@@ -33,7 +33,9 @@ gulp.task('webpack', function() {
     webpackConfig.entry = configRoot;
     gulp.src('')
         .pipe(webpack(webpackConfig))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./build/dist'));
+
+    gulp.start(['copy']);
 });
 
 gulp.task('watch', function () {
@@ -45,7 +47,7 @@ gulp.task('watch', function () {
 
 
 gulp.task('clean', function() {
-    return gulp.src('dist/', {
+    return gulp.src('build/', {
             read: false
         })
         .pipe(clean());
@@ -53,7 +55,12 @@ gulp.task('clean', function() {
 gulp.task('backboneBuild', function() {
     gulp.src(['./js/underscore.js','./js/backbone.js','./js/ajaxBackboneManger.js'])
         .pipe(concat('./backboneLib.js'))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./build/dist'));
+});
+
+gulp.task('copy', function() {
+    return gulp.src(['./css/**/*', './*.html', './lib/**/*'], {base: './'})
+        .pipe(gulp.dest('build'));
 });
 
 gulp.task('build',['webpack'], function() {
@@ -70,6 +77,6 @@ gulp.task('build',['webpack'], function() {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default',['clean','backboneBuild','webpack'], function() {
-    gulp.start(['watch']);
+gulp.task('default',['clean'], function() {
+    gulp.start(['backboneBuild','webpack','watch']);
 });

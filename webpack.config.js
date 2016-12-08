@@ -1,17 +1,16 @@
 var webpack = require('webpack');
 var path = require("path");
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({name:'common'});
 //PostCSS plugins
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    entry: { main: './js/main.js'},
+    entry: { },
     output: {
-        path: path.join(__dirname, '../dist/'), //文件输出目录
-        publicPath: './../dist/',
-        filename: '[name].js',
-        chunkFilename: "[name].page.js"
+        path: path.join(__dirname, './build/dist/'), //文件输出目录
+        publicPath: './dist/',
+        filename: '[name].js'
     },
     plugins: [commonsPlugin,new ExtractTextPlugin("[name].css")
     ],
@@ -19,7 +18,9 @@ module.exports = {
         loaders: [
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader", {
+                    publicPath: '../dist/'
+                })
             },
             {
                 test: /\.(jpg|png|woff|ttf|svg|gif)$/,

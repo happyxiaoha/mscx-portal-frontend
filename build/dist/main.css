@@ -1,0 +1,67 @@
+.header{height: 90px;}
+.header h1{margin:20px 0 0;}
+.header h1 a{display: block;}
+.header h1 a img{display: block;}
+.header .citys{margin: 35px 0 0 6px;cursor: pointer;}
+.header .citys input{padding: 0;margin: 0;border: 0;box-shadow: none;width: 88px;color: #069cd9;font-size: 14px;background: transparent;cursor: pointer;}
+.header .searchCons{margin: 0 30px 0 0;background: #fff;position: relative}
+.header .searchCons .search-img{position: absolute;top: 0; right: 0;height: 38px;width: 38px;background: url(../dist/45705948a6ffc7ba7eac9fc3a41587db.png) center center no-repeat;cursor: pointer}
+.header .searchCons input{display: inline-block;margin: 0;}
+.header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 0;box-shadow: none;padding-left: 10px;padding-right: 16px;}
+.header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
+.header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
+.header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
+.header .haslogin .noLogin span{margin: 0 4px;}
+.header .haslogin .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
+.header .haslogin .yesLogin span.down{min-width: 80px; padding-right: 20px;background: url(../dist/f14b7e2ba540c8f368a95e4081460ab9.png) right center no-repeat;}
+.header .haslogin .yesLogin .active span.down{background: url(../dist/2325267fd5ded71e89275c1b9d878b1c.png) right center no-repeat;}
+
+.footer{padding: 60px 0 20px;margin-top: 50px;}
+.footer ul{
+    margin-left: 130px;
+}
+.footer ul li a{
+    width: 155px;
+    display: block;
+    color: #888;
+    font-size: 14px;
+    line-height: 30px;
+}
+.footer ul li a:first-child{
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}.header{height: 90px;}
+.header h1{margin:20px 0 0;}
+.header h1 a{display: block;}
+.header h1 a img{display: block;}
+.header .citys{margin: 35px 0 0 6px;cursor: pointer;}
+.header .citys input{padding: 0;margin: 0;border: 0;box-shadow: none;width: 88px;color: #069cd9;font-size: 14px;background: transparent;cursor: pointer;}
+.header .searchCons{margin: 0 30px 0 0;background: #fff;position: relative}
+.header .searchCons .search-img{position: absolute;top: 0; right: 0;height: 38px;width: 38px;background: url(../dist/45705948a6ffc7ba7eac9fc3a41587db.png) center center no-repeat;cursor: pointer}
+.header .searchCons input{display: inline-block;margin: 0;}
+.header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 0;box-shadow: none;padding-left: 10px;padding-right: 16px;}
+.header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
+.header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
+.header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
+.header .haslogin .noLogin span{margin: 0 4px;}
+.header .haslogin .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
+.header .haslogin .yesLogin span.down{min-width: 80px; padding-right: 20px;background: url(../dist/f14b7e2ba540c8f368a95e4081460ab9.png) right center no-repeat;}
+.header .haslogin .yesLogin .active span.down{background: url(../dist/2325267fd5ded71e89275c1b9d878b1c.png) right center no-repeat;}
+
+.footer{padding: 60px 0 20px;margin-top: 50px;}
+.footer ul{
+    margin-left: 130px;
+}
+.footer ul li a{
+    width: 155px;
+    display: block;
+    color: #888;
+    font-size: 14px;
+    line-height: 30px;
+}
+.footer ul li a:first-child{
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}

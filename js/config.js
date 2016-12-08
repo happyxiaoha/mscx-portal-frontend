@@ -5,8 +5,10 @@
 var mscxPage = {
     domEl: {
         mainEl: '',
-        headerEl: '',
-        footerEl: '',
+        headerEl: '#headSection',
+        footerEl: '#footSection',
         apiEl: ''
-    }
+    },
+    views: {},
+    appRouter: {}
 };

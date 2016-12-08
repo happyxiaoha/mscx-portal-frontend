@@ -11,15 +11,15 @@ var gulp = require('gulp'),
     webpackConfig = require('./webpack.config.js');
 
 var configRoot = {
-    'login': '',
-    'register': '',
+    /*'login': '',*/
+    /*'register': '',*/
     'main': './js/main.js',      //首页
-    'sources': '',    //数据
-    'api': '',
-    'services': '',     //微服务
-    'demand ': '',     //需求定制
-    'pioneering': '',    //创业园地
-    'userInfo': ''      //用户中心
+    /* 'sources': '',   */ //数据
+        /* 'api': '',*/
+        /*'services': '',  */   //微服务
+        /* 'demand': '',    */ //需求定制
+    /* 'pioneering': '',  */  //创业园地
+    'userInfo': './js/userInfo.js'      //用户中心
 };
 
 gulp.task('lint', function  () {

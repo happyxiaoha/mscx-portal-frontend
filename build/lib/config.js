@@ -4,11 +4,12 @@
 
 var mscxPage = {
     domEl: {
-        mainEl: '',
+        mainEl: '#content',
         headerEl: '#headSection',
         footerEl: '#footSection',
         apiEl: ''
     },
     views: {},
-    appRouter: {}
+    appRouter: {},
+    host: 'http://mscx-portal.eastdc.cn:82/ro'
 };

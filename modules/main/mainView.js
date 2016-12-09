@@ -16,7 +16,7 @@ var mainModel = Backbone.Model.extend({
         options = options || {};
         var coll = this;
         _.extend(options, {
-            url: mscxPage.host+'/mscx-app-api/recommend/bar.do',
+            url: '/mscx-app-api/recommend/bar.do',
             success: function(res) {
                 new navigationView({
                     el: '#daohangSer',
@@ -31,7 +31,7 @@ var mainModel = Backbone.Model.extend({
         options = options || {};
         var coll = this;
         _.extend(options, {
-            url:mscxPage.host+ '/mscx-app-api/list.do',
+            url: '/mscx-app-api/list.do',
             success: function(res) {
                 new recommendBarView({
                     el: '#serList',
@@ -45,7 +45,7 @@ var mainModel = Backbone.Model.extend({
     recommendSerList: function(options) {
         options = options || {};
         _.extend(options, {
-            url: mscxPage.host+'/mscx-app-api/recommend/list.do',
+            url: '/mscx-app-api/recommend/list.do',
             success: function(res) {
                 new recommendView({
                     el: '.recommendSerList',
@@ -59,7 +59,7 @@ var mainModel = Backbone.Model.extend({
     apiDaohang: function(options) {
         options = options || {};
         _.extend(options, {
-            url:mscxPage.host+ '/mscx-api-api/service/getNavigationApi.do',
+            url: '/mscx-api-api/service/getNavigationApi.do',
             data: {areaId:'280101'},
             success: function(res) {
                 new navigationView({
@@ -75,7 +75,7 @@ var mainModel = Backbone.Model.extend({
         options = options || {};
 
         _.extend(options, {
-            url: mscxPage.host+'/mscx-api-api/service/getSelectedNavigation.do',
+            url: '/mscx-api-api/service/getSelectedNavigation.do',
             data: {areaId:'280101'},
             success: function(res) {
                 new recommendBarView({
@@ -90,7 +90,7 @@ var mainModel = Backbone.Model.extend({
     recommendApiList: function(options) {
         options = options || {};
         _.extend(options, {
-            url: mscxPage.host+'/mscx-api-api/service/getSelectedApi.do',
+            url: '/mscx-api-api/service/getSelectedApi.do',
             data: {areaId:'280101'},
             success: function(res) {
                 new recommendView({

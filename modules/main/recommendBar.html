@@ -1,0 +1,16 @@
+
+<% if(type == 'api'){ %>
+<% _.each(dataList,function(item,index){ %>
+<% if(index < 10 ){%>
+<li><a attrid="<%= item.apiServiceId %>"><%= item.apiServiceCName %></a></li>
+<% }; %>
+<% }); %>
+<% }; %>
+
+<% if(type == 'ser'){ %>
+<% _.each(dataList,function(item,index){ %>
+<% if(index < 10 ){%>
+<li><a attrid="<%= item.id %>"><%= item.name %></a></li>
+<% }; %>
+<% }); %>
+<% }; %>

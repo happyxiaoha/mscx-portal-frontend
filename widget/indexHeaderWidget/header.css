@@ -1,3 +1,11 @@
+.ml5{
+    margin-left: 5px;
+}
+
+a{
+    color: #6e7782;
+    cursor: pointer;
+}
 .header{height: 90px;}
 .header h1{margin:20px 0 0;}
 .header h1 a{display: block;}
@@ -5,7 +13,7 @@
 .header .citys{margin: 35px 0 0 6px;cursor: pointer;}
 .header .citys input{padding: 0;margin: 0;border: 0;box-shadow: none;width: 88px;color: #069cd9;font-size: 14px;background: transparent;cursor: pointer;}
 .header .searchCons{margin: 0 30px 0 0;background: #fff;position: relative}
-.header .searchCons .search-img{position: absolute;top: 0; right: 0;height: 38px;width: 38px;background: url('../../images/img01.png') center center no-repeat;cursor: pointer}
+.header .searchCons .search-img{position: absolute;top: 0; right: 0;height: 38px;width: 38px;background: url("../../images/img01.png") center center no-repeat;cursor: pointer}
 .header .searchCons input{display: inline-block;margin: 0;}
 .header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 0;box-shadow: none;padding-left: 10px;padding-right: 16px;}
 .header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
@@ -13,22 +21,44 @@
 .header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
 .header .haslogin .noLogin span{margin: 0 4px;}
 .header .haslogin .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
-.header .haslogin .yesLogin span.down{min-width: 80px; padding-right: 20px;background: url('../../images/newicon/ic_down.png') right center no-repeat;}
-.header .haslogin .yesLogin .active span.down{background: url('../../images/newicon/ic_up.png') right center no-repeat;}
+.header .haslogin .yesLogin span.down{min-width: 80px; padding-right: 20px;background: url("../../images/newicon/ic_down.png") right center no-repeat;}
+.header .haslogin .yesLogin .active span.down{background: url("../../images/newicon/ic_up.png") right center no-repeat;}
 
-.footer{padding: 60px 0 20px;margin-top: 50px;}
-.footer ul{
-    margin-left: 130px;
+.personIcon{
+    min-width: 100px;
+    padding-right: 10px;
+    height: 100%;
+    float: left;
+    padding-left: 40px;
+    background: url("../../images/newicon/ic_username.png") 12px center no-repeat;
 }
-.footer ul li a{
-    width: 155px;
-    display: block;
-    color: #888;
-    font-size: 14px;
-    line-height: 30px;
+
+.yesLogin {
+    min-width: 150px;
+    height: 36px;
+    line-height: 36px;
+    background: #f9f9f9;
+    margin-top: 2px;
 }
-.footer ul li a:first-child{
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 20px;
+/*个人信息下拉菜单*/
+.dropMenu{
+    position: absolute;
+    border: solid 1px #eee;
+    background: #fff;
+    top: 38px;
+    right: 0;
+    display: none;
+    z-index: 1001;
+    width: 148px;
+}
+.dropMenu li{ white-space:nowrap;height:36px;line-height: 36px;}
+
+.dropMenu a { display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center; }
+.dropMenu a:hover{ color:#069cd9; }
+
+.dropMenu li.usercenter{
+    background: url("../../images/newicon/ic_usercenter.png") 12px center no-repeat;
+}
+.dropMenu li.logout{
+    background: url("../../images/newicon/ic_logout.png") 12px center no-repeat;
 }

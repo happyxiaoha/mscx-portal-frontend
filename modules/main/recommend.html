@@ -1,0 +1,49 @@
+
+<% if(type == 'api'){ %>
+<% _.each(dataList,function(item,index){ %>
+<% if(index < 8 ){%>
+<li>
+    <div class="centers">
+        <a attrid="<%= item.apiServiceId %>">
+            <div class="datalist-img">
+                <img src="<%= item.iconUrl %>">
+            </div>
+            <p><a><%= item.apiServiceCName %></a></p>
+            <p class="buyType"><%= (item.chargeType === 0 ? '免费' : '收费') %></p>
+        </a>
+    </div>
+    <div class="downs clearfix">
+        <span class="lianjiehsu fl">
+           <%= item.accessCnt %>
+        </span>
+        <span class="fl diaoyongshu">
+           <%= item.attentionCnt %>
+        </span>
+    </div>
+</li>
+<% }; %>
+<% }); %>
+<% }; %>
+
+<% if(type == 'ser'){ %>
+<% _.each(dataList,function(item,index){ %>
+<% if(index < 8 ){%>
+<li>
+    <div class="centers">
+        <a attrid="<%= item.id %>">
+            <div class="datalist-img">
+                <img src="<%= item.imageUri %>">
+            </div>
+            <p><a><%= item.name %></a></p>
+            <p class="buyType"><%= item.chargeType %></p>
+        </a>
+    </div>
+    <div class="downs clearfix">
+        <span class="lianjiehsu fl">
+            <%= item.viewCount %>
+        </span>
+    </div>
+</li>
+<% }; %>
+<% }); %>
+<% }; %>

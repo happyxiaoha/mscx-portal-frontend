@@ -6,12 +6,14 @@ require('./header.css');
 
 var headerView = Backbone.View.extend({
     el: mscxPage.domEl.headerEl,
+    template: _.template(template),
     events: {
         'blur .info-line input':'changeAttribute'
-
     },
     initialize: function() {
-        this.$el.html(template);
+        this.$el.html(this.template({
+            id: this.id || ''
+        }));
     }
 });
 

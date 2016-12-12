@@ -37,12 +37,11 @@ gulp.task('webpack', function() {
 
     gulp.start(['copy']);
 });
-
 gulp.task('watch', function () {
     gulp.watch(['./js/underscore.js','./js/backbone.js','./js/ajaxBackboneManger.js'], ['backboneBuild']);
-    gulp.watch(['modules/*/*.html','modules/*/*/*.html'], ['webpack']);
-    gulp.watch(['modules/*/*.css','modules/*/*/*.css'], ['webpack']);
-    gulp.watch(['modules/*/*.js','modules/*/*/*.js'], ['webpack']);
+    gulp.watch(['modules/*/*.html','modules/*/*/*.html','widget/*/*.html','widget/*/*/*.html'], ['webpack']);
+    gulp.watch(['modules/*/*.css','modules/*/*/*.css','widget/*/*.css','widget/*/*/*.css'], ['webpack']);
+    gulp.watch(['modules/*/*.js','modules/*/*/*.js','widget/*/*.js','widget/*/*/*.js'], ['webpack']);
 });
 
 

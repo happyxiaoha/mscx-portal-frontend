@@ -9,26 +9,46 @@
 .header .searchCons input{display: inline-block;margin: 0;}
 .header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 0;box-shadow: none;padding-left: 10px;padding-right: 16px;}
 .header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
-.header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
-.header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
-.header .haslogin .noLogin span{margin: 0 4px;}
-.header .haslogin .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
-.header .haslogin .yesLogin span.down{min-width: 80px; padding-right: 20px;background: url(../dist/f14b7e2ba540c8f368a95e4081460ab9.png) right center no-repeat;}
-.header .haslogin .yesLogin .active span.down{background: url(../dist/2325267fd5ded71e89275c1b9d878b1c.png) right center no-repeat;}
+.header .left-area{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
+.header .left-area .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
+.header .left-area .noLogin span{margin: 0 4px;}
+.header .left-area .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
+.header .left-area .yesLogin span.down{min-width: 80px; padding-right: 20px;background: url(../dist/f14b7e2ba540c8f368a95e4081460ab9.png) right center no-repeat;}
+.header .left-area .yesLogin .active span.down{background: url(../dist/2325267fd5ded71e89275c1b9d878b1c.png) right center no-repeat;}
 
-.footer{padding: 60px 0 20px;margin-top: 50px;}
-.footer ul{
-    margin-left: 130px;
+.dropMenu{
+    position: absolute;
+    border: solid 1px #eee;
+    background: #fff;
+    top: 38px;
+    right: 0;
+    display: none;
+    z-index: 1001;
+    width: 148px;
 }
-.footer ul li a{
-    width: 155px;
-    display: block;
-    color: #888;
-    font-size: 14px;
-    line-height: 30px;
+.dropMenu li{ white-space:nowrap;height:36px;line-height: 36px;}
+
+.dropMenu a { display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center; }
+.dropMenu a:hover{ color:#069cd9; }
+
+.dropMenu li.usercenter{
+    background: url(../dist/e832896a017c63898919b68142806dd8.png) 12px center no-repeat;
 }
-.footer ul li a:first-child{
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 20px;
+.dropMenu li.logout{
+    background: url(../dist/43b03b1957bc566624b3acc8d3118a56.png) 12px center no-repeat;
 }
+
+.navCons{height: 54px;line-height: 54px;}
+.navCons .nav{margin-bottom: 0;}
+.navCons .nav li{float:left;font-size: 16px;padding:0 30px;}
+.navCons .nav li.active{background: #0683b6;}
+.navCons .nav li:hover{background: #0683b6;}
+.navCons .nav li a{color: #fff;display: block;}
+.navCons .nav li a:hover,.navCons .nav li a:link{background: transparent;color: #fff !important;}
+.navCons .nav li a:hover{color: #333;}
+.navCons .links{font-size: 16px;}
+.navCons .links a{color: #fff; display: inline-block;}
+.navCons .links a:first-child{width: 30px;height:31px;vertical-align: -10px;background: url(../dist/1ca0c412c9d8ae16ef0e38aa608cc751.png) no-repeat left center;margin-right: 12px; cursor: pointer;}
+.navCons .links a:nth-child(2){background: url(../dist/dd730dd5a4c5cf9ac20a1144f57887db.png) no-repeat 10px center;padding: 0 10px 0 44px;cursor: pointer;}
+.navCons .links a:nth-child(2):hover{background-color: #0683b6;}
+.navCons .links a:nth-child(2).active{background-color: #0683b6;}

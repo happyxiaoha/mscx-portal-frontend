@@ -2,18 +2,18 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./footer.html');
-require('./footer.css');
+var template = require('html!./userInfoDefault.html');
+require('./userInfoDefault.css');
 
-
-var footerView = Backbone.View.extend({
-    el: mscxPage.domEl.footerEl,
+var mainView = Backbone.View.extend({
+    el: mscxPage.domEl.mainEl,
     events: {
         'blur .info-line input':'changeAttribute'
+
     },
     initialize: function() {
         this.$el.html(template);
     }
 });
 
-module.exports = footerView;
+module.exports = mainView;

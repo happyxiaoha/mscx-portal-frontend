@@ -235,3 +235,42 @@ input[type='checkbox']{margin:2px 3px 3px 4px;padding:0;width:13px;height: 13px;
 .need {
 	color: #ff4200;
 }
+/* 长度小的select框 */
+.smallSelCons{width: 403px;}
+.smallSel{height: 40px;margin: 0 8px;}
+.smallSel .smallSelList{
+	width: 85px;
+	background: #fff;
+	border: 1px solid #ccc;
+	height: 26px; 
+	line-height: 24px;
+	text-align: left;
+	padding: 0 10px;
+	box-sizing: border-box;
+	position: relative;
+	cursor: pointer;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	border-radius: 0;
+	margin: 0;
+	outline: none;
+	vertical-align: 0;
+}
+.smallSel span{
+	vertical-align: 0;
+	display: inline-block;
+	margin: 0 6px;
+}
+.smallSel .downSmalllBtn{
+	display: block;
+	position: absolute;
+	border-top: 6px solid #aaa;
+	border-right: 6px solid transparent;
+	border-left: 6px solid transparent;
+	right: 36px;
+	top: 18px;
+}
+
+.common .tit{position: relative; height: 24px;line-height: 24px;padding-left: 16px;}
+.common .tit:before{content: '';position: absolute;width: 5px;height: 24px;background: #069cd9;left: 0;top: 0;}

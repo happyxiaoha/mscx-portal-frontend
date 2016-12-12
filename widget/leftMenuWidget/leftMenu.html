@@ -1,0 +1,9 @@
+<ul>
+    <li>
+        <% data && data.sideBars.forEach(function(item, index) { %>
+            <a href="<%= item.url %>" class="<%= item.key == data.id ? 'active' : '' %>">
+                <span><%= item.name %></span>
+            </a>
+        <% }) %>
+    </li>
+</ul>

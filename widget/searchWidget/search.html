@@ -1,45 +1,269 @@
-<div class="footer bg535353 indexfooter">
-    <div class="grid1190 clearfix">
-        <a href="../templates/newindex2.html" class="block fl">
-            <img src="../static/img/newicon/ic_logo.png" alt="">
-        </a>
-        <ul class="fl clearfix">
-            <li class="fl">
-                <a href="../templates/newindex.html">首页</a>
-                <a href="../templates/openData/openData.html">数据</a>
-                <a href="../templates/api/citySdk.html">API</a>
-                <a href="../templates/server/server.html">微服务</a>
-                <a href="../templates/customized/citySdkRequire.html">
-                    需求定制</a>
-                <a href="../templates/pioneer/news.html">创业园地</a>
-            </li>
-            <li class="fl">
-                <a href="#">帮助</a>
-                <a href="#">关于我们</a>
-                <a href="#">新手指导</a>
-                <a href="#">API使用</a>
-                <a href="#">微应用使用</a>
-                <a href="#">常见问题</a>
-            </li>
-            <li class="fl">
-                <a href="#">联系我们</a>
-                <a href="#">商务合作</a>
-                <a href="#">用户反馈</a>
-                <a href="#">合作伙伴</a>
-            </li>
-        </ul>
-        <div class="fl text-center righttext">
-            <p class="textinfo">关注官方微信</p>
-            <img src="../static/img/newCode.png" alt="">
-        </div>
-        <div class="forhelp fl">
-            <div class="swhz">
-                <p>商务合作（工作日9:00-18:00）</p>
-                <p class="ft18 mt10">010-8765436</p>
+<div class="tit">
+    <h2 class="ft16 cor5"><%= data && data.title %></h2>
+</div>
+<div class="ChoiceList boxSizing">
+    <!-- 范围 -->
+    <div class="clearfix">
+        <!-- 对象 -->
+        <div class="C_selectorLine clearfix fl wd240">
+            <div class="sl-wrap clearfix">
+                <div class="sl-key fl">
+                    <span>对象</span>
+                </div>
+                <div class="sl-value fl">
+                    <div class="sl-v-list">
+                        <ul class="J_valueList clearfix pr10">
+                            <li>
+                                <input type="checkbox" id="self">
+                                <label for="self">个人</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="cpmpany">
+                                <label for="cpmpany">企业</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="citySet">
+                                <label for="citySet">城市管理</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="jisuzhichi">
-                <p>技术支持</p>
-                <p class="ft18 mt10">010-8765436</p>
+        </div>
+
+        <div class="C_selectorLine clearfix fl">
+            <div class="sl-wrap clearfix borc1">
+                <div class="sl-key fl">
+                    <span>范围</span>
+                </div>
+                <div class="sl-value fl">
+                    <div class="sl-v-list">
+                        <div class="smallSelCons clearfix">
+                            <div class="smallSel fl posRE">
+                                <select class="smallSelList">
+                                    <option value="不限">不限</option>
+                                    <option value="北京">北京</option>
+                                    <option value="河北">河北</option>
+                                    <option value="河南">河南</option>
+                                    <option value="山西">山西</option>
+                                    <option value="陕西">陕西</option>
+                                    <option value="湖南">湖南</option>
+                                    <option value="湖北">湖北</option>
+                                    <option value="广东">广东</option>
+                                    <option value="广西">广西</option>
+                                    <option value="四川">四川</option>
+                                    <option value="内蒙古">内蒙古</option>
+                                    <option value="台湾">台湾</option>
+                                    <option value="澳门">澳门</option>
+                                    <option value="香港">香港</option>
+                                    <option value="山东">山东</option>
+                                    <option value="福建">福建</option>
+                                    <option value="江苏">江苏</option>
+                                    <option value="浙江">浙江</option>
+                                </select>
+                                <span>省</span>
+                                <em class="downSmalllBtn"></em>
+                            </div>
+                            <div class="smallSel fl posRE">
+                                <select class="smallSelList">
+                                    <option value="不限">不限</option>
+                                    <option value="海淀">海淀</option>
+                                    <option value="昌平">昌平</option>
+                                    <option value="滨湖">滨湖</option>
+                                    <option value="新城">新城</option>
+                                    <option value="海港">海港</option>
+                                    <option value="北戴河">北戴河</option>
+                                    <option value="南戴河">南戴河</option>
+                                    <option value="新都区">新都区</option>
+                                    <option value="江北区">江北区</option>
+                                </select>
+                                <span>市</span>
+                                <em class="downSmalllBtn"></em>
+                            </div>
+                            <div class="smallSel fl posRE">
+                                <select class="smallSelList">
+                                    <option value="不限">不限</option>
+                                    <option value="北京">北京</option>
+                                    <option value="石家庄">石家庄</option>
+                                    <option value="秦皇岛">秦皇岛</option>
+                                    <option value="保定">保定</option>
+                                    <option value="西安">西安</option>
+                                    <option value="无锡">无锡</option>
+                                    <option value="昆明">昆明</option>
+                                    <option value="佛山">佛山</option>
+                                    <option value="本溪">本溪</option>
+                                    <option value="鞍山">鞍山</option>
+                                    <option value="济南">济南</option>
+                                    <option value="烟台">烟台</option>
+                                    <option value="张家口">张家口</option>
+                                    <option value="天津">天津</option>
+                                    <option value="杭州">杭州</option>
+                                    <option value="广州">广州</option>
+                                    <option value="重庆">重庆</option>
+                                    <option value="成都">成都</option>
+                                </select>
+                                <span>区县</span>
+                                <em class="downSmalllBtn R47"></em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 机构 -->
+    <div class="C_selectorLine clearfix">
+        <div class="sl-wrap clearfix">
+            <div class="sl-key fl">
+                <span>机构</span>
+            </div>
+            <div class="sl-value fl">
+                <div class="sl-v-list">
+                    <ul class="J_valueList clearfix J_List">
+                        <li class="active">
+                            <a href="#">不限</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">公安局</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">民政局</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">工商局</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">质监局</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">旅游局</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">教育局</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sl-ext fl">
+                <a class="sl-e-more J_extMore down" href="javascript:;">更多&gt;&gt;</a>
+            </div>
+        </div>
+    </div>
+    <!-- 分类 -->
+    <div class="C_selectorLine clearfix">
+        <div class="sl-wrap clearfix">
+            <div class="sl-key fl">
+                <span>分类</span>
+            </div>
+            <div class="sl-value fl">
+                <div class="sl-v-list">
+                    <ul class="J_valueList clearfix J_List">
+                        <li class="active">
+                            <a href="#">不限</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">教育</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">工作就业</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">社会保障</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">医疗卫生</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">交通出行</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">产业发展</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sl-ext fl">
+                <a class="sl-e-more J_extMore down" href="javascript:;">更多&gt;&gt;</a>
+            </div>
+        </div>
+    </div>
+    <!-- 机构 -->
+    <!-- 2016-09-07 增加类名 agency 机构选项不可点击状态 更多 增加类名 agencyDown -->
+    <div class="C_selectorLine clearfix">
+        <div class="sl-wrap clearfix">
+            <div class="sl-key fl">
+                <span>标签</span>
+            </div>
+            <div class="sl-value fl">
+                <div class="sl-v-list">
+                    <ul class="J_valueList clearfix J_List">
+                        <li class="active">
+                            <a href="#">不限</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">企业信息</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">知识产权</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">关联关系</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">司法信息</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">资质认可</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">遵循违规</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">遵循违规</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">遵循违规</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">遵循违规</a>
+                        </li>
+                        <li>
+                            <a href="#" rel="nofollow">遵循违规</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 2016-09-07 机构更多事件阻止  增加类名 agencyDown-->
+            <div class="sl-ext fl">
+                <a class="sl-e-more J_extMore down agencyDown" href="javascript:;">更多&gt;&gt;</a>
+            </div>
+        </div>
+    </div>
+    <!-- 范围 -->
+    <div class="C_selectorLine clearfix">
+        <div class="sl-wrap clearfix">
+            <div class="sl-key fl">
+                <span>收费类型</span>
+            </div>
+            <div class="sl-value fl">
+                <div class="sl-v-list">
+                    <ul class="J_valueList clearfix wd804">
+                        <li class="active">
+                            <input type="checkbox">
+                            <label for="free">免费</label>
+                        </li>
+                        <li class="active">
+                            <input type="checkbox" id="noFree">
+                            <label for="noFree">收费</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 搜索 -->
+            <div class="sl-search">
+                <input type="text" class="slSearch-input">
+                <span class="slSearch-Btn"></span>
             </div>
         </div>
     </div>

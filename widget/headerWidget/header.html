@@ -37,12 +37,9 @@
 <div class="navCons clearfix bgBlue">
     <div class="grid960">
         <ul class="nav fl">
-            <li class="<%= (id == 'index' ? 'active' : '' ) %>"><a href="../newindex.html">首页</a></li>
-            <li class="<%= (id == 'sources' ? 'active' : '' ) %>"><a href="../openData/openData.html">数据</a></li>
-            <li class="<%= (id == 'api' ? 'active' : '' ) %>"><a href="../api/citySdk.html">API</a></li>
-            <li class="<%= (id == 'services' ? 'active' : '' ) %>"><a href="../server/server.html">微服务</a></li>
-            <li class="<%= (id == 'demand' ? 'active' : '' ) %>"><a href="../customized/citySdkRequire.html">需求定制</a></li>
-            <li class="<%= (id == 'pioneering' ? 'active' : '' ) %>"><a href="../pioneer/news.html">创业园地</a></li>
+            <% _.each(menuList, function (item) { %>
+                <li <%= (id == item.key ? 'class=active' : '' ) %>><a href="<%=item.url%>"><%=item.name%></a></li>
+            <%})%>
         </ul>
     </div>
 </div>

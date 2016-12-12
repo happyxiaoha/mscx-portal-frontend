@@ -1,0 +1,7 @@
+.left-list-wrap{width: 166px;border: 1px solid #ccc;text-align: center;}
+.left-list-wrap .myinfo{height: 50px;font-size: 18px;color: #fff;line-height: 50px;background: url(../../../images/img16.png) no-repeat center bottom #069cd9;display: block;}
+.left-list-wrap ul li a{height: 44px;line-height: 44px;font-size: 14px;border-bottom: 1px solid #ccc;cursor: pointer;background: #fff;position: relative;display: block;}
+.left-list-wrap ul li a:last-child{border: 0;position: relative;}
+.left-list-wrap ul li a:hover{color: #069cd9;}
+.left-list-wrap ul li a.active{color: #069cd9;}
+.left-list-wrap ul li a.active:before{content: '';position: absolute;width: 5px;height: 44px;background: #069cd9;left: 0;}

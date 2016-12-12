@@ -8,7 +8,6 @@ var Routes =  Backbone.Router.extend({
         'companyInfo':'companyInfo'//企业信息
     },
     defaultView:function () {
-        
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
         mscxPage.views['defaultViewObj'] = new defaultView();
     },

@@ -6,7 +6,7 @@ var template = require('html!./userInfoDefault.html');
 require('./userInfoDefault.css');
 
 var mainView = Backbone.View.extend({
-    el: mscxPage.domEl.mainEl,
+    el: mscxPage.domEl.userCenterRight,
     events: {
         'blur .info-line input':'changeAttribute'
 

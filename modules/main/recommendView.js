@@ -8,7 +8,23 @@ var recommendView = Backbone.View.extend({
     events: {
     },
     initialize: function(obj) {
-        this.$el.html(this.template({'dataList': this.model,'type': obj.type}));
+        this.$el.toggleClass('loading');
+        if(this.id === 'api'){
+            this.model.fetch({
+                data: {areaId:'280101'}
+            });
+        }
+        else {
+            this.model.fetch();
+        }
+
+        this.listenTo(this.model,'sync',this.render);
+
+    },
+    render: function() {
+        this.$el.toggleClass('loading');
+        var nJson =  this.model.toJSON();
+        this.$el.html(this.template({'dataList': nJson.result,'type': this.id}));
     }
 });
 

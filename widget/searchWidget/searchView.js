@@ -61,7 +61,7 @@ require('./search.css');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'common',
+    className: 'search-box search-loading',
     events: {
         'click .sl-e-more': 'toggleMore'
     },
@@ -86,6 +86,7 @@ var view = Backbone.View.extend({
         return this;
     },
     render: function() {
+        this.$el.toggleClass('search-loading');
         var model = this.model.toJSON ? this.model.toJSON() : this.model;
         var params = {};
 
@@ -109,9 +110,9 @@ var view = Backbone.View.extend({
     toggleMore: function(event) {
         var $target = this.$(event.currentTarget);
         if($target.hasClass('down')){
-            $target.html('收起>>').removeClass('down').parent().siblings('.sl-value').find('.J_List').css({'height':'auto'});
+            $target.html('收起>>').removeClass('down').parent().siblings('.sl-value').find('.J_List').toggleClass('expand');
         }else{
-            $target.html('更多>>').addClass('down').parent().siblings('.sl-value').find('.J_List').css({'height':'40px'});
+            $target.html('更多>>').addClass('down').parent().siblings('.sl-value').find('.J_List').toggleClass('expand');
         }            
     }
 });

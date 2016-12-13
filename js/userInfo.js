@@ -11,7 +11,7 @@ var userCenterLeft = require('userInfo/leftSide/leftSideView.js');
 $(function() {
     new header();
     new footer();
-    new userCenterLeft();
+    mscxPage.userCenter = {leftView: new userCenterLeft()};
     mscxPage.appRouter = new router();
     Backbone.history.stop();
     Backbone.history.start();

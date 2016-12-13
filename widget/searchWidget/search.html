@@ -6,14 +6,14 @@
     <div class="clearfix">
         <!-- 对象 -->
         <div class="C_selectorLine clearfix fl">
-            <div class="sl-wrap clearfix">
+            <div class="sl-wrap clearfix widthFull">
                 <div class="sl-key fl">
                     <span>对象</span>
                 </div>
                 <div class="sl-value fl">
                     <div class="sl-v-list">
-                        <ul class="J_valueList clearfix pr10">
-                            <% data && data.objects && data.objects.toJSON().result.forEach(function(item) { %>
+                        <ul class="J_valueList clearfix">
+                            <% data && data.objects && data.objects.result.forEach(function(item) { %>
                                 <li>
                                     <input type="checkbox" id="object<%= item.dictCode %>">
                                     <label for="object<%= item.dictCode %>"><%= item.dictName %></label>
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="C_selectorLine clearfix fl">
+        <div class="C_selectorLine clearfix fr">
             <div class="sl-wrap clearfix borc1">
                 <div class="sl-key fl">
                     <span>范围</span>
@@ -97,7 +97,7 @@
                                     <option value="成都">成都</option>
                                 </select>
                                 <span>区县</span>
-                                <em class="downSmalllBtn R47"></em>
+                                <em class="downSmalllBtn right47"></em>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
         </div>
     </div>
     
-    <% if(data.orgs) { %>
+    <% if(data.orgs && data.orgs.result) { %>
     <!-- 机构 -->
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
@@ -119,7 +119,7 @@
                         <li class="active">
                             <a href="#">不限</a>
                         </li>
-                        <% data && data.orgs && data.orgs.toJSON().result.forEach(function(item) { %>
+                        <% data.orgs.result.forEach(function(item) { %>
                             <li>
                                 <a href="#" rel="nofollow"><%= item.shortName %></a>
                             </li>
@@ -134,7 +134,7 @@
     </div>
     <% } %>
     
-    <% if(data.category) { %>
+    <% if(data.category && data.category.result) { %>
     <!-- 分类 -->
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
@@ -147,7 +147,7 @@
                         <li class="active">
                             <a href="#">不限</a>
                         </li>
-                        <% data && data.category && data.category.toJSON().result.forEach(function(item) { %>
+                        <% data.category.result.forEach(function(item) { %>
                             <li>
                                 <a href="#" rel="nofollow"><%= item.catalogName %></a>
                             </li>
@@ -162,7 +162,7 @@
     </div>
     <% } %>
 
-    <% if(data.tags) { %>
+    <% if(data.tags && data.tags.result) { %>
     <!-- 标签 -->
     <!-- 2016-09-07 增加类名 agency 机构选项不可点击状态 更多 增加类名 agencyDown -->
     <div class="C_selectorLine clearfix">
@@ -176,7 +176,7 @@
                         <li class="active">
                             <a href="#">不限</a>
                         </li>
-                        <% data && data.tags && data.tags.toJSON().result.forEach(function(item) { %>
+                        <% data.tags.result.forEach(function(item) { %>
                             <li>
                                 <a href="#" rel="nofollow"><%= item.tagName %></a>
                             </li>
@@ -192,7 +192,7 @@
     </div>
     <% } %>
 
-    <% if(data.chargeWay) { %>
+    <% if(data.chargeWay && data.chargeWay.result && data.chargeWay.result.length > 0) { %>
     <!-- 收费类型 -->
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
@@ -202,7 +202,7 @@
             <div class="sl-value fl">
                 <div class="sl-v-list">
                     <ul class="J_valueList clearfix wd804">
-                        <% data && data.chargeWay && data.chargeWay.toJSON().result.forEach(function(item) { %>
+                        <% data.chargeWay.result.forEach(function(item) { %>
                             <li class="active">
                                 <input type="checkbox" id="chargeWay<%= item.dictCode %>">
                                 <label for="chargeWay<%= item.dictCode %>"><%= item.dictName %></label>

@@ -68,6 +68,7 @@ body{ font-family:'microsoft yahei'; font-size:12px;}
 .grid1000{ width:1000px; margin:0 auto; }
 .grid1190{ width:1190px; margin:0 auto; }
 
+.widthFull{width: 100%}
 .wd120{width: 120px;}
 .wd804{width: 804px;}
 .wd660{width: 660px;}
@@ -128,6 +129,8 @@ body{ font-family:'microsoft yahei'; font-size:12px;}
 .pt14{padding-top: 14px !important;}
 .pl60{padding-left: 60px !important;}
 .pr60{padding-right: 60px !important;}
+
+.right47{right: 47px !important;}
 em{color:#cc0000;font-style: normal;}
 /*圆角*/
 .radius3{ -webkit-border-radius:3px; -moz-border-radius:3px; -o-border-radius:3px; border-radius:3px;}
@@ -235,7 +238,6 @@ input[type='checkbox']{margin:2px 3px 3px 4px;padding:0;width:13px;height: 13px;
 .need {
 	color: #ff4200;
 }
-<<<<<<< HEAD
 /* 长度小的select框 */
 .smallSelCons{width: 403px;}
 .smallSel{height: 40px;margin: 0 8px;}

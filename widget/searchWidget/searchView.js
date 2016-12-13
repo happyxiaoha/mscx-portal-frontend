@@ -73,7 +73,10 @@ var view = Backbone.View.extend({
         this.on('render', this.render);
 
         _.each(this.filterMaps, function(item) {
-            queue.push(item.fetch());
+            // 如果已经获取过，就无需获取
+            if(typeof item.toJSON().result == 'undefined') {
+                queue.push(item.fetch());
+            }
         })
         
         $.when.apply($, queue).done(function() {
@@ -84,6 +87,8 @@ var view = Backbone.View.extend({
     },
     render: function() {
         var model = this.model.toJSON ? this.model.toJSON() : this.model;
+        var params = {};
+
         _.extend(model, this.filterMaps);
 
         // 处理一下model中的标签
@@ -91,7 +96,15 @@ var view = Backbone.View.extend({
         // 处理一下model中的分类
         model.category = model.dataCategory || model.modelCategory || model.toolCategory;
 
-        this.$el.html(this.template(model));
+        for(var key in model) {
+            if(model[key].toJSON) {
+                params[key] = model[key].toJSON();
+            }else {
+                params[key] = model[key];
+            }
+        }
+
+        this.$el.html(this.template(params));
     },
     toggleMore: function(event) {
         var $target = this.$(event.currentTarget);

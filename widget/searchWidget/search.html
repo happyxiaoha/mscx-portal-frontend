@@ -1,11 +1,11 @@
 <div class="tit">
-    <h2 class="ft16 cor5"><%= data && data.title %></h2>
+    <h2 class="ft16 cor5"><%= data && data.title %>筛选</h2>
 </div>
 <div class="ChoiceList boxSizing">
     <!-- 范围 -->
     <div class="clearfix">
         <!-- 对象 -->
-        <div class="C_selectorLine clearfix fl wd240">
+        <div class="C_selectorLine clearfix fl">
             <div class="sl-wrap clearfix">
                 <div class="sl-key fl">
                     <span>对象</span>
@@ -13,18 +13,12 @@
                 <div class="sl-value fl">
                     <div class="sl-v-list">
                         <ul class="J_valueList clearfix pr10">
-                            <li>
-                                <input type="checkbox" id="self">
-                                <label for="self">个人</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="cpmpany">
-                                <label for="cpmpany">企业</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="citySet">
-                                <label for="citySet">城市管理</label>
-                            </li>
+                            <% data && data.objects && data.objects.toJSON().result.forEach(function(item) { %>
+                                <li>
+                                    <input type="checkbox" id="object<%= item.dictCode %>">
+                                    <label for="object<%= item.dictCode %>"><%= item.dictName %></label>
+                                </li>
+                            <% }) %>
                         </ul>
                     </div>
                 </div>
@@ -112,6 +106,7 @@
         </div>
     </div>
     
+    <% if(data.orgs) { %>
     <!-- 机构 -->
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
@@ -124,24 +119,11 @@
                         <li class="active">
                             <a href="#">不限</a>
                         </li>
-                        <li>
-                            <a href="#" rel="nofollow">公安局</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">民政局</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">工商局</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">质监局</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">旅游局</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">教育局</a>
-                        </li>
+                        <% data && data.orgs && data.orgs.toJSON().result.forEach(function(item) { %>
+                            <li>
+                                <a href="#" rel="nofollow"><%= item.shortName %></a>
+                            </li>
+                        <% }) %>  
                     </ul>
                 </div>
             </div>
@@ -150,6 +132,9 @@
             </div>
         </div>
     </div>
+    <% } %>
+    
+    <% if(data.category) { %>
     <!-- 分类 -->
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
@@ -162,24 +147,11 @@
                         <li class="active">
                             <a href="#">不限</a>
                         </li>
-                        <li>
-                            <a href="#" rel="nofollow">教育</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">工作就业</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">社会保障</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">医疗卫生</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">交通出行</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">产业发展</a>
-                        </li>
+                        <% data && data.category && data.category.toJSON().result.forEach(function(item) { %>
+                            <li>
+                                <a href="#" rel="nofollow"><%= item.catalogName %></a>
+                            </li>
+                        <% }) %>
                     </ul>
                 </div>
             </div>
@@ -188,7 +160,10 @@
             </div>
         </div>
     </div>
-    <!-- 机构 -->
+    <% } %>
+
+    <% if(data.tags) { %>
+    <!-- 标签 -->
     <!-- 2016-09-07 增加类名 agency 机构选项不可点击状态 更多 增加类名 agencyDown -->
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
@@ -201,36 +176,11 @@
                         <li class="active">
                             <a href="#">不限</a>
                         </li>
-                        <li>
-                            <a href="#" rel="nofollow">企业信息</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">知识产权</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">关联关系</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">司法信息</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">资质认可</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">遵循违规</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">遵循违规</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">遵循违规</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">遵循违规</a>
-                        </li>
-                        <li>
-                            <a href="#" rel="nofollow">遵循违规</a>
-                        </li>
+                        <% data && data.tags && data.tags.toJSON().result.forEach(function(item) { %>
+                            <li>
+                                <a href="#" rel="nofollow"><%= item.tagName %></a>
+                            </li>
+                        <% }) %>
                     </ul>
                 </div>
             </div>
@@ -240,7 +190,10 @@
             </div>
         </div>
     </div>
-    <!-- 范围 -->
+    <% } %>
+
+    <% if(data.chargeWay) { %>
+    <!-- 收费类型 -->
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
             <div class="sl-key fl">
@@ -249,14 +202,12 @@
             <div class="sl-value fl">
                 <div class="sl-v-list">
                     <ul class="J_valueList clearfix wd804">
-                        <li class="active">
-                            <input type="checkbox">
-                            <label for="free">免费</label>
-                        </li>
-                        <li class="active">
-                            <input type="checkbox" id="noFree">
-                            <label for="noFree">收费</label>
-                        </li>
+                        <% data && data.chargeWay && data.chargeWay.toJSON().result.forEach(function(item) { %>
+                            <li class="active">
+                                <input type="checkbox" id="chargeWay<%= item.dictCode %>">
+                                <label for="chargeWay<%= item.dictCode %>"><%= item.dictName %></label>
+                            </li>
+                        <% }) %>  
                     </ul>
                 </div>
             </div>
@@ -267,4 +218,5 @@
             </div>
         </div>
     </div>
+    <% } %>
 </div>

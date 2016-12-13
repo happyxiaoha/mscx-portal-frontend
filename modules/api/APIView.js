@@ -2,6 +2,7 @@
 
 var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var contentView = require('./contentView.js');
+var Resource = require('./resource.js');
 require('./api.css');
 
 var view = Backbone.View.extend({
@@ -11,21 +12,7 @@ var view = Backbone.View.extend({
             model: {
                 className: 'api',
                 id: this.id,
-                sideBars: [
-                    {
-                        name: '数据API',
-                        url: '#data',
-                        key: 'data'
-                    },{
-                        name: '工具API',
-                        url: '#tool',
-                        key: 'tool'
-                    },{
-                        name: '模型API',
-                        url: '#model',
-                        key: 'model'
-                    }
-                ]
+                sideBars: Resource.maps
             }
         });
 

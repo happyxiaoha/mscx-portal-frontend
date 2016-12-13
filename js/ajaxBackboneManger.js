@@ -69,7 +69,7 @@ Backbone.sync = function(method, model, options) {
             if (success) return success.apply(this, arguments);
         }
     };
-    backboneSync(method, model, options);
+    return backboneSync(method, model, options);
 };
 
 $(function () {

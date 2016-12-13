@@ -21,7 +21,7 @@ var recommendBarView = Backbone.View.extend({
                 this.$el.html(this.template({'dataList': nJson.result,'type': 'api'}));
             }
             else {
-                this.$el.html(this.template({'dataList': nJson.result.data,'type': 'ser'}));
+                this.$el.html(this.template({'dataList': nJson.result.list,'type': 'ser'}));
             }
         }
 });

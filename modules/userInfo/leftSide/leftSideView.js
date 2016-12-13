@@ -8,11 +8,12 @@ require('./leftSide.css');
 var mainView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterLeft,
     events: {
-        'blur .info-line input':'changeAttribute'
-
     },
-    initialize: function() {
-        this.$el.html(template);
+    initialize: function(name) {
+        var sName = name || '';
+        this.$el.html(_.template(template)({
+            name: sName
+        }));
     }
 });
 

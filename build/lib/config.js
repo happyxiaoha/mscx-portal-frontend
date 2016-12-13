@@ -7,9 +7,20 @@ var mscxPage = {
         mainEl: '#content',
         headerEl: '#headSection',
         footerEl: '#footSection',
-        apiEl: ''
+        apiEl: '',
+        userEl: '.my-info-area',
+        userCenterLeft: '.left-list-wrap',
+        userCenterRight: '.right-con-wrap'
     },
     views: {},
     appRouter: {},
-    host: 'http://mscx-portal.eastdc.cn:82/ro'
+    host: '',
+    urlConfig: {
+        indexPage: 'index.html',
+        sourcesPage: 'sources.html',
+        apiPage: 'api.html',
+        servicesPage: 'services.html',
+        demandPage: 'demand.html',
+        pioneeringPage: 'pioneering.html'
+    }
 };

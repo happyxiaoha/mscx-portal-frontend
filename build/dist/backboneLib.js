@@ -3511,8 +3511,11 @@ Backbone.sync = function(method, model, options) {
     if(!options.data){
         options.data = param(model.attributes);
     }
+    else {
+        options.data = param( options.data)
+    }
     options.beforeSend = function (xhr) {
-        this.type = 'POST';
+        //this.type = 'POST';
         if (beforeSend) return beforeSend.apply(this, arguments);
     };
     options.complete = function (xhr) {

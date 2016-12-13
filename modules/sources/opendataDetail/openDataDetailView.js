@@ -7,7 +7,7 @@
 var openDataDetailTemplate = require('html!./openDataDetailView.html');
 
 var openDataDetailModel = Backbone.Model.extend({
-    url: mscxPage.host+'/mscx-data-api/getDataDetail.do'
+    url: mscxPage.host+'/ro/mscx-data-api/getDataDetail.do'
 });
 
 var openDataDetailView = Backbone.View.extend({

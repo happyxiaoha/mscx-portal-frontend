@@ -14,7 +14,7 @@ var configRoot = {
     /*'login': '',*/
     /*'register': '',*/
     'main': './js/main.js',      //首页
-    /* 'sources': '',   */ //数据
+     'sources': './js/sources.js',    //数据
     'api': './js/api.js',
         /*'services': '',  */   //微服务
         /* 'demand': '',    */ //需求定制

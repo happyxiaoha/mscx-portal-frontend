@@ -7,7 +7,7 @@ var openDataThemeTemplate = require('html!./openDataThemeView.html');
 
 
 var openDataModel = Backbone.Model.extend({
-    url: mscxPage.host+'/mscx-data-api/getDataForTheme.do'
+    url: mscxPage.host+'/ro/mscx-data-api/getDataForTheme.do'
 });
 
 var openDataThemeView = Backbone.View.extend({

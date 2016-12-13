@@ -6,13 +6,13 @@
     <div class="clearfix">
         <!-- 对象 -->
         <div class="C_selectorLine clearfix fl">
-            <div class="sl-wrap clearfix widthfull">
+            <div class="sl-wrap clearfix">
                 <div class="sl-key fl">
                     <span>对象</span>
                 </div>
                 <div class="sl-value fl">
                     <div class="sl-v-list">
-                        <ul class="J_valueList clearfix">
+                        <ul class="J_valueList pr10 clearfix">
                             <% data && data.objects && data.objects.result.forEach(function(item) { %>
                                 <li>
                                     <input type="checkbox" data-type="objects" value="<%= item.dictCode %>" id="object<%= item.dictCode %>">
@@ -220,8 +220,8 @@
             </div>
             <!-- 搜索 -->
             <div class="sl-search">
-                <input type="text" class="slSearch-input">
-                <span class="slSearch-Btn"></span>
+                <input type="text" class="search-input" maxlength="30">
+                <span class="search-btn"></span>
             </div>
         </div>
     </div>

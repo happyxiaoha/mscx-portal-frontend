@@ -3,10 +3,11 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '':'dataAPI',
-        'data':'dataAPI',
-        'tool':'toolAPI',
-        'model':'modelAPI'
+        '': 'dataAPI',
+        'data': 'dataAPI',
+        'tool': 'toolAPI',
+        'model': 'modelAPI',
+        'detail/:id': 'detail'
     },
     dataAPI:function () {
         var APIView = require('api/APIView.js');
@@ -24,6 +25,12 @@ var Routes =  Backbone.Router.extend({
         var APIView = require('api/APIView.js');
         mscxPage.views['modelAPIObj'] = new APIView({
             id: 'model'
+        });
+    },
+    detail: function(id) {
+        var view = require('api/detailView.js');
+        mscxPage.views['detailView'] = new view({
+            id: id
         });
     },
     openPage: function(url) {

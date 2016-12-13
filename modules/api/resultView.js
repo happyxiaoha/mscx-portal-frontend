@@ -25,7 +25,7 @@ var view = Backbone.View.extend({
         this.$dataList.empty().addClass('opacity0');
 
         var result = model.toJSON().result || {};
-        var apiServiceList = result.apiServiceList || [];
+        var apiServiceList = result.list || [];
         var pageInfo = result.page || {};
         var me = this; 
 

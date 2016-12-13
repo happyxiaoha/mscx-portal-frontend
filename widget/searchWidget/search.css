@@ -2,6 +2,10 @@
 .search-loading{height: 200px;opacity: 0;}
 .choiceList{width: 100%;height: auto;border: 1px solid #ccc;margin: 16px 0 24px;}
 .sl-wrap{line-height: 40px;border-bottom: 1px dashed #ccc;background: #ebedf0;position: relative;padding-left: 78px;}
+.sl-wrap .pr10 {
+    padding-right: 10px !important;
+    border-right: 1px solid #ccc;
+}
 .C_selectorLine:last-child .sl-wrap{border: 0;}
 .sl-wrap .sl-key{text-align: center;width: 78px;color: #777;height: auto;position: absolute;left: 0;top: 0;}
 .sl-v-list .J_valueList{padding: 0 92px 0 12px;box-sizing: border-box;background: #fff;}

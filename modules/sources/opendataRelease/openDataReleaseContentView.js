@@ -18,26 +18,30 @@ var openDataReleaseContentView = Backbone.View.extend({
     },
     initialize: function() {
         this.$el.toggleClass('loading');
+        // 筛选部分初始化
         this.searchView = new searchView({
-            id: this.id,
+            id: 'openData',
             model: {
                 title: '开放数据',
-                options: ['objects','orgs', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay']
+                options: ['objects','orgs', 'range', 'openDataCategory', 'openDataTags', 'chargeWay']
             }
         });
-        this.$el.append(this.searchView.$el);
-        this.$el.toggleClass('loading');
-       this.model = new openDataReleaseResultModel();
-        this.model.fetch();
-        this.listenTo(this.model,'sync', this.render)
-    },
-    render: function() {
-        var nJson = this.model;
-        new openDataReleaseResultView({
-            model: nJson
-        })
-    }
 
+        // 结果部分初始化
+        this.resultView = new openDataReleaseResultView();
+
+        this.searchView.delegate = this;
+        this.resultView.delegate = this;
+
+        this.$el.append(this.searchView.render().$el);
+        this.$el.toggleClass('loading');
+
+        this.openDataAPI = new openDataReleaseResultModel();
+
+        this.listenTo(this.openDataAPI, 'sync', this.resultView.render.bind(this.resultView));
+    
+        return this;
+    }
 });
 
 

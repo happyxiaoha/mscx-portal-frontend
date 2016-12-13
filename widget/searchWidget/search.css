@@ -1,11 +1,5 @@
 /*筛选条件*/
 .search-loading{height: 200px;opacity: 0;}
-.search-box {
-    -webkit-transition: opacity .5s ease-in-out;
-    -moz-transition: opacity .5s ease-in-out;
-    -o-transition: opacity .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
-}
 .choiceList{width: 100%;height: auto;border: 1px solid #ccc;margin: 16px 0 24px;}
 .sl-wrap{line-height: 40px;border-bottom: 1px dashed #ccc;background: #ebedf0;position: relative;padding-left: 78px;}
 .C_selectorLine:last-child .sl-wrap{border: 0;}

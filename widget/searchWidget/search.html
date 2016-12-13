@@ -15,7 +15,7 @@
                         <ul class="J_valueList clearfix">
                             <% data && data.objects && data.objects.result.forEach(function(item) { %>
                                 <li>
-                                    <input type="checkbox" id="object<%= item.dictCode %>">
+                                    <input type="checkbox" data-type="objects" value="<%= item.dictCode %>" id="object<%= item.dictCode %>">
                                     <label for="object<%= item.dictCode %>"><%= item.dictName %></label>
                                 </li>
                             <% }) %>
@@ -127,9 +127,11 @@
                     </ul>
                 </div>
             </div>
+            <% if(data.orgs.result.length > 7) { %>
             <div class="sl-ext fl">
                 <a class="sl-e-more J_extMore down" href="javascript:;">更多&gt;&gt;</a>
             </div>
+            <% } %>
         </div>
     </div>
     <% } %>
@@ -145,19 +147,21 @@
                 <div class="sl-v-list">
                     <ul class="J_valueList clearfix J_List">
                         <li class="active">
-                            <a href="#">不限</a>
+                            <a href="javascript:;" data-type="categoryId">不限</a>
                         </li>
                         <% data.category.result.forEach(function(item) { %>
                             <li>
-                                <a href="#" rel="nofollow"><%= item.catalogName %></a>
+                                <a rel="nofollow" href="javascript:;" data-type="categoryId" data-categoryid="<%= item.catalogId %>"><%= item.catalogName %></a>
                             </li>
                         <% }) %>
                     </ul>
                 </div>
             </div>
+            <% if(data.category.result.length > 7) { %>
             <div class="sl-ext fl">
                 <a class="sl-e-more J_extMore down" href="javascript:;">更多&gt;&gt;</a>
             </div>
+            <% } %>
         </div>
     </div>
     <% } %>
@@ -166,28 +170,31 @@
     <!-- 标签 -->
     <!-- 2016-09-07 增加类名 agency 机构选项不可点击状态 更多 增加类名 agencyDown -->
     <div class="C_selectorLine clearfix">
-        <div class="sl-wrap clearfix">
+        <div class="tag-wrap sl-wrap clearfix">
             <div class="sl-key fl">
                 <span>标签</span>
             </div>
             <div class="sl-value widthfull fl">
                 <div class="sl-v-list">
-                    <ul class="J_valueList clearfix J_List">
+                    <ul class="J_valueList clearfix J_List tag-ul">
                         <li class="active">
-                            <a href="#">不限</a>
+                            <a href="javascript:;"  data-type="tagId">不限</a>
                         </li>
                         <% data.tags.result.forEach(function(item) { %>
                             <li>
-                                <a href="#" rel="nofollow"><%= item.tagName %></a>
+                                <a href="javascript:;" data-type="tagId" data-tagid="<%= item.tagId %>" rel="nofollow"><%= item.tagName %></a>
                             </li>
                         <% }) %>
                     </ul>
                 </div>
             </div>
             <!-- 2016-09-07 机构更多事件阻止  增加类名 agencyDown-->
-            <div class="sl-ext fl">
-                <a class="sl-e-more J_extMore down agencyDown" href="javascript:;">更多&gt;&gt;</a>
-            </div>
+            <!-- 超过7条数据才需要显示更多 -->
+            <% if(data.tags.result.length > 7) { %>
+                <div class="sl-ext fl">
+                    <a class="sl-e-more J_extMore down agencyDown" href="javascript:;">更多&gt;&gt;</a>
+                </div>
+            <% } %>
         </div>
     </div>
     <% } %>
@@ -204,7 +211,7 @@
                     <ul class="J_valueList clearfix wd804">
                         <% data.chargeWay.result.forEach(function(item) { %>
                             <li class="active">
-                                <input type="checkbox" id="chargeWay<%= item.dictCode %>">
+                                <input type="checkbox" data-type="chargeType" value="<%= item.dictCode %>" id="chargeWay<%= item.dictCode %>">
                                 <label for="chargeWay<%= item.dictCode %>"><%= item.dictName %></label>
                             </li>
                         <% }) %>  

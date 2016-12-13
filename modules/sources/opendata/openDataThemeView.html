@@ -1,0 +1,23 @@
+
+
+    <% if(dataList){ %>
+    <ul class="clearfix DataList">
+
+        <% _.each(dataList,function(item, index){ %>
+        <li  class="<%= (index < 10 ? '' : 'liToTen hide') %>">
+            <div class="centers">
+                <a attrId="<%= item.categoryId %>">
+                    <img src="<%= item.iconUrl %>" alt="">
+                    <span><%= item.categoryName %></span>
+                    <span class="corGreen"><%= item.count %></span>
+                </a>
+            </div>
+        </li>
+        <% }); %>
+
+    </ul>
+    <% if(dataList.length > 9){ %>
+    <p class="text-right"><a class="showToggle showMore">展开</a></p>
+    <% }; %>
+    <% }; %>
+

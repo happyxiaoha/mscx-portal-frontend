@@ -3508,12 +3508,7 @@ Backbone.sync = function(method, model, options) {
     var beforeSend = options.beforeSend,
         success = options.success,
         complete = options.complete;
-    if(!options.data){
-        options.data = param(model.attributes);
-    }
-    else {
-        options.data = param( options.data)
-    }
+    
     options.beforeSend = function (xhr) {
         //this.type = 'POST';
         if (beforeSend) return beforeSend.apply(this, arguments);
@@ -3539,7 +3534,7 @@ Backbone.sync = function(method, model, options) {
             if (success) return success.apply(this, arguments);
         }
     };
-    backboneSync(method, model, options);
+    return backboneSync(method, model, options);
 };
 
 $(function () {

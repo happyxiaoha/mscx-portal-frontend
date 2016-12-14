@@ -42,7 +42,8 @@ module.exports = {
             path.resolve(__dirname,'widget')
         ],
         alias: {
-            validate: 'js/jquery.validate.js'
+            validate: 'lib/jquery.validate.js',
+            formAjax: 'lib/jquery.form.js'
         },
         extensions: ['', '.js', '.css']
     }

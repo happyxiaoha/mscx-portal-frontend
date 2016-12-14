@@ -68,6 +68,7 @@ body{ font-family:'microsoft yahei'; font-size:12px;}
 .grid1000{ width:1000px; margin:0 auto; }
 .grid1190{ width:1190px; margin:0 auto; }
 
+.widthfull{width: 100%}
 .wd120{width: 120px;}
 .wd804{width: 804px;}
 .wd660{width: 660px;}
@@ -128,6 +129,8 @@ body{ font-family:'microsoft yahei'; font-size:12px;}
 .pt14{padding-top: 14px !important;}
 .pl60{padding-left: 60px !important;}
 .pr60{padding-right: 60px !important;}
+
+.right47{right: 47px !important;}
 em{color:#cc0000;font-style: normal;}
 /*圆角*/
 .radius3{ -webkit-border-radius:3px; -moz-border-radius:3px; -o-border-radius:3px; border-radius:3px;}
@@ -137,7 +140,6 @@ em{color:#cc0000;font-style: normal;}
 .fl{ float:left;}
 .fr{ float:right;}
 .pr{ position:relative;}
-.hide{display: none;}
 .block{display: block;}
 /* global end */
 
@@ -145,6 +147,7 @@ em{color:#cc0000;font-style: normal;}
 .fwb{font-weight:bold;}
 
 /*透明度*/
+.opacity0{opacity: 0;filter: "alpha(opacity=0)";filter: alpha(opacity=0);zoom: 1; }
 .opacity2{opacity: 0.2;filter: "alpha(opacity=20)";filter: alpha(opacity=20);zoom: 1; }
 .opacity3{opacity: 0.3;filter: "alpha(opacity=30)";filter: alpha(opacity=30);zoom: 1; }
 .opacity5{opacity: 0.5;filter: "alpha(opacity=50)";filter: alpha(opacity=50);zoom: 1; }
@@ -191,25 +194,25 @@ input[type='checkbox']{margin:2px 3px 3px 4px;padding:0;width:13px;height: 13px;
 	background: url("../images/newicon/float.png") -56px top no-repeat;
 }
 .floatDiv a.message{
-	background: url("../images/newicon/float.png") -56px -50px no-repeat;
+	background-position: -56px -50px;
 }
 .floatDiv a.message:hover{
 	background-position: 0 -50px;
 }
 .floatDiv a.gm{
-	background: url("../images/newicon/float.png") -56px -95px no-repeat;
+	background-position:  -56px -95px;
 }
 .floatDiv a.gm:hover{
 	background-position: 0 -95px;
 }
 .floatDiv a.ercode{
-	background: url("../images/newicon/float.png") -56px -140px no-repeat;
+	background-position:  -56px -140px;
 }
 .floatDiv a.ercode:hover{
 	background-position: 0 -140px;
 }
 .floatDiv a.callus{
-	background: url("../images/newicon/float.png") -56px -185px no-repeat;
+	background-position:  -56px -185px;
 }
 .floatDiv a.callus:hover{
 	background-position: 0 -185px;
@@ -234,4 +237,54 @@ input[type='checkbox']{margin:2px 3px 3px 4px;padding:0;width:13px;height: 13px;
 }
 .need {
 	color: #ff4200;
+}
+/* 长度小的select框 */
+.smallSelCons{width: 403px;}
+.smallSel{height: 40px;margin: 0 8px;}
+.smallSel .smallSelList{
+	width: 85px;
+	background: #fff;
+	border: 1px solid #ccc;
+	height: 26px; 
+	line-height: 24px;
+	text-align: left;
+	padding: 0 10px;
+	box-sizing: border-box;
+	position: relative;
+	cursor: pointer;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	border-radius: 0;
+	margin: 0;
+	outline: none;
+	vertical-align: 0;
+}
+.smallSel span{
+	vertical-align: 0;
+	display: inline-block;
+	margin: 0 6px;
+}
+.smallSel .downSmalllBtn{
+	display: block;
+	position: absolute;
+	border-top: 6px solid #aaa;
+	border-right: 6px solid transparent;
+	border-left: 6px solid transparent;
+	right: 36px;
+	top: 18px;
+}
+
+.common .tit{position: relative; height: 24px;line-height: 24px;padding-left: 16px;}
+.common .tit:before{content: '';position: absolute;width: 5px;height: 24px;background: #069cd9;left: 0;top: 0;}
+
+.loading{
+	background: url("../images/newicon/loading.gif") center center no-repeat #fff !important;
+}
+/* 局部内容块渐入效果 */
+.animate-content {
+	-webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
 }

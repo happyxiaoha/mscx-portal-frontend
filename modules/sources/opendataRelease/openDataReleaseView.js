@@ -6,7 +6,6 @@
 
 var openDataReleaseContentView = require('./openDataReleaseContentView.js');
 var leftMenuView = require('leftMenuWidget/leftMenuView.js');
-var openDataReleaseContentTemplate = require('html!./openDataReleaseContent.html');
 
 var openDataView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
@@ -33,11 +32,12 @@ var openDataView = Backbone.View.extend({
 
         this.$el.empty();
         this.$el.append(this.leftMenuView.$el);
-        this.$el.append(openDataReleaseContentTemplate);
-         new openDataReleaseContentView({
+
+        this.contentView = new openDataReleaseContentView({
             id: this.id
         });
 
+        this.$el.append(this.contentView.$el);
     }
 });
 

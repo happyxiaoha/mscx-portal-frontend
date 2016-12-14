@@ -13,7 +13,8 @@ var openDataReleaseResultModel = Backbone.Model.extend({
 
 
 var openDataReleaseContentView = Backbone.View.extend({
-    el: '.openDataReleaseSearch',
+    tagName: 'div',
+    className: 'rightMenuWrap fl boxShadiow boxSizing bgWhite common',
     events: {
     },
     initialize: function() {
@@ -33,12 +34,16 @@ var openDataReleaseContentView = Backbone.View.extend({
         this.searchView.delegate = this;
         this.resultView.delegate = this;
 
-        this.$el.append(this.searchView.render().$el);
-        this.$el.toggleClass('loading');
+        this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
+        this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleSort.bind(this.searchView));
 
         this.openDataAPI = new openDataReleaseResultModel();
 
         this.listenTo(this.openDataAPI, 'sync', this.resultView.render.bind(this.resultView));
+
+        this.$el.append(this.searchView.render().$el);
+        this.$el.append(this.resultView.$el);
+        this.$el.toggleClass('loading');
 
         return this;
     }

@@ -39,7 +39,7 @@ var openDataReleaseContentView = Backbone.View.extend({
         this.openDataAPI = new openDataReleaseResultModel();
 
         this.listenTo(this.openDataAPI, 'sync', this.resultView.render.bind(this.resultView));
-    
+
         return this;
     }
 });

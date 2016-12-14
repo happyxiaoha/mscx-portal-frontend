@@ -20,12 +20,12 @@ var openDataView = Backbone.View.extend({
                 sideBars: [
                     {
                         name: '数据视图',
-                        url: '#dataview',
-                        key: 'dataview'
+                        url: '#view',
+                        key: 'view'
                     },{
                         name: '数据目录',
-                        url: '#datarelease',
-                        key: 'datarelease'
+                        url: '#catalog',
+                        key: 'catalog'
                     }
                 ]
             }

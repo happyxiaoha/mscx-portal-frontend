@@ -6,20 +6,20 @@ require('./openData.css');
 var Routes =  Backbone.Router.extend({
     routes: {
         '': 'dataThemeView',
-        'dataview': 'dataThemeView',
-        'datarelease':'openDataReleaseView',
+        'view': 'dataThemeView',
+        'catalog':'openDataReleaseView',
         'detail/:id':'openDataDetailView'
     },
     dataThemeView:function () {
         var openDataView = require('./opendata/openDataView.js');
         mscxPage.views['openDataViewObj'] = new openDataView({
-            id: 'dataview'
+            id: 'view'
         });
     },
     openDataReleaseView:function () {
         var openDataReleaseView = require('./opendataRelease/openDataReleaseView.js');
         mscxPage.views['openDataReleaseViewObj'] = new openDataReleaseView({
-            id: 'dataRelease'
+            id: 'catalog'
         });
     },
     openDataDetailView: function (id) {

@@ -1,0 +1,27 @@
+<p class="top clearfix boxSizing">
+    <span class="fr block corGreen"></span>
+</p>
+<div class="tc">
+    <a href="#detail/<%= data && data.apiServiceId %>">
+        <img src="<%= data && data.iconUrl %>" alt="">
+        <span><%= data && data.apiServiceCName %></span>
+    </a>
+</div>
+<div class="downs clearfix">
+    <span class="fl">
+        <img src="../../images/small01.png" alt="">
+        <em><%= data && data.accessCnt %></em>
+    </span>
+    <span class="fl">
+        <img src="../../images/small02.png" alt="" class="mt3">
+        <em><%= data && data.chargeCount %></em>
+    </span>
+    <span class="fl">
+        <% if(data && data.chargeType == '02'){ %>
+            <em class="red mt3">¥<%= data && data.price %>.00</em>
+            <em><%= data && data.chargeCount %>次起</em>
+        <% }else if(data.chargeType == '01'){ %>
+            <i class="red ft14"><%= data && data.chargeTypeDesc %></i>
+        <% } %>
+    </span>
+</div>

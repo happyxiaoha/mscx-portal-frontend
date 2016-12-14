@@ -296,6 +296,14 @@
     font-size: 14px;
     background: url("../../images/newicon/ic_blue.png") 30px  19px no-repeat;
     line-height: 15px;
+    width: 175px;
+}
+.apitypelist li a{
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
 }
 .apitypelist li:first-child{
     padding-top: 0;
@@ -313,9 +321,15 @@
 }
 .dataListDiv{
     width: 952px;
+    height: 481px;
+}
+.ser-img-box{
+    height: 108px;
 }
 .DataList {
     border-top: solid 2px #0ab7ef;
+    height: 100%;
+    width: 100%;
     /*border-right: solid 1px #b6c0c6;*/
     float: left;
 
@@ -490,3 +504,8 @@
 .partner ul{ overflow:hidden; zoom:1; }
 .partner ul li{ width: 20%; float:left; margin: 30px 5px;  display:inline; }
 .partner ul li img{height:60px; }
+
+/*
+.loading{
+    background: url("../../images/newicon/loading.gif") center center no-repeat #fff !important;
+}*/

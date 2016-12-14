@@ -9,7 +9,7 @@
             </p>
             <div class="rightTips" style="display: none;">
                 <% _.each(item.appList, function(json){ %>
-                <a attrid="<%= json.id %>" ><%= json.name %></a>
+                <a href="services.html#detail/<%= json.id %>" ><%= json.name %></a>
                 <% }) %>
             </div>
         </li>
@@ -32,11 +32,11 @@
     <% if(index < 9 ){ %>
     <li>
         <p class="leftTit">
-            <a  class="w2" attrid="<%= item.catagoryId %>" ><%= item.catagoryName %></a>
+            <a  class="w2" attrid="<%= item.catalogId %>" ><%= item.catalogName %></a>
         </p>
         <div class="rightTips" style="display: none;">
             <% _.each(item.apiServiceList, function(json){ %>
-            <a attrid="<%= json.apiServiceId %>" ><%= json.apiServiceName %></a>
+            <a href="api.html#detail/<%= item.apiServiceId %>" ><%= json.apiServiceName %></a>
             <% }) %>
         </div>
     </li>

@@ -3,13 +3,31 @@
  */
 var navigationTemplate = require('html!./navigation.html');
 
-var navigationView = Backbone.View.extend({
+var navigationApiView = Backbone.View.extend({
     template: _.template(navigationTemplate),
     events: {
     },
-    initialize: function(obj) {
-        this.$el.html(this.template({'dataList': this.model,'type': obj.type}));
+    initialize: function() {
+
+        this.$el.toggleClass('loading');
+        if(this.id === 'api'){
+            this.model.fetch({
+                data: {areaId:'280101'}
+            });
+        }
+        else {
+            this.model.fetch();
+        }
+
+        this.listenTo(this.model,'sync',this.render);
+
+    },
+    render: function() {
+        this.$el.toggleClass('loading');
+        var nJson =  this.model.toJSON();
+        this.$el.html(this.template({'dataList': nJson.result,'type': this.id}));
     }
 });
 
-module.exports = navigationView;
+
+module.exports = navigationApiView;

@@ -1,17 +1,14 @@
 <div class="header grid1190">
     <h1 class="logo fl">
-        <a href="../templates/newindex.html">
+        <a href="index.html">
             <img src="../../images/newicon/ic_newlogo.png">
         </a>
     </h1>
     <div class="navCons fl mt20">
         <ul class="nav fl">
-            <li class="active"><a href="#">首页</a></li>
-            <li><a href="#">数据</a></li>
-            <li><a href="#">API</a></li>
-            <li><a href="#">微服务</a></li>
-            <li><a href="#">需求定制</a></li>
-            <li><a href="#">创业园地</a></li>
+            <% _.each(menuList, function (item) { %>
+            <li><a href="<%=item.url%>"><%=item.name%></a></li>
+            <%})%>
         </ul>
     </div>
     <div class="haslogin fr clearfix">

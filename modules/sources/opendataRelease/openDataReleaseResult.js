@@ -1,50 +1,41 @@
 'use strict';
 
-var resultTemplate = require('html!./resultTemplate.html');
-var apiItemView = require('apiItemWidget/apiItemView.js');
+var wrapTemplate = require('html!./openDataReleaseContent.html');
+var listTemplate = require('html!./openDataSearchResult.html');
 
 var view = Backbone.View.extend({
     tagName: 'div',
     className: 'animate-content posRE opacity0',
+    wrapTemplate: _.template(wrapTemplate),
+    listTemplate: _.template(listTemplate, {variable: 'data'}),
     events: {
         'click .sort a': 'sort'
     },
-    template: _.template(resultTemplate, {variable: 'data'}),
     initialize: function() {
-        this.$el.html(this.template());
+        this.$el.html(this.wrapTemplate());
 
-        this.$dataList = this.$('.data-list');
+        this.$dataList = this.$('#searchResult');
         this.$page = this.$('.page');
         this.$count = this.$('#count');
         this.$sort = this.$('.sort');
-
-        return this;
     },
     render: function(model) {
         this.$el.removeClass('opacity0');
-        this.$dataList.empty().addClass('opacity0');
-
         var result = model.toJSON().result || {};
-        var apiServiceList = result.list || [];
-        var pageInfo = result.page || {};
-        var me = this; 
 
-        if(apiServiceList.length < 1) {
+        var list = result.list || [];
+        var pageInfo = result.page || {};
+        var me = this;
+
+        if(list.length < 1) {
             this.$sort.hide();
             this.$dataList.html('暂无数据');
         }else {
             this.$sort.show();
         }
-        this.$count.html(apiServiceList.length || 0);
+        this.$count.html(list.length || 0);
 
-        _.each(apiServiceList, function(item) {
-            var view = new apiItemView({
-                model: item
-            })
-            this.$dataList.append(view.$el);
-        }.bind(this));
-
-        this.$dataList.removeClass('opacity0');
+        this.$dataList.html(this.listTemplate(list));
 
         laypage({
             cont: 'page',

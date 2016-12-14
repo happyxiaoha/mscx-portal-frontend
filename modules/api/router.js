@@ -3,20 +3,21 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '':'dataAPI',
-        'data':'dataAPI',
-        'tool':'toolAPI',
-        'model':'modelAPI'
+        '': 'dataAPI',
+        'data': 'dataAPI',
+        'tool': 'toolAPI',
+        'model': 'modelAPI',
+        'detail/:id': 'detail'
     },
     dataAPI:function () {
         var APIView = require('api/APIView.js');
-        mscxPage.views['dataAPIViewObj'] = new APIView({
+        mscxPage.views['dataAPIObj'] = new APIView({
             id: 'data'
         });
     },
     toolAPI:function () {
         var APIView = require('api/APIView.js');
-        mscxPage.views['toolAPIViewObj'] = new APIView({
+        mscxPage.views['toolAPIObj'] = new APIView({
             id: 'tool'
         });
     },
@@ -26,12 +27,18 @@ var Routes =  Backbone.Router.extend({
             id: 'model'
         });
     },
+    detail: function(id) {
+        var view = require('api/detailView.js');
+        mscxPage.views['detailView'] = new view({
+            id: id
+        });
+    },
     openPage: function(url) {
         this.navigate(url,{trigger: true});
     },
     execute: function(callback,args,name) {
-        if(mscxPage.views[name+'Obj']) {
-            mscxPage.views[name+'Obj'].initialize();
+        if(mscxPage.views[name + 'Obj']) {
+            mscxPage.views[name + 'Obj'].initialize();
         }
         else {
             if (callback) callback.apply(this, args);

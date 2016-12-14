@@ -1,0 +1,40 @@
+<div class="tit">
+    <h2 class="ft16 cor5">机构开放数据（共<span><%= dataCount %></span>个）</h2>
+    <div class="ConditionList posAB">
+        <p>【共接入<i class='ft14 corBlue'><%= orgCount %></i>家机构，开放<i class='ft14 corBlue'><%= dataCount %></i>项数据资源】</p>
+    </div>
+</div>
+<div class="D_table table-h">
+    <table>
+        <thead>
+        <tr>
+            <th>机构名称</th>
+            <th>开放数据</th>
+            <th>机构名称</th>
+            <th>开放数据</th>
+            <th>机构名称</th>
+            <th>开放数据</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if(orgList){ %>
+        <% _.each(orgList, function(item, index){ %>
+        <% if((index + 1) % 3 === 0){ %>
+        <tr>
+            <% }else{ %>
+            <td><a attrId="<%= item.orgId %>"><%= item.orgName %></a></td>
+            <td><%= item.count %></td>
+            <% }; %>
+
+            <% if(index > (orgList.length - orgList.length % 3)){ %>
+            <td></td>
+            <td></td>
+            <% }; %>
+            <% if((index + 1) % 3 === 0){ %>
+        </tr>
+        <% }; %>
+        <% }); %>
+        <% }; %>
+        </tbody>
+    </table>
+</div>

@@ -10,108 +10,29 @@ require('./../../css/swiper.css');
 require('../../lib/swiper.jquery.js');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
 
-var mainModel = Backbone.Model.extend({
-    count: 0,
-    serDaohang: function(options) {
-        options = options || {};
-        var coll = this;
-        _.extend(options, {
-            url: mscxPage.host+'/mscx-app-api/recommend/bar.do',
-            success: function(res) {
-                new navigationView({
-                    el: '#daohangSer',
-                    type: 'ser',
-                    model: res.result
-                })
-            }
-        });
-        this.sync('get', this, options);
-    },
-    serList: function(options) {
-        options = options || {};
-        var coll = this;
-        _.extend(options, {
-            url:mscxPage.host+ '/mscx-app-api/list.do',
-            success: function(res) {
-                new recommendBarView({
-                    el: '#serList',
-                    type: 'ser',
-                    model: res.result.data
-                })
-            }
-        });
-        this.sync('get', this, options);
-    },
-    recommendSerList: function(options) {
-        options = options || {};
-        _.extend(options, {
-            url: mscxPage.host+'/mscx-app-api/recommend/list.do',
-            success: function(res) {
-                new recommendView({
-                    el: '.recommendSerList',
-                    type: 'ser',
-                    model: res.result
-                })
-            }
-        });
-        this.sync('get', this, options);
-    },
-    apiDaohang: function(options) {
-        options = options || {};
-        _.extend(options, {
-            url:mscxPage.host+ '/mscx-api-api/service/getNavigationApi.do',
-            data: {areaId:'280101'},
-            success: function(res) {
-                new navigationView({
-                    el: '#daohangAPI',
-                    type: 'api',
-                    model: res.result
-                })
-            }
-        });
-        this.sync('get', this, options);
-    },
-    apiList: function(options) {
-        options = options || {};
-
-        _.extend(options, {
-            url: mscxPage.host+'/mscx-api-api/service/getSelectedNavigation.do',
-            data: {areaId:'280101'},
-            success: function(res) {
-                new recommendBarView({
-                    el: '#apiList',
-                    type: 'api',
-                    model: res.result
-                })
-            }
-        });
-        this.sync('get', this, options);
-    },
-    recommendApiList: function(options) {
-        options = options || {};
-        _.extend(options, {
-            url: mscxPage.host+'/mscx-api-api/service/getSelectedApi.do',
-            data: {areaId:'280101'},
-            success: function(res) {
-                new recommendView({
-                    el: '.recommendApiList',
-                    type: 'api',
-                    model: res.result
-                })
-            }
-        });
-        this.sync('get', this, options);
-    },
-    initIndex: function() {
-        var coll = this;
-        coll.serDaohang();
-        coll.serList();
-        coll.recommendSerList();
-        coll.apiDaohang();
-        coll.apiList();
-        coll.recommendApiList();
-    }
+var navigationSerModel = Backbone.Model.extend({
+    url: mscxPage.host+'/ro/mscx-app-api/recommend/bar.do'
 });
+
+var navigationApiModel = Backbone.Model.extend({
+    url: mscxPage.host+'/ro/mscx-api-api/service/getNavigationApi.do'
+});
+
+var serListModel = Backbone.Model.extend({
+    url: mscxPage.host+ '/ro/mscx-app-api/list.do'
+});
+
+var apiListModel = Backbone.Model.extend({
+    url: mscxPage.host+'/ro/mscx-api-api/service/getSelectedNavigation.do'
+});
+
+var recommendApiModel = Backbone.Model.extend({
+    url: mscxPage.host+'/ro/mscx-api-api/service/getSelectedApi.do'
+});
+var recommendSerModel = Backbone.Model.extend({
+    url: mscxPage.host+'/ro/mscx-app-api/recommend/list.do'
+});
+
 
 var mainView = Backbone.View.extend({
     el: mscxPage.domEl.mainEl,
@@ -119,12 +40,45 @@ var mainView = Backbone.View.extend({
         'blur .info-line input':'changeAttribute'
     },
     initialize: function() {
+        this.$el.html(template);
+        new navigationView({
+            id: 'ser',
+            el: '#daohangSer',
+            model: new navigationSerModel()
+        });
 
-        var mainIndexModel = this.model = new mainModel(),
-            coll = this;
-        coll.$el.html(template);
-        coll.render();
-        mainIndexModel.initIndex();
+        new navigationView({
+            id: 'api',
+            el: '#daohangAPI',
+            model: new navigationApiModel()
+        });
+
+        new recommendBarView({
+            id: 'ser',
+            el: '#serList',
+            model: new serListModel()
+        });
+
+
+        new recommendBarView({
+            id: 'api',
+            el: '#apiList',
+            model: new apiListModel()
+        });
+
+        new recommendView({
+            id: 'api',
+            el: '.recommendApiList',
+            className: 'loading',
+            model: new recommendApiModel()
+        });
+
+        new recommendView({
+            id: 'ser',
+            el: '.recommendSerList',
+            model: new recommendSerModel()
+        });
+        this.render();
     },
     render: function(){
         var galleryTop = new Swiper('.swiper-container', {

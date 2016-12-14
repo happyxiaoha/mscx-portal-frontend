@@ -8,6 +8,7 @@ require('./api.css');
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     initialize: function() {
+        this.$el.addClass('grid1000');
         this.leftMenuView = new leftMenuView({
             model: {
                 className: 'api',

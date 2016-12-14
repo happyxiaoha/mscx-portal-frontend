@@ -148,10 +148,6 @@
 .pioneer li a.active:nth-child(4){background: url(../../images/icon_2_1@2x.png) no-repeat center 22px #fff;}
 .pioneer li a.active:nth-child(5){background: url(../../images/icon_10_1@2x.png) no-repeat center 22px #fff;}
 
-.pr10 {
-    padding-right: 10px !important;
-    border-right: 1px solid #ccc;
-}
 .citysSel {
     right: 0;
     top: 0;

@@ -2,6 +2,7 @@
 
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
+var offlineView = require('./offlineLayer.js');
 
 var detailModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-api-api/service/getApiServiceDetailById.do'
@@ -15,7 +16,8 @@ var view = Backbone.View.extend({
     events: {
         'click .tab span': 'selectTab',
         'click #applyBtn': 'apply',
-        'click #followBtn': 'follow'
+        'click #followBtn': 'follow',
+        'click #offlineBtn': 'offlineChat'
     },
     initialize: function() {
         this.$el.addClass('grid960 animate-content opacity0');
@@ -56,7 +58,10 @@ var view = Backbone.View.extend({
     // 申请
     apply: function() {
         if(!this.applyView) {
-            this.applyView = new applyView();
+            this.applyView = new applyView({
+                id: this.id
+            });
+            this.$el.append(this.applyView.$el);
         }
         layer.open({
             type: 1,
@@ -64,7 +69,7 @@ var view = Backbone.View.extend({
             title: '选择您要购买的套餐：',
             shade: 0.6,
             shadeClose: true,
-            area: ['500px', '400px'],
+            area: ['500px', '500px'],
             content: this.applyView.$el,
             btn1: function (index) {
                 layer.close(index);
@@ -75,7 +80,31 @@ var view = Backbone.View.extend({
     },
     // 关注
     follow: function() {
-        
+        layer.msg('关注成功！');
+    },
+    // 线下洽谈
+    offlineChat: function() {
+        if(!this.offlineView) {
+            this.offlineView = new offlineView({
+                id: this.id
+            });
+            this.$el.append(this.offlineView.$el);
+        }
+        layer.open({
+            type: 1,
+            btn: ['确定','取消'],
+            title: '<p class="ft22">资源使用需求</p>',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px', '450px'],
+            content: this.offlineView.$el,
+            btn1: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                layer.close(index);
+            }
+        })
     }
 });
 

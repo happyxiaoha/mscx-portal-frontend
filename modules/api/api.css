@@ -160,26 +160,56 @@
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}
 
-#applyBox {
+.apply-box {
     padding: 5px 30px;
 }
-#applyBox .D_table {
-    height: 280px;
+.apply-box .D_table {
+    min-height: 280px;
 }
-#applyBox .D_table table tr td input[type='number'],
+.apply-box .D_table table tr td input[type='number'],
 .layer-table .D_table table tr td input[type='number']{
     width: 40px;
 }
-#applyBox,.layer-table{
+.apply-box,.layer-table{
     padding: 5px 30px;
 }
-#applyBox p label,.layer-table p label{
+.apply-box p label,.layer-table p label{
     float: left;
 }
-#applyBox p label a,.layer-table p label a{
+.apply-box p label a,.layer-table p label a{
     color: #00aff6;
 }
-#applyBox p span, .layer-table p span{
+.apply-box p span, .layer-table p span{
     font-size: 16px;
     float: right;
 }
+/* 线下洽谈弹层 */
+.offline-box,.orderDiv {padding: 20px 30px;font-size: 14px;}
+.offline-box label,.orderDiv label{
+    float: left;
+    padding: 5px 0;
+}
+.offline-box label span,
+.orderDiv label span{
+    display: block;
+    float: left;
+    width: 100px;
+    line-height: 26px;
+}
+.offline-box label textarea,
+.orderDiv label textarea{
+    width: 270px;
+    padding: 4px 6px;
+    height: 70px;
+    float: left;
+}
+.offline-box label input,
+.orderDiv label input{
+    width: 270px;
+}
+/*button .offline-btn {
+    border-radius: 5px;
+    border: solid 1px #8b8b8b;
+    background: #fff;
+    color: #8a8a8a;
+}*/

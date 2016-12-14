@@ -35,7 +35,7 @@ var view = Backbone.View.extend({
         }else {
             this.$sort.show();
         }
-        this.$count.html(apiServiceList.length || 0);
+        this.$count.html(pageInfo.totalSize || 0);
 
         _.each(apiServiceList, function(item) {
             var view = new apiItemView({
@@ -55,7 +55,7 @@ var view = Backbone.View.extend({
                 if(!first) {
                     me.trigger('page', {
                         page: obj.curr,
-                        pageSize: pageInfo.pageSize
+                        pageSize: '10'
                     })
                 }
             }

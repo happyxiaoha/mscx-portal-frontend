@@ -33,7 +33,7 @@ var view = Backbone.View.extend({
             this.$sort.show();
             this.$dataList.html(this.listTemplate(list));
         }
-        this.$count.html(list.length || 0);
+        this.$count.html(pageInfo.totalSize || 0);
 
 
 
@@ -46,7 +46,7 @@ var view = Backbone.View.extend({
                 if(!first) {
                     me.trigger('page', {
                         page: obj.curr,
-                        pageSize: pageInfo.pageSize
+                        pageSize: '10'
                     })
                 }
             }

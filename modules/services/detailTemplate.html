@@ -1,0 +1,108 @@
+<div class="containerWrap grid960">
+    <div class="tabbable bgWhite boxShadiow">
+        <div class="slideBanner clearfix">
+            <div class="mleftCons">
+                <div class="serverInfos mb35 clearfix">
+                    <div class="fl appImgCons">
+                            <img class="appImg" src="<%= data.imageUri %>" alt="">
+                        <div class="viewerNums clearfix">
+                            <p>访问量：<span><%= data.viewCount %></span></p>
+                        </div>
+                    </div>
+                    <div class="appInfoCons fl posRE">
+                        <div class="top mb10 clearfix">
+                            <h2 class="fl mr20"><%= data.name %></h2>
+                            <div class="fl mr20">
+                                <span><%= (data.tagNames).replace(',/g',' ') %></span>
+                            </div>
+                            <div class="fl">
+                                <span>服务分类：<em><%= data.categoryName %></em></span>
+                            </div>
+                        </div>
+                        <div class="down">
+                            <div class="left">
+                                <p class="mb15">
+                                    <span class="mr10">服务商：<em><%= data.providerName %></em></span>
+                                    <!--<span class="mr25">版本号：<em>7.0.1</em></span>-->
+                                </p>
+                                <p class="mb15"><span>提供方式：<em><%= data.serviceType %></em></span></p>
+                                <p class="mb15">
+                                    <span class="mr10">访问URL：<a href="<%= data.uri %>"><%= data.uri %></a></span>
+                                    <span class="mr25">更新时间：<em><%= (new Date(data.updatedTime).toISOString()).slice(0,10) %></em></span>
+                                </p>
+                            </div>
+                            <p class="mb20 line20">
+                                <span>服务简介：<em><%= data.description %></em></span>
+                            </p>
+                        </div>
+                        <div>
+                            <button><a href="<%= data.demoUri %>" class="corff">查看演示</a></button>
+                            <button class="bgOrange">关注</button>
+                        </div>
+                        <!-- 分享 -->
+                        <div class="share posAB">
+                            <a href="#" id="sahreWeixin"></a>
+                            <a href="#" id="sahreQQ"></a>
+                            <a href="#" id="sahreWeibo"></a>
+                        </div>
+                        <!-- 费用 -->
+                        <div class="useMoney posAB">
+                            <span class="red"><%= data.chargeTypeDesc %><em></em></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% if(data.demoImage1 || data.demoImage2 || data.demoImage3){ %>
+            <div class="R-Cons">
+                <p class="titTop bggray ft14 corBlue">详情信息</p>
+                <div class="titTopCons picScroll-left">
+                    <a class="next"></a>
+                    <a class="prev"></a>
+                    <div class="bd">
+                        <ul class="picList">
+                            <li>
+                                <div class="pic"><img src="<%= data.demoImage1 %>" /></div>
+                            </li>
+                            <li>
+                                <div class="pic"><img src="<%= data.demoImage2 %>" /></div>
+                            </li>
+                            <li>
+                                <div class="pic"><img src="<%= data.demoImage3 %>" /></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <% }; %>
+            <!--<div class="R-Cons">
+                <p class="titTop bggray ft14 corBlue">套餐介绍</p>
+                <div class="titTopCons serverinfoList">
+                    <div class="tableCons mb30 D_table">
+                        <h2>常规套餐包<b class="corOrange">【更多次数、更多优惠请线下洽谈】</b></h2>
+
+                        <table class="D_table mt20">
+                            <tr>
+                                <th>名称</th>
+                                <th>价格</th>
+                                <th>次数</th>
+                                <th>说明</th>
+                            </tr>
+                            <tr>
+                                <td>高级套餐</td>
+                                <td>1000</td>
+                                <td>1150</td>
+                                <td>高级点的套餐</td>
+                            </tr>
+                            <tr>
+                                <td>基本套餐</td>
+                                <td>100</td>
+                                <td>110</td>
+                                <td>最基本的套餐</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>

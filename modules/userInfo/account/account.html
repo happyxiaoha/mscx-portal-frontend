@@ -1,0 +1,200 @@
+<div id="accountTabs" class="topTab clearfix myApiTop">
+    <span class="active">我的消费记录</span>
+    <span>发票申请</span>
+</div>
+<div id="accountInfo"  class="tabDownCons">
+
+</div>
+<script id="accountSources" type="template">
+    <div class="R-mainInfo clearfix">
+        <!-- API、运行资源、微服务 tab -->
+        <div id="applyTab" class="R-titTab">
+            <span class="active">资源</span>
+            <span>运行环境</span>
+        </div>
+        <div class=" M-DownCons bgWhite">
+            <!-- API -->
+            <div class="M-downCons account">
+                <div class="D_table M-table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>订单号</th>
+                            <th>资源名称</th>
+                            <th>资源类型</th>
+                            <th>价格</th>
+                            <th>数量</th>
+                            <th>支付金额</th>
+                            <th>支付方式</th>
+                            <th>支付时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td rowspan="2">1100036238</td>
+                            <td><a href="../api/citySdkInfo.html">全国交通违章查询</a></td>
+                            <td>数据API</td>
+                            <td>免费</td>
+                            <td>3</td>
+                            <td rowspan="2">￥400</td>
+                            <td rowspan="2">线下支付</td>
+
+                            <td rowspan="2">2016-06-12 12:04:32</td>
+                        </tr>
+                        <tr>
+                            <td><a>天气预报</a></td>
+                            <td>工具API</td>
+                            <td>2元/次</td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td>1100011674</td>
+                            <td><a>企业谱系模型</a></td>
+                            <td>模型API</td>
+                            <td>￥99.00/10000次<br>（申请即送1000次)</td>
+                            <td>1100</td>
+                            <td>￥99.00</td>
+                            <td>在线支付</td>
+                            <td>2016-07-20 9:34:04</td>
+                        </tr>
+                        <tr>
+                            <td>1100011649</td>
+                            <td><a>北京水费账单</a></td>
+                            <td>数据</td>
+                            <td>￥5.00/200次</td>
+                            <td>2</td>
+                            <td>￥10.00</td>
+                            <td>在线支付</td>
+                            <td>2016-04-30 18:26:39</td>
+                        </tr>
+                        <tr>
+                            <td>1100011632</td>
+                            <td><a>专利信息查询</a></td>
+                            <td>微服务</td>
+                            <td>￥10.00/600次</td>
+                            <td>1</td>
+                            <td>￥10.00</td>
+                            <td>在线支付</td>
+                            <td>2016-05-22 14:20:01</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 运行环境 -->
+            <div class="M-downCons hide">
+                <div class="D_table M-table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>订单号</th>
+                            <th>应用</th>
+                            <th>类型</th>
+                            <th>资源数量</th>
+                            <th>时长</th>
+                            <th>金额</th>
+                            <th>时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>dd000000000008</td>
+                            <td>公积金查询</td>
+                            <td>dcoker实例</td>
+                            <td>1</td>
+                            <td>1个月</td>
+                            <td>免费</td>
+                            <td>2016-08-07 13:00:00</td>
+                        </tr>
+                        <tr>
+                            <td>dd000000000007</td>
+                            <td>公积金查询</td>
+                            <td>dcoker实例</td>
+                            <td>2</td>
+                            <td>1个月</td>
+                            <td>免费</td>
+                            <td>2016-09-07 09:01:23</td>
+                        </tr>
+                        <tr>
+                            <td>dd000000000006</td>
+                            <td>数据库</td>
+                            <td>数据库实例</td>
+                            <td>2</td>
+                            <td>自动续费(1个月)</td>
+                            <td>￥40</td>
+                            <td>2016-08-21 15:00:00</td>
+                        </tr>
+                        <tr>
+                            <td>dd000000000005</td>
+                            <td>数据库</td>
+                            <td>数据库实例</td>
+                            <td>1</td>
+                            <td>12个月</td>
+                            <td>￥240</td>
+                            <td>2016-07-02 21:21:11</td>
+                        </tr>
+                        <tr>
+                            <td>dd000000000004</td>
+                            <td>数据库</td>
+                            <td>数据库实例</td>
+                            <td>2</td>
+                            <td>2个月</td>
+                            <td>￥80</td>
+                            <td>2016-06-22 15:00:00</td>
+                        </tr>
+                        <tr>
+                            <td>dd000000000002</td>
+                            <td>水费查询</td>
+                            <td>dcoker实例</td>
+                            <td>2</td>
+                            <td>12个月</td>
+                            <td>￥4800.00</td>
+                            <td>2016-07-07 09:01:23</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</script>
+<script id="accountApply" type="template">
+    <div class="M-DownCons bgWhite" style="border-top: 1px solid #ccc;padding-top: 20px;">
+        <div class="tab-title" ><button class="mr20"><a class="invoice corff">申请发票</a></button>
+            <input type="text" placeholder="请输入发票抬头" style="margin-top: 6px;">
+            <button class="ml10">搜索</button></div>
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>发票类型</th>
+                        <th>发票金额</th>
+                        <th>单位名称</th>
+                        <th>发票申请时间</th>
+                        <th>收取方式</th>
+                        <th>取票地址</th>
+                        <th>发票状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>增值税专用发票</td>
+                        <td>400</td>
+                        <td>北京海阔天空公司</td>
+                        <td>2016-08-07 13:00</td>
+                        <td>邮寄</td>
+                        <td>神州数码广场</td>
+                        <td>未开票</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</script>

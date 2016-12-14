@@ -6,9 +6,10 @@ webpackJsonp([1],[
 	 * Created by kevin on 2016/12/6.
 	 */
 
-	var header = __webpack_require__(24);
-	var footer = __webpack_require__(29);
-	var mianView = __webpack_require__(33);
+	var header = __webpack_require__(85);
+	var footer = __webpack_require__(90);
+	var mianView = __webpack_require__(94);
+	__webpack_require__(158);
 
 	$(function() {
 	    new header();
@@ -40,53 +41,149 @@ webpackJsonp([1],[
 /* 21 */,
 /* 22 */,
 /* 23 */,
-/* 24 */
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Kevin on 2016/12/6.
 	 */
 
-	var template = __webpack_require__(25);
-	__webpack_require__(26);
+	var template = __webpack_require__(86);
+	__webpack_require__(87);
+	var menuList = [
+	    {
+	        name: '首页',
+	        url: mscxPage.urlConfig.indexPage,
+	        key: 'index'
+	    },
+	    {
+	        name: '数据',
+	        url: mscxPage.urlConfig.sourcesPage,
+	        key: 'sources'
+	    },
+	    {
+	        name: 'API',
+	        url: mscxPage.urlConfig.apiPage,
+	        key: 'api'
+	    },
+	    {
+	        name: '微服务',
+	        url: mscxPage.urlConfig.servicesPage,
+	        key: 'services'
+	    },
+	    {
+	        name: '需求定制',
+	        url: mscxPage.urlConfig.demandPage,
+	        key: 'demand'
+	    },
+	    {
+	        name: '创业园地',
+	        url: mscxPage.urlConfig.pioneeringPage,
+	        key: 'pioneering'
+	    }
+	];
 
 	var headerView = Backbone.View.extend({
 	    el: mscxPage.domEl.headerEl,
+	    template: _.template(template),
 	    events: {
 	        'blur .info-line input':'changeAttribute'
-
 	    },
 	    initialize: function() {
-	        this.$el.html(template);
+	        this.$el.html(this.template({
+	            id: this.id || '',
+	            menuList: menuList
+	        }));
 	    }
 	});
 
 	module.exports = headerView;
 
 /***/ },
-/* 25 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"header grid1190\">\r\n    <h1 class=\"logo fl\">\r\n        <a href=\"../templates/newindex.html\">\r\n            <img src=\"" + __webpack_require__(3) + "\">\r\n        </a>\r\n    </h1>\r\n    <div class=\"navCons fl mt20\">\r\n        <ul class=\"nav fl\">\r\n            <li class=\"active\"><a href=\"#\">首页</a></li>\r\n            <li><a href=\"#\">数据</a></li>\r\n            <li><a href=\"#\">API</a></li>\r\n            <li><a href=\"#\">微服务</a></li>\r\n            <li><a href=\"#\">需求定制</a></li>\r\n            <li><a href=\"#\">创业园地</a></li>\r\n        </ul>\r\n    </div>\r\n    <div class=\"haslogin fr clearfix\">\r\n        <div class=\"searchCons fl\">\r\n            <input type=\"text\" class=\"search\" id=\"inputs\" placeholder=\"请输入要查找的内容\">\r\n            <a class=\"search-img\"></a>\r\n        </div>\r\n        <div class=\"fr\">\r\n            <div class=\"noLogin hide\">\r\n                <a href=\"#\" id=\"login\">登陆</a>\r\n                <span>|</span>\r\n                <a href=\"#\" id=\"register\">注册</a>\r\n            </div><div class=\"yesLogin\">\r\n            <div id=\"personReal\" class=\"personIcon\">\r\n                <span id=\"infoName\" class=\" down\">小太阳</span>\r\n            </div>\r\n        </div><!-- 个人中心 -->\r\n            <div class=\"shareBox dropMenu\" style=\"display: none;\">\r\n                <div class=\"shareList\">\r\n                    <ul>\r\n                        <li class=\"usercenter\">\r\n                            <a href=\"#\">用户中心</a>\r\n                        </li>\r\n                        <li class=\"logout\"><a href=\"#\" id=\"exit\">退出</a></li>\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
+	module.exports = "<div class=\"header grid1190\">\r\n    <h1 class=\"logo fl\">\r\n        <a href=\"index.html\">\r\n            <img src=\"" + __webpack_require__(3) + "\">\r\n        </a>\r\n    </h1>\r\n    <div class=\"navCons fl mt20\">\r\n        <ul class=\"nav fl\">\r\n            <% _.each(menuList, function (item) { %>\r\n            <li><a href=\"<%=item.url%>\"><%=item.name%></a></li>\r\n            <%})%>\r\n        </ul>\r\n    </div>\r\n    <div class=\"haslogin fr clearfix\">\r\n        <div class=\"searchCons fl\">\r\n            <input type=\"text\" class=\"search\" id=\"inputs\" placeholder=\"请输入要查找的内容\">\r\n            <a class=\"search-img\"></a>\r\n        </div>\r\n        <div class=\"fr\">\r\n            <div class=\"noLogin hide\">\r\n                <a href=\"#\" id=\"login\">登陆</a>\r\n                <span>|</span>\r\n                <a href=\"#\" id=\"register\">注册</a>\r\n            </div><div class=\"yesLogin\">\r\n            <div id=\"personReal\" class=\"personIcon\">\r\n                <span id=\"infoName\" class=\" down\">小太阳</span>\r\n            </div>\r\n        </div><!-- 个人中心 -->\r\n            <div class=\"shareBox dropMenu\" style=\"display: none;\">\r\n                <div class=\"shareList\">\r\n                    <ul>\r\n                        <li class=\"usercenter\">\r\n                            <a href=\"#\">用户中心</a>\r\n                        </li>\r\n                        <li class=\"logout\"><a href=\"#\" id=\"exit\">退出</a></li>\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
 
 /***/ },
-/* 26 */
+/* 87 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 27 */,
-/* 28 */,
-/* 29 */
+/* 88 */,
+/* 89 */,
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Kevin on 2016/12/6.
 	 */
 
-	var template = __webpack_require__(30);
-	__webpack_require__(31);
+	var template = __webpack_require__(91);
+	__webpack_require__(92);
 
 	var footerView = Backbone.View.extend({
 	    el: mscxPage.domEl.footerEl,
@@ -102,136 +199,57 @@ webpackJsonp([1],[
 	module.exports = footerView;
 
 /***/ },
-/* 30 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "<div class=\"footer bg535353 indexfooter\">\r\n    <div class=\"grid1190 clearfix\">\r\n        <a href=\"../templates/newindex2.html\" class=\"block fl\">\r\n            <img src=\"" + __webpack_require__(17) + "\" alt=\"\">\r\n        </a>\r\n        <ul class=\"fl clearfix\">\r\n            <li class=\"fl\">\r\n                <a href=\"../templates/newindex.html\">首页</a>\r\n                <a href=\"../templates/openData/openData.html\">数据</a>\r\n                <a href=\"../templates/api/citySdk.html\">API</a>\r\n                <a href=\"../templates/server/server.html\">微服务</a>\r\n                <a href=\"../templates/customized/citySdkRequire.html\">\r\n                    需求定制</a>\r\n                <a href=\"../templates/pioneer/news.html\">创业园地</a>\r\n            </li>\r\n            <li class=\"fl\">\r\n                <a href=\"#\">帮助</a>\r\n                <a href=\"#\">关于我们</a>\r\n                <a href=\"#\">新手指导</a>\r\n                <a href=\"#\">API使用</a>\r\n                <a href=\"#\">微应用使用</a>\r\n                <a href=\"#\">常见问题</a>\r\n            </li>\r\n            <li class=\"fl\">\r\n                <a href=\"#\">联系我们</a>\r\n                <a href=\"#\">商务合作</a>\r\n                <a href=\"#\">用户反馈</a>\r\n                <a href=\"#\">合作伙伴</a>\r\n            </li>\r\n        </ul>\r\n        <div class=\"fl text-center righttext\">\r\n            <p class=\"textinfo\">关注官方微信</p>\r\n            <img src=\"" + __webpack_require__(18) + "\" alt=\"\">\r\n        </div>\r\n        <div class=\"forhelp fl\">\r\n            <div class=\"swhz\">\r\n                <p>商务合作（工作日9:00-18:00）</p>\r\n                <p class=\"ft18 mt10\">010-8765436</p>\r\n            </div>\r\n            <div class=\"jisuzhichi\">\r\n                <p>技术支持</p>\r\n                <p class=\"ft18 mt10\">010-8765436</p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
 
 /***/ },
-/* 31 */
+/* 92 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 32 */,
-/* 33 */
+/* 93 */,
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Kevin on 2016/12/6.
 	 */
-	var template = __webpack_require__(34),
-	    navigationView = __webpack_require__(69),
-	    recommendBarView = __webpack_require__(71),
-	    recommendView = __webpack_require__(73);
-	__webpack_require__(75);
-	__webpack_require__(93);
-	__webpack_require__(95);
-	__webpack_require__(96);
+	var template = __webpack_require__(95),
+	    navigationView = __webpack_require__(130),
+	    recommendBarView = __webpack_require__(132),
+	    recommendView = __webpack_require__(134);
+	__webpack_require__(136);
+	__webpack_require__(154);
+	__webpack_require__(156);
+	__webpack_require__(157);
 
-	var mainModel = Backbone.Model.extend({
-	    count: 0,
-	    serDaohang: function(options) {
-	        options = options || {};
-	        var coll = this;
-	        _.extend(options, {
-	            url: mscxPage.host+'/mscx-app-api/recommend/bar.do',
-	            success: function(res) {
-	                new navigationView({
-	                    el: '#daohangSer',
-	                    type: 'ser',
-	                    model: res.result
-	                })
-	            }
-	        });
-	        this.sync('get', this, options);
-	    },
-	    serList: function(options) {
-	        options = options || {};
-	        var coll = this;
-	        _.extend(options, {
-	            url:mscxPage.host+ '/mscx-app-api/list.do',
-	            success: function(res) {
-	                new recommendBarView({
-	                    el: '#serList',
-	                    type: 'ser',
-	                    model: res.result.data
-	                })
-	            }
-	        });
-	        this.sync('get', this, options);
-	    },
-	    recommendSerList: function(options) {
-	        options = options || {};
-	        _.extend(options, {
-	            url: mscxPage.host+'/mscx-app-api/recommend/list.do',
-	            success: function(res) {
-	                new recommendView({
-	                    el: '.recommendSerList',
-	                    type: 'ser',
-	                    model: res.result
-	                })
-	            }
-	        });
-	        this.sync('get', this, options);
-	    },
-	    apiDaohang: function(options) {
-	        options = options || {};
-	        _.extend(options, {
-	            url:mscxPage.host+ '/mscx-api-api/service/getNavigationApi.do',
-	            data: {areaId:'280101'},
-	            success: function(res) {
-	                new navigationView({
-	                    el: '#daohangAPI',
-	                    type: 'api',
-	                    model: res.result
-	                })
-	            }
-	        });
-	        this.sync('get', this, options);
-	    },
-	    apiList: function(options) {
-	        options = options || {};
-
-	        _.extend(options, {
-	            url: mscxPage.host+'/mscx-api-api/service/getSelectedNavigation.do',
-	            data: {areaId:'280101'},
-	            success: function(res) {
-	                new recommendBarView({
-	                    el: '#apiList',
-	                    type: 'api',
-	                    model: res.result
-	                })
-	            }
-	        });
-	        this.sync('get', this, options);
-	    },
-	    recommendApiList: function(options) {
-	        options = options || {};
-	        _.extend(options, {
-	            url: mscxPage.host+'/mscx-api-api/service/getSelectedApi.do',
-	            data: {areaId:'280101'},
-	            success: function(res) {
-	                new recommendView({
-	                    el: '.recommendApiList',
-	                    type: 'api',
-	                    model: res.result
-	                })
-	            }
-	        });
-	        this.sync('get', this, options);
-	    },
-	    initIndex: function() {
-	        var coll = this;
-	        coll.serDaohang();
-	        coll.serList();
-	        coll.recommendSerList();
-	        coll.apiDaohang();
-	        coll.apiList();
-	        coll.recommendApiList();
-	    }
+	var navigationSerModel = Backbone.Model.extend({
+	    url: mscxPage.host+'/ro/mscx-app-api/recommend/bar.do'
 	});
+
+	var navigationApiModel = Backbone.Model.extend({
+	    url: mscxPage.host+'/ro/mscx-api-api/service/getNavigationApi.do'
+	});
+
+	var serListModel = Backbone.Model.extend({
+	    url: mscxPage.host+ '/ro/mscx-app-api/list.do'
+	});
+
+	var apiListModel = Backbone.Model.extend({
+	    url: mscxPage.host+'/ro/mscx-api-api/service/getSelectedNavigation.do'
+	});
+
+	var recommendApiModel = Backbone.Model.extend({
+	    url: mscxPage.host+'/ro/mscx-api-api/service/getSelectedApi.do'
+	});
+	var recommendSerModel = Backbone.Model.extend({
+	    url: mscxPage.host+'/ro/mscx-app-api/recommend/list.do'
+	});
+
 
 	var mainView = Backbone.View.extend({
 	    el: mscxPage.domEl.mainEl,
@@ -239,12 +257,45 @@ webpackJsonp([1],[
 	        'blur .info-line input':'changeAttribute'
 	    },
 	    initialize: function() {
+	        this.$el.html(template);
+	        new navigationView({
+	            id: 'ser',
+	            el: '#daohangSer',
+	            model: new navigationSerModel()
+	        });
 
-	        var mainIndexModel = this.model = new mainModel(),
-	            coll = this;
-	        coll.$el.html(template);
-	        coll.render();
-	        mainIndexModel.initIndex();
+	        new navigationView({
+	            id: 'api',
+	            el: '#daohangAPI',
+	            model: new navigationApiModel()
+	        });
+
+	        new recommendBarView({
+	            id: 'ser',
+	            el: '#serList',
+	            model: new serListModel()
+	        });
+
+
+	        new recommendBarView({
+	            id: 'api',
+	            el: '#apiList',
+	            model: new apiListModel()
+	        });
+
+	        new recommendView({
+	            id: 'api',
+	            el: '.recommendApiList',
+	            className: 'loading',
+	            model: new recommendApiModel()
+	        });
+
+	        new recommendView({
+	            id: 'ser',
+	            el: '.recommendSerList',
+	            model: new recommendSerModel()
+	        });
+	        this.render();
 	    },
 	    render: function(){
 	        var galleryTop = new Swiper('.swiper-container', {
@@ -308,284 +359,333 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 34 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\r\n<div class=\"w100 bannerbg\">\r\n    <div class=\"grid1190\">\r\n        <div class=\"left-banner mr10 fl\">\r\n            <div class=\"container posAB\">\r\n                <div class=\"topTit\">\r\n                    <span class=\"active topTitFirst\">API</span>\r\n                    <span class=\"topTitLast\">微服务</span>\r\n                </div>\r\n                <div class=\"downCons\">\r\n                    <div class=\"titCons\" id=\"daohangAPI\">\r\n                        <!--<ul>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  class=\"w2\" href=\"#?cat=2\" >教育</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=561\" >学历查询</a>\r\n                                    <a href=\"#?id=281\" >学籍查询</a>\r\n                                    <a href=\"#?id=283\" >学位查询</a>\r\n                                    <a href=\"#?id=276\" >普通高校基本信息查询</a>\r\n                                    <a href=\"#?id=278\" >普通高校招生计划</a>\r\n                                    <a href=\"#?id=277\" >普通高校往年录取分数线</a>\r\n                                    <a href=\"#?id=285\" >外国高等学校</a>\r\n                                    <a href=\"#?id=280\" >硕士院校专业查询</a>\r\n                                    <a href=\"#?id=274\" >博士院校专业查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=4\" >工作就业</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=1\" >证券从业人员执业注册查询</a>\r\n                                    <a href=\"#?id=4\" >基金从业人员资格信息查询</a>\r\n                                    <a href=\"#?id=5\" >国家职业资格证书查询</a>\r\n                                    <a href=\"#?id=7\" >CETTIC证书查询</a>\r\n                                    <a href=\"#?id=8\" >国际证书查询</a>\r\n                                    <a href=\"#?id=193\" >保险从业人员查询</a>\r\n                                    <a href=\"#?id=212\" >建筑行业注册人员查询</a>\r\n                                    <a href=\"#?id=485\" >全国信息技术水平考试查询</a>\r\n                                    <a href=\"#?id=486\" >信息技术人才培训考试查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=6\" >社会保障</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=20\" >北京公积金查询</a>\r\n                                    <a href=\"#?id=23\" >上海社保查询</a>\r\n                                    <a href=\"#?id=24\" >无锡公积金查询</a>\r\n                                    <a href=\"#?id=25\" >苏州社保查询</a>\r\n                                    <a href=\"#?id=27\" >济南公积金查询</a>\r\n                                    <a href=\"#?id=28\" >青岛公积金查询</a>\r\n                                    <a href=\"#?id=35\" >徐州社保查询</a>\r\n                                    <a href=\"#?id=44\" >北京社保查询</a>\r\n                                    <a href=\"#?id=46\" >济南社保查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=8\" >医疗卫生</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=318\" >病状信息</a>\r\n                                    <a href=\"#?id=320\" >疾病信息</a>\r\n                                    <a href=\"#?id=321\" >检查项目</a>\r\n                                    <a href=\"#?id=322\" >科室分类</a>\r\n                                    <a href=\"#?id=323\" >身体部位</a>\r\n                                    <a href=\"#?id=324\" >手术分类</a>\r\n                                    <a href=\"#?id=327\" >医院门诊</a>\r\n                                    <a href=\"#?id=328\" >药品信息</a>\r\n                                    <a href=\"#?id=329\" >药店药房</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=1\" >交通出行</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=522\" >南通巴士管家查询</a>\r\n                                    <a href=\"#?id=16\" >北京驾驶人记分</a>\r\n                                    <a href=\"#?id=47\" >北京机动车摇号查询</a>\r\n                                    <a href=\"#?id=49\" >北京车辆限行查询</a>\r\n                                    <a href=\"#?id=268\" >高速公路道路阻断查询</a>\r\n                                    <a href=\"#?id=272\" >国内机票查询</a>\r\n                                    <a href=\"#?id=273\" >实时停车场查询</a>\r\n                                    <a href=\"#?id=487\" >行驶证核查</a>\r\n                                    <a href=\"#?id=491\" >车辆保单信息查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  class=\"w2\" href=\"#?cat=3\" >旅游</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=287\" >景区门票价格查询</a>\r\n                                    <a href=\"#?id=288\" >景区语音</a>\r\n                                    <a href=\"#?id=289\" >酒店价格查询</a>\r\n                                    <a href=\"#?id=290\" >目的地旅游线路价格</a>\r\n                                    <a href=\"#?id=291\" >游记攻略</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=11\" >文化体育</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=559\" >NBA赛事</a>\r\n                                    <a href=\"#?id=560\" >足球联赛</a>\r\n                                    <a href=\"#?id=315\" >电视节目查询</a>\r\n                                    <a href=\"#?id=316\" >电影票团购</a>\r\n                                    <a href=\"#?id=317\" >演出曲艺</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=7\" >生活服务</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=569\" >健康菜谱</a>\r\n                                    <a href=\"#?id=17\" >北京水费账单</a>\r\n                                    <a href=\"#?id=18\" >北京电费账单</a>\r\n                                    <a href=\"#?id=48\" >北京一卡通查询</a>\r\n                                    <a href=\"#?id=64\" >无锡电费查询</a>\r\n                                    <a href=\"#?id=65\" >无锡水费查询</a>\r\n                                    <a href=\"#?id=292\" >餐饮团购</a>\r\n                                    <a href=\"#?id=311\" >全国福利彩票开奖查询</a>\r\n                                    <a href=\"#?id=496\" >手机号在网状态信息</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=7\" >生活服务</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=569\" >健康菜谱</a>\r\n                                    <a href=\"#?id=17\" >北京水费账单</a>\r\n                                    <a href=\"#?id=18\" >北京电费账单</a>\r\n                                    <a href=\"#?id=48\" >北京一卡通查询</a>\r\n                                    <a href=\"#?id=64\" >无锡电费查询</a>\r\n                                    <a href=\"#?id=65\" >无锡水费查询</a>\r\n                                    <a href=\"#?id=292\" >餐饮团购</a>\r\n                                    <a href=\"#?id=311\" >全国福利彩票开奖查询</a>\r\n                                    <a href=\"#?id=496\" >手机号在网状态信息</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit moreThanTen\">\r\n                                    <a  href=\"#\" >更多</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=60\" >上市公司信息查询</a>\r\n                                    <a href=\"#?id=61\" >上市公司业绩报告查询</a>\r\n                                    <a href=\"#?id=53\" >工商企业信用公示信息查询</a>\r\n                                    <a href=\"#?id=56\" >计算机软件著作权查询</a>\r\n                                    <a href=\"#?id=54\" >专利信息查询</a>\r\n                                    <a href=\"#?id=51\" >企业建筑资质查询</a>\r\n                                    <a href=\"#?id=59\" >A级纳税人信息查询</a>\r\n                                    <a href=\"#?id=58\" >重大税收违法案件信息查询</a>\r\n                                    <a href=\"#?id=52\" >企业环境标志清单查询</a>\r\n                                </div>\r\n                            </li>\r\n                        </ul>-->\r\n                    </div>\r\n                    <div class=\"titCons hide\" id=\"daohangSer\">\r\n                        <!--<ul>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >社会保障</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=45\" >公积金查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >交通出行</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=2\" >机动车摇号查询</a>\r\n                                    <a href=\"#?id=4\" >驾驶人记分</a>\r\n                                    <a href=\"#?id=3\" >交通违章查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >文化体育</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=14\" >编诗姬</a>\r\n                                    <a href=\"#?id=16\" >智能问答机器人</a>\r\n                                    <a href=\"#?id=15\" >作文改写</a>\r\n                                    <a href=\"#?id=17\" >文本语义分析</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?catalog=2\" >生活服务</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=5\" >一卡通查询</a>\r\n                                    <a href=\"#?id=11\" >水账单查询</a>\r\n                                    <a href=\"#?id=8\" >市民卡-交易记录</a>\r\n                                    <a href=\"#?id=10\" >港澳签注代办</a>\r\n                                    <a href=\"#?id=6\" >市民卡申领</a>\r\n                                    <a href=\"#?id=12\" >电费查询 </a>\r\n                                    <a href=\"#?id=9\" >市民卡-充值</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >城市管理</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=18\" >城市间资本流动</a>\r\n                                    <a href=\"#?id=37\" >城市对比</a>\r\n                                    <a href=\"#?id=20\" >企业信用评价</a>\r\n                                    <a href=\"#?id=36\" >城市互联</a>\r\n                                    <a href=\"#?id=19\" >热点事件分析</a>\r\n                                    <a href=\"#?id=38\" >行业信息统计网格</a>\r\n                                    <a href=\"#?id=35\" >城市要素</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >产业发展</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=23\" >行业空间布局</a>\r\n                                    <a href=\"#?id=41\" >企业信息多维度查询</a>\r\n                                    <a href=\"#?id=33\" >企业全景报告</a>\r\n                                    <a href=\"#?id=40\" >企业关联族谱及风险信息</a>\r\n                                    <a href=\"#?id=27\" >企业图谱详情</a>\r\n                                    <a href=\"#?id=34\" >企业信息概览</a>\r\n                                </div>\r\n                            </li>\r\n                        </ul>-->\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"bannger fl mr10\">\r\n            <div class=\"swiper-container\">\r\n                <div class=\"swiper-wrapper\">\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(35) + "\">\r\n                    </a>\r\n                    <a href=\"#\" class=\"swiper-slide \">\r\n                        <img src=\"" + __webpack_require__(36) + "\">\r\n                    </a>\r\n                    <a href=\"#\" target=\"_blank\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(37) + "\">\r\n                    </a>\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(38) + "\">\r\n                    </a>\r\n                </div>\r\n                <!-- Add Pagination -->\r\n            </div>\r\n        </div>\r\n        <div class=\"left-banner fl\">\r\n            <div class=\"swiper-right\">\r\n                <div class=\"swiper-wrapper rightBannner\">\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(39) + "\">\r\n                    </a>\r\n                    <a href=\"#\" class=\"swiper-slide \">\r\n                        <img src=\"" + __webpack_require__(40) + "\">\r\n                    </a>\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(41) + "\">\r\n                    </a>\r\n                    <!--<a href=\"#\" class=\"swiper-slide\"\r\n                       style=\"background: url('../../images/newicon/banner4-small.png') center center no-repeat;\">\r\n                    </a>-->\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(42) + "\">\r\n                    </a>\r\n                </div>\r\n                <!-- Add Pagination -->\r\n            </div>\r\n        </div>\r\n        <!-- Add Arrows -->\r\n\r\n    </div>\r\n</div>\r\n\r\n<div class=\"grid1190\">\r\n    <p class=\" scroll\">\r\n        <span class=\"newMsg\">最新消息:</span>\r\n        <span>平台用户可以使用平台提供的数据、API及微服务，用于各个平台上的APP开发 。另外根据数据的特性不同，不同数据具有不同的资费标准及赠送次数。</span>\r\n    </p>\r\n</div>\r\n\r\n\r\n<div>\r\n    <div class=\"layer grid1190 common\">\r\n        <div class=\"tabChange\">\r\n            <ul class=\"clearfix ml5\">\r\n                <li class=\"angled-135 posRE\">\r\n                    <div class=\"tabConsTop clearfix\">\r\n                        <div class=\"iconforapi\">\r\n                            <a href=\"#\" class=\"apihref\">\r\n                                <img src=\"" + __webpack_require__(43) + "\">\r\n                                <p><span>公积金查询</span></p>\r\n                            </a>\r\n                        </div>\r\n                        <a href=\"#\"\r\n                           class=\"apiname\">公积金查询</a>\r\n                    </div>\r\n                    <p class=\"ft14\">\r\n                            <span class=\"charge fl\">\r\n                                收费\r\n                            </span>\r\n                            <span class=\"fwjirl mt3\">\r\n                                <i>110</i>\r\n                            </span>\r\n                             <span class=\"fangwenliang mt3\">\r\n                                <i>160</i>\r\n                            </span>\r\n                    </p>\r\n                </li>\r\n                <li class=\"angled-135 posRE\">\r\n                    <div class=\"tabConsTop clearfix\">\r\n                        <div class=\"iconforapi\">\r\n                            <a class=\"apihref\" href=\"javascript:;\">\r\n                                <img src=\"" + __webpack_require__(44) + "\">\r\n                                <p><span>人脸识别</span></p>\r\n                            </a>\r\n                        </div>\r\n                        <a href=\"javascript:;\"\r\n                           class=\"apiname\">人脸识别</a>\r\n                    </div>\r\n                    <p class=\"ft14\">\r\n                            <span class=\"charge fl\">\r\n                                收费\r\n                            </span>\r\n                            <span class=\"fwjirl mt3\">\r\n                                <i>79</i>\r\n                            </span>\r\n                             <span class=\"fangwenliang mt3\">\r\n                                <i>121</i>\r\n                            </span>\r\n                    </p>\r\n                </li>\r\n                <li class=\"angled-135 posRE\">\r\n                    <div class=\"tabConsTop clearfix\">\r\n                        <div class=\"iconforapi\">\r\n                            <a href=\"javascript:;\" class=\"apihref\">\r\n                                <img src=\"" + __webpack_require__(45) + "\">\r\n                                <p><span>身份证二元素认证</span></p>\r\n                            </a>\r\n                        </div>\r\n                        <a href=\"javascript:;\"\r\n                           class=\"apiname\">身份证二元素认证</a>\r\n                    </div>\r\n                    <p class=\"ft14\">\r\n                        <span class=\"charge fl\">收费</span>\r\n                            <span class=\"fwjirl mt3\">\r\n                                <i>110</i>\r\n                            </span>\r\n                             <span class=\"fangwenliang mt3\">\r\n                                <i>110</i>\r\n                            </span>\r\n                    </p>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div>\r\n    <div class=\"layer00 grid1190 common clearfix\">\r\n        <div class=\"layerCons clearfix\">\r\n            <div class=\"tit\">\r\n                <span class=\"fl\">精选API</span>\r\n                <span class=\"fl titbg\"></span>\r\n            </div>\r\n            <div class=\"mainDatas\">\r\n                <div class=\"mainDatas-left fl\">\r\n                    <div><img src=\"" + __webpack_require__(46) + "\"></div>\r\n                    <ul class=\"apitypelist\" id=\"apiList\">\r\n                        <!--<li><a>预约挂号</a></li>\r\n                        <li><a>健康图书</a></li>\r\n                        <li><a>一卡通查询</a></li>\r\n                        <li><a>全国交通违章查询</a></li>\r\n                        <li><a>农业知识</a></li>\r\n                        <li><a>健康菜谱</a></li>\r\n                        <li><a>国籍证书查询</a></li>\r\n                        <li><a>工商企业信用公示查询</a></li>\r\n                        <li><a>学历查询</a></li>\r\n                        <li><a>专利信息查询</a></li>-->\r\n                    </ul>\r\n                    <a class=\"w100 more\" href=\"javascript:;\">\r\n                        更多...\r\n                    </a>\r\n                </div>\r\n                <div class=\"dataListDiv fl\">\r\n                    <ul class=\"clearfix DataList recommendApiList\">\r\n                        <!--<li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"#\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(47) + "\">\r\n                                    </div>\r\n                                    <p><a>全国交通违章查询</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        169\r\n                                    </span>\r\n                                    <span class=\"fl diaoyongshu\">\r\n                                        169\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(48) + "\">\r\n                                    </div>\r\n                                    <p><a>上市公司业绩报告查询</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        89\r\n                                    </span>\r\n                                    <span class=\"fl diaoyongshu\">\r\n                                        94\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(49) + "\">\r\n                                    </div>\r\n                                    <p><a>国家职业资质证书查询</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        264\r\n                                    </span>\r\n                                    <span class=\"fl diaoyongshu\">\r\n                                        391\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li >\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(50) + "\">\r\n                                    </div>\r\n                                    <p><a>身份信息验证</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        1982\r\n                                    </span>\r\n                                    <span class=\"fl diaoyongshu\">\r\n                                        3402\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(51) + "\">\r\n                                    </div>\r\n                                    <p><a>健康问答</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        712\r\n                                    </span>\r\n                                    <span class=\"fl diaoyongshu\">\r\n                                        1320\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(52) + "\">\r\n                                    </div>\r\n                                    <p><a>商标信息查询</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        52\r\n                                    </span>\r\n                                    <span class=\"fl diaoyongshu\">\r\n                                        67\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(53) + "\">\r\n                                    </div>\r\n                                    <p><a>工商企业公示信息查询</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        14\r\n                                    </span>\r\n                                    <span class=\"fl diaoyongshu\">\r\n                                        32\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li >\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(54) + "\">\r\n                                    </div>\r\n                                    <p><a>专利信息查询</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        278\r\n                                    </span>\r\n                                    <span class=\"fl diaoyongshu\">\r\n                                        424\r\n                                    </span>\r\n                            </div>\r\n                        </li>-->\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"layerCons clearfix serlist\">\r\n            <div class=\"tit mt20\">\r\n                <span class=\"fl\">精选微服务</span>\r\n                <span class=\"fl titbg titbgser\"></span>\r\n            </div>\r\n            <div class=\"mainDatas\">\r\n                <div class=\"mainDatas-left fl\">\r\n                    <div><img src=\"" + __webpack_require__(55) + "\"></div>\r\n                    <ul class=\"apitypelist\" id=\"serList\">\r\n                       <!-- <li><a>公积金查询</a></li>\r\n                        <li><a>编诗姬</a></li>\r\n                        <li><a>水账单查询</a></li>\r\n                        <li><a>电费查询</a></li>\r\n                        <li><a>企业图谱详情</a></li>\r\n                        <li><a>城市互联</a></li>\r\n                        <li><a>作业改写</a></li>\r\n                        <li><a>智能问答机器人</a></li>\r\n                        <li><a>驾驶人计分</a></li>\r\n                        <li><a>交通违章查询</a></li>-->\r\n                    </ul>\r\n                    <a class=\"w100 more\" href=\"javascript:;\">\r\n                        更多...\r\n                    </a>\r\n                </div>\r\n                <div class=\"dataListDiv fl\">\r\n                    <ul class=\"clearfix DataList recommendSerList\">\r\n                       <!-- <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"#\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(56) + "\">\r\n                                    </div>\r\n                                    <p><a>公积金查询</a></p>\r\n                                    <p class=\"buyType\">收费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        49281\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(57) + "\">\r\n                                    </div>\r\n                                    <p><a>智能问答机器人</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        94\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(58) + "\">\r\n                                    </div>\r\n                                    <p><a>驾驶人计分</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        391\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li >\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(59) + "\">\r\n                                    </div>\r\n                                    <p><a>产业云图</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        3402\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(60) + "\">\r\n                                    </div>\r\n                                    <p><a>热点事件分析</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        1320\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(61) + "\">\r\n                                    </div>\r\n                                    <p><a>作文修改</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        67\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li>\r\n                            <div class=\"centers\">\r\n                                <a href=\"javascript:;\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(62) + "\">\r\n                                    </div>\r\n                                    <p><a>电费查询</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        21907\r\n                                    </span>\r\n                            </div>\r\n                        </li>\r\n                        <li >\r\n                            <div class=\"centers\">\r\n                                <a href=\"#\">\r\n                                    <div class=\"datalist-img\">\r\n                                        <img src=\"" + __webpack_require__(63) + "\">\r\n                                    </div>\r\n                                    <p><a>企业信息概览</a></p>\r\n                                    <p class=\"buyType\">免费</p>\r\n                                </a>\r\n                            </div>\r\n                            <div class=\"downs clearfix\">\r\n                                    <span class=\"lianjiehsu fl\">\r\n                                        424\r\n                                    </span>\r\n                            </div>\r\n                        </li>-->\r\n                    </ul>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n\r\n        <div class=\"layerCons clearfix\">\r\n            <div class=\"tit mt20\">\r\n                <span class=\"fl\">合作伙伴</span>\r\n                <span class=\"fl titbg titbgser\"></span>\r\n            </div>\r\n            <div class=\"partner\">\r\n                <ul >\r\n                    <li><a><img src=\"" + __webpack_require__(64) + "\"></a></li>\r\n                    <li><a><img src=\"" + __webpack_require__(65) + "\"></a></li>\r\n                    <li><a><img src=\"" + __webpack_require__(66) + "\"></a></li>\r\n                    <li><a><img src=\"" + __webpack_require__(67) + "\"></a></li>\r\n                    <li><a><img src=\"" + __webpack_require__(68) + "\"></a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
+	module.exports = "\r\n<div class=\"w100 bannerbg\">\r\n    <div class=\"grid1190\">\r\n        <div class=\"left-banner mr10 fl\">\r\n            <div class=\"container posAB\">\r\n                <div class=\"topTit\">\r\n                    <span class=\"active topTitFirst\">API</span>\r\n                    <span class=\"topTitLast\">微服务</span>\r\n                </div>\r\n                <div class=\"downCons\">\r\n                    <div class=\"titCons\" id=\"daohangAPI\">\r\n                        <!--<ul>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  class=\"w2\" href=\"#?cat=2\" >教育</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=561\" >学历查询</a>\r\n                                    <a href=\"#?id=281\" >学籍查询</a>\r\n                                    <a href=\"#?id=283\" >学位查询</a>\r\n                                    <a href=\"#?id=276\" >普通高校基本信息查询</a>\r\n                                    <a href=\"#?id=278\" >普通高校招生计划</a>\r\n                                    <a href=\"#?id=277\" >普通高校往年录取分数线</a>\r\n                                    <a href=\"#?id=285\" >外国高等学校</a>\r\n                                    <a href=\"#?id=280\" >硕士院校专业查询</a>\r\n                                    <a href=\"#?id=274\" >博士院校专业查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=4\" >工作就业</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=1\" >证券从业人员执业注册查询</a>\r\n                                    <a href=\"#?id=4\" >基金从业人员资格信息查询</a>\r\n                                    <a href=\"#?id=5\" >国家职业资格证书查询</a>\r\n                                    <a href=\"#?id=7\" >CETTIC证书查询</a>\r\n                                    <a href=\"#?id=8\" >国际证书查询</a>\r\n                                    <a href=\"#?id=193\" >保险从业人员查询</a>\r\n                                    <a href=\"#?id=212\" >建筑行业注册人员查询</a>\r\n                                    <a href=\"#?id=485\" >全国信息技术水平考试查询</a>\r\n                                    <a href=\"#?id=486\" >信息技术人才培训考试查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=6\" >社会保障</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=20\" >北京公积金查询</a>\r\n                                    <a href=\"#?id=23\" >上海社保查询</a>\r\n                                    <a href=\"#?id=24\" >无锡公积金查询</a>\r\n                                    <a href=\"#?id=25\" >苏州社保查询</a>\r\n                                    <a href=\"#?id=27\" >济南公积金查询</a>\r\n                                    <a href=\"#?id=28\" >青岛公积金查询</a>\r\n                                    <a href=\"#?id=35\" >徐州社保查询</a>\r\n                                    <a href=\"#?id=44\" >北京社保查询</a>\r\n                                    <a href=\"#?id=46\" >济南社保查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=8\" >医疗卫生</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=318\" >病状信息</a>\r\n                                    <a href=\"#?id=320\" >疾病信息</a>\r\n                                    <a href=\"#?id=321\" >检查项目</a>\r\n                                    <a href=\"#?id=322\" >科室分类</a>\r\n                                    <a href=\"#?id=323\" >身体部位</a>\r\n                                    <a href=\"#?id=324\" >手术分类</a>\r\n                                    <a href=\"#?id=327\" >医院门诊</a>\r\n                                    <a href=\"#?id=328\" >药品信息</a>\r\n                                    <a href=\"#?id=329\" >药店药房</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=1\" >交通出行</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=522\" >南通巴士管家查询</a>\r\n                                    <a href=\"#?id=16\" >北京驾驶人记分</a>\r\n                                    <a href=\"#?id=47\" >北京机动车摇号查询</a>\r\n                                    <a href=\"#?id=49\" >北京车辆限行查询</a>\r\n                                    <a href=\"#?id=268\" >高速公路道路阻断查询</a>\r\n                                    <a href=\"#?id=272\" >国内机票查询</a>\r\n                                    <a href=\"#?id=273\" >实时停车场查询</a>\r\n                                    <a href=\"#?id=487\" >行驶证核查</a>\r\n                                    <a href=\"#?id=491\" >车辆保单信息查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  class=\"w2\" href=\"#?cat=3\" >旅游</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=287\" >景区门票价格查询</a>\r\n                                    <a href=\"#?id=288\" >景区语音</a>\r\n                                    <a href=\"#?id=289\" >酒店价格查询</a>\r\n                                    <a href=\"#?id=290\" >目的地旅游线路价格</a>\r\n                                    <a href=\"#?id=291\" >游记攻略</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=11\" >文化体育</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=559\" >NBA赛事</a>\r\n                                    <a href=\"#?id=560\" >足球联赛</a>\r\n                                    <a href=\"#?id=315\" >电视节目查询</a>\r\n                                    <a href=\"#?id=316\" >电影票团购</a>\r\n                                    <a href=\"#?id=317\" >演出曲艺</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=7\" >生活服务</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=569\" >健康菜谱</a>\r\n                                    <a href=\"#?id=17\" >北京水费账单</a>\r\n                                    <a href=\"#?id=18\" >北京电费账单</a>\r\n                                    <a href=\"#?id=48\" >北京一卡通查询</a>\r\n                                    <a href=\"#?id=64\" >无锡电费查询</a>\r\n                                    <a href=\"#?id=65\" >无锡水费查询</a>\r\n                                    <a href=\"#?id=292\" >餐饮团购</a>\r\n                                    <a href=\"#?id=311\" >全国福利彩票开奖查询</a>\r\n                                    <a href=\"#?id=496\" >手机号在网状态信息</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?cat=7\" >生活服务</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=569\" >健康菜谱</a>\r\n                                    <a href=\"#?id=17\" >北京水费账单</a>\r\n                                    <a href=\"#?id=18\" >北京电费账单</a>\r\n                                    <a href=\"#?id=48\" >北京一卡通查询</a>\r\n                                    <a href=\"#?id=64\" >无锡电费查询</a>\r\n                                    <a href=\"#?id=65\" >无锡水费查询</a>\r\n                                    <a href=\"#?id=292\" >餐饮团购</a>\r\n                                    <a href=\"#?id=311\" >全国福利彩票开奖查询</a>\r\n                                    <a href=\"#?id=496\" >手机号在网状态信息</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit moreThanTen\">\r\n                                    <a  href=\"#\" >更多</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=60\" >上市公司信息查询</a>\r\n                                    <a href=\"#?id=61\" >上市公司业绩报告查询</a>\r\n                                    <a href=\"#?id=53\" >工商企业信用公示信息查询</a>\r\n                                    <a href=\"#?id=56\" >计算机软件著作权查询</a>\r\n                                    <a href=\"#?id=54\" >专利信息查询</a>\r\n                                    <a href=\"#?id=51\" >企业建筑资质查询</a>\r\n                                    <a href=\"#?id=59\" >A级纳税人信息查询</a>\r\n                                    <a href=\"#?id=58\" >重大税收违法案件信息查询</a>\r\n                                    <a href=\"#?id=52\" >企业环境标志清单查询</a>\r\n                                </div>\r\n                            </li>\r\n                        </ul>-->\r\n                    </div>\r\n                    <div class=\"titCons hide\" id=\"daohangSer\">\r\n                        <!--<ul>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >社会保障</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=45\" >公积金查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >交通出行</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=2\" >机动车摇号查询</a>\r\n                                    <a href=\"#?id=4\" >驾驶人记分</a>\r\n                                    <a href=\"#?id=3\" >交通违章查询</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >文化体育</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=14\" >编诗姬</a>\r\n                                    <a href=\"#?id=16\" >智能问答机器人</a>\r\n                                    <a href=\"#?id=15\" >作文改写</a>\r\n                                    <a href=\"#?id=17\" >文本语义分析</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#?catalog=2\" >生活服务</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=5\" >一卡通查询</a>\r\n                                    <a href=\"#?id=11\" >水账单查询</a>\r\n                                    <a href=\"#?id=8\" >市民卡-交易记录</a>\r\n                                    <a href=\"#?id=10\" >港澳签注代办</a>\r\n                                    <a href=\"#?id=6\" >市民卡申领</a>\r\n                                    <a href=\"#?id=12\" >电费查询 </a>\r\n                                    <a href=\"#?id=9\" >市民卡-充值</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >城市管理</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=18\" >城市间资本流动</a>\r\n                                    <a href=\"#?id=37\" >城市对比</a>\r\n                                    <a href=\"#?id=20\" >企业信用评价</a>\r\n                                    <a href=\"#?id=36\" >城市互联</a>\r\n                                    <a href=\"#?id=19\" >热点事件分析</a>\r\n                                    <a href=\"#?id=38\" >行业信息统计网格</a>\r\n                                    <a href=\"#?id=35\" >城市要素</a>\r\n                                </div>\r\n                            </li>\r\n                            <li>\r\n                                <p class=\"leftTit\">\r\n                                    <a  href=\"#\" >产业发展</a>\r\n                                </p>\r\n                                <div class=\"rightTips\" style=\"display: none;\">\r\n                                    <a href=\"#?id=23\" >行业空间布局</a>\r\n                                    <a href=\"#?id=41\" >企业信息多维度查询</a>\r\n                                    <a href=\"#?id=33\" >企业全景报告</a>\r\n                                    <a href=\"#?id=40\" >企业关联族谱及风险信息</a>\r\n                                    <a href=\"#?id=27\" >企业图谱详情</a>\r\n                                    <a href=\"#?id=34\" >企业信息概览</a>\r\n                                </div>\r\n                            </li>\r\n                        </ul>-->\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"bannger fl mr10\">\r\n            <div class=\"swiper-container\">\r\n                <div class=\"swiper-wrapper\">\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(96) + "\">\r\n                    </a>\r\n                    <a href=\"#\" class=\"swiper-slide \">\r\n                        <img src=\"" + __webpack_require__(97) + "\">\r\n                    </a>\r\n                    <a href=\"#\" target=\"_blank\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(98) + "\">\r\n                    </a>\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(99) + "\">\r\n                    </a>\r\n                </div>\r\n                <!-- Add Pagination -->\r\n            </div>\r\n        </div>\r\n        <div class=\"left-banner fl\">\r\n            <div class=\"swiper-right\">\r\n                <div class=\"swiper-wrapper rightBannner\">\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(100) + "\">\r\n                    </a>\r\n                    <a href=\"#\" class=\"swiper-slide \">\r\n                        <img src=\"" + __webpack_require__(101) + "\">\r\n                    </a>\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(102) + "\">\r\n                    </a>\r\n                    <!--<a href=\"#\" class=\"swiper-slide\"\r\n                       style=\"background: url('../../images/newicon/banner4-small.png') center center no-repeat;\">\r\n                    </a>-->\r\n                    <a href=\"#\" class=\"swiper-slide\">\r\n                        <img src=\"" + __webpack_require__(103) + "\">\r\n                    </a>\r\n                </div>\r\n                <!-- Add Pagination -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div class=\"grid1190\">\r\n    <p class=\" scroll\">\r\n        <span class=\"newMsg\">最新消息:</span>\r\n        <span>平台用户可以使用平台提供的数据、API及微服务，用于各个平台上的APP开发 。另外根据数据的特性不同，不同数据具有不同的资费标准及赠送次数。</span>\r\n    </p>\r\n</div>\r\n\r\n\r\n<div class=\"grid1190 layer common\">\r\n    <div class=\"tabChange\">\r\n        <ul class=\"clearfix ml5\">\r\n            <li class=\"angled-135 posRE\">\r\n                <div class=\"tabConsTop clearfix\">\r\n                    <div class=\"iconforapi\">\r\n                        <a href=\"#\" class=\"apihref\">\r\n                            <img src=\"" + __webpack_require__(104) + "\">\r\n                            <p><span>公积金查询</span></p>\r\n                        </a>\r\n                    </div>\r\n                    <a href=\"#\"\r\n                       class=\"apiname\">公积金查询</a>\r\n                </div>\r\n                <p class=\"ft14\">\r\n                        <span class=\"charge fl\">\r\n                            收费\r\n                        </span>\r\n                        <span class=\"fwjirl mt3\">\r\n                            <i>110</i>\r\n                        </span>\r\n                         <span class=\"fangwenliang mt3\">\r\n                            <i>160</i>\r\n                        </span>\r\n                </p>\r\n            </li>\r\n            <li class=\"angled-135 posRE\">\r\n                <div class=\"tabConsTop clearfix\">\r\n                    <div class=\"iconforapi\">\r\n                        <a class=\"apihref\" href=\"javascript:;\">\r\n                            <img src=\"" + __webpack_require__(105) + "\">\r\n                            <p><span>人脸识别</span></p>\r\n                        </a>\r\n                    </div>\r\n                    <a href=\"javascript:;\"\r\n                       class=\"apiname\">人脸识别</a>\r\n                </div>\r\n                <p class=\"ft14\">\r\n                        <span class=\"charge fl\">\r\n                            收费\r\n                        </span>\r\n                        <span class=\"fwjirl mt3\">\r\n                            <i>79</i>\r\n                        </span>\r\n                         <span class=\"fangwenliang mt3\">\r\n                            <i>121</i>\r\n                        </span>\r\n                </p>\r\n            </li>\r\n            <li class=\"angled-135 posRE\">\r\n                <div class=\"tabConsTop clearfix\">\r\n                    <div class=\"iconforapi\">\r\n                        <a href=\"javascript:;\" class=\"apihref\">\r\n                            <img src=\"" + __webpack_require__(106) + "\">\r\n                            <p><span>身份证二元素认证</span></p>\r\n                        </a>\r\n                    </div>\r\n                    <a href=\"javascript:;\"\r\n                       class=\"apiname\">身份证二元素认证</a>\r\n                </div>\r\n                <p class=\"ft14\">\r\n                    <span class=\"charge fl\">收费</span>\r\n                        <span class=\"fwjirl mt3\">\r\n                            <i>110</i>\r\n                        </span>\r\n                         <span class=\"fangwenliang mt3\">\r\n                            <i>110</i>\r\n                        </span>\r\n                </p>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</div>\r\n\r\n\r\n<div class=\"layer00 grid1190 common mt16 clearfix\">\r\n    <div class=\"layerCons clearfix\">\r\n        <div class=\"tit\">\r\n            <span class=\"fl\">精选API</span>\r\n            <span class=\"fl titbg\"></span>\r\n        </div>\r\n        <div class=\"mainDatas\">\r\n            <div class=\"mainDatas-left fl\">\r\n                <div class=\"ser-img-box\"><img src=\"" + __webpack_require__(107) + "\"></div>\r\n                <ul class=\"apitypelist\" id=\"apiList\">\r\n                    <!--<li><a>预约挂号</a></li>\r\n                    <li><a>健康图书</a></li>\r\n                    <li><a>一卡通查询</a></li>\r\n                    <li><a>全国交通违章查询</a></li>\r\n                    <li><a>农业知识</a></li>\r\n                    <li><a>健康菜谱</a></li>\r\n                    <li><a>国籍证书查询</a></li>\r\n                    <li><a>工商企业信用公示查询</a></li>\r\n                    <li><a>学历查询</a></li>\r\n                    <li><a>专利信息查询</a></li>-->\r\n                </ul>\r\n                <a class=\"w100 more\" href=\"javascript:;\">\r\n                    更多...\r\n                </a>\r\n            </div>\r\n            <div class=\"dataListDiv fl\">\r\n                <ul class=\"DataList recommendApiList\">\r\n                    <!--<li>\r\n                        <div class=\"centers\">\r\n                            <a href=\"#\">\r\n                                <div class=\"datalist-img\">\r\n                                    <img src=\"" + __webpack_require__(108) + "\">\r\n                                </div>\r\n                                <p><a>全国交通违章查询</a></p>\r\n                                <p class=\"buyType\">免费</p>\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"downs clearfix\">\r\n                                <span class=\"lianjiehsu fl\">\r\n                                    169\r\n                                </span>\r\n                                <span class=\"fl diaoyongshu\">\r\n                                    169\r\n                                </span>\r\n                        </div>\r\n                    </li>\r\n                    <li>\r\n                        <div class=\"centers\">\r\n                            <a href=\"javascript:;\">\r\n                                <div class=\"datalist-img\">\r\n                                    <img src=\"" + __webpack_require__(109) + "\">\r\n                                </div>\r\n                                <p><a>上市公司业绩报告查询</a></p>\r\n                                <p class=\"buyType\">免费</p>\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"downs clearfix\">\r\n                                <span class=\"lianjiehsu fl\">\r\n                                    89\r\n                                </span>\r\n                                <span class=\"fl diaoyongshu\">\r\n                                    94\r\n                                </span>\r\n                        </div>\r\n                    </li>\r\n                    <li>\r\n                        <div class=\"centers\">\r\n                            <a href=\"javascript:;\">\r\n                                <div class=\"datalist-img\">\r\n                                    <img src=\"" + __webpack_require__(110) + "\">\r\n                                </div>\r\n                                <p><a>国家职业资质证书查询</a></p>\r\n                                <p class=\"buyType\">免费</p>\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"downs clearfix\">\r\n                                <span class=\"lianjiehsu fl\">\r\n                                    264\r\n                                </span>\r\n                                <span class=\"fl diaoyongshu\">\r\n                                    391\r\n                                </span>\r\n                        </div>\r\n                    </li>\r\n                    <li >\r\n                        <div class=\"centers\">\r\n                            <a href=\"javascript:;\">\r\n                                <div class=\"datalist-img\">\r\n                                    <img src=\"" + __webpack_require__(111) + "\">\r\n                                </div>\r\n                                <p><a>身份信息验证</a></p>\r\n                                <p class=\"buyType\">免费</p>\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"downs clearfix\">\r\n                                <span class=\"lianjiehsu fl\">\r\n                                    1982\r\n                                </span>\r\n                                <span class=\"fl diaoyongshu\">\r\n                                    3402\r\n                                </span>\r\n                        </div>\r\n                    </li>\r\n                    <li>\r\n                        <div class=\"centers\">\r\n                            <a href=\"javascript:;\">\r\n                                <div class=\"datalist-img\">\r\n                                    <img src=\"" + __webpack_require__(112) + "\">\r\n                                </div>\r\n                                <p><a>健康问答</a></p>\r\n                                <p class=\"buyType\">免费</p>\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"downs clearfix\">\r\n                                <span class=\"lianjiehsu fl\">\r\n                                    712\r\n                                </span>\r\n                                <span class=\"fl diaoyongshu\">\r\n                                    1320\r\n                                </span>\r\n                        </div>\r\n                    </li>\r\n                    <li>\r\n                        <div class=\"centers\">\r\n                            <a href=\"javascript:;\">\r\n                                <div class=\"datalist-img\">\r\n                                    <img src=\"" + __webpack_require__(113) + "\">\r\n                                </div>\r\n                                <p><a>商标信息查询</a></p>\r\n                                <p class=\"buyType\">免费</p>\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"downs clearfix\">\r\n                                <span class=\"lianjiehsu fl\">\r\n                                    52\r\n                                </span>\r\n                                <span class=\"fl diaoyongshu\">\r\n                                    67\r\n                                </span>\r\n                        </div>\r\n                    </li>\r\n                    <li>\r\n                        <div class=\"centers\">\r\n                            <a href=\"javascript:;\">\r\n                                <div class=\"datalist-img\">\r\n                                    <img src=\"" + __webpack_require__(114) + "\">\r\n                                </div>\r\n                                <p><a>工商企业公示信息查询</a></p>\r\n                                <p class=\"buyType\">免费</p>\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"downs clearfix\">\r\n                                <span class=\"lianjiehsu fl\">\r\n                                    14\r\n                                </span>\r\n                                <span class=\"fl diaoyongshu\">\r\n                                    32\r\n                                </span>\r\n                        </div>\r\n                    </li>\r\n                    <li >\r\n                        <div class=\"centers\">\r\n                            <a href=\"javascript:;\">\r\n                                <div class=\"datalist-img\">\r\n                                    <img src=\"" + __webpack_require__(115) + "\">\r\n                                </div>\r\n                                <p><a>专利信息查询</a></p>\r\n                                <p class=\"buyType\">免费</p>\r\n                            </a>\r\n                        </div>\r\n                        <div class=\"downs clearfix\">\r\n                                <span class=\"lianjiehsu fl\">\r\n                                    278\r\n                                </span>\r\n                                <span class=\"fl diaoyongshu\">\r\n                                    424\r\n                                </span>\r\n                        </div>\r\n                    </li>-->\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"layerCons clearfix serlist\">\r\n        <div class=\"tit mt20\">\r\n            <span class=\"fl\">精选微服务</span>\r\n            <span class=\"fl titbg titbgser\"></span>\r\n        </div>\r\n        <div class=\"mainDatas\">\r\n            <div class=\"mainDatas-left fl\">\r\n                <div class=\"ser-img-box\"><img src=\"" + __webpack_require__(116) + "\"></div>\r\n                <ul class=\"apitypelist\" id=\"serList\">\r\n                    <!-- <li><a>公积金查询</a></li>\r\n                     <li><a>编诗姬</a></li>\r\n                     <li><a>水账单查询</a></li>\r\n                     <li><a>电费查询</a></li>\r\n                     <li><a>企业图谱详情</a></li>\r\n                     <li><a>城市互联</a></li>\r\n                     <li><a>作业改写</a></li>\r\n                     <li><a>智能问答机器人</a></li>\r\n                     <li><a>驾驶人计分</a></li>\r\n                     <li><a>交通违章查询</a></li>-->\r\n                </ul>\r\n                <a class=\"w100 more\" href=\"javascript:;\">\r\n                    更多...\r\n                </a>\r\n            </div>\r\n            <div class=\"dataListDiv fl\">\r\n                <ul class=\"DataList recommendSerList\">\r\n                    <!-- <li>\r\n                         <div class=\"centers\">\r\n                             <a href=\"#\">\r\n                                 <div class=\"datalist-img\">\r\n                                     <img src=\"" + __webpack_require__(117) + "\">\r\n                                 </div>\r\n                                 <p><a>公积金查询</a></p>\r\n                                 <p class=\"buyType\">收费</p>\r\n                             </a>\r\n                         </div>\r\n                         <div class=\"downs clearfix\">\r\n                                 <span class=\"lianjiehsu fl\">\r\n                                     49281\r\n                                 </span>\r\n                         </div>\r\n                     </li>\r\n                     <li>\r\n                         <div class=\"centers\">\r\n                             <a href=\"javascript:;\">\r\n                                 <div class=\"datalist-img\">\r\n                                     <img src=\"" + __webpack_require__(118) + "\">\r\n                                 </div>\r\n                                 <p><a>智能问答机器人</a></p>\r\n                                 <p class=\"buyType\">免费</p>\r\n                             </a>\r\n                         </div>\r\n                         <div class=\"downs clearfix\">\r\n                                 <span class=\"lianjiehsu fl\">\r\n                                     94\r\n                                 </span>\r\n                         </div>\r\n                     </li>\r\n                     <li>\r\n                         <div class=\"centers\">\r\n                             <a href=\"javascript:;\">\r\n                                 <div class=\"datalist-img\">\r\n                                     <img src=\"" + __webpack_require__(119) + "\">\r\n                                 </div>\r\n                                 <p><a>驾驶人计分</a></p>\r\n                                 <p class=\"buyType\">免费</p>\r\n                             </a>\r\n                         </div>\r\n                         <div class=\"downs clearfix\">\r\n                                 <span class=\"lianjiehsu fl\">\r\n                                     391\r\n                                 </span>\r\n                         </div>\r\n                     </li>\r\n                     <li >\r\n                         <div class=\"centers\">\r\n                             <a href=\"javascript:;\">\r\n                                 <div class=\"datalist-img\">\r\n                                     <img src=\"" + __webpack_require__(120) + "\">\r\n                                 </div>\r\n                                 <p><a>产业云图</a></p>\r\n                                 <p class=\"buyType\">免费</p>\r\n                             </a>\r\n                         </div>\r\n                         <div class=\"downs clearfix\">\r\n                                 <span class=\"lianjiehsu fl\">\r\n                                     3402\r\n                                 </span>\r\n                         </div>\r\n                     </li>\r\n                     <li>\r\n                         <div class=\"centers\">\r\n                             <a href=\"javascript:;\">\r\n                                 <div class=\"datalist-img\">\r\n                                     <img src=\"" + __webpack_require__(121) + "\">\r\n                                 </div>\r\n                                 <p><a>热点事件分析</a></p>\r\n                                 <p class=\"buyType\">免费</p>\r\n                             </a>\r\n                         </div>\r\n                         <div class=\"downs clearfix\">\r\n                                 <span class=\"lianjiehsu fl\">\r\n                                     1320\r\n                                 </span>\r\n                         </div>\r\n                     </li>\r\n                     <li>\r\n                         <div class=\"centers\">\r\n                             <a href=\"javascript:;\">\r\n                                 <div class=\"datalist-img\">\r\n                                     <img src=\"" + __webpack_require__(122) + "\">\r\n                                 </div>\r\n                                 <p><a>作文修改</a></p>\r\n                                 <p class=\"buyType\">免费</p>\r\n                             </a>\r\n                         </div>\r\n                         <div class=\"downs clearfix\">\r\n                                 <span class=\"lianjiehsu fl\">\r\n                                     67\r\n                                 </span>\r\n                         </div>\r\n                     </li>\r\n                     <li>\r\n                         <div class=\"centers\">\r\n                             <a href=\"javascript:;\">\r\n                                 <div class=\"datalist-img\">\r\n                                     <img src=\"" + __webpack_require__(123) + "\">\r\n                                 </div>\r\n                                 <p><a>电费查询</a></p>\r\n                                 <p class=\"buyType\">免费</p>\r\n                             </a>\r\n                         </div>\r\n                         <div class=\"downs clearfix\">\r\n                                 <span class=\"lianjiehsu fl\">\r\n                                     21907\r\n                                 </span>\r\n                         </div>\r\n                     </li>\r\n                     <li >\r\n                         <div class=\"centers\">\r\n                             <a href=\"#\">\r\n                                 <div class=\"datalist-img\">\r\n                                     <img src=\"" + __webpack_require__(124) + "\">\r\n                                 </div>\r\n                                 <p><a>企业信息概览</a></p>\r\n                                 <p class=\"buyType\">免费</p>\r\n                             </a>\r\n                         </div>\r\n                         <div class=\"downs clearfix\">\r\n                                 <span class=\"lianjiehsu fl\">\r\n                                     424\r\n                                 </span>\r\n                         </div>\r\n                     </li>-->\r\n                </ul>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n\r\n    <div class=\"layerCons clearfix\">\r\n        <div class=\"tit mt20\">\r\n            <span class=\"fl\">合作伙伴</span>\r\n            <span class=\"fl titbg titbgser\"></span>\r\n        </div>\r\n        <div class=\"partner\">\r\n            <ul >\r\n                <li><a><img src=\"" + __webpack_require__(125) + "\"></a></li>\r\n                <li><a><img src=\"" + __webpack_require__(126) + "\"></a></li>\r\n                <li><a><img src=\"" + __webpack_require__(127) + "\"></a></li>\r\n                <li><a><img src=\"" + __webpack_require__(128) + "\"></a></li>\r\n                <li><a><img src=\"" + __webpack_require__(129) + "\"></a></li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ },
-/* 35 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "9898fbf5023aaaaedfe9fc8aeca82435.png";
 
 /***/ },
-/* 36 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b6767335b0d831bb61b7c5b80f655431.png";
 
 /***/ },
-/* 37 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "9c2476bdca0359cd853fc57f315419dd.png";
 
 /***/ },
-/* 38 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b23948af54e1cd8b6bbf553e36134146.png";
 
 /***/ },
-/* 39 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "e46799bb0863c7bf0c7fa615dde01609.png";
 
 /***/ },
-/* 40 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b1abe41c0d4133bec5c31cd706b9e379.png";
 
 /***/ },
-/* 41 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "4bdf1e0c4c46c49177156ea28ae49697.png";
 
 /***/ },
-/* 42 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b95ec85ae781c5b554928dbe8ac66ae9.png";
 
 /***/ },
-/* 43 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "ccbab4c601837f54d895935b52220bc5.png";
 
 /***/ },
-/* 44 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "bbb32b5cabe0dce8335f344ca64c4d3e.png";
 
 /***/ },
-/* 45 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "8d2d5e03c03bf2c3e4f537faa99bbe07.png";
 
 /***/ },
-/* 46 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "033d9a0f5b285f917b7b57d0fee60f1f.png";
 
 /***/ },
-/* 47 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "cc1558f766283796bfaa2fd57b22e204.png";
 
 /***/ },
-/* 48 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "44c491447cc108b8283184ffed984444.png";
 
 /***/ },
-/* 49 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "2759de590e5d0aa5037eb2ba9ed41d72.png";
 
 /***/ },
-/* 50 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0be4024efb1d48238e86e2af5683022b.png";
 
 /***/ },
-/* 51 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "60ce8860900073c3f6c9acb76f18447d.png";
 
 /***/ },
-/* 52 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "cff5a398852eca95d78e4a3a12ac3cf9.png";
 
 /***/ },
-/* 53 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "3e48ec0db070bde3cc3b0b741d89a861.png";
 
 /***/ },
-/* 54 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "32ac909f80ad3ffb07a3aa67e7f624ad.png";
 
 /***/ },
-/* 55 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0463ae462384faa768a0f88d87b2e914.png";
 
 /***/ },
-/* 56 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b7bd411163ac10dee1772388ea672619.png";
 
 /***/ },
-/* 57 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "1d8bf8e530106d4721fdeb6253f1ce4a.png";
 
 /***/ },
-/* 58 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "b0a6da9d6b3d43e5e461538a93e81c53.png";
 
 /***/ },
-/* 59 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "6fd7b944dfc7665961e981b19da0294f.png";
 
 /***/ },
-/* 60 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "0736a2b5d85e6865f886ee84d9a669dc.png";
 
 /***/ },
-/* 61 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "23bdd3778ad5184abcda5373942dc6df.png";
 
 /***/ },
-/* 62 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "423def2d3cf282d3c6b006d4867bc6ac.png";
 
 /***/ },
-/* 63 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "ae35948d4544fd0e805c68f75ef0c1cc.png";
 
 /***/ },
-/* 64 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "3dfc5da0a4abb577416d70a3e04be1b5.png";
 
 /***/ },
-/* 65 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "a4d898e9edb8c2e94769dcd31a5fe3ea.png";
 
 /***/ },
-/* 66 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "59e01c3437821d1a50f917139d9d950f.png";
 
 /***/ },
-/* 67 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "4ac01851c28e3771d7915c04fcac6527.png";
 
 /***/ },
-/* 68 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "3c3d2dad028883ce2279b67e8a2d520a.png";
 
 /***/ },
-/* 69 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Kevin on 2016/12/6.
 	 */
-	var navigationTemplate = __webpack_require__(70);
+	var navigationTemplate = __webpack_require__(131);
 
-	var navigationView = Backbone.View.extend({
+	var navigationApiView = Backbone.View.extend({
 	    template: _.template(navigationTemplate),
 	    events: {
 	    },
-	    initialize: function(obj) {
-	        this.$el.html(this.template({'dataList': this.model,'type': obj.type}));
+	    initialize: function() {
+
+	        this.$el.toggleClass('loading');
+	        if(this.id === 'api'){
+	            this.model.fetch({
+	                data: {areaId:'280101'}
+	            });
+	        }
+	        else {
+	            this.model.fetch();
+	        }
+
+	        this.listenTo(this.model,'sync',this.render);
+
+	    },
+	    render: function() {
+	        this.$el.toggleClass('loading');
+	        var nJson =  this.model.toJSON();
+	        this.$el.html(this.template({'dataList': nJson.result,'type': this.id}));
 	    }
 	});
 
-	module.exports = navigationView;
+
+	module.exports = navigationApiView;
 
 
 /***/ },
-/* 70 */
+/* 131 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<% if(type == 'ser'){ %>\r\n<ul>\r\n    <% _.each(dataList,function(item,index){ %>\r\n    <% if(index < 9 ){ %>\r\n        <li>\r\n            <p class=\"leftTit\">\r\n                <a  class=\"w2\" attrid=\"<%= item.id %>\" ><%= item.name %></a>\r\n            </p>\r\n            <div class=\"rightTips\" style=\"display: none;\">\r\n                <% _.each(item.appList, function(json){ %>\r\n                <a attrid=\"<%= json.id %>\" ><%= json.name %></a>\r\n                <% }) %>\r\n            </div>\r\n        </li>\r\n    <% }; %>\r\n    <% if(index == '9'){ %>\r\n    <li>\r\n        <p class=\"leftTit moreThanTen\">\r\n            <a  href=\"#\" >更多</a>\r\n        </p>\r\n    </li>\r\n    <% }; %>\r\n\r\n    <% }); %>\r\n</ul>\r\n<% }; %>\r\n\r\n<% if(type == 'api'){ %>\r\n<ul>\r\n    <% _.each(dataList,function(item,index){ %>\r\n    <% if(index < 9 ){ %>\r\n    <li>\r\n        <p class=\"leftTit\">\r\n            <a  class=\"w2\" attrid=\"<%= item.catagoryId %>\" ><%= item.catagoryName %></a>\r\n        </p>\r\n        <div class=\"rightTips\" style=\"display: none;\">\r\n            <% _.each(item.apiServiceList, function(json){ %>\r\n            <a attrid=\"<%= json.apiServiceId %>\" ><%= json.apiServiceName %></a>\r\n            <% }) %>\r\n        </div>\r\n    </li>\r\n    <% }; %>\r\n    <% if(index == '9'){ %>\r\n    <li>\r\n        <p class=\"leftTit moreThanTen\">\r\n            <a  href=\"#\" >更多</a>\r\n        </p>\r\n    </li>\r\n    <% }; %>\r\n\r\n    <% }); %>\r\n</ul>\r\n<% }; %>";
+	module.exports = "\r\n<% if(type == 'ser'){ %>\r\n<ul>\r\n    <% _.each(dataList,function(item,index){ %>\r\n    <% if(index < 9 ){ %>\r\n        <li>\r\n            <p class=\"leftTit\">\r\n                <a  class=\"w2\" attrid=\"<%= item.id %>\" ><%= item.name %></a>\r\n            </p>\r\n            <div class=\"rightTips\" style=\"display: none;\">\r\n                <% _.each(item.appList, function(json){ %>\r\n                <a href=\"services.html#detail/<%= json.id %>\" ><%= json.name %></a>\r\n                <% }) %>\r\n            </div>\r\n        </li>\r\n    <% }; %>\r\n    <% if(index == '9'){ %>\r\n    <li>\r\n        <p class=\"leftTit moreThanTen\">\r\n            <a  href=\"#\" >更多</a>\r\n        </p>\r\n    </li>\r\n    <% }; %>\r\n\r\n    <% }); %>\r\n</ul>\r\n<% }; %>\r\n\r\n<% if(type == 'api'){ %>\r\n<ul>\r\n    <% _.each(dataList,function(item,index){ %>\r\n    <% if(index < 9 ){ %>\r\n    <li>\r\n        <p class=\"leftTit\">\r\n            <a  class=\"w2\" attrid=\"<%= item.catalogId %>\" ><%= item.catalogName %></a>\r\n        </p>\r\n        <div class=\"rightTips\" style=\"display: none;\">\r\n            <% _.each(item.apiServiceList, function(json){ %>\r\n            <a href=\"api.html#detail/<%= item.apiServiceId %>\" ><%= json.apiServiceName %></a>\r\n            <% }) %>\r\n        </div>\r\n    </li>\r\n    <% }; %>\r\n    <% if(index == '9'){ %>\r\n    <li>\r\n        <p class=\"leftTit moreThanTen\">\r\n            <a  href=\"#\" >更多</a>\r\n        </p>\r\n    </li>\r\n    <% }; %>\r\n\r\n    <% }); %>\r\n</ul>\r\n<% }; %>";
 
 /***/ },
-/* 71 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Created by Kevin on 2016/12/6.
+	 * Created by qin on 2016/12/6.
 	 */
-	var recommendBarTemplate = __webpack_require__(72);
+	var recommendBarTemplate = __webpack_require__(133);
 
 	var recommendBarView = Backbone.View.extend({
 	    template: _.template(recommendBarTemplate),
 	    events: {
 	    },
-	    initialize: function(obj) {
-	        this.$el.html(this.template({'dataList': this.model,'type': obj.type}));
-	    }
+	    initialize: function() {
+	        this.$el.toggleClass('loading');
+	            this.model.fetch({
+	                data: {areaId:'280101'}
+	            });
+	            this.listenTo(this.model,'sync',this.render);
+	        },
+	        render: function() {
+	            this.$el.toggleClass('loading');
+	            var nJson =  this.model.toJSON();
+	            if(this.id === 'api'){
+	                this.$el.html(this.template({'dataList': nJson.result,'type': 'api'}));
+	            }
+	            else {
+	                this.$el.html(this.template({'dataList': nJson.result.list,'type': 'ser'}));
+	            }
+	        }
 	});
+
 
 	module.exports = recommendBarView;
 
 
 /***/ },
-/* 72 */
+/* 133 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<% if(type == 'api'){ %>\r\n<% _.each(dataList,function(item,index){ %>\r\n<% if(index < 10 ){%>\r\n<li><a attrid=\"<%= item.apiServiceId %>\"><%= item.apiServiceCName %></a></li>\r\n<% }; %>\r\n<% }); %>\r\n<% }; %>\r\n\r\n<% if(type == 'ser'){ %>\r\n<% _.each(dataList,function(item,index){ %>\r\n<% if(index < 10 ){%>\r\n<li><a attrid=\"<%= item.id %>\"><%= item.name %></a></li>\r\n<% }; %>\r\n<% }); %>\r\n<% }; %>";
+	module.exports = "\r\n<% if(type == 'api'){ %>\r\n<% _.each(dataList,function(item,index){ %>\r\n<% if(index < 10 ){%>\r\n<li><a href=\"api.html#detail/<%= item.apiServiceId %>\"><%= item.apiServiceCName %></a></li>\r\n<% }; %>\r\n<% }); %>\r\n<% }; %>\r\n\r\n<% if(type == 'ser'){ %>\r\n<% _.each(dataList,function(item,index){ %>\r\n<% if(index < 10 ){%>\r\n<li><a href=\"services.html#detail/<%= item.id %>\"><%= item.name %></a></li>\r\n<% }; %>\r\n<% }); %>\r\n<% }; %>";
 
 /***/ },
-/* 73 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Kevin on 2016/12/6.
 	 */
-	var recommendTemplate = __webpack_require__(74);
+	var recommendTemplate = __webpack_require__(135);
 
 	var recommendView = Backbone.View.extend({
 	    template: _.template(recommendTemplate),
 	    events: {
 	    },
 	    initialize: function(obj) {
-	        this.$el.html(this.template({'dataList': this.model,'type': obj.type}));
+	        this.$el.toggleClass('loading');
+	        if(this.id === 'api'){
+	            this.model.fetch({
+	                data: {areaId:'280101'}
+	            });
+	        }
+	        else {
+	            this.model.fetch();
+	        }
+
+	        this.listenTo(this.model,'sync',this.render);
+
+	    },
+	    render: function() {
+	        this.$el.toggleClass('loading');
+	        var nJson =  this.model.toJSON();
+	        this.$el.html(this.template({'dataList': nJson.result,'type': this.id}));
 	    }
 	});
 
@@ -593,43 +693,43 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 74 */
+/* 135 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<% if(type == 'api'){ %>\r\n<% _.each(dataList,function(item,index){ %>\r\n<% if(index < 8 ){%>\r\n<li>\r\n    <div class=\"centers\">\r\n        <a attrid=\"<%= item.apiServiceId %>\">\r\n            <div class=\"datalist-img\">\r\n                <img src=\"<%= item.iconUrl %>\">\r\n            </div>\r\n            <p><a><%= item.apiServiceCName %></a></p>\r\n            <p class=\"buyType\"><%= (item.chargeType === 0 ? '免费' : '收费') %></p>\r\n        </a>\r\n    </div>\r\n    <div class=\"downs clearfix\">\r\n        <span class=\"lianjiehsu fl\">\r\n           <%= item.accessCnt %>\r\n        </span>\r\n        <span class=\"fl diaoyongshu\">\r\n           <%= item.attentionCnt %>\r\n        </span>\r\n    </div>\r\n</li>\r\n<% }; %>\r\n<% }); %>\r\n<% }; %>\r\n\r\n<% if(type == 'ser'){ %>\r\n<% _.each(dataList,function(item,index){ %>\r\n<% if(index < 8 ){%>\r\n<li>\r\n    <div class=\"centers\">\r\n        <a attrid=\"<%= item.id %>\">\r\n            <div class=\"datalist-img\">\r\n                <img src=\"<%= item.imageUri %>\">\r\n            </div>\r\n            <p><a><%= item.name %></a></p>\r\n            <p class=\"buyType\"><%= item.chargeType %></p>\r\n        </a>\r\n    </div>\r\n    <div class=\"downs clearfix\">\r\n        <span class=\"lianjiehsu fl\">\r\n            <%= item.viewCount %>\r\n        </span>\r\n    </div>\r\n</li>\r\n<% }; %>\r\n<% }); %>\r\n<% }; %>";
+	module.exports = "\r\n<% if(type == 'api'){ %>\r\n<% _.each(dataList,function(item,index){ %>\r\n<% if(index < 8 ){%>\r\n<li>\r\n    <div class=\"centers\">\r\n        <a  href=\"api.html#detail/<%= item.apiServiceId %>\">\r\n            <div class=\"datalist-img\">\r\n                <img src=\"<%= item.iconUrl %>\">\r\n            </div>\r\n            <p><a href=\"api.html#detail/<%= item.apiServiceId %>\" ><%= item.apiServiceCName %></a></p>\r\n            <p class=\"buyType\"><%= (item.chargeType === 0 ? '免费' : '收费') %></p>\r\n        </a>\r\n    </div>\r\n    <div class=\"downs clearfix\">\r\n        <span class=\"lianjiehsu fl\">\r\n           <%= item.accessCnt %>\r\n        </span>\r\n        <span class=\"fl diaoyongshu\">\r\n           <%= item.viewCnt %>\r\n        </span>\r\n    </div>\r\n</li>\r\n<% }; %>\r\n<% }); %>\r\n<% }; %>\r\n\r\n<% if(type == 'ser'){ %>\r\n<% _.each(dataList,function(item,index){ %>\r\n<% if(index < 8 ){%>\r\n<li>\r\n    <div class=\"centers\">\r\n        <a href=\"services.html#detail/<%= item.id %>\">\r\n            <div class=\"datalist-img\">\r\n                <img src=\"<%= item.imageUri %>\">\r\n            </div>\r\n            <p><a href=\"services.html#detail/<%= item.id %>\"><%= item.name %></a></p>\r\n            <p class=\"buyType\"><%= item.chargeType %></p>\r\n        </a>\r\n    </div>\r\n    <div class=\"downs clearfix\">\r\n        <span class=\"lianjiehsu fl\">\r\n            <%= item.viewCount %>\r\n        </span>\r\n    </div>\r\n</li>\r\n<% }; %>\r\n<% }); %>\r\n<% }; %>";
 
 /***/ },
-/* 75 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */
+/* 136 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 94 */,
-/* 95 */
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 155 */,
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -5265,7 +5365,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 96 */
+/* 157 */
 /***/ function(module, exports) {
 
 	/*!
@@ -5283,6 +5383,12 @@ webpackJsonp([1],[
 	 */
 
 	!function(a){a.fn.slide=function(b){return a.fn.slide.defaults={type:"slide",effect:"fade",autoPlay:!1,delayTime:500,interTime:2500,triggerTime:150,defaultIndex:0,titCell:".hd li",mainCell:".bd",targetCell:null,trigger:"mouseover",scroll:1,vis:1,titOnClassName:"on",autoPage:!1,prevCell:".prev",nextCell:".next",pageStateCell:".pageState",opp:!1,pnLoop:!0,easing:"swing",startFun:null,endFun:null,switchLoad:null,playStateCell:".playState",mouseOverStop:!0,defaultPlay:!0,returnDefault:!1},this.each(function(){var c=a.extend({},a.fn.slide.defaults,b),d=a(this),e=c.effect,f=a(c.prevCell,d),g=a(c.nextCell,d),h=a(c.pageStateCell,d),i=a(c.playStateCell,d),j=a(c.titCell,d),k=j.size(),l=a(c.mainCell,d),m=l.children().size(),n=c.switchLoad,o=a(c.targetCell,d),p=parseInt(c.defaultIndex),q=parseInt(c.delayTime),r=parseInt(c.interTime);parseInt(c.triggerTime);var Q,t=parseInt(c.scroll),u=parseInt(c.vis),v="false"==c.autoPlay||0==c.autoPlay?!1:!0,w="false"==c.opp||0==c.opp?!1:!0,x="false"==c.autoPage||0==c.autoPage?!1:!0,y="false"==c.pnLoop||0==c.pnLoop?!1:!0,z="false"==c.mouseOverStop||0==c.mouseOverStop?!1:!0,A="false"==c.defaultPlay||0==c.defaultPlay?!1:!0,B="false"==c.returnDefault||0==c.returnDefault?!1:!0,C=0,D=0,E=0,F=0,G=c.easing,H=null,I=null,J=null,K=c.titOnClassName,L=j.index(d.find("."+K)),M=p=-1==L?p:L,N=p,O=p,P=m>=u?0!=m%t?m%t:t:0,R="leftMarquee"==e||"topMarquee"==e?!0:!1,S=function(){a.isFunction(c.startFun)&&c.startFun(p,k,d,a(c.titCell,d),l,o,f,g)},T=function(){a.isFunction(c.endFun)&&c.endFun(p,k,d,a(c.titCell,d),l,o,f,g)},U=function(){j.removeClass(K),A&&j.eq(N).addClass(K)};if("menu"==c.type)return A&&j.removeClass(K).eq(p).addClass(K),j.hover(function(){Q=a(this).find(c.targetCell);var b=j.index(a(this));I=setTimeout(function(){switch(p=b,j.removeClass(K).eq(p).addClass(K),S(),e){case"fade":Q.stop(!0,!0).animate({opacity:"show"},q,G,T);break;case"slideDown":Q.stop(!0,!0).animate({height:"show"},q,G,T)}},c.triggerTime)},function(){switch(clearTimeout(I),e){case"fade":Q.animate({opacity:"hide"},q,G);break;case"slideDown":Q.animate({height:"hide"},q,G)}}),B&&d.hover(function(){clearTimeout(J)},function(){J=setTimeout(U,q)}),void 0;if(0==k&&(k=m),R&&(k=2),x){if(m>=u)if("leftLoop"==e||"topLoop"==e)k=0!=m%t?(0^m/t)+1:m/t;else{var V=m-u;k=1+parseInt(0!=V%t?V/t+1:V/t),0>=k&&(k=1)}else k=1;j.html("");var W="";if(1==c.autoPage||"true"==c.autoPage)for(var X=0;k>X;X++)W+="<li>"+(X+1)+"</li>";else for(var X=0;k>X;X++)W+=c.autoPage.replace("$",X+1);j.html(W);var j=j.children()}if(m>=u){l.children().each(function(){a(this).width()>E&&(E=a(this).width(),D=a(this).outerWidth(!0)),a(this).height()>F&&(F=a(this).height(),C=a(this).outerHeight(!0))});var Y=l.children(),Z=function(){for(var a=0;u>a;a++)Y.eq(a).clone().addClass("clone").appendTo(l);for(var a=0;P>a;a++)Y.eq(m-a-1).clone().addClass("clone").prependTo(l)};switch(e){case"fold":l.css({position:"relative",width:D,height:C}).children().css({position:"absolute",width:E,left:0,top:0,display:"none"});break;case"top":l.wrap('<div class="tempWrap" style="overflow:hidden; position:relative; height:'+u*C+'px"></div>').css({top:-(p*t)*C,position:"relative",padding:"0",margin:"0"}).children().css({height:F});break;case"left":l.wrap('<div class="tempWrap" style="overflow:hidden; position:relative; width:'+u*D+'px"></div>').css({width:m*D,left:-(p*t)*D,position:"relative",overflow:"hidden",padding:"0",margin:"0"}).children().css({"float":"left",width:E});break;case"leftLoop":case"leftMarquee":Z(),l.wrap('<div class="tempWrap" style="overflow:hidden; position:relative; width:'+u*D+'px"></div>').css({width:(m+u+P)*D,position:"relative",overflow:"hidden",padding:"0",margin:"0",left:-(P+p*t)*D}).children().css({"float":"left",width:E});break;case"topLoop":case"topMarquee":Z(),l.wrap('<div class="tempWrap" style="overflow:hidden; position:relative; height:'+u*C+'px"></div>').css({height:(m+u+P)*C,position:"relative",padding:"0",margin:"0",top:-(P+p*t)*C}).children().css({height:F})}}var $=function(a){var b=a*t;return a==k?b=m:-1==a&&0!=m%t&&(b=-m%t),b},_=function(b){var c=function(c){for(var d=c;u+c>d;d++)b.eq(d).find("img["+n+"]").each(function(){var b=a(this);if(b.attr("src",b.attr(n)).removeAttr(n),l.find(".clone")[0])for(var c=l.children(),d=0;d<c.size();d++)c.eq(d).find("img["+n+"]").each(function(){a(this).attr(n)==b.attr("src")&&a(this).attr("src",a(this).attr(n)).removeAttr(n)})})};switch(e){case"fade":case"fold":case"top":case"left":case"slideDown":c(p*t);break;case"leftLoop":case"topLoop":c(P+$(O));break;case"leftMarquee":case"topMarquee":var d="leftMarquee"==e?l.css("left").replace("px",""):l.css("top").replace("px",""),f="leftMarquee"==e?D:C,g=P;if(0!=d%f){var h=Math.abs(0^d/f);g=1==p?P+h:P+h-1}c(g)}},ab=function(a){if(!A||M!=p||a||R){if(R?p>=1?p=1:0>=p&&(p=0):(O=p,p>=k?p=0:0>p&&(p=k-1)),S(),null!=n&&_(l.children()),o[0]&&(Q=o.eq(p),null!=n&&_(o),"slideDown"==e?(o.not(Q).stop(!0,!0).slideUp(q),Q.slideDown(q,G,function(){l[0]||T()})):(o.not(Q).stop(!0,!0).hide(),Q.animate({opacity:"show"},q,function(){l[0]||T()}))),m>=u)switch(e){case"fade":l.children().stop(!0,!0).eq(p).animate({opacity:"show"},q,G,function(){T()}).siblings().hide();break;case"fold":l.children().stop(!0,!0).eq(p).animate({opacity:"show"},q,G,function(){T()}).siblings().animate({opacity:"hide"},q,G);break;case"top":l.stop(!0,!1).animate({top:-p*t*C},q,G,function(){T()});break;case"left":l.stop(!0,!1).animate({left:-p*t*D},q,G,function(){T()});break;case"leftLoop":var b=O;l.stop(!0,!0).animate({left:-($(O)+P)*D},q,G,function(){-1>=b?l.css("left",-(P+(k-1)*t)*D):b>=k&&l.css("left",-P*D),T()});break;case"topLoop":var b=O;l.stop(!0,!0).animate({top:-($(O)+P)*C},q,G,function(){-1>=b?l.css("top",-(P+(k-1)*t)*C):b>=k&&l.css("top",-P*C),T()});break;case"leftMarquee":var c=l.css("left").replace("px","");0==p?l.animate({left:++c},0,function(){l.css("left").replace("px","")>=0&&l.css("left",-m*D)}):l.animate({left:--c},0,function(){l.css("left").replace("px","")<=-(m+P)*D&&l.css("left",-P*D)});break;case"topMarquee":var d=l.css("top").replace("px","");0==p?l.animate({top:++d},0,function(){l.css("top").replace("px","")>=0&&l.css("top",-m*C)}):l.animate({top:--d},0,function(){l.css("top").replace("px","")<=-(m+P)*C&&l.css("top",-P*C)})}j.removeClass(K).eq(p).addClass(K),M=p,y||(g.removeClass("nextStop"),f.removeClass("prevStop"),0==p&&f.addClass("prevStop"),p==k-1&&g.addClass("nextStop")),h.html("<span>"+(p+1)+"</span>/"+k)}};A&&ab(!0),B&&d.hover(function(){clearTimeout(J)},function(){J=setTimeout(function(){p=N,A?ab():"slideDown"==e?Q.slideUp(q,U):Q.animate({opacity:"hide"},q,U),M=p},300)});var bb=function(a){H=setInterval(function(){w?p--:p++,ab()},a?a:r)},cb=function(a){H=setInterval(ab,a?a:r)},db=function(){z||(clearInterval(H),bb())},eb=function(){(y||p!=k-1)&&(p++,ab(),R||db())},fb=function(){(y||0!=p)&&(p--,ab(),R||db())},gb=function(){clearInterval(H),R?cb():bb(),i.removeClass("pauseState")},hb=function(){clearInterval(H),i.addClass("pauseState")};if(v?R?(w?p--:p++,cb(),z&&l.hover(hb,gb)):(bb(),z&&d.hover(hb,gb)):(R&&(w?p--:p++),i.addClass("pauseState")),i.click(function(){i.hasClass("pauseState")?gb():hb()}),"mouseover"==c.trigger?j.hover(function(){var a=j.index(this);I=setTimeout(function(){p=a,ab(),db()},c.triggerTime)},function(){clearTimeout(I)}):j.click(function(){p=j.index(this),ab(),db()}),R){if(g.mousedown(eb),f.mousedown(fb),y){var ib,jb=function(){ib=setTimeout(function(){clearInterval(H),cb(0^r/10)},150)},kb=function(){clearTimeout(ib),clearInterval(H),cb()};g.mousedown(jb),g.mouseup(kb),f.mousedown(jb),f.mouseup(kb)}"mouseover"==c.trigger&&(g.hover(eb,function(){}),f.hover(fb,function(){}))}else g.click(eb),f.click(fb)})}}(jQuery),jQuery.easing.jswing=jQuery.easing.swing,jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(a,b,c,d,e){return jQuery.easing[jQuery.easing.def](a,b,c,d,e)},easeInQuad:function(a,b,c,d,e){return d*(b/=e)*b+c},easeOutQuad:function(a,b,c,d,e){return-d*(b/=e)*(b-2)+c},easeInOutQuad:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b+c:-d/2*(--b*(b-2)-1)+c},easeInCubic:function(a,b,c,d,e){return d*(b/=e)*b*b+c},easeOutCubic:function(a,b,c,d,e){return d*((b=b/e-1)*b*b+1)+c},easeInOutCubic:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b*b+c:d/2*((b-=2)*b*b+2)+c},easeInQuart:function(a,b,c,d,e){return d*(b/=e)*b*b*b+c},easeOutQuart:function(a,b,c,d,e){return-d*((b=b/e-1)*b*b*b-1)+c},easeInOutQuart:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b*b*b+c:-d/2*((b-=2)*b*b*b-2)+c},easeInQuint:function(a,b,c,d,e){return d*(b/=e)*b*b*b*b+c},easeOutQuint:function(a,b,c,d,e){return d*((b=b/e-1)*b*b*b*b+1)+c},easeInOutQuint:function(a,b,c,d,e){return(b/=e/2)<1?d/2*b*b*b*b*b+c:d/2*((b-=2)*b*b*b*b+2)+c},easeInSine:function(a,b,c,d,e){return-d*Math.cos(b/e*(Math.PI/2))+d+c},easeOutSine:function(a,b,c,d,e){return d*Math.sin(b/e*(Math.PI/2))+c},easeInOutSine:function(a,b,c,d,e){return-d/2*(Math.cos(Math.PI*b/e)-1)+c},easeInExpo:function(a,b,c,d,e){return 0==b?c:d*Math.pow(2,10*(b/e-1))+c},easeOutExpo:function(a,b,c,d,e){return b==e?c+d:d*(-Math.pow(2,-10*b/e)+1)+c},easeInOutExpo:function(a,b,c,d,e){return 0==b?c:b==e?c+d:(b/=e/2)<1?d/2*Math.pow(2,10*(b-1))+c:d/2*(-Math.pow(2,-10*--b)+2)+c},easeInCirc:function(a,b,c,d,e){return-d*(Math.sqrt(1-(b/=e)*b)-1)+c},easeOutCirc:function(a,b,c,d,e){return d*Math.sqrt(1-(b=b/e-1)*b)+c},easeInOutCirc:function(a,b,c,d,e){return(b/=e/2)<1?-d/2*(Math.sqrt(1-b*b)-1)+c:d/2*(Math.sqrt(1-(b-=2)*b)+1)+c},easeInElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(1==(b/=e))return c+d;if(g||(g=.3*e),h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return-(h*Math.pow(2,10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g))+c},easeOutElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(1==(b/=e))return c+d;if(g||(g=.3*e),h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return h*Math.pow(2,-10*b)*Math.sin((b*e-f)*2*Math.PI/g)+d+c},easeInOutElastic:function(a,b,c,d,e){var f=1.70158,g=0,h=d;if(0==b)return c;if(2==(b/=e/2))return c+d;if(g||(g=e*.3*1.5),h<Math.abs(d)){h=d;var f=g/4}else var f=g/(2*Math.PI)*Math.asin(d/h);return 1>b?-.5*h*Math.pow(2,10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g)+c:.5*h*Math.pow(2,-10*(b-=1))*Math.sin((b*e-f)*2*Math.PI/g)+d+c},easeInBack:function(a,b,c,d,e,f){return void 0==f&&(f=1.70158),d*(b/=e)*b*((f+1)*b-f)+c},easeOutBack:function(a,b,c,d,e,f){return void 0==f&&(f=1.70158),d*((b=b/e-1)*b*((f+1)*b+f)+1)+c},easeInOutBack:function(a,b,c,d,e,f){return void 0==f&&(f=1.70158),(b/=e/2)<1?d/2*b*b*(((f*=1.525)+1)*b-f)+c:d/2*((b-=2)*b*(((f*=1.525)+1)*b+f)+2)+c},easeInBounce:function(a,b,c,d,e){return d-jQuery.easing.easeOutBounce(a,e-b,0,d,e)+c},easeOutBounce:function(a,b,c,d,e){return(b/=e)<1/2.75?d*7.5625*b*b+c:2/2.75>b?d*(7.5625*(b-=1.5/2.75)*b+.75)+c:2.5/2.75>b?d*(7.5625*(b-=2.25/2.75)*b+.9375)+c:d*(7.5625*(b-=2.625/2.75)*b+.984375)+c},easeInOutBounce:function(a,b,c,d,e){return e/2>b?.5*jQuery.easing.easeInBounce(a,2*b,0,d,e)+c:.5*jQuery.easing.easeOutBounce(a,2*b-e,0,d,e)+.5*d+c}});
+
+/***/ },
+/* 158 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 ]);

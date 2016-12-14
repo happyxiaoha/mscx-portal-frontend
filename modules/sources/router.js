@@ -8,6 +8,8 @@ var Routes =  Backbone.Router.extend({
         '': 'dataThemeView',
         'view': 'dataThemeView',
         'catalog':'openDataReleaseView',
+        'catalog/category/:id':'openDataReleaseCategoryView',
+        'catalog/org/:id':'openDataReleaseOrgView',
         'detail/:id':'openDataDetailView'
     },
     dataThemeView:function () {
@@ -20,6 +22,24 @@ var Routes =  Backbone.Router.extend({
         var openDataReleaseView = require('./opendataRelease/openDataReleaseView.js');
         mscxPage.views['openDataReleaseViewObj'] = new openDataReleaseView({
             id: 'catalog'
+        });
+    },
+    openDataReleaseCategoryView: function(categoryId) {
+        var openDataReleaseView = require('./opendataRelease/openDataReleaseView.js');
+        new openDataReleaseView({
+            id: 'catalog',
+            model: {
+                categoryId: categoryId
+            }
+        });
+    },
+    openDataReleaseOrgView: function(orgId) {
+        var openDataReleaseView = require('./opendataRelease/openDataReleaseView.js');
+        new openDataReleaseView({
+            id: 'catalog',
+            model: {
+                orgId: orgId
+            }
         });
     },
     openDataDetailView: function (id) {

@@ -14,23 +14,23 @@ var Models = {
     })),
     // 数据API分类
     dataCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/catalog/getDataApiCatalog.do'
+        url: mscxPage.host + '/ro/mscx-dict-api/category/getDataApiCategory.do'
     })),
     // 模型API分类
     modelCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/catalog/getModelApiCatalog.do'
+        url: mscxPage.host + '/ro/mscx-dict-api/category/getModelApiCategory.do'
     })),
     // 工具API分类
     toolCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/catalog/getToolApiCatalog.do'
+        url: mscxPage.host + '/ro/mscx-dict-api/category/getToolApiCategory.do'
     })),
     // 开放数据分类
     openDataCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/catalog/getOpenDataCatalog.do'
+        url: mscxPage.host + '/ro/mscx-dict-api/category/getOpenDataCategory.do'
     })),
     // 微服务分类
     serviceCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/catalog/getServiceCatalog.do'
+        url: mscxPage.host + '/ro/mscx-dict-api/category/getServiceCategory.do'
     })),
     // 数据API标签
     dataTags: new (Backbone.Model.extend({
@@ -52,7 +52,7 @@ var Models = {
     serviceTags: new (Backbone.Model.extend({
         url: mscxPage.host + '/ro/mscx-dict-api/tags/getServiceTags.do'
     })),
-    // 标签详情 根据catalogId获取
+    // 标签详情 根据categoryId获取
     detailTags: new (Backbone.Model.extend({
         url: mscxPage.host + '/ro/mscx-dict-api/tag/getTagsInfo.do'
     })),
@@ -83,7 +83,7 @@ var view = Backbone.View.extend({
     initialize: function() {
         this.filterMaps = _.pick(Models, this.model.options);
 
-        // 标签详情 根据catalogId获取
+        // 标签详情 根据categoryId获取
         this.detailTags = Models.detailTags;
 
         this.listenTo(this.detailTags, 'sync', this.renderDetailTags);
@@ -135,6 +135,13 @@ var view = Backbone.View.extend({
 
         this.$el.html(this.template(params));
 
+        // 如果自带默认查询条件
+        if(model.defaults) {
+            _.extend(this.searchParams, model.defaults);
+            
+            model.defaults.categoryId && this.fetchTags();
+        }
+        
         // 默认触发查询
         this.searchData();
     },
@@ -156,18 +163,9 @@ var view = Backbone.View.extend({
 
             this.searchParams[type] = type && $target.data(type.toLowerCase()) || '';
 
-            // 如果选中的是分类，则获取该分类下的标签明细, 不做查询操作
+            // 如果选中的是分类，则获取该分类下的标签明细, 然后做查询操作
             if(type == 'categoryId') {
-                if(this.searchParams[type]) {
-                    this.detailTags.fetch({
-                        data: {
-                            catalogId: this.searchParams[type]
-                        }
-                    })
-                }else {
-                    Models[this.id + 'Tags'].fetch({data: {}});
-                }
-                return;
+                this.fetchTags();
             }
         }
         
@@ -175,6 +173,19 @@ var view = Backbone.View.extend({
         this.queryAPI.fetch({
             data: this.searchParams
         });
+    },
+    fetchTags: function() {
+        // 具体某个分类下的标签
+        if(this.searchParams['categoryId']) {
+            this.detailTags.fetch({
+                data: {
+                    categoryId: this.searchParams['categoryId']
+                }
+            })
+        }else {
+            // 不限 所有分类的标签
+            Models[this.id + 'Tags'].fetch({data: {}});
+        }
     },
     renderDetailTags: function(model) {
         this.$('.tag-ul').html(this.tagTemplate(model.toJSON()));
@@ -209,9 +220,8 @@ var view = Backbone.View.extend({
     handleQueryStr: function() {
         var searchText = $.trim(this.$('.search-input').val());
 
-        this.searchParams['searchText'] = searchText;
+        this.searchParams['keyword'] = searchText;
         this.searchData();
-        
     },
     handlePageJump: function(params) {
         this.searchParams['page'] = params.page || 0;

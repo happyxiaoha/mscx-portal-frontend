@@ -29,7 +29,8 @@
                         </div>
                     </div>
                     <div class="down">
-                        <p class="fenlei mb15">
+                        <p class="mb15"></p>
+                        <!-- <p class="fenlei mb15">
                             <span>
                                 <em></em>
                                 <em></em>
@@ -39,7 +40,7 @@
                             </span>
                             <span>评分</span>
                             <span>4.2分</span>
-                        </p>
+                        </p> -->
                         <div>
                             <div class="left">
                                 <p class="mb15">
@@ -59,9 +60,9 @@
                         </p>
                     </div>
                     <div>
-                        <button id="service_apply">申请</button>
-                        <button><a class="corff" href="./serverAplication.html">API测试</a></button>
-                        <button class="bgOrange">关注</button>
+                        <button id="applyBtn">申请</button>
+                        <!-- <button><a class="corff" href="./serverAplication.html">API测试</a></button> -->
+                        <button id="followBtn" class="bgOrange">关注</button>
                         <button id="offline" class="fr" style="margin-right: 0;">线下洽谈申请</button>
                     </div>
                     <!-- 分享 -->
@@ -78,13 +79,13 @@
             </div>
             <div class="tabList">
                 <div class="tab clearfix bggray">
-                    <span class="">API调用</span>
-                    <span class="">返回码</span>
-                    <span class="">示例代码</span>
-                    <span class="active">套餐介绍</span>
+                    <span data-index="0">API调用</span>
+                    <span data-index="1">返回码</span>
+                    <span data-index="2">示例代码</span>
+                    <span data-index="3">套餐介绍</span>
                 </div>
-                <div class="tabCons">
-                    <div class="tabConsInfo mt15 clearfix" style="display: none;">
+                <div class="tabCons animate-content opacity0">
+                    <div class="tabConsInfo mt15 clearfix hide">
                         <div class="tabLeft fl">
                             <span class="active">全国交通违章查询</span>
                         </div>
@@ -165,7 +166,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14" style="display: none;">
+                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
                         <h3>服务返回码：</h3>
                         <ul>
                             <li>返回码 -   说明</li>
@@ -179,7 +180,7 @@
                             <li>100002 - 验证失败</li>
                         </ul>
                     </div>
-                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14" style="display: none;">
+                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
                         <div class="tableCons mb30 D_table">
                             <h2>完整教学示例代码：</h2>
                             <div>
@@ -243,7 +244,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14" style="display: block;">
+                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
                         <div class="tableCons mb30 D_table">
                         <h2>常规套餐包<b class="corOrange">【更多次数、更多优惠请线下洽谈】</b></h2>
 

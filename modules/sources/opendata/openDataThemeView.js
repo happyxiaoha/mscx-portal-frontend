@@ -13,8 +13,6 @@ var openDataModel = Backbone.Model.extend({
 var openDataThemeView = Backbone.View.extend({
     template: _.template(openDataThemeTemplate),
     el: '.data-theme',
-    events: {
-    },
     initialize: function() {
         this.model = new openDataModel();
 

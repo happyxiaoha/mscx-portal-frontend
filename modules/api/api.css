@@ -68,8 +68,6 @@
 .useMoney{right:0;top: 60px;font-size: 26px;}
 .useMoney em{font-size: 16px;margin-left: 10px;}
 
-
-
 .containerWrap .slideBanner .mleftCons .tabList{min-height: 700px;height: 100%;}
 .containerWrap .slideBanner .mleftCons .tabList .tab{height: 54px;padding-top: 14px;box-sizing: border-box;}
 .containerWrap .slideBanner .mleftCons .tabList .tab span{display: block;float: left;width: 126px;height: 26px;line-height: 26px;text-align: center;font-size: 14px;border-right: 1px solid #a0a0a0;cursor: pointer;}
@@ -154,3 +152,10 @@
     color: #fff;
     padding: 8px 12px;
 }
+
+/*table*/
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}

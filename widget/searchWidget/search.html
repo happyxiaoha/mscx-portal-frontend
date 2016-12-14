@@ -116,12 +116,12 @@
             <div class="sl-value fl widthfull">
                 <div class="sl-v-list">
                     <ul class="J_valueList clearfix J_List">
-                        <li class="active">
-                            <a href="#">不限</a>
+                        <li class="<%= data.defaults && data.defaults.orgId ? '' : 'active' %>">
+                            <a href="javascript:;" data-type="orgId">不限</a>
                         </li>
                         <% data.orgs.result.forEach(function(item) { %>
-                            <li>
-                                <a href="#" rel="nofollow"><%= item.shortName %></a>
+                            <li class="<%= data.defaults && (data.defaults.orgId == item.id) && 'active' %>">
+                                <a href="javascript:;" data-type="orgId" data-orgId="<%= item.id %>" rel="nofollow"><%= item.shortName %></a>
                             </li>
                         <% }) %>  
                     </ul>
@@ -146,18 +146,18 @@
             <div class="sl-value fl widthfull">
                 <div class="sl-v-list">
                     <ul class="J_valueList clearfix J_List">
-                        <li class="active">
+                        <li class="<%= data.defaults && data.defaults.categoryId ? '' : 'active' %>">
                             <a href="javascript:;" data-type="categoryId">不限</a>
                         </li>
                         <% data.category.result.forEach(function(item) { %>
-                            <li>
-                                <a rel="nofollow" href="javascript:;" data-type="categoryId" data-categoryid="<%= item.catalogId %>"><%= item.catalogName %></a>
+                            <li class="<%= data.defaults && (data.defaults.categoryId == item.categoryId) && 'active' %>">
+                                <a rel="nofollow" href="javascript:;" data-type="categoryId" data-categoryid="<%= item.categoryId %>"><%= item.categoryName %></a>
                             </li>
                         <% }) %>
                     </ul>
                 </div>
             </div>
-            <% if(data.category.result.length > 7) { %>
+            <% if(data.category.result.length > 6) { %>
             <div class="sl-ext fl">
                 <a class="sl-e-more J_extMore down" href="javascript:;">更多&gt;&gt;</a>
             </div>

@@ -6,7 +6,7 @@
         <% _.each(dataList,function(item, index){ %>
         <li  class="<%= (index < 10 ? '' : 'liToTen hide') %>">
             <div class="centers">
-                <a attrId="<%= item.categoryId %>">
+                <a data-id="<%= item.categoryId %>" href="#catalog/category/<%= item.categoryId %>">
                     <img src="<%= item.iconUrl %>" alt="">
                     <span><%= item.categoryName %></span>
                     <span class="corGreen"><%= item.count %></span>

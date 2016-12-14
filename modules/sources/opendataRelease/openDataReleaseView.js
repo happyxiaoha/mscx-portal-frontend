@@ -34,7 +34,8 @@ var openDataView = Backbone.View.extend({
         this.$el.append(this.leftMenuView.$el);
 
         this.contentView = new openDataReleaseContentView({
-            id: this.id
+            id: this.id,
+            model: this.model || {}
         });
 
         this.$el.append(this.contentView.$el);

@@ -22,7 +22,7 @@
         <% if((index + 1) % 3 === 0){ %>
         <tr>
             <% }else{ %>
-            <td><a attrId="<%= item.orgId %>"><%= item.orgName %></a></td>
+            <td><a attrId="<%= item.orgId %>" href="#catalog/org/<%= item.orgId %>"><%= item.orgName %></a></td>
             <td><%= item.count %></td>
             <% }; %>
 

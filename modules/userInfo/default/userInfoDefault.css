@@ -1,2 +1,20 @@
 .my-info-area {overflow: hidden;}
 .right-con-wrap {width: 780px;}
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}
+
+.right-con-wrap .R-topList .R-cons{padding: 22px 24px;box-sizing:border-box;height: 118px;}
+.right-con-wrap .R-topList .R-cons:first-child{width: 220px;}
+.right-con-wrap .R-topList .user-cost{width: 240px;}
+.right-con-wrap .R-topList .user-ser{width: 288px;}
+
+.right-con-wrap a.message{background: url('../../../images/news.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin: 10px 0}
+.right-con-wrap .realName{background: url('../../../images/img17.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;}
+.right-con-wrap .RCconsList p{border-bottom: 1px dashed #069cd9;line-height: 26px;}
+.right-con-wrap .RCconsList p span{display: inline-block;}
+.right-con-wrap .RCconsList p span:first-child{width: 60px;}
+.right-con-wrap .RCconsListBtn p{line-height: 26px;}
+.right-con-wrap .RCconsListBtn button{width: 102px;height: 26px;border: 0;outline: none;display: block;}

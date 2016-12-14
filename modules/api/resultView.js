@@ -3,6 +3,10 @@
 var resultTemplate = require('html!./resultTemplate.html');
 var apiItemView = require('apiItemWidget/apiItemView.js');
 
+var followModel = Backbone.Model.extend({
+    url: mscxPage.host + '/ro/mscx-api-api/userAttention/add.do'
+})
+
 var view = Backbone.View.extend({
     tagName: 'div',
     className: 'animate-content posRE opacity0',
@@ -17,6 +21,8 @@ var view = Backbone.View.extend({
         this.$page = this.$('.page');
         this.$count = this.$('#count');
         this.$sort = this.$('.sort');
+
+        this.followModel = new followModel();
 
         return this;
     },

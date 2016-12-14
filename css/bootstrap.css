@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Bootstrap v2.3.1
  *
  * Copyright 2012 Twitter, Inc
@@ -1447,7 +1447,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "å¾®è½¯é›…é»‘", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 label {
@@ -1489,7 +1489,7 @@ input,
 textarea,
 .uneditable-input {
   width: 240px;
-  font-family: "å¾®è½¯é›…é»‘"
+  font-family: "微软雅黑"
 }
 
 textarea {

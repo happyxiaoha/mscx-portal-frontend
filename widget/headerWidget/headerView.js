@@ -22,7 +22,7 @@ var menuList = [
     {
         name: '微服务',
         url: mscxPage.urlConfig.servicesPage,
-        key: 'services'
+        key: 'service'
     },
     {
         name: '需求定制',

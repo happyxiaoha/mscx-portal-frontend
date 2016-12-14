@@ -17,7 +17,7 @@ var openDataView = Backbone.View.extend({
     initialize: function() {
         this.leftMenuView = new leftMenuView({
             model: {
-                className: 'citySdkLeft',
+                className: 'opendata',
                 id: this.id,
                 sideBars: [
                     {

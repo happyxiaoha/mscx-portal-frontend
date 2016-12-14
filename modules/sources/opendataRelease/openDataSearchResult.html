@@ -12,7 +12,7 @@
                 <span>开放格式：</span>
                 <span class="corBlue"><%= item.fileType %></span>
                 <span>上次更新于：</span>
-                <span class="corBlue update-time"><%= item.updatedTime %></span>
+                <span class="corBlue update-time"><%= (new Date(item.updatedTime).toISOString()).slice(0,10) %></span>
                 <span class="free fr"><%= (item.chargeFlag ==='0' ? '免费':'收费') %></span>
             </p>
         </div>

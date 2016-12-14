@@ -7,7 +7,11 @@
         <li  class="<%= (index < 10 ? '' : 'liToTen hide') %>">
             <div class="centers">
                 <a data-id="<%= item.categoryId %>" href="#catalog/category/<%= item.categoryId %>">
-                    <img src="<%= item.iconUrl %>" alt="">
+                    <% if(item.iconUrl){ %>
+                    <img src="<%= item.iconUrl %>" >
+                    <% } else { %>
+                    <img src="../../../images/tu48.png">
+                    <% }; %>
                     <span><%= item.categoryName %></span>
                     <span class="corGreen"><%= item.count %></span>
                 </a>

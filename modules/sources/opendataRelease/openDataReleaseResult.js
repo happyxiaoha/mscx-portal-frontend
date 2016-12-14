@@ -26,16 +26,16 @@ var view = Backbone.View.extend({
         var list = result.list || [];
         var pageInfo = result.page || {};
         var me = this;
-
         if(list.length < 1) {
             this.$sort.hide();
             this.$dataList.html('暂无数据');
         }else {
             this.$sort.show();
+            this.$dataList.html(this.listTemplate(list));
         }
         this.$count.html(list.length || 0);
 
-        this.$dataList.html(this.listTemplate(list));
+
 
         laypage({
             cont: 'page',

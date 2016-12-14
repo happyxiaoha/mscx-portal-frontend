@@ -20,7 +20,7 @@
 .mainDatas .DataList li{width: 145px;;height: 150px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 35px 18px 0;margin-right: 29px\9;}
 .mainDatas .DataList li a{display: block;width: 100%;height: 100%;}
 .mainDatas .DataList li .centers{text-align: center;}
-.mainDatas .DataList li .centers img{display: inline-block;margin: 20px 0 4px;}
+.mainDatas .DataList li .centers img{display: inline-block;margin: 20px 0 4px;height: 55px;}
 .mainDatas .DataList li .centers span{display: block;margin: 10px 0 ;font-size: 14px;}
 .mainDatas .DataList li:nth-child(5n){margin-right: 0;}
 /*筛选条件*/
@@ -133,8 +133,9 @@ span.charge,span.free {
 
 /*开放数据 开放目录*/
 .mainSelDatas{margin-top: 15px;}
-.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;padding: 0 16px;}
+.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;padding: 16px 16px;}
 .mainSelDatas .DataSelList li{padding: 14px 0;border-bottom: 1px dashed #ccc;position: relative;}
+.DataSelList li:first-child {padding-top: 0;}
 .mainSelDatas .DataSelList li:last-child{border: 0;}
 
 /*公共 左边样式*/

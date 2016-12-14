@@ -44,7 +44,7 @@ var Routes =  Backbone.Router.extend({
     },
     openDataDetailView: function (id) {
         var openDataDetailView = require('./openDataDetail/openDataDetailView.js');
-        mscxPage.views['openDataDetailViewObj'] = new openDataDetailView({
+        new openDataDetailView({
             id: id
         });
     },

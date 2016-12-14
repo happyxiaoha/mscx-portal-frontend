@@ -24,6 +24,14 @@ var Models = {
     toolCategory: new (Backbone.Model.extend({
         url: mscxPage.host + '/ro/mscx-dict-api/catalog/getToolApiCatalog.do'
     })),
+    // 开放数据分类
+    openDataCategory: new (Backbone.Model.extend({
+        url: mscxPage.host + '/ro/mscx-dict-api/catalog/getOpenDataCatalog.do'
+    })),
+    // 微服务分类
+    serviceCategory: new (Backbone.Model.extend({
+        url: mscxPage.host + '/ro/mscx-dict-api/catalog/getServiceCatalog.do'
+    })),
     // 数据API标签
     dataTags: new (Backbone.Model.extend({
         url: mscxPage.host + '/ro/mscx-dict-api/tags/getDataApiTags.do'
@@ -66,7 +74,9 @@ var view = Backbone.View.extend({
     events: {
         'click .sl-e-more': 'toggleMore',
         'click li a': 'searchData',
-        'click input[type="checkbox"]': 'handleCheckbox'
+        'click input[type="checkbox"]': 'handleCheckbox',
+        'click .search-btn': 'handleQueryStr',
+        'keydown .search-input': 'pressEnterSearch'
     },
     template: _.template(template, {variable: 'data'}),
     tagTemplate: _.template(tagTemplate, {variable: 'data'}),
@@ -113,7 +123,7 @@ var view = Backbone.View.extend({
         // 处理一下model中的标签
         model.tags = model.dataTags || model.toolTags || model.modelTags || model.openDataTags || model.serviceTags;
         // 处理一下model中的分类
-        model.category = model.dataCategory || model.modelCategory || model.toolCategory;
+        model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory;
 
         for(var key in model) {
             if(model[key].toJSON) {
@@ -196,6 +206,13 @@ var view = Backbone.View.extend({
 
         this.searchData();
     },
+    handleQueryStr: function() {
+        var searchText = $.trim(this.$('.search-input').val());
+
+        this.searchParams['searchText'] = searchText;
+        this.searchData();
+        
+    },
     handlePageJump: function(params) {
         this.searchParams['page'] = params.page || 0;
         this.searchParams['pageSize'] = params.pageSize || 20;
@@ -206,6 +223,11 @@ var view = Backbone.View.extend({
         _.extend(this.searchParams, params);
 
         this.searchData();
+    },
+    pressEnterSearch: function(event) {
+        if(event.keyCode == 13) {
+            this.handleQueryStr();
+        }
     }
 });
 

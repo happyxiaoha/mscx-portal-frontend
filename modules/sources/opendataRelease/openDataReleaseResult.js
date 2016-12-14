@@ -3,11 +3,13 @@
 var openDataReleaseResultTemplate = require('html!./openDataSearchResult.html');
 
 var view = Backbone.View.extend({
-    template: _.template(openDataReleaseResultTemplate),
+    template: _.template(openDataReleaseResultTemplate, {variable: 'data'}),
     el: '#searchResult',
     initialize: function() {
-        var nJson = this.model.toJSON();
-        this.$el.html(this.template({'data': nJson.result.data}))
+        
+    },
+    render: function(model) {
+        this.$el.html(this.template(model.toJSON()));
     }
 });
 

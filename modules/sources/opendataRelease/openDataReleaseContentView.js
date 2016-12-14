@@ -25,7 +25,7 @@ var openDataReleaseContentView = Backbone.View.extend({
                 options: ['objects','orgs', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay']
             }
         });
-        this.$el.append(this.searchView.$el);
+        this.$el.append(this.searchView.render().$el);
         this.$el.toggleClass('loading');
        this.model = new openDataReleaseResultModel();
         this.model.fetch();

@@ -11,7 +11,7 @@ require('../modules/sources/openData.css');
 
 $(function() {
     new header({
-        id: 'source'
+        id: 'sources'
     });
     new footer();
     mscxPage.appRouter = new router();

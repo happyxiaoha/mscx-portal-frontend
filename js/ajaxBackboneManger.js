@@ -69,6 +69,10 @@ Backbone.sync = function(method, model, options) {
 
 $(function () {
     var $document = $(document);
+    var pageType = $document.find('body').data('type');
+
+    if(pageType ==  'index') return;
+
     $document.ajaxStart(function(){
         layer.closeAll('loading');
         layer.load(2,{shade:0.2, area: ['32px', '64px']});

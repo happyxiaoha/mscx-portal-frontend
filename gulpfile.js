@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     webpackConfig = require('./webpack.config.js');
 
 var configRoot = {
-    /*'login': '',*/
+    'login': './js/login.js',
     /*'register': '',*/
     'main': './js/main.js',      //首页
      'sources': './js/sources.js',    //数据

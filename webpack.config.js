@@ -24,7 +24,7 @@ module.exports = {
             },
             {
                 test: /\.(jpg|png|woff|ttf|svg|gif)$/,
-                loader: 'file-loader'
+                loader: "url?limit=10000"
             },
             {
                 test: /\.json$/,

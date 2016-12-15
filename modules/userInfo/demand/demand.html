@@ -25,6 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <% _.each(demandList, function (item) { %>
                     <tr>
                         <td><a  href="../customized/dataInf.html">失业人员信息</a></td>
                         <td>数据包括身份证号码、姓名、性别、出生日期、户口性质、联系电话等信息</td>
@@ -37,46 +38,16 @@
                             <a class="remove">下架</a>
                         </td>
                     </tr>
+                    <% }); %>
+                    <%if(demandList.length == 0){%>
                     <tr>
-                        <td><a>老人优待证信息</a></td>
-                        <td>数据包含姓名、身份证号、老年人类别等相关数据信息</td>
-                        <td>2016.7.19</td>
-                        <td>预审中</td>
-                        <td>2016.6.10</td>
-                        <td><a class="edit">修改</a>
-                            <a class="delete">删除</a>
-                            <a class="closed">关闭</a>
-                            <a class="remove">下架</a>
-                        </td>
+                        <td colspan="6">暂无数据</td>
                     </tr>
-                    <tr>
-                        <td><a>著名商标企业信息</a></td>
-                        <td>数据包含企业名称、商标名称、认定年度</td>
-                        <td>2016.4.20</td>
-                        <td>处理中</td>
-                        <td>2016.4.20</td>
-                        <td><a class="edit">修改</a>
-                            <a class="delete">删除</a>
-                            <a class="closed">关闭</a>
-                            <a class="remove">下架</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a>审批项目信息</a></td>
-                        <td>数据包含项目名称、建设单位、项目建议书审批文号、可研审批文号、初步设计审批文号</td>
-                        <td>2016.6.18</td>
-                        <td>公开</td>
-                        <td>2016.6.18</td>
-                        <td>
-                            <a class="delete">删除</a>
-                            <a class="closed">关闭</a>
-                            <a class="remove">下架</a>
-                        </td>
-                    </tr>
-
+                    <%}%>
                     </tbody>
                 </table>
             </div>
+            <div class="page-area"></div>
         </div>
     </div>
 </script>

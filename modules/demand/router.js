@@ -3,27 +3,11 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '':'defaultView',
-        'info': 'defaultView',
-        'user':'userView',
-        'account': 'accountView',
-        'demand': 'demandView'
+        'createDemand':'createDemandView'
     },
-    defaultView:function () {
-        var defaultView = require('userInfo/default/userInfoDefaultView.js');
-        mscxPage.views['defaultViewObj'] = new defaultView();
-    },
-    userView: function () {
-        var userView = require('userInfo/user/userView.js');
-        mscxPage.views['userViewObj'] = new userView();
-    },
-    accountView: function () {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['accountViewObj'] = new accountView();
-    },
-    demandView: function () {
-        var demandView = require('userInfo/demand/demandView.js');
-        mscxPage.views['demandViewObj'] = new demandView();
+    createDemandView:function () {
+        var createDemandView = require('demand/createDemand/createDemandView.js');
+        mscxPage.views['createDemandViewObj'] = new createDemandView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

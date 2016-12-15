@@ -3,6 +3,7 @@
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
 var offlineView = require('./offlineLayer.js');
+var shareView = require('shareWidget/shareView.js');
 
 var detailModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-api-api/service/getApiServiceDetailById.do'
@@ -31,6 +32,7 @@ var view = Backbone.View.extend({
                 apiServiceId: this.id
             }
         })
+        this.shareView = new shareView();
 
         return this;
     },
@@ -39,6 +41,10 @@ var view = Backbone.View.extend({
 
         this.$tabContent = this.$('.tabConsInfo');
         this.$tabWrap = this.$('.tabCons');
+        this.$appInfoCons = this.$('.appInfoCons');
+
+        // 添加分享组件
+        this.$appInfoCons.append(this.shareView.$el);
 
         // 默认选中第一个
         this.$('.tab span').eq(0).click();

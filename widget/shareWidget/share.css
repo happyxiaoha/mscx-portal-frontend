@@ -1,0 +1,6 @@
+/*分享*/
+.share{right: 0;top: 0;}
+.share a{display: inline-block;width: 30px;height: 22px;padding-right: 8px;}
+.share a:first-child{background: url(../../images/tu4.png) no-repeat center center;}
+.share a:nth-child(2){background: url(../../images/tu5.png) no-repeat center center;}
+.share a:last-child{background: url(../../images/tu6.png) no-repeat center center;margin: 0;}

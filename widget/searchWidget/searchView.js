@@ -148,9 +148,9 @@ var view = Backbone.View.extend({
     toggleMore: function(event) {
         var $target = this.$(event.currentTarget);
         if($target.hasClass('down')){
-            $target.html('收起>>').removeClass('down').parent().siblings('.sl-value').find('.J_List').toggleClass('expand');
+            $target.html('收起>>').removeClass('down').parent().siblings('.sl-value').find('.J_List').scrollTop(0).toggleClass('expand');
         }else{
-            $target.html('更多>>').addClass('down').parent().siblings('.sl-value').find('.J_List').toggleClass('expand');
+            $target.html('更多>>').addClass('down').parent().siblings('.sl-value').find('.J_List').scrollTop(0).toggleClass('expand');
         }            
     },
     searchData: function(event) {

@@ -71,7 +71,7 @@ $(function () {
     var $document = $(document);
     var pageType = $document.find('body').data('type');
 
-    if(pageType ==  'index') return;
+    if(pageType == 'index') return;
 
     $document.ajaxStart(function(){
         layer.closeAll('loading');

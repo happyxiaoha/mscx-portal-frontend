@@ -286,4 +286,5 @@ input[type='checkbox']{margin:2px 3px 3px 4px;padding:0;width:13px;height: 13px;
     -moz-transition: opacity .5s ease-in-out;
     -o-transition: opacity .5s ease-in-out;
     transition: opacity .5s ease-in-out;
+    min-height: 100px;
 }

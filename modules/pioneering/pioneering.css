@@ -1,0 +1,231 @@
+/*创业+首页*/
+.rightMenuWrap{width: 916px;margin-left: 2px;padding: 24px 20px;}
+
+.prCorps{margin-top: 20px;margin-bottom: 12px;}
+.prCorps .DataList li{box-shadow: 1px 1px 3px rgba(0,0,0,.1), -1px -1px 3px rgba(0,0,0,.1);width: 280px;width: 273px\9;height: 154px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 18px 18px 0;background: #f8f8f8;box-sizing: border-box;padding: 18px;}
+.prCorps .DataList li:nth-child(3n){margin-right: 0;}
+.prCorps .DataList li a{display: block;width: 100%;height: 100%;}
+.prCorps .DataList li .centers img{width:70px;height:70px;margin: 0;}
+.prCorps .DataList li .centers p{text-align: left;width: 150px;}
+.prCorps .DataList li .centers span{display:block;position: relative;margin-bottom: 10px;}
+.prCorps .DataList li .centers span:not(:first-child):before{content: '';position: absolute;width: 4px;height: 4px;left: 0;top: 10px;background: #444;border-radius: 50%;}
+.prCorps .DataList li .centers span:not(:first-child){padding-left: 12px;line-height: 15px;}
+
+.partner .DataList li a{display: block;width: 283px; float: left;border: 1px solid #ccc;margin: 0 10px 10px 0;}
+.partner .DataList li a:nth-child(3n){margin-right: 0;}
+.partner .DataList li img{display:block;width: 100%;height: 100%;}
+
+
+/*创业军团列表*/
+.R-myServerList{border: 1px solid #ccc;background: #fff;margin: 20px 0px}
+.R-myServerList ul li{padding: 20px;height: 110px;border-bottom: 1px solid #ccc;}
+.R-myServerList ul li:last-child{border:0;}
+.R-myServerList ul li img{width: 110px;height: 110px;}
+
+.proRight{width: 780px;}
+.proRight a{line-height: 28px;}
+.proRight p.R-infos{line-height: 24px;margin: 8px 0 11px;overflow: hidden;}
+
+/**/
+
+/*创业伙伴信息*/
+.R-top{padding: 42px 30px 36px;}
+.R-top h3 em{border: 1px solid #ef6f08;padding: 3px 6px;border-radius: 3px;margin-left: 26px;vertical-align: 3px;}
+.R-shareStarCons p:first-child span:first-child{display: inline-block;margin-right: 5px;}
+.R-shareStarCons p:first-child span:first-child em{display: inline-block;width: 19px;height: 18px;background: url(../../images/tu7.png) no-repeat center center;}
+.R-shareStarCons p:first-child span:first-child em.active{background: url(../../images/tu7_cur.png) no-repeat center center;}
+.R-shareStarCons p:first-child span:not(:first-child){width: 40px;height: 20px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;margin-left: 4px;cursor: pointer;}
+.R-shareStarCons .share{text-align: right;margin-top: 20px;}
+.R-Cons .titTop{height: 54px;line-height: 54px;padding-left: 34px;}
+.titTopCons{padding: 34px 46px;text-align: center;}
+.titTopCons p{line-height: 25px;text-indent: 2em;text-align: left;margin-top: 24px;}
+
+/*创业辅导*/
+.openClass{margin-top: 16px;margin-bottom: 12px;}
+.openClass .DataList li{box-shadow: 1px 1px 3px rgba(0,0,0,.1), -1px -1px 3px rgba(0,0,0,.1);width: 196px;height: 170px;overflow: hidden;float: left;background: #fcfcfc;box-sizing: border-box;padding: 0px;text-align: center;}
+.openClass .DataList li:not(:last-child){margin: 0 30px 20px 0;}
+.openClass .DataList li a{display: block;}
+.openClass .DataList li a img{display: block;height: 130px;width: 196px;}
+/*.openClass .DataList li:nth-child(3n){margin-right: 0;}*/
+.openClass .DataList .centers a p{margin-top: 10px;padding: 0 8px;width: 180px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+
+.R_circle{margin: 16px 0 30px;padding: 16px 16px 4px;}
+.R_circle .DataList li{width: 95px;overflow: hidden;float: left;box-sizing: border-box;text-align: center;}
+.R_circle .DataList li a{display: block;}
+.R_circle .DataList li a img{display: block;width: 93px;height: 93px;border: 1px solid #ccc;}
+.R_circle .DataList li p{margin: 8px 0 0;width: 85px;line-height: 18px;padding: 0 5px;}
+.R_circle .DataList li:not(:last-child){margin: 0 12px 12px 0;}
+/*.openClass .DataList li:nth-child(3n){margin-right: 0;}*/
+
+/*下部表格**/
+.table-h{margin-top: 16px}
+.table-h tbody tr td{padding: 8px 15px !important;font-size:12px !important;border-bottom: 1px dashed #ccc !important;}
+.table-h tbody tr td:first-child{text-align: left;}
+
+.DataSelList{border: 1px dashed #ccc;margin-bottom: 24px;}
+
+
+/*活动列表*/
+.R-ActivityList{border: 1px solid #ccc;background: #fff;margin: 20px 0px}
+.R-ActivityList ul li{padding: 20px 20px 10px;border-bottom: 1px dashed #ccc;}
+.R-ActivityList ul li:last-child{border:0;}
+
+.actRight{width: 860px;}
+.actRight a{line-height: 28px;display: inline-block;}
+.fontHead a{margin-right: 20px}
+.fontHead .fontSol{display: inline-block;cursor: pointer;}
+.fontInf{line-height: 24px;margin: 10px 0 18px;overflow: hidden;}
+.fontBt p{padding-bottom: 10px;margin-right: 125px;color: #7d7d7d}
+.fontSol{background: #ef6f08;padding: 5px 12px;color: white}
+.fontSol.bgBlue{background: #069cd9;}
+.fontSol.bgBlue.registered{border: solid 1px #dcdcdc;color: #fff}
+.citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}
+
+/*项目孵化*/
+.projectList .DataList li{background: #f8f8f8;box-shadow: none !important;height: 207px;padding: 0;}
+.projectList .DataList li img{width: 80px;height: 80px;}
+.projectList .DataList li .centers a{display: block;padding: 14px;box-sizing:border-box;height: 170px;overflow: hidden;}
+.projectList .DataList li .centers p{width: 160px;}
+.projectList .DataList li .centers p span{margin-bottom: 8px;}
+.projectList .DataList li .centers p span:not(:first-child){padding: 0;line-height: 22px;}
+.projectList .DataList li .centers p span:before{display: none;}
+.projectList .DataList li em{display: block;width: 100%;height: 35px;text-align: center;line-height: 35px;color: #444;background: #f0f0f0;}
+.requireHeader{padding: 17px 20px;font-size: 16px;width: 587px;box-sizing: border-box;}
+.requireHeader p{color: #333;background: url(../../images/img14.png) no-repeat left center;line-height: 46px;padding-left: 50px;}
+.requireHeader button{height: 46px;border: 0;outline: none;color: #fff;font-size: 16px;padding: 0 20px;}
+.projectRight{width: 270px !important;}
+.DownsLeft{width: 587px;}
+.inputs{right: 0;top: 0;}
+.inputs{width: 200px;height: 24px;border: 1px solid #ccc;}
+.inputs input{margin: 0;border-radius: 0;box-shadow: none;box-sizing:border-box;padding: 0 10px;border: 0;width: 176px;height: 24px;outline: none;}
+.inputs span{width: 24px;height: 24px;background: url(../../images/img07.png) no-repeat center center;display: block;cursor: pointer;}
+.DownsRight{width: 270px;}
+.DownsRight .more{display: block;right: 0;top: 8px;}
+.DownRightList{border: 1px solid #ccc;}
+.DownRightList h4{height: 38px;line-height: 38px;padding-left: 20px;border-top: 3px solid #069cd9;border-bottom: 1px solid #ccc;}
+.DownRightList ul{padding: 20px 20px 12px;}
+.DownRightList ul li{margin-bottom: 8px;line-height: 20px;}
+.DownRightList ul li span:first-child{width: 64px;display: inline-block;vertical-align: top;}
+.DownRightList ul li span:last-child{width: 156px;display: inline-block;}
+.DownRightList .btnA-group{display:block;border: 0;color: #fff;margin: 0 auto 20px;background: #fff}
+.DownRightList .btnA-group a {
+    display:block;
+    padding: 5px 10px;
+    color: #fff;
+    float: left;
+}
+.DownRightList .btnA-group a:first-child{
+    margin-right: 10px;
+    background: #00aff6;
+}
+.registered{
+    background: #dcdcdc!important;
+    color: #dcdcdc;
+    border: solid 1px #dcdcdc;
+}
+/*综合*/
+.titTopConszh{text-align: center;padding:32px 46px}
+.titTopConszh p{line-height: 25px;text-indent: 2em;text-align: left;font-size: 14px;}
+.mainDatas{padding: 0px 0px;margin-top: 0px;background: #fff;}
+.mainDatas .DataList{padding: 32px 58px 0;}
+.mainDatas .DataList li{width: 185px;height: 212px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 32px 32px 0;}
+.mainDatas .DataList li:nth-child(4n){margin-right: 0;}
+.mainDatas .DataList li a{display: block;width: 100%;height: 100%;}
+.mainDatas .DataList li .top{width: 100%;height: 30px;line-height: 30px;background: #ebedf0;padding: 0 12px;}
+.mainDatas .DataList li .centers{text-align: center;}
+.mainDatas .DataList li .centers img{display: inline-block;margin: 10px 0 4px;}
+.mainDatas .DataList li .centers span{display: block;color: #444;font-size: 14px;}
+.mainDatas .DataList li .downs{margin-top: 20px;}
+.mainDatas .DataList li .downs span{display: block;text-align: center;height: 36px;width: 58px;}
+.mainDatas .DataList li .downs span:not(:last-child){border-right:1px solid #ccc;}
+.mainDatas .DataList li .downs span em{display: block;color: #999;margin-top: 7px;}
+.mainDatas .DataList li .downs span i{display: block;line-height: 36px;}
+.imgInf{text-align: center}
+.btImg{padding: 40px 40px;}
+.btImg img{margin: 0 12px 0}
+.layLeft ul.zixun {
+    float: left;
+    width: 100%;
+}
+.layLeft ul.zixun li{
+    list-style: none;
+    margin-left: 10px;
+    width: 262px;
+    float: left;
+}
+.layLeft ul.zixun li img{
+    border: solid 1px #dcdcdc;
+}
+.layLeft ul.zixun li a{
+    float: left;
+    white-space: normal;
+}
+.layLeft ul.zixun li:before{
+    content: none;
+}
+.layLeft ul.zixun li a span.time{
+    margin-left: 20px;
+}
+.layLeft{width: 909px;box-sizing: border-box;padding: 24px 16px;}
+.layLeft .tit{margin-bottom: 22px;position: relative;}
+.layLeft .tit .more{position: absolute;right: 0;top: 0;color: #5bc4f2;text-decoration: underline;}
+.layLeft ul li{font-size: 14px;color: #444;margin-bottom: 12px;position: relative;padding-left: 18px;margin-left: 18px;line-height: 22px;}
+.layLeft ul li a{display: block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.layLeft ul li a:hover,.layLeft ul li:link{color: #069cd9;}
+.layLeft ul li:before{content: '';position: absolute;left: 0;top: 9px;width: 5px;height: 5px;background: #069cd9;}
+.bgBoxShodow{background: #fff;box-shadow: 1px 1px 3px rgba(0,0,0,.1), -1px -1px 3px rgba(0,0,0,.1);}
+
+/*公告详情*/
+.smallNav{margin: 20px 0 14px 5px;}
+.noticeListCons{border: 1px solid #ccc;padding: 15px 28px 25px;}
+.noticeListCons .noticeListConsUl li{border-bottom: 1px dashed #CCC;font-size: 14px;padding: 14px 0;line-height: 16px;}
+.noticeListCons .noticeListConsUl li a{ display: block;width: 700px;white-space:nowrap; text-overflow:ellipsis; overflow: hidden;position: relative; padding-left: 16px;}
+.noticeListCons .noticeListConsUl li a:before{content: '';width: 5px;height: 5px;background: #069cd9;position: absolute;left: 0;top: 5px;}
+.noticeListCons .noticeListConsUl li a:hover{color: #069cd9;}
+
+.noticeListCons .TopTit h2{font-size: 25px;padding-top:40px;font-weight: normal;text-align: center;}
+.noticeListCons .TopTit .titList{font-size: 12px;padding-top:25px;border-bottom:1px solid #cccccc;padding-bottom: 10px;font-weight: normal;}
+.noticeListCons .TopTit .shareCons a{height: 28px;margin-right: 12px;display: inline-block;box-sizing: border-box;margin-right: 15px;}
+.noticeListCons .TopTit .shareCons a em{height: 30px;width: 26px;vertical-align: middle;}
+.noticeListCons .TopTit .shareCons a span{display: inline-block;}
+.noticeListCons .TopTit .article{font-size: 14px;line-height: 28px;}
+
+.downCons p{font-size: 14px;line-height: 24px;margin-bottom: 14px;}
+.downCons p.tit2{text-indent: 2em;}
+.downCons img{display: block;margin: 20px auto;}
+
+/* 新闻列表分页 */
+.Page{width: 100%;}
+.Page ul{text-align: center;}
+.Page ul li{display: inline-table;font-size: 12px;line-height: 24px;margin-right: 10px;}
+.Page ul li a{display: inline-block;padding: 0 7px;border: 1px solid #ddd;margin-right: 5px; }
+.Page ul li a:link{color: #333;}
+.Page ul li a:hover{color: #5596ed;}
+.Page ul li a.active{border: 1px solid #5596ed;color: #5596ed;}
+.Page ul li input{vertical-align: 0px; width: 30px;height: 26px;border-radius: 0;box-sizing: border-box;text-align: center;margin: 0 6px;}
+.Page ul li a#go{margin-left: 6px;}
+
+/*API开发环境*/
+.api-env.rightMenuWrap{padding: 24px 16px;}
+.api-env .top-font{position: relative;padding: 0px;margin: 0px;background: #f8f8f8;}
+.api-env .left-font{width: 694px;height: 405px;padding: 20px 20px; }
+.api-env .left-font p:first-child{line-height: 24px;text-indent: 2em;}
+.api-env .left-font .l-img{margin-right: 15px}
+.api-env .right-img{width: 190px;height: 437px;background: url("../../images/tu15.png") no-repeat center center #1bb0ed}
+.api-env .right-img a{display: block;text-align: center;margin-top: 160px}
+.api-env .right-img a span{display: block;text-align: center;color: #fff;font-size: 14px;margin-top: 18px;}
+
+/*服务开发环境*/
+.server-env .left-font{padding: 44px 0 0 38px;height: 160px;box-sizing: border-box;position: relative;background: #f8f8f8;}
+.server-env .left-font p{line-height: 26px;text-indent: 2em;width: 615px;}
+.server-env .left-font a{width: 190px;height: 160px;background: url(../../images/newRequireImg01.png) no-repeat left top;display: block;position: absolute;right: 0;top: 0;color: #fff;font-size: 14px;text-align: center;line-height: 250px;}
+.AppProcess{padding-left: 26px;}
+.AppProcess em{color: #00aff6;}
+.AppProcess img{margin: 32px auto;}
+
+/*table*/
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}

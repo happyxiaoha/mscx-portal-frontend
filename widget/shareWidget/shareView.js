@@ -29,11 +29,11 @@ var view = Backbone.View.extend({
         return this;
     },
     shareQzone: function() {
-        var url = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+ this.url +'&site=' + this.url + '&title=' + this.title + '&desc='+ this.desc + "&pics=" + this.pic;  
+        var url = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+ this.url +'&site=' + this.url + '&title=' + this.title + '&desc='+ this.desc + "&pics=" + this.pic;
         this.open(url);
     },
     shareWeibo: function() {
-        var url = 'http://service.weibo.com/share/share.php?url=' + this.url + '&appkey=' + this.sinaAppkey + '&site=' + this.url + '&title=' + this.title + "&pic=" + this.pic;  
+        var url = 'http://service.weibo.com/share/share.php?url=' + this.url + '&appkey=' + this.sinaAppkey + '&site=' + this.url + '&title=' + this.title + "&pic=" + this.pic;
         this.open(url)
     },
     shareWeixin: function() {

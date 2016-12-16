@@ -48,6 +48,22 @@ var headerView = Backbone.View.extend({
             id: this.id || '',
             menuList: menuList
         }));
+        var _c;
+        $("#personReal").hover(function(){
+            $(".shareBox").show();
+            $(this).addClass('active');
+        },function(){
+            _c = setTimeout(function(){
+                $(".shareBox").hide();
+                $('#personReal').removeClass('active');
+            },10);
+        });
+        $(".shareBox").hover(function(){
+            clearTimeout(_c);
+        },function(){
+            $(".shareBox").hide();
+            $('#personReal').removeClass('active');
+        });
     }
 });
 

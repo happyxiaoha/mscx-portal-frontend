@@ -9,7 +9,7 @@ a{
 .header{height: 90px;}
 .header h1{margin:20px 0 0;}
 .header h1 a{display: block;}
-.header h1 a img{display: block;}
+.header h1 a img{display: block;width: 172px;}
 .header .citys{margin: 35px 0 0 6px;cursor: pointer;}
 .header .citys input{padding: 0;margin: 0;border: 0;box-shadow: none;width: 88px;color: #069cd9;font-size: 14px;background: transparent;cursor: pointer;}
 .header .searchCons{margin: 0 30px 0 0;background: #fff;position: relative}
@@ -24,6 +24,27 @@ a{
 .header .haslogin .yesLogin span.down{min-width: 80px; padding-right: 20px;background: url("../../images/newicon/ic_down.png") right center no-repeat;}
 .header .haslogin .yesLogin .active span.down{background: url("../../images/newicon/ic_up.png") right center no-repeat;}
 
+.dropMenu{
+    position: absolute;
+    border: solid 1px #eee;
+    background: #fff;
+    top: 38px;
+    right: 0;
+    display: none;
+    z-index: 1001;
+    width: 148px;
+}
+.dropMenu li{ white-space:nowrap;height:36px;line-height: 36px;}
+
+.dropMenu a { display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center; }
+.dropMenu a:hover{ color:#069cd9; }
+
+.dropMenu li.usercenter{
+    background: url("../../images/newicon/ic_usercenter.png") 12px center no-repeat;
+}
+.dropMenu li.logout{
+    background: url("../../images/newicon/ic_logout.png") 12px center no-repeat;
+}
 .personIcon{
     min-width: 100px;
     padding-right: 10px;

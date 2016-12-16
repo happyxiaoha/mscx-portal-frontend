@@ -93,31 +93,18 @@
                                     <p>接口地址：<%= item.uri %></p>
                                     <p>支持格式：<%= item.requestType %></p>
                                     <p>请求方式：<%= item.requestMethod %></p>
-                                    <p><%= item.requestMethod %>请求示例：<%= item.testPacket %></p>
-                                    <!-- 请求参数 -->
-                                    <pre>
-                                        <code>
-                                            <%- item.directions %>
-                                        </code>
-                                    </pre>
-                                    
+                                    <p><%= item.testPacket %></p>
+                                    <div class="markdown-body">
+                                        <%= item.directions %>
+                                    </div>
                                 </div>
                             </div>
                         <% }) %>
                     </div>
                     <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
-                        <h3>服务返回码：</h3>
-                        <ul>
-                            <li>返回码 -   说明</li>
-                            <li>900001 -    数据不存在</li>
-                            <li>900002 -    输入参数错误</li>
-                        </ul>
-                        <h3>系统返回码</h3>
-                        <ul>
-                            <li>返回码 - 说明</li>
-                            <li>100001 - 系统异常</li>
-                            <li>100002 - 验证失败</li>
-                        </ul>
+                        <div class="markdown-body">
+                            <%= data.result.rtnCode %>
+                        </div>
                     </div>
                     <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
                         <div class="tableCons mb30 D_table">

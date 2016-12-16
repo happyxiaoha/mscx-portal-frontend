@@ -80,9 +80,10 @@
 .containerWrap .slideBanner .mleftCons .tabList .tabConsInfo p{line-height: 20px;margin-bottom: 12px;font-size: 12px;}
 .containerWrap .slideBanner .mleftCons .tabList .tabConsInfo h3{font-size: 14px;font-weight: 600;line-height: 28px;margin:10px 0 6px 0;}
 .containerWrap .slideBanner .mleftCons .tabList .tabConsInfo ul li{line-height: 24px;list-style: disc;margin-left: 17px;}
-.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo ul li code{font-weight: 600;color: #cc0000;}
+/*.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo ul li code{font-weight: 600;color: #cc0000;}
 .containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight pre{border: 1px solid #ddd;border-radius: 0;padding: 10px 14px;background: #efefef;}
 .containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight pre code{line-height: 24px;}
+*/
 .containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .tableCons{margin-bottom: 30px;}
 .tableCons h2{font-size: 16px;line-height: 28px;margin-bottom: 8px;}
 .codeTxt h3{line-height: 20px;margin-bottom: 12px;font-weight: 600;}

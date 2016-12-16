@@ -186,7 +186,7 @@
     background: url(../../images/newicon/ic_tj.png) no-repeat left top;
 }
 .layer .tabChange ul li .iconforapi span{
-
+    margin-right: 0;
     color: #fff;
     padding: 2px ;
     line-height: 48px;

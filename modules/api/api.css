@@ -160,6 +160,7 @@
 .D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}
+.D_table table tr {cursor: pointer;}
 
 .apply-box {
     padding: 5px 30px;
@@ -214,3 +215,9 @@
     background: #fff;
     color: #8a8a8a;
 }*/
+
+.offline-box form label.error {
+    color: #e66c6b;
+    padding: 0;
+    margin-left: 110px;
+}

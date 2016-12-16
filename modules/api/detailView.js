@@ -9,6 +9,10 @@ var detailModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-api-api/service/getApiServiceDetailById.do'
 });
 
+var followModel = Backbone.Model.extend({
+    url: mscxPage.host + '/ro/mscx-api-api/userAttention/add.do'
+});
+
 var showdown = require('markdown');
 
 require('./api.css');
@@ -26,9 +30,11 @@ var view = Backbone.View.extend({
         this.$el.addClass('grid960 animate-content opacity0');
 
         this.detailModel = new detailModel();
+        this.followModel = new followModel();
 
         this.listenTo(this.detailModel, 'sync', this.render);
-
+        this.listenTo(this.followModel, 'sync', this.handleFollow);
+        
         this.detailModel.fetch({
             data: {
                 apiServiceId: this.id
@@ -48,6 +54,8 @@ var view = Backbone.View.extend({
 
         model.result.rtnCode = converter.makeHtml(model.result.rtnCode);
 
+        this.chargeType = model.result.chargeType;
+        this.resourceType = model.result.resourceType;
         this.$el.html(this.template(model)).removeClass('opacity0');
 
         this.$tabContent = this.$('.tabConsInfo');
@@ -74,37 +82,65 @@ var view = Backbone.View.extend({
     },
     // 申请
     apply: function() {
-        if(!this.applyView) {
-            this.applyView = new applyView({
-                id: this.id
-            });
-            this.$el.append(this.applyView.$el);
-        }
+        var me = this;
+
+        this.applyView = new applyView({
+            id: this.id,
+            model: {
+                chargeType: this.chargeType
+            }
+        });
+        this.$el.append(this.applyView.$el);
+
+        this.applyView.delegate = this;
+
+        var btn = this.chargeType == '01' ? ['完成'] : ['立即支付', '加入购物车']
+
         layer.open({
             type: 1,
-            btn: ['完成'],
+            btn: btn,
             title: '选择您要购买的套餐：',
             shade: 0.6,
             shadeClose: true,
             area: ['500px', '500px'],
             content: this.applyView.$el,
             btn1: function (index) {
-                layer.close(index);
-                layer.msg('资源已申请成功！');
+                me.applyView.order(index);
+            },
+            btn2: function(index) {
+                me.applyView.addCart(index);
+            },
+            end: function() {
+                me.applyView.remove();
             }
         })
 
     },
     // 关注
     follow: function() {
-        layer.msg('关注成功！');
+        this.followModel.fetch({
+            data: {
+                apiServiceId: this.id
+            }
+        })
+    },
+    handleFollow: function() {
+        var result = this.followModel.toJSON();
+        if(result.status == 'OK') {
+            layer.msg('关注成功！');
+        }else {
+            layer.msg('关注失败！');
+        }
     },
     // 线下洽谈
     offlineChat: function() {
+        var me = this;
+
         if(!this.offlineView) {
             this.offlineView = new offlineView({
                 id: this.id
             });
+            this.offlineView.delegate = this;
             this.$el.append(this.offlineView.$el);
         }
         layer.open({
@@ -116,7 +152,7 @@ var view = Backbone.View.extend({
             area: ['500px', '450px'],
             content: this.offlineView.$el,
             btn1: function (index) {
-                layer.close(index);
+                me.offlineView.submit(index);
             },
             btn2: function (index) {
                 layer.close(index);

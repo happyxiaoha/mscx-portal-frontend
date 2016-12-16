@@ -1,17 +1,23 @@
 <!-- 线下洽谈弹出框 -->
-<label>
-    <span>资源需求：</span>
-    <textarea></textarea>
-</label>
-<label>
-    <span>使用意向：</span>
-    <textarea></textarea>
-</label>
-<label>
-    <span>联系人：</span>
-    <input type="text">
-</label>
-<label>
-    <span>联系电话：</span>
-    <input type="text">
-</label>
+<form onsubmit="return false;">
+    <label>
+        <em class="fl line22">*</em>
+        <span>资源需求：</span>
+        <textarea name="resReq"></textarea>
+    </label>
+    <label>
+        <em class="fl line22">*</em>
+        <span>使用意向：</span>
+        <textarea name="purpose"></textarea>
+    </label>
+    <label>
+        <em class="fl line22">*</em>
+        <span>联系人：</span>
+        <input type="text" name="contact" />
+    </label>
+    <label>
+        <em class="fl line22">*</em>
+        <span>联系电话：</span>
+        <input type="text" name="contactNo" />
+    </label>
+</form>

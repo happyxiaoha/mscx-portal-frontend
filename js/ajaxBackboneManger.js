@@ -37,7 +37,8 @@ var param = function (obj) {
 Backbone.sync = function(method, model, options) {
     var beforeSend = options.beforeSend,
         success = options.success,
-        complete = options.complete;
+        complete = options.complete,
+        error = options.error;
     
     options.beforeSend = function (xhr) {
         //this.type = 'POST';
@@ -46,6 +47,10 @@ Backbone.sync = function(method, model, options) {
     options.complete = function (xhr) {
         if (complete) return complete.apply(this, arguments);
     };
+    options.error = function(xhr) {
+        layer.alert('系统错误', {icon: 2});
+        if (error) return error.apply(this, arguments);
+    }
     options.success = function (xhr) {
         if(xhr.status == 'ERROR' && xhr.code == 500800) { //un log
             var sHref = window.location.href,

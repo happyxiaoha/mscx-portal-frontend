@@ -93,14 +93,11 @@
                                     <p>接口地址：<%= item.uri %></p>
                                     <p>支持格式：<%= item.requestType %></p>
                                     <p>请求方式：<%= item.requestMethod %></p>
-                                    <p><%= item.requestMethod %>请求示例：<%= item.testPacket %></p>
+                                    <p><%= item.testPacket %></p>
                                     <!-- 请求参数 -->
-                                    <pre>
-                                        <code>
-                                            <%- item.directions %>
-                                        </code>
-                                    </pre>
-                                    
+                                    <div class="markdown-body">
+                                        <%= item.directions %>
+                                    </div>
                                 </div>
                             </div>
                         <% }) %>

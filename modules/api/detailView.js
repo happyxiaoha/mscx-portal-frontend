@@ -9,6 +9,8 @@ var detailModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-api-api/service/getApiServiceDetailById.do'
 });
 
+var showdown = require('markdown');
+
 require('./api.css');
 
 var view = Backbone.View.extend({
@@ -37,7 +39,14 @@ var view = Backbone.View.extend({
         return this;
     },
     render: function() {
-        this.$el.html(this.template(this.detailModel.toJSON())).removeClass('opacity0');
+        var converter = new showdown.Converter();
+        var model = this.detailModel.toJSON();
+
+        model.result.apiList.forEach(function(item) {
+            item.directions = converter.makeHtml(item.directions);
+        })
+
+        this.$el.html(this.template(model)).removeClass('opacity0');
 
         this.$tabContent = this.$('.tabConsInfo');
         this.$tabWrap = this.$('.tabCons');

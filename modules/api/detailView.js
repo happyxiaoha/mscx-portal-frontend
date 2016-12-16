@@ -46,6 +46,8 @@ var view = Backbone.View.extend({
             item.directions = converter.makeHtml(item.directions);
         })
 
+        model.result.rtnCode = converter.makeHtml(model.result.rtnCode);
+
         this.$el.html(this.template(model)).removeClass('opacity0');
 
         this.$tabContent = this.$('.tabConsInfo');

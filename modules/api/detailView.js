@@ -102,7 +102,7 @@ var view = Backbone.View.extend({
             title: '选择您要购买的套餐：',
             shade: 0.6,
             shadeClose: true,
-            area: ['500px', '500px'],
+            area: ['500px'],
             content: this.applyView.$el,
             btn1: function (index) {
                 me.applyView.order(index);
@@ -136,13 +136,12 @@ var view = Backbone.View.extend({
     offlineChat: function() {
         var me = this;
 
-        if(!this.offlineView) {
-            this.offlineView = new offlineView({
-                id: this.id
-            });
-            this.offlineView.delegate = this;
-            this.$el.append(this.offlineView.$el);
-        }
+        this.offlineView = new offlineView({
+            id: this.id
+        });
+        this.offlineView.delegate = this;
+        this.$el.append(this.offlineView.$el);
+        
         layer.open({
             type: 1,
             btn: ['确定','取消'],
@@ -156,6 +155,9 @@ var view = Backbone.View.extend({
             },
             btn2: function (index) {
                 layer.close(index);
+            },
+            end: function() {
+                me.offlineView.remove();
             }
         })
     }

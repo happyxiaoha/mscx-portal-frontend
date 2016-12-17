@@ -34,6 +34,7 @@ var view = Backbone.View.extend({
         this.feeOrderModel = new feeOrderModel();
         this.addCartModel = new addCartModel();
 
+        // 收费/免费
         this.chargeType = this.model.chargeType;
 
         this.listenTo(this.packageModel, 'sync', this.render);
@@ -43,11 +44,17 @@ var view = Backbone.View.extend({
 
         this.on('caculate', this.caculate);
 
-        this.packageModel.fetch({
-            data: {
-                apiServiceId: this.id
-            }
-        })
+        // 如果是免费的，就不需要获取套餐
+        if(this.chargeType == '01') {
+            this.render();
+        }else {
+            this.packageModel.fetch({
+                async: false,
+                data: {
+                    apiServiceId: this.id
+                }
+            })
+        }      
     },
     render: function() {
         this.$el.html(this.template(this.packageModel.toJSON()));
@@ -94,54 +101,60 @@ var view = Backbone.View.extend({
             totalPrice += num * price;
         }
 
+        this.amount = totalPrice;
         this.$el.find('#selectedCount').html(count);
         this.$el.find('#totalPirce').html(totalPrice);
     },
     // 立即支付
     order: function(index) {
-        var sourceType = this.delegate.sourceType,
-            isAgree = this.$('#agreementBtn')[0].checked,
+        var isAgree = this.$('#agreementBtn')[0].checked,
             msg = '';
 
-        var $selected = this.$el.find('td input[type="radio"]:checked'),
-            $tr = $selected.parents('tr'),
-            $number = $tr.find('.number'),
-            num = $number.val(),
-            ruleId = $number.data('id');
+        !isAgree && (msg += '请阅读并接受资源服务协议');
 
-        // 免费API的提交
-        if(this.chargeType == '01') {
-            this.freeOrderModel.fetch({
-                data: {
-                    apiId: this.id
-                }
-            })
-        }else {
-            this.feeOrderModel.fetch({
-                data: {
-                    apiId: this.id,
-                    charRuleId: ruleId,
-                    itemNum: num
-                }
-            })
-        }
-        return;
-        
-
-        if($selected.length < 1) {
-            msg += '请至少选择一个资源';
-        }else {
-            !isAgree && (msg += '请阅读并接受资源服务协议');
-        }
-        
         if(msg) {
             layer.alert(msg);
             return;
         }
 
-        this.orderModel.fetch({
+        this.layerIndex = index;
+
+        // 免费API的提交
+        if(this.chargeType == '01') {
+            this.freeOrder();   
+        }else {
+            this.feeOrder();
+        }
+    },
+    freeOrder: function() {
+        this.freeOrderModel.fetch({
             data: {
-                apiId: apiId
+                apiId: this.id
+            }
+        })
+    },
+    feeOrder: function() {
+        var $selected = this.$el.find('td input[type="radio"]:checked'),
+            $tr = $selected.parents('tr'),
+            $number = $tr.find('.number'),
+            num = $number.val(),
+            ruleId = $number.data('id'),
+            msg = '';
+
+        if($selected.length < 1) {
+            msg += '请至少选择一个资源';
+        }
+
+        if(msg) {
+            layer.alert(msg);
+            return;
+        }
+
+        this.feeOrderModel.fetch({
+            data: {
+                apiId: this.id,
+                charRuleId: ruleId,
+                itemNum: num
             }
         })
     },
@@ -189,9 +202,28 @@ var view = Backbone.View.extend({
     },
     handleFeeOrder: function() {
         var model = this.feeOrderModel.toJSON();
+
+        if(model.status != 'OK') {
+            layer.alert('API下单失败！');
+            return;
+        }
+
+        var param = {
+            orderNum: model.result,
+            amount: this.amount
+        };
+
+        window.localStorage.setItem('orderInfo', JSON.stringify(param));
+        location.href = 'pay.html';
     },
     handleFreeOrder: function() {
         var model = this.freeOrderModel.toJSON();
+
+        layer.alert(model.message);
+
+        if(model.status == 'OK') {
+            layer.close(this.layerIndex);
+        }
     }
 });
 

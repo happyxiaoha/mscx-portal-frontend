@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>广州大数据共创服务平台-支付</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/swiper.min.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="dist/pay.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 公共区域 -->
+        <div id="headSection">
+
+        </div>
+        <!-- 内容部分 -->
+        <div class=" grid960 mt20 clearfix bgWhite boxShadiow">
+            <div class="pay-content">
+                <p>应付金额&gt;&gt; <span class="corOrange fr">￥<span id="amount">111.00</span></span></p>
+                <div class="pay-type">
+                    <label class="zfb"><input type="radio" name="type" value="zfb" checked=""></label>
+                    <label class="wxzf"><input type="radio" name="type" value="wxzf"></label>
+                </div>
+                <hr>
+                <button class="qrzf fr" id="payBtn">确认支付</button>
+            </div>
+        </div>
+        <!-- 公共底部 -->
+        <div id="footSection">
+
+        </div>
+    </div>
+</body>
+<script src="lib/jquery.js"></script>
+<script src="lib/layer/layer.js"></script>
+<script src="lib/config.js"></script>
+<script src="dist/backboneLib.js"></script>
+<script src="dist/common.js"></script>
+<script src="dist/pay.js"></script>
+</html>

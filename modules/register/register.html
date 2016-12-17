@@ -1,0 +1,64 @@
+<div class="register-content">
+    <div class="register-form">
+        <form id="registForm" onsubmit="return false;">
+            <ul>
+                <li>
+                    <p class="po_re clearfix">
+                        <span><em class="corRed">*</em>用户名</span>
+                        <input id="account" class="registerInput" name="account" placeholder="设置用户名" type="text" />
+                        
+                    </p>
+
+                </li>
+                <li>
+                    <p class="po_re clearfix">
+                        <span><em class="corRed">*</em>登录密码</span>
+                        <input id="password" class="registerInput" name="password" placeholder="设置你的登录密码" type="password" />
+                        
+                    </p>
+
+                </li>
+                <li>
+                    <p class="po_re clearfix">
+                        <span><em class="corRed">*</em>密码确认</span>
+                        <input id="passwordConfirm" class="registerInput" name="passwordConfirm" placeholder="请再次输入你的密码" type="password" />
+                        
+                    </p>
+
+                </li>
+            </ul>
+            <hr>
+            <ul>
+                <li>
+                    <p class="po_re clearfix">
+                        <span><em class="corRed">*</em>手机号</span>
+                        <input class="zone" type="text" value="+86" readonly>
+                        <input id="mobile" class="phone registerInput" name="mobile" placeholder="请输入手机号" type="text" />
+                        
+                    </p>
+                </li>
+                <li>
+                    <p class="po_re clearfix">
+                        <span><em>*</em>验证码</span>
+                        <input class="code" id="captcha" name="captcha" placeholder="请输入验证码" type="text" />
+                        <img class="captchaImg" src="/register/captcha.do">
+                    </p>
+                </li>
+                <li>
+                    <p class="po_re clearfix">
+                        <span><em>*</em>手机验证码</span>
+                        <input class="code registerInput" id="authCode" name="authCode" placeholder="请输入手机验证码" type="text" />
+                        <button class="getCode" type="button" id="getCode">获取手机验证码</button>
+                    </p>
+                </li>
+                <li>
+                    <input class="checkbox" id="agreement" type="checkbox" name="agreement" value="" required/>
+                    <label class="remember" for="agreement">我已阅读并接受<a class="golink" href="javascript:void(0)">《平台注册协议》</a></label>
+                </li>
+                <li>
+                    <button id="regist" type="submit">注册</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>

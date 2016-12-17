@@ -4,12 +4,12 @@
 
 var Routes =  Backbone.Router.extend({
     routes: {
-        '': 'loginView',
-        'login': 'loginView'
+        '': 'registerView',
+        'register': 'registerView'
     },
-    loginView: function () {
-        var loginView = require('./loginView.js');
-        new loginView();
+    registerView: function() {
+        var registerView = require('./registerView.js');
+        new registerView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

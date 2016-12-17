@@ -10,7 +10,7 @@ require('../modules/login/login.css');
 
 $(function() {
     new header({
-        id: '注册'
+        id: '登录'
     });
     mscxPage.appRouter = new router();
     Backbone.history.stop();

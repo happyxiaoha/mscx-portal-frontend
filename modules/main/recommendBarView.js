@@ -9,9 +9,7 @@ var recommendBarView = Backbone.View.extend({
     },
     initialize: function() {
         this.$el.toggleClass('loading');
-            this.model.fetch({
-                data: {areaId:'280101'}
-            });
+            this.model.fetch();
             this.listenTo(this.model,'sync',this.render);
         },
         render: function() {

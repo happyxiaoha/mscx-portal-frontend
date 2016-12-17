@@ -4,7 +4,9 @@
 var template = require('html!./main.html'),
     navigationView = require('./navigationView.js'),
     recommendBarView = require('./recommendBarView.js'),
-    recommendView = require('./recommendView.js');
+    recommendView = require('./recommendView.js'),
+    bannerView = require('./banner.js'),
+    firstRecommendView = require('./firstRecommendView.js');
 require('./main.css');
 require('./../../css/swiper.css');
 require('../../lib/swiper.jquery.js');
@@ -41,6 +43,8 @@ var mainView = Backbone.View.extend({
     },
     initialize: function() {
         this.$el.html(template);
+        new bannerView();
+        new firstRecommendView();
         new navigationView({
             id: 'ser',
             el: '#daohangSer',
@@ -81,26 +85,6 @@ var mainView = Backbone.View.extend({
         this.render();
     },
     render: function(){
-        var galleryTop = new Swiper('.swiper-container', {
-            /*        nextButton: '.swiper-button-next',
-             prevButton: '.swiper-button-prev',*/
-            spaceBetween: 10,
-            loop:true,
-            direction: 'vertical',
-            loopedSlides:8
-        });
-        var galleryThumbs = new Swiper('.swiper-right', {
-            spaceBetween: 10,
-            slidesPerView:4,
-            touchRatio: 0.2,
-            loop:true,
-            autoplay:3000,
-            direction: 'vertical',
-            loopedSlides:8,
-            slideToClickedSlide: true
-        });
-        galleryTop.params.control = galleryThumbs;
-        galleryThumbs.params.control = galleryTop;
         $(".partner").slide({
             mainCell:"ul",
             autoPlay:true,

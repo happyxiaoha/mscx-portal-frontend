@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 
 var configRoot = {
     'login': './js/login.js',
-    /*'register': '',*/
+    'register': './js/register.js',
     'main': './js/main.js',      //首页
      'sources': './js/sources.js',    //数据
     'api': './js/api.js',

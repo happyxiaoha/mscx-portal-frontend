@@ -1,0 +1,47 @@
+<div class="register-form">
+    <form id="changePwdForm" onsubmit="return false;">
+        <ul>
+            <li>
+                <p class="po_re clearfix">
+                    <span><em class="corRed">*</em>手机号</span>
+                    <input class="zone" type="text" value="+86" readonly>
+                    <input id="mobile" class="phone changeInput" name="mobile" placeholder="请输入手机号" type="text" />
+
+                </p>
+            </li>
+            <li>
+                <p class="po_re clearfix">
+                    <span><em>*</em>验证码</span>
+                    <input class="code" id="captchaForChange" name="captchaForChange" placeholder="请输入验证码" type="text" />
+                    <img class="captchaImgChange" src="/forget/password/captcha.do">
+                </p>
+            </li>
+            <li>
+                <p class="po_re clearfix">
+                    <span><em>*</em>手机验证码</span>
+                    <input class="code changeInput" id="authCode" name="authCode" placeholder="请输入手机验证码" type="text" />
+                    <button class="getCode" type="button" id="getCode">获取手机验证码</button>
+                </p>
+            </li>
+            <li>
+                <p class="po_re clearfix">
+                    <span><em class="corRed">*</em>新密码</span>
+                    <input id="password" class="changeInput newPwd" name="password" placeholder="设置新密码" type="password" />
+
+                </p>
+
+            </li>
+            <li>
+                <p class="po_re clearfix">
+                    <span><em class="corRed">*</em>新密码确认</span>
+                    <input id="passwordConfirm" class="changeInput" name="passwordConfirm" placeholder="确认新密码" type="password" />
+                </p>
+
+            </li>
+
+            <li class="text-center">
+                <button type="submit">确认</button>
+            </li>
+        </ul>
+    </form>
+</div>

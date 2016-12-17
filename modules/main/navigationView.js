@@ -10,15 +10,7 @@ var navigationApiView = Backbone.View.extend({
     initialize: function() {
 
         this.$el.toggleClass('loading');
-        if(this.id === 'api'){
-            this.model.fetch({
-                data: {areaId:'280101'}
-            });
-        }
-        else {
-            this.model.fetch();
-        }
-
+        this.model.fetch();
         this.listenTo(this.model,'sync',this.render);
 
     },

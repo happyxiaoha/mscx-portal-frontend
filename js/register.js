@@ -2,16 +2,14 @@
  * Created by Administrator on 2016/12/12.
  */
 
-var header = require('../modules/login/loginHeaderView.js');
+var header = require('../modules/register/headerView.js');
 require('../css/base.css');
 
-var router = require('../modules/login/router.js');
-require('../modules/login/login.css');
+var router = require('../modules/register/router.js');
+require('../modules/register/register.css');
 
 $(function() {
-    new header({
-        id: '登录'
-    });
+    new header();
     mscxPage.appRouter = new router();
     Backbone.history.stop();
     Backbone.history.start();

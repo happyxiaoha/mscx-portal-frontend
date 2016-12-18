@@ -2,6 +2,7 @@
 
 var wrapTemplate = require('html!./openDataReleaseContent.html');
 var listTemplate = require('html!./openDataSearchResult.html');
+var applyView = require('./applyLayer.js');
 
 var view = Backbone.View.extend({
     tagName: 'div',
@@ -9,7 +10,8 @@ var view = Backbone.View.extend({
     wrapTemplate: _.template(wrapTemplate),
     listTemplate: _.template(listTemplate, {variable: 'data'}),
     events: {
-        'click .sort a': 'sort'
+        'click .sort a': 'sort',
+        'click .downLoadBtn': 'download'
     },
     initialize: function() {
         this.$el.html(this.wrapTemplate());
@@ -26,6 +28,9 @@ var view = Backbone.View.extend({
         var list = result.list || [];
         var pageInfo = result.page || {};
         var me = this;
+
+        this.list = list;
+
         if(list.length < 1) {
             this.$sort.hide();
             this.$dataList.html('暂无数据');
@@ -64,6 +69,52 @@ var view = Backbone.View.extend({
         this.trigger('sort', {
             orderBy: type
         })
+    },
+    download: function(event) {
+        var $target = this.$(event.currentTarget);
+        var index = $target.data('index');
+        var item = this.list[index];
+        var me = this;
+
+        this.applyView = new applyView({
+            id: item.id,
+            model: {
+                chargeType: item.chargeType
+            }
+        });
+
+        var btn = item.chargeType == '01' ? ['直接下载', '取消'] : ['立即支付', '加入购物车']
+        var btnCallback = item.chargeType == '01' ? {
+            btn1: function (index) {
+                me.applyView.download(index);
+            },
+            btn2: function(index) {
+                layer.close(index);
+            }
+        } : {
+            btn1: function (index) {
+                me.applyView.order(index);
+            },
+            btn2: function(index) {
+                me.applyView.addCart(index);
+            }
+        };
+
+        var layerParam = {
+            type: 1,
+            btn: btn,
+            title: '下载详情',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px'],
+            content: this.applyView.$el,
+            end: function() {
+                me.applyView.remove();
+            }
+        };
+
+        layer.open(_.extend(layerParam, btnCallback));
+
     }
 });
 

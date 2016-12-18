@@ -19,7 +19,8 @@ var configRoot = {
     'services': './js/services.js',     //微服务
     'demand': './js/demand.js',     //需求定制
     'pioneering': './js/pioneering.js',  //创业园地
-    'userInfo': './js/userInfo.js'      //用户中心
+    'userInfo': './js/userInfo.js',    //用户中心
+    'pay': './js/pay.js'
 };
 
 gulp.task('lint', function  () {

@@ -60,9 +60,11 @@ var view = Backbone.View.extend({
     handleSubmit: function() {
         var model = this.offlineModel.toJSON();
 
-        layer.alert(model.result.message);
+        // layer.alert(model.message);
 
-        if(model.result.status == 'OK') {
+        layer.alert('线下洽谈申请成功！');
+
+        if(model.status == 'OK') {
             layer.close(this.layerIndex);
         }    
     }

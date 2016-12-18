@@ -2,10 +2,6 @@
 
 var template = require('html!./applyTemplate.html');
 
-// 套餐api
-var packageModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/charge/getChargeRuleByServiceId.do'
-});
 // 免费api下单
 var freeOrderModel = Backbone.Model.extend({
     url: mscxPage.host + '/order/freeApi/placeOrder.do'
@@ -24,12 +20,10 @@ var view = Backbone.View.extend({
     className: 'apply-box hide',
     template: _.template(template, {variable: 'data'}),
     events: {
-        'change .number': 'changeTdTotal',
         'click input[type="radio"]': 'selectPackage',
         'click .D_table tr': 'selectRadio'
     },
     initialize: function() {
-        this.packageModel = new packageModel();
         this.freeOrderModel = new freeOrderModel();
         this.feeOrderModel = new feeOrderModel();
         this.addCartModel = new addCartModel();

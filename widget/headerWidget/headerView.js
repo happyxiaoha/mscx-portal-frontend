@@ -56,7 +56,7 @@ var headerView = Backbone.View.extend({
         this.model.fetch();
         this.listenTo(this.model, 'sync', this.render);
         this.$el.html(this.template({
-            id: 'index',
+            id: this.id,
             menuList: menuList
         }));
     },
@@ -64,7 +64,7 @@ var headerView = Backbone.View.extend({
         var nJson = this.model.toJSON();
 
         this.$el.html(this.template({
-            id: 'index',
+            id: this.id,
             menuList: menuList,
             username: nJson.result
         }));

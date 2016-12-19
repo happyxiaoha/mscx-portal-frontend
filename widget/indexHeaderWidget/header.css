@@ -36,7 +36,7 @@ a{
 }
 .dropMenu li{ white-space:nowrap;height:36px;line-height: 36px;}
 
-.dropMenu a { display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center; }
+.dropMenu a {display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center;cursor: pointer;}
 .dropMenu a:hover{ color:#069cd9; }
 
 .dropMenu li.usercenter{

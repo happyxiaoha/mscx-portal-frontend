@@ -19,7 +19,7 @@ $(function() {
     new footer();
 
     var orderInfo = window.localStorage.getItem('orderInfo');
-    orderInfo = orderInfo && JSON.parse(orderInfo) || {};
+    orderInfo = orderInfo && JSON.parse(decrypt_string(config.key, orderInfo)) || {};
 
     $('#amount').html(orderInfo.amount);
 

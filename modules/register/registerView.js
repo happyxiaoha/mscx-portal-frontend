@@ -89,14 +89,16 @@ var registerView = Backbone.View.extend({
                 },
                 captcha: {
                     required: true,
-                    remote: {
+                    minlength: 4,
+                    maxlength: 4
+                    /*remote: {
                         url: '/register/captcha/check.do',
                         data: {
                             captcha: function () {
                                 return $("#captcha").val();
                             }
                         }
-                    }
+                    }*/
                 },
                 authCode: {
                     required: true
@@ -124,7 +126,8 @@ var registerView = Backbone.View.extend({
                 },
                 captcha: {
                     required: "请输入验证码",
-                    remote: "验证码错误"
+                    minlength: "验证码为四位",
+                    maxlength: "验证码为四位"
                 },
                 authCode: {
                     required: "请输入手机验证码"

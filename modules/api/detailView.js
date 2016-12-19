@@ -40,7 +40,9 @@ var view = Backbone.View.extend({
                 apiServiceId: this.id
             }
         })
-        this.shareView = new shareView();
+        this.shareView = new shareView({
+            className: 'share posAB'
+        });
 
         return this;
     },

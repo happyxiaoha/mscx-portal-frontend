@@ -7,7 +7,6 @@ require('./share.css');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'share posAB',
     events: {
         'click #shareWeixin': 'shareWeixin',
         'click #shareQzone': 'shareQzone',

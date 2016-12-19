@@ -36,17 +36,64 @@ var menuList = [
     }
 ];
 
+var logoutModel = Backbone.Model.extend({
+    url: mscxPage.host+'/logout.do'
+});
+
+var getUserMsg = Backbone.Model.extend({
+    url: mscxPage.host+'/briefInfo.do'
+});
+
 var headerView = Backbone.View.extend({
     el: mscxPage.domEl.headerEl,
-    template: _.template(template),
+    template: _.template(template, {variable: 'data'}),
     events: {
-        'blur .info-line input':'changeAttribute'
+        'blur .info-line input': 'changeAttribute',
+        'click #exit': 'logout'
     },
     initialize: function() {
+        this.model = new getUserMsg();
+        this.model.fetch();
+        this.listenTo(this.model, 'sync', this.render);
         this.$el.html(this.template({
-            id: this.id || '',
+            id: 'index',
             menuList: menuList
         }));
+    },
+    render: function () {
+        var nJson = this.model.toJSON();
+
+        this.$el.html(this.template({
+            id: 'index',
+            menuList: menuList,
+            username: nJson.result
+        }));
+        var _c;
+        $("#personReal").hover(function(){
+            $(".shareBox").show();
+            $(this).addClass('active');
+        },function(){
+            _c = setTimeout(function(){
+                $(".shareBox").hide();
+                $('#personReal').removeClass('active');
+            },10);
+        });
+        $(".shareBox").hover(function(){
+            clearTimeout(_c);
+        },function(){
+            $(".shareBox").hide();
+            $('#personReal').removeClass('active');
+        });
+    },
+    logout: function(){
+        new logoutModel().fetch({
+            success: function(res){
+                res = res.toJSON();
+                if(res.message == 'success'){
+                    window.open('index.html','_self');
+                }
+            }
+        })
     }
 });
 

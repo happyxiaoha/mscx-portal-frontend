@@ -18,3 +18,28 @@
 .right-con-wrap .RCconsList p span:first-child{width: 60px;}
 .right-con-wrap .RCconsListBtn p{line-height: 26px;}
 .right-con-wrap .RCconsListBtn button{width: 102px;height: 26px;border: 0;outline: none;display: block;}
+
+.more{right: 18px;top: 2px;}
+.mainDatas{padding: 20px 15px;margin-top: 16px;background: #fff;}
+.mainDatas .DataList li{width: 177px;width: 173px\9;height: 212px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 11px 0 0;}
+.mainDatas .DataList li a{display: block;width: 100%;height: 100%;}
+.mainDatas .DataList li .top{width: 100%;height: 30px;line-height: 30px;background: #ebedf0;padding: 0 12px;}
+.mainDatas .DataList li .centers{text-align: center;}
+.mainDatas .DataList li .centers img{display: inline-block;margin: 10px 0 4px;}
+.mainDatas .DataList li .centers span{display: block;color: #444;font-size: 14px;}
+.mainDatas .DataList li .downs{margin-top: 20px;}
+.mainDatas .DataList li .downs span{display: block;text-align: center;height: 36px;width: 58px;}
+.mainDatas .DataList li .downs span:not(:last-child){border-right:1px solid #ccc;}
+.mainDatas .DataList li .downs span em{display: block;color: #999;margin-top: 7px;}
+.mainDatas .DataList li .downs span i{display: block;line-height: 36px;}
+.mainDatas .DataList li:nth-child(4n){margin: 0;}
+
+.R-myServerList{border: 1px solid #ccc;background: #fff;}
+.R-myServerList ul li{padding: 14px 12px;height: 110px;border-bottom: 1px solid #ccc;}
+.R-myServerList ul li:last-child{border:0;}
+.R-myServerList ul li img{width: 156px;height: 110px;}
+.myServerRight{width: 580px;}
+.myServerRight a{line-height: 28px;}
+.myServerRight p.R-infos{line-height: 20px;margin: 8px 0 11px;height: 44px;overflow: hidden;}
+.myServerRight p span{margin-right: 22px;}
+.citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}

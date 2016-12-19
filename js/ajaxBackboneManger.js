@@ -69,6 +69,10 @@ Backbone.sync = function(method, model, options) {
             if (success) return success.apply(this, arguments);
         }
     };
+    options.error = function (xhr) {
+        layer.alert('网络出错',{icon: 2});
+        return error.apply(this, arguments);
+    };
     return backboneSync(method, model, options);
 };
 

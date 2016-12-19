@@ -7,7 +7,7 @@ var footer = require('footerWidget/footerView.js');
 require('pay/pay.css');
 
 var PayResource = {
-    host: 'http://mscx-order-api.eastdc.cn:82/order/payOrder.do',
+    host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
     channels: {
         alipay: 'ALI_WEB',
         weixin: 'WX_NATIVE'

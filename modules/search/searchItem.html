@@ -1,0 +1,37 @@
+<% debugger; %>
+<% if(data.list) { %>
+<% if(data.type =='data'){ %>
+<% _.each(data.list, function(item){ %>
+<li>
+    <p>
+        <a href="source.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
+        <span>类型：</span>
+        <span class="corBlue">数据</span>
+    </p>
+    <p  class="cor4"><%= item.description %></p>
+</li>
+<% }); %>
+<% }else if(data.type =='api'){ %>
+<% _.each(data.list, function(item){ %>
+<li>
+    <p>
+        <a href="sources.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
+        <span>类型：</span>
+        <span class="corBlue">数据</span>
+    </p>
+    <p  class="cor4"><%= item.description %></p>
+</li>
+<% }); %>
+<% }else{ %>
+<% _.each(data.list, function(item){ %>
+<li>
+    <p>
+        <a href="source.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
+        <span>类型：</span>
+        <span class="corBlue">数据</span>
+    </p>
+    <p  class="cor4"><%= item.description %></p>
+</li>
+<% }); %>
+<% }; %>
+<% }; %>

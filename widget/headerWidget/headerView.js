@@ -49,7 +49,8 @@ var headerView = Backbone.View.extend({
     template: _.template(template, {variable: 'data'}),
     events: {
         'blur .info-line input': 'changeAttribute',
-        'click #exit': 'logout'
+        'click #exit': 'logout',
+        'click .search-img': 'search'
     },
     initialize: function() {
         this.model = new getUserMsg();
@@ -62,7 +63,7 @@ var headerView = Backbone.View.extend({
     },
     render: function () {
         var nJson = this.model.toJSON();
-
+        mscxPage.userInfo = nJson.result;
         this.$el.html(this.template({
             id: this.id,
             menuList: menuList,
@@ -84,6 +85,9 @@ var headerView = Backbone.View.extend({
             $(".shareBox").hide();
             $('#personReal').removeClass('active');
         });
+    },
+    search: function () {
+        window.open('search.html','_self');
     },
     logout: function(){
         new logoutModel().fetch({

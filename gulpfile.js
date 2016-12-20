@@ -20,7 +20,8 @@ var configRoot = {
     'demand': './js/demand.js',     //需求定制
     'pioneering': './js/pioneering.js',  //创业园地
     'userInfo': './js/userInfo.js',    //用户中心
-    'pay': './js/pay.js'
+    'pay': './js/pay.js',
+    'search': './js/search.js'
 };
 
 gulp.task('lint', function  () {

@@ -4,7 +4,6 @@
 
 var header = require('../widget/headerWidget/headerView.js');
 var footer = require('../widget/footerWidget/footerView.js');
-require('../css/base.css');
 
 var router = require('../modules/sources/router.js');
 require('../modules/sources/openData.css');

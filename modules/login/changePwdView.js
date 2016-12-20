@@ -44,11 +44,13 @@ var changePwdView = Backbone.View.extend({
             success: function (res) {
                 res = res.toJSON();
                 if(res.status == 'OK'){
-                    window.open('login.html','_self');
+                    layer.msg('密码修改成功,即将跳转登录页');
+                    setTimeout(function(){ window.open('login.html','_self');},4000)
+
                 }
-                else {
-                    that.refreshCaptcha();
-                }
+            },
+            error: function () {
+                that.refreshCaptcha();
             }
         });
     },
@@ -60,9 +62,9 @@ var changePwdView = Backbone.View.extend({
         $('.captchaImgChange').attr('src','/forget/password/captcha.do?t='+ new Date().getTime());
     },
     sendMsgCode: function (e) {
-        var submitForm = $("#changePwdForm");
-        var check = submitForm.validate().element($("#mobile"))
-                    && submitForm.validate().element($("#captchaForChange")),
+        var submitForm = $('#changePwdForm');
+        var check = submitForm.validate().element($('#mobile'))
+                    && submitForm.validate().element($('#captchaForChange')),
             $target = $(e.target),
             that = this;
         if(check){
@@ -74,10 +76,14 @@ var changePwdView = Backbone.View.extend({
                 success: function (res) {
                     res = res.toJSON().message;
                     if(res == 'success'){
+                        layer.msg('验证码发送成功!');
                         $target.attr('disabled','disabled');
                         $target.html('<b id="jumpTime">60</b>秒后可重新发送');
                         that.subtraction($target, 60);
                     }
+                },
+                error: function () {
+                    that.refreshCaptcha();
                 }
             })
         }

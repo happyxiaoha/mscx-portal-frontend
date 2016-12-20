@@ -18,7 +18,6 @@ var openDataReleaseContentView = Backbone.View.extend({
     events: {
     },
     initialize: function() {
-        this.$el.toggleClass('loading');
         // 筛选部分初始化
         this.searchView = new searchView({
             id: 'openData',
@@ -47,7 +46,6 @@ var openDataReleaseContentView = Backbone.View.extend({
 
         this.$el.append(this.searchView.render().$el);
         this.$el.append(this.resultView.$el);
-        this.$el.toggleClass('loading');
 
         return this;
     }

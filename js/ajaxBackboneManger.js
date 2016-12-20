@@ -64,6 +64,7 @@ Backbone.sync = function(method, model, options) {
             else {
                 alert(xhr.message);
             }
+            if (error) return error.apply(this, arguments);
         }
         else {
             if (success) return success.apply(this, arguments);

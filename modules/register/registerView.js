@@ -47,12 +47,17 @@ var registerView = Backbone.View.extend({
                 success: function (res) {
                       res = res.toJSON();
                      if(res.message == 'success'){
-                         layer.msg('注册成功');
-                            window.open('login.html','_self');
+                         layer.confirm('注册成功', {
+                             btn: ['去登陆','去首页'] //按钮
+                         }, function(){
+                             window.open('login.html','_self');
+                         }, function(){
+                             window.open('index.html','_self');
+                         });
                      }
-                     else {
-                        that.refreshCaptcha();
-                     }
+                },
+                error: function () {
+                    that.refreshCaptcha();
                 }
             });
         }
@@ -159,6 +164,7 @@ var registerView = Backbone.View.extend({
                 success: function (res) {
                     res = res.toJSON().message;
                     if(res == 'success'){
+                        layer.msg('验证码发送成功');
                         $target.attr('disabled','disabled');
                         $target.html('<b id="jumpTime">60</b>秒后可重新发送');
                         that.subtraction($target, 60);

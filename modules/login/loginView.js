@@ -38,18 +38,14 @@ var loginView = Backbone.View.extend({
     login: function(){
         var that = this;
         that.model.save({},{
-            type: 'POST',
             success: function (res) {
                   res = res.toJSON();
                 if(res.status == 'OK'){
                     window.open('index.html','_self');
                 }
-                else if(res.status  == 'ERROR') {
-                    if (layer) {
-                        layer.alert(res.message, {icon: 2});
-                    }
-                    that.refreshCaptcha();
-                }
+            },
+            error: function () {
+                that.refreshCaptcha();
             }
         });
     },

@@ -63,7 +63,7 @@ var headerView = Backbone.View.extend({
     },
     render: function () {
         var nJson = this.model.toJSON();
-
+        mscxPage.userInfo = nJson.result;
         this.$el.html(this.template({
             id: 'index',
             menuList: menuList,

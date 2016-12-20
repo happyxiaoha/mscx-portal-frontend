@@ -144,3 +144,16 @@
 .downLoadCons button{background: #069cd9;outline: none;width: 86px;height: 34px;margin: 8px 0 0;border: 0;color: #fff;font-size: 14px;}
 .downLoadCons button.bggray{background: #ddd}
 .downLoadCons p:last-child{margin-top: 10px;}
+
+/* 详情 */
+.R-top{padding: 40px 28px 24px;}
+.R-top h3 em{border: 1px solid #ef6f08;padding: 3px 6px;border-radius: 3px;margin-left: 26px;vertical-align: 3px;}
+.R-Cons .titTopCons ul li span{display: inline-block;font-size: 14px;line-height: 24px;}
+.R-Cons .titTopCons ul li span:first-child{width: 114px;text-align: right;margin-right: 2px;vertical-align: top;}
+.R-Cons .titTopCons ul li span:last-child{width: 758px;}
+.R-Cons .titTopCons a{padding: 20px 0;display: inline-block;}
+.R-Cons .titTop{height: 54px;line-height: 54px;padding-left: 34px;}
+.R-Cons .titTopCons{padding: 26px 40px;box-sizing: border-box;}
+.R-Cons .titTopCons img{border: 1px solid #ccc;}
+.R-shareStarCons p:first-child span:first-child{margin-right: 5px;}
+.R-shareStarCons p:first-child span{height: 21px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;margin-left: 4px;cursor: pointer;padding: 2px 10px;}

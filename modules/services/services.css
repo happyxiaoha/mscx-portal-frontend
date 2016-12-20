@@ -166,3 +166,7 @@
 .picScroll-left .bd ul li .title {
     line-height: 24px;
 }
+
+.have-attention{
+    background: #b7b7b7!important;
+}

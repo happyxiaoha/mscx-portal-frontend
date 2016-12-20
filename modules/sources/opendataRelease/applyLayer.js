@@ -2,14 +2,20 @@
 
 var template = require('html!./applyTemplate.html');
 
-// 免费api下单
+// 数据数据下单
 var freeOrderModel = Backbone.Model.extend({
-    url: mscxPage.host + '/order/freeApi/placeOrder.do'
+    url: mscxPage.host + '/order/freeData/placeOrder.do'
 });
-// 收费api下单
+// 收费数据下单
 var feeOrderModel = Backbone.Model.extend({
-    url: mscxPage.host + '/order/feeApi/placeOrder.do'
+    url: mscxPage.host + '/order/feeData/placeOrder.do'
 });
+
+//判断数据是否已购
+var purchaseOrNotModel = Backbone.Model.extend({
+    url: mscxPage.host + '/mscx-order-api/order/purchaseOrNot.do'
+});
+
 // 加入购物车
 var addCartModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-uc-api/shopping/cart/user/add.do'
@@ -27,77 +33,22 @@ var view = Backbone.View.extend({
         this.freeOrderModel = new freeOrderModel();
         this.feeOrderModel = new feeOrderModel();
         this.addCartModel = new addCartModel();
+        this.purchaseOrNotModel = new purchaseOrNotModel();
 
         // 收费/免费
         this.chargeType = this.model.chargeType;
 
-        this.listenTo(this.packageModel, 'sync', this.render);
         this.listenTo(this.addCartModel, 'sync', this.handleCart);
         this.listenTo(this.feeOrderModel, 'sync', this.handleFeeOrder);
         this.listenTo(this.freeOrderModel, 'sync', this.handleFreeOrder);
 
-        this.on('caculate', this.caculate);
+        this.listenTo(this.purchaseOrNotModel, 'sync', this.handlePurchase);
 
-        // 如果是免费的，就不需要获取套餐
-        if(this.chargeType == '01') {
-            this.render();
-        }else {
-            this.packageModel.fetch({
-                async: false,
-                data: {
-                    apiServiceId: this.id
-                }
-            })
-        }      
+        this.render();
+
     },
     render: function() {
-        this.$el.html(this.template(this.packageModel.toJSON()));
-        this.trigger('caculate');
-    },
-    changeTdTotal: function(event) {
-        var $target = this.$(event.currentTarget);
-        var $tr = $target.parents('tr');
-        var $number = $tr.find('.number');
-        var num = $number.val();
-        var price = $number.data('price');
-
-        if(num < 0) {
-            $target.val(0);
-            num = 0;
-        }
-
-        $tr.find('.total').html(num * price);
-
-        this.trigger('caculate');
-    },
-    selectPackage: function(event) {
-        event.stopPropagation();
-
-        var $selected = this.$el.find('td input[type="radio"]:checked');
-        var $tr = $selected.parents('tr');
-
-        $tr.find('.number').val(1).change();
-
-        this.trigger('caculate');
-    },
-    caculate: function() {
-        var count = 0,
-            totalPrice = 0,
-            $selected = this.$el.find('td input[type="radio"]:checked');
-
-        if($selected.length > 0) {
-            var $tr = $selected.parents('tr'),
-                $number = $tr.find('.number'),
-                num = $number.val(),
-                price = $number.data('price');
-
-            count++;
-            totalPrice += num * price;
-        }
-
-        this.amount = totalPrice;
-        this.$el.find('#selectedCount').html(count);
-        this.$el.find('#totalPirce').html(totalPrice);
+        this.$el.html(this.template(this.model));
     },
     // 立即支付
     order: function(index) {
@@ -117,44 +68,44 @@ var view = Backbone.View.extend({
         if(this.chargeType == '01') {
             this.freeOrder();   
         }else {
-            this.feeOrder();
+            this.purchaseData();
         }
+    },
+    //下载
+    download: function () {
+
+    },
+    purchaseData: function () {      //判断数据是否购买
+        this.purchaseOrNotModel.fetch({
+            data: {
+                sourceId: this.id,
+                char_rule_id: '-1',
+                sourceType: '02'
+            }
+        });
+    },
+    handlePurchase: function () {
+        this.feeOrder();
     },
     freeOrder: function() {
         this.freeOrderModel.fetch({
             data: {
-                apiId: this.id
+                dataId: this.id
             }
         })
     },
     feeOrder: function() {
-        var $selected = this.$el.find('td input[type="radio"]:checked'),
-            $tr = $selected.parents('tr'),
-            $number = $tr.find('.number'),
-            num = $number.val(),
-            ruleId = $number.data('id'),
-            msg = '';
-
-        if($selected.length < 1) {
-            msg += '请至少选择一个资源';
-        }
-
-        if(msg) {
-            layer.alert(msg);
-            return;
-        }
 
         this.feeOrderModel.fetch({
             data: {
-                apiId: this.id,
-                charRuleId: ruleId,
-                itemNum: num
+                dataId: this.id
             }
         })
     },
     // 加入购物车
     addCart: function(index) {
-        var resourceType = this.delegate.resourceType,
+        debugger;
+        var resourceType = this.model.resourceType || '02',
             isAgree = this.$('#agreementBtn')[0].checked,
             msg = '';
 
@@ -168,24 +119,10 @@ var view = Backbone.View.extend({
 
         this.addCartModel.save({
             resourceType: resourceType,
-            resourceId: this.id,
-            chargeRuleId: ruleId,
-            applyTimes: num
+            resourceId: this.id
         })
     },
-    selectRadio: function(event) {
-        event.stopPropagation();
-        // 增减API数量不触发radio
-        if(event.toElement.tagName == 'INPUT') return;
-        
-        var $target = this.$(event.currentTarget);
 
-        this.$el.find('td input[type="radio"]:checked').removeAttr('checked');
-
-        $target.find('input[type="radio"]').click();
-
-        $target.find('.number').val(1).change();
-    },
     handleCart: function() {
         var model = this.addCartModel.toJSON();
         layer.alert('添加购物车成功！');

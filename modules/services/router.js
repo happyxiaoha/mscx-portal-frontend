@@ -15,8 +15,11 @@ var Routes =  Backbone.Router.extend({
         });
     },
     detailView: function(id) {
-        var detailView = require('services/detailView.js');
-        new detailView({
+        var serviceDetailView = require('services/detailView.js');
+        var detailView = mscxPage.views['serDetailView'];
+        detailView && detailView.undelegateEvents() && detailView.stopListening();
+
+        mscxPage.views['serDetailView'] = new serviceDetailView({
             id: id
         });
     },

@@ -1,12 +1,12 @@
 <div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
     <!-- top -->
     <p class="ReleaseTit">发布API开发需求 ？</p>
-    <div class="ReleaseInputs">
+    <form class="ReleaseInputs" enctype="multipart/form-data" method="post" onsubmit="return false;">
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>需求说明：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入需求描述信息" value="" id="requirement-description">
+                    <input type="text" placeholder="请输入需求描述信息" name="name" value="" id="requirement-description">
                 </p>
             </div>
         </div>
@@ -14,18 +14,18 @@
             <p class="fl R_left"><em>*</em>系统名称：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入系统名称" value="" id="system-name">
+                    <input type="text" name="sysName" placeholder="请输入系统名称" value="" id="system-name">
                 </p>
             </div>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">系统类型：</p>
             <div class="fl R_right">
-                <select class="form-control select-type" id="system-type">
-                    <option>A/S</option>
-                    <option>B/S带插件</option>
-                    <option>B/S无插件</option>
-                    <option>C/S</option>
+                <select class="form-control select-type" name="sysType" id="system-type">
+                    <option value="A/S">A/S</option>
+                    <option value="B/S带插件">B/S带插件</option>
+                    <option value="B/S无插件">B/S无插件</option>
+                    <option value="C/S">C/S</option>
                 </select>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <p class="fl R_left">系统描述：</p>
             <div class="fl R_right">
                 <p>
-                    <textarea name="" cols="30" rows="10" placeholder="请输入系统描述" id="system-description"></textarea>
+                    <textarea cols="30" rows="10" name="sysDescription" placeholder="请输入系统描述" id="system-description"></textarea>
                 </p>
             </div>
         </div>
@@ -41,7 +41,7 @@
             <p class="fl R_left"><em>*</em>归属单位 ：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入所属单位" id="system-belongCompany">
+                    <input type="text" name="department" placeholder="请输入所属单位" id="system-belongCompany">
                 </p>
             </div>
         </div>
@@ -50,17 +50,16 @@
             <div class="fl R_right checkbox-border">
                 <div class="radio-list">
                     <label class="radio-inline">
-                        <input type="radio" name="system-owner" value="是" style="margin-top: -3px;">
+                        <input type="radio" checked name="ownership" value="Y">
                         是
                     </label>
-                    <label class="radio-inline" style="margin-left: 20px;">
-
-                            <input type="radio" name="system-owner" value="否" style="margin-top: -3px;">
-
-
+                    <label class="radio-inline">
+                        <input type="radio" name="ownership" value="N">
                         否
                     </label>
-                    <span class="star" style="    font-size: 10px;margin-top: -6px;margin-left: 12px;">注:选择否,则需要在说明中说明情况</span>
+                    <div class="fl message">
+                        <em>注:选择否,则需要在说明中说明情况</em>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,7 +67,7 @@
             <p class="fl R_left">访问网址：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入访问网址,没有可不填" id="system-accessUrl">
+                    <input type="text" name="site" placeholder="请输入访问网址,没有可不填" id="system-accessUrl">
                 </p>
             </div>
         </div>
@@ -77,11 +76,11 @@
             <div class="fl R_right checkbox-border">
                 <div class="radio-list">
                     <label class="radio-inline checkbox-border">
-                        <input type="radio" name="system-network" value="是">
+                        <input type="radio" name="netType" value="inner">
                         内网系统
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="system-network" value="否" checked="">
+                        <input type="radio" name="netType" value="outer" checked="">
                         公网系统
                     </label>
                 </div>
@@ -94,7 +93,7 @@
                     <label class="checkbox-inline">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="system-language" value="JAVA">
+                            <input type="checkbox" name="developLanguage" value="JAVA">
                         </span>
                         </div>
                         JAVA
@@ -102,7 +101,7 @@
                     <label class="checkbox-inline">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="system-language" value="C/C++">
+                            <input type="checkbox" name="developLanguage" value="C/C++">
                         </span>
                         </div>
                         C/C++
@@ -110,7 +109,7 @@
                     <label class="checkbox-inline">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="system-language" value="C#">
+                            <input type="checkbox" name="developLanguage" value="C#">
                         </span>
                         </div>
                         C#
@@ -118,7 +117,7 @@
                     <label class="checkbox-inline">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="system-language" value="JS">
+                            <input type="checkbox" name="developLanguage" value="JS">
                         </span>
                         </div>
                         JS
@@ -126,7 +125,7 @@
                     <label class="checkbox-inline">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="system-language" value="CSS">
+                            <input type="checkbox" name="developLanguage" value="CSS">
                         </span>
                         </div>
                         CSS
@@ -134,7 +133,7 @@
                     <label class="checkbox-inline">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="system-language" value="HTML">
+                            <input type="checkbox" name="developLanguage" value="HTML">
                         </span>
                         </div>
                         HTML
@@ -142,7 +141,7 @@
                     <label class="checkbox-inline">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="system-language" value="PHP">
+                            <input type="checkbox" name="developLanguage" value="PHP">
                         </span>
                         </div>
                         PHP
@@ -150,11 +149,11 @@
                     <label class="checkbox-inline checkbox-inline-other">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="system-language-other">
+                            <input type="checkbox" name="developLanguageer">
                         </span>
                         </div>
                         其它
-                        <input type="text" name="system-language" value="" id="system-language">
+                        <input type="text" value="" id="otherLanguage">
                     </label>
                 </div>
             </div>
@@ -163,21 +162,21 @@
             <p class="fl R_left"><em>*</em>接口个数：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请需要的接口个数" value="" id="system-apiNumber">
+                    <input type="text" name="interfaceNum" placeholder="请需要的接口个数" value="" id="system-apiNumber">
                 </p>
             </div>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>截止日期：</p>
             <div class="fl R_right">
-                <a><input size="7" type="text" value="2015-11-16" readonly="" class="analytics-datetime analytics-datetime-end"></a>
+                <a><input size="7" type="text" name="endTime" readonly class="end-time"></a>
             </div>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">需求用户：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入需求用户" id="who-requirement">
+                    <input type="text" name="reqUser" placeholder="请输入需求用户" id="who-requirement">
                 </p>
             </div>
         </div>
@@ -185,7 +184,7 @@
             <p class="fl R_left"><em>*</em>联系人：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入联系人信息" id="system-contact-who">
+                    <input type="text" name="contactUsername" placeholder="请输入联系人信息" id="system-contact-who">
                 </p>
             </div>
         </div>
@@ -193,38 +192,38 @@
             <p class="fl R_left"><em>*</em>联系人电话：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入联系人电话" id="system-phoneNumber">
+                    <input type="text" name="contactPhone" placeholder="请输入联系人电话" id="system-phoneNumber">
                 </p>
             </div>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>预期报价：</p>
             <div class="fl R_right">
-
                 <p>
-                    <input type="text" placeholder="请输入预期报价" value="" id="system-price">
+                    <input type="text" name="preOffer" placeholder="请输入预期报价" value="" id="system-price">
                 </p>
             </div>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">附件：</p>
             <div class="fl R_right">
-            <span>
-                <input class="btn btn-xs requirement-publish-document-upload" id="document-0" type="file" name="requirementDocument" value="选择文件" accept=".docx,.doc,.pdf,.zip,.rar" size="28">
-            </span>
+                <button class="btn beauty-file" type="button">上传文件
+                    <input class="btn btn-xs" id="document-0" type="file" name="file" value="选择文件" accept=".docx,.doc,.pdf,.zip,.rar" size="28">
+                </button>
+                <span id="showFileName"></span>
             </div>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">说明：</p>
             <div class="fl R_right">
                 <p>
-                    <textarea name="" cols="30" rows="10" placeholder="请输入其他说明" id="system-other-text"></textarea>
+                    <textarea name="" cols="30" rows="10" name="description" placeholder="请输入其他说明" id="system-other-text"></textarea>
                 </p>
             </div>
         </div>
         <div class="R_Btns">
-            <button class="bgBlue sumbit-requirement">发布</button>
-            <a href="dataRequire.html"> <button class="bgBlue return-list">返回</button></a>
+            <button class="bgBlue" type="submit" id="publishBtn">发布</button>
+            <button id="goBack" class="bgBlue">返回</button>
         </div>
-    </div>
+    </form>
 </div>

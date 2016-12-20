@@ -7,12 +7,32 @@
 .ReleaseInputs .ReleaseList .R_right input[type="text"].error{border: 1px solid #d82e3a;}
 .ReleaseInputs .ReleaseList .R_right textarea.error{border: 1px solid #d82e3a;}
 .ReleaseInputs .ReleaseList .R_right label.error{float: left;  line-height: 30px;  color: #d82e3a;  margin-left: 20px;  font-size: 14px;background: url(../../images/del.png) no-repeat center left; padding-left: 32px;}
+.ReleaseInputs .ReleaseList .R_right input[readonly] {cursor: default;background-color:#fff;}
+.ReleaseInputs .ReleaseList .R_left em {margin-left: -10px;}
 .R_Btns{text-align: center;margin:50px 0 10px;}
 .R_Btns .bgBlue{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;}
 .R_Btns .bgBlue:first-child{margin-right: 40px;}
 .demand-content .radio-list {width: 790px;}
 .demand-content .radio-list label{    float: left;  width: 112px;  display: block;  height: 30px;  line-height: 30px;}
 .demand-content .radio-list label input {margin: 0;}
-label.checkbox-inline {
+.demand-content .radio-list .message{height: 30px; line-height: 30px;}
+.demand-content .checkbox-border {line-height: 32px;}
+.demand-content #otherLanguage {
+    width: 100px;
+}
+.demand-content .beauty-file {
+    position: relative;
+    cursor: pointer;
+    width: 200px;
+}
+.demand-content .beauty-file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer
+}
+label.checkbox-inline, .checker {
     display: inline-block;
 }

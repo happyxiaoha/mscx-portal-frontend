@@ -1,0 +1,66 @@
+<div class="R-top clearfix">
+    <div class="fl R-nameCons">
+        <h3 class="ft24 mb25"><%= data.name %></h3>
+        <p>
+            <span class="cor7 mr25 ft14">访问量：<em class="cor7"><%= data.pageviewAmount %></em></span>
+            <span class="cor7 mr25 ft14">关注量：<em class="cor7"><%= data.focusAmount %></em></span>
+        </p>
+    </div>
+    <div class="fr R-shareStarCons">
+        <p>
+            <% if(data.myself == 0){ %>
+            <span id="follow">关注</span>
+            <% } %>
+        </p>
+    </div>
+</div>
+<div class="R-Cons">
+    <p class="titTop bggray ft14 corBlue">详情</p>
+    <div class="titTopCons">
+        <ul>
+            <li class="mb10">
+                <span>数据项：</span>
+                <span class="cor7"><%= data.dataItem %></span>
+            </li>
+            <li class="mb10">
+                <span>数据用途：</span>
+                <span class="cor7"><%= data.dataUsage %></span>
+            </li>
+            <li class="mb10">
+                <span>归属部门：</span>
+                <span class="cor7"><%= data.department %></span>
+            </li>
+            <li class="mb10">
+                <span>数据格式：</span>
+                <span class="cor7"><%= data.dataFormat %></span>
+            </li>
+            <li class="mb10">
+                <span>发布用户：</span>
+                <span class="cor7"><%= data.reqUser %></span>
+            </li>
+            <li class="mb10">
+                <span>发布日期：</span>
+                <span class="cor7"><%= new Date(data.publishTime).format('yyyy-MM-dd') %></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="R-Cons">
+    <p class="titTop bggray ft14 corBlue">需求反馈</p>
+    <div class="titTopCons">
+        <ul>
+            <li class="mb10">
+                <span>反馈时间：</span>
+                <span class="cor7"><%= new Date(data.feedbackTime).format('yyyy-MM-dd') %></span>
+            </li>
+            <li class="mb10">
+                <span>反馈意见：</span>
+                <span class="cor7"><%= data.feedbackSuggestion %></span>
+            </li>
+            <li class="mb10">
+                <span>数据展现链接：</span>
+                <span class="cor7"><%= data.datalink ? data.datalink : '暂无' %></span>
+            </li>
+        </ul>
+    </div>
+</div>

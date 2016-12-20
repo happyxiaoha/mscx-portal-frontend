@@ -66,7 +66,7 @@ var createDemandView = Backbone.View.extend({
         var model = this.model.toJSON();
         if(model.status == 'OK') {
             layer.msg('发布成功', function() {
-                location.href = '#data';
+                location.href = 'userinfo.html#demand';
             })
         }
     }

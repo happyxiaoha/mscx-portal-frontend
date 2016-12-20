@@ -157,3 +157,4 @@
 .R-Cons .titTopCons img{border: 1px solid #ccc;}
 .R-shareStarCons p:first-child span:first-child{margin-right: 5px;}
 .R-shareStarCons p:first-child span{height: 21px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;margin-left: 4px;cursor: pointer;padding: 2px 10px;}
+.R-shareStarCons p:first-child span.disable{background-color: #999;}

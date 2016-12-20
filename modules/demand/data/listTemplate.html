@@ -2,7 +2,7 @@
     <% data && data.forEach(function(item) { %>
     <li>
         <p class="posRE mb20">
-            <a href="dataInf.html" class="corOrange ft16 mr72"><%= item.name %></a>
+            <a href="#data/detail/<%= item.id %>" class="corOrange ft16 mr72"><%= item.name %></a>
         </p>
         <p class="cor4 mb20 line22">需求描述：<span><%= item.dataDescription %></span></p>
         <p class="cor4 mb20 line22">资源用途：<span><%= item.dataUsage %></span></p>

@@ -36,3 +36,27 @@
 label.checkbox-inline, .checker {
     display: inline-block;
 }
+.orderDiv {padding: 20px 30px;font-size: 14px;overflow: hidden;}
+.orderDiv label{
+    float: left;
+    padding: 5px 0;
+    line-height: 32px;
+}
+.orderDiv label span{
+    display: block;
+    float: left;
+    width: 100px;
+    line-height: 26px;
+}
+.orderDiv label textarea{
+    width: 270px;
+    padding: 4px 6px;
+    height: 70px;
+    float: left;
+}
+.orderDiv label input{
+    width: 270px;
+}
+.orderDiv em {
+    margin-left: -10px;
+}

@@ -1,0 +1,24 @@
+<% if(data && data.length > 0){ %>
+    <% data && data.forEach(function(item) { %>
+    <li>
+        <p class="posRE mb20">
+            <a href="dataInf.html" class="corOrange ft16 mr72"><%= item.name %></a>
+        </p>
+        <p class="cor4 mb20 line22">需求描述：<span><%= item.dataDescription %></span></p>
+        <p class="cor4 mb20 line22">资源用途：<span><%= item.dataUsage %></span></p>
+        <p class="posRE ">
+            <span>需求用户：</span>
+            <span class="corBlue mr72"><%= item.reqUser %></span>
+            <span>发布时间：</span>
+            <span class="corBlue mr72"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span>
+            <span>归属部门：</span>
+            <span class="corBlue mr72"><%= item.department %></span>
+            <span>处理状态：</span>
+            <span class="corOrange"><%= item.status %></span>
+        </p>
+        <p class="posAB citysSel bgOrange"><%= item.status %></p>
+    </li>
+    <% }) %>
+<% }else { %>
+    <li>暂无数据</li>
+<% } %>

@@ -1,0 +1,28 @@
+<% if(data && data.length > 0){ %>
+    <% data && data.forEach(function(item) { %>
+    <li>
+        <div class="wd660">
+            <p class="posRE mb20 clearfix">
+                <a class="corOrange ft16 mr72 fl block" href="serverExTaskInf.html" target="_blank"><%= item.name %></a>
+                <span class="fr block">任务金额：<em class="corOrange"><%= item.money %></em></span>
+            </p>
+            <p class="cor4 mb20 line22">任务描述：<span><%= item.description %></span></p>
+            <p class="posRE">
+                <span>需求用户：</span>
+                <span class="corBlue mr72"><%= item.reqUser %></span>
+                <span>发布日期：</span>
+                <span class="corBlue mr72"><%= item.publishTime %></span>
+                <span>截止日期：</span>
+                <span class="corBlue"><%= item.endTime %></span>
+            </p>
+        </div>
+        <div class="posAB downLoadCons">
+            <p class="ft12 corOrange">新任务</p>
+            <button class="downLoadBtn ">接单</button>
+            <p class="ft12">已浏览<em class="corOrange ft16"><%= item.focusAmount %></em>次</p>
+        </div>
+    </li>
+    <% }) %>
+<% }else { %>
+    <li>暂无数据</li>
+<% } %>

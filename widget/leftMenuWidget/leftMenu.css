@@ -49,21 +49,21 @@
 .pioneer li a.active:nth-child(5){background: url(../../images/icon_10_1@2x.png) no-repeat center 22px #fff;}
 
 /*需求定制 左侧导航栏 */
-.citySdkLeft li a:first-child{background: url(../../images/icon_9@2x.png) no-repeat center center;}
-.citySdkLeft li a:nth-child(2){background: url(../../images/sdk02.png) no-repeat center center;}
-.citySdkLeft li a:nth-child(3){background: url(../../images/sdk03.png) no-repeat center center;}
-.citySdkLeft li a:nth-child(4){background: url(../../images/sdk04.png) no-repeat center center;}
-.citySdkLeft li a:nth-child(5){background: url(../../images/sdk05.png) no-repeat center center;}
-.citySdkLeft li a:first-child:hover{background: url(../../images/icon_9_1@2x.png) no-repeat center center;}
-.citySdkLeft li a:nth-child(2):hover{background: url(../../images/sdk02_cur.png) no-repeat center center;}
-.citySdkLeft li a:nth-child(3):hover{background: url(../../images/sdk03_cur.png) no-repeat center center;}
-.citySdkLeft li a:nth-child(4):hover{background: url(../../images/sdk04_cur.png) no-repeat center center;}
-.citySdkLeft li a:nth-child(5):hover{background: url(../../images/sdk05_cur.png) no-repeat center center;}
-.citySdkLeft li a.active:first-child{background: #fff url(../../images/icon_9_1@2x.png) no-repeat center 22px;}
-.citySdkLeft li a.active:nth-child(2){background: #fff url(../../images/sdk02_cur.png) no-repeat center 22px;}
-.citySdkLeft li a.active:nth-child(3){background: #fff url(../../images/sdk03_cur.png) no-repeat center 22px;}
-.citySdkLeft li a.active:nth-child(4){background: #fff url(../../images/sdk04_cur.png) no-repeat center 22px;}
-.citySdkLeft li a.active:nth-child(5){background: #fff url(../../images/sdk05_cur.png) no-repeat center 22px;}
+.demand li a:first-child{background: url(../../images/icon_9@2x.png) no-repeat center center;}
+.demand li a:nth-child(2){background: url(../../images/sdk02.png) no-repeat center center;}
+.demand li a:nth-child(3){background: url(../../images/sdk03.png) no-repeat center center;}
+.demand li a:nth-child(4){background: url(../../images/sdk04.png) no-repeat center center;}
+.demand li a:nth-child(5){background: url(../../images/sdk05.png) no-repeat center center;}
+.demand li a:first-child:hover{background: url(../../images/icon_9_1@2x.png) no-repeat center center;}
+.demand li a:nth-child(2):hover{background: url(../../images/sdk02_cur.png) no-repeat center center;}
+.demand li a:nth-child(3):hover{background: url(../../images/sdk03_cur.png) no-repeat center center;}
+.demand li a:nth-child(4):hover{background: url(../../images/sdk04_cur.png) no-repeat center center;}
+.demand li a:nth-child(5):hover{background: url(../../images/sdk05_cur.png) no-repeat center center;}
+.demand li a.active:first-child{background: #fff url(../../images/icon_9_1@2x.png) no-repeat center 22px;}
+.demand li a.active:nth-child(2){background: #fff url(../../images/sdk02_cur.png) no-repeat center 22px;}
+.demand li a.active:nth-child(3){background: #fff url(../../images/sdk03_cur.png) no-repeat center 22px;}
+.demand li a.active:nth-child(4){background: #fff url(../../images/sdk04_cur.png) no-repeat center 22px;}
+.demand li a.active:nth-child(5){background: #fff url(../../images/sdk05_cur.png) no-repeat center 22px;}
 
 /* 微服务 左侧导航栏 */
 .services li a:first-child{background: url(../../images/sdk05.png) no-repeat center center;}

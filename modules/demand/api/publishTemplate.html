@@ -1,0 +1,233 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
+    <!-- top -->
+    <p class="ReleaseTit">发布API开发需求 ？</p>
+    <!--<img src="img/wenhao.png" class="help-tooltip" data-toggle="tooltip" data-placement="bottom" title="">-->
+    <!--&lt;!&ndash;data-original-title="发布将已有系统API化的需求，系统可以是A/S架构，B/S架构和C/S架构。基于您发布的API需求，我们将为您制作数据API。">&ndash;&gt;-->
+    <!--&lt;!&ndash; down &ndash;&gt;-->
+    <div class="ReleaseInputs">
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>需求说明：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入需求描述信息" value="" id="requirement-description">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>系统名称：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入系统名称" value="" id="system-name">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">系统类型：</p>
+            <div class="fl R_right">
+                <select class="form-control select-type" id="system-type">
+                    <option>A/S</option>
+                    <option>B/S带插件</option>
+                    <option>B/S无插件</option>
+                    <option>C/S</option>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">系统描述：</p>
+            <div class="fl R_right">
+                <p>
+                    <textarea name="" cols="30" rows="10" placeholder="请输入系统描述" id="system-description"></textarea>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>归属单位 ：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入所属单位" id="system-belongCompany">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>所有权：</p>
+            <div class="fl R_right checkbox-border">
+                <div class="radio-list">
+                    <label class="radio-inline">
+                        <input type="radio" name="system-owner" value="是" style="margin-top: -3px;">
+                        是
+                    </label>
+                    <label class="radio-inline" style="margin-left: 20px;">
+
+                            <input type="radio" name="system-owner" value="否" style="margin-top: -3px;">
+
+
+                        否
+                    </label>
+                    <span class="star" style="    font-size: 10px;margin-top: -6px;margin-left: 12px;">注:选择否,则需要在说明中说明情况</span>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">访问网址：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入访问网址,没有可不填" id="system-accessUrl">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>网络性质：</p>
+            <div class="fl R_right checkbox-border">
+                <div class="radio-list">
+                    <label class="radio-inline checkbox-border">
+                        <input type="radio" name="system-network" value="是">
+                        内网系统
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="system-network" value="否" checked="">
+                        公网系统
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">开发语言：</p>
+            <div class="fl R_right checkbox-border">
+                <div class="checkbox-list">
+                    <label class="checkbox-inline">
+                        <div class="checker" id="">
+                        <span>
+                            <input type="checkbox" name="system-language" value="JAVA">
+                        </span>
+                        </div>
+                        JAVA
+                    </label>
+                    <label class="checkbox-inline">
+                        <div class="checker" id="">
+                        <span>
+                            <input type="checkbox" name="system-language" value="C/C++">
+                        </span>
+                        </div>
+                        C/C++
+                    </label>
+                    <label class="checkbox-inline">
+                        <div class="checker" id="">
+                        <span>
+                            <input type="checkbox" name="system-language" value="C#">
+                        </span>
+                        </div>
+                        C#
+                    </label>
+                    <label class="checkbox-inline">
+                        <div class="checker" id="">
+                        <span>
+                            <input type="checkbox" name="system-language" value="JS">
+                        </span>
+                        </div>
+                        JS
+                    </label>
+                    <label class="checkbox-inline">
+                        <div class="checker" id="">
+                        <span>
+                            <input type="checkbox" name="system-language" value="CSS">
+                        </span>
+                        </div>
+                        CSS
+                    </label>
+                    <label class="checkbox-inline">
+                        <div class="checker" id="">
+                        <span>
+                            <input type="checkbox" name="system-language" value="HTML">
+                        </span>
+                        </div>
+                        HTML
+                    </label>
+                    <label class="checkbox-inline">
+                        <div class="checker" id="">
+                        <span>
+                            <input type="checkbox" name="system-language" value="PHP">
+                        </span>
+                        </div>
+                        PHP
+                    </label>
+                    <label class="checkbox-inline checkbox-inline-other">
+                        <div class="checker" id="">
+                        <span>
+                            <input type="checkbox" name="system-language-other">
+                        </span>
+                        </div>
+                        其它
+                        <input type="text" name="system-language" value="" id="system-language">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>接口个数：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请需要的接口个数" value="" id="system-apiNumber">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>截止日期：</p>
+            <div class="fl R_right">
+                <a><input size="7" type="text" value="2015-11-16" readonly="" class="analytics-datetime analytics-datetime-end"></a>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">需求用户：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入需求用户" id="who-requirement">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>联系人：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入联系人信息" id="system-contact-who">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>联系人电话：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入联系人电话" id="system-phoneNumber">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>预期报价：</p>
+            <div class="fl R_right">
+
+                <p>
+                    <input type="text" placeholder="请输入预期报价" value="" id="system-price">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">附件：</p>
+            <div class="fl R_right">
+            <span>
+                <input class="btn btn-xs requirement-publish-document-upload" id="document-0" type="file" name="requirementDocument" value="选择文件" accept=".docx,.doc,.pdf,.zip,.rar" size="28">
+            </span>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">说明：</p>
+            <div class="fl R_right">
+                <p>
+                    <textarea name="" cols="30" rows="10" placeholder="请输入其他说明" id="system-other-text"></textarea>
+                </p>
+            </div>
+        </div>
+        <div class="R_Btns">
+            <button class="bgBlue sumbit-requirement">发布</button>
+            <a href="dataRequire.html"> <button class="bgBlue return-list">返回</button></a>
+        </div>
+    </div>
+</div>

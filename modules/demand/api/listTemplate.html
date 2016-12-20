@@ -1,0 +1,29 @@
+<% if(data && data.length > 0){ %>
+    <% data && data.forEach(function(item) { %>
+    <li>
+        <p class="posRE mb20">
+            <a href="citySdkInf.html" class="corOrange ft16 mr72"><%= item.sysName %></a>
+            <span>内网系统：</span>
+            <span class="corBlue mr72"><%= item.netType %></span>
+            <span>所属单位：</span>
+            <span class="corBlue mr72"><%= item.department %></span>
+        </p>
+        <p class="cor4 mb20 line22">需求描述：<span><%= item.sysDescription %></span></p>
+        <p class="posRE ">
+            <span>需求用户：</span>
+            <span class="corBlue mr72"><%= item.reqUser %></span>
+            <span>发布时间：</span>
+            <span class="corBlue mr72"><%= new Date(item.publishTime).format('yyyy.MM.dd') %></span>
+            <span>截止日期：</span>
+            <span class="corBlue"><%= new Date(item.endTime).format('yyyy.MM.dd') %></span>
+        </p>
+        <div class="posAB downLoadCons">
+            <p class="ft12 corOrange">新任务</p>
+            <button class="downLoadBtn ">接单</button>
+            <p class="ft12">已浏览<em class="corOrange ft16"><%= item.pageviewAmount %></em>次</p>
+        </div>
+    </li>
+    <% }) %>
+<% }else { %>
+    <li>暂无数据</li>
+<% } %>

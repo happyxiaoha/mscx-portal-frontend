@@ -30,10 +30,10 @@ var Routes =  Backbone.Router.extend({
     detail: function(id) {
         var view = require('api/detailView.js');
 
-        var detailView = mscxPage.views['detailView'];
+        var detailView = mscxPage.views['apiDetailView'];
         detailView && detailView.undelegateEvents() && detailView.stopListening();
 
-        mscxPage.views['detailView'] = new view({
+        mscxPage.views['apiDetailView'] = new view({
             id: id
         });
     },

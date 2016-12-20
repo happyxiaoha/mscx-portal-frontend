@@ -26,13 +26,31 @@ var createDemandView = Backbone.View.extend({
                     required: true,
                     minlength: 2
                 },
-                dataDescription: {
+                sysName: {
                     required: true
                 },
-                dataItem: {
+                department: {
                     required: true
                 },
-                dataUsage: {
+                ownership: {
+                    required: true
+                },
+                netType: {
+                    required: true
+                },
+                interfaceNum: {
+                    required: true
+                },
+                endTime: {
+                    required: true
+                },
+                contactUsername: {
+                    required: true
+                },
+                contactPhone: {
+                    required: true
+                },
+                preOffer: {
                     required: true
                 }
             },

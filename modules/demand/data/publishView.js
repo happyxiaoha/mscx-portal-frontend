@@ -7,19 +7,29 @@ require('../publish.css');
 require('validate');
 
 var demandApi = '/ro/mscx-requirement-api/';
-var createDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'addData.do'
+var model = Backbone.Model.extend({
+    url: mscxPage.host + '' + demandApi + 'addData.do'
 });
 
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     events: {
-        'input #createDemandForm input[type="text"]' : 'changeAttribute',
-        'input #createDemandForm textarea' : 'changeAttribute',
+        'input form input[type="text"]' : 'changeAttribute',
+        'input form textarea' : 'changeAttribute',
         'click #goBack': 'backHistory'
     },
+    template: _.template(template),
+    initialize: function() {
+        this.$el.html(this.template());
+
+        this.$form = this.$('form');
+        this.$form.validate(this.validateConfig());
+
+        this.model = new model();
+        this.listenTo(this.model, 'sync', this.handleSubmit);
+    },
     validateConfig: function () {
-        var that = this;
+        var me = this;
         return {
             rules: {
                 name: {
@@ -37,31 +47,28 @@ var createDemandView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                that.doCreate()
+                me.submitForm();
             }
         }
     },
-    changeAttribute: function (e) {
-        this.model.set(e.target.id,e.target.value);
-        return false;
+    submitForm: function () {
+        var dataFormat = this.$el.find('input[name="dataFormat"]').filter(':checked').val();
+        this.model.set('dataFormat', dataFormat);
+        this.model.save();
     },
-    doCreate: function () {
-        var dataFormat = this.$el.find('input[name="system-network"]').filter(':checked').val();
-        this.model.set('dataFormat',dataFormat);
-        this.model.save({},{
-            success: function (model,res) {
-                layer.msg('添加成功!');
-                location.href = './userinfo.html#demand';
-            }
-        })
+    changeAttribute: function (e) {
+        this.model.set(e.target.name, e.target.value);
     },
     backHistory: function () {
         history.back();
     },
-    initialize: function() {
-        this.model = new createDemandModel();
-        this.$el.html(template);
-        $('#createDemandForm').validate(this.validateConfig());
+    handleSubmit: function() {
+        var model = this.model.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('发布成功', function() {
+                location.href = '#data';
+            })
+        }
     }
 });
 

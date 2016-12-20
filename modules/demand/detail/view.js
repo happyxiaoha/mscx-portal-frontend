@@ -4,6 +4,12 @@ var template = require('html!./template.html');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-requirement-api/apiDetail.do'
 })
+// var detailModel = Backbone.Model.extend({
+//     url: mscxPage.host + '/ro/mscx-requirement-api/dataDetail.do'
+// })
+// var detailModel = Backbone.Model.extend({
+//     url: mscxPage.host + '/ro/mscx-requirement-api/getServiceDetail.do'
+// })
 require('../demand.css');
 
 var view = Backbone.View.extend({

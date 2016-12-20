@@ -2,7 +2,7 @@
     <% data && data.forEach(function(item) { %>
     <li>
         <p class="posRE mb20">
-            <a href="citySdkInf.html" class="corOrange ft16 mr72"><%= item.sysName %></a>
+            <a href="#detail/<%= item.id %>" class="corOrange ft16 mr72"><%= item.sysName %></a>
             <span>内网系统：</span>
             <span class="corBlue mr72"><%= item.netType %></span>
             <span>所属单位：</span>

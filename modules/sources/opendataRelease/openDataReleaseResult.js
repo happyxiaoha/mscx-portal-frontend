@@ -40,8 +40,6 @@ var view = Backbone.View.extend({
         }
         this.$count.html(pageInfo.totalSize || 0);
 
-
-
         laypage({
             cont: 'page',
             skip: true,
@@ -71,6 +69,7 @@ var view = Backbone.View.extend({
         })
     },
     download: function(event) {
+        debugger;
         var $target = this.$(event.currentTarget);
         var index = $target.data('index');
         var item = this.list[index];
@@ -78,15 +77,14 @@ var view = Backbone.View.extend({
 
         this.applyView = new applyView({
             id: item.id,
-            model: {
-                chargeType: item.chargeType
-            }
+            model: item
         });
-
-        var btn = item.chargeType == '01' ? ['直接下载', '取消'] : ['立即支付', '加入购物车']
+        console.log(item);
+        this.$el.append(this.applyView.$el);
+        var btn = item.chargeType == '01' ? ['直接下载', '取消'] : ['立即支付', '加入购物车'];
         var btnCallback = item.chargeType == '01' ? {
             btn1: function (index) {
-                me.applyView.download(index);
+                me.applyView.order(index);
             },
             btn2: function(index) {
                 layer.close(index);
@@ -105,7 +103,7 @@ var view = Backbone.View.extend({
             btn: btn,
             title: '下载详情',
             shade: 0.6,
-            shadeClose: true,
+            shadeClose: false,
             area: ['500px'],
             content: this.applyView.$el,
             end: function() {

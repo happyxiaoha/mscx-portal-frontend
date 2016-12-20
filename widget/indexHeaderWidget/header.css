@@ -21,7 +21,16 @@ a{
 .header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
 .header .haslogin .noLogin span{margin: 0 4px;}
 .header .haslogin .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
-.header .haslogin .yesLogin span.down{min-width: 80px; padding-right: 20px;background: url("../../images/newicon/ic_down.png") right center no-repeat;}
+.header .haslogin .yesLogin span.down{
+    display: block;
+    height: 100%;
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 20px;
+    background: url("../../images/newicon/ic_down.png") right center no-repeat;
+}
 .header .haslogin .yesLogin .active span.down{background: url("../../images/newicon/ic_up.png") right center no-repeat;}
 
 .dropMenu{
@@ -36,7 +45,7 @@ a{
 }
 .dropMenu li{ white-space:nowrap;height:36px;line-height: 36px;}
 
-.dropMenu a {display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center;cursor: pointer;}
+.dropMenu a { display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center; }
 .dropMenu a:hover{ color:#069cd9; }
 
 .dropMenu li.usercenter{
@@ -55,7 +64,7 @@ a{
 }
 
 .yesLogin {
-    min-width: 150px;
+    width: 150px;
     height: 36px;
     line-height: 36px;
     background: #f9f9f9;

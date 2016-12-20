@@ -86,7 +86,7 @@ span.charge,span.free {
     color: #ff4200;
     font-size: 18px;
     margin-top: -5px;
-    margin-right: 0px;
+    margin-right: 0;
 }
 .openDataReleaseSearch {
     min-height: 250px;
@@ -95,7 +95,8 @@ span.charge,span.free {
 .R-top{padding: 40px 28px 24px;}
 .R-top h3 em{border: 1px solid #ef6f08;padding: 3px 6px;border-radius: 3px;margin-left: 26px;vertical-align: 3px;}
 .R-shareStarCons p:first-child{text-align: right;padding-right: 8px;}
-.R-shareStarCons p:first-child span{width: 40px;height: 20px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;margin-left: 4px;cursor: pointer;}
+span.attention{padding: 5px 10px;height: 20px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;margin-left: 4px;cursor: pointer;}
+span.attention.haves-attention{background: #b7b7b7;}
 .R-shareStarCons .share{text-align: right;margin-top: 20px;}
 .R-Cons .titTop{height: 54px;line-height: 54px;padding-left: 34px;}
 .R-Cons .titTopCons{padding: 26px 40px;}
@@ -142,6 +143,62 @@ span.charge,span.free {
 .common .tit{position: relative; height: 24px;line-height: 24px;padding-left: 16px;}
 .common .tit:before{content: '';position: absolute;width: 5px;height: 24px;background: #069cd9;left: 0;top: 0;}
 
-.loading{
-    background: url("../../images/newicon/loading.gif") center center no-repeat #fff !important;
+.apply-box {
+    padding: 5px 30px;
+}
+.apply-box .D_table {
+    min-height: 280px;
+}
+.apply-box .D_table table tr td input[type='number'],
+.layer-table .D_table table tr td input[type='number']{
+    width: 40px;
+}
+.apply-box,.layer-table{
+    padding: 5px 30px;
+}
+.apply-box p label,.layer-table p label{
+    float: left;
+}
+.apply-box p label a,.layer-table p label a{
+    color: #00aff6;
+}
+.apply-box p span, .layer-table p span{
+    font-size: 16px;
+    float: right;
+}
+/* 线下洽谈弹层 */
+.offline-box,.orderDiv {padding: 20px 30px;font-size: 14px;}
+.offline-box label,.orderDiv label{
+    float: left;
+    padding: 5px 0;
+}
+.offline-box label span,
+.orderDiv label span{
+    display: block;
+    float: left;
+    width: 100px;
+    line-height: 26px;
+}
+.offline-box label textarea,
+.orderDiv label textarea{
+    width: 270px;
+    padding: 4px 6px;
+    height: 70px;
+    float: left;
+}
+.offline-box label input,
+.orderDiv label input{
+    width: 270px;
+}
+/*button .offline-btn {
+    border-radius: 5px;
+    border: solid 1px #8b8b8b;
+    background: #fff;
+    color: #8a8a8a;
+}*/
+
+.offline-box form label.error {
+    color: #e66c6b;
+    padding: 0;
+    margin-left: 110px;
 }

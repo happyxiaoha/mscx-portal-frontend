@@ -16,12 +16,10 @@ var openDataThemeView = Backbone.View.extend({
     initialize: function() {
         this.model = new openDataModel();
 
-        this.$el.toggleClass('loading');
         this.model.fetch();
         this.listenTo(this.model,'sync',this.render);
     },
     render: function() {
-        this.$el.toggleClass('loading');
         var nJson =  this.model.toJSON();
         this.$el.html(this.template({'dataList': nJson.result}));
     }

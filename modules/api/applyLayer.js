@@ -113,7 +113,7 @@ var view = Backbone.View.extend({
         !isAgree && (msg += '请阅读并接受资源服务协议');
 
         if(msg) {
-            layer.alert(msg);
+            layer.msg(msg);
             return;
         }
 
@@ -146,7 +146,7 @@ var view = Backbone.View.extend({
         }
 
         if(msg) {
-            layer.alert(msg);
+            layer.msg(msg);
             return;
         }
 
@@ -194,7 +194,7 @@ var view = Backbone.View.extend({
     },
     handleCart: function() {
         var model = this.addCartModel.toJSON();
-        layer.alert('添加购物车成功！');
+        layer.msg('添加购物车成功！');
 
         if(model.status == 'OK') {
             layer.close(this.layerIndex);
@@ -204,7 +204,7 @@ var view = Backbone.View.extend({
         var model = this.feeOrderModel.toJSON();
 
         if(model.status != 'OK') {
-            layer.alert('API下单失败！');
+            layer.msg('API下单失败！');
             return;
         }
 
@@ -213,13 +213,13 @@ var view = Backbone.View.extend({
             amount: this.amount
         };
 
-        window.localStorage.setItem('orderInfo', JSON.stringify(param));
+        window.localStorage.setItem('orderInfo', encrypt_string(config.key, JSON.stringify(param)));
         location.href = 'pay.html';
     },
     handleFreeOrder: function() {
         var model = this.freeOrderModel.toJSON();
 
-        layer.alert(model.message);
+        layer.msg(model.message);
 
         if(model.status == 'OK') {
             layer.close(this.layerIndex);

@@ -62,7 +62,7 @@ var view = Backbone.View.extend({
 
         // layer.alert(model.message);
 
-        layer.alert('线下洽谈申请成功！');
+        layer.msg('线下洽谈申请成功！');
 
         if(model.status == 'OK') {
             layer.close(this.layerIndex);

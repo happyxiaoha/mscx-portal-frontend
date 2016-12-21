@@ -3,13 +3,26 @@
 <li class="angled-135 posRE">
     <div class="tabConsTop clearfix">
         <div class="iconforapi">
-            <a href="services.html#detail/<%- item.id %>" class="apihref">
+            <% if(item.sourceType ==='01'){ %>
+            <a href="api.html#detail/<%- item.id %>" class="apihref">
+                <% }else if(item.sourceType ==='02'){ %>
+                <a href="sources.html#detail/<%- item.id %>" class="apihref">
+                    <% }else{ %>
+                    <a href="services.html#detail/<%- item.id %>" class="apihref">
+                        <% };%>
+
                 <img src="<%- item.imgUri %>">
                 <p><span><%- item.name %></span></p>
             </a>
         </div>
-        <a href="services.html#detail/<%- item.id %>"
-           class="apiname"><%- item.name %></a>
+        <% if(item.sourceType ==='01'){ %>
+        <a href="api.html#detail/<%- item.id %>" class="apiname">
+            <% }else if(item.sourceType ==='02'){ %>
+            <a href="sources.html#detail/<%- item.id %>" class="apiname">
+                <% }else{ %>
+                <a href="services.html#detail/<%- item.id %>" class="apiname">
+                    <% };%>
+            <%- item.name %></a>
     </div>
     <p class="ft14">
         <span class="charge fl">

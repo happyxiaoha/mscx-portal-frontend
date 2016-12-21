@@ -138,24 +138,28 @@ var view = Backbone.View.extend({
     handlePurchase: function (res) {
         res = res.toJSON();
         var that = this;
+        debugger;
         if(res.status =='error'){
             layer.confirm('该资源已经购买是否立即下载？', {
                 btn: ['立即下载', '取消']
-            }, function(index, layero){
+            }, function(index, layero) {
+                var newTarget = window.open('about:blank', '_blank'); //打开新的tab页
                 that.downloadModel.fetch({
                     data: {
-                        dataId: that.id
+                        dataId: that.curr.id
+                    },
+                    success: function (res) {
+                        res = res.toJSON();
+                        newTarget.location.href = res.result; //在打开的tab页下载
                     }
-                }) ;
-                layer.close(index)
-            }, function(index){
-                layer.close(index)
-            });
+                });
+                layer.close(index);
+            })
         }
         else {
             this.applyView = new applyView({
-                id: item.id,
-                model: item
+                id: that.curr.id,
+                model: that.curr
             });
             this.$el.append(this.applyView.$el);
             var btn = ['立即支付', '加入购物车'];
@@ -183,12 +187,6 @@ var view = Backbone.View.extend({
             layer.open(_.extend(layerParam, btnCallback));
         }
 
-    },
-    handleDownload: function(res){
-        res = res.toJSON();
-        if(res.status =='OK'){
-            window.open(res.result);
-        }
     }
 });
 

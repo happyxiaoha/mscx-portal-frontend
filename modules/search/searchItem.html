@@ -1,17 +1,6 @@
-<% debugger; %>
-<% if(data.list) { %>
+
+<% if(data.list &&　data.list.length > 0) { %>
 <% if(data.type =='data'){ %>
-<% _.each(data.list, function(item){ %>
-<li>
-    <p>
-        <a href="source.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
-        <span>类型：</span>
-        <span class="corBlue">数据</span>
-    </p>
-    <p  class="cor4"><%= item.description %></p>
-</li>
-<% }); %>
-<% }else if(data.type =='api'){ %>
 <% _.each(data.list, function(item){ %>
 <li>
     <p>
@@ -22,16 +11,29 @@
     <p  class="cor4"><%= item.description %></p>
 </li>
 <% }); %>
+<% }else if(data.type =='api'){ %>
+<% _.each(data.list, function(item){ %>
+<li>
+    <p>
+        <a href="api.html#detail/<%= item.apiServiceId %>" class="corOrange ft16"><%= item.apiServiceName %></a>
+        <span>类型：</span>
+        <span class="corBlue"><%= item.typeDesc %></span>
+    </p>
+    <p  class="cor4"><%= item.description %></p>
+</li>
+<% }); %>
 <% }else{ %>
 <% _.each(data.list, function(item){ %>
 <li>
     <p>
-        <a href="source.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
+        <a href="services.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
         <span>类型：</span>
-        <span class="corBlue">数据</span>
+        <span class="corBlue">微服务</span>
     </p>
     <p  class="cor4"><%= item.description %></p>
 </li>
 <% }); %>
 <% }; %>
+<% }else{ %>
+    <div class="none-list">找不到数据，换个关键词试试！</div>
 <% }; %>

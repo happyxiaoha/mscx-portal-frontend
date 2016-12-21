@@ -24,10 +24,13 @@ Backbone.sync = function(method, model, options) {
     options.success = function (xhr) {
         if(xhr.status == 'ERROR' && xhr.code == 500800) { //un log
             var sHref = window.location.href,
-                sUrl = 'caseLogin' + '?service='+sHref;
+                sUrl = 'login.html' + '?service='+ encodeURIComponent(sHref);
             location.href = sUrl;
         }
         else if(xhr.status == 'ERROR'){
+            var pageType = $(document).find('body').data('type');
+
+            if(pageType == 'index') return;
             if(layer){
                 layer.alert(xhr.message,{icon: 2});
             }

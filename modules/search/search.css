@@ -11,7 +11,7 @@
 .bigInputs input[type="button"]{width: 140px;height: 56px;border-radius: 0;border: 0;color: #fff;font-size: 18px;}
 
 .SearchList{margin-bottom: 25px;}
-.SearchList>ul{border: 1px solid #ccc;background: #fff;border-top: 0;}
+.SearchList>ul{border: 1px solid #ccc;background: #fff;border-top: 0;min-height: 150px;}
 .SearchList>ul li{border-bottom: 1px dashed #ccc;padding: 20px;}
 .SearchList>ul li p{line-height: 18px;}
 .SearchList>ul li p:first-child{margin-bottom: 18px;}
@@ -50,4 +50,8 @@
     border: 1px solid #ccc;
     border-bottom: 0;
     color: #069cd9;
+}
+.none-list {
+    padding: 20px;
+    font-size: 20px;
 }

@@ -54,7 +54,7 @@ var openDataDetailView = Backbone.View.extend({
         this.attentionDataModel = new attentionDataModel();
         this.removeAttentionModel = new removeAttentionModel();
 
-        this.listenTo(this.downloadModel, 'sync', this.handleDownload);
+        //this.listenTo(this.downloadModel, 'sync', this.handleDownload);
         this.listenTo(this.attentionDataModel, 'sync', this.handleAttention);
         this.listenTo(this.removeAttentionModel, 'sync', this.handlereAttention);
         this.listenTo(this.model, 'sync', this.render);
@@ -175,9 +175,14 @@ var openDataDetailView = Backbone.View.extend({
             layer.confirm('该资源已经购买是否立即下载？', {
                 btn: ['立即下载', '取消']
             }, function(index, layero){
+                var newTarget = window.open('about:blank', '_blank'); //打开新的tab页
                 me.downloadModel.fetch({
                     data: {
                         dataId: me.id
+                    },
+                    success: function(res){
+                        res = res.toJSON();
+                        newTarget.location.href= res.result; //在打开的tab页下载
                     }
                 }) ;
                 layer.close(index)
@@ -216,12 +221,6 @@ var openDataDetailView = Backbone.View.extend({
             layer.open(_.extend(layerParam, btnCallback));
         }
 
-    },
-    handleDownload: function(res){
-        res = res.toJSON();
-        if(res.status =='OK'){
-            window.open(res.result);
-        }
     }
 });
 

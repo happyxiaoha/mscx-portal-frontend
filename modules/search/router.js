@@ -8,7 +8,7 @@ var Routes =  Backbone.Router.extend({
         '': 'searchView',
         'search': 'searchView'
     },
-    searchView: function () {
+    searchView: function (id) {
         var searchView = require('./searchView.js');
         new searchView();
     },

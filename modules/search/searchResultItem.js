@@ -12,7 +12,6 @@ var searchView = Backbone.View.extend({
         'click .search-type span': 'changeType'
     },
     initialize: function() {
-        debugger;
         this.$el.html(this.template({'type': this.id,'list': this.model}));
     }
 });

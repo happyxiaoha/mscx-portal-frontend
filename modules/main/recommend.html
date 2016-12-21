@@ -9,7 +9,7 @@
                 <img src="<%= item.iconUrl %>">
             </div>
             <p><a href="api.html#detail/<%= item.apiServiceId %>" title="<%= item.apiServiceCName %>"><%= item.apiServiceCName %></a></p>
-            <p class="buyType"><%= (item.chargeType === 0 ? '免费' : '收费') %></p>
+            <p class="buyType"><%= item.chargeTypeDesc || '免费' %></p>
         </a>
     </div>
     <div class="downs clearfix">

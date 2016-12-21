@@ -50,7 +50,8 @@ var headerView = Backbone.View.extend({
     template: _.template(template, {variable: 'data'}),
     events: {
         'blur .info-line input': 'changeAttribute',
-        'click #exit': 'logout'
+        'click #exit': 'logout',
+        'click .search-img': 'search'
     },
     initialize: function() {
         this.model = new getUserMsg();
@@ -95,6 +96,13 @@ var headerView = Backbone.View.extend({
                 }
             }
         })
+    },
+    search: function () {
+        var $inputs = $('#inputs'),
+            keyWord = $.trim($inputs.val());
+        window.localStorage.setItem('keyword', keyWord);
+        window.localStorage.setItem('dataType','Api');
+        window.open('search.html','_self');
     }
 });
 

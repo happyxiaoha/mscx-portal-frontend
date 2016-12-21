@@ -87,6 +87,10 @@ var headerView = Backbone.View.extend({
         });
     },
     search: function () {
+        var $inputs = $('#inputs'),
+            keyWord = $.trim($inputs.val());
+        window.localStorage.setItem('keyword', keyWord);
+        window.localStorage.setItem('dataType','Api');
         window.open('search.html','_self');
     },
     logout: function(){

@@ -42,7 +42,7 @@
             <p class="fl R_left"><em>*</em>截止日期：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="endTime" class="end-time" readonly value="<%= data.endTime %>">
+                    <input type="text" name="endTime" class="end-time" readonly value="<%= new Date(data.endTime).format('yyyy-MM-dd') %>">
                 </p>
             </div>
         </div>

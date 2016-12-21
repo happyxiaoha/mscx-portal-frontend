@@ -9,7 +9,7 @@ require('util');
 
 var demandApi = '/ro/mscx-requirement-api/';
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.host + '' + demandApi + 'getServiceDetail.do'
+    url: mscxPage.host + '' + demandApi + 'getServiceDetailOfMe.do'
 })
 var addModel = Backbone.Model.extend({
     idAttribute: 'addId',

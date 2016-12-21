@@ -19,7 +19,9 @@ $(function() {
     new footer();
 
     var orderInfo = window.localStorage.getItem('orderInfo');
-    orderInfo = orderInfo && JSON.parse(decrypt_string(mscxPage.key, orderInfo)) || {};
+    var base = new Base64;
+
+    orderInfo = orderInfo && JSON.parse(base.decode(orderInfo)) || {};
 
     $('#amount').html(orderInfo.amount);
 

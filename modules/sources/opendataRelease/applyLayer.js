@@ -131,7 +131,8 @@ var view = Backbone.View.extend({
             amount: this.amount
         };
 
-        window.localStorage.setItem('orderInfo', encrypt_string(mscxPage.key, JSON.stringify(param)));
+        var base = new Base64;
+        window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
         location.href = 'pay.html';
     },
     handleFreeOrder: function() {

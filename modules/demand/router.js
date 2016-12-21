@@ -50,10 +50,6 @@ var Routes =  Backbone.Router.extend({
             id: id
         });
     },
-    createDemandView:function () {
-        var createDemandView = require('demand/createDemand/createDemandView.js');
-        mscxPage.views['createDemandViewObj'] = new createDemandView();
-    },
     dataPublishView: function() {
         var dataPublishView = require('demand/data/publishView.js');
         mscxPage.views['dataPublishView'] = new dataPublishView();

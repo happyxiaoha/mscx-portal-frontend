@@ -3,6 +3,9 @@
  */
 
 var template = require('html!./publishTemplate.html');
+var detailModel = Backbone.Model.extend({
+    url: mscxPage.host + '/ro/mscx-requirement-api/modifyApiDetail.do'
+})
 require('../publish.css');
 require('validate');
 require('formAjax');
@@ -16,21 +19,20 @@ var createDemandView = Backbone.View.extend({
         'click #goBack': 'backHistory',
         'change .beauty-file input[type="file"]': 'changeFile'
     },
-    template: _.template(template),
+    template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.$el.html(this.template());
-
-        this.$form = this.$('form');
-        this.$form.validate(this.validateConfig());
-
-        this.$endTime = this.$('.end-time');
-
-        // 选择日期
-        this.$endTime.daterangepicker({
-            singleDatePicker: true,
-            startDate: moment(),
-            minDate: (new Date()).format('yyyy-MM-dd')
-        });
+        // 如果有ID则说明是进入修改页面
+        if(this.id) {
+            this.detailModel = new detailModel();
+            this.listenTo(this.detailModel, 'sync', this.renderDetail);
+            this.detailModel.fetch({
+                data: {
+                    id: this.id
+                }
+            })
+        }else {
+            this.renderDetail();
+        }
     },
     validateConfig: function () {
         var me = this;
@@ -78,7 +80,7 @@ var createDemandView = Backbone.View.extend({
     },
     submitForm: function () {
         this.$form.ajaxSubmit({
-            url: mscxPage.host + '' + demandApi + 'addApi.do',
+            url: this.formAction,
             success: function(res) {
                 layer.msg('发布成功！', function() {
                     location.href = 'userinfo.html#demand/api';
@@ -94,6 +96,25 @@ var createDemandView = Backbone.View.extend({
         var arr = filePath.split('\\');
         var fileName=arr[arr.length-1];
         this.$("#showFileName").html(fileName);
+    },
+    renderDetail: function() {
+        var model = this.detailModel.toJSON();
+
+        this.$el.html(this.template(model.result));
+
+        this.$form = this.$('form');
+        this.$form.validate(this.validateConfig());
+
+        this.formAction = mscxPage.host + '' + demandApi + (this.id ? 'modifyApi.do' : 'addApi.do');
+
+        this.$endTime = this.$('.end-time');
+
+        // 选择日期
+        this.$endTime.daterangepicker({
+            singleDatePicker: true,
+            startDate: moment(),
+            minDate: (new Date()).format('yyyy-MM-dd')
+        });
     }
 });
 

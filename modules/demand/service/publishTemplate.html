@@ -3,11 +3,14 @@
     <p class="ReleaseTit">发布服务开发需求</p>
     <!-- down -->
     <form class="ReleaseInputs" onsubmit="return false;">
+        <% if(data && data.id) { %>
+        <input type="hidden" name="id" value="<%= data.id %>" />
+        <% } %>
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>任务名称：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="name" placeholder="请输入任务名称" value="">
+                    <input type="text" name="name" placeholder="请输入任务名称" value="<%= data.name %>">
                 </p>
             </div>
         </div>
@@ -15,7 +18,7 @@
             <p class="fl R_left"><em>*</em>任务描述：</p>
             <div class="fl R_right">
                 <p>
-                    <textarea name="description" id="" cols="30" rows="10" placeholder="请输入任务描述"></textarea>
+                    <textarea name="description" id="" cols="30" rows="10" placeholder="请输入任务描述"><%= data.description %></textarea>
                 </p>
             </div>
         </div>
@@ -23,7 +26,7 @@
             <p class="fl R_left"><em>*</em>任务要求：</p>
             <div class="fl R_right">
                 <p>
-                    <textarea style="height: 120px" name="required" id="" cols="30" rows="10" placeholder="请输入任务要求"></textarea>
+                    <textarea style="height: 120px" name="required" id="" cols="30" rows="10" placeholder="请输入任务要求"><%= data.required %></textarea>
                 </p>
             </div>
         </div>
@@ -31,7 +34,7 @@
             <p class="fl R_left"><em>*</em>任务金额：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="money" placeholder="请输入任务金额" value="">
+                    <input type="text" name="money" placeholder="请输入任务金额" value="<%= data.money %>">
                 </p>
             </div>
         </div>
@@ -39,7 +42,7 @@
             <p class="fl R_left"><em>*</em>截止日期：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="endTime" class="end-time" readonly value="">
+                    <input type="text" name="endTime" class="end-time" readonly value="<%= data.endTime %>">
                 </p>
             </div>
         </div>
@@ -47,7 +50,7 @@
             <p class="fl R_left"><em>*</em>联系人信息：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="contactUsername" placeholder="请输入联系人信息" value="">
+                    <input type="text" name="contactUsername" placeholder="请输入联系人信息" value="<%= data.contactUsername %>">
                 </p>
             </div>
         </div>
@@ -55,7 +58,7 @@
             <p class="fl R_left"><em>*</em>联系人电话：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="contactPhone" placeholder="请输入联系人电话" value="">
+                    <input type="text" name="contactPhone" placeholder="请输入联系人电话" value="<%= data.contactPhone %>">
                 </p>
             </div>
         </div>
@@ -63,7 +66,7 @@
             <p class="fl R_left">邮箱：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="contactEmail" placeholder="请输入邮箱" value="">
+                    <input type="text" name="contactEmail" placeholder="请输入邮箱" value="<%= data.contactEmail %>">
                 </p>
             </div>
         </div>
@@ -71,7 +74,7 @@
             <p class="fl R_left">地址：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="contactAddress" placeholder="请输入地址" value="">
+                    <input type="text" name="contactAddress" placeholder="请输入地址" value="<%= data.contactAddress %>">
                 </p>
             </div>
         </div>

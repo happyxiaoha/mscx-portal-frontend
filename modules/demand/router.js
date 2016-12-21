@@ -10,6 +10,9 @@ var Routes =  Backbone.Router.extend({
         'data/detail/:id': 'dataDetailView',
         'api/detail/:id': 'apiDetailView',
         'service/detail/:id': 'serviceDetailView',
+        'data/edit/:id': 'dataPublishView',
+        'api/edit/:id': 'apiPublishView',
+        'service/edit/:id': 'servicePublishView',
         'data/publish': 'dataPublishView',
         'api/publish': 'apiPublishView',
         'service/publish': 'servicePublishView'
@@ -34,33 +37,51 @@ var Routes =  Backbone.Router.extend({
     },
     dataDetailView: function(id) {
         var view = require('demand/data/detailView.js');
+
+        var detailView = mscxPage.views['dataDetailView'];
+        detailView && detailView.undelegateEvents() && detailView.stopListening();
+
         mscxPage.views['dataDetailView'] = new view({
             id: id
         });
     },
     apiDetailView: function(id) {
         var view = require('demand/api/detailView.js');
+
+        var detailView = mscxPage.views['apiDetailView'];
+        detailView && detailView.undelegateEvents() && detailView.stopListening();
+
         mscxPage.views['apiDetailView'] = new view({
             id: id
         });
     },
     serviceDetailView: function(id) {
         var view = require('demand/service/detailView.js');
+
+        var detailView = mscxPage.views['serviceDetailView'];
+        detailView && detailView.undelegateEvents() && detailView.stopListening();
+
         mscxPage.views['serviceDetailView'] = new view({
             id: id
         });
     },
-    dataPublishView: function() {
+    dataPublishView: function(id) {
         var dataPublishView = require('demand/data/publishView.js');
-        mscxPage.views['dataPublishView'] = new dataPublishView();
+        mscxPage.views['dataPublishView'] = new dataPublishView({
+            id: id
+        });
     },
-    apiPublishView: function() {
+    apiPublishView: function(id) {
         var apiPublishView = require('demand/api/publishView.js');
-        mscxPage.views['apiPublishView'] = new apiPublishView();
+        mscxPage.views['apiPublishView'] = new apiPublishView({
+            id: id
+        });
     },
-    servicePublishView: function() {
+    servicePublishView: function(id) {
         var servicePublishView = require('demand/service/publishView.js');
-        mscxPage.views['servicePublishView'] = new servicePublishView();
+        mscxPage.views['servicePublishView'] = new servicePublishView({
+            id: id
+        });
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

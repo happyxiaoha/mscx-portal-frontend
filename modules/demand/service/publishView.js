@@ -8,35 +8,39 @@ require('validate');
 require('util');
 
 var demandApi = '/ro/mscx-requirement-api/';
-var model = Backbone.Model.extend({
+var detailModel = Backbone.Model.extend({
+    url: mscxPage.host + '' + demandApi + 'getServiceDetail.do'
+})
+var addModel = Backbone.Model.extend({
+    idAttribute: 'addId',
     url: mscxPage.host + '' + demandApi + 'addService.do'
+});
+var modifyModel = Backbone.Model.extend({
+    idAttribute: 'modifyId',
+    url: mscxPage.host + '' + demandApi + 'modifyService.do'
 });
 
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     events: {
-        'input form input[type="text"]' : 'changeAttribute',
-        'input form textarea' : 'changeAttribute',
         'click #goBack': 'backHistory'
     },
-    template: _.template(template),
+    template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.$el.html(this.template());
+        // 如果有ID则说明是进入修改页面
+        if(this.id) {
+            this.detailModel = new detailModel();
+            this.listenTo(this.detailModel, 'sync', this.renderDetail);
+            this.detailModel.fetch({
+                data: {
+                    id: this.id
+                }
+            })
+        }else {
+            this.renderDetail();
+        }
 
-        this.$form = this.$('form');
-        this.$form.validate(this.validateConfig());
-
-        this.$endTime = this.$('.end-time');
-
-        // 选择日期
-        this.$endTime.daterangepicker({
-            singleDatePicker: true,
-            startDate: moment(),
-            minDate: (new Date()).format('yyyy-MM-dd')
-        });
-        this.$endTime.on('apply.daterangepicker', this.changeDate.bind(this));
-
-        this.model = new model();
+        this.model = this.id ? new modifyModel() : new addModel();
         this.listenTo(this.model, 'sync', this.handleSubmit);
     },
     validateConfig: function () {
@@ -54,8 +58,7 @@ var createDemandView = Backbone.View.extend({
                     required: true
                 },
                 money: {
-                    required: true,
-                    number: true
+                    required: true
                 },
                 endTime: {
                     required: true
@@ -77,10 +80,10 @@ var createDemandView = Backbone.View.extend({
         }
     },
     submitForm: function () {
+        var params = this.$form.serializeObject();
+
+        this.model.set(params);
         this.model.save();
-    },
-    changeAttribute: function (e) {
-        this.model.set(e.target.name, e.target.value);
     },
     backHistory: function () {
         history.back();
@@ -102,6 +105,24 @@ var createDemandView = Backbone.View.extend({
         this.model.set({
             endTime: date
         })
+    },
+    renderDetail: function() {
+        var model = this.detailModel.toJSON();
+
+        this.$el.html(this.template(model.result));
+
+        this.$form = this.$('form');
+        this.$form.validate(this.validateConfig());
+
+        this.$endTime = this.$('.end-time');
+
+        // 选择日期
+        this.$endTime.daterangepicker({
+            singleDatePicker: true,
+            startDate: moment(),
+            minDate: (new Date()).format('yyyy-MM-dd')
+        });
+        this.$endTime.on('apply.daterangepicker', this.changeDate.bind(this));
     }
 });
 

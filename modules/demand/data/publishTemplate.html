@@ -1,5 +1,8 @@
 <div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
     <form onsubmit="return false;">
+        <% if(data && data.id) { %>
+        <input type="hidden" name="id" value="<%= data.id %>" />
+        <% } %>
         <!-- top -->
         <p class="ReleaseTit">发布数据需求</p>
         <!-- down -->
@@ -8,7 +11,7 @@
                 <p class="fl R_left"><em>*</em> 需求名称：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="name" id="name" placeholder="请输入需求名称" >
+                        <input type="text" name="name" value="<%= data.name %>" id="name" placeholder="请输入需求名称" >
                     </p>
                 </div>
             </div>
@@ -16,7 +19,7 @@
                 <p class="fl R_left"><em>*</em> 数据描述：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea name="dataDescription" id="dataDescription" cols="30" rows="10" placeholder="请输入任务描述"></textarea>
+                        <textarea name="dataDescription" id="dataDescription" cols="30" rows="10" placeholder="请输入任务描述"><%= data && data.dataDescription %></textarea>
                     </p>
                 </div>
             </div>
@@ -24,7 +27,7 @@
                 <p class="fl R_left"><em>*</em> 数据项：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea style="height: 120px" name="dataItem" id="dataItem" cols="30" rows="10" placeholder="请输入数据项"></textarea>
+                        <textarea style="height: 120px" name="dataItem" id="dataItem" cols="30" rows="10" placeholder="请输入数据项"><%= data && data.dataItem %></textarea>
                     </p>
                 </div>
             </div>
@@ -32,7 +35,7 @@
                 <p class="fl R_left"><em>*</em> 数据用途：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea style="height: 120px" name="dataUsage" id="dataUsage" cols="30" rows="10" placeholder="请输入数据用途"></textarea>
+                        <textarea style="height: 120px" name="dataUsage" id="dataUsage" cols="30" rows="10" placeholder="请输入数据用途"><%= data && data.dataUsage %></textarea>
                     </p>
                 </div>
             </div>
@@ -41,7 +44,7 @@
                 <div class="fl R_right">
                     <div class="radio-list">
                         <p>
-                            <input type="text" name="department" id="department" placeholder="请输入归属部门" />
+                            <input type="text" name="department" value="<%= data && data.department %>" id="department" placeholder="请输入归属部门" />
                         </p>
                     </div>
                 </div>
@@ -51,7 +54,7 @@
                 <div class="fl R_right">
                     <div class="radio-list">
                         <p>
-                            <input type="text" name="reqUser" id="reqUser" placeholder="请输入需求用户" />
+                            <input type="text" name="reqUser" value="<%= data && data.reqUser %>" id="reqUser" placeholder="请输入需求用户" />
                         </p>
                     </div>
                 </div>
@@ -61,27 +64,27 @@
                 <div class="fl R_right">
                     <div class="radio-list">
                         <label class="radio-inline checkbox-border">
-                            <input type="radio" name="dataFormat" value="csv" checked>
+                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'csv' && "checked" %> value="csv" >
                             csv
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="pdf" >
+                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'pdf' && "checked" %> value="pdf" >
                             pdf
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="xml">
+                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'xml' && "checked" %> value="xml">
                             xml
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="xlsx">
+                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'xlsx' && "checked" %> value="xlsx">
                             xlsx
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="word">
+                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'word' && "checked" %> value="word">
                             word
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="other">
+                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'other' && "checked" %> value="other">
                             其他
                         </label>
                     </div>

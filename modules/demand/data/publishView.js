@@ -3,29 +3,45 @@
  */
 
 var template = require('html!./publishTemplate.html');
+var detailModel = Backbone.Model.extend({
+    url: mscxPage.host + '/ro/mscx-requirement-api/modifyDataDetail.do'
+})
+var addModel = Backbone.Model.extend({
+    idAttribute: 'addId',
+    url: mscxPage.host + '/ro/mscx-requirement-api/addData.do'
+});
+var modifyModel = Backbone.Model.extend({
+    idAttribute: 'modifyId',
+    url: mscxPage.host + '/ro/mscx-requirement-api/modifyData.do'
+});
+
+
 require('../publish.css');
 require('validate');
+require('util');
 
-var demandApi = '/ro/mscx-requirement-api/';
-var model = Backbone.Model.extend({
-    url: mscxPage.host + '' + demandApi + 'addData.do'
-});
 
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     events: {
-        'input form input[type="text"]' : 'changeAttribute',
-        'input form textarea' : 'changeAttribute',
         'click #goBack': 'backHistory'
     },
-    template: _.template(template),
+    template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.$el.html(this.template());
+        // 如果有ID则说明是进入修改页面
+        if(this.id) {
+            this.detailModel = new detailModel();
+            this.listenTo(this.detailModel, 'sync', this.renderDetail);
+            this.detailModel.fetch({
+                data: {
+                    id: this.id
+                }
+            })
+        }else {
+            this.renderDetail();
+        }
 
-        this.$form = this.$('form');
-        this.$form.validate(this.validateConfig());
-
-        this.model = new model();
+        this.model = this.id ? new modifyModel() : new addModel();
         this.listenTo(this.model, 'sync', this.handleSubmit);
     },
     validateConfig: function () {
@@ -52,12 +68,10 @@ var createDemandView = Backbone.View.extend({
         }
     },
     submitForm: function () {
-        var dataFormat = this.$el.find('input[name="dataFormat"]').filter(':checked').val();
-        this.model.set('dataFormat', dataFormat);
+        var params = this.$form.serializeObject();
+
+        this.model.set(params);
         this.model.save();
-    },
-    changeAttribute: function (e) {
-        this.model.set(e.target.name, e.target.value);
     },
     backHistory: function () {
         history.back();
@@ -69,6 +83,14 @@ var createDemandView = Backbone.View.extend({
                 location.href = 'userinfo.html#demand';
             })
         }
+    },
+    renderDetail: function() {
+        var model = this.detailModel.toJSON();
+
+        this.$el.html(this.template(model.result));
+
+        this.$form = this.$('form');
+        this.$form.validate(this.validateConfig());
     }
 });
 

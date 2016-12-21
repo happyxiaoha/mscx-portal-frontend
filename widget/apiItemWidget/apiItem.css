@@ -38,6 +38,7 @@
 .api-item .tc img {
     display: inline-block;
     margin: 10px 0 4px;
+    height: 90px;
 }
 .api-item .tc span {
     display: block;

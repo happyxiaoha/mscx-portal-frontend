@@ -2,8 +2,8 @@
 
 var template = require('html!./applyTemplate.html');
 var model = Backbone.Model.extend({
-    idAttribute: 'apiId',
-    url: mscxPage.host + '/ro/mscx-requirement-api/addApiOrder.do'
+    idAttribute: 'serviceId',
+    url: mscxPage.host + '/ro/mscx-requirement-api/addServiceOrder.do'
 })
 
 require('validate');
@@ -53,7 +53,7 @@ var view = Backbone.View.extend({
         this.model.set(e.target.name, e.target.value);
     },
     submit: function() {
-        this.model.set('id', this.id);
+        this.model.set('reqId', this.id);
         this.model.save();
     },
     submitForm: function(index) {

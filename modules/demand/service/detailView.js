@@ -1,8 +1,12 @@
 'use strict';
 
 var template = require('html!./detailTemplate.html');
+var applyView = require('./applyLayer.js');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-requirement-api/getServiceDetail.do'
+})
+var pvModel = Backbone.Model.extend({
+    url: mscxPage.host + '/ro/mscx-requirement-api/addPageViewAmount.do'
 })
 var followModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-requirement-api/addReqServiceFocus.do'
@@ -22,8 +26,10 @@ var view = Backbone.View.extend({
         
         this.detailModel = new detailModel();
         this.followModel = new followModel();
+        this.pvModel = new pvModel();
 
-        this.detailModel.fetch({
+        this.fetchDetail();
+        this.pvModel.fetch({
             data: {
                 id: this.id
             }
@@ -37,17 +43,52 @@ var view = Backbone.View.extend({
 
         this.$el.html(this.template(model.result)).removeClass('opacity0');
     },
-    follow: function() {
-        this.followModel.fetch({
+    fetchDetail: function() {
+        this.detailModel.fetch({
             data: {
-                serviceId: this.id
+                id: this.id
             }
         })
     },
+    apply: function() {
+        var me = this;
+        this.applyView = new applyView({
+            id: this.id
+        });
+        this.$el.append(this.applyView.$el);
+
+        this.applyView.delegate = this;
+
+        layer.open({
+            type: 1,
+            btn: ['确定', '取消'],
+            title: '方案详情',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px'],
+            content: this.applyView.$el,
+            btn1: function (index) {
+                me.applyView.submitForm(index);
+            },
+            btn2: function(index) {
+                layer.close(index);
+            },
+            end: function() {
+                me.applyView.remove();
+            }
+        })
+    },
+    follow: function() {
+        this.followModel.set('serviceId', this.id);
+        this.followModel.save();
+    },
     handleFollow: function() {
+        var me = this;
         var model = this.followModel.toJSON();
-        if(mode.result.status == 'OK') {
-            layer.msg('关注成功');
+        if(model.result.status == 'OK') {
+            layer.msg('关注成功', function() {
+                me.fetchDetail();
+            });
         }
     }
 });

@@ -34,7 +34,7 @@
 .commonDataSel .sl-search{width: 183px;position: inherit;margin: 0 0 0 10px;}
 .commonDataSel .sl-search input[type="text"]{width: 126px;}
 .mainSelDatas{margin-top: 15px;}
-.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;}
+.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;padding: 0 16px;}
 .mainSelDatas .DataSelList li{padding: 14px 25px;border-bottom: 1px solid #ccc;position: relative}
 .mainSelDatas .DataSelList li:last-child{border: 0;}
 /*状态*/
@@ -141,7 +141,7 @@
 .downLoadCons p em{display: inline-block;margin: 0 5px;}
 .downLoadCons p{margin-bottom: 5px;}
 .downLoadCons p.stop{color: #ccc;}
-.downLoadCons button{background: #069cd9;outline: none;width: 86px;height: 34px;margin: 8px 0 0;border: 0;color: #fff;font-size: 14px;}
+.downLoadCons a{background: #069cd9;display:inline-block;line-height:34px;width: 86px;height: 34px;margin: 8px 0 0;border: 0;color: #fff;font-size: 14px;}
 .downLoadCons button.bggray{background: #ddd}
 .downLoadCons p:last-child{margin-top: 10px;}
 
@@ -158,3 +158,9 @@
 .R-shareStarCons p:first-child span:first-child{margin-right: 5px;}
 .R-shareStarCons p:first-child span{height: 21px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;margin-left: 4px;cursor: pointer;padding: 2px 10px;}
 .R-shareStarCons p:first-child span.disable{background-color: #999;}
+
+.apply-box label.error {
+    color: #e66c6b;
+    padding: 0;
+    margin-left: 100px;
+}

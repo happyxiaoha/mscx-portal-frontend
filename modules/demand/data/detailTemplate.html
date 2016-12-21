@@ -8,8 +8,10 @@
     </div>
     <div class="fr R-shareStarCons">
         <p>
-            <% if(data.myself == 0){ %>
+            <% if(data.flag == 0){ %>
             <span id="follow">关注</span>
+            <% }else { %>
+            <span class="disable">已关注</span>
             <% } %>
         </p>
     </div>

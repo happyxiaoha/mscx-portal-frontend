@@ -5,7 +5,11 @@ var applyView = require('./applyLayer.js');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-requirement-api/apiDetail.do'
 })
+var pvModel = Backbone.Model.extend({
+    url: mscxPage.host + '/ro/mscx-requirement-api/addApiPV.do'
+})
 var followModel = Backbone.Model.extend({
+    idAttribute: 'apiId',
     url: mscxPage.host + '/ro/mscx-requirement-api/addApiFocus.do'
 })
 require('../demand.css');
@@ -22,9 +26,14 @@ var view = Backbone.View.extend({
         this.$el.addClass('ReleaseMainCons grid960 clearfix bgWhite boxShadiow animate-content opacity0');
         
         this.detailModel = new detailModel();
-        this.followModel = new followModel();
+        this.pvModel = new pvModel();
+        this.followModel = new followModel({
+            id: this.id
+        });
 
-        this.detailModel.fetch({
+        this.fetchDetail();
+
+        this.pvModel.fetch({
             data: {
                 id: this.id
             }
@@ -33,6 +42,14 @@ var view = Backbone.View.extend({
         this.listenTo(this.detailModel, 'sync', this.render);
         this.listenTo(this.followModel, 'sync', this.handleFollow);
     },
+    fetchDetail: function() {
+        this.$el.addClass('opacity0');
+        this.detailModel.fetch({
+            data: {
+                id: this.id
+            }
+        })
+    },
     render: function() {
         var model = this.detailModel.toJSON();
 
@@ -40,7 +57,9 @@ var view = Backbone.View.extend({
     },
     apply: function() {
         var me = this;
-        this.applyView = new applyView();
+        this.applyView = new applyView({
+            id: this.id
+        });
         this.$el.append(this.applyView.$el);
 
         this.applyView.delegate = this;
@@ -54,7 +73,7 @@ var view = Backbone.View.extend({
             area: ['500px'],
             content: this.applyView.$el,
             btn1: function (index) {
-                me.applyView.submit(index);
+                me.applyView.submitForm(index);
             },
             btn2: function(index) {
                 layer.close(index);
@@ -65,16 +84,16 @@ var view = Backbone.View.extend({
         })
     },
     follow: function() {
-        this.followModel.fetch({
-            data: {
-                id: this.id
-            }
-        })
+        this.followModel.set('id', this.id);
+        this.followModel.save();
     },
     handleFollow: function() {
+        var me = this;
         var model = this.followModel.toJSON();
-        if(mode.result.status == 'OK') {
-            layer.msg('关注成功');
+        if(model.status == 'OK') {
+            layer.msg('关注成功', function() {
+                me.fetchDetail();
+            });
         }
     }
 });

@@ -9,13 +9,15 @@
     </div>
     <div class="fr R-shareStarCons">
         <p>
-            <% if(data.flag1 == 1){ %>
-            <span class="disable">已接单</span>
-            <% }else { %>
+            <% if(!data.billFlag){ %>
             <span id="apply">接单</span>
+            <% }else { %>
+            <span class="disable">已接单</span>
             <% } %>
-            <% if(data.myself == 0){ %>
+            <% if(!data.attentionFlag){ %>
             <span id="follow">关注</span>
+            <% }else{ %>
+            <span class="disable">已关注</span>
             <% } %>
         </p>
     </div>

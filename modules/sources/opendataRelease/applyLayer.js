@@ -11,11 +11,10 @@ var feeOrderModel = Backbone.Model.extend({
     url: mscxPage.host + '/order/feeData/placeOrder.do'
 });
 
-//判断数据是否已购
-var purchaseOrNotModel = Backbone.Model.extend({
-    url: mscxPage.host + '/mscx-order-api/order/purchaseOrNot.do'
+//下载数据
+var downloadModel = Backbone.Model.extend({
+    url: mscxPage.host + '/ro/mscx-data-api/download.do'
 });
-
 // 加入购物车
 var addCartModel = Backbone.Model.extend({
     url: mscxPage.host + '/ro/mscx-uc-api/shopping/cart/user/add.do'
@@ -33,16 +32,15 @@ var view = Backbone.View.extend({
         this.freeOrderModel = new freeOrderModel();
         this.feeOrderModel = new feeOrderModel();
         this.addCartModel = new addCartModel();
-        this.purchaseOrNotModel = new purchaseOrNotModel();
-
+        this.downloadModel = new downloadModel();
         // 收费/免费
         this.chargeType = this.model.chargeType;
+
+        this.listenTo(this.downloadModel, 'sync', this.handleDownload);
 
         this.listenTo(this.addCartModel, 'sync', this.handleCart);
         this.listenTo(this.feeOrderModel, 'sync', this.handleFeeOrder);
         this.listenTo(this.freeOrderModel, 'sync', this.handleFreeOrder);
-
-        this.listenTo(this.purchaseOrNotModel, 'sync', this.handlePurchase);
 
         this.render();
 
@@ -68,24 +66,14 @@ var view = Backbone.View.extend({
         if(this.chargeType == '01') {
             this.freeOrder();   
         }else {
-            this.purchaseData();
+            this.feeOrder();
         }
     },
-    //下载
-    download: function () {
-
-    },
-    purchaseData: function () {      //判断数据是否购买
-        this.purchaseOrNotModel.fetch({
-            data: {
-                sourceId: this.id,
-                char_rule_id: '-1',
-                sourceType: '02'
-            }
-        });
-    },
-    handlePurchase: function () {
-        this.feeOrder();
+    handleDownload: function(res){
+        res = res.toJSON();
+        if(res.status =='OK'){
+            window.open(res.result);
+        }
     },
     freeOrder: function() {
         this.freeOrderModel.fetch({
@@ -104,7 +92,6 @@ var view = Backbone.View.extend({
     },
     // 加入购物车
     addCart: function(index) {
-        debugger;
         var resourceType = this.model.resourceType || '02',
             isAgree = this.$('#agreementBtn')[0].checked,
             msg = '';
@@ -144,7 +131,8 @@ var view = Backbone.View.extend({
             amount: this.amount
         };
 
-        window.localStorage.setItem('orderInfo', JSON.stringify(param));
+        window.localStorage.setItem('orderInfo', encrypt_string(mscxPage.key, JSON.stringify(param)));
+        debugger;
         location.href = 'pay.html';
     },
     handleFreeOrder: function() {
@@ -152,6 +140,11 @@ var view = Backbone.View.extend({
 
         layer.alert(model.message);
 
+        this.downloadModel.fetch({
+            data: {
+                dataId: this.id
+            }
+        }) ;
         if(model.status == 'OK') {
             layer.close(this.layerIndex);
         }

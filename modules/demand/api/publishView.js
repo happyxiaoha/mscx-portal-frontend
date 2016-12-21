@@ -81,7 +81,7 @@ var createDemandView = Backbone.View.extend({
             url: mscxPage.host + '' + demandApi + 'addApi.do',
             success: function(res) {
                 layer.msg('发布成功！', function() {
-                    location.href = '#api';
+                    location.href = 'userinfo.html#demand/api';
                 });
             }
         })

@@ -1,0 +1,52 @@
+<div class="R-top clearfix">
+    <div class="fl R-nameCons">
+        <h3 class="ft24 mb25"><%= data.name %></h3>
+        <p>
+            <span class="cor7 mr25 ft14">访问量：<em class="cor7"><%= data.pageviewAmount %></em></span>
+            <span class="cor7 mr25 ft14">关注量：<em class="cor7"><%= data.focusAmount %></em></span>
+            <span class="cor7 mr25 ft14"><em class="red"><%= data.statusName %></em></span>
+        </p>
+    </div>
+    <div class="fr R-shareStarCons">
+        <p>
+            <% if(data.flag1 == 1){ %>
+            <span class="disable">已接单</span>
+            <% }else { %>
+            <span id="apply">接单</span>
+            <% } %>
+            <% if(data.myself == 0){ %>
+            <span id="follow">关注</span>
+            <% } %>
+        </p>
+    </div>
+</div>
+<div class="R-Cons">
+    <p class="titTop bggray ft14 corBlue">详情</p>
+    <div class="titTopCons">
+        <ul>
+            <li class="mb10">
+                <span>预算金额：</span>
+                <span class="cor7"><%= data.money %></span>
+            </li>
+            <li class="mb10">
+                <span>联系截至日期：</span>
+                <span class="cor7"><%= data.endTime %></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="R-Cons">
+    <p class="titTop bggray ft14 corBlue">任务描述</p>
+    <div class="titTopCons">
+        <ul>
+            <li class="mb10">
+                <span>任务内容：</span>
+                <span class="cor7"><%= data.description %></span>
+            </li>
+            <li class="mb10">
+                <span>任务要求：</span>
+                <span class="cor7"><%= data.required %></span>
+            </li>
+        </ul>
+    </div>
+</div>

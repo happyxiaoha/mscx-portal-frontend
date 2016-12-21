@@ -2,8 +2,8 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./demand.html');
-require('./demand.css');
+var template = require('html!./orders.html');
+require('./orders.css');
 
 
 var demandApi = '/ro/mscx-requirement-api/';

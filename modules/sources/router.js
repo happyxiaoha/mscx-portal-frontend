@@ -8,8 +8,8 @@ var Routes =  Backbone.Router.extend({
         '': 'dataThemeView',
         'view': 'dataThemeView',
         'catalog':'openDataReleaseView',
-        'catalog/category/:id':'openDataReleaseCategoryView',
-        'catalog/org/:id':'openDataReleaseOrgView',
+        'catalog/category/:categoryId':'openDataReleaseCategoryView',
+        'catalog/org/:orgId':'openDataReleaseOrgView',
         'detail/:id':'openDataDetailView'
     },
     dataThemeView:function () {

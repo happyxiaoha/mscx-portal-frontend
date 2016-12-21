@@ -151,7 +151,7 @@ var view = Backbone.View.extend({
 
         // 如果自带默认查询条件
         if(model.defaults) {
-            _.extend(this.searchParams, model.defaults);
+            this.searchParams.set(model.defaults, {silent: true});
             
             model.defaults.categoryId && this.fetchTags();
         }

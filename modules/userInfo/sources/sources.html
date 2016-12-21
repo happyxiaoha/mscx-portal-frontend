@@ -1,0 +1,88 @@
+<div id="sourcesTabs" class="topTab clearfix myApiTop">
+    <span class="active">关注的数据</span>
+    <span>下载的数据</span>
+</div>
+<div id="sourcesInfo"  class="tabDownCons">
+
+</div>
+<script id="focusResourcesMsg" type="template">
+    <div class="M-mainInfo clearfix bgWhite pt25">
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="16%">数据名称</th>
+                        <th width="16%">发布机构</th>
+                        <th width="16%">更新时间</th>
+                        <th width="12%">关注时间</th>
+                        <th width="20%">数据描述</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(focusList, function (fitem) { %>
+                    <tr attrId="<%=fitem.dataInfoId%>">
+                        <td><a href="sources.html#detail/<%=fitem.dataInfoId%>"><%=fitem.name%></a></td>
+                        <td><%=fitem.orgName%></td>
+                        <td><%=fitem.orgName%></td>
+                        <td><%=fitem.updatedTime%></td>
+                        <td><%=fitem.attentionTime%></td>
+                        <td><a class="removeAttention" href="javascript:;">取消关注</a></td>
+                    </tr>
+                    <% }); %>
+                    <%if(focusList.length == 0){%>
+                    <tr>
+                        <td colspan="6">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="focusPage"></div>
+        </div>
+    </div>
+    </div>
+</script>
+<script id="downloadSourcesList" type="template">
+    <div class="R-mainInfo clearfix">
+        <div class="M-mainInfo clearfix bgWhite pt25">
+            <div class="M-downCons">
+                <div class="D_table M-table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th width="12%">数据名称</th>
+                            <th width="16%">发布机构</th>
+                            <th width="16%">更新时间</th>
+                            <th width="12%">关注时间</th>
+                            <th width="20%">数据描述</th>
+                            <th width="10%">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% _.each(downloadList, function (ditem) { %>
+                        <tr>
+                            <td><a href="../openData/openDataAPI.html">2016年全国普通高等学校信息</a></td>
+                            <td>教育部</td>
+                            <td>2016.6.12</td>
+                            <td>2016-06-22 15:05:12</td>
+                            <td>学校名称、主管部门、所在地、办学层次、备注</td>
+                            <td><a>下载</a></td>
+                        </tr>
+                        <% }); %>
+                        <%if(downloadList.length == 0){%>
+                        <tr>
+                            <td colspan="6">暂无数据</td>
+                        </tr>
+                        <%}%>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div id="downLoadPage"></div>
+            </div>
+        </div>
+    </div>
+</script>
+

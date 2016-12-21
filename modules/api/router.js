@@ -7,7 +7,9 @@ var Routes =  Backbone.Router.extend({
         'data': 'dataAPI',
         'tool': 'toolAPI',
         'model': 'modelAPI',
-        'detail/:id': 'detail'
+        'detail/:id': 'detail',
+        'createApi': 'createApiView',
+        'updateApi/id': 'updateApiView'
     },
     dataAPI:function () {
         var APIView = require('api/APIView.js');
@@ -34,6 +36,16 @@ var Routes =  Backbone.Router.extend({
         detailView && detailView.undelegateEvents() && detailView.stopListening();
 
         mscxPage.views['apiDetailView'] = new view({
+            id: id
+        });
+    },
+    createApiView: function () {
+        var createApiView = require('api/apiManage/createApiView.js');
+        mscxPage.views['createApiViewObj'] = new createApiView();
+    },
+    updateApiView: function (id) {
+        var updateApiView = require('api/apiManage/updateApiView.js');
+        mscxPage.views['updateApiViewObj'] = new updateApiView({
             id: id
         });
     },

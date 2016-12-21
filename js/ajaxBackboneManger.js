@@ -3,36 +3,6 @@
  */
 
 var backboneSync = Backbone.sync;
-var param = function (obj) {
-    var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
-
-    for (name in obj) {
-        value = obj[name];
-
-        if (value instanceof Array) {
-            for (i = 0; i < value.length; ++i) {
-                subValue = value[i];
-                fullSubName = name + '[' + i + ']';
-                innerObj = {};
-                innerObj[fullSubName] = subValue;
-                query += param(innerObj) + '&';
-            }
-        }
-        else if (value instanceof Object) {
-            for (subName in value) {
-                subValue = value[subName];
-                fullSubName = name + '[' + subName + ']';
-                innerObj = {};
-                innerObj[fullSubName] = subValue;
-                query += param(innerObj) + '&';
-            }
-        }
-        else if (value !== undefined && value !== null)
-            query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
-    }
-
-    return query.length ? query.substr(0, query.length - 1) : query;
-};
 
 Backbone.sync = function(method, model, options) {
     var beforeSend = options.beforeSend,
@@ -50,7 +20,7 @@ Backbone.sync = function(method, model, options) {
     options.error = function(xhr) {
         layer.alert('系统错误', {icon: 2});
         if (error) return error.apply(this, arguments);
-    }
+    };
     options.success = function (xhr) {
         if(xhr.status == 'ERROR' && xhr.code == 500800) { //un log
             var sHref = window.location.href,
@@ -69,10 +39,6 @@ Backbone.sync = function(method, model, options) {
         else {
             if (success) return success.apply(this, arguments);
         }
-    };
-    options.error = function (xhr) {
-        layer.alert('网络出错',{icon: 2});
-        return error.apply(this, arguments);
     };
     return backboneSync(method, model, options);
 };

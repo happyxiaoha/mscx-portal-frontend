@@ -1,0 +1,198 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
+    <p class="ReleaseTit">发布新API</p>
+    <div class="ReleaseDownCons">
+        <div class="ReleaseInputs labelleft ReleaseDown">
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务范围：</p>
+                <div class="fl R_right">
+                    <p>
+                        <textarea placeholder="多个城市之间以逗号隔开"></textarea>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务名称：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" placeholder="请输入服务名称">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务标识：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" placeholder="输入完整的服务访问URL地址">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">是否收费：</p>
+                <div class="fl R_right chargeTypeRadio">
+                    <label><input type="radio" name="chargeType" checked>免费</label>
+                    <label><input type="radio" name="chargeType">收费</label>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务简介：</p>
+                <div class="fl R_right">
+                    <p>
+                        <textarea name="" id="" cols="30" rows="10" placeholder="请输入数据描述"></textarea>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务图标：</p>
+                <div class="fl R_right">
+                    <p class="allInfoImg">
+                        <img src="../../../images/add.png" alt="">
+                    </p>
+                </div>
+            </div>
+            <!-- 增加 选择框及选择按钮  2016-09-05-->
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务分类：</p>
+                <div class="fl R_right posRE">
+                    <p id="serverCategory" class="checkboxlist">
+                        <label><input type="radio">生活账单</label>
+                        <label><input type="radio">新闻资讯</label>
+                        <label><input type="radio">工作就业</label>
+                        <label><input type="radio">医疗卫生</label>
+                        <label><input type="radio">社会保障</label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">标签：</p>
+                <div class="fl R_right posRE">
+                    <p>
+                        <input type="text" placeholder="请选择标签" value="" readonly class="wd300" id="mainSelInput01">
+                        <button class="btn btn-primary" id="chooseTag">选择</button>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务返回码：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" placeholder="请输入服务返回码">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务对象：</p>
+                <div class="fl R_right">
+                    <p class="server-dist">
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="D_table">
+                <table >
+                    <thead>
+                    <tr>
+                        <th>套餐名称</th>
+                        <th>套餐价格</th>
+                        <th>购买限制</th>
+                        <th>使用限制</th>
+                        <th>生效日期</th>
+                        <th>失效日期</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="packageTable">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearfix ReleaseList mt20">
+                <span class="newSelBtn addPrice fr bgBlue" style="padding: 3px 10px;">新增收费规则</span>
+            </div>
+
+            <div class="D_table">
+                <table>
+                    <tr>
+                        <th>API名称</th>
+                        <th>API标识</th>
+                        <th>API地址</th>
+                        <th>操作</th>
+                    </tr>
+                    <tbody id="apiTable">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearfix ReleaseList mt20">
+                <span class="newSelBtn addApi fr bgBlue" style="padding: 3px 10px;">新增API</span>
+            </div>
+            <div class="R_Btns">
+                <!-- <button class="bgBlue">返回</button> -->
+                <button class="bgBlue">发布</button>
+            </div>
+        </div>
+        <form id="ajaxUpload" class="imgForm" action="" method="post">
+            <input type="file" name="photo" class="upload-file">
+            <input type="submit" id="btnAjax">
+        </form>
+    </div>
+</div>
+<script id="categoryList" type="template">
+    <% _.each(categoryList, function (citem) { %>
+        <label><input type="radio" name="category">生活账单</label>
+    <% }); %>
+</script>
+<script id="tagList" type="template">
+    <div class="layerApi">
+        <ul class="provider-list">
+            <% _.each(tagList, function (titem) { %>
+            <li>神州数码(北京)股份有限公司</li>
+            <% }); %>
+        </ul>
+    </div>
+</script>
+<script id="serverTypeList" type="template">
+        <% _.each(serverTypeList, function (titem) { %>
+        <label class="fl"><input type="checkbox" name="serverTypes">个人</label>
+        <% }); %>
+</script>
+<script id="packageTableTemps" type="template">
+    <% _.each(packageList, function (pitem) { %>
+    <tr>
+        <td>免费套餐</td>
+        <td>0元1000次</td>
+        <td>1次</td>
+        <td>12个月</td>
+        <td>2016-11-11</td>
+        <td>-</td>
+        <td>
+            <a href="javascript:;" class="editPrice">修改</a>
+            <a href="javascript:;" class="removePrice">删除</a>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(packageList.length == 0){%>
+    <tr>
+        <td colspan="7">暂无数据</td>
+    </tr>
+    <%}%>
+</script>
+<script id="apiTableTemps" type="template">
+    <% _.each(apiList, function (aitem) { %>
+    <tr>
+        <td>获取城市列表</td>
+        <td>city</td>
+        <td>http://xxx.scity,cn/water/service/CW0001</td>
+        <td>
+            <a href="javascript:void(0);" class="edit">修改</a>
+            <a href="javascript:void(0);" class="delete">删除</a>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(apiList.length == 0){%>
+    <tr>
+        <td colspan="4">暂无数据</td>
+    </tr>
+    <%}%>
+</script>

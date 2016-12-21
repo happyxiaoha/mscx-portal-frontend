@@ -29,8 +29,8 @@ var createDemandView = Backbone.View.extend({
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
         // 如果有ID则说明是进入修改页面
+        this.detailModel = new detailModel();
         if(this.id) {
-            this.detailModel = new detailModel();
             this.listenTo(this.detailModel, 'sync', this.renderDetail);
             this.detailModel.fetch({
                 data: {

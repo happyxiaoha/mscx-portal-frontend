@@ -14,6 +14,9 @@ $(function() {
     });
     new footer();
     mscxPage.appRouter = new router();
+    mscxPage.appRouter.on('route', function() {
+        $('body').animate({ scrollTop: '0' }, 100)
+    })
     Backbone.history.stop();
     Backbone.history.start();
 });

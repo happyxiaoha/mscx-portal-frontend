@@ -7,9 +7,7 @@ require('./servicesItem.css');
 var view = Backbone.View.extend({
     tagName: 'li',
     className: 'services-item',
-    events: {
-        'click .sl-e-more': 'toggleMore'
-    },
+    events: { },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
         this.$el.html(this.template(this.model));

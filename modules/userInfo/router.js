@@ -6,6 +6,7 @@ var Routes =  Backbone.Router.extend({
         '':'defaultView',
         'info': 'defaultView',
         'user':'userView',
+        'user/:id':'userView',
         'account': 'accountView',
         'demand': 'demandView',
         'demand/:id': 'demandView',
@@ -18,9 +19,11 @@ var Routes =  Backbone.Router.extend({
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
         mscxPage.views['defaultViewObj'] = new defaultView();
     },
-    userView: function () {
+    userView: function (id) {
         var userView = require('userInfo/user/userView.js');
-        mscxPage.views['userViewObj'] = new userView();
+        mscxPage.views['userViewObj'] = new userView({
+            id: id
+        });
     },
     accountView: function () {
         var accountView = require('userInfo/account/accountView.js');

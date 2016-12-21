@@ -22,6 +22,15 @@ var demandApiListModel = Backbone.Model.extend({
 var deleteApiDemandModel = Backbone.Model.extend({
     url: mscxPage.host+''+demandApi+'deleteApi.do'
 });
+var closeApiDemandModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'closeApi.do'
+});
+var deleteServerDemandModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'deleteService.do'
+});
+var closeServerDemandModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'closeService.do'
+});
 
 var demandServersListModel = Backbone.Model.extend({
     url: mscxPage.host+''+demandApi+'queryServiceListOfMe.do'
@@ -34,17 +43,28 @@ var deleteServerDemandModel = Backbone.Model.extend({
 var followServersListModel = Backbone.Model.extend({
     url: mscxPage.host+''+demandApi+'queryServiceFocus.do'
 });
+var reduceFocusServerModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'cancelServiceFocus.do'
+});
 
 var followApiListModel = Backbone.Model.extend({
     url: mscxPage.host+''+demandApi+'queryApiFocus.do'
 });
-
+var reduceFocusApiModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'reduceApiFocus.do'
+});
 var followSourcesListModel = Backbone.Model.extend({
     url: mscxPage.host+''+demandApi+'queryFocus.do'
+});
+var reduceFocusSourcesModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'reduceFocus.do'
 });
 
 var acceptServersModel = Backbone.Model.extend({
     url: mscxPage.host+''+demandApi+'queryServiceOrderOfMe.do'
+});
+var acceptApiModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'queryMyApiOrder.do'
 });
 
 var demandView = Backbone.View.extend({
@@ -242,6 +262,24 @@ var apiDemandListView = Backbone.View.extend({
         }, function(){
             layer.close(deleteLay);
         });
+    },
+    closeApi: function (e) {
+        var that = this;
+        var closeLay = layer.confirm('确认关闭这条API需求吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var sId = $(e.target).closest('tr').attr('attrid');
+            new closeApiDemandModel().save({id: sId},{
+                type: 'POST',
+                success: function () {
+                    layer.msg('关闭成功!');
+                    that.reloadPage();
+                }
+            });
+            layer.close(closeLay);
+        }, function(){
+            layer.close(closeLay);
+        });
     }
 });
 var serversDemandListView = Backbone.View.extend({
@@ -251,10 +289,8 @@ var serversDemandListView = Backbone.View.extend({
         totalPage: 0
     },
     events: {
-        'click .editS': 'updateServers',
-        'click .deleteS': 'deleteServers',
-        'click .closeS': 'closeServers',
-        'click .downS': 'downServers'
+        'click .deleteServers': 'deleteServers',
+        'click .closeServers': 'closeServers'
     },
     initialize: function() {
         var that = this;
@@ -270,89 +306,77 @@ var serversDemandListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
-        this.render();
+        this.initRender();
     },
     render: function () {
-        var res = this.model.get('result');
-        var serverDemandList = [];
-        if(res){
-            serverDemandList = res.list;
-            var page = res.page || {totalPage:0,currentPage:0};
-            this.pagObj.totalPage = page.totalPage;
-            this.pagObj.pageNum = page.currentPage;
-        }
+        var res = this.model.get('result'),
+            that = this,
+            serverDemandList = res.list,
+            page = res.page;
+        this.pagObj.pageNum = page.currentPage;
+        this.pagObj.totalPage = page.totalPage;
         this.$el.html(this.templete({serverDemandList:serverDemandList}));
+        laypage({
+            cont: 'serverPage',
+            skip: true,
+            pages: this.pagObj.totalPage,
+            curr: this.pagObj.pageNum || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.pagObj.pageNum = obj.curr;
+                    that.reloadPage();
+                }
+            }
+        });
+    },
+    initRender: function () {
+        this.$el.html(this.templete({serverDemandList:[]}));
     },
     deleteServers: function (e) {
         var that = this;
-        var $this = $(e.target).is('tr') ? $(e.target) : $(e.target).parent();
-        var sid = $this.attr('attrId');
-        var deleteLayer = layer.confirm('确认要删除吗？', {
-            btn: ['确认','取消'] //按钮
+        var deleteLay = layer.confirm('确认删除这条服务需求吗？', {
+            btn: ['确定','取消'] //按钮
         }, function(){
-            new deleteServerDemandModel().fetch({
-                data: {
-                    id: sid
-                },
+            var sId = $(e.target).closest('tr').attr('attrid');
+            new deleteServerDemandModel().save({id: sId},{
+                type: 'POST',
                 success: function () {
                     layer.msg('删除成功!');
-                    that.model.fetch({
-                        pageSize: this.pagObj.pageSize,
-                        page: this.pagObj.pageNum
-                    });
+                    if(that.model.get('result') && that.model.get('result').list && that.model.get('result').list.length == 1 && that.pagObj.pageNum != 1){
+                        that.pagObj.pageNum--;
+                    }
+                    that.reloadPage();
                 }
             });
-            layer.close(deleteLayer);
+            layer.close(deleteLay);
         }, function(){
-            layer.close(deleteLayer);
+            layer.close(deleteLay);
         });
     },
     closeServers: function () {
         var that = this;
-        var $this = $(e.target).is('tr') ? $(e.target) : $(e.target).parent();
-        var sid = $this.attr('attrId');
-        var deleteLayer = layer.confirm('确认要关闭吗？', {
-            btn: ['确认','取消'] //按钮
+        var closeLay = layer.confirm('确认关闭这条数据需求吗？', {
+            btn: ['确定','取消'] //按钮
         }, function(){
-            new deleteServerDemandModel().fetch({
-                data: {
-                    id: sid
-                },
+            var sId = $(e.target).closest('tr').attr('attrid');
+            new closeServerDemandModel().save({id: sId},{
+                type: 'POST',
                 success: function () {
                     layer.msg('关闭成功!');
-                    that.model.fetch({
-                        pageSize: this.pagObj.pageSize,
-                        page: this.pagObj.pageNum
-                    });
+                    that.reloadPage();
                 }
             });
-            layer.close(deleteLayer);
+            layer.close(closeLay);
         }, function(){
-            layer.close(deleteLayer);
+            layer.close(closeLay);
         });
     },
-    downServers: function () {
-        var that = this;
-        var $this = $(e.target).is('tr') ? $(e.target) : $(e.target).parent();
-        var sid = $this.attr('attrId');
-        var deleteLayer = layer.confirm('确认要下架吗？', {
-            btn: ['确认','取消'] //按钮
-        }, function(){
-            new deleteServerDemandModel().fetch({
-                data: {
-                    id: sid
-                },
-                success: function () {
-                    layer.msg('下架成功!');
-                    that.model.fetch({
-                        pageSize: this.pagObj.pageSize,
-                        page: this.pagObj.pageNum
-                    });
-                }
-            });
-            layer.close(deleteLayer);
-        }, function(){
-            layer.close(deleteLayer);
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
         });
     }
 });
@@ -391,7 +415,7 @@ var followServersListView = Backbone.View.extend({
         pageNum: 1
     },
     events: {
-
+        'click .cancelFocus': 'cancelFocus'
     },
     initialize: function() {
         var that = this;
@@ -439,6 +463,30 @@ var followServersListView = Backbone.View.extend({
     },
     initRender: function () {
         this.$el.html(this.templete({focusServerList:[]}));
+    },
+    cancelFocus: function (e) {
+        var that = this;
+        var sId = parseInt($(e.target).closest('tr').attr('attrid'));
+        var cancelLayer = layer.confirm('确认要取消关注吗？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            new reduceFocusServerModel().save({serviceId: sId},{
+                type: 'POST',
+                success: function () {
+                    layer.msg('取消关注成功!');
+                    if(that.model.get('result') && that.model.get('result').list && that.model.get('result').list.length == 1 && that.pagObj.pageNum != 1){
+                        that.pagObj.pageNum--;
+                    }
+                    that.model.fetch({
+                        pageSize: that.pagObj.pageSize,
+                        page: that.pagObj.pageNum
+                    });
+                }
+            });
+            layer.close(cancelLayer);
+        }, function(){
+            layer.close(cancelLayer);
+        });
     }
 });
 var followApiListView = Backbone.View.extend({
@@ -447,7 +495,7 @@ var followApiListView = Backbone.View.extend({
         pageNum: 1
     },
     events: {
-
+        'click .cancelApiFocus': 'cancelFocus'
     },
     initialize: function() {
         var that = this;
@@ -486,6 +534,30 @@ var followApiListView = Backbone.View.extend({
             }
         });
     },
+    cancelFocus: function (e) {
+        var that = this;
+        var sId = $(e.target).closest('tr').attr('attrid');
+        var cancelLayer = layer.confirm('确认要取消关注吗？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            new reduceFocusApiModel().save({id: sId},{
+                type: 'POST',
+                success: function () {
+                    layer.msg('取消关注成功!');
+                    if(that.model.get('result') && that.model.get('result').list && that.model.get('result').list.length == 1 && that.pagObj.pageNum != 1){
+                        that.pagObj.pageNum--;
+                    }
+                    that.model.fetch({
+                        pageSize: that.pagObj.pageSize,
+                        page: that.pagObj.pageNum
+                    });
+                }
+            });
+            layer.close(cancelLayer);
+        }, function(){
+            layer.close(cancelLayer);
+        });
+    },
     reloadPage: function () {
         this.model.fetch({
             data: {
@@ -504,7 +576,7 @@ var followSourcesListView = Backbone.View.extend({
         pageNum: 1
     },
     events: {
-
+        'click .cancelSourceslFocus': 'cancelFocus'
     },
     initialize: function() {
         var that = this;
@@ -520,6 +592,30 @@ var followSourcesListView = Backbone.View.extend({
             }
         });
         this.initRender();
+    },
+    cancelFocus: function (e) {
+        var that = this;
+        var sId = parseInt($(e.target).closest('tr').attr('attrid'));
+        var cancelLayer = layer.confirm('确认要取消关注吗？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            new reduceFocusSourcesModel().save({id: sId},{
+                type: 'POST',
+                success: function () {
+                    layer.msg('取消关注成功!');
+                    if(that.model.get('result') && that.model.get('result').list && that.model.get('result').list.length == 1 && that.pagObj.pageNum != 1){
+                        that.pagObj.pageNum--;
+                    }
+                    that.model.fetch({
+                        pageSize: that.pagObj.pageSize,
+                        page: that.pagObj.pageNum
+                    });
+                }
+            });
+            layer.close(cancelLayer);
+        }, function(){
+            layer.close(cancelLayer);
+        });
     },
     render: function () {
         var res = this.model.get('result'),
@@ -575,18 +671,18 @@ var acceptView = Backbone.View.extend({
         e.preventDefault();
     }
 });
-var acceptServersView = Backbone.View.extend({
+var acceptApiView = Backbone.View.extend({
     pagObj: {
         pageSize: 10,
         pageNum: 1
     },
     events: {
-
+        
     },
     initialize: function() {
          var that = this;
-         this.templete = _.template($('#myServerAccept').html());
-         this.model = new acceptServersModel();
+         this.templete = _.template($('#myApiAccept').html());
+         this.model = new acceptApiModel();
          this.model.on('change',function () {
              that.render();
          });
@@ -596,6 +692,62 @@ var acceptServersView = Backbone.View.extend({
                  page: this.pagObj.pageNum
              }
          });
+        this.initRender();
+    },
+    render: function () {
+        var res = this.model.get('result'),
+            that = this,
+            acceptApiList = res.list,
+            page = res.page;
+        this.pagObj.pageNum = page.currentPage;
+        this.pagObj.totalPage = page.totalPage;
+        this.$el.html(this.templete({acceptApiList: acceptApiList}));
+        laypage({
+            cont: 'acceptPages',
+            skip: true,
+            pages: this.pagObj.totalPage,
+            curr: this.pagObj.pageNum || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.pagObj.pageNum = obj.curr;
+                    that.reloadPage();
+                }
+            }
+        });
+    },
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
+    },
+    initRender: function () {
+        this.$el.html(this.templete({acceptApiList:[]}));
+    }
+});
+var acceptServersView = Backbone.View.extend({
+    pagObj: {
+        pageSize: 10,
+        pageNum: 1
+    },
+    events: {
+
+    },
+    initialize: function() {
+        var that = this;
+        this.templete = _.template($('#myServerAccept').html());
+        this.model = new acceptServersModel();
+        this.model.on('change',function () {
+            that.render();
+        });
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
         this.initRender();
     },
     render: function () {
@@ -628,33 +780,7 @@ var acceptServersView = Backbone.View.extend({
         });
     },
     initRender: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-var acceptApiView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        this.templete = _.template($('#myApiAccept').html());
-        /*
-         this.model = new demandListModel();
-         this.model.on('change',this.render);
-         this.model.fetch({
-         data: {
-         pageSize: this.pagObj.pageSize,
-         page: this.pagObj.pageNum
-         }
-         });
-         */
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
+        this.$el.html(this.templete({acceptServersList:[]}));
     }
 });
 module.exports = demandView;

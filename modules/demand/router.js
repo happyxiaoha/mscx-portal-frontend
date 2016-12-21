@@ -7,7 +7,6 @@ var Routes =  Backbone.Router.extend({
         'data': 'dataDemandView',
         'api': 'apiDemandView',
         'service': 'serviceDemandView',
-        'createDemand':'createDemandView',
         'data/detail/:id': 'dataDetailView',
         'api/detail/:id': 'apiDetailView',
         'service/detail/:id': 'serviceDetailView',

@@ -11,7 +11,7 @@ var mainView = Backbone.View.extend({
     },
     initialize: function(name) {
         var sName = name || '';
-        this.$el.html(_.template(template)({
+        this.$el.addClass('bod').html(_.template(template)({
             name: sName
         }));
     }

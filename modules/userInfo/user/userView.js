@@ -136,7 +136,7 @@ var userAuthenticationView = Backbone.View.extend({
                     required: true,
                     bussinessCard: true
                 },
-                contractIdCard: {
+                contractIdcard: {
                     required: true,
                     careId: true
                 },
@@ -296,7 +296,9 @@ var userAuthenticationView = Backbone.View.extend({
                 licenceNo: '',
                 taxRegisterNo: '',
                 organizationCode: '',
-                licenceImageId: ''
+                licenceImageId: '',
+                licencePicUrl: '',
+                contractIdcard: ''
             };
         res.account = account;
         this.model = res.contractName ? new updateEnterpriseAuthModel(res) : new addEnterpriseAuthModel(res);
@@ -390,7 +392,7 @@ var userPasswordView = Backbone.View.extend({
         this.model.save({},{
             type: 'POST',
             success: function () {
-                console.log(1);
+                layer.msg('修改密码成功!');
             }
         });
     },

@@ -7,7 +7,12 @@ var Routes =  Backbone.Router.extend({
         'info': 'defaultView',
         'user':'userView',
         'account': 'accountView',
-        'demand': 'demandView'
+        'demand': 'demandView',
+        'demand/:id': 'demandView',
+        'sources': 'sourcesView',
+        'api': 'apiView',
+        'server': 'serverView',
+        'order': 'orderView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -21,9 +26,27 @@ var Routes =  Backbone.Router.extend({
         var accountView = require('userInfo/account/accountView.js');
         mscxPage.views['accountViewObj'] = new accountView();
     },
-    demandView: function () {
+    demandView: function (id) {
         var demandView = require('userInfo/demand/demandView.js');
-        mscxPage.views['demandViewObj'] = new demandView();
+        mscxPage.views['demandViewObj'] = new demandView({
+            id: id
+        });
+    },
+    sourcesView: function () {
+        var sourcesView = require('userInfo/sources/sourcesView.js');
+        mscxPage.views['sourcesViewObj'] = new sourcesView();
+    },
+    serverView: function () {
+        var serverView = require('userInfo/servers/serversView.js');
+        mscxPage.views['serverViewObj'] = new serverView();
+    },
+    apiView: function () {
+        var apiView = require('userInfo/api/apiView.js');
+        mscxPage.views['apiViewObj'] = new apiView();
+    },
+    orderView: function () {
+        var orderView = require('userInfo/orders/ordersView.js');
+        mscxPage.views['orderViewObj'] = new orderView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});
@@ -33,7 +56,7 @@ var Routes =  Backbone.Router.extend({
             mscxPage.userCenter.leftView.initialize(name);
         }
         if(mscxPage.views[name+'Obj']) {
-            mscxPage.views[name+'Obj'].initialize();
+            mscxPage.views[name+'Obj'].initialize(args[0]);
         }
         else {
             if (callback) callback.apply(this, args);

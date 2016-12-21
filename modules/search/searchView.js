@@ -5,7 +5,7 @@
 var searchTemplate = require('html!./search.html');
 
 var searchApiModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/service/queryDataApi.do'
+    url: mscxPage.host + '/ro/mscx-api-api/service/searchApi.do'
 });
 var searchItemView = require('./searchResultItem.js');
 
@@ -95,7 +95,7 @@ var searchView = Backbone.View.extend({
             el:  '#apiResult ul',
             model: res.result.list
         });
-        if(res.page){
+        if(res.result.page){
             laypage({
                 cont: $('#apiResult .Page'),
                 skip: true,
@@ -103,7 +103,7 @@ var searchView = Backbone.View.extend({
                 pages: pageInfo.totalPage,
                 jump: function(obj, first) {
                     if(!first) {
-                        me.searchDataModel.fetch({
+                        me.searchApiModel.fetch({
                             data:{
                                 page: obj.curr,
                                 keyword:　me.id
@@ -124,22 +124,24 @@ var searchView = Backbone.View.extend({
             el:  '#dataResult ul',
             model: res.result.list
         });
-       laypage({
-            cont: $('#dataResult .Page'),
-            skip: true,
-            curr: pageInfo.currentPage || 1,
-            pages: pageInfo.totalPage,
-            jump: function(obj, first) {
-                if(!first) {
-                    me.searchDataModel.fetch({
-                        data:{
-                            page: obj.curr,
-                            keyword:　me.id
-                        }
-                    })
+        if(res.result.page) {
+            laypage({
+                cont: $('#dataResult .Page'),
+                skip: true,
+                curr: pageInfo.currentPage || 1,
+                pages: pageInfo.totalPage,
+                jump: function (obj, first) {
+                    if (!first) {
+                        me.searchDataModel.fetch({
+                            data: {
+                                page: obj.curr,
+                                keyword: me.id
+                            }
+                        })
+                    }
                 }
-            }
-        })
+            })
+        }
     },
     initSerResult: function(res) {
         var pageInfo = res.toJSON().result.page,
@@ -150,22 +152,24 @@ var searchView = Backbone.View.extend({
             el:  '#serResult ul',
             model: res.result.list
         });
-        laypage({
-            cont: $('#serResult .Page'),
-            skip: true,
-            curr: pageInfo.currentPage || 1,
-            pages: pageInfo.totalPage,
-            jump: function(obj, first) {
-                if(!first) {
-                    me.searchSerModel.fetch({
-                        data:{
-                            page: obj.curr,
-                            keyword:　me.id
-                        }
-                    })
+        if(res.result.page) {
+            laypage({
+                cont: $('#serResult .Page'),
+                skip: true,
+                curr: pageInfo.currentPage || 1,
+                pages: pageInfo.totalPage,
+                jump: function (obj, first) {
+                    if (!first) {
+                        me.searchSerModel.fetch({
+                            data: {
+                                page: obj.curr,
+                                keyword: me.id
+                            }
+                        })
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 });
 

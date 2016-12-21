@@ -41,7 +41,14 @@ var loginView = Backbone.View.extend({
             success: function (res) {
                   res = res.toJSON();
                 if(res.status == 'OK'){
-                    window.open('index.html','_self');
+                    var nHref = location.search.replace('?service=','');
+                    if(nHref){
+                        window.open( decodeURIComponent(nHref),'_self');
+                    }
+                    else{
+                        window.open('index.html','_self');
+                    }
+
                 }
             },
             error: function () {

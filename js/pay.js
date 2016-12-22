@@ -4,7 +4,7 @@
 
 var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
-require('pay/pay.css');
+var router = require('pay/router.js');
 
 var PayResource = {
     host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
@@ -18,22 +18,10 @@ $(function() {
     new header();
     new footer();
 
-    var orderInfo = window.localStorage.getItem('orderInfo');
-    var base = new Base64;
-
-    orderInfo = orderInfo && JSON.parse(base.decode(orderInfo)) || {};
-
-    $('#amount').html(orderInfo.amount);
-
-    $('#payBtn').on('click', function() {
-        // 支付按钮
-        var type = $('.pay-type').find('input[type="radio"]:checked').val();
-        
-        _.extend(orderInfo, {
-            channel: PayResource.channels[type],
-            title: '广州大数据'
-        })
-
-        location.href = PayResource.host + '?' + $.param(orderInfo);
+    mscxPage.appRouter = new router();
+    mscxPage.appRouter.on('route', function() {
+        $('body').animate({ scrollTop: '0' }, 100)
     })
+    Backbone.history.stop();
+    Backbone.history.start();
 });

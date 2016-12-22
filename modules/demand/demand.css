@@ -34,7 +34,8 @@
 .commonDataSel .sl-search{width: 183px;position: inherit;margin: 0 0 0 10px;}
 .commonDataSel .sl-search input[type="text"]{width: 126px;}
 .mainSelDatas{margin-top: 15px;}
-.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;padding: 0 16px;}
+.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;}
+.DataSelList.padding-side{padding: 0 16px;}
 .mainSelDatas .DataSelList li{padding: 14px 25px;border-bottom: 1px solid #ccc;position: relative}
 .mainSelDatas .DataSelList li:last-child{border: 0;}
 /*状态*/

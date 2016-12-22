@@ -10,23 +10,23 @@ var applyView = require('../opendataRelease/applyLayer.js');
 var offlineView = require('./offlineLayer.js');
 
 var openDataDetailModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-data-api/getDataDetail.do'
+    url: mscxPage.request.data + 'getDataDetail.do'
 });
 
 //下载数据
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-data-api/download.do'
+    url: mscxPage.request.data + 'download.do'
 });
 //判断数据是否已购
 var purchaseOrNotModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-order-api/order/purchaseOrNot.do'
+    url: mscxPage.request.order + 'order/purchaseOrNot.do'
 });
 var attentionDataModel = Backbone.Model.extend({    //关注
-    url: mscxPage.host+'/ro/mscx-data-api/addUserDataAttention.do'
+    url: mscxPage.request.data + 'addUserDataAttention.do'
 });
 
 var removeAttentionModel = Backbone.Model.extend({    //取消关注
-    url: mscxPage.host+'/ro/mscx-data-api/removeUserDataAttention.do'
+    url: mscxPage.request.data + 'removeUserDataAttention.do'
 });
 
 var openDataDetailView = Backbone.View.extend({
@@ -129,56 +129,25 @@ var openDataDetailView = Backbone.View.extend({
     },
     downloadData: function(event) {
         var me = this;
-        if (me.model.toJSON().result.chargeType == '02') {
-            this.purchaseOrNotModel.fetch({
-                data: {
-                    sourceId: me.id,
-                    char_rule_id: '-1',
-                    sourceType: '02'
-                }
-            });
-        }
-        else {
-            this.applyView = new applyView({
-                id: me.id,
-                model: me.model.toJSON().result
-            });
-            this.$el.append(this.applyView.$el);
-            var btn = ['直接下载', '取消'];
-            var btnCallback = {
-                btn1: function (index) {
-                    me.applyView.order(index);
-                },
-                btn2: function (index) {
-                    layer.close(index);
-                }
-            };
-            var layerParam = {
-                type: 1,
-                btn: btn,
-                title: '下载详情',
-                shade: 0.6,
-                shadeClose: false,
-                area: ['500px'],
-                content: this.applyView.$el,
-                end: function () {
-                    me.applyView.remove();
-                }
-            };
-            layer.open(_.extend(layerParam, btnCallback));
-        }
+        this.purchaseOrNotModel.fetch({
+            data: {
+                sourceId: me.id,
+                char_rule_id: '-1',
+                sourceType: '02'
+            }
+        });
     },
     handlePurchase: function (res) {
         res = res.toJSON();
-        var me = this;
-        if(res.status =='error'){
+        var that = this;
+        if(res.result =='02'){
             layer.confirm('该资源已经购买是否立即下载？', {
                 btn: ['立即下载', '取消']
             }, function(index, layero){
                 var newTarget = window.open('about:blank', '_blank'); //打开新的tab页
-                me.downloadModel.fetch({
+                that.downloadModel.fetch({
                     data: {
-                        dataId: me.id
+                        dataId: that.id
                     },
                     success: function(res){
                         res = res.toJSON();
@@ -190,21 +159,34 @@ var openDataDetailView = Backbone.View.extend({
                 layer.close(index)
             });
         }
+        else  if(res.result =='01'){
+            layer.confirm('该资源已经下单请付款', {
+                btn: ['去付款', '取消']
+            }, function(index, layero) {
+                layer.close(index);
+                window.open('userInfo.html#order','_self');
+            })
+        }
         else {
             this.applyView = new applyView({
-                id: me.id,
-                model: me.model.toJSON().result
+                id: that.curr.id,
+                model: that.curr
             });
             this.$el.append(this.applyView.$el);
-            var btn = ['立即支付', '加入购物车'];
-            var btnCallback =   {
+            var btn = that.curr.chargeType === '02'? ['立即支付', '加入购物车']: ['立即下载', '取消'];
+            var btnCallback =  that.curr.chargeType === '02'? {
                 btn1: function (index) {
-                    me.applyView.order(index);
+                    that.applyView.order(index);
                 },
                 btn2: function (index) {
-                    me.applyView.addCart(index);
+                    that.applyView.addCart(index);
                 }
-            };
+            } : {btn1: function (index) {
+                that.applyView.order(index);
+            },
+                btn2: function (index) {
+                    layer.close(index);
+                }};
 
             var layerParam = {
                 type: 1,
@@ -215,7 +197,7 @@ var openDataDetailView = Backbone.View.extend({
                 area: ['500px'],
                 content: this.applyView.$el,
                 end: function () {
-                    me.applyView.remove();
+                    that.applyView.remove();
                 }
             };
             layer.open(_.extend(layerParam, btnCallback));

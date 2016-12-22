@@ -4,15 +4,15 @@
 
 var template = require('html!./publishTemplate.html');
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/modifyDataDetail.do'
+    url: mscxPage.request.demand + 'modifyDataDetail.do'
 })
 var addModel = Backbone.Model.extend({
     idAttribute: 'addId',
-    url: mscxPage.host + '/ro/mscx-requirement-api/addData.do'
+    url: mscxPage.request.demand + 'addData.do'
 });
 var modifyModel = Backbone.Model.extend({
     idAttribute: 'modifyId',
-    url: mscxPage.host + '/ro/mscx-requirement-api/modifyData.do'
+    url: mscxPage.request.demand + 'modifyData.do'
 });
 
 

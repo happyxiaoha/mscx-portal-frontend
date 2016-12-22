@@ -3,7 +3,7 @@ var openDataThemeListTemplate = require('html!./openDataContentView.html');
 
 
 var openDataThemeListModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-data-api/getDataForOrg.do'
+    url: mscxPage.request.data + 'getDataForOrg.do'
 });
 
 var openDataThemeView = Backbone.View.extend({

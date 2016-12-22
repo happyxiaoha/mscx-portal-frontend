@@ -9,15 +9,15 @@ require('util');
 
 var demandApi = '/ro/mscx-requirement-api/';
 var demandListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryData.do'
+    url: mscxPage.host+''+demandApi+'queryData.do'
 });
 
 var deleteSourceDemandModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'deleteData.do'
+    url: mscxPage.host+''+demandApi+'deleteData.do'
 });
 
 var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryApi.do'
+    url: mscxPage.host+''+demandApi+'queryApi.do'
 });
 var deleteApiDemandModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'deleteApi.do'

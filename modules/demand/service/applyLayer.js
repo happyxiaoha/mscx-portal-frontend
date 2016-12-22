@@ -3,7 +3,7 @@
 var template = require('html!./applyTemplate.html');
 var model = Backbone.Model.extend({
     idAttribute: 'serviceId',
-    url: mscxPage.host + '/ro/mscx-requirement-api/addServiceOrder.do'
+    url: mscxPage.request.demand + 'addServiceOrder.do'
 })
 
 require('validate');

@@ -7,7 +7,7 @@ var searchView = require('searchWidget/searchView.js');
 var resultView = require('./resultView.js');
 
 var servicesModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-app-api/list.do'
+    url: mscxPage.request.app + 'list.do'
 });
 
 var view = Backbone.View.extend({

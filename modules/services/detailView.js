@@ -8,15 +8,15 @@ var serviceDetailModelTemplate = require('html!./detailTemplate.html');
 var shareView = require('shareWidget/shareView.js');
 
 var serviceDetailModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-app-api/get.do'
+    url: mscxPage.request.app + 'get.do'
 });
 
 var attentionModel = Backbone.Model.extend({   //关注
-    url: mscxPage.host + '/ro/mscx-app-api/attention/add.do'
+    url: mscxPage.request.app + 'attention/add.do'
 });
 
 var reAttentionModel = Backbone.Model.extend({   //取消关注
-    url: mscxPage.host + '/ro/mscx-app-api/attention/delete.do'
+    url: mscxPage.request.app + 'attention/delete.do'
 });
 
 require('./services.css');

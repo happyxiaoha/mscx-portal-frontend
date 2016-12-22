@@ -4,19 +4,19 @@ var template = require('html!./applyTemplate.html');
 
 // 套餐api
 var packageModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/charge/getChargeRuleByServiceId.do'
+    url: mscxPage.request.api + 'charge/getChargeRuleByServiceId.do'
 });
 // 免费api下单
 var freeOrderModel = Backbone.Model.extend({
-    url: mscxPage.host + '/order/freeApi/placeOrder.do'
+    url: 'order/freeApi/placeOrder.do'
 });
 // 收费api下单
 var feeOrderModel = Backbone.Model.extend({
-    url: mscxPage.host + '/order/feeApi/placeOrder.do'
+    url: 'order/feeApi/placeOrder.do'
 });
 // 加入购物车
 var addCartModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-uc-api/shopping/cart/user/add.do'
+    url: mscxPage.request.uc + 'shopping/cart/user/add.do'
 });
 
 var view = Backbone.View.extend({

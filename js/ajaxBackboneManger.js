@@ -11,7 +11,7 @@ Backbone.sync = function(method, model, options) {
         error = options.error;
     
     options.beforeSend = function (xhr) {
-        //this.type = 'POST';
+        this.url = mscxPage.host + this.url;
         if (beforeSend) return beforeSend.apply(this, arguments);
     };
     options.complete = function (xhr) {

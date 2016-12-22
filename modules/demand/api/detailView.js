@@ -3,14 +3,14 @@
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/apiDetail.do'
+    url: mscxPage.request.demand + 'apiDetail.do'
 })
 var pvModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/addApiPV.do'
+    url: mscxPage.request.demand + 'addApiPV.do'
 })
 var followModel = Backbone.Model.extend({
     idAttribute: 'apiId',
-    url: mscxPage.host + '/ro/mscx-requirement-api/addApiFocus.do'
+    url: mscxPage.request.demand + 'addApiFocus.do'
 })
 require('../demand.css');
 require('util');

@@ -1,7 +1,7 @@
 'use strict';
 
 var serviceModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/queryServiceListOfAll.do'
+    url: mscxPage.request.demand + 'queryServiceListOfAll.do'
 })
 var wrapTemplate = require('html!./wrapTemplate.html');
 var listTemplate = require('html!./listTemplate.html');

@@ -1,7 +1,7 @@
 'use strict';
 
 var apiModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/queryAllApi.do'
+    url: mscxPage.request.demand + 'queryAllApi.do'
 })
 var wrapTemplate = require('html!./wrapTemplate.html');
 var listTemplate = require('html!./listTemplate.html');

@@ -3,7 +3,7 @@
 var template = require('html!./offlineTemplate.html');
 
 var offlineModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-data-api/addDataOfflineMessage.do'
+    url: mscxPage.request.data + 'addDataOfflineMessage.do'
 });
 
 require('validate');

@@ -7,17 +7,16 @@ require('../publish.css');
 require('validate');
 require('util');
 
-var demandApi = '/ro/mscx-requirement-api/';
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.host + '' + demandApi + 'getServiceDetailOfMe.do'
+    url: mscxPage.request.demand + 'getServiceDetailOfMe.do'
 })
 var addModel = Backbone.Model.extend({
     idAttribute: 'addId',
-    url: mscxPage.host + '' + demandApi + 'addService.do'
+    url: mscxPage.request.demand + 'addService.do'
 });
 var modifyModel = Backbone.Model.extend({
     idAttribute: 'modifyId',
-    url: mscxPage.host + '' + demandApi + 'modifyService.do'
+    url: mscxPage.request.demand + 'modifyService.do'
 });
 
 var createDemandView = Backbone.View.extend({

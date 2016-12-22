@@ -51,6 +51,7 @@ var view = Backbone.View.extend({
     // 立即支付
     order: function(index) {
         var isAgree = this.$('#agreementBtn')[0].checked,
+            that = this,
             msg = '';
 
         !isAgree && (msg += '请阅读并接受资源服务协议');
@@ -60,13 +61,22 @@ var view = Backbone.View.extend({
             return;
         }
 
-        this.layerIndex = index;
+        that.layerIndex = index;
 
         // 免费API的提交
-        if(this.chargeType == '01') {
-            this.freeOrder();   
+        if(that.chargeType == '01') {
+            var newTarget = window.open('about:blank', '_blank'); //打开新的tab页
+            that.freeOrderModel.fetch({
+                data: {
+                    dataId: that.id
+                },
+                success: function (res) {
+                    res = res.toJSON();
+                    newTarget.location.href = res.result; //在打开的tab页下载
+                }
+            })
         }else {
-            this.feeOrder();
+            that.feeOrder();
         }
     },
     handleDownload: function(res){
@@ -74,13 +84,6 @@ var view = Backbone.View.extend({
         if(res.status =='OK'){
             window.open(res.result);
         }
-    },
-    freeOrder: function() {
-        this.freeOrderModel.fetch({
-            data: {
-                dataId: this.id
-            }
-        })
     },
     feeOrder: function() {
 
@@ -120,7 +123,6 @@ var view = Backbone.View.extend({
     },
     handleFeeOrder: function() {
         var model = this.feeOrderModel.toJSON();
-
         if(model.status != 'OK') {
             layer.alert('API下单失败！');
             return;
@@ -128,14 +130,14 @@ var view = Backbone.View.extend({
 
         var param = {
             orderNum: model.result,
-            amount: this.amount
+            amount: this.model.price
         };
 
         var base = new Base64;
         window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
         location.href = 'pay.html';
     },
-    handleFreeOrder: function() {
+    handleFreeOrder: function(res) {
         var model = this.freeOrderModel.toJSON();
 
         layer.alert(model.message);

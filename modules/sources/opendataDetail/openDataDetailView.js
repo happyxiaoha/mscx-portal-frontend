@@ -129,56 +129,25 @@ var openDataDetailView = Backbone.View.extend({
     },
     downloadData: function(event) {
         var me = this;
-        if (me.model.toJSON().result.chargeType == '02') {
-            this.purchaseOrNotModel.fetch({
-                data: {
-                    sourceId: me.id,
-                    char_rule_id: '-1',
-                    sourceType: '02'
-                }
-            });
-        }
-        else {
-            this.applyView = new applyView({
-                id: me.id,
-                model: me.model.toJSON().result
-            });
-            this.$el.append(this.applyView.$el);
-            var btn = ['直接下载', '取消'];
-            var btnCallback = {
-                btn1: function (index) {
-                    me.applyView.order(index);
-                },
-                btn2: function (index) {
-                    layer.close(index);
-                }
-            };
-            var layerParam = {
-                type: 1,
-                btn: btn,
-                title: '下载详情',
-                shade: 0.6,
-                shadeClose: false,
-                area: ['500px'],
-                content: this.applyView.$el,
-                end: function () {
-                    me.applyView.remove();
-                }
-            };
-            layer.open(_.extend(layerParam, btnCallback));
-        }
+        this.purchaseOrNotModel.fetch({
+            data: {
+                sourceId: me.id,
+                char_rule_id: '-1',
+                sourceType: '02'
+            }
+        });
     },
     handlePurchase: function (res) {
         res = res.toJSON();
-        var me = this;
+        var that = this;
         if(res.status =='error'){
             layer.confirm('该资源已经购买是否立即下载？', {
                 btn: ['立即下载', '取消']
             }, function(index, layero){
                 var newTarget = window.open('about:blank', '_blank'); //打开新的tab页
-                me.downloadModel.fetch({
+                that.downloadModel.fetch({
                     data: {
-                        dataId: me.id
+                        dataId: that.id
                     },
                     success: function(res){
                         res = res.toJSON();
@@ -191,6 +160,41 @@ var openDataDetailView = Backbone.View.extend({
             });
         }
         else {
+
+            this.applyView = new applyView({
+                id: that.curr.id,
+                model: that.curr
+            });
+            this.$el.append(this.applyView.$el);
+            var btn = that.curr.chargeType === '02'? ['立即支付', '加入购物车']: ['立即下载', '取消'];
+            var btnCallback =  that.curr.chargeType === '02'? {
+                btn1: function (index) {
+                    that.applyView.order(index);
+                },
+                btn2: function (index) {
+                    that.applyView.addCart(index);
+                }
+            } : {btn1: function (index) {
+                that.applyView.order(index);
+            },
+                btn2: function (index) {
+                    layer.close(index);
+                }};
+
+            var layerParam = {
+                type: 1,
+                btn: btn,
+                title: '下载详情',
+                shade: 0.6,
+                shadeClose: false,
+                area: ['500px'],
+                content: this.applyView.$el,
+                end: function () {
+                    that.applyView.remove();
+                }
+            };
+            layer.open(_.extend(layerParam, btnCallback));
+/*
             this.applyView = new applyView({
                 id: me.id,
                 model: me.model.toJSON().result
@@ -219,6 +223,7 @@ var openDataDetailView = Backbone.View.extend({
                 }
             };
             layer.open(_.extend(layerParam, btnCallback));
+         */
         }
 
     }

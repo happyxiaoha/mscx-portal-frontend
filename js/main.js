@@ -4,7 +4,6 @@
 
 var header = require('../widget/indexHeaderWidget/headerView.js');
 var footer = require('../widget/indexFooterWidget/footerView.js');
-var float = require('../widget/floatWidget/floatView.js');
 var mainView = require('../modules/main/mainView.js');
 require('../css/base.css');
 
@@ -12,5 +11,5 @@ $(function() {
     new header();
     new footer();
     new mainView();
-    new float();
+
 });

@@ -27,7 +27,8 @@ var changePwdView = Backbone.View.extend({
     template: _.template(changePwdTemplate),
     events: {
         'input input.changeInput' : 'changeAttribute',
-        'click #getCode': 'sendMsgCode'
+        'click #getCode': 'sendMsgCode',
+        'click .captchaImgChange': 'refreshCaptcha'
     },
     initialize: function () {
         this.model = new resetPwdModel();

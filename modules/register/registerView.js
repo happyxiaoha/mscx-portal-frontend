@@ -169,6 +169,9 @@ var registerView = Backbone.View.extend({
                         $target.html('<b id="jumpTime">60</b>秒后可重新发送');
                         that.subtraction($target, 60);
                     }
+                },
+                error: function (){
+                    that.refreshCaptcha();
                 }
             })
         }

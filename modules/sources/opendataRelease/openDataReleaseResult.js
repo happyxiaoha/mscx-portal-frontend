@@ -86,23 +86,19 @@ var view = Backbone.View.extend({
         var $target = this.$(event.currentTarget);
         var index = $target.data('index');
         var item = this.list[index];
-        var me = this;
         this.curr = item;
-
-            this.purchaseOrNotModel.fetch({
-                data: {
-                    sourceId: item.id,
-                    char_rule_id: '-1',
-                    sourceType: '02'
-                }
-            });
-
-
+        this.purchaseOrNotModel.fetch({
+            data: {
+                sourceId: item.id,
+                char_rule_id: '-1',
+                sourceType: '02'
+            }
+        });
     },
     handlePurchase: function (res) {
         res = res.toJSON();
         var that = this;
-        if(res.status =='error'){
+        if(res.result =='02'){
             layer.confirm('该资源已经购买是否立即下载？', {
                 btn: ['立即下载', '取消']
             }, function(index, layero) {
@@ -119,7 +115,15 @@ var view = Backbone.View.extend({
                 layer.close(index);
             })
         }
-        else {
+        else if(res.result =='01'){
+            layer.confirm('该资源已经下单请付款', {
+                btn: ['去付款', '取消']
+            }, function(index, layero) {
+                layer.close(index);
+                window.open('userInfo.html#order','_self');
+            })
+        }
+        else{
             this.applyView = new applyView({
                 id: that.curr.id,
                 model: that.curr

@@ -140,7 +140,7 @@ var openDataDetailView = Backbone.View.extend({
     handlePurchase: function (res) {
         res = res.toJSON();
         var that = this;
-        if(res.status =='error'){
+        if(res.result =='02'){
             layer.confirm('该资源已经购买是否立即下载？', {
                 btn: ['立即下载', '取消']
             }, function(index, layero){
@@ -159,8 +159,15 @@ var openDataDetailView = Backbone.View.extend({
                 layer.close(index)
             });
         }
+        else  if(res.result =='01'){
+            layer.confirm('该资源已经下单请付款', {
+                btn: ['去付款', '取消']
+            }, function(index, layero) {
+                layer.close(index);
+                window.open('userInfo.html#order','_self');
+            })
+        }
         else {
-
             this.applyView = new applyView({
                 id: that.curr.id,
                 model: that.curr
@@ -194,36 +201,6 @@ var openDataDetailView = Backbone.View.extend({
                 }
             };
             layer.open(_.extend(layerParam, btnCallback));
-/*
-            this.applyView = new applyView({
-                id: me.id,
-                model: me.model.toJSON().result
-            });
-            this.$el.append(this.applyView.$el);
-            var btn = ['立即支付', '加入购物车'];
-            var btnCallback =   {
-                btn1: function (index) {
-                    me.applyView.order(index);
-                },
-                btn2: function (index) {
-                    me.applyView.addCart(index);
-                }
-            };
-
-            var layerParam = {
-                type: 1,
-                btn: btn,
-                title: '下载详情',
-                shade: 0.6,
-                shadeClose: false,
-                area: ['500px'],
-                content: this.applyView.$el,
-                end: function () {
-                    me.applyView.remove();
-                }
-            };
-            layer.open(_.extend(layerParam, btnCallback));
-         */
         }
 
     }

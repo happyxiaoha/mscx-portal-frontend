@@ -6,19 +6,19 @@ var registerTemplate = require('html!./register.html');
 require('validate');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
-    url: mscxPage.host+'/register/captcha.do?t=' + new Date().getTime()
+    url: 'register/captcha.do?t=' + new Date().getTime()
 });
 
 var getSmsCaptchaModel = Backbone.Model.extend({   //获取短信验证码
-    url: mscxPage.host+'/register/sms/send.do'
+    url: 'register/sms/send.do'
 });
 
 var checkCaptchaModel = Backbone.Model.extend({   //图形验证码验证
-    url: mscxPage.host+'/register/captcha/check.do'
+    url: 'register/captcha/check.do'
 });
 
 var registerModel = Backbone.Model.extend({   //登录
-    url: mscxPage.host+'/register.do'
+    url: 'register.do'
 });
 
 var registerView = Backbone.View.extend({
@@ -169,6 +169,9 @@ var registerView = Backbone.View.extend({
                         $target.html('<b id="jumpTime">60</b>秒后可重新发送');
                         that.subtraction($target, 60);
                     }
+                },
+                error: function (){
+                    that.refreshCaptcha();
                 }
             })
         }

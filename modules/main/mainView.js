@@ -13,26 +13,26 @@ require('../../lib/swiper.jquery.js');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
 
 var navigationSerModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-app-api/recommend/bar.do'
+    url: mscxPage.request.app + 'recommend/bar.do'
 });
 
 var navigationApiModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-api-api/service/getNavigationApi.do'
+    url: mscxPage.request.api + 'service/getNavigationApi.do'
 });
 
 var serListModel = Backbone.Model.extend({
-    url: mscxPage.host+ '/ro/mscx-app-api/list.do'
+    url: mscxPage.request.app + 'list.do'
 });
 
 var apiListModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-api-api/service/getSelectedNavigation.do'
+    url: mscxPage.request.api + 'service/getSelectedNavigation.do'
 });
 
 var recommendApiModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-api-api/service/getSelectedApi.do'
+    url: mscxPage.request.api + 'service/getSelectedApi.do'
 });
 var recommendSerModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-app-api/recommend/list.do'
+    url: mscxPage.request.app + 'recommend/list.do'
 });
 
 

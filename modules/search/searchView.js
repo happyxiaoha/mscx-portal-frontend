@@ -5,15 +5,15 @@
 var searchTemplate = require('html!./search.html');
 
 var searchApiModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/service/searchApi.do'
+    url: mscxPage.request.api + 'service/searchApi.do'
 });
 var searchItemView = require('./searchResultItem.js');
 
 var searchDataModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-data-api/getDataList.do'
+    url: mscxPage.request.data + 'getDataList.do'
 });
 var searchSerModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-app-api/list.do'
+    url: mscxPage.request.app + 'list.do'
 });
 
 var searchView = Backbone.View.extend({

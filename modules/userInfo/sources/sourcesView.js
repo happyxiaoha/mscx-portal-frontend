@@ -24,21 +24,20 @@ function filterData(res,sSplit,array) {
     }
     return res;
 }
-var sourcesApi = '/ro/mscx-data-api/';
 var focusModel = Backbone.Model.extend({
-    url: mscxPage.host+''+sourcesApi+'getAttentionDatum.do',
+    url: mscxPage.request.data + 'getAttentionDatum.do',
     parse: function (res) {
         filterData(res.result,'.',['updatedTime','attentionTime']);
         return res;
     }
 });
 var removeFocusModel = Backbone.Model.extend({
-    url: mscxPage.host+''+sourcesApi+'removeUserDataAttention.do'
+    url: mscxPage.request.data + 'removeUserDataAttention.do'
 });
 
 
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.host+''+sourcesApi+'getAttentionDatum.do'
+    url: mscxPage.request.data + 'getAttentionDatum.do'
 });
 
 

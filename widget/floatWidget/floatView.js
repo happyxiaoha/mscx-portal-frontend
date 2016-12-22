@@ -6,12 +6,13 @@ var template = require('html!./float.html');
 require('./float.css');
 
 
-var footerView = Backbone.View.extend({
+var floatView = Backbone.View.extend({
+    tagName: 'div',
     events: {
         'click #gotoTop':'gotoTop'
     },
     initialize: function() {
-        $('body').append(template);
+        $('body').append(this.$el.html(template));
         $('a.ercode').hover(//为返回顶部增加鼠标进入的反馈效果，用添加删除css类实现
             function(){$('#erCode').fadeIn(100);},
             function(){$('#erCode').fadeOut(100);
@@ -35,4 +36,4 @@ var footerView = Backbone.View.extend({
     }
 });
 
-module.exports = footerView;
+module.exports = floatView;

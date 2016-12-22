@@ -4,7 +4,7 @@
 
 var firstRecommendTemplate = require('html!./firstRecommend.html');
 var firstRecommendModel = Backbone.Model.extend({
-   url: mscxPage.host + '/home/recommendation.do'
+   url: 'home/recommendation.do'
 });
 
 var firstRecommendView = Backbone.View.extend({

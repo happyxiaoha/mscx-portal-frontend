@@ -6,31 +6,30 @@ var template = require('html!./servers.html');
 require('./servers.css');
 
 
-var demandApi = '/ro/mscx-requirement-api/';
 var demandListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryData.do'
+    url: mscxPage.request.demand + 'queryData.do'
 });
 var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryApi.do'
+    url: mscxPage.request.demand + 'queryApi.do'
 });
 var demandServersListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryServiceListOfMe.do'
+    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
 });
 var deleteServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'deleteService.do'
+    url: mscxPage.request.demand + 'deleteService.do'
 });
 
 
 var followServersListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryServiceFocus.do'
+    url: mscxPage.request.demand + 'queryServiceFocus.do'
 });
 
 var followApiListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryServiceListOfMe.do'
+    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
 });
 
 var followSourcesListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryServiceListOfMe.do'
+    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
 });
 
 var serversView = Backbone.View.extend({

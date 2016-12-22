@@ -1,13 +1,12 @@
-.pay-content {
+.pay-wrapper {
     background: #fff;
     width: 900px;
-    float: left;
     padding: 0 30px 30px;
 }
 .pay-content hr {
     border: dashed 1px #dcdcdc;
 }
-.pay-content p{
+.pay-content p.split{
     font-size: 24px;
     padding: 20px;
     border-bottom: solid 1px #888;

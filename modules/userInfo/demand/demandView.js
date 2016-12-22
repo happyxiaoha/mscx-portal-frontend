@@ -9,15 +9,15 @@ require('util');
 
 var demandApi = '/ro/mscx-requirement-api/';
 var demandListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryData.do'
+    url: mscxPage.host+''+demandApi+'queryData.do'
 });
 
 var deleteSourceDemandModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'deleteData.do'
+    url: mscxPage.host+''+demandApi+'deleteData.do'
 });
 
 var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryApi.do'
+    url: mscxPage.host+''+demandApi+'queryApi.do'
 });
 var deleteApiDemandModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'deleteApi.do'
@@ -30,6 +30,15 @@ var deleteServerDemandModel = Backbone.Model.extend({
 });
 var closeServerDemandModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'closeService.do'
+});
+var closeApiDemandModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'closeApi.do'
+});
+var deleteServerDemandModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'deleteService.do'
+});
+var closeServerDemandModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'closeService.do'
 });
 
 var demandServersListModel = Backbone.Model.extend({
@@ -46,6 +55,9 @@ var followServersListModel = Backbone.Model.extend({
 var reduceFocusServerModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'cancelServiceFocus.do'
 });
+var reduceFocusServerModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'cancelServiceFocus.do'
+});
 
 var followApiListModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'queryApiFocus.do'
@@ -59,12 +71,18 @@ var followSourcesListModel = Backbone.Model.extend({
 var reduceFocusSourcesModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'reduceFocus.do'
 });
+var reduceFocusSourcesModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'reduceFocus.do'
+});
 
 var acceptServersModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'queryServiceOrderOfMe.do'
 });
 var acceptApiModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'queryMyApiOrder.do'
+});
+var acceptApiModel = Backbone.Model.extend({
+    url: mscxPage.host+''+demandApi+'queryMyApiOrder.do'
 });
 
 var demandView = Backbone.View.extend({

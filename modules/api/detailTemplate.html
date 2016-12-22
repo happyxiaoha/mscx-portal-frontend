@@ -60,7 +60,11 @@
                     <div>
                         <button id="applyBtn">申请</button>
                         <!-- <button><a class="corff" href="./serverAplication.html">API测试</a></button> -->
-                        <button id="followBtn" class="bgOrange">关注</button>
+                        <% if(data.result && !data.result.attentionFlag){ %>
+                            <button id="followBtn" class="bgOrange">关注</button>
+                        <% }else{ %>
+                            <button class="bggray">已关注</button>
+                        <% } %>
                         <button id="offlineBtn" class="fr" style="margin-right: 0;">线下洽谈申请</button>
                     </div>
                     <!-- 分享 -->

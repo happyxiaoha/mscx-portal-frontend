@@ -22,7 +22,7 @@ var view = Backbone.View.extend({
         this.$count = this.$('#count');
         this.$sort = this.$('.sort');
 
-        this.pageSize = 10;
+        this.pageSize = 12;
 
         this.followModel = new followModel();
 

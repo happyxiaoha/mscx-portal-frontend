@@ -98,3 +98,11 @@
     border-radius: 3px;
     border: none;
 }
+.erweimaImg .saomiao {
+    background: #439cd9 url(../../images/pay/saomiao.png)20px center no-repeat;
+    width: 120px;
+    font-size: 14px;
+    height: 40px;
+    padding-left: 80px;
+    padding-top: 10px;
+}

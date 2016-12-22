@@ -57,6 +57,7 @@ var view = Backbone.View.extend({
         }      
     },
     render: function() {
+        this.packageModel.set('chargeType', this.chargeType);
         this.$el.html(this.template(this.packageModel.toJSON()));
         this.trigger('caculate');
     },
@@ -169,6 +170,8 @@ var view = Backbone.View.extend({
             $number = $tr.find('.number'),
             num = $number.val(),
             ruleId = $number.data('id');
+
+        if(!ruleId) return;
 
         this.layerIndex = index;
 

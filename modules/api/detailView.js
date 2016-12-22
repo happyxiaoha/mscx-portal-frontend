@@ -12,6 +12,11 @@ var detailModel = Backbone.Model.extend({
 var followModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'userAttention/add.do'
 });
+var unFollowModel = Backbone.Model.extend({
+    url: mscxPage.request.api + 'userAttention/remove.do'
+});
+
+
 
 var showdown = require('markdown');
 
@@ -31,9 +36,11 @@ var view = Backbone.View.extend({
 
         this.detailModel = new detailModel();
         this.followModel = new followModel();
+        this.unFollowModel = new unFollowModel();
 
         this.listenTo(this.detailModel, 'sync', this.render);
         this.listenTo(this.followModel, 'sync', this.handleFollow);
+        this.listenTo(this.unFollowModel, 'sync', this.handleUnFollow);
         
         this.detailModel.fetch({
             data: {
@@ -56,6 +63,7 @@ var view = Backbone.View.extend({
 
         model.result.rtnCode = converter.makeHtml(model.result.rtnCode);
 
+        this.attentionFlag = model.result.attentionFlag;
         this.chargeType = model.result.chargeType;
         this.resourceType = model.result.resourceType;
         this.$el.html(this.template(model)).removeClass('opacity0');
@@ -118,22 +126,43 @@ var view = Backbone.View.extend({
         })
 
     },
-    // 关注
+    // 关注或取消关注
     follow: function() {
-        this.followModel.fetch({
-            data: {
-                apiServiceId: this.id
-            }
-        })
+        if(this.attentionFlag) {
+            this.unFollowModel.fetch({
+                data: {
+                    apiServiceId: this.id
+                }
+            })
+        }else {
+            this.followModel.fetch({
+                data: {
+                    apiServiceId: this.id
+                }
+            })
+        }
+        
     },
     handleFollow: function() {
         var result = this.followModel.toJSON();
 
         if(result.status == 'OK') {
             layer.msg('关注成功！');
-            this.$('#followBtn').removeClass().addClass('bggray');
+            this.attentionFlag = !this.attentionFlag;
+            this.$('#followBtn').text('取消关注');
         }else {
             layer.msg('关注失败！');
+        }
+    },
+    handleUnFollow: function() {
+        var result = this.unFollowModel.toJSON();
+
+        if(result.status == 'OK') {
+            layer.msg('取消关注成功！');
+            this.attentionFlag = !this.attentionFlag;
+            this.$('#followBtn').text('关注');
+        }else {
+            layer.msg('取消关注失败！');
         }
     },
     // 线下洽谈

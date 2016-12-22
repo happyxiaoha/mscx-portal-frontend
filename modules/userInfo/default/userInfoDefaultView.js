@@ -4,6 +4,15 @@
 var defaultModel = Backbone.Model.extend({
     url: mscxPage.host+'/personal/dashboard.do'
 });
+var orderApi = '/ro/mscx-order-api/',
+    serverApi = '/ro/mscx-app-api/';
+var myApiListModel = Backbone.Model.extend({
+    url: mscxPage.host+''+orderApi+'api/getSelfApiList.do'
+});
+
+var myServerListModel = Backbone.Model.extend({
+    url: mscxPage.host+''+serverApi+'attention/list.do'
+});
 
 var myApiListModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'api/getSelfApiList.do'

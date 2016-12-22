@@ -44,7 +44,19 @@
     float: left;
     line-height: 27px;
 }
-.tag-list-area .layerApi ul li span, .add-price-list ul li span,.add-api-list ul li span{
+.tag-list-area .layerApi ul li span, .add-price-list ul li span,.add-api-list ul li span{}
+.tag-list-area .layerApi ul,.add-price-list ul{
+    padding: 10px 20px;
+}
+.tag-list-area .layerApi  ul li,.add-price-list ul li{
+    padding: 5px ;
+    float: left;
+}
+.tag-list-area .layerApi ul li label,.add-price-list ul li label{
+    float: left;
+    line-height: 27px;
+}
+.tag-list-area .layerApi ul li span, .add-price-list ul li span{
     width: 70px;
     line-height: 30px;
     display: block;
@@ -94,3 +106,8 @@
 .add-price-list .ml20,.add-api-list .ml20 {margin-left: 20px;}
 .img-error,.tag-error,.server-error,.package-error,.api-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
 .btn-primary {color: #FFF !important;}
+.add-price-list {display: none}
+.add-price-list ul li input.small {width: 80px;}
+.add-price-list ul li input[type="text"] { width: 320px;}
+.add-price-list ul li textarea {width: 320px;height: 80px;resize: none;}
+.add-price-list .ml20 {margin-left: 20px;}

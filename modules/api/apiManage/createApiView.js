@@ -309,6 +309,16 @@ var createApiView = Backbone.View.extend({
             $('.server-error').hide();
         });
         this.model.set('serviceObject',aServerType.join(','));
+        this.$el.html(template);
+        this.buildDateEvents();
+        //$('#createDemandForm').validate(this.validateConfig());
+    },
+    changeCategory: function (e) {
+        var sId = parseInt(e.target.id.replace('c',''));
+        this.renderTagWithCategory(sId);
+        this.model.set('tags','');
+        this.model.set('categoryId',sId);
+        return false;
     },
     renderCategory: function () {
         var categoryTemplate = _.template($('#categoryList').html());
@@ -381,6 +391,23 @@ var createApiView = Backbone.View.extend({
         var that = this;
         var addChargeTemplete = _.template($('#chargeManage').html());
         $('.add-price-list').html(addChargeTemplete({res:{}}));
+        $('#effectDate').daterangepicker({
+            format: 'YYYY-MM-DD',
+            singleDatePicker: true,
+            startDate: moment(),
+            minDate: new Date()
+        }).on('apply.daterangepicker',function (ev,picker) {
+            $('#expiryDate').data('daterangepicker').setOptions({'minDate': new Date($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
+        });
+        $('#expiryDate').daterangepicker({
+            format: 'YYYY-MM-DD',
+            singleDatePicker: true,
+            startDate: moment()
+        }).on('apply.daterangepicker',function (ev,picker) {
+            $('#effectDate').data('daterangepicker').setOptions({'maxDate': new Date($('#expiryDate').val()),singleDatePicker: true,startDate: moment()});
+        });
+    },
+    addChargeLay: function () {
         var dialog= layer.open({
             type: 1,
             btn: ['保存','取消'],
@@ -614,7 +641,11 @@ var createApiView = Backbone.View.extend({
         $formArea.ajaxForm(options);
         $formArea.find('input[type="submit"]').click();
         $formArea = null;
-        e.stopPropagation();
+    },
+    buildChargeTable: function () {
+        var chargeSetJson = this.model.get('chargeSetJson');
+        var packageTableTemps = _.template($('#packageTableTemps').html());
+        $('#packageTable').html(packageTableTemps({chargeSetJson: chargeSetJson}));
     }
 });
 

@@ -5,9 +5,9 @@
 var template = require('html!./api.html');
 require('./api.css');
 
-
+var apiApi = '/ro/mscx-api-api/';
 var myPublicModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/getMyPublishedApi.do'
+    url: mscxPage.host+''+apiApi+'service/getMyPublishedApi.do'
 });
 var demandApiListModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'queryApi.do'

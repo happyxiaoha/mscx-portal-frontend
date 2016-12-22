@@ -1,19 +1,15 @@
 var Routes =  Backbone.Router.extend({
     routes: {
         '': 'selectPayView',
-        'weixin': 'weixinPayView'
+        'result': 'resultView'
     },
     selectPayView: function () {
-        var APIView = require('pay/selectPayView.js');
-        mscxPage.views['dataAPIObj'] = new APIView({
-            id: 'data'
-        });
+        var view = require('pay/selectPayView.js');
+        mscxPage.views['selectPayViewObj'] = new view();
     },
-    weixinPayView:function () {
-        var APIView = require('pay/weixinPayView.js');
-        mscxPage.views['toolAPIObj'] = new APIView({
-            id: 'tool'
-        });
+    resultView:function () {
+        var view = require('pay/resultView.js');
+        mscxPage.views['resultViewObj'] = new view();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

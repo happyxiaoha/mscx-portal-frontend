@@ -1,6 +1,7 @@
 'use strict';
 
 var template = require('html!./selectPayTemplate.html');
+var weixinPayView = require('./weixinPayView.js');
 require('./pay.css');
 
 var PayResource = {
@@ -14,10 +15,11 @@ var PayResource = {
 var view = Backbone.View.extend({
     el: mscxPage.domEl.payEl,
     initialize: function() {
-        this.$el.addClass('.pay-wrapper grid960 mt20 clearfix bgWhite boxShadiow').html(template);
+        this.$el.addClass('pay-wrapper grid960 mt20 clearfix bgWhite boxShadiow').html(template);
 
         var orderInfo = window.localStorage.getItem('orderInfo');
         var base = new Base64;
+        var me = this;
 
         orderInfo = orderInfo && JSON.parse(base.decode(orderInfo)) || {};
 
@@ -32,7 +34,29 @@ var view = Backbone.View.extend({
                 title: '广州大数据'
             })
 
-            location.href = PayResource.host + '?' + $.param(orderInfo);
+            /* 
+             * 如果是支付宝，页面跳转
+             * 如果是微信支付，ajax获取url生成二维码
+             */
+            var payUrl = PayResource.host + '?' + $.param(orderInfo);
+            switch(type) {
+                case 'alipay':
+                    location.href = payUrl;
+                    break;
+                case 'weixin':
+                    $.get(payUrl, function(res) {
+                        me.weixinPayView = new weixinPayView({
+                            model: {
+                                url: res.result
+                            }
+                        })
+                        me.setElement(me.weixinPayView.render().el);
+                    })
+                    break;
+                default:
+                    break;
+            }
+            
         })
     }
 });

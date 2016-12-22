@@ -1,7 +1,7 @@
 'use strict';
 
 var template = require('html!./share.html');
-var QrCode = require('./qrCode.js');
+var QrCode = require('lib/qrCode.js');
 
 require('./share.css');
 

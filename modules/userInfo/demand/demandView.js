@@ -9,62 +9,62 @@ require('util');
 
 var demandApi = '/ro/mscx-requirement-api/';
 var demandListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryData.do'
+    url: mscxPage.request.demand + 'queryData.do'
 });
 
 var deleteSourceDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'deleteData.do'
+    url: mscxPage.request.demand + 'deleteData.do'
 });
 
 var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryApi.do'
+    url: mscxPage.request.demand + 'queryApi.do'
 });
 var deleteApiDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'deleteApi.do'
+    url: mscxPage.request.demand + 'deleteApi.do'
 });
 var closeApiDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'closeApi.do'
+    url: mscxPage.request.demand + 'closeApi.do'
 });
 var deleteServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'deleteService.do'
+    url: mscxPage.request.demand + 'deleteService.do'
 });
 var closeServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'closeService.do'
+    url: mscxPage.request.demand + 'closeService.do'
 });
 
 var demandServersListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryServiceListOfMe.do'
+    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
 });
 var deleteServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'deleteService.do'
+    url: mscxPage.request.demand + 'deleteService.do'
 });
 
 
 var followServersListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryServiceFocus.do'
+    url: mscxPage.request.demand + 'queryServiceFocus.do'
 });
 var reduceFocusServerModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'cancelServiceFocus.do'
+    url: mscxPage.request.demand + 'cancelServiceFocus.do'
 });
 
 var followApiListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryApiFocus.do'
+    url: mscxPage.request.demand + 'queryApiFocus.do'
 });
 var reduceFocusApiModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'reduceApiFocus.do'
+    url: mscxPage.request.demand + 'reduceApiFocus.do'
 });
 var followSourcesListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryFocus.do'
+    url: mscxPage.request.demand + 'queryFocus.do'
 });
 var reduceFocusSourcesModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'reduceFocus.do'
+    url: mscxPage.request.demand + 'reduceFocus.do'
 });
 
 var acceptServersModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryServiceOrderOfMe.do'
+    url: mscxPage.request.demand + 'queryServiceOrderOfMe.do'
 });
 var acceptApiModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryMyApiOrder.do'
+    url: mscxPage.request.demand + 'queryMyApiOrder.do'
 });
 
 var demandView = Backbone.View.extend({

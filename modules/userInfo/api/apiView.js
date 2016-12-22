@@ -6,18 +6,17 @@ var template = require('html!./api.html');
 require('./api.css');
 
 
-var apiApi = '/ro/mscx-api-api/';
 var myPublicModel = Backbone.Model.extend({
-    url: mscxPage.host+''+apiApi+'service/getMyPublishedApi.do'
+    url: mscxPage.request.api + 'service/getMyPublishedApi.do'
 });
 var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+apiApi+'queryApi.do'
+    url: mscxPage.request.api + 'queryApi.do'
 });
 var demandServersListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+apiApi+'queryServiceListOfMe.do'
+    url: mscxPage.request.api + 'queryServiceListOfMe.do'
 });
 var deleteServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+apiApi+'deleteService.do'
+    url: mscxPage.request.api + 'deleteService.do'
 });
 
 

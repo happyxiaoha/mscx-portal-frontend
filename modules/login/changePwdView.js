@@ -6,19 +6,19 @@
 var changePwdTemplate = require('html!./changePwd.html');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
-    url: mscxPage.host+'/forget/password/captcha.do?t=' + new Date().getTime()
+    url: 'forget/password/captcha.do?t=' + new Date().getTime()
 });
 
 var getSmsCaptchaModel = Backbone.Model.extend({   //获取短信验证码
-    url: mscxPage.host+'/forget/password/sms/send.do'
+    url: 'forget/password/sms/send.do'
 });
 
 var checkCaptchaModel = Backbone.Model.extend({   //图形验证码验证
-    url: mscxPage.host+'/forget/password/captcha/check.do'
+    url: 'forget/password/captcha/check.do'
 });
 
 var resetPwdModel = Backbone.Model.extend({   //重置密码
-    url: mscxPage.host+'/forget/password.do'
+    url: 'forget/password.do'
 });
 
 

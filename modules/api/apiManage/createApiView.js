@@ -7,21 +7,18 @@ require('./createApi.css');
 require('validate');
 require('formAjax');
 
-var dicApi = '/ro/mscx-dict-api/',
-    apiApi = '/ro/mscx-api-api/';
-
 var createApiModel = Backbone.Model.extend({
-    url: mscxPage.host+''+apiApi+'service/publishServiceApi.do'
+    url: mscxPage.request.api + 'service/publishServiceApi.do'
 });
 
 var getCategoryModel = Backbone.Model.extend({
-    url: mscxPage.host+''+dicApi+'category/getApiCategory.do'
+    url: mscxPage.request.dict + 'category/getApiCategory.do'
 });
 var getCategoryTagModel = Backbone.Model.extend({
-    url: mscxPage.host+''+dicApi+'tag/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tag/getTagsInfo.do'
 });
 var getServiceTypeModel = Backbone.Model.extend({
-    url: mscxPage.host+''+dicApi+'dict/getServiceObject.do'
+    url: mscxPage.request.dict + 'dict/getServiceObject.do'
 });
 
 var createApiView = Backbone.View.extend({

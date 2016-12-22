@@ -6,7 +6,7 @@ var template = require('html!./account.html');
 require('./account.css');
 
 var userModel = Backbone.Model.extend({
-    url: mscxPage.host+'/user/info.do'
+    url: 'user/info.do'
 });
 
 var accountView = Backbone.View.extend({

@@ -5,13 +5,13 @@ var resultView = require('./resultView.js');
 var Resource = require('./resource.js');
 
 var dataAPI = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/service/queryDataApi.do'
+    url: mscxPage.request.api + 'service/queryDataApi.do'
 })
 var toolAPI = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/service/queryToolApi.do'
+    url: mscxPage.request.api + 'service/queryToolApi.do'
 })
 var modelAPI = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/service/queryModelApi.do'
+    url: mscxPage.request.api + 'service/queryModelApi.do'
 })
 
 var view = Backbone.View.extend({

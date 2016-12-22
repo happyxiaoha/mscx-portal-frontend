@@ -8,7 +8,7 @@ var searchView = require('searchWidget/searchView.js');
 var openDataReleaseResultView = require('./openDataReleaseResult.js');
 
 var openDataReleaseResultModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-data-api/getDataList.do'
+    url: mscxPage.request.data + 'getDataList.do'
 });
 
 

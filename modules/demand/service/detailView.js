@@ -3,13 +3,13 @@
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/getServiceDetail.do'
+    url: mscxPage.request.demand + 'getServiceDetail.do'
 })
 var pvModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/addPageViewAmount.do'
+    url: mscxPage.request.demand + 'addPageViewAmount.do'
 })
 var followModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/addReqServiceFocus.do'
+    url: mscxPage.request.demand + 'addReqServiceFocus.do'
 })
 require('../demand.css');
 require('util');

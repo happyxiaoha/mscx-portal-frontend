@@ -7,15 +7,15 @@ var changePwdView = require('./changePwdView.js');
 require('validate');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
-    url: mscxPage.host+'/login/captcha.do?t=' + new Date().getTime()
+    url: 'login/captcha.do?t=' + new Date().getTime()
 });
 
 var checkCaptchaModel = Backbone.Model.extend({   //图形验证码验证
-    url: mscxPage.host+'/login/captcha/check.do'
+    url: 'login/captcha/check.do'
 });
 
 var loginModel = Backbone.Model.extend({   //登录
-    url: mscxPage.host+'/login.do'
+    url: 'login.do'
 });
 
 var loginView = Backbone.View.extend({

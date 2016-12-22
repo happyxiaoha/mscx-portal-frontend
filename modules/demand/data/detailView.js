@@ -2,14 +2,14 @@
 
 var template = require('html!./detailTemplate.html');
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/dataDetail.do'
+    url: mscxPage.request.demand + 'dataDetail.do'
 })
 var pvModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/addPV.do'
+    url: mscxPage.request.demand + 'addPV.do'
 })
 var followModel = Backbone.Model.extend({
     idAttribute: 'dataId',
-    url: mscxPage.host + '/ro/mscx-requirement-api/addFocus.do'
+    url:mscxPage.request.demand + 'addFocus.do'
 })
 require('../demand.css');
 require('util');

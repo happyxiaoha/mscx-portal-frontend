@@ -4,7 +4,7 @@ var resultTemplate = require('html!./resultTemplate.html');
 var apiItemView = require('apiItemWidget/apiItemView.js');
 
 var followModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/userAttention/add.do'
+    url: mscxPage.request.api + 'userAttention/add.do'
 })
 
 var view = Backbone.View.extend({

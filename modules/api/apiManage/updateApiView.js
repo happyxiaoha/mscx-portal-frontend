@@ -6,9 +6,8 @@ var template = require('html!./createApi.html');
 require('./createApi.css');
 require('validate');
 
-var demandApi = '/ro/mscx-api-api/';
 var createApiModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'addData.do'
+    url: mscxPage.request.demand + 'addData.do'
 });
 
 var createApiView = Backbone.View.extend({

@@ -10,23 +10,23 @@ var applyView = require('../opendataRelease/applyLayer.js');
 var offlineView = require('./offlineLayer.js');
 
 var openDataDetailModel = Backbone.Model.extend({
-    url: mscxPage.host+'/ro/mscx-data-api/getDataDetail.do'
+    url: mscxPage.request.data + 'getDataDetail.do'
 });
 
 //下载数据
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-data-api/download.do'
+    url: mscxPage.request.data + 'download.do'
 });
 //判断数据是否已购
 var purchaseOrNotModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-order-api/order/purchaseOrNot.do'
+    url: mscxPage.request.order + 'order/purchaseOrNot.do'
 });
 var attentionDataModel = Backbone.Model.extend({    //关注
-    url: mscxPage.host+'/ro/mscx-data-api/addUserDataAttention.do'
+    url: mscxPage.request.data + 'addUserDataAttention.do'
 });
 
 var removeAttentionModel = Backbone.Model.extend({    //取消关注
-    url: mscxPage.host+'/ro/mscx-data-api/removeUserDataAttention.do'
+    url: mscxPage.request.data + 'removeUserDataAttention.do'
 });
 
 var openDataDetailView = Backbone.View.extend({

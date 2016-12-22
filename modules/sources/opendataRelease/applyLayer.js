@@ -4,20 +4,20 @@ var template = require('html!./applyTemplate.html');
 
 // 数据数据下单
 var freeOrderModel = Backbone.Model.extend({
-    url: mscxPage.host + '/order/freeData/placeOrder.do'
+    url: 'order/freeData/placeOrder.do'
 });
 // 收费数据下单
 var feeOrderModel = Backbone.Model.extend({
-    url: mscxPage.host + '/order/feeData/placeOrder.do'
+    url: 'order/feeData/placeOrder.do'
 });
 
 //下载数据
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-data-api/download.do'
+    url: mscxPage.request.data + 'download.do'
 });
 // 加入购物车
 var addCartModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-uc-api/shopping/cart/user/add.do'
+    url: mscxPage.request.uc + 'shopping/cart/user/add.do'
 });
 
 var view = Backbone.View.extend({

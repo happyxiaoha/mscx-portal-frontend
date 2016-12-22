@@ -6,11 +6,11 @@ var applyView = require('./applyLayer.js');
 
 //判断数据是否已购
 var purchaseOrNotModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-order-api/order/purchaseOrNot.do'
+    url: mscxPage.request.order + 'order/purchaseOrNot.do'
 });
 //下载数据
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-data-api/download.do'
+    url: mscxPage.request.data + 'download.do'
 });
 
 var view = Backbone.View.extend({

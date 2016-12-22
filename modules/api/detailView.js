@@ -6,11 +6,11 @@ var offlineView = require('./offlineLayer.js');
 var shareView = require('shareWidget/shareView.js');
 
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/service/getApiServiceDetailById.do'
+    url: mscxPage.request.api + 'service/getApiServiceDetailById.do'
 });
 
 var followModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-api-api/userAttention/add.do'
+    url: mscxPage.request.api + 'userAttention/add.do'
 });
 
 var showdown = require('markdown');

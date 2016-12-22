@@ -6,31 +6,30 @@ var template = require('html!./user.html');
 require('./user.css');
 require('validate');
 require('formAjax');
-var ucApi = '/ro/mscx-uc-api/';
 
 var userInfoModel = Backbone.Model.extend({
-    url: mscxPage.host+''+ucApi+'user/info/mine.do'
+    url: mscxPage.request.uc + 'user/info/mine.do'
 });
 var getPersonAuthModel = Backbone.Model.extend({
-    url: mscxPage.host+''+ucApi+'certification/person/info.do'
+    url: mscxPage.request.uc + 'certification/person/info.do'
 });
 var getEnterpriseAuthModel = Backbone.Model.extend({
-    url: mscxPage.host+''+ucApi+'certification/enterprise/info.do'
+    url: mscxPage.request.uc + 'certification/enterprise/info.do'
 });
 var updateEnterpriseAuthModel = Backbone.Model.extend({
-    url: mscxPage.host+''+ucApi+'certification/enterprise/update.do'
+    url: mscxPage.request.uc + 'certification/enterprise/update.do'
 });
 
 var addEnterpriseAuthModel = Backbone.Model.extend({
-    url: mscxPage.host+''+ucApi+'certification/enterprise.do'
+    url: mscxPage.request.uc + 'certification/enterprise.do'
 });
 
 var personAuthModel = Backbone.Model.extend({
-    url: mscxPage.host+''+ucApi+'certification/person.do'
+    url: mscxPage.request.uc + 'certification/person.do'
 });
 
 var userPasswordManagerModel = Backbone.Model.extend({
-    url: mscxPage.host+''+ucApi+'change/password.do'
+    url: mscxPage.request.uc + 'change/password.do'
 });
 
 var account = '';

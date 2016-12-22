@@ -4,7 +4,7 @@
 
 var template = require('html!./publishTemplate.html');
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.host + '/ro/mscx-requirement-api/modifyApiDetail.do'
+    url: mscxPage.request.demand + 'modifyApiDetail.do'
 })
 require('../publish.css');
 require('validate');

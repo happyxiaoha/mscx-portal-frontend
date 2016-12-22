@@ -67,7 +67,7 @@
                 <p class="fl R_left">标签：</p>
                 <div class="fl R_right posRE">
                     <p>
-                        <input type="text" placeholder="请选择标签" value="" readonly class="wd300" id="mainSelInput01">
+                        <div class="tag-area fl"><span class="un-select">未选择任何标签</span></div>
                         <button class="btn btn-primary" id="chooseTag">选择</button>
                     </p>
                 </div>
@@ -103,7 +103,9 @@
                     </tr>
                     </thead>
                     <tbody id="packageTable">
-
+                        <tr>
+                            <td colspan="7">暂无数据</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -120,7 +122,9 @@
                         <th>操作</th>
                     </tr>
                     <tbody id="apiTable">
-
+                        <tr>
+                            <td colspan="4">暂无数据</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -137,28 +141,93 @@
             <input type="submit" id="btnAjax">
         </form>
     </div>
+    <div class="tag-list-area"></div>
+    <div class="add-price-list layerApi">
+        <form id="addChargeForm" onsubmit="return false;">
+            <ul>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>计费方式：</span>
+                        <select>
+                            <option>免费</option>
+                            <option>按次数</option>
+                            <option>按时间</option>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>套餐名称：</span>
+                        <input type="text">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>套餐价格：</span>
+                        <label><input type="number" class="small">元/</label>
+                        <label><input type="number" class="small">次</label>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>购买限制：</span>
+                        <input type="number" class="small fl">
+                        <b class="fl ml20">(不填则为无限制)</b>
+                    </label>
+                </li>
+                <li>
+                    <label class="gl">
+                        <span>使用限制：</span>
+                        <b class="fl"><input type="number" class="small fl">
+                            个月</b>
+                        <b class="fl ml20">(不填则为无限制)</b>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>生效日期：</span>
+                        <input type="text" name="effectDate" id="effectDate">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>失效日期：</span>
+                        <input type="text" name="expiryDate" id="expiryDate">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>套餐说明：</span>
+                        <textarea></textarea>
+                    </label>
+                </li>
+            </ul>
+        </form>
+    </div>
 </div>
+<script id="chooseTagArea" type="template">
+    <% for(var i=0,len=tags.length; i < len; i++) { %>
+    <span class="fl"><%=tags[i]%></span>
+    <% } %>
+    <%if(tags.length == 0){%>
+    <span class="un-select">未选择任何标签</span>
+    <%}%>
+</script>
 <script id="categoryList" type="template">
     <% _.each(categoryList, function (citem) { %>
-        <label><input type="radio" name="category">生活账单</label>
+        <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == categoryList[0].categoryId){%>checked<%}%> ><%=citem.categoryName%></label>
     <% }); %>
 </script>
 <script id="tagList" type="template">
-    <div class="layerApi">
-        <ul class="provider-list">
-            <% _.each(tagList, function (titem) { %>
-            <li>神州数码(北京)股份有限公司</li>
-            <% }); %>
-        </ul>
-    </div>
+    <div class="layerApi"><ul class="provider-list"><% _.each(tagList, function (tagitem) { %><li attrId="<%=tagitem.tagId%>"><%=tagitem.name%></li><% }); %></ul></div>
 </script>
 <script id="serverTypeList" type="template">
         <% _.each(serverTypeList, function (titem) { %>
-        <label class="fl"><input type="checkbox" name="serverTypes">个人</label>
+        <label class="fl"><input type="checkbox" id="t<%=titem.id%>" name="serverTypes"><%=titem.dictName%></label>
         <% }); %>
 </script>
 <script id="packageTableTemps" type="template">
-    <% _.each(packageList, function (pitem) { %>
+    <% _.each(chargeSetJson, function (chargeItem) { %>
     <tr>
         <td>免费套餐</td>
         <td>0元1000次</td>

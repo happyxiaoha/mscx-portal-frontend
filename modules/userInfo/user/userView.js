@@ -49,10 +49,24 @@ var userView = Backbone.View.extend({
             new this.childView[index]({el: '#userInfoArea'});
         }
     },
-    initialize: function() {
+    initialize: function(id) {
+        if(id){
+            this.id = id;
+        }
+        var index = 0;
         this.childView = [userInfoView,userAuthenticationView,userPasswordView];
         this.$el.html(template);
-        new userInfoView({el: '#userInfoArea'});
+        switch (this.id){
+            case 'auth':
+                index = 1;
+                $($('#userTabs').find('span')[1]).addClass('active');
+                break;
+            default:
+                $($('#userTabs').find('span')[0]).addClass('active');
+                break;
+        }
+        window.history.pushState({},0,'#user');
+        new this.childView[index]({el: '#userInfoArea'});
     }
 });
 var userInfoView = Backbone.View.extend({

@@ -88,7 +88,7 @@ var view = Backbone.View.extend({
         var item = this.list[index];
         var me = this;
         this.curr = item;
-        if(item.chargeType == '02'){
+
             this.purchaseOrNotModel.fetch({
                 data: {
                     sourceId: item.id,
@@ -96,49 +96,12 @@ var view = Backbone.View.extend({
                     sourceType: '02'
                 }
             });
-        }
-        else {
-            this.applyView = new applyView({
-                id: item.id,
-                model: item
-            });
-            this.$el.append(this.applyView.$el);
-            var btn = ['直接下载', '取消'];
-            var btnCallback =  {
-                btn1: function (index) {
-                    me.applyView.order(index);
-                },
-                btn2: function (index) {
-                    layer.close(index);
-                }
-            }; /*: {
-                btn1: function (index) {
-                    me.applyView.order(index);
-                },
-                btn2: function (index) {
-                    me.applyView.addCart(index);
-                }
-            };*/
 
-            var layerParam = {
-                type: 1,
-                btn: btn,
-                title: '下载详情',
-                shade: 0.6,
-                shadeClose: false,
-                area: ['500px'],
-                content: this.applyView.$el,
-                end: function () {
-                    me.applyView.remove();
-                }
-            };
-            layer.open(_.extend(layerParam, btnCallback));
-        }
+
     },
     handlePurchase: function (res) {
         res = res.toJSON();
         var that = this;
-        debugger;
         if(res.status =='error'){
             layer.confirm('该资源已经购买是否立即下载？', {
                 btn: ['立即下载', '取消']
@@ -162,15 +125,20 @@ var view = Backbone.View.extend({
                 model: that.curr
             });
             this.$el.append(this.applyView.$el);
-            var btn = ['立即支付', '加入购物车'];
-            var btnCallback =   {
+            var btn = that.curr.chargeType === '02'? ['立即支付', '加入购物车']: ['立即下载', '取消'];
+            var btnCallback =  that.curr.chargeType === '02'? {
                  btn1: function (index) {
                      that.applyView.order(index);
                  },
                  btn2: function (index) {
                      that.applyView.addCart(index);
                  }
-                 };
+                 } : {btn1: function (index) {
+                        that.applyView.order(index);
+                    },
+                    btn2: function (index) {
+                         layer.close(index);
+                    }};
 
             var layerParam = {
                 type: 1,
@@ -185,9 +153,9 @@ var view = Backbone.View.extend({
                 }
             };
             layer.open(_.extend(layerParam, btnCallback));
-        }
 
     }
+}
 });
 
 module.exports = view;

@@ -3,6 +3,7 @@
  */
 
 var template = require('html!./footer.html');
+var float = require('../floatWidget/floatView.js');
 require('./footer.css');
 
 
@@ -13,6 +14,7 @@ var footerView = Backbone.View.extend({
     },
     initialize: function() {
         this.$el.html(template);
+        new float();
     }
 });
 

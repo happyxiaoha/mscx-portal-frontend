@@ -10,14 +10,14 @@
 </div>
 <script id="resourcesDemandList" type="template">
     <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
-        <div class="tab-title" ><button><a class="corff" href="./demand.html#createDemand">发布数据需求</a></button></div>
+        <div class="tab-title" ><button><a class="corff" href="./demand.html#service/publish">发布数据需求</a></button></div>
         <div class="M-downCons">
             <div class="D_table M-table">
                 <table>
                     <thead>
                     <tr>
-                        <th width="8%">需求名称</th>
-                        <th width="28%">需求描述</th>
+                        <th width="11%">数据需求名称</th>
+                        <th width="25%">数据需求描述</th>
                         <th width="8%">发布日期</th>
                         <th width="8%">状态</th>
                         <th width="8%">反馈日期</th>
@@ -34,7 +34,7 @@
                         <td><%= item.feedbackTime ? new Date(item.feedbackTime).format('yyyy-MM-dd') : '-'%></td>
                         <td>
                             <%if(item.statusCode == '0'){%>
-                                <a href="javascript:;" class="editSource">修改</a>
+                                <a href="./demand.html#service/edit/<%=item.id%>" class="editSource">修改</a>
                                 <a href="javascript:;" class="deleteSource">删除</a>
                             <%}%>
                         </td>
@@ -54,14 +54,14 @@
 </script>
 <script id="apiDemandList" type="template">
     <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
-        <div class="tab-title"><button><a class="corff" href="../customized/citySdkIw.html">发布API需求</a></button></div>
+        <div class="tab-title"><button><a class="corff" href="./demand.html#api/publish">发布API需求</a></button></div>
         <div class="M-downCons">
             <div class="D_table M-table">
                 <table>
                     <thead>
                     <tr>
-                        <th width="20%">需求方系统</th>
-                        <th width="48%">需求方系统描述</th>
+                        <th width="20%">API需求名称</th>
+                        <th width="48%">API需求描述</th>
                         <th width="10%">状态</th>
                         <th width="20%">操作</th>
                     </tr>
@@ -74,7 +74,7 @@
                         <td><%=mscxPage.sourceStatus[aitem.statusCode]%></td>
                         <td>
                             <%if(aitem.statusCode == '0'){%>
-                                <a href="javascript:;" class="editApi">修改</a>
+                                <a href="demand.html#api/edit/<%=aitem.id%>" class="editApi">修改</a>
                                 <a href="javascript:;" class="deleteApi">删除</a>
                             <%}else if(aitem.statusCode == '2' || aitem.statusCode == '3' || aitem.statusCode == '4'){%>
                                 <a href="javascript:;" class="closeApi">关闭</a>
@@ -96,14 +96,14 @@
 </script>
 <script id="serversDemandList" type="template">
     <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
-        <div class="tab-title"><button><a class="corff" href="../customized/citySdkIw.html">发布服务需求</a></button></div>
+        <div class="tab-title"><button><a class="corff" href="./demand.html#data/publish">发布服务需求</a></button></div>
         <div class="M-downCons">
             <div class="D_table M-table">
                 <table>
                     <thead>
                     <tr>
-                        <th width="20%">服务任务名称</th>
-                        <th width="30%">服务任务描述</th>
+                        <th width="20%">服务需求名称</th>
+                        <th width="30%">服务需求描述</th>
                         <th width="18%">截止日期</th>
                         <th width="10%">状态</th>
                         <th width="20%">操作</th>
@@ -111,16 +111,18 @@
                     </thead>
                     <tbody>
                     <% _.each(serverDemandList, function (sitem) { %>
-                    <tr>
+                    <tr attrId="<%=sitem.id%>" >
                         <td><%=sitem.name%></td>
                         <td><%=sitem.description%></td>
                         <td><%=sitem.endTime%></td>
                         <td><%=sitem.statusName%></td>
-                        <td attrId="<%=sitem.id%> ">
-                            <a class="editS" href="javascript:;">修改</a>
-                            <a class="deleteS" href="javascript:;">删除</a>
-                            <a class="closeS" href="javascript:;">关闭</a>
-                            <a class="downS" href="javascript:;">下架</a>
+                        <td>
+                            <%if(sitem.status == '0'){%>
+                                <a href="./demand.html#data/edit/<%=sitem.id%>" class="editServerApi">修改</a>
+                                <a href="javascript:;" class="deleteServers">删除</a>
+                            <%}else if(sitem.status == '2' || sitem.status == '3' || sitem.status == '4'){%>
+                                <a href="javascript:;" class="closeServers">关闭</a>
+                            <%}%>
                         </td>
                     </tr>
                     <% }); %>
@@ -132,6 +134,7 @@
                     </tbody>
                 </table>
             </div>
+            <div id="serverPage" class="page-area fr"></div>
         </div>
     </div>
 </script>
@@ -205,7 +208,7 @@
                 <td><%= faitem.pageviewAmount%></td>
                 <td><%= faitem.focusTime ? new Date(faitem.focusTime).format('yyyy-MM-dd') : '-'%></td>
                 <td>
-                    <a href="javascript:;" class="cancelFocus">取消关注</a>
+                    <a href="javascript:;" class="cancelApiFocus">取消关注</a>
                 </td>
             </tr>
             <% }); %>
@@ -239,7 +242,7 @@
                     <td><%= fsitem.department%></td>
                     <td><%= fsitem.focusTime ? new Date(fsitem.focusTime).format('yyyy-MM-dd') : '-'%></td>
                     <td>
-                        <a href="javascript:;" class="cancelFocus">取消关注</a>
+                        <a href="javascript:;" class="cancelSourceslFocus">取消关注</a>
                     </td>
                 </tr>
                 <% }); %>
@@ -253,7 +256,6 @@
         </table>
     </div>
 </script>
-
 
 <script id="myAccept" type="template">
     <div class="R-mainInfo clearfix accept-list">
@@ -281,22 +283,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><a href="../customized/serverExTaskInf.html">招投标资质核验系统</a></td>
-                <td>80万-100万</td>
-                <td>2016年08月30日</td>
-                <td>20160512</td>
-                <td>广州市政府采购中心</td>
-                <td>已确认</td>
+            <% _.each(acceptServersList, function (asitem) { %>
+            <tr attrId="<%=asitem.id%>">
+                <td><a  href="../sources.html#detail/<%=asitem.id%>"><%=asitem.name%></a></td>
+                <td><%= asitem.money%></td>
+                <td><%= asitem.endTime ? new Date(asitem.endTime).format('yyyy-MM-dd') : '-'%></td>
+                <td><%= asitem.createdTime ? new Date(asitem.createdTime).format('yyyy-MM-dd') : '-'%></td>
+                <td><%= asitem.reqUser%></td>
+                <td>
+                    <%= asitem.statusName%>
+                </td>
             </tr>
+            <% }); %>
+            <%if(acceptServersList.length == 0){%>
             <tr>
-                <td><a href="#">企业诉讼情况调查服务开发</a></td>
-                <td>8万-10万</td>
-                <td>2016年07月30日</td>
-                <td>20160612</td>
-                <td>优信律师事务所</td>
-                <td>已拒绝</td>
+                <td colspan="6">暂无数据</td>
             </tr>
+            <%}%>
             </tbody>
         </table>
     </div>
@@ -315,27 +318,22 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><a href="../customized/citySdkInf.html">中小学生学籍管理系统</a></td>
-                <td>2016-08-30 12:00:00</td>
-                <td>2016-01-01 12:00:00</td>
-                <td>市信息资源中心</td>
-                <td>已确认</td>
+            <% _.each(acceptApiList, function (aaitem) { %>
+            <tr attrId="<%=aaitem.id%>">
+                <td><a  href="../sources.html#detail/<%=aaitem.id%>"><%=aaitem.sysName%></a></td>
+                <td><%= aaitem.endTime ? new Date(aaitem.endTime).format('yyyy-MM-dd') : '-'%></td>
+                <td><%= aaitem.orderTime ? new Date(aaitem.orderTime).format('yyyy-MM-dd') : '-'%></td>
+                <td><%= aaitem.reqUser%></td>
+                <td>
+                    <%= aaitem.statusName%>
+                </td>
             </tr>
+            <% }); %>
+            <%if(acceptApiList.length == 0){%>
             <tr>
-                <td><a href="#">农产品批发市场价格信息网</a></td>
-                <td>2016-04-23 13:23:00</td>
-                <td>2016-04-23 13:23:00</td>
-                <td>李科长</td>
-                <td>已确认</td>
+                <td colspan="6">暂无数据</td>
             </tr>
-            <tr>
-                <td><a href="#">智慧城市平台</a></td>
-                <td>2016-05-12 15:45:23</td>
-                <td>2016-05-12 15:45:23</td>
-                <td>王先生</td>
-                <td>已拒绝</td>
-            </tr>
+            <%}%>
 
             </tbody>
         </table>

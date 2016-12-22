@@ -7,8 +7,8 @@ require('./api.css');
 
 
 var apiApi = '/ro/mscx-api-api/';
-var demandListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+apiApi+'queryData.do'
+var myPublicModel = Backbone.Model.extend({
+    url: mscxPage.host+''+apiApi+'service/getMyPublishedApi.do'
 });
 var demandApiListModel = Backbone.Model.extend({
     url: mscxPage.host+''+apiApi+'queryApi.do'
@@ -52,19 +52,25 @@ var myApiListView = Backbone.View.extend({
         
     },
     initialize: function() {
+        var that = this;
         this.templete = _.template($('#myApiList').html());
 
-        this.model = new demandListModel();
-        this.model.on('change',this.render);
+        this.model = new myPublicModel();
+        this.model.on('change',function () {
+            that.render();
+        });
         this.model.fetch({
             data: {
                 pageSize: this.pagObj.pageSize,
                 page: this.pagObj.pageNum
             }
         });
-        this.render();
+        this.initRender();
     },
     render: function () {
+
+    },
+    initRender: function () {
         this.$el.html(this.templete({demandList:[]}));
     }
 });

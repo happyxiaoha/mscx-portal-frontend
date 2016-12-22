@@ -11,7 +11,7 @@
                 <p class="fl R_left"><em>*</em> 需求名称：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="name" value="<%= data.name %>" id="name" placeholder="请输入需求名称" >
+                        <input type="text" name="name" value="<%= data && data.name %>" id="name" placeholder="请输入需求名称" >
                     </p>
                 </div>
             </div>
@@ -64,7 +64,11 @@
                 <div class="fl R_right">
                     <div class="radio-list">
                         <label class="radio-inline checkbox-border">
+                            <% if(!data){ %>
+                            <input type="radio" name="dataFormat" checked value="csv" >
+                            <% }else{ %>
                             <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'csv' && "checked" %> value="csv" >
+                            <% } %>
                             csv
                         </label>
                         <label class="radio-inline">

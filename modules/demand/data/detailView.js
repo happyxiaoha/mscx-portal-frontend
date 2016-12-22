@@ -59,6 +59,7 @@ var view = Backbone.View.extend({
         var model = this.followModel.toJSON();
         if(model.result.status == 'OK') {
             layer.msg('关注成功');
+            this.fetchDetail();
         }
     }
 });

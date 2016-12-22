@@ -128,8 +128,10 @@ var view = Backbone.View.extend({
     },
     handleFollow: function() {
         var result = this.followModel.toJSON();
+
         if(result.status == 'OK') {
             layer.msg('关注成功！');
+            this.$('#followBtn').removeClass().addClass('bggray');
         }else {
             layer.msg('关注失败！');
         }

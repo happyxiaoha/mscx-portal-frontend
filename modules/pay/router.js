@@ -1,15 +1,17 @@
 var Routes =  Backbone.Router.extend({
     routes: {
         '': 'selectPayView',
-        'result': 'resultView'
+        'result/:id': 'resultView'
     },
     selectPayView: function () {
         var view = require('pay/selectPayView.js');
         mscxPage.views['selectPayViewObj'] = new view();
     },
-    resultView:function () {
+    resultView:function (id) {
         var view = require('pay/resultView.js');
-        mscxPage.views['resultViewObj'] = new view();
+        mscxPage.views['resultView'] = new view({
+            id: id
+        });
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

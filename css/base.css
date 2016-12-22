@@ -163,7 +163,7 @@ em{color:#cc0000;font-style: normal;}
 .bgWhite{background: #fff !important;}
 .bgBlue{background: #069cd9;}
 .bgfff{background: #fff;}
-.bggray{background: #e7e7e7;}
+.bggray{background: #e7e7e7!important;}
 .bgOrange{background: #ef6f08 !important;}
 
 .boxShadiow{box-shadow: 1px 1px 3px rgba(0,0,0,.1), -1px -1px 3px rgba(0,0,0,.1);}

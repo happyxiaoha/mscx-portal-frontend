@@ -88,12 +88,10 @@ var view = Backbone.View.extend({
         this.followModel.save();
     },
     handleFollow: function() {
-        var me = this;
         var model = this.followModel.toJSON();
         if(model.status == 'OK') {
-            layer.msg('关注成功', function() {
-                me.fetchDetail();
-            });
+            layer.msg('关注成功');
+            this.fetchDetail();
         }
     }
 });

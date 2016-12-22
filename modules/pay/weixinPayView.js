@@ -6,10 +6,12 @@ require('./pay.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.payEl,
+    template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.$el.removeClass().addClass('pay-content').html(template);
+        this.$el.removeClass().addClass('pay-content');
     },
     render: function() {
+        this.$el.html(this.template(this.model.order));
         this.$qrcode = this.$('#qrCode');
 
         var qrcode = new QrCode(this.$qrcode[0], {

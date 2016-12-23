@@ -177,12 +177,16 @@ var view = Backbone.View.extend({
         // 如果选中的是分类，则获取该分类下的标签明细, 然后做查询操作
         if(type == 'categoryId') {
             this.searchParams.set({
+                page: 1,
                 categoryId: $target.data('categoryid'),
                 tagId: ''
             })
             this.fetchTags();
         }else {
-            this.searchParams.set(type, (type && $target.data(type.toLowerCase()) || ''));
+            this.searchParams.set({
+                page: 1,
+                type: type && $target.data(type.toLowerCase()) || ''
+            })
         }
     },
     searchData: function() {
@@ -227,15 +231,24 @@ var view = Backbone.View.extend({
         })
 
         if(type == 'objects') {
-            this.searchParams.set('serviceObject', params.join(','));
+            this.searchParams.set({
+                page: 1,
+                serviceObject: params.join(',')
+            });
         }else if(type == 'chargeType') {
-            this.searchParams.set('chargeType', params.length > 1 ? '' : params[0]);
+            this.searchParams.set({
+                page: 1,
+                chargeType: params.length > 1 ? '' : params[0]
+            });
         }
     },
     handleQueryStr: function() {
         var searchText = $.trim(this.$('.search-input').val());
 
-        this.searchParams.set('keyword', searchText);
+        this.searchParams.set({
+            page: 1,
+            keyword: searchText
+        });
     },
     handlePageJump: function(params) {
         this.searchParams.set({
@@ -244,6 +257,9 @@ var view = Backbone.View.extend({
         })
     },
     handleSort: function(params) {
+        _.extend(params, {
+            page: 1
+        })
         this.searchParams.set(params);
     },
     pressEnterSearch: function(event) {
@@ -261,7 +277,10 @@ var view = Backbone.View.extend({
         this.$citySel.html(this.scopeTemplate(this.province && this.province.cities || []));
         this.$areaSel.html(this.scopeTemplate([]));
 
-        this.searchParams.set('scope', code == 0 ? '' : this.$provinceSel.find(':selected').text());
+        this.searchParams.set({
+            page: 1,
+            scope: code == 0 ? '' : this.$provinceSel.find(':selected').text()
+        });
     },
     changeCities: function(event) {
         var code = this.$citySel.val();
@@ -272,12 +291,18 @@ var view = Backbone.View.extend({
 
         this.$areaSel.html(this.scopeTemplate(this.city && this.city.areas || []));
 
-        this.searchParams.set('scope', code == 0 ? '' : this.$citySel.find(':selected').text());
+        this.searchParams.set({
+            page: 1,
+            scope: code == 0 ? '' : this.$citySel.find(':selected').text()
+        });
     },
     changeAreas: function(event) {
         var code = this.$areaSel.val();
 
-        this.searchParams.set('scope', code == 0 ? '' : this.$areaSel.find(':selected').text());
+        this.searchParams.set({
+            page: 1,
+            scope: code == 0 ? '' : this.$areaSel.find(':selected').text()
+        });
     }
 });
 

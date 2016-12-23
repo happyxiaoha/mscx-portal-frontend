@@ -18,7 +18,7 @@
     </span>
     <span class="fl">
         <% if(data && data.chargeType == '02'){ %>
-            <em class="red mt3">¥<%= data && data.price %>.00</em>
+            <em class="red mt3"><% data && data.price ? '¥'+data.price : '' %></em>
             <em><%= data && data.chargeCount %>次起</em>
         <% }else if(data.chargeType == '01'){ %>
             <i class="red ft14"><%= data && data.chargeTypeDesc %></i>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>广州大数据共创服务平台-支付</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="wrapper">
+        正在跳转...
+    </div>
+    <script src="dist/backboneLib.js"></script>
+    <script>
+        var params = location.search.split('&');
+        var orderNum;
+        _.each(params, function(item) {
+            var split = item.split('=');
+            if(split[0] == 'out_trade_no') {
+                orderNum = split[1];
+                return;
+            }
+        })
+        location.replace('pay.html#result/' + orderNum);
+    </script>
+</body>
+</html>

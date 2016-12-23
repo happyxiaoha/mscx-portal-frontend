@@ -106,3 +106,12 @@
     padding-left: 80px;
     padding-top: 10px;
 }
+a.wx-result-btn {
+    float: right;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 8px;
+    color: #fff;
+    margin: 20px;
+}

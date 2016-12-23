@@ -80,7 +80,8 @@ var view = Backbone.View.extend({
         'click .search-btn': 'handleQueryStr',
         'keydown .search-input': 'pressEnterSearch',
         'change #provinceSel': 'changeProvinces',
-        'change #citySel': 'changeCities'
+        'change #citySel': 'changeCities',
+        'change #areaSel': 'changeAreas'
     },
     template: _.template(template, {variable: 'data'}),
     tagTemplate: _.template(tagTemplate, {variable: 'data'}),

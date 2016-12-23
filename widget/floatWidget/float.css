@@ -58,7 +58,7 @@
     bottom: 65px;
     z-index: 1;
     right: 55px;
-    background: url("../../images/codeBg.png") no-repeat;
+    background: url("../../images/ercode.jpg") no-repeat;
 }
 .er-code p{
     text-indent: 40px;
@@ -66,5 +66,5 @@
 .er-code div{
     height: 126px;
     width: 126px;
-    background: url("../../images/newCode.png") no-repeat;
+    background: url("../../images/ercode.jpg") no-repeat;
 }

@@ -180,7 +180,7 @@ var userAuthenticationView = Backbone.View.extend({
         })
     },
     doEnterpriseSave: function () {
-        if($('.upload-file').val()){
+        if(!$('.upload-file').val()){
             $('.phone-error').removeClass('hide');
             return;
         }

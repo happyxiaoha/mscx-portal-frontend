@@ -26,8 +26,8 @@
                         <td><a href="sources.html#detail/<%=fitem.dataInfoId%>"><%=fitem.name%></a></td>
                         <td><%=fitem.orgName%></td>
                         <td><%=fitem.orgName%></td>
-                        <td><%=fitem.updatedTime%></td>
-                        <td><%=fitem.attentionTime%></td>
+                        <td><%= fitem.updatedTime ? new Date(fitem.updatedTime).format('yyyy-MM-dd') : '-'%></td>
+                        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd') : '-'%></td>
                         <td><a class="removeAttention" href="javascript:;">取消关注</a></td>
                     </tr>
                     <% }); %>
@@ -39,7 +39,7 @@
                     </tbody>
                 </table>
             </div>
-            <div id="focusPage"></div>
+            <div id="focusPage" class="page-area fr"></div>
         </div>
     </div>
     </div>
@@ -80,7 +80,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="downLoadPage"></div>
+                <div id="downLoadPage" class="page-area fr"></div>
             </div>
         </div>
     </div>

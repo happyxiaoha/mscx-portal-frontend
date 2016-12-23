@@ -12,6 +12,11 @@ var followModel = Backbone.Model.extend({
     idAttribute: 'apiId',
     url: mscxPage.request.demand + 'addApiFocus.do'
 })
+var unFollowModel = Backbone.Model.extend({
+    idAttribute: 'apiId',
+    url: mscxPage.request.demand + 'reduceApiFocus.do'
+})
+
 require('../demand.css');
 require('util');
 
@@ -30,6 +35,9 @@ var view = Backbone.View.extend({
         this.followModel = new followModel({
             id: this.id
         });
+        this.unFollowModel = new unFollowModel({
+            id: this.id
+        });
 
         this.fetchDetail();
 
@@ -41,6 +49,7 @@ var view = Backbone.View.extend({
 
         this.listenTo(this.detailModel, 'sync', this.render);
         this.listenTo(this.followModel, 'sync', this.handleFollow);
+        this.listenTo(this.unFollowModel, 'sync', this.handleUnFollow);
     },
     fetchDetail: function() {
         this.$el.addClass('opacity0');
@@ -53,6 +62,7 @@ var view = Backbone.View.extend({
     render: function() {
         var model = this.detailModel.toJSON();
 
+        this.attentionFlag = model.result.flag;
         this.$el.html(this.template(model.result)).removeClass('opacity0');
     },
     apply: function() {
@@ -84,14 +94,26 @@ var view = Backbone.View.extend({
         })
     },
     follow: function() {
-        this.followModel.set('id', this.id);
-        this.followModel.save();
+        if(!this.attentionFlag) {
+            this.followModel.save();
+        }else {
+            this.unFollowModel.save();
+        }
     },
     handleFollow: function() {
         var model = this.followModel.toJSON();
         if(model.status == 'OK') {
             layer.msg('关注成功');
-            this.fetchDetail();
+            this.attentionFlag = 1;
+            this.$('#follow').text('取消关注');
+        }
+    },
+    handleUnFollow: function() {
+        var model = this.unFollowModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('取消关注成功');
+            this.attentionFlag = 0;
+            this.$('#follow').text('关注');
         }
     }
 });

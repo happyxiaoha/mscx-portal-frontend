@@ -14,7 +14,7 @@ var followModel = Backbone.Model.extend({
 })
 var unFollowModel = Backbone.Model.extend({
     idAttribute: 'apiId',
-    url: mscxPage.request.demand + 'reduceFocus.do'
+    url: mscxPage.request.demand + 'reduceApiFocus.do'
 })
 
 require('../demand.css');

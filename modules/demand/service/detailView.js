@@ -12,7 +12,7 @@ var followModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'addReqServiceFocus.do'
 })
 var unFollowModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'removeReqServiceFocus.do'
+    url: mscxPage.request.demand + 'cancelReqServiceFocus.do'
 })
 require('../demand.css');
 require('util');
@@ -28,8 +28,12 @@ var view = Backbone.View.extend({
         this.$el.addClass('ReleaseMainCons grid960 clearfix bgWhite boxShadiow animate-content opacity0');
         
         this.detailModel = new detailModel();
-        this.followModel = new followModel();
-        this.unFollowModel = new unFollowModel();
+        this.followModel = new followModel({
+            serviceId: +this.id
+        });
+        this.unFollowModel = new unFollowModel({
+            serviceId: +this.id
+        });
         this.pvModel = new pvModel();
 
         this.fetchDetail();
@@ -85,12 +89,16 @@ var view = Backbone.View.extend({
         })
     },
     follow: function() {
-        this.followModel.set('serviceId', this.id);
-        this.followModel.save();
+        if(!this.attentionFlag) {
+            this.followModel.save();
+        }else {
+            this.unFollowModel.save();
+        }
+        
     },
     handleFollow: function() {
         var model = this.followModel.toJSON();
-        if(model.result.status == 'OK') {
+        if(model.status == 'OK') {
             layer.msg('关注成功');
             this.attentionFlag = true;
             this.$('#follow').text('取消关注');
@@ -98,7 +106,7 @@ var view = Backbone.View.extend({
     },
     handleUnFollow: function() {
         var model = this.unFollowModel.toJSON();
-        if(model.result.status == 'OK') {
+        if(model.status == 'OK') {
             layer.msg('取消关注成功');
             this.attentionFlag = false;
             this.$('#follow').text('关注');

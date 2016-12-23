@@ -15,7 +15,7 @@ var openDataDetailModel = Backbone.Model.extend({
 
 //下载数据
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.request.data + 'download.do'
+    url: mscxPage.request.data + 'data/download.do'
 });
 //判断数据是否已购
 var purchaseOrNotModel = Backbone.Model.extend({

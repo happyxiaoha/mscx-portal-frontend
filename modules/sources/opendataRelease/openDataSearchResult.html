@@ -4,6 +4,7 @@
             <p class="posRE mb20 clearfix">
                 <a href="#detail/<%= item.id %>" class="corOrange ft16 mr72 fl block"><%= item.name %></a>
                <!-- <span class="fr block">评分：<em class="corOrange">4.3</em></span>-->
+                <span class="free fr"><%= item.chargeTypeDesc %></span>
             </p>
             <p  class="cor4 mb20 line22">数据描述：<span><%= item.description %></span></p>
             <p class="posRE search-data-result clearfix">
@@ -13,7 +14,6 @@
                 <span class="corBlue"><%= item.fileType %></span>
                 <span>上次更新于：</span>
                 <span class="corBlue update-time"><%= (new Date(item.updatedTime).toISOString()).slice(0,10) %></span>
-                <span class="free fr"><%= item.chargeTypeDesc %></span>
             </p>
         </div>
         <div class="posAB downLoadCons">

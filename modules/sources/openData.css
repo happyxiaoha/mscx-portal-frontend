@@ -85,7 +85,7 @@
 span.charge,span.free {
     color: #ff4200;
     font-size: 18px;
-    margin-top: -5px;
+    /*margin-top: -5px;*/
     margin-right: 0;
 }
 .openDataReleaseSearch {

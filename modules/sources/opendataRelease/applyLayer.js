@@ -13,7 +13,7 @@ var feeOrderModel = Backbone.Model.extend({
 
 //下载数据
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.request.data + 'download.do'
+    url: mscxPage.request.data + 'data/download.do'
 });
 // 加入购物车
 var addCartModel = Backbone.Model.extend({

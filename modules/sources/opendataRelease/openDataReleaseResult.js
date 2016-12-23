@@ -10,7 +10,7 @@ var purchaseOrNotModel = Backbone.Model.extend({
 });
 //下载数据
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.request.data + 'download.do'
+    url: mscxPage.request.data + 'data/download.do'
 });
 
 var view = Backbone.View.extend({
@@ -115,7 +115,7 @@ var view = Backbone.View.extend({
                 layer.close(index);
             })
         }
-        else if(res.result =='01'){
+        else if(res.result =='0'){
             layer.confirm('该资源已经下单请付款', {
                 btn: ['去付款', '取消']
             }, function(index, layero) {

@@ -79,6 +79,7 @@ var myApplyListView = Backbone.View.extend({
         pageNum: 1
     },
     events: {
+        'click .applyApi': 'applyApiAgain'
     },
     initialize: function() {
         var that = this;
@@ -97,7 +98,41 @@ var myApplyListView = Backbone.View.extend({
         this.render();
     },
     render: function () {
-        this.$el.html(this.templete({applyApiList:[]}));
+        var that = this,
+            res = this.model.get('result') || {},
+            applyApiList = res.list|| [],
+            page = res.page || {currentPage:1,totalSize:1,totalPage:1};
+
+        this.pagObj.pageNum = page.currentPage;
+        this.pagObj.pageTotal = page.totalSize;
+        this.$el.html(this.templete({applyApiList:applyApiList}));
+        laypage({
+            cont: 'applyApiPages',
+            pages: page.totalPage,
+            skip: true,
+            curr: this.pagObj.pageNum || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.pagObj.pageNum = obj.curr;
+                    that.reloadPage();
+                }
+            }
+        });
+    },
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
+    },
+    applyApiAgain: function (e) {
+        var $this = $(e.target).closest('tr'),
+            sourceId = $this.attr('attrId'),
+            sourcePakcageId = $this.attr('attrPackageId');
+
+        //do apply again
     }
 });
 var serversDemandListView = Backbone.View.extend({

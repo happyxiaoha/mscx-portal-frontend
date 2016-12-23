@@ -12,7 +12,7 @@ var followModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'addReqServiceFocus.do'
 })
 var unFollowModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'cancelReqServiceFocus.do'
+    url: mscxPage.request.demand + 'cancelServiceFocus.do'
 })
 require('../demand.css');
 require('util');

@@ -1,5 +1,6 @@
 /*分享*/
 .share{right: 0;top: 0;}
+.share img {position: relative;z-index: 100;}
 .share a{display: inline-block;width: 30px;height: 22px;padding-right: 8px;}
 .share a:first-child{background: url(../../images/tu4.png) no-repeat center center;}
 .share a:nth-child(2){background: url(../../images/tu5.png) no-repeat center center;}

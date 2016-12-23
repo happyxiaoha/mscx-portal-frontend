@@ -8,7 +8,7 @@ var Resource = require('./city.json');
 var Models = {
     // 对象
     objects: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/dict/getServiceObject.do'
+        url: mscxPage.request.dict + 'dict/getServiceObject.do'
     })),
     // 范围
     rage: new (Backbone.Model.extend({
@@ -16,55 +16,55 @@ var Models = {
     })),
     // 数据API分类
     dataCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/category/getDataApiCategory.do'
+        url: mscxPage.request.dict + 'category/getDataApiCategory.do'
     })),
     // 模型API分类
     modelCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/category/getModelApiCategory.do'
+        url: mscxPage.request.dict + 'category/getModelApiCategory.do'
     })),
     // 工具API分类
     toolCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/category/getToolApiCategory.do'
+        url: mscxPage.request.dict + 'category/getToolApiCategory.do'
     })),
     // 开放数据分类
     openDataCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/category/getOpenDataCategory.do'
+        url: mscxPage.request.dict + 'category/getOpenDataCategory.do'
     })),
     // 微服务分类
     serviceCategory: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/category/getServiceCategory.do'
+        url: mscxPage.request.dict + 'category/getServiceCategory.do'
     })),
     // 数据API标签
     dataTags: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/tags/getDataApiTags.do'
+        url: mscxPage.request.dict + 'tags/getDataApiTags.do'
     })),
     // 工具API标签
     toolTags: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/tags/getToolApiTags.do'
+        url: mscxPage.request.dict + 'tags/getToolApiTags.do'
     })),
     // 模型API标签
     modelTags: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/tags/getModelApiTags.do'
+        url: mscxPage.request.dict + 'tags/getModelApiTags.do'
     })),
     // 开放数据标签
     openDataTags: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/tags/getOpenDataTags.do'
+        url: mscxPage.request.dict + 'tags/getOpenDataTags.do'
     })),
     // 微服务标签
     serviceTags: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/tags/getServiceTags.do'
+        url: mscxPage.request.dict + 'tags/getServiceTags.do'
     })),
     // 标签详情 根据categoryId获取
     detailTags: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/tag/getTagsInfo.do'
+        url: mscxPage.request.dict + 'tag/getTagsInfo.do'
     })),
     // 收费类型
     chargeWay: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/dict/getChargeWays.do'
+        url: mscxPage.request.dict + 'dict/getChargeWays.do'
     })),
     // 机构
     orgs: new (Backbone.Model.extend({
-        url: mscxPage.host + '/ro/mscx-dict-api/org/getOrganization.do'
+        url: mscxPage.request.dict + 'org/getOrganization.do'
     }))
 }
 

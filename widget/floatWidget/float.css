@@ -1,0 +1,71 @@
+
+.float-div {
+    position: fixed;
+    right: 0;
+    bottom: 130px;
+    z-index: 1;
+    width: 48px;
+    height: 200px;
+}
+.float-div a{
+    cursor: pointer;
+    display: block;
+    height: 46px;
+    margin-top: 10px;
+    background: url("../../images/newicon/float.png") -56px top no-repeat;
+}
+.float-div a:first-child{
+    margin-top: 0;
+}
+.float-div a.message{
+    background-position: -56px -50px;
+}
+.float-div a.message:hover{
+    background-position: 0 -50px;
+}
+.float-div a.gm{
+    background-position:  -56px -95px;
+}
+.float-div a.gm:hover{
+    background-position: 0 -95px;
+}
+.float-div a.ercode{
+    background-position:  -56px -140px;
+}
+.float-div a.ercode:hover{
+    background-position: 0 -140px;
+}
+.float-div a.callus{
+    background-position:  -56px -185px;
+}
+.float-div a.callus:hover{
+    background-position: 0 -185px;
+}
+.float-div a:hover{
+    background-position: 0 top;
+}
+.float-div>div{
+    height: 60px;
+}
+.mt0 {
+    margin-top: 0;
+}
+.er-code {
+    height: 150px;
+    width: 150px;
+    padding: 10px;
+    position: fixed;
+    bottom: 65px;
+    z-index: 1;
+    right: 55px;
+    background: url("../../images/codeBg.png") no-repeat;
+}
+.er-code p{
+    text-indent: 40px;
+}
+.er-code div{
+    height: 126px;
+    width: 126px;
+    background: url("../../images/ercode.jpg") no-repeat;
+    background-size: 100% 100%;
+}

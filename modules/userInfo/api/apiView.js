@@ -9,8 +9,8 @@ var apiApi = '/ro/mscx-api-api/';
 var myPublicModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getMyPublishedApi.do'
 });
-var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'queryApi.do'
+var applyApiListModel = Backbone.Model.extend({
+    url: mscxPage.request.order + 'api/getSelfApiList.do'
 });
 var demandServersListModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'queryServiceListOfMe.do'
@@ -23,7 +23,7 @@ var deleteServerDemandModel = Backbone.Model.extend({
 var apiView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
-        'click #demandTabs span': 'changeTab'
+        'click #apiTabs span': 'changeTab'
     },
     changeTab: function (e) {
         var $this = $(e.target),
@@ -32,11 +32,11 @@ var apiView = Backbone.View.extend({
         if(!isActive){
             $this.parent().find('.active').removeClass('active');
             $this.addClass('active');
-            new this.childView[index]({el: '#demandInfo'});
+            new this.childView[index]({el: '#apiInfo'});
         }
     },
     initialize: function() {
-        this.childView = [myApiListView,apiDemandListView,serversDemandListView,followListView,acceptView];
+        this.childView = [myApiListView,myApplyListView,serversDemandListView,followListView,acceptView];
         this.$el.html(template);
         new myApiListView({el: '#apiInfo'});
     }
@@ -73,7 +73,7 @@ var myApiListView = Backbone.View.extend({
         this.$el.html(this.templete({demandList:[]}));
     }
 });
-var apiDemandListView = Backbone.View.extend({
+var myApplyListView = Backbone.View.extend({
     pagObj: {
         pageSize: 10,
         pageNum: 1
@@ -81,10 +81,13 @@ var apiDemandListView = Backbone.View.extend({
     events: {
     },
     initialize: function() {
-        this.templete = _.template($('#apiDemandList').html());
+        var that = this;
+        this.templete = _.template($('#apiApplyList').html());
 
-        this.model = new demandApiListModel();
-        this.model.on('change',this.render);
+        this.model = new applyApiListModel();
+        this.model.on('change',function () {
+            that.render()
+        });
         this.model.fetch({
             data: {
                 pageSize: this.pagObj.pageSize,
@@ -94,7 +97,7 @@ var apiDemandListView = Backbone.View.extend({
         this.render();
     },
     render: function () {
-        this.$el.html(this.templete({apiDemandList:[]}));
+        this.$el.html(this.templete({applyApiList:[]}));
     }
 });
 var serversDemandListView = Backbone.View.extend({

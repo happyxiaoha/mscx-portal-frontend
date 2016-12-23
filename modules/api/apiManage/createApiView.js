@@ -42,6 +42,45 @@ var createApiView = Backbone.View.extend({
         'change .upload-file': 'doUploadImg'
     },
     updateIndex: -1,
+    initialize: function() {
+        var that = this;
+        this.getCategoryModel = new getCategoryModel();
+        this.getCategoryTagModel = new getCategoryTagModel();
+        this.getServiceTypeModel = new getServiceTypeModel();
+        this.getCategoryModel.on('change',function () {
+            that.renderCategory();
+        });
+        this.getCategoryTagModel.on('change',function () {
+            that.renderCategoryTag();
+        });
+        this.getServiceTypeModel.on('change',function () {
+            that.renderServiceType();
+        });
+        this.getCategoryModel.fetch();
+        this.getServiceTypeModel.fetch();
+
+        this.model = new createApiModel();
+        this.model.on('change:tags',function () {
+            that.buildChooseTags();
+        });
+        this.model.on('change:chargeSetJson',function () {
+            that.buildChargeTable();
+        });
+        this.model.on('change:apiListJson',function () {
+            that.buildApiTable();
+        });
+        this.model.on('change:chargeType',function () {
+            if(that.model.get('chargeType') == '01' && that.model.get('chargeSetJson')){
+                that.model.set('chargeSetJson',null);
+            }
+            else {
+                that.buildChargeTable();
+            }
+        });
+        this.$el.html(template);
+        this.model.set('chargeType','01');
+        $('#publishApi').validate(this.validateConfig());
+    },
     validateConfig: function () {
         var that = this;
         return {
@@ -248,45 +287,6 @@ var createApiView = Backbone.View.extend({
             }
         });
     },
-    initialize: function() {
-        var that = this;
-        this.getCategoryModel = new getCategoryModel();
-        this.getCategoryTagModel = new getCategoryTagModel();
-        this.getServiceTypeModel = new getServiceTypeModel();
-        this.getCategoryModel.on('change',function () {
-            that.renderCategory();
-        });
-        this.getCategoryTagModel.on('change',function () {
-            that.renderCategoryTag();
-        });
-        this.getServiceTypeModel.on('change',function () {
-            that.renderServiceType();
-        });
-        this.getCategoryModel.fetch();
-        this.getServiceTypeModel.fetch();
-
-        this.model = new createApiModel();
-        this.model.on('change:tags',function () {
-            that.buildChooseTags();
-        });
-        this.model.on('change:chargeSetJson',function () {
-            that.buildChargeTable();
-        });
-        this.model.on('change:apiListJson',function () {
-            that.buildApiTable();
-        });
-        this.model.on('change:chargeType',function () {
-            if(that.model.get('chargeType') == '01' && that.model.get('chargeSetJson')){
-                that.model.set('chargeSetJson',null);
-            }
-            else {
-                that.buildChargeTable();
-            }
-        });
-        this.$el.html(template);
-        this.model.set('chargeType','01');
-        $('#publishApi').validate(this.validateConfig());
-    },
     changeCategory: function (e) {
         var sId = parseInt(e.target.id.replace('c',''));
         this.renderTagWithCategory(sId);
@@ -306,16 +306,6 @@ var createApiView = Backbone.View.extend({
             $('.server-error').hide();
         });
         this.model.set('serviceObject',aServerType.join(','));
-        this.$el.html(template);
-        this.buildDateEvents();
-        //$('#createDemandForm').validate(this.validateConfig());
-    },
-    changeCategory: function (e) {
-        var sId = parseInt(e.target.id.replace('c',''));
-        this.renderTagWithCategory(sId);
-        this.model.set('tags','');
-        this.model.set('categoryId',sId);
-        return false;
     },
     renderCategory: function () {
         var categoryTemplate = _.template($('#categoryList').html());
@@ -388,23 +378,7 @@ var createApiView = Backbone.View.extend({
         var that = this;
         var addChargeTemplete = _.template($('#chargeManage').html());
         $('.add-price-list').html(addChargeTemplete({res:{}}));
-        $('#effectDate').daterangepicker({
-            format: 'YYYY-MM-DD',
-            singleDatePicker: true,
-            startDate: moment(),
-            minDate: new Date()
-        }).on('apply.daterangepicker',function (ev,picker) {
-            $('#expiryDate').data('daterangepicker').setOptions({'minDate': new Date($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
-        });
-        $('#expiryDate').daterangepicker({
-            format: 'YYYY-MM-DD',
-            singleDatePicker: true,
-            startDate: moment()
-        }).on('apply.daterangepicker',function (ev,picker) {
-            $('#effectDate').data('daterangepicker').setOptions({'maxDate': new Date($('#expiryDate').val()),singleDatePicker: true,startDate: moment()});
-        });
-    },
-    addChargeLay: function () {
+
         var dialog= layer.open({
             type: 1,
             btn: ['保存','取消'],
@@ -615,7 +589,7 @@ var createApiView = Backbone.View.extend({
     },
     doUploadImg: function (e) {
         var $formArea = $('#ajaxUpload');
-        $formArea.attr('action',mscxPage.host+''+apiApi+'uploadFile.do');
+        $formArea.attr('action',mscxPage.request.api+'uploadFile.do');
         var that = this;
         var options = {
             success: function (res) {
@@ -638,11 +612,6 @@ var createApiView = Backbone.View.extend({
         $formArea.ajaxForm(options);
         $formArea.find('input[type="submit"]').click();
         $formArea = null;
-    },
-    buildChargeTable: function () {
-        var chargeSetJson = this.model.get('chargeSetJson');
-        var packageTableTemps = _.template($('#packageTableTemps').html());
-        $('#packageTable').html(packageTableTemps({chargeSetJson: chargeSetJson}));
     }
 });
 

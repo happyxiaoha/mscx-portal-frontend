@@ -2,34 +2,12 @@
  * Created by Kevin on 2016/12/6.
  */
 
+require('util');
 var template = require('html!./sources.html');
 require('./sources.css');
 
-function filterData(res,sSplit,array) {
-    function parseDate(sDate) {
-        var date = new Date(sDate),
-            iMonth = date.getMonth()+1,
-            iMonth = iMonth < 10 ? '0'+iMonth : iMonth,
-            iDate = date.getDate() < 10 ? '0'+date.getDate() : date.getDate();
-        return date.getFullYear()+''+sSplit+''+iMonth+''+sSplit+''+iDate;
-    }
-    for(var i = 0, len = res.length; i < len; i++){
-        var obj = res[i];
-        for(var k = 0, kLen = array.length; k < kLen; k++){
-            var key = array[k];
-            if(obj[key]){
-                obj[key] = parseDate(obj[key]);
-            }
-        }
-    }
-    return res;
-}
 var focusModel = Backbone.Model.extend({
-    url: mscxPage.request.data + 'getAttentionDatum.do',
-    parse: function (res) {
-        filterData(res.result,'.',['updatedTime','attentionTime']);
-        return res;
-    }
+    url: mscxPage.request.data + 'getAttentionDatum.do'
 });
 var removeFocusModel = Backbone.Model.extend({
     url: mscxPage.request.data + 'removeUserDataAttention.do'
@@ -37,7 +15,7 @@ var removeFocusModel = Backbone.Model.extend({
 
 
 var downloadModel = Backbone.Model.extend({
-    url: mscxPage.request.data + 'getAttentionDatum.do'
+    url: mscxPage.request.order + 'data/getSelfDataList.do'
 });
 
 
@@ -45,7 +23,6 @@ var sourcesView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
         'click #sourcesTabs span': 'changeTab'
-
     },
     changeTab: function (e) {
         var $this = $(e.target),
@@ -98,35 +75,45 @@ var focusResourcesView = Backbone.View.extend({
         laypage({
             cont: 'focusPage',
             pages: page.totalPage,
+            skip: true,
             curr: this.pagObj.pageNum || 1,
             jump: function(obj, first){
                 if(!first){
-                    that.pageChange(obj.curr);
+                    that.pagObj.pageNum = obj.curr;
+                    that.reloadPage();
                 }
             }
         });
     },
-    pageChange: function (curr) {
-        
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
     },
     removeAttention: function (e) {
-        var that = this,
-            $this = $(e.target).closest('tr'),
-            sId = $this.attr('attrId');
-
-        new removeFocusModel().fetch({
-            data: {
-                dataId: sId
-            },
-            success: function () {
-                layer.msg('取消关注成功');
-                that.model.fetch({
-                    data: {
-                        pageSize: this.pagObj.pageSize,
-                        page: this.pagObj.pageNum
+        var that = this;
+        var deleteLay = layer.confirm('确认取消关注这条数据需求吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var sId = parseInt($(e.target).closest('tr').attr('attrid'));
+            new removeFocusModel().fetch(
+                {
+                    data: {dataId: sId},
+                    type: 'GET',
+                    success: function () {
+                        layer.msg('取消关注成功');
+                        if(that.model.get('result') && that.model.get('result').list && that.model.get('result').list.length == 1 && that.pagObj.pageNum != 1){
+                            that.pagObj.pageNum--;
+                        }
+                        that.reloadPage();
                     }
-                });
-            }
+            });
+            layer.close(deleteLay);
+        }, function(){
+            layer.close(deleteLay);
         });
         e.stopPropagation();
     }
@@ -174,7 +161,12 @@ var downloadSourcesListView = Backbone.View.extend({
         });
     },
     pageChange: function () {
-        
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
     }
 });
 

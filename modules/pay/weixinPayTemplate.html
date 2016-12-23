@@ -9,10 +9,11 @@
                   <% data && data.sourceDetail.forEach(function(item){ %>
                     <%= item.resourceName %>
                   <% }) %>
-                 </span></span>
+                  </span></span>
              </p>
          </div>
      </div>
+     <a href="#result/<%= data && data.orderNum %>" class="wx-result-btn bgBlue">支付后点击查看支付结果</a>
   </div>
 </div>
 <div class="ReleaseMainCons grid960 bgWhite mt20 clearfix boxShadiow">

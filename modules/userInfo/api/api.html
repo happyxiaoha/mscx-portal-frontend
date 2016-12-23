@@ -68,23 +68,25 @@
                 <table>
                     <thead>
                     <tr>
-                        <th width="20%">API需求名称</th>
-                        <th width="48%">API需求描述</th>
-                        <th width="10%">状态</th>
-                        <th width="20%">操作</th>
+                        <th width="13%">API名称</th>
+                        <th width="30%">API描述</th>
+                        <th width="10%">申请时间</th>
+                        <th width="8%">收费类型</th>
+                        <th width="10%">使用次数</th>
+                        <th width="10%">剩余次数</th>
+                        <th width="10%">操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <% _.each(applyApiList, function (aitem) { %>
-                    <tr>
-                        <td>数据包括身份证号码、姓名、性别、出生日期、户口性质、联系电话等信息</td>
-                        <td>2016.6.10</td>
-                        <td>预审驳回</td>
-                        <td><a class="edit">修改</a>
-                            <a class="delete">删除</a>
-                            <a class="closed">关闭</a>
-                            <a class="remove">下架</a>
-                        </td>
+                    <tr attrId="<%=aitem.sourceId%>" attrPackageId="<%=aitem.sourcePakcageId%>">
+                        <td><%=aitem.apiName%></td>
+                        <td><%=aitem.apiDesc%></td>
+                        <td><%=aitem.applyTime%></td>
+                        <td><%=aitem.chargeType%></td>
+                        <td><%=aitem.chargeType%></td>
+                        <td><%=aitem.chargeType%></td>
+                        <td><a class="applyApi">再次申请</a></td>
                     </tr>
                     <% }); %>
                     <%if(applyApiList.length == 0){%>
@@ -95,6 +97,7 @@
                     </tbody>
                 </table>
             </div>
+            <div id="applyApiPages" class="page-area fr"></div>
         </div>
     </div>
 </script>

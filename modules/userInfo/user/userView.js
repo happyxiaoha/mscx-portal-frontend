@@ -328,10 +328,10 @@ var userAuthenticationView = Backbone.View.extend({
         if($this.parent()[0].id == 'ajaxEnterpriseUpload'){
             type = 1;
             $formArea = $('#ajaxEnterpriseUpload');
-            $formArea.attr('action',mscxPage.host+''+ucApi+'certification/enterprise/upload/licence.do');
+            $formArea.attr('action',mscxPage.request.uc + 'certification/enterprise/upload/licence.do');
         }
         else {
-            $formArea.attr('action',mscxPage.host+''+ucApi+'certification/person/upload/photo.do');
+            $formArea.attr('action',mscxPage.request.uc + 'certification/person/upload/photo.do');
         }
         var that = this;
         var options = {

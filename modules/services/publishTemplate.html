@@ -1,0 +1,116 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
+    <!-- top -->
+    <p class="ReleaseTit">发布新服务</p>
+    <!-- 2016-09-08 新增 tab切换 -->
+    <!-- down -->
+    <div class="ReleaseDownCons">
+        <!-- SaaS 服务发布内容 -->
+        <form class="ReleaseInputs ReleaseDown">
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>服务对象：</p>
+                <div class="fl R_right">
+                    <p class="fl mt10">
+                        <label class="fl"><input name="serviceObject" value="" type="checkbox">个人</label>
+                        <label class="fl"><input name="serviceObject" type="checkbox">企业</label>
+                        <label class="fl"><input name="serviceObject" type="checkbox">城市管理</label>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>服务名称：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" name="name" placeholder="请输入服务名称" value="">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>服务简介：</p>
+                <div class="fl R_right">
+                    <p>
+                        <textarea name="description" id="" cols="30" rows="10" placeholder="请输入数据描述"></textarea>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>服务图标：</p>
+                <div class="fl R_right">
+                    <p class="allInfoImg">
+                        <img src="../../images/new01.png" alt="">
+                        <input type="file">
+                        <input type="hidden" name="imageUri" id="imageUri">
+                        <input type="hidden" name="imageKey" id="imageKey">
+                    </p>
+                </div>
+            </div>
+            <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
+            <div class="clearfix ReleaseList ">
+                <p class="fl R_left"><em>*</em>分类：</p>
+                <div class="fl R_right">
+                    <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
+                    <div class="classifyList Travel01">
+                        <p class="down">交通出行</p>
+                        <div class="classifyCons Travel01Down">
+                            <ul class="classifyDowns">
+                                <li>交通出行</li>
+                                <li>交通出行1</li>
+                                <li>交通出行2</li>
+                                <li>交通出行3</li>
+                                <li>交通出行4</li>
+                                <li>交通出行5</li>
+                                <li>交通出行6</li>
+                            </ul>
+                        </div>
+                        <input type="hidden" name="categoryId" id="categoryId">
+                    </div>
+                </div>
+            </div>
+            <!-- 增加 选择框及选择按钮  2016-09-05-->
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>标签：</p>
+                <div class="fl R_right posRE">
+                    <p>
+                        <input type="text" placeholder="请选择标签" value="" readonly="" class="wd300" id="mainSelInput01" name="tags">
+                        <button class="btn btn-primary" id="newSelBtn01">选择</button>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>服务范围：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" placeholder="输入服务的城市" name="scope" value="">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>演示地址：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" name="demoUri" placeholder="输入演示地址" value="">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>访问URL：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" name="uri" placeholder="输入访问URL" value="">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">详情信息：</p>
+                <div class="fl R_right">
+                    <p class="allInfoImg">
+                        
+                    </p>
+                </div>
+            </div>
+            <div class="R_Btns">
+                <!-- <button class="bgBlue">返回</button> -->
+                <button class="bgBlue">发布</button>
+            </div>
+        </form>
+    </div>
+</div>

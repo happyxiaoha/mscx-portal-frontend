@@ -6,7 +6,8 @@ var Routes =  Backbone.Router.extend({
     routes: {
         '': 'serviceView',
         'service': 'serviceView',
-        'detail/:id': 'detailView'
+        'detail/:id': 'detailView',
+        'publish': 'publishView'
     },
     serviceView: function () {
         var serviceView = require('services/servicesView.js');
@@ -22,6 +23,10 @@ var Routes =  Backbone.Router.extend({
         mscxPage.views['serDetailView'] = new serviceDetailView({
             id: id
         });
+    },
+    publishView: function () {
+        var publishView = require('services/publishView.js');
+        mscxPage.views['servicesPublishObj'] = new publishView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

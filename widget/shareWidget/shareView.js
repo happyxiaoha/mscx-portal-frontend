@@ -23,6 +23,12 @@ var view = Backbone.View.extend({
 
         this.$qrcode = this.$('#qrcode');
 
+        $('body').on('click.shareWeixin', function(event) {
+            if(event.target.id != 'shareWeixin') {
+                this.$qrcode.addClass('hide');
+            }
+        }.bind(this));
+
         this.sinaAppkey = '';
 
         return this;

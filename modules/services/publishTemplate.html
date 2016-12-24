@@ -3,18 +3,19 @@
     <p class="ReleaseTit">发布新服务</p>
     <!-- 2016-09-08 新增 tab切换 -->
     <!-- down -->
-    <div class="ReleaseDownCons">
+    <div class="ReleaseDownCons pr">
         <!-- SaaS 服务发布内容 -->
-        <form class="ReleaseInputs ReleaseDown">
+        <form class="ReleaseInputs ReleaseDown" id="publishForm">
             <div class="clearfix ReleaseList">
                 <p class="fl R_left"><em>*</em>服务对象：</p>
                 <div class="fl R_right">
                     <p class="fl mt10">
-                        <label class="fl"><input name="serviceObject" value="" type="checkbox">个人</label>
-                        <label class="fl"><input name="serviceObject" type="checkbox">企业</label>
-                        <label class="fl"><input name="serviceObject" type="checkbox">城市管理</label>
+                        <% data && data.objects.forEach(function(item){ %>
+                        <label class="fl"><input name="serviceObject" value="<%= item.dictCode %>" type="checkbox"><%= item.dictName %></label>
+                        <% }) %>
                     </p>
                 </div>
+                <label id="serviceObject-error" style="display:none" class="error" for="serviceObject"></label>
             </div>
             <div class="clearfix ReleaseList">
                 <p class="fl R_left"><em>*</em>服务名称：</p>
@@ -36,12 +37,12 @@
                 <p class="fl R_left"><em>*</em>服务图标：</p>
                 <div class="fl R_right">
                     <p class="allInfoImg">
-                        <img src="../../images/new01.png" alt="">
-                        <input type="file">
-                        <input type="hidden" name="imageUri" id="imageUri">
-                        <input type="hidden" name="imageKey" id="imageKey">
+                        <img id="serviceIcon" src="../../images/add.png" alt="">
+                        <input type="text" class="hide" name="imageKey" id="serviceKey">
                     </p>
                 </div>
+                <label id="imageKey-error" style="display:none;" class="error" for="imageKey"></label>
+                <!-- <label class="img-error">请上传服务图标</label> -->
             </div>
             <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
             <div class="clearfix ReleaseList ">
@@ -49,19 +50,11 @@
                 <div class="fl R_right">
                     <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
                     <div class="classifyList Travel01">
-                        <p class="down">交通出行</p>
-                        <div class="classifyCons Travel01Down">
-                            <ul class="classifyDowns">
-                                <li>交通出行</li>
-                                <li>交通出行1</li>
-                                <li>交通出行2</li>
-                                <li>交通出行3</li>
-                                <li>交通出行4</li>
-                                <li>交通出行5</li>
-                                <li>交通出行6</li>
-                            </ul>
-                        </div>
-                        <input type="hidden" name="categoryId" id="categoryId">
+                        <select id="selectCategory" name="categoryId">
+                            <% data && data.category.forEach(function(item){ %>
+                            <option value="<%= item.categoryId %>"><%= item.categoryName %></option>
+                            <% }) %>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -70,10 +63,12 @@
                 <p class="fl R_left"><em>*</em>标签：</p>
                 <div class="fl R_right posRE">
                     <p>
-                        <input type="text" placeholder="请选择标签" value="" readonly="" class="wd300" id="mainSelInput01" name="tags">
-                        <button class="btn btn-primary" id="newSelBtn01">选择</button>
+                        <input type="text" placeholder="请选择标签" value="" readonly="" class="wd300" id="tagName">
+                        <input type="hidden" name="tags" id="tagId"/>
+                        <button class="btn btn-primary" id="selectTagBtn">选择</button>
                     </p>
                 </div>
+                <label id="mainSelInput01-error" style="display:none;" class="error" for="mainSelInput01"></label>
             </div>
             <div class="clearfix ReleaseList">
                 <p class="fl R_left"><em>*</em>服务范围：</p>
@@ -100,17 +95,38 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">详情信息：</p>
+                <p class="fl R_left">示例图片：</p>
                 <div class="fl R_right">
-                    <p class="allInfoImg">
-                        
+                    <p class="allInfoImg fl mr10">
+                        <img id="demo1Icon" src="../../images/add.png" alt="">
+                        <input type="text" class="hide" name="demoKey1" id="demo1Key">
+                    </p>
+                    <p class="allInfoImg fl mr10">
+                        <img id="demo2Icon" src="../../images/add.png" alt="">
+                        <input type="text" class="hide" name="demoKey2" id="demo2Key">
+                    </p>
+                    <p class="allInfoImg fl">
+                        <img id="demo3Icon" src="../../images/add.png" alt="">
+                        <input type="text" class="hide" name="demoKey3" id="demo3Key">
                     </p>
                 </div>
             </div>
             <div class="R_Btns">
                 <!-- <button class="bgBlue">返回</button> -->
-                <button class="bgBlue">发布</button>
+                <input type="submit" class="bgBlue" value="发布">
             </div>
+        </form>
+        <form id="uploadServiceIcon" class="icon-form" action="" method="post">
+            <input type="file" id="service" name="pic" class="upload-file">
+        </form>
+        <form id="uploadDemoIcon1" class="icon-form" action="" method="post">
+            <input type="file" id="demo1" name="pic" class="upload-file">
+        </form>
+        <form id="uploadDemoIcon2" class="icon-form" action="" method="post">
+            <input type="file" id="demo2" name="pic" class="upload-file">
+        </form>
+        <form id="uploadDemoIcon3" class="icon-form" action="" method="post">
+            <input type="file" id="demo3" name="pic" class="upload-file">
         </form>
     </div>
 </div>

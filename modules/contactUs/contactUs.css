@@ -12,3 +12,6 @@
 .Btns button{height: 36px;border: 0;font-size: 14px;padding: 0 26px;color: #fff;display: inline-block;}
 .Btns button:first-child{background: #069cd9;margin-right: 28px;}
 .Btns button:last-child{background: #bbb;}
+.contact-img{
+    width: 100px;
+}

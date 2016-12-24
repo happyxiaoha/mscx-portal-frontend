@@ -153,25 +153,30 @@
     </div>
     <% } %>
 
-    <% if(data.chargeWay && data.chargeWay.result && data.chargeWay.result.length > 0) { %>
     <!-- 收费类型 -->
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
             <div class="sl-key fl">
+                <% if(data.chargeWay && data.chargeWay.result && data.chargeWay.result.length > 0) { %>
                 <span>收费类型</span>
+                <% } %>
             </div>
             <div class="sl-value fl">
                 <div class="sl-v-list">
                     <ul class="J_valueList clearfix wd804">
+                        <% if(data.chargeWay && data.chargeWay.result && data.chargeWay.result.length > 0) { %>
+
                         <% data.chargeWay.result.forEach(function(item) { %>
                             <li class="active">
                                 <input type="checkbox" data-type="chargeType" value="<%= item.dictCode %>" id="chargeWay<%= item.dictCode %>">
                                 <label for="chargeWay<%= item.dictCode %>"><%= item.dictName %></label>
                             </li>
-                        <% }) %>  
+                        <% }) %>
+                        <% } %>
                     </ul>
                 </div>
             </div>
+
             <!-- 搜索 -->
             <div class="sl-search">
                 <input type="text" class="search-input" maxlength="30">
@@ -179,5 +184,5 @@
             </div>
         </div>
     </div>
-    <% } %>
+
 </div>

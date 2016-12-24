@@ -51,7 +51,8 @@ var headerView = Backbone.View.extend({
     events: {
         'blur .info-line input': 'changeAttribute',
         'click #exit': 'logout',
-        'click .search-img': 'search'
+        'click .search-img': 'search',
+        'keydown #inputs': 'keyDownSearch'
     },
     initialize: function() {
         this.model = new getUserMsg();
@@ -87,6 +88,13 @@ var headerView = Backbone.View.extend({
             $('#personReal').removeClass('active');
         });
     },
+    keyDownSearch: function(e){
+        var that = this;
+        if (e.keyCode == "13") {
+            //回车执行查询
+            that.search();
+        }
+    },
     logout: function(){
         new logoutModel().fetch({
             success: function(res){
@@ -97,7 +105,7 @@ var headerView = Backbone.View.extend({
             }
         })
     },
-    search: function () {
+    search: function (e) {
         var $inputs = $('#inputs'),
             keyWord = $.trim($inputs.val());
         window.localStorage.setItem('keyword', keyWord);

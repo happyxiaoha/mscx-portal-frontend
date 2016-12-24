@@ -19,7 +19,7 @@ var view = Backbone.View.extend({
             id: this.id,
             model: {
                 title: '微服务',
-                options: ['objects', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay']
+                options: ['objects', 'range', this.id + 'Category', this.id + 'Tags']
             }
         });
 

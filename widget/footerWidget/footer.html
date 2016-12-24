@@ -5,12 +5,9 @@
         </a>
         <ul class="fl clearfix">
             <li class="fl">
-                <a href="../../templates/newindex.html">首页</a>
-                <a href="../../templates/openData/openData.html">数据</a>
-                <a href="../../templates/api/citySdk.html">API</a>
-                <a href="../../templates/server/server.html">微服务</a>
-                <a href="../../templates/customized/citySdkRequire.html">需求定制</a>
-                <a href="../../templates/pioneer/news.html">创业园地</a>
+                <% _.each(data.menuList, function (item) { %>
+                <a href="<%= item.url %>"><%= item.name %></a>
+                <%})%>
             </li>
             <li class="fl">
                 <a href="#">帮助</a>

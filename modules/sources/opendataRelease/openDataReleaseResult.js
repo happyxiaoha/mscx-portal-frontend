@@ -110,12 +110,13 @@ var view = Backbone.View.extend({
                     success: function (res) {
                         res = res.toJSON();
                         newTarget.location.href = res.result; //在打开的tab页下载
+                        setTimeout(function(){newTarget.close()}, 1000);
                     }
                 });
                 layer.close(index);
             })
         }
-        else if(res.result =='0'){
+        else if(res.result =='01'){
             layer.confirm('该资源已经下单请付款', {
                 btn: ['去付款', '取消']
             }, function(index, layero) {

@@ -54,21 +54,19 @@
                         <tr>
                             <th width="12%">数据名称</th>
                             <th width="16%">发布机构</th>
-                            <th width="16%">更新时间</th>
-                            <th width="12%">关注时间</th>
-                            <th width="20%">数据描述</th>
+                            <th width="18%">更新时间</th>
+                            <th width="30%">数据描述</th>
                             <th width="10%">操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <% _.each(downloadList, function (ditem) { %>
-                        <tr>
-                            <td><a href="../openData/openDataAPI.html">2016年全国普通高等学校信息</a></td>
-                            <td>教育部</td>
-                            <td>2016.6.12</td>
-                            <td>2016-06-22 15:05:12</td>
-                            <td>学校名称、主管部门、所在地、办学层次、备注</td>
-                            <td><a>下载</a></td>
+                        <tr attrId="<%=ditem.id%>">
+                            <td><a href="sources.html#detail/<%=ditem.id%>"><%=ditem.dataSourceName%></a></td>
+                            <td><%=ditem.desc%></td>
+                            <td><%= ditem.updateTime ? new Date(ditem.updateTime).format('yyyy-MM-dd') : '-'%></td>
+                            <td><%=ditem.displayer%></td>
+                            <td><a href="javascript:;" class="down-sources">下载</a></td>
                         </tr>
                         <% }); %>
                         <%if(downloadList.length == 0){%>

@@ -80,7 +80,7 @@
                     <tbody>
                     <% _.each(applyApiList, function (aitem) { %>
                     <tr attrId="<%=aitem.sourceId%>" attrPackageId="<%=aitem.sourcePakcageId%>">
-                        <td><%=aitem.apiName%></td>
+                        <td><a target="_blank" href="./api.html#detail/<%=aitem.sourceId%>"><%=aitem.apiName%></a></td>
                         <td><%=aitem.apiDesc%></td>
                         <td><%=aitem.applyTime%></td>
                         <td><%=aitem.chargeType%></td>
@@ -91,7 +91,7 @@
                     <% }); %>
                     <%if(applyApiList.length == 0){%>
                     <tr>
-                        <td colspan="4">暂无数据</td>
+                        <td colspan="7">暂无数据</td>
                     </tr>
                     <%}%>
                     </tbody>
@@ -101,7 +101,7 @@
         </div>
     </div>
 </script>
-<script id="serversDemandList" type="template">
+<script id="followApiList" type="template">
     <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
         <div class="tab-title"><button><a class="corff" href="../customized/citySdkIw.html">发布服务需求</a></button></div>
         <div class="M-downCons">
@@ -109,36 +109,32 @@
                 <table>
                     <thead>
                     <tr>
-                        <th width="20%">服务需求名称</th>
-                        <th width="30%">服务需求描述</th>
-                        <th width="18%">截止日期</th>
-                        <th width="10%">状态</th>
-                        <th width="20%">操作</th>
+                        <th width="20%">API名称</th>
+                        <th width="50%">API描述</th>
+                        <th width="15%">关注时间</th>
+                        <th width="15%">操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <% _.each(serverDemandList, function (sitem) { %>
-                    <tr>
-                        <td><%=sitem.name%></td>
-                        <td><%=sitem.description%></td>
-                        <td><%=sitem.endTime%></td>
-                        <td><%=sitem.statusName%></td>
-                        <td attrId="<%=sitem.id%> ">
-                            <a class="editS" href="javascript:;">修改</a>
-                            <a class="deleteS" href="javascript:;">删除</a>
-                            <a class="closeS" href="javascript:;">关闭</a>
-                            <a class="downS" href="javascript:;">下架</a>
+                    <% _.each(followApiList, function (fitem) { %>
+                    <tr attrId="<%=fitem.apiServiceId%>">
+                        <td><a target="_blank" href="./api.html#detail/<%=fitem.apiServiceId%>"><%=fitem.apiServiceCName%></a></td>
+                        <td><%=fitem.description%></td>
+                        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd') : '-'%></td>
+                        <td>
+                            <a class="cancelFollow" href="javascript:;">取消关注</a>
                         </td>
                     </tr>
                     <% }); %>
-                    <%if(serverDemandList.length == 0){%>
+                    <%if(followApiList.length == 0){%>
                     <tr>
-                        <td colspan="5">暂无数据</td>
+                        <td colspan="4">暂无数据</td>
                     </tr>
                     <%}%>
                     </tbody>
                 </table>
             </div>
+            <div id="followApi" class="page-area fr"></div>
         </div>
     </div>
 </script>

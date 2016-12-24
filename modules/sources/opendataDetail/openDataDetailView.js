@@ -140,6 +140,7 @@ var openDataDetailView = Backbone.View.extend({
     handlePurchase: function (res) {
         res = res.toJSON();
         var that = this;
+            that.curr = that.model.toJSON().result;
         if(res.result =='02'){
             layer.confirm('该资源已经购买是否立即下载？', {
                 btn: ['立即下载', '取消']
@@ -152,6 +153,7 @@ var openDataDetailView = Backbone.View.extend({
                     success: function(res){
                         res = res.toJSON();
                         newTarget.location.href= res.result; //在打开的tab页下载
+                        setTimeout(function(){newTarget.close()}, 1000);
                     }
                 }) ;
                 layer.close(index)

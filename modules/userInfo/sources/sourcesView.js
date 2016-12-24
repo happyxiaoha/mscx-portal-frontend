@@ -14,8 +14,12 @@ var removeFocusModel = Backbone.Model.extend({
 });
 
 
-var downloadModel = Backbone.Model.extend({
+var downloadModel = Backbone.Model.extend({               //下载的数据
     url: mscxPage.request.order + 'data/getSelfDataList.do'
+});
+
+var downloadDataModel = Backbone.Model.extend({           //数据下载
+    url: mscxPage.request.data + 'data/download.do'
 });
 
 
@@ -125,12 +129,13 @@ var downloadSourcesListView = Backbone.View.extend({
         pageTotal: 0
     },
     events: {
-
+        'click .down-sources': 'downLoad'
     },
     initialize: function() {
         var that = this;
         this.templete = _.template($('#downloadSourcesList').html());
         this.model = new downloadModel();
+        this.downloadDataModel = new downloadDataModel();
         this.model.on('change',function(){
             that.render()
         });
@@ -167,6 +172,23 @@ var downloadSourcesListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
+    },
+    downLoad: function (e) {
+        var sId = parseInt($(e.target).closest('tr').attr('attrId'));
+        var newTarget = window.open('about:blank', '_blank'); //打开新的tab页
+
+        this.downloadDataModel.fetch({
+            data:{
+                dataId: sId
+            },
+            success: function (res) {
+                res = res.toJSON();
+                newTarget.location.href = res.result; //在打开的tab页下载
+                setTimeout(function(){newTarget.close()}, 1000);
+            }
+        });
+        //download
+        e.stopPropagation();
     }
 });
 

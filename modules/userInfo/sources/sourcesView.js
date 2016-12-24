@@ -125,7 +125,7 @@ var downloadSourcesListView = Backbone.View.extend({
         pageTotal: 0
     },
     events: {
-
+        'click .down-sources': 'downLoad'
     },
     initialize: function() {
         var that = this;
@@ -167,6 +167,11 @@ var downloadSourcesListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
+    },
+    downLoad: function (e) {
+        var sId = parseInt($(e.target).closest('tr').attr('attrId'));
+        //download
+        e.stopPropagation();
     }
 });
 

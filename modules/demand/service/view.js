@@ -81,8 +81,8 @@ var view = Backbone.View.extend({
         date = date.split(' - ');
 
         this.searchParam.set({
-            beginTime: date[0],
-            endTime: date[1]
+            beginTime: new Date(date[0]).getTime(),
+            endTime: new Date(date[1]).getTime()
         })
     },
     searchKeyword: function(event) {

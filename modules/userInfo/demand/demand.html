@@ -34,7 +34,7 @@
                         <td><%= item.feedbackTime ? new Date(item.feedbackTime).format('yyyy-MM-dd') : '-'%></td>
                         <td>
                             <%if(item.statusCode == '0'){%>
-                                <a href="./demand.html#service/edit/<%=item.id%>" class="editSource">修改</a>
+                                <a href="./demand.html#data/edit/<%=item.id%>" class="editSource">修改</a>
                                 <a href="javascript:;" class="deleteSource">删除</a>
                             <%}%>
                         </td>
@@ -118,7 +118,7 @@
                         <td><%=sitem.statusName%></td>
                         <td>
                             <%if(sitem.status == '0'){%>
-                                <a href="./demand.html#data/edit/<%=sitem.id%>" class="editServerApi">修改</a>
+                                <a href="./demand.html#service/edit/<%=sitem.id%>" class="editServerApi">修改</a>
                                 <a href="javascript:;" class="deleteServers">删除</a>
                             <%}else if(sitem.status == '2' || sitem.status == '3' || sitem.status == '4'){%>
                                 <a href="javascript:;" class="closeServers">关闭</a>

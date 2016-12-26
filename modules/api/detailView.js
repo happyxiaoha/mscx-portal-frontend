@@ -6,7 +6,7 @@ var offlineView = require('./offlineLayer.js');
 var shareView = require('shareWidget/shareView.js');
 
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/getApiServiceDetailById.do'
+    url: mscxPage.request.api + 'service/getApiServiceDetailById.do?t=' + new Date().getTime()
 });
 
 var followModel = Backbone.Model.extend({

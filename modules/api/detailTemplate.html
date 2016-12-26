@@ -47,7 +47,7 @@
                                     <span>服务区域：<em><%= data.result && data.result.scope %></em></span>
                                 </p>
                                 <p class="mb15">
-                                    <span class="mr10">服务商：<em><%= data.result && data.result.providerName %></em></span>
+                                    <span class="mr10" title="<%= data.result && data.result.providerName %>">服务商：<em><%= data.result && data.result.providerName %></em></span>
                                     <span class="mr25">更新时间：<em><%= data.result && data.result.updatedTime && (new Date(data.result.updatedTime).toISOString()).slice(0,10)%></em></span>
                                     <span>所属分类：<em><%= data.result && data.result.categoryName %></em></span>
                                 </p>

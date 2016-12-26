@@ -1,15 +1,140 @@
-.tab-title{
-    margin-bottom: 15px;
+.shopCar img{
+    height: 80px;
+    width: 80px;
+    border: solid 1px #dcdcdc;
+    margin: 15px 10px;
+    float: left;
 }
-.tab-title button {
-    border: none;
-    background: #069cd9;
-    border-radius: 5px;
-    color: #fff;
+.car-title{
+    width: 100%;
+    background: #efefef;
+    text-align: center;
+    font-size: 14px;
+    float: left;
+}
+.car-title span{
+    display: block;
+    float: left;
+    padding: 10px 0;
+}
+.car-title .resources {
+    width: 250px;
+}
+.shop-car-area .price {
+    width: 102px;
+}
+.shop-car-area .count {
+    width: 102px;
+}
+.shop-car-area .resourcestype {
+    width: 102px;
+}
+.shop-car-area .amount {
+    width: 102px;
+}
+.shop-car-area .status {
+    width: 102px;
+}
+.shop-car-area .operation {
+    width: 91px;
+}
+.shop-car-area .pagination{
+    float: left;
+    text-align: right;
+    width: 100%;
+    margin: 10px 0;
+}
+.shop-car-area .pagination span.disabled {
+    color: #dcdcdc
+}
+.shop-car-area .pagination span{
+    display: block;
+    width: 40px;
+    margin-left: 20px;
+    float: left;
     padding: 5px 10px;
+    border: solid 1px #888;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.shopCar {
+    float: left;
+    width: 100%;
     font-size: 14px;
 }
-.tab-title button a {font-size: 16px;}
-.D_table table tbody tr td a {
-    color: #3f89ec;
+.shopCar li{
+    width: 100%;
+    float: left;
+    border: solid 1px #e1e1e1;
+    margin-bottom: 20px;
+}
+.shopCar li>p{
+    padding: 10px 0 10px 20px;
+    background: #efefef;
+}
+.shopCar li .orderList a {
+    float: left;
+    cursor: pointer;
+}
+.shopCar li .orderList span{
+    line-height: 112px;
+    display: block;
+    float: left;
+    text-align: center;
+}
+.shopCar li .orderList input[type='number']{
+    width: 42px;
+}
+.shopCar li .orderList span.operation{
+    text-align: center;
+
+    background: #e9f5fc;
+}
+.shopCar li .orderList span a{
+    width: 100%;
+    color: #00aff6;
+}
+.shopCar li .orderList a p{
+    line-height: 112px;
+    float: left;
+    width: 180px;
+    color: #00aff6;
+}
+
+.car-title.bottom {
+    border: 1px solid #dcdcdc;
+    background: #fff;
+}
+.car-title.bottom span {
+    padding: 15px 0;
+}
+.car-title.bottom button {
+    padding: 15px;
+    background: #00aff6;
+    color: #fff;
+    border: none;
+}
+.car-title.bottom span.fr{
+    float: right;
+    padding: 0;
+}
+.car-title.bottom span.fr i{
+    padding: 10px 0;
+    display: block;
+    float: left;
+    margin-top: 5px;
+}
+
+.car-title.bottom button.disabled{
+    background: #CCC;
+    cursor: default;
+}
+.shop-car-area span.deleteCar{
+    display: block;
+    height: 22px;
+    width: 22px;
+    background: url("../../../images/del02.png") no-repeat;
+    margin-top: -4px;
+    cursor: pointer;
+    margin-right: 3px;
 }

@@ -1,7 +1,3 @@
-.topTab{border-bottom: 3px solid #ccc;height: 40px;margin: 8px 0 15px 0;}
-.topTab span{display: block;float: left;padding: 0 8px;font-size: 16px;line-height: 38px;margin-right: 14px;cursor: pointer;position: relative;height: 40px;}
-.topTab span.active{border-bottom: 3px solid #069cd9;color:#069cd9 }
-
 /*用户基本信息*/
 .M-mainInfo{padding: 29px 25px;border: 1px solid #ccc;}
 .M-rightMyTxt{width: 620px;}

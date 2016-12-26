@@ -4,6 +4,7 @@
 
 var registerTemplate = require('html!./register.html');
 require('validate');
+require('../../lib/additional-methods.js');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
     url: 'register/captcha.do?t=' + new Date().getTime()
@@ -13,8 +14,8 @@ var getSmsCaptchaModel = Backbone.Model.extend({   //获取短信验证码
     url: 'register/sms/send.do'
 });
 
-var checkCaptchaModel = Backbone.Model.extend({   //图形验证码验证
-    url: 'register/captcha/check.do'
+var checkAccountModel = Backbone.Model.extend({   //验证用户名
+    url: 'ro/mscx-uc-api/unique/check/user/account/exist.do'
 });
 
 var registerModel = Backbone.Model.extend({   //登录
@@ -32,6 +33,7 @@ var registerView = Backbone.View.extend({
     },
     initialize: function() {
         this.model = new registerModel();
+        this.checkAccountModel = new checkAccountModel();
         this.$el.html(this.template());
         this.render();
     },
@@ -78,11 +80,20 @@ var registerView = Backbone.View.extend({
             rules: {
                 account:{
                     required: true,
-                    minlength: 2
+                    letterStart: true,
+                    account: true,
+                    minlength: 6,
+                    maxlength: 20,
+                    remote: {
+                        url: 'ro/mscx-uc-api/unique/check/user/account/exist.do',
+                        flag: true   //由于用户名存在返回的是true，给个标记方便validate操作
+                    }
                 },
                 password:{
                     required: true,
-                    minlength: 6
+                    password: true,
+                    minlength: 6,
+                    maxlength: 20
                 },
                 passwordConfirm: {
                     required: true,
@@ -96,14 +107,6 @@ var registerView = Backbone.View.extend({
                     required: true,
                     minlength: 4,
                     maxlength: 4
-                    /*remote: {
-                        url: '/register/captcha/check.do',
-                        data: {
-                            captcha: function () {
-                                return $("#captcha").val();
-                            }
-                        }
-                    }*/
                 },
                 authCode: {
                     required: true
@@ -115,11 +118,16 @@ var registerView = Backbone.View.extend({
             messages: {
                 account:{
                     required: "请输入用户名",
-                    minlength: "用户名最少两个字符"
+                    minlength: "用户名最少6个字符",
+                    maxlength: "用户名最多20个字符",
+                    letterStart: '用户名必须以字母开头',
+                    account: '用户名只能包含数字字母下划线',
+                    remote: '用户名已注册'
                 },
                 password:{
                     required: "请输入密码",
-                    minlength: "密码最少为6位"
+                    minlength: "密码最少为6位",
+                    maxlength: "密码最多20个字符"
                 },
                 passwordConfirm: {
                     required: "请确认密码",
@@ -146,6 +154,24 @@ var registerView = Backbone.View.extend({
             }
         }
     },
+    validateAccount:　function (){
+        var account = $('#account').val(),
+            flag = true;
+        this.checkAccountModel.fetch({
+            data:{
+              account: account
+            },
+            success: function(res){
+                res = res.toJSON();
+                if(res.result){
+                    $('#account').addClass('error');
+                    $('#account').after('<label id="account-error" class="error" for="account">该用户名已被注册</label>');
+                    return false;
+                }else
+                return true
+            }
+        });
+    },
     sendMsgCode: function (e) {
         var submitForm = $("#registForm");
         var check = submitForm.validate().element($("#account"))
@@ -155,7 +181,9 @@ var registerView = Backbone.View.extend({
                 && submitForm.validate().element($("#captcha")),
             $target = $(e.target),
             that = this;
-        if(check){
+
+        if( check && that.validateAccount() ){
+            debugger;
             new getSmsCaptchaModel().fetch({
                 data: {
                     mobile: $('#mobile').val(),

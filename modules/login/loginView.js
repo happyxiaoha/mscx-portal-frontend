@@ -5,6 +5,7 @@
 var loginTemplate = require('html!./login.html');
 var changePwdView = require('./changePwdView.js');
 require('validate');
+require('../../lib/additional-methods.js');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
     url: 'login/captcha.do?t=' + new Date().getTime()
@@ -30,7 +31,6 @@ var loginView = Backbone.View.extend({
         this.model = new loginModel();
         this.$el.html(this.template());
         this.render();
-        //$('#loginOrRegister').html('注册');
     },
     render: function () {
         $('#loginform').validate(this.loginValidateConfig());
@@ -68,12 +68,16 @@ var loginView = Backbone.View.extend({
         return {
             rules: {
                 loginName:{
-                    required: true,
-                    minlength: 2
+                    letterStart: true,
+                    account: true,
+                    minlength: 6,
+                    maxlength: 20
                 },
                 password:{
                     required: true,
-                    minlength: 6
+                    password: true,
+                    minlength: 6,
+                    maxlength: 20
                 },
                 captcha: {
                     required: true,
@@ -92,11 +96,15 @@ var loginView = Backbone.View.extend({
             messages: {
                 loginName:{
                     required: "请输入用户名",
-                    minlength: "用户名最少两个字符"
+                    minlength: "用户名最少6个字符",
+                    maxlength: "用户名最多20个字符",
+                    letterStart: '用户名必须以字母开头',
+                    account: '用户名只能包含数字字母下划线'
                 },
                 password:{
                     required: "请输入密码",
-                    minlength: "密码最少为6位"
+                    minlength: "密码最少为6位",
+                    maxlength: "密码最多20个字符"
                 },
                 captcha: {
                     required: "请输入验证码",

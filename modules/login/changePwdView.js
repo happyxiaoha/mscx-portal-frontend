@@ -4,6 +4,8 @@
 
 'use strict';
 var changePwdTemplate = require('html!./changePwd.html');
+require('validate');
+require('../../lib/additional-methods.js');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
     url: 'forget/password/captcha.do?t=' + new Date().getTime()
@@ -116,7 +118,9 @@ var changePwdView = Backbone.View.extend({
                 },
                 password:{
                     required: true,
-                    minlength: 6
+                    password: true,
+                    minlength: 6,
+                    maxlength: 20
                 },
                 passwordConfirm: {
                     required: true,
@@ -126,7 +130,8 @@ var changePwdView = Backbone.View.extend({
             messages: {
                 password:{
                     required: "请输入密码",
-                    minlength: "密码最少为6位"
+                    minlength: "密码最少为6位",
+                    maxlength: "密码最多20个字符"
                 },
                 passwordConfirm: {
                     required: "请确认密码",

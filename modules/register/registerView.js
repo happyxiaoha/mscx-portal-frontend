@@ -183,7 +183,6 @@ var registerView = Backbone.View.extend({
             that = this;
 
         if( check && that.validateAccount() ){
-            debugger;
             new getSmsCaptchaModel().fetch({
                 data: {
                     mobile: $('#mobile').val(),

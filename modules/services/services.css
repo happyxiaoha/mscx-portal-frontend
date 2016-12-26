@@ -18,6 +18,10 @@
     border: 1px solid #ccc;
     margin: 16px 0 24px;
 }
+.data-list.data-empty {
+    padding: 26px 26px 0;
+    min-height: initial;
+}
 .ConditionList{right: 0;top: 0;margin-top: 8px;}
 .ConditionList a{display: inline-block;margin-right: 10px;}
 .ConditionList a:hover,.ConditionList a:link{color: #444;}

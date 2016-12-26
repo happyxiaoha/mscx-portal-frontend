@@ -15,6 +15,11 @@
 .mainDatas .DataList li .downs span em{display: block;color: #999;margin-top: 7px;}
 .mainDatas .DataList li .downs span i{display: block;line-height: 36px;}
 .mainDatas .DataList li:nth-child(4n){margin: 0;}
+
+.data-list.data-empty {
+    min-height: initial;
+}
+
 /*筛选条件*/
 .ConditionList{right: 0;top: 0;margin-top: 8px;}
 .ConditionList a{display: inline-block;margin-right: 10px;}

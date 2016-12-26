@@ -42,7 +42,7 @@ var logoutModel = Backbone.Model.extend({
 });
 
 var getUserMsg = Backbone.Model.extend({
-    url: mscxPage.host+'/briefInfo.do'
+    url: mscxPage.host+'/briefInfo.do?t='+new Date().getTime()
 });
 
 var headerView = Backbone.View.extend({

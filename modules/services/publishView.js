@@ -34,7 +34,7 @@ var addModel = Backbone.Model.extend({
 });
 var modifyModel = Backbone.Model.extend({
     idAttribute: 'modifyId',
-    url: mscxPage.request.demand + 'modify.do'
+    url: mscxPage.request.app + 'modify.do'
 });
 
 var createDemandView = Backbone.View.extend({
@@ -115,6 +115,11 @@ var createDemandView = Backbone.View.extend({
         var params = this.$form.serializeObject();
 
         params.serviceObject = params.serviceObject.join(',');
+        params.categoryId = +params.categoryId;
+        if(params.id) {
+            params.id = +params.id;
+        }
+
         this.model.set(params);
         this.model.save();
     },
@@ -124,8 +129,8 @@ var createDemandView = Backbone.View.extend({
     handleSubmit: function() {
         var model = this.model.toJSON();
         if(model.status == 'OK') {
-            layer.msg('发布成功', function() {
-                location.href = 'userinfo.html#demand/server';
+            layer.msg('提交成功，请等待审核', function() {
+                location.href = 'userinfo.html#server';
             })
         }
     },
@@ -139,6 +144,7 @@ var createDemandView = Backbone.View.extend({
             detail: detail.result,
             objects: object.result,
             category: category.result,
+            showFlag: this.showFlag
         })
 
         this.$el.html(this.template(params));

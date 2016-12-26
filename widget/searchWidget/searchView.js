@@ -171,6 +171,7 @@ var view = Backbone.View.extend({
     selectOption: function(event) {
         var $target = this.$(event.currentTarget);
         var type = $target.data('type');
+        var param = {};
 
         $target.parents('ul').find('.active').removeClass('active');
         $target.parent().toggleClass('active');
@@ -184,10 +185,10 @@ var view = Backbone.View.extend({
             })
             this.fetchTags();
         }else {
-            this.searchParams.set({
-                page: 1,
-                type: type && $target.data(type.toLowerCase()) || ''
-            })
+            param.page = 1;
+            param[type] = type && $target.data(type.toLowerCase()) || '';
+
+            this.searchParams.set(param);
         }
     },
     searchData: function() {

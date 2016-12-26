@@ -1,5 +1,6 @@
 <div class="containerWrap grid960">
     <div class="tabbable bgWhite boxShadiow">
+        <% if(data) { %>
         <div class="slideBanner clearfix">
             <div class="mleftCons">
                 <div class="serverInfos mb35 clearfix">
@@ -104,5 +105,10 @@
                 </div>
             </div>-->
         </div>
+        <% }else{ %>
+        <div class="slideBanner clearfix">
+        <p class="ft22 pl60">此服务未上线</p>
+        </div>
+        <% } %>
     </div>
 </div>

@@ -1,43 +1,62 @@
 <div id="demandTabs" class="topTab clearfix myApiTop">
     <span class="active">发布的服务</span>
-    <span>服务申请记录</span>
     <span>关注的服务</span>
 </div>
 <div id="serverInfo"  class="tabDownCons">
 
 </div>
-<script id="serverInfoList" type="template">
+<script id="serverPublishList" type="template">
     <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
-        <div class="tab-title" ><button><a target="_blank" class="corff" href="./demand.html#createDemand">发布数据需求</a></button></div>
+        <div class="tab-title" ><button><a target="_blank" class="corff" href="./services.html#publish">发布新服务</a></button></div>
         <div class="M-downCons">
             <div class="D_table M-table">
                 <table>
                     <thead>
                     <tr>
-                        <th width="8%">需求名称</th>
-                        <th width="28%">需求描述</th>
-                        <th width="8%">发布日期</th>
-                        <th width="8%">状态</th>
-                        <th width="8%">反馈日期</th>
-                        <th width="16%">操作</th>
+                        <th width="8%">服务名称</th>
+                        <th width="8%">关注次数</th>
+                        <th width="8%">浏览次数</th>
+                        <th width="8%">发布时间</th>
+                        <th width="8%">服务状态</th>
+                        <th width="18%">操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <% _.each(demandList, function (item) { %>
+                    <% _.each(serverList, function (item) { %>
                     <tr>
-                        <td><a  href="../customized/dataInf.html">失业人员信息</a></td>
-                        <td>数据包括身份证号码、姓名、性别、出生日期、户口性质、联系电话等信息</td>
-                        <td>2016.6.10</td>
-                        <td>预审驳回</td>
-                        <td>2016.6.10</td>
-                        <td><a class="edit">修改</a>
-                            <a class="delete">删除</a>
-                            <a class="closed">关闭</a>
-                            <a class="remove">下架</a>
+                        <td>
+                            <% if(item.status == '0'){ %>
+                                <a href="services.html#detail/<%= item.id %>"><%= item.name %></a>
+                            <% }else{ %>
+                                <a><%= item.name %></a>
+                            <% } %>
+                        </td>
+                        <td><%= item.attentionCount %></td>
+                        <td><%= item.viewCount %></td>
+                        <td><%= new Date(item.createdTime).format('yyyy.MM.dd') %></td>
+                        <td><%= item.statusDesc %></td>
+                        <td>
+                            <!-- 通过 -->
+                            <% if(item.status == '0'){ %>
+                                <a href="services.html#edit/<%= item.id %>">修改</a>
+                                <a class="unshelve" data-id="<%= item.id %>" href="javascript:;">下架</a>
+                            <!-- 审核中 -->
+                            <% }else if(item.status == '2'){ %>
+                                <a href="services.html#show/<%= item.id %>">查看</a>
+                            <!-- 拒绝 -->
+                            <% }else if(item.status == '3'){ %>
+                                <% if(item.isOnline == 'Y'){ %>
+                                    <a class="edit" href="services.html#edit/<%= item.id %>">修改</a>
+                                    <a class="unshelve" data-id="<%= item.id %>">下架</a>
+                                <% }else{ %>
+                                    <a class="delete" data-id="<%= item.id %>" href="javascript:;">删除</a>
+                                    <a class="edit" href="services.html#edit/<%= item.id %>">修改</a>
+                                <% } %>
+                            <% } %>
                         </td>
                     </tr>
                     <% }); %>
-                    <%if(demandList.length == 0){%>
+                    <%if(serverList.length == 0){%>
                     <tr>
                         <td colspan="6">暂无数据</td>
                     </tr>
@@ -45,263 +64,46 @@
                     </tbody>
                 </table>
             </div>
-            <div class="page-area"></div>
+            <div id="serverPage" class="page-area fr"></div>
         </div>
     </div>
 </script>
-<script id="apiDemandList" type="template">
+<script id="serverFollowList" type="template">
     <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
-        <div class="tab-title"><button><a class="corff" href="../customized/citySdkIw.html">发布API需求</a></button></div>
         <div class="M-downCons">
             <div class="D_table M-table">
                 <table>
                     <thead>
                     <tr>
-                        <th width="20%">需求方系统</th>
-                        <th width="48%">需求方系统描述</th>
-                        <th width="10%">状态</th>
-                        <th width="20%">操作</th>
+                        <th width="8%">服务名称</th>
+                        <th width="8%">服务商</th>
+                        <th width="8%">提供方式</th>
+                        <th width="8%">浏览次数</th>
+                        <th width="18%">关注时间</th>
+                        <th width="18%">操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <% _.each(apiDemandList, function (aitem) { %>
+                    <% _.each(followList, function (item) { %>
                     <tr>
-                        <td>数据包括身份证号码、姓名、性别、出生日期、户口性质、联系电话等信息</td>
-                        <td>2016.6.10</td>
-                        <td>预审驳回</td>
-                        <td><a class="edit">修改</a>
-                            <a class="delete">删除</a>
-                            <a class="closed">关闭</a>
-                            <a class="remove">下架</a>
+                        <td><a href="services.html#detail/<%= item.id %>"><%= item.name %></a></td>
+                        <td><%= item.providerName %></td>
+                        <td><%= item.serviceType %></td>
+                        <td><%= item.viewCount %></td>
+                        <td><%= new Date(item.attentionTime).format('yyyy.MM.dd') %></td>
+                        <td><a href="javascript:;" data-id="<%= item.id %>" class="unfollow">取消关注</a>
                         </td>
                     </tr>
                     <% }); %>
-                    <%if(apiDemandList.length == 0){%>
+                    <%if(followList.length == 0){%>
                     <tr>
-                        <td colspan="4">暂无数据</td>
+                        <td colspan="6">暂无数据</td>
                     </tr>
                     <%}%>
                     </tbody>
                 </table>
             </div>
+            <div id="serverPage" class="page-area fr"></div>
         </div>
     </div>
 </script>
-<script id="serversDemandList" type="template">
-    <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
-        <div class="tab-title"><button><a class="corff" href="../customized/citySdkIw.html">发布服务需求</a></button></div>
-        <div class="M-downCons">
-            <div class="D_table M-table">
-                <table>
-                    <thead>
-                    <tr>
-                        <th width="20%">服务任务名称</th>
-                        <th width="30%">服务任务描述</th>
-                        <th width="18%">截止日期</th>
-                        <th width="10%">状态</th>
-                        <th width="20%">操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% _.each(serverDemandList, function (sitem) { %>
-                    <tr>
-                        <td><%=sitem.name%></td>
-                        <td><%=sitem.description%></td>
-                        <td><%=sitem.endTime%></td>
-                        <td><%=sitem.statusName%></td>
-                        <td attrId="<%=sitem.id%> ">
-                            <a class="editS" href="javascript:;">修改</a>
-                            <a class="deleteS" href="javascript:;">删除</a>
-                            <a class="closeS" href="javascript:;">关闭</a>
-                            <a class="downS" href="javascript:;">下架</a>
-                        </td>
-                    </tr>
-                    <% }); %>
-                    <%if(serverDemandList.length == 0){%>
-                    <tr>
-                        <td colspan="5">暂无数据</td>
-                    </tr>
-                    <%}%>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</script>
-<script id="followList" type="template">
-    <div class="R-mainInfo clearfix follow-list">
-        <div class="R-titTab">
-            <span class="active">关注的服务任务</span>
-            <span>关注的API任务</span>
-            <span>关注的数据任务</span>
-        </div>
-        <div id="followArea" class="M-DownCons bgWhite">
-
-        </div>
-    </div>
-</script>
-<script id="followServersList" type="template">
-    <div class="D_table M-table">
-        <table>
-            <thead>
-            <tr>
-                <th>API任务名称</th>
-                <th>发布人</th>
-                <th>预算金额</th>
-                <th>浏览次数</th>
-                <th>关注时间</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a href="../customized/citySdkInf.html">中小学生学籍管理系统</a></td>
-                <td>市招投标中心</td>
-                <td>80万-100万</td>
-                <td>112次</td>
-                <td>2016-01-12</td>
-                <td><a>取消关注</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</script>
-<script id="followApiList" type="template">
-    <div class="D_table M-table">
-        <table>
-            <thead>
-            <tr>
-                <th>数据任务名称</th>
-                <th>数据用途</th>
-                <th>归属部门</th>
-                <th>关注时间</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a href="../customized/dataInf.html">失业人员信息</a></td>
-                <td>查询失业人员的基本信息</td>
-                <td>市人社局</td>
-                <td>2016-01-12</td>
-                <td><a>取消关注</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</script>
-<script id="followSourcesList" type="template">
-    <div class="D_table M-table">
-        <table>
-            <thead>
-            <tr>
-                <th>服务任务名称</th>
-                <th>发布人</th>
-                <th>预算金额</th>
-                <th>浏览次数</th>
-                <th>关注时间</th>
-                <th>操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a href="../customized/serverExTaskInf.html">招投标资质核验系统</a></td>
-                <td>市招投标中心</td>
-                <td>80万-100万</td>
-                <td>112次</td>
-                <td>2016-01-12</td>
-                <td><a>取消关注</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</script>
-
-
-<script id="myAccept" type="template">
-    <div class="R-mainInfo clearfix accept-list">
-        <div class="R-titTab">
-            <span class="active">服务开发需求接单</span>
-            <span>API开发需求接单</span>
-        </div>
-        <div id="acceptArea" class="M-DownCons bgWhite">
-
-        </div>
-    </div>
-</script>
-<script id="myServerAccept" type="template">
-    <div class="D_table M-table">
-        <table>
-            <thead>
-            <tr>
-                <th>服务名称</th>
-                <th>预算金额</th>
-                <th>截止日期</th>
-                <th>接单日期</th>
-                <th>需求方</th>
-                <th>接单状态</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a href="../customized/serverExTaskInf.html">招投标资质核验系统</a></td>
-                <td>80万-100万</td>
-                <td>2016年08月30日</td>
-                <td>20160512</td>
-                <td>广州市政府采购中心</td>
-                <td>已确认</td>
-            </tr>
-            <tr>
-                <td><a href="#">企业诉讼情况调查服务开发</a></td>
-                <td>8万-10万</td>
-                <td>2016年07月30日</td>
-                <td>20160612</td>
-                <td>优信律师事务所</td>
-                <td>已拒绝</td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-</script>
-
-<script id="myApiAccept" type="template">
-    <div class="D_table M-table">
-        <table>
-            <thead>
-            <tr>
-                <th>需求方系统</th>
-                <th>截止时间</th>
-                <th>接单时间</th>
-                <th>需求方</th>
-                <th>接单状态</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a href="../customized/citySdkInf.html">中小学生学籍管理系统</a></td>
-                <td>2016-08-30 12:00:00</td>
-                <td>2016-01-01 12:00:00</td>
-                <td>市信息资源中心</td>
-                <td>已确认</td>
-            </tr>
-            <tr>
-                <td><a href="#">农产品批发市场价格信息网</a></td>
-                <td>2016-04-23 13:23:00</td>
-                <td>2016-04-23 13:23:00</td>
-                <td>李科长</td>
-                <td>已确认</td>
-            </tr>
-            <tr>
-                <td><a href="#">智慧城市平台</a></td>
-                <td>2016-05-12 15:45:23</td>
-                <td>2016-05-12 15:45:23</td>
-                <td>王先生</td>
-                <td>已拒绝</td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-</script>
-

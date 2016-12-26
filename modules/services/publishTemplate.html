@@ -1,17 +1,26 @@
 <div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
     <!-- top -->
-    <p class="ReleaseTit">发布新服务</p>
+    <p class="ReleaseTit">
+        <% if(data.detail && data.detail.id){ %>
+        编辑服务
+        <% }else{ %>
+        发布新服务
+        <% } %>
+    </p>
     <!-- 2016-09-08 新增 tab切换 -->
     <!-- down -->
     <div class="ReleaseDownCons pr">
         <!-- SaaS 服务发布内容 -->
         <form class="ReleaseInputs ReleaseDown" id="publishForm">
             <div class="clearfix ReleaseList">
+                <% if(data.detail && data.detail.id){ %>
+                    <input type="hidden" name="id" value="<%= data.detail.id %>" />
+                <% } %>
                 <p class="fl R_left"><em>*</em>服务对象：</p>
                 <div class="fl R_right">
                     <p class="fl mt10">
                         <% data && data.objects.forEach(function(item){ %>
-                        <label class="fl"><input name="serviceObject" value="<%= item.dictCode %>" type="checkbox"><%= item.dictName %></label>
+                        <label class="fl"><input name="serviceObject" value="<%= item.dictCode %>" <%= data.detail && data.detail.serviceObject.indexOf(item.dictCode) > -1 && "checked" %> type="checkbox"><%= item.dictName %></label>
                         <% }) %>
                     </p>
                 </div>
@@ -21,7 +30,7 @@
                 <p class="fl R_left"><em>*</em>服务名称：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="name" placeholder="请输入服务名称" value="">
+                        <input type="text" name="name" placeholder="请输入服务名称" value="<%= data.detail && data.detail.name %>">
                     </p>
                 </div>
             </div>
@@ -29,7 +38,7 @@
                 <p class="fl R_left"><em>*</em>服务简介：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea name="description" id="" cols="30" rows="10" placeholder="请输入数据描述"></textarea>
+                        <textarea name="description" id="" cols="30" rows="10" placeholder="请输入数据描述"><%= data.detail && data.detail.description %></textarea>
                     </p>
                 </div>
             </div>
@@ -37,8 +46,12 @@
                 <p class="fl R_left"><em>*</em>服务图标：</p>
                 <div class="fl R_right">
                     <p class="allInfoImg">
-                        <img id="serviceIcon" src="../../images/add.png" alt="">
-                        <input type="text" class="hide" name="imageKey" id="serviceKey">
+                        <% if(data.detail && data.detail.imageUri){ %>
+                            <img id="serviceIcon" src="<%= data.detail.imageUri %>" alt="">
+                        <% }else { %>
+                            <img id="serviceIcon" src="../../images/add.png" alt="">
+                        <% } %>
+                        <input type="text" class="hide" value="<%= data.detail && data.detail.imageKey %>" name="imageKey" id="serviceKey">
                     </p>
                 </div>
                 <label id="imageKey-error" style="display:none;" class="error" for="imageKey"></label>
@@ -52,7 +65,7 @@
                     <div class="classifyList Travel01">
                         <select id="selectCategory" name="categoryId">
                             <% data && data.category.forEach(function(item){ %>
-                            <option value="<%= item.categoryId %>"><%= item.categoryName %></option>
+                            <option value="<%= item.categoryId %>" <%= data.detail && data.detail.categoryId == item.categoryId && "selected" %>><%= item.categoryName %></option>
                             <% }) %>
                         </select>
                     </div>
@@ -63,8 +76,8 @@
                 <p class="fl R_left"><em>*</em>标签：</p>
                 <div class="fl R_right posRE">
                     <p>
-                        <input type="text" placeholder="请选择标签" value="" readonly="" class="wd300" id="tagName">
-                        <input type="hidden" name="tags" id="tagId"/>
+                        <input type="text" placeholder="请选择标签" value="<%= data.detail && data.detail.tagNames %>" readonly="" class="wd300" id="tagName">
+                        <input type="hidden" name="tags" value="<%= data.detail && data.detail.tags %>" id="tagId"/>
                         <button class="btn btn-primary" id="selectTagBtn">选择</button>
                     </p>
                 </div>
@@ -74,7 +87,7 @@
                 <p class="fl R_left"><em>*</em>服务范围：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" placeholder="输入服务的城市" name="scope" value="">
+                        <input type="text" placeholder="输入服务的城市" name="scope" value="<%= data.detail && data.detail.scope %>">
                     </p>
                 </div>
             </div>
@@ -82,7 +95,7 @@
                 <p class="fl R_left"><em>*</em>演示地址：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="demoUri" placeholder="输入演示地址" value="">
+                        <input type="text" name="demoUri" placeholder="输入演示地址" value="<%= data.detail && data.detail.demoUri %>">
                     </p>
                 </div>
             </div>
@@ -90,7 +103,7 @@
                 <p class="fl R_left"><em>*</em>访问URL：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="uri" placeholder="输入访问URL" value="">
+                        <input type="text" name="uri" placeholder="输入访问URL" value="<%= data.detail && data.detail.uri %>">
                     </p>
                 </div>
             </div>
@@ -98,22 +111,36 @@
                 <p class="fl R_left">示例图片：</p>
                 <div class="fl R_right">
                     <p class="allInfoImg fl mr10">
-                        <img id="demo1Icon" src="../../images/add.png" alt="">
-                        <input type="text" class="hide" name="demoKey1" id="demo1Key">
+                        <% if(data.detail && data.detail.demoImage1){ %>
+                            <img id="demo1Icon" src="<%= data.detail.demoImage1 %>" alt="">
+                        <% }else { %>
+                            <img id="demo1Icon" src="../../images/add.png" alt="">
+                        <% } %>
+                        <input type="text" value="<%= data.detail && data.detail.demoKey1 %>" class="hide" name="demoKey1" id="demo1Key">
                     </p>
                     <p class="allInfoImg fl mr10">
-                        <img id="demo2Icon" src="../../images/add.png" alt="">
-                        <input type="text" class="hide" name="demoKey2" id="demo2Key">
+                        <% if(data.detail && data.detail.demoImage2){ %>
+                            <img id="demo2Icon" src="<%= data.detail.demoImage2 %>" alt="">
+                        <% }else { %>
+                            <img id="demo2Icon" src="../../images/add.png" alt="">
+                        <% } %>
+                        <input type="text" value="<%= data.detail && data.detail.demoKey2 %>" class="hide" name="demoKey2" id="demo2Key">
                     </p>
                     <p class="allInfoImg fl">
-                        <img id="demo3Icon" src="../../images/add.png" alt="">
-                        <input type="text" class="hide" name="demoKey3" id="demo3Key">
+                        <% if(data.detail && data.detail.demoImage3){ %>
+                            <img id="demo3Icon" src="<%= data.detail.demoImage3 %>" alt="">
+                        <% }else { %>
+                            <img id="demo3Icon" src="../../images/add.png" alt="">
+                        <% } %>
+                        <input type="text" value="<%= data.detail && data.detail.demoKey3 %>" class="hide" name="demoKey3" id="demo3Key">
                     </p>
                 </div>
             </div>
             <div class="R_Btns">
                 <!-- <button class="bgBlue">返回</button> -->
-                <input type="submit" class="bgBlue" value="发布">
+                <% if(!data.showFlag){ %>
+                    <input type="submit" class="bgBlue" value="提交">
+                <% } %>
             </div>
         </form>
         <form id="uploadServiceIcon" class="icon-form" action="" method="post">

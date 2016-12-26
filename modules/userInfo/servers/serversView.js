@@ -4,39 +4,30 @@
 
 var template = require('html!./servers.html');
 require('./servers.css');
+require('util');
 
 
-var demandListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryData.do'
+var publishListModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'publish/list.do'
 });
-var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryApi.do'
+var followListModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'attention/list.do'
 });
-var demandServersListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
+var unfollowModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'attention/delete.do'
 });
-var deleteServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'deleteService.do'
+var unshelveModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'unshelve.do'
 });
-
-
-var followServersListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryServiceFocus.do'
+var deleteModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'delete.do'
 });
 
-var followApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
-});
-
-var followSourcesListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
-});
 
 var serversView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
         'click #demandTabs span': 'changeTab'
-
     },
     changeTab: function (e) {
         var $this = $(e.target),
@@ -49,370 +40,162 @@ var serversView = Backbone.View.extend({
         }
     },
     initialize: function() {
-        this.childView = [resourcesDemandListView,apiDemandListView,serversDemandListView,followListView,acceptView];
+        this.childView = [myPublishListView, myFollowListView];
         this.$el.html(template);
-        new resourcesDemandListView({el: '#serverInfo'});
+        new myPublishListView({el: '#serverInfo'});
     }
 });
 
-var resourcesDemandListView = Backbone.View.extend({
+// 发布的服务
+var myPublishListView = Backbone.View.extend({
     pagObj: {
         pageSize: 10,
         pageNum: 1
     },
     events: {
-        
-    },
-    changeTab: function (e) {
-        var $this = $(e.target),
-            isActive = $this.hasClass('active'),
-            index = $this.index();
-        if(!isActive){
-            $this.parent().find('.active').removeClass('active');
-            $this.addClass('active');
-            // new this.childView[index]({el: '#accountInfo'});
-        }
+        'click .unshelve': 'unshelveService',
+        'click .delete': 'deleteService'
     },
     initialize: function() {
-        this.templete = _.template($('#resourcesDemandList').html());
+        this.templete = _.template($('#serverPublishList').html());
 
-        this.model = new demandListModel();
-        this.model.on('change',this.render);
+        this.model = new publishListModel();
+        this.unshelveModel = new unshelveModel();
+        this.deleteModel = new deleteModel();
+
+        this.listenTo(this.deleteModel, 'sync', this.handleOperation);
+        this.listenTo(this.unshelveModel, 'sync', this.handleOperation);
+        this.listenTo(this.model, 'sync', this.render);
+
         this.model.fetch({
             data: {
                 pageSize: this.pagObj.pageSize,
                 page: this.pagObj.pageNum
             }
         });
-        this.render();
+        this.initRender();
     },
     render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-var apiDemandListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-    },
-    initialize: function() {
-        this.templete = _.template($('#apiDemandList').html());
-
-        this.model = new demandApiListModel();
-        this.model.on('change',this.render);
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({apiDemandList:[]}));
-    }
-});
-var serversDemandListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1,
-        totalPage: 0
-    },
-    events: {
-        'click .editS': 'updateServers',
-        'click .deleteS': 'deleteServers',
-        'click .closeS': 'closeServers',
-        'click .downS': 'downServers'
-    },
-    initialize: function() {
-        var that = this;
-        this.templete = _.template($('#serversDemandList').html());
-
-        this.model = new demandServersListModel();
-        this.model.on('change',function () {
-            that.render();
-        });
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-        this.render();
-    },
-    render: function () {
-        var res = this.model.get('result');
-        var serverDemandList = [];
-        if(res){
-            serverDemandList = res.list;
-            var page = res.page || {totalPage:0,currentPage:0};
-            this.pagObj.totalPage = page.totalPage;
-            this.pagObj.pageNum = page.currentPage;
-        }
-        this.$el.html(this.templete({serverDemandList:serverDemandList}));
-    },
-    deleteServers: function (e) {
-        var that = this;
-        var $this = $(e.target).is('tr') ? $(e.target) : $(e.target).parent();
-        var sid = $this.attr('attrId');
-        var deleteLayer = layer.confirm('确认要删除吗？', {
-            btn: ['确认','取消'] //按钮
-        }, function(){
-            new deleteServerDemandModel().fetch({
-                data: {
-                    id: sid
-                },
-                success: function () {
-                    layer.msg('删除成功!');
-                    that.model.fetch({
-                        pageSize: this.pagObj.pageSize,
-                        page: this.pagObj.pageNum
-                    });
+        var res = this.model.get('result'),
+            me = this,
+            serverList = res.list,
+            page = res.page;
+        this.pagObj.pageNum = page.currentPage;
+        this.pagObj.totalPage = page.totalPage;
+        this.$el.html(this.templete({serverList:serverList}));
+        laypage({
+            cont: 'serverPage',
+            skip: true,
+            pages: this.pagObj.totalPage,
+            curr: this.pagObj.pageNum || 1,
+            jump: function(obj, first){
+                if(!first){
+                    me.pagObj.pageNum = obj.curr;
+                    me.reloadPage();
                 }
-            });
-            layer.close(deleteLayer);
-        }, function(){
-            layer.close(deleteLayer);
+            }
         });
     },
-    closeServers: function () {
-        var that = this;
-        var $this = $(e.target).is('tr') ? $(e.target) : $(e.target).parent();
-        var sid = $this.attr('attrId');
-        var deleteLayer = layer.confirm('确认要关闭吗？', {
-            btn: ['确认','取消'] //按钮
-        }, function(){
-            new deleteServerDemandModel().fetch({
-                data: {
-                    id: sid
-                },
-                success: function () {
-                    layer.msg('关闭成功!');
-                    that.model.fetch({
-                        pageSize: this.pagObj.pageSize,
-                        page: this.pagObj.pageNum
-                    });
+    initRender: function () {
+        this.$el.html(this.templete({serverList:[]}));
+    },
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
+    },
+    unshelveService: function(event) {
+        var id = this.$(event.currentTarget).data('id');
+        this.unshelveModel.fetch({
+            data: {
+                id: id
+            }
+        })
+    },
+    deleteService: function() {
+        var id = this.$(event.currentTarget).data('id');
+        this.deleteModel.fetch({
+            data: {
+                id: id
+            }
+        })
+    },
+    handleOperation: function() {
+        this.pagObj.pageNum = 1;
+        this.reloadPage();
+    }
+});
+
+// 关注的服务
+var myFollowListView = Backbone.View.extend({
+    pagObj: {
+        pageSize: 10,
+        pageNum: 1
+    },
+    events: {
+        'click .unfollow': 'unFollowService'
+    },
+    initialize: function() {
+        this.templete = _.template($('#serverFollowList').html());
+
+        this.model = new followListModel();
+        this.unfollowModel = new unfollowModel();
+        this.listenTo(this.model, 'sync', this.render);
+        this.listenTo(this.unfollowModel, 'sync', this.reloadPage);
+
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
+        this.initRender();
+    },
+    render: function () {
+        var res = this.model.get('result'),
+            me = this,
+            followList = res.list,
+            page = res.page;
+        this.pagObj.pageNum = page.currentPage;
+        this.pagObj.totalPage = page.totalPage;
+        this.$el.html(this.templete({followList: followList}));
+        laypage({
+            cont: 'serverPage',
+            skip: true,
+            pages: this.pagObj.totalPage,
+            curr: this.pagObj.pageNum || 1,
+            jump: function(obj, first){
+                if(!first){
+                    me.pagObj.pageNum = obj.curr;
+                    me.reloadPage();
                 }
-            });
-            layer.close(deleteLayer);
-        }, function(){
-            layer.close(deleteLayer);
+            }
         });
     },
-    downServers: function () {
-        var that = this;
-        var $this = $(e.target).is('tr') ? $(e.target) : $(e.target).parent();
-        var sid = $this.attr('attrId');
-        var deleteLayer = layer.confirm('确认要下架吗？', {
-            btn: ['确认','取消'] //按钮
-        }, function(){
-            new deleteServerDemandModel().fetch({
-                data: {
-                    id: sid
-                },
-                success: function () {
-                    layer.msg('下架成功!');
-                    that.model.fetch({
-                        pageSize: this.pagObj.pageSize,
-                        page: this.pagObj.pageNum
-                    });
-                }
-            });
-            layer.close(deleteLayer);
-        }, function(){
-            layer.close(deleteLayer);
-        });
-    }
-});
-var followListView = Backbone.View.extend({
-    events: {
-        'click .follow-list span': 'changeTab'
+    initRender: function () {
+        this.$el.html(this.templete({followList:[]}));
     },
-    initialize: function() {
-        this.childView = [followServersListView,followApiListView,followSourcesListView];
-        this.$el.html($('#followList').html());
-        new this.childView[0]({
-            el: '#followArea'
-        });
-    },
-    changeTab: function (e) {
-        var $this = $(e.target),
-            isActive = $this.hasClass('active'),
-            index = $this.index();
-        if(!$this.is('span')){
-            return;
-        }
-        if(!isActive){
-            $this.parent().find('.active').removeClass('active');
-            $this.addClass('active');
-            new this.childView[index]({
-                el: '#followArea'
-            });
-        }
-        e.stopPropagation();
-        e.preventDefault();
-    }
-});
-var followServersListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        var that = this;
-        this.templete = _.template($('#followServersList').html());
-        this.model = new followServersListModel();
-        this.model.on('change',function () {
-            that.render();
-        });
+    reloadPage: function () {
         this.model.fetch({
             data: {
                 pageSize: this.pagObj.pageSize,
                 page: this.pagObj.pageNum
             }
         });
-        this.render();
     },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-var followApiListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
+    unFollowService: function(event) {
+        var id = this.$(event.currentTarget).data('id');
 
-    },
-    initialize: function() {
-        this.templete = _.template($('#followApiList').html());
-        /*
-        this.model = new demandListModel();
-        this.model.on('change',this.render);
-        this.model.fetch({
+        this.pagObj.pageNum = 1;
+        this.unfollowModel.fetch({
             data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
+                id: parseInt(id)
             }
-        });
-        */
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-var followSourcesListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        this.templete = _.template($('#followSourcesList').html());
-        /*
-        this.model = new demandListModel();
-        this.model.on('change',this.render);
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-        */
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
+        })
     }
 });
 
-var acceptView = Backbone.View.extend({
-    events: {
-        'click .accept-list span': 'changeTab'
-    },
-    initialize: function() {
-        this.childView = [acceptServersView,acceptApiView];
-        this.$el.html($('#myAccept').html());
-        new this.childView[0]({
-            el: '#acceptArea'
-        });
-    },
-    changeTab: function (e) {
-        var $this = $(e.target),
-            isActive = $this.hasClass('active'),
-            index = $this.index();
-        if(!$this.is('span')){
-            return;
-        }
-        if(!isActive){
-            $this.parent().find('.active').removeClass('active');
-            $this.addClass('active');
-            new this.childView[index]({
-                el: '#acceptArea'
-            });
-        }
-        e.stopPropagation();
-        e.preventDefault();
-    }
-});
-var acceptServersView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        this.templete = _.template($('#myServerAccept').html());
-        /*
-         this.model = new demandListModel();
-         this.model.on('change',this.render);
-         this.model.fetch({
-         data: {
-         pageSize: this.pagObj.pageSize,
-         page: this.pagObj.pageNum
-         }
-         });*/
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-var acceptApiView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        this.templete = _.template($('#myApiAccept').html());
-        /*
-         this.model = new demandListModel();
-         this.model.on('change',this.render);
-         this.model.fetch({
-         data: {
-         pageSize: this.pagObj.pageSize,
-         page: this.pagObj.pageNum
-         }
-         });
-         */
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
 module.exports = serversView;

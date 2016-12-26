@@ -27,19 +27,26 @@ var Routes =  Backbone.Router.extend({
         });
     },
     publishView: function (id) {
-        var publishView = require('services/publishView.js');
-        mscxPage.views['servicesPublishObj'] = new publishView({
+        var view = require('services/publishView.js');
+
+        var publishView = mscxPage.views['publishView'];
+        publishView && publishView.undelegateEvents() && publishView.stopListening();
+
+        mscxPage.views['publishView'] = new view({
             id: id
         });
     },
     showView: function (id) {
-        var publishView = require('services/publishView.js');
+        var view = require('services/publishView.js');
         
-        var view = new publishView({
+        var publishView = mscxPage.views['publishView'];
+        publishView && publishView.undelegateEvents() && publishView.stopListening();
+
+        var view = new view({
             id: id
         });
         view.showFlag = true;
-        mscxPage.views['servicesPublishObj'] = view;
+        mscxPage.views['publishView'] = view;
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

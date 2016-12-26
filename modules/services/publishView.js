@@ -196,10 +196,17 @@ var createDemandView = Backbone.View.extend({
     },
     showTagLayer: function(event) {
         var tags = this.tagModel.toJSON();
+        var detail = this.detailModel.toJSON();
         var me = this;
+        var param = {};
+
+        _.extend(param, {
+            tags: tags,
+            detailTag: detail.result.tags
+        })
 
         this.tagView = new tagView({
-            model: tags
+            model: param
         });
         this.$el.append(this.tagView.$el);
 
@@ -207,13 +214,16 @@ var createDemandView = Backbone.View.extend({
 
         this.layer = layer.open({
             type: 1,
-            btn: ['取消'],
+            btn: ['确定', '取消'],
             title: '服务标签',
             shade: 0.6,
             shadeClose: true,
             area: ['500px'],
             content: this.tagView.$el,
             btn1: function (index) {
+                me.tagView.submit(index);
+            },
+            btn2: function (index) {
                 layer.close(index);
             },
             end: function() {

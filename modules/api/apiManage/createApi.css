@@ -111,3 +111,5 @@
 .add-price-list ul li input[type="text"] { width: 320px;}
 .add-price-list ul li textarea {width: 320px;height: 80px;resize: none;}
 .add-price-list .ml20 {margin-left: 20px;}
+.api-server-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
+.api-name-error {color: red;margin-right: 5px;float: right;display: none;}

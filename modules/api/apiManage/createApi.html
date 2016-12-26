@@ -23,9 +23,10 @@
                 <p class="fl R_left">服务标识：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" placeholder="输入服务标识" name="name">
+                        <input type="text" id="apiServerId" placeholder="输入服务标识" name="name">
                     </p>
                 </div>
+                <span class="api-server-error">不能为空</span>
             </div>
             <div class="clearfix ReleaseList">
                 <p class="fl R_left">是否收费：</p>
@@ -200,8 +201,8 @@
 <script id="apiTableTemps" type="template">
     <% _.each(apiList, function (aitem) { %>
     <tr>
-        <td><%=aitem.name%></td>
         <td><%=aitem.cname%></td>
+        <td><%=aitem.name%></td>
         <td><%=aitem.uri%></td>
         <td>
             <a href="javascript:void(0);" class="editApi">修改</a>
@@ -282,14 +283,15 @@
             <li>
                 <label>
                     <span><i class="need">*</i>API名称：</span>
-                    <input type="text" name="name" id="apiName" value="<%=res.name%>">
+                    <input type="text" name="cname" id="cname" value="<%=res.name%>">
                 </label>
             </li>
             <li>
                 <label>
                     <span><i class="need">*</i>API标识：</span>
-                    <input type="text" name="cname" id="cname" value="<%=res && res.cname%>">
+                    <input type="text" name="name" id="apiName" value="<%=res && res.cname%>">
                 </label>
+                <span class="api-name-error"></span>
             </li>
             <li>
                 <label>

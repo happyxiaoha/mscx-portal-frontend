@@ -11,7 +11,9 @@ require('util');
 var createApiModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/publishServiceApi.do'
 });
-
+var checkServerId = Backbone.Model.extend({
+    url: mscxPage.request.api + 'service/checkApiByIdentification.do'
+});
 var getCategoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getApiCategory.do'
 });
@@ -39,9 +41,12 @@ var createApiView = Backbone.View.extend({
         'click .addApi': 'addApiLay',
         'click .editApi': 'updateApi',
         'click .deleteApi': 'removeApi',
-        'change .upload-file': 'doUploadImg'
+        'change .upload-file': 'doUploadImg',
+        'blur #apiServerId': 'checkServerId',
+        'blur #apiName': 'checkApiName'
     },
     updateIndex: -1,
+    apiName: '',
     initialize: function() {
         var that = this;
         this.getCategoryModel = new getCategoryModel();
@@ -85,10 +90,6 @@ var createApiView = Backbone.View.extend({
         var that = this;
         return {
             rules: {
-                name: {
-                    required: true,
-                    minlength: 2
-                },
                 scope: {
                     required: true
                 },
@@ -100,7 +101,7 @@ var createApiView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                that.doPublish()
+                that.doPublish();
             },
             invalidHandler:function() {
                 that.checkValidateSelf();
@@ -156,6 +157,16 @@ var createApiView = Backbone.View.extend({
         else {
             $('.package-error').hide();
         }
+
+        if(!this.model.get('name')) {
+            if(!$('.api-server-error').is(':visible')){
+                $('.api-server-error').html('不能为空').show();
+            }
+            res = false;
+        }
+        else {
+            $('.api-server-error').remove();
+        }
         return res;
     },
     packageValidateConfig: function () {
@@ -202,10 +213,6 @@ var createApiView = Backbone.View.extend({
         var that = this;
         return {
             rules: {
-                name: {
-                    required: true,
-                    minlength: 2
-                },
                 cname: {
                     required: true
                 },
@@ -221,23 +228,15 @@ var createApiView = Backbone.View.extend({
             },
             submitHandler: function () {
                 that.saveApiJson()
+            },
+            invalidHandler:function() {
+                that.checkApiName();
             }
         }
     },
     changeAttribute: function (e) {
         this.model.set(e.target.id,e.target.value);
         return false;
-    },
-    doCreate: function () {
-        /*
-        var dataFormat = this.$el.find('input[name="system-network"]').filter(':checked').val();
-        this.model.set('dataFormat',dataFormat);
-        this.model.save({},{
-            success: function (model,res) {
-                layer.msg('添加成功!');
-                location.href = './userinfo.html#demand';
-            }
-        })*/
     },
     chooseTag: function (e) {
         var $this = $(e.target),
@@ -503,20 +502,32 @@ var createApiView = Backbone.View.extend({
         that.lays = dialog;
     },
     saveApiJson: function () {
+        var res = $('#addApiForm').serializeObject();
+        if(this.apiName.indexOf('**'+res.name+'&&')>= 0){
+            return;
+        }
         layer.close(this.lays);
         var apiListJson = _.clone(this.model.get('apiListJson') || []);
         if(this.updateIndex < 0){
-            apiListJson.push($('#addApiForm').serializeObject());
+            apiListJson.push(res);
         }
         else {
-            apiListJson[this.updateIndex] = $('#addApiForm').serializeObject();
+            apiListJson[this.updateIndex] = res;
             this.updateIndex = -1;
         }
 
         this.model.set('apiListJson',apiListJson);
         $('#addApiForm').resetForm();
     },
+    reBuildApiName: function () {
+        var apiListJson = this.model.get('apiListJson');
+        this.apiName = '';
+        for(var i = 0, len = apiListJson.length; i < len; i++){
+            this.apiName += '**'+apiListJson[i].name+'&&';
+        }
+    },
     buildApiTable: function () {
+        this.reBuildApiName();
         var apiListJson = this.model.get('apiListJson');
         apiListJson = apiListJson || [];
         if(apiListJson.length > 0){
@@ -576,18 +587,17 @@ var createApiView = Backbone.View.extend({
             this.model.set('scope',obj.scope);
             this.model.set('cname',obj.cname);
             this.model.set('description',obj.description);
-            this.model.set('name',obj.name);
             this.model.set('rtnCode',obj.rtnCode || '');
             this.model.save({},{
                 success: function () {
                     layer.msg('发布成功!',function () {
-                        location.href = '';
+                        location.href = 'userInfo.html#api';
                     });
                 }
             })
         }
     },
-    doUploadImg: function (e) {
+    doUploadImg: function () {
         var $formArea = $('#ajaxUpload');
         $formArea.attr('action',mscxPage.request.api+'uploadFile.do');
         var that = this;
@@ -612,6 +622,40 @@ var createApiView = Backbone.View.extend({
         $formArea.ajaxForm(options);
         $formArea.find('input[type="submit"]').click();
         $formArea = null;
+    },
+    checkServerId: function () {
+        var that = this;
+        var sName = $.trim($('#apiServerId').val());
+        if(!sName){
+            $('.api-server-error').html('不能为空').show();
+            return;
+        }
+        new checkServerId().fetch({
+            data: {name: sName},
+            success: function (model,res) {
+                if(res.result){
+                    $('.api-server-error').hide();
+                    that.model.set('name',sName);
+                }
+                else {
+                    that.model.set('name','');
+                    $('.api-server-error').html(res.message).show();
+                }
+            }
+        })
+    },
+    checkApiName: function () {
+        var name = $.trim($('#apiName').val());
+        if(!name){
+            $('.api-name-error').html('不能为空').show();
+            return;
+        }
+        if(this.apiName.indexOf('**'+name+'&&')>= 0){
+            $('.api-name-error').html('API标示重复').show();
+        }
+        else {
+            $('.api-name-error').hide();
+        }
     }
 });
 

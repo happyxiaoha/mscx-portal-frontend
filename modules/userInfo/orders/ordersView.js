@@ -7,36 +7,13 @@ require('./orders.css');
 
 
 var demandListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryData.do'
-});
-var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryApi.do'
-});
-var demandServersListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
-});
-var deleteServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'deleteService.do'
+    url: mscxPage.request.order + 'queryData.do'
 });
 
-
-var followServersListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryServiceFocus.do'
-});
-
-var followApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
-});
-
-var followSourcesListModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryServiceListOfMe.do'
-});
-
-var demandView = Backbone.View.extend({
+var orderView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
-        'click #demandTabs span': 'changeTab'
-
+        'click #orderTabs span': 'changeTab'
     },
     changeTab: function (e) {
         var $this = $(e.target),
@@ -45,17 +22,17 @@ var demandView = Backbone.View.extend({
         if(!isActive){
             $this.parent().find('.active').removeClass('active');
             $this.addClass('active');
-            new this.childView[index]({el: '#demandInfo'});
+            new this.childView[index]({el: '#orderInfo'});
         }
     },
     initialize: function() {
-        this.childView = [resourcesDemandListView,apiDemandListView,serversDemandListView,followListView,acceptView];
+        this.childView = [shopCarView,orderListView,saleListView];
         this.$el.html(template);
-        new resourcesDemandListView({el: '#demandInfo'});
+        new shopCarView({el: '#orderInfo'});
     }
 });
 
-var resourcesDemandListView = Backbone.View.extend({
+var shopCarView = Backbone.View.extend({
     pagObj: {
         pageSize: 10,
         pageNum: 1
@@ -90,7 +67,7 @@ var resourcesDemandListView = Backbone.View.extend({
         this.$el.html(this.templete({demandList:[]}));
     }
 });
-var apiDemandListView = Backbone.View.extend({
+var orderListView = Backbone.View.extend({
     pagObj: {
         pageSize: 10,
         pageNum: 1
@@ -114,7 +91,7 @@ var apiDemandListView = Backbone.View.extend({
         this.$el.html(this.templete({apiDemandList:[]}));
     }
 });
-var serversDemandListView = Backbone.View.extend({
+var saleListView = Backbone.View.extend({
     pagObj: {
         pageSize: 10,
         pageNum: 1,
@@ -226,193 +203,4 @@ var serversDemandListView = Backbone.View.extend({
         });
     }
 });
-var followListView = Backbone.View.extend({
-    events: {
-        'click .follow-list span': 'changeTab'
-    },
-    initialize: function() {
-        this.childView = [followServersListView,followApiListView,followSourcesListView];
-        this.$el.html($('#followList').html());
-        new this.childView[0]({
-            el: '#followArea'
-        });
-    },
-    changeTab: function (e) {
-        var $this = $(e.target),
-            isActive = $this.hasClass('active'),
-            index = $this.index();
-        if(!$this.is('span')){
-            return;
-        }
-        if(!isActive){
-            $this.parent().find('.active').removeClass('active');
-            $this.addClass('active');
-            new this.childView[index]({
-                el: '#followArea'
-            });
-        }
-        e.stopPropagation();
-        e.preventDefault();
-    }
-});
-var followServersListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        var that = this;
-        this.templete = _.template($('#followServersList').html());
-        this.model = new followServersListModel();
-        this.model.on('change',function () {
-            that.render();
-        });
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-var followApiListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        this.templete = _.template($('#followApiList').html());
-        /*
-        this.model = new demandListModel();
-        this.model.on('change',this.render);
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-        */
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-var followSourcesListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        this.templete = _.template($('#followSourcesList').html());
-        /*
-        this.model = new demandListModel();
-        this.model.on('change',this.render);
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-        */
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-
-var acceptView = Backbone.View.extend({
-    events: {
-        'click .accept-list span': 'changeTab'
-    },
-    initialize: function() {
-        this.childView = [acceptServersView,acceptApiView];
-        this.$el.html($('#myAccept').html());
-        new this.childView[0]({
-            el: '#acceptArea'
-        });
-    },
-    changeTab: function (e) {
-        var $this = $(e.target),
-            isActive = $this.hasClass('active'),
-            index = $this.index();
-        if(!$this.is('span')){
-            return;
-        }
-        if(!isActive){
-            $this.parent().find('.active').removeClass('active');
-            $this.addClass('active');
-            new this.childView[index]({
-                el: '#acceptArea'
-            });
-        }
-        e.stopPropagation();
-        e.preventDefault();
-    }
-});
-var acceptServersView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        this.templete = _.template($('#myServerAccept').html());
-        /*
-         this.model = new demandListModel();
-         this.model.on('change',this.render);
-         this.model.fetch({
-         data: {
-         pageSize: this.pagObj.pageSize,
-         page: this.pagObj.pageNum
-         }
-         });*/
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-var acceptApiView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-
-    },
-    initialize: function() {
-        this.templete = _.template($('#myApiAccept').html());
-        /*
-         this.model = new demandListModel();
-         this.model.on('change',this.render);
-         this.model.fetch({
-         data: {
-         pageSize: this.pagObj.pageSize,
-         page: this.pagObj.pageNum
-         }
-         });
-         */
-        this.render();
-    },
-    render: function () {
-        this.$el.html(this.templete({demandList:[]}));
-    }
-});
-module.exports = demandView;
+module.exports = orderView;

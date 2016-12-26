@@ -34,7 +34,7 @@ var addModel = Backbone.Model.extend({
 });
 var modifyModel = Backbone.Model.extend({
     idAttribute: 'modifyId',
-    url: mscxPage.request.demand + 'modify.do'
+    url: mscxPage.request.app + 'modify.do'
 });
 
 var createDemandView = Backbone.View.extend({
@@ -129,7 +129,7 @@ var createDemandView = Backbone.View.extend({
     handleSubmit: function() {
         var model = this.model.toJSON();
         if(model.status == 'OK') {
-            layer.msg('发布成功，请等待审核', function() {
+            layer.msg('提交成功，请等待审核', function() {
                 location.href = 'userinfo.html#server';
             })
         }

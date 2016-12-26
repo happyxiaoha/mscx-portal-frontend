@@ -82,7 +82,7 @@ var createDemandView = Backbone.View.extend({
         this.$form.ajaxSubmit({
             url: this.formAction,
             success: function(res) {
-                layer.msg('发布成功！', function() {
+                layer.msg('提交成功！', function() {
                     location.href = 'userinfo.html#demand/api';
                 });
             }

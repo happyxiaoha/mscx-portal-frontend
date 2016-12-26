@@ -13,7 +13,9 @@ var Routes =  Backbone.Router.extend({
         'sources': 'sourcesView',
         'api': 'apiView',
         'server': 'serverView',
-        'order': 'orderView'
+        'order': 'orderView',
+        'shop': 'shopView',
+        'sale': 'saleView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -50,6 +52,14 @@ var Routes =  Backbone.Router.extend({
     orderView: function () {
         var orderView = require('userInfo/orders/ordersView.js');
         mscxPage.views['orderViewObj'] = new orderView();
+    },
+    shopView: function () {
+        var shopView = require('userInfo/orders/shopCarView.js');
+        mscxPage.views['shopViewObj'] = new shopView();
+    },
+    saleView: function () {
+        var saleView = require('userInfo/orders/saleView.js');
+        mscxPage.views['saleViewObj'] = new saleView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

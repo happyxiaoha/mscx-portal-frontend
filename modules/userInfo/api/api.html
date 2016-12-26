@@ -24,40 +24,34 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td> <a href="../api/citySdkInfo.html"> 全国交通违章查询</a></td>
-                        <td>已经支持300个左右的城市违章查询，目前支持的省份有：北京、山西、辽宁、吉林、上海、江苏、浙江、安徽、山东、河南、湖北、广东、海南、重庆、贵州、云南、西藏、陕西、甘肃、青海、宁夏、新疆</td>
-                        <td>7</td>
-                        <td>审核通过</td>
+                    <% _.each(publishApiList, function (paitem) { %>
+                    <tr attrId="<%=paitem.apiServiceId%>">
+                        <td><%=paitem.apiServiceCName%></td>
+                        <td><%=paitem.description%></td>
+                        <td><%=paitem.applyCount || '-' %></td>
+                        <td><%=paitem.statusDesc%></td>
                         <td>
-                            <a class="changePrice">调价</a>
-                            <a class="delete">删除</a>
-                            <a class="closed">下架</a>
+                            <%if(paitem.status == '0'){%>
+                                <a href="javascript:;" class="changePrice">调价</a>
+                                <a href="javascript:;" class="updateApi">编辑</a>
+                                <a href="javascript:;" class="downApi">下架</a>
+                            <%}else if(paitem.status == '3'){%>
+                            <a href="javascript:;" class="changePrice">调价</a>
+                            <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
+                            <a href="javascript:;" class="deleteApi">删除</a>
+                            <%}%>
                         </td>
                     </tr>
+                    <% }); %>
+                    <%if(publishApiList.length == 0){%>
                     <tr>
-                        <td> <a href="#"> 上海社保查询</a></td>
-                        <td>提供上海市范围内的社会保险查询功能。</td>
-                        <td>2</td>
-                        <td>审核中</td>
-                        <td><a class="edit">修改</a>
-                            <a class="delete">删除</a>
-                            <a class="closed">下架</a>
-                        </td>
+                        <td colspan="5">暂无数据</td>
                     </tr>
-                    <tr>
-                        <td> <a href="#"> 北京电费账单</a></td>
-                        <td>提供北京市范围内的电费账单查询。</td>
-                        <td>8</td>
-                        <td>审核拒绝</td>
-                        <td>
-                            <a class="showMsg">查看</a>
-                        </td>
-                    </tr>
-
+                    <%}%>
                     </tbody>
                 </table>
             </div>
+            <div class="page-area" id="publishPage"></div>
         </div>
     </div>
 </script>
@@ -80,8 +74,8 @@
                     <tbody>
                     <% _.each(applyApiList, function (aitem) { %>
                     <tr attrId="<%=aitem.sourceId%>" attrPackageId="<%=aitem.sourcePakcageId%>">
-                        <td><a target="_blank" href="./api.html#detail/<%=aitem.sourceId%>"><%=aitem.apiName%></a></td>
-                        <td><%=aitem.apiDesc%></td>
+                        <td><a target="_blank" href="./api.html#detail/<%=aitem.sourceId%>"><%=aitem.apiName || '-'%></a></td>
+                        <td><%=aitem.apiDesc || '-'%></td>
                         <td><%=aitem.applyTime%></td>
                         <td><%=aitem.chargeType%></td>
                         <td><%=aitem.chargeType%></td>

@@ -4,17 +4,17 @@
 
 
 var commonTemplate = require('html!./orderCommon.html');
-var orderTemplate = require('html!./orders.html');
+var orderTemplate = require('html!./sale.html');
 require('./orders.css');
 require('util');
-var orderListModel = Backbone.Model.extend({
+var saleListModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderList.do'
 });
 var updateShopModel = Backbone.Model.extend({
     url: mscxPage.request.uc + 'shopping/cart/user/modify/times.do'
 });
 
-var orderView = Backbone.View.extend({
+var saleView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
         pageSize: 5,
@@ -26,8 +26,8 @@ var orderView = Backbone.View.extend({
     },
     initialize: function() {
         var that = this;
-        this.$el.html(_.template(commonTemplate)({name:'order'}));
-        this.model = new orderListModel();
+        this.$el.html(_.template(commonTemplate)({name:'sale'}));
+        this.model = new saleListModel();
         this.model.on('change',function () {
             that.render();
         });
@@ -47,4 +47,4 @@ var orderView = Backbone.View.extend({
     }
 });
 
-module.exports = orderView;
+module.exports = saleView;

@@ -70,10 +70,39 @@ var myApiListView = Backbone.View.extend({
         this.initRender();
     },
     render: function () {
-
+        var that = this;
+        var res = this.model.get('result');
+        var publishApiList = [], page = {};
+        if(res){
+            publishApiList = res.list;
+            var page = res.page || {totalPage:0,currentPage:0,totalPage:0};
+            this.pagObj.totalPage = page.totalPage;
+            this.pagObj.pageNum = page.currentPage;
+        }
+        this.$el.html(this.templete({publishApiList:publishApiList}));
+        laypage({
+            cont: 'publishPage',
+            pages: page.totalPage,
+            skip: true,
+            curr: this.pagObj.pageNum || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.pagObj.pageNum = obj.curr;
+                    that.reloadPage();
+                }
+            }
+        });
+    },
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
     },
     initRender: function () {
-        this.$el.html(this.templete({demandList:[]}));
+        this.$el.html(this.templete({publishApiList:[]}));
     }
 });
 var myApplyListView = Backbone.View.extend({

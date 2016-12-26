@@ -9,7 +9,7 @@ var Routes =  Backbone.Router.extend({
         'model': 'modelAPI',
         'detail/:id': 'detail',
         'createApi': 'createApiView',
-        'updateApi/id': 'updateApiView'
+        'updateApi/:id': 'updateApiView'
     },
     dataAPI:function () {
         var APIView = require('api/APIView.js');

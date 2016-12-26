@@ -82,7 +82,7 @@ var myApplyListView = Backbone.View.extend({
         pageNum: 1
     },
     events: {
-        'click .applyApi': 'applyApiAgain'
+        // 'click .applyApi': 'applyApiAgain'
     },
     initialize: function() {
         var that = this;
@@ -129,14 +129,16 @@ var myApplyListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
-    },
-    applyApiAgain: function (e) {
-        var $this = $(e.target).closest('tr'),
-            sourceId = $this.attr('attrId'),
-            sourcePakcageId = $this.attr('attrPackageId');
-
-        //do apply again
     }
+    // ,
+    // applyApiAgain: function (e) {
+    //     var $this = $(e.target).closest('tr'),
+    //         sourceId = $this.attr('attrId'),
+    //         sourcePakcageId = $this.attr('attrPackageId');
+
+    //     //do apply again，跳转至API详情页面
+    //     location.href = 'api.html#detail/' + sourceId;
+    // }
 });
 var serversDemandListView = Backbone.View.extend({
     pagObj: {

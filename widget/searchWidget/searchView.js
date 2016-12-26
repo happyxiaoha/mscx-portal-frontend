@@ -295,7 +295,7 @@ var view = Backbone.View.extend({
 
         this.searchParams.set({
             page: 1,
-            scope: code == 0 ? '' : this.$citySel.find(':selected').text()
+            scope: code == 0 ? this.$provinceSel.find(':selected').text() : this.$citySel.find(':selected').text()
         });
     },
     changeAreas: function(event) {
@@ -303,7 +303,7 @@ var view = Backbone.View.extend({
 
         this.searchParams.set({
             page: 1,
-            scope: code == 0 ? '' : this.$areaSel.find(':selected').text()
+            scope: code == 0 ? this.$citySel.find(':selected').text() : this.$areaSel.find(':selected').text()
         });
     }
 });

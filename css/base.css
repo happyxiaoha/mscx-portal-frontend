@@ -220,21 +220,6 @@ input[type='checkbox']{margin:2px 3px 3px 4px;padding:0;width:13px;height: 13px;
 .floatDiv a:hover{
 	background-position: 0 top;
 }
-.er-code {
-	height: 150px;
-	width: 150px;
-	padding: 10px;
-	position: fixed;
-	bottom: 65px;
-	z-index: 1;
-	right: 55px;
-	background: url("../images/codeBg.png") no-repeat;
-}
-.er-code div{
-	height: 126px;
-	width: 126px;
-	background: url("../images/newCode.png") no-repeat;
-}
 .need {
 	color: #ff4200;
 }

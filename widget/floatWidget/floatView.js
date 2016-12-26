@@ -13,7 +13,7 @@ var floatView = Backbone.View.extend({
     },
     initialize: function() {
         $('body').append(this.$el.html(template));
-        $('a.ercode').hover(//为返回顶部增加鼠标进入的反馈效果，用添加删除css类实现
+        $('a.showercode').hover(//为返回顶部增加鼠标进入的反馈效果，用添加删除css类实现
             function(){$('#erCode').fadeIn(100);},
             function(){$('#erCode').fadeOut(100);
             });

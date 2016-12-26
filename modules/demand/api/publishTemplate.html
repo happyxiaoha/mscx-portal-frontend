@@ -1,6 +1,10 @@
 <div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
     <!-- top -->
-    <p class="ReleaseTit">发布API开发需求</p>
+    <% if(data && data.id) { %>
+    <p class="ReleaseTit">修改API开发需求</p>
+    <% }else{ %>
+    <p class="ReleaseTit">新增API开发需求</p>
+    <% } %>
     <form class="ReleaseInputs" enctype="multipart/form-data" method="post" onsubmit="return false;">
         <% if(data && data.id) { %>
         <input type="hidden" name="id" value="<%= data.id %>" />
@@ -219,7 +223,7 @@
             <p class="fl R_left">附件：</p>
             <div class="fl R_right">
                 <button class="btn beauty-file" type="button">上传文件
-                    <input class="btn btn-xs" id="document-0" type="file" name="file" value="选择文件" accept=".docx,.doc,.pdf,.zip,.rar" size="28">
+                    <input class="btn btn-xs" id="document-0" type="file" name="file" value="选择文件">
                 </button>
                 <span id="showFileName"><%= data && data.fileName %></span>
             </div>

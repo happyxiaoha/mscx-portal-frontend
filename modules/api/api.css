@@ -187,6 +187,12 @@
     float: right;
 }
 /* 线下洽谈弹层 */
+#offlineBtn {
+    border-radius: 5px;
+    border: solid 1px #8b8b8b;
+    background: #fff;
+    color: #8a8a8a;
+}
 .offline-box,.orderDiv {padding: 20px 30px;font-size: 14px;}
 .offline-box label,.orderDiv label{
     float: left;

@@ -2,147 +2,7 @@
     <p class="ReleaseTit">发布新API</p>
     <div class="ReleaseDownCons">
         <form id="publishApi" onsubmit="return false;">
-            <div class="ReleaseInputs labelleft ReleaseDown">
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">服务范围：</p>
-                    <div class="fl R_right">
-                        <p>
-                            <textarea placeholder="多个城市之间以逗号隔开" name="scope"></textarea>
-                        </p>
-                    </div>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">服务名称：</p>
-                    <div class="fl R_right">
-                        <p>
-                            <input type="text" placeholder="请输入服务名称" name="cname">
-                        </p>
-                    </div>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">服务标识：</p>
-                    <div class="fl R_right">
-                        <p>
-                            <input type="text" id="apiServerId" placeholder="输入服务标识" name="name">
-                        </p>
-                    </div>
-                    <span class="api-server-error">不能为空</span>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">是否收费：</p>
-                    <div class="fl R_right chargeTypeRadio">
-                        <label><input type="radio" name="chargeType" id="ct01" checked>免费</label>
-                        <label><input type="radio" name="chargeType" id="ct02">收费</label>
-                    </div>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">服务简介：</p>
-                    <div class="fl R_right">
-                        <p>
-                            <textarea cols="30" rows="10" placeholder="请输入数据描述" name ="description"></textarea>
-                        </p>
-                    </div>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">服务图标：</p>
-                    <div class="fl R_right">
-                        <p class="allInfoImg">
-                            <img src="../../../images/add.png" alt="">
-                        </p>
-                    </div>
-                    <label class="img-error">请上传服务图标</label>
-                </div>
-                <!-- 增加 选择框及选择按钮  2016-09-05-->
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">服务分类：</p>
-                    <div class="fl R_right posRE">
-                        <p id="serverCategory" class="checkboxlist">
-                            <label><input type="radio">生活账单</label>
-                            <label><input type="radio">新闻资讯</label>
-                            <label><input type="radio">工作就业</label>
-                            <label><input type="radio">医疗卫生</label>
-                            <label><input type="radio">社会保障</label>
-                        </p>
-                    </div>
-                </div>
 
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">标签：</p>
-                    <div class="fl R_right posRE">
-                        <p>
-                        <div class="tag-area fl"><span class="un-select">未选择任何标签</span></div>
-                        <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
-                        </p>
-                    </div>
-                    <label class="tag-error">请选择标签</label>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">服务返回码：</p>
-                    <div class="fl R_right">
-                        <p>
-                            <input type="text" placeholder="请输入服务返回码" name="rtnCode">
-                        </p>
-                    </div>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left">服务对象：</p>
-                    <div class="fl R_right">
-                        <p class="server-dist">
-
-                        </p>
-                    </div>
-                    <label class="server-error">请选择服务对象</label>
-                </div>
-
-                <div class="D_table api-package">
-                    <table >
-                        <thead>
-                        <tr>
-                            <th>套餐名称</th>
-                            <th>套餐价格</th>
-                            <th>购买限制</th>
-                            <th>使用限制</th>
-                            <th>生效日期</th>
-                            <th>失效日期</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                        <tbody id="packageTable">
-                        <tr>
-                            <td colspan="7">暂无数据</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="clearfix ReleaseList mt20 api-package">
-                    <label class="package-error">套餐不能为空</label>
-                    <span class="newSelBtn addPrice fr bgBlue" style="padding: 3px 10px;">新增收费规则</span>
-                </div>
-
-                <div class="D_table">
-                    <table>
-                        <tr>
-                            <th>API名称</th>
-                            <th>API标识</th>
-                            <th>API地址</th>
-                            <th>操作</th>
-                        </tr>
-                        <tbody id="apiTable">
-                        <tr>
-                            <td colspan="4">暂无数据</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="clearfix ReleaseList mt20">
-                    <label class="api-error">API不能为空</label>
-                    <span class="newSelBtn addApi fr bgBlue" style="padding: 3px 10px;">新增API</span>
-                </div>
-                <div class="R_Btns">
-                    <!-- <button class="bgBlue">返回</button> -->
-                    <input type="submit" class="bgBlue" value="发布">
-                </div>
-            </div>
         </form>
         <form id="ajaxUpload" class="imgForm" action="" method="post">
             <input type="file" name="image" class="upload-file">
@@ -153,9 +13,144 @@
     <div class="add-price-list layerApi">
     </div>
     <div class="add-api-list layerApi">
-
     </div>
 </div>
+<script id="updateFormMes" type="template">
+    <div class="ReleaseInputs labelleft ReleaseDown">
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务范围：</p>
+            <div class="fl R_right">
+                <p>
+                    <textarea placeholder="多个城市之间以逗号隔开" name="scope" ><%=res.scope%></textarea>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务名称：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入服务名称" name="cname" value="<%=res.cname%>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务标识：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" id="apiServerId" placeholder="输入服务标识" name="name" value="<%=res.name%>">
+                </p>
+            </div>
+            <span class="api-server-error">不能为空</span>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">是否收费：</p>
+            <div class="fl R_right chargeTypeRadio">
+                <label><input type="radio" name="chargeType" id="ct01" <%if(res.chargeType=='01'){%>checked<%}%>>免费</label>
+                <label><input type="radio" name="chargeType" id="ct02" <%if(res.chargeType=='02'){%>checked<%}%>>收费</label>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务简介：</p>
+            <div class="fl R_right">
+                <p>
+                    <textarea cols="30" rows="10" placeholder="请输入数据描述" name ="description"><%=res.description%></textarea>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务图标：</p>
+            <div class="fl R_right">
+                <p class="allInfoImg">
+                    <img src="<%=res.imageUri%>" >
+                </p>
+            </div>
+            <label class="img-error">请上传服务图标</label>
+        </div>
+        <!-- 增加 选择框及选择按钮  2016-09-05-->
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务分类：</p>
+            <div class="fl R_right posRE">
+                <p id="serverCategory" class="checkboxlist">
+                    <label><input type="radio">加载中</label>
+                </p>
+            </div>
+        </div>
+
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">标签：</p>
+            <div class="fl R_right posRE">
+                <p>
+                <div class="tag-area fl"><span class="un-select">未选择任何标签</span></div>
+                <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
+                </p>
+            </div>
+            <label class="tag-error">请选择标签</label>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务返回码：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入服务返回码" name="rtnCode" value="<%=res.rtnCode%>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务对象：</p>
+            <div class="fl R_right">
+                <p class="server-dist">
+                </p>
+            </div>
+            <label class="server-error">请选择服务对象</label>
+        </div>
+
+        <div class="D_table api-package">
+            <table >
+                <thead>
+                <tr>
+                    <th>套餐名称</th>
+                    <th>套餐价格</th>
+                    <th>购买限制</th>
+                    <th>使用限制</th>
+                    <th>生效日期</th>
+                    <th>失效日期</th>
+                </tr>
+                </thead>
+                <tbody id="packageTable">
+                <tr>
+                    <td colspan="6">暂无数据</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix ReleaseList mt20 api-package">
+
+        </div>
+
+        <div class="D_table">
+            <table>
+                <tr>
+                    <th>API名称</th>
+                    <th>API标识</th>
+                    <th>API地址</th>
+                    <th>操作</th>
+                </tr>
+                <tbody id="apiTable">
+                <tr>
+                    <td colspan="4">暂无数据</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix ReleaseList mt20">
+            <label class="api-error">API不能为空</label>
+            <span class="newSelBtn addApi fr bgBlue" style="padding: 3px 10px;">新增API</span>
+        </div>
+        <div class="R_Btns">
+            <!-- <button class="bgBlue">返回</button> -->
+            <input type="submit" class="bgBlue" value="修改">
+        </div>
+    </div>
+</script>
 <script id="chooseTagArea" type="template">
     <% for(var i=0,len=tags.length; i < len; i++) { %>
     <span class="fl"><%=tags[i]%></span>
@@ -166,7 +161,7 @@
 </script>
 <script id="categoryList" type="template">
     <% _.each(categoryList, function (citem) { %>
-    <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == categoryList[0].categoryId){%>checked<%}%> ><%=citem.categoryName%></label>
+    <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == defCid){%>checked<%}%> ><%=citem.categoryName%></label>
     <% }); %>
 </script>
 <script id="tagList" type="template">
@@ -174,7 +169,7 @@
 </script>
 <script id="serverTypeList" type="template">
     <% _.each(serverTypeList, function (titem) { %>
-    <label class="fl"><input type="checkbox" id="t<%=titem.id%>" name="serverTypes"><%=titem.dictName%></label>
+    <label class="fl"><input type="checkbox" id="t<%=titem.id%>" name="serverTypes" <%if(titem.isSelect){%>checked=true<%}%>><%=titem.dictName%></label>
     <% }); %>
 </script>
 <script id="packageTableTemps" type="template">
@@ -184,22 +179,19 @@
         <td><%=chargeItem.price%>元<%=chargeItem.Count%>次</td>
         <td><%=chargeItem.countLimit ? chargeItem.countLimit : 0%>次</td>
         <td><%=chargeItem.monthLimit ? chargeItem.monthLimit : 0%>个月</td>
-        <td><%=chargeItem.effectDate%></td>
-        <td><%=chargeItem.expiryDate%></td>
-        <td>
-            <a href="javascript:;" class="editCharge">修改</a>
-            <a href="javascript:;" class="removeCharge">删除</a>
-        </td>
+        <td><%= chargeItem.effectDate ? new Date(chargeItem.effectDate).format('yyyy-MM-dd') : '-'%></td>
+        <td><%= chargeItem.expiryDate ? new Date(chargeItem.expiryDate).format('yyyy-MM-dd') : '-'%></td>
     </tr>
     <% }); %>
     <%if(chargeSetJson.length == 0){%>
     <tr>
-        <td colspan="7">暂无数据</td>
+        <td colspan="6">暂无数据</td>
     </tr>
     <%}%>
 </script>
 <script id="apiTableTemps" type="template">
     <% _.each(apiList, function (aitem) { %>
+    <%if(aitem.flag != 'D'){%>
     <tr>
         <td><%=aitem.cname%></td>
         <td><%=aitem.name%></td>
@@ -209,6 +201,7 @@
             <a href="javascript:void(0);" class="deleteApi">删除</a>
         </td>
     </tr>
+    <% }%>
     <% }); %>
     <%if(apiList.length == 0){%>
     <tr>
@@ -216,80 +209,19 @@
     </tr>
     <%}%>
 </script>
-<script id="chargeManage" type="template">
-    <form id="addChargeForm" onsubmit="return false;">
-        <ul>
-            <li>
-                <label>
-                    <span><i class="need">*</i>计费方式：</span>
-                    <select name="chargeType">
-                        <option value="05" <%if(res && res.chargeType=='05'){%>selected="selected"<%}%>>按次数</option>
-                        <option value="04" <%if(res && res.chargeType=='04'){%>selected="selected"<%}%>>按时间</option>
-                    </select>
-                </label>
-            </li>
-            <li>
-                <label>
-                    <span><i class="need">*</i>套餐名称：</span>
-                    <input type="text" name="name" id="packageName" value="<%=res.name%>">
-                </label>
-            </li>
-            <li>
-                <label>
-                    <span><i class="need">*</i>套餐价格：</span>
-                    <label><input type="number" class="small" name="price" id="price" value="<%=res && res.price%>">元/</label>
-                    <label><input type="number" class="small" name="chargeCount" id="chargeCount" value="<%=res && res.chargeCount%>">次</label>
-                </label>
-            </li>
-            <li>
-                <label>
-                    <span>购买限制：</span>
-                    <input type="number" class="small fl" name="countLimit" id="countLimit" value="<%=res && res.countLimit%>">
-                    <b class="fl ml20">(不填则为无限制)</b>
-                </label>
-            </li>
-            <li>
-                <label class="gl">
-                    <span>使用限制：</span>
-                    <input type="number" class="small fl" name="monthLimit" id="monthLimit" value="<%=res && res.monthLimit%>">
-                    <b class="fl">个月</b>
-                    <b class="fl ml20">(不填则为无限制)</b>
-                </label>
-            </li>
-            <li>
-                <label>
-                    <span><i class="need">*</i>生效日期：</span>
-                    <input type="text" name="effectDate" id="effectDate" value="<%=res && res.effectDate%>">
-                </label>
-            </li>
-            <li>
-                <label>
-                    <span><i class="need">*</i>失效日期：</span>
-                    <input type="text" name="expiryDate" id="expiryDate" value="<%=res && res.expiryDate%>">
-                </label>
-            </li>
-            <li>
-                <label>
-                    <span>套餐说明：</span>
-                    <textarea id="chargeDescription" name="description"><%=res && res.description%></textarea>
-                </label>
-            </li>
-        </ul>
-    </form>
-</script>
 <script id="apiManageTemps" type="template">
     <form id="addApiForm" onsubmit="return false;">
         <ul>
             <li>
                 <label>
                     <span><i class="need">*</i>API名称：</span>
-                    <input type="text" name="cname" id="cname" value="<%=res.name%>">
+                    <input type="text" name="cname" id="cname" value="<%=res.cname%>">
                 </label>
             </li>
             <li>
                 <label>
                     <span><i class="need">*</i>API标识：</span>
-                    <input type="text" name="name" id="apiName" value="<%=res && res.cname%>">
+                    <input type="text" name="name" id="apiName" value="<%=res && res.name%>">
                 </label>
                 <span class="api-name-error"></span>
             </li>

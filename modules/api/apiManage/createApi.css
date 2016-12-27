@@ -44,7 +44,6 @@
     float: left;
     line-height: 27px;
 }
-.tag-list-area .layerApi ul li span, .add-price-list ul li span,.add-api-list ul li span{}
 .tag-list-area .layerApi ul,.add-price-list ul{
     padding: 10px 20px;
 }
@@ -113,3 +112,4 @@
 .add-price-list .ml20 {margin-left: 20px;}
 .api-server-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
 .api-name-error {color: red;margin-right: 5px;float: right;display: none;}
+.package-area {display: none;}

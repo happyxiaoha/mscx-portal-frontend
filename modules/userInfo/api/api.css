@@ -1,1 +1,36 @@
 .my-api-list {padding-top: 20px;}
+.package-manage {display: none;}
+.package-manage ul li input.small{width: 80px;float: left;}
+.package-manage ul li input[type="text"]{ width: 320px;}
+.package-manage ul li textarea{width: 320px;height: 80px;resize: none;}
+.package-manage ul li input.error{border: 1px solid red;}
+.package-manage ul li label.error{color: red;margin-right: 5px;float: right;}
+#price-error {display: none !important;}
+.package-manage .ml20{margin-left: 20px;}
+.btn-primary {color: #FFF !important;}
+
+.package-manage ul{
+    padding: 10px 20px;
+}
+.package-manage  ul li{
+    padding: 5px ;
+    float: left;
+}
+.package-manage ul li label{
+    float: left;
+    line-height: 27px;
+}
+.package-manage ul li span{
+    width: 70px;
+    line-height: 30px;
+    display: block;
+    float: left;
+    text-align: right;
+}
+.package-manage ul li input{
+    width: 340px;
+    float: left;
+}
+.dropdown-menu {
+    z-index: 99999999999999999999999;
+}

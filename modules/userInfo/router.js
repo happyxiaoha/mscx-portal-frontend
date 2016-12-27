@@ -12,12 +12,14 @@ var Routes =  Backbone.Router.extend({
         'demand/:id': 'demandView',
         'sources': 'sourcesView',
         'api': 'apiView',
+        'myApi': 'myApiView',
+        'follow': 'followView',
         'server': 'serverView',
         'order': 'orderView',
-        'shop': 'shopView',
-        'sale': 'saleView'
+        'shop': 'shopView'
     },
     defaultView:function () {
+        debugger;
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
         mscxPage.views['defaultViewObj'] = new defaultView();
     },
@@ -48,6 +50,14 @@ var Routes =  Backbone.Router.extend({
     apiView: function () {
         var apiView = require('userInfo/api/apiView.js');
         mscxPage.views['apiViewObj'] = new apiView();
+    },
+    myApiView: function () {
+        var myApiView = require('userInfo/api/myApiView.js');
+        mscxPage.views['myApiViewObj'] = new myApiView();
+    },
+    followView: function () {
+        var followView = require('userInfo/api/followView.js');
+        mscxPage.views['followViewObj'] = new followView();
     },
     orderView: function () {
         var orderView = require('userInfo/orders/ordersView.js');

@@ -47,7 +47,7 @@ var view = Backbone.View.extend({
 
         if(list.length < 1) {
             this.$sort.hide();
-            this.$dataList.html('暂无数据');
+            this.$dataList.html('没有符合查询条件的数据');
         }else {
             this.$sort.show();
             this.$dataList.html(this.listTemplate(list));

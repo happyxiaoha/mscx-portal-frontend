@@ -51,9 +51,11 @@ var view = Backbone.View.extend({
         var pageInfo = result.page || {};
         var me = this;
 
-        this.$dataList.html(this.listTemplate(list));
+        this.$dataList.addClass('animate-content').removeClass('opacity0').html(this.listTemplate(list));
 
-        this.$dataList.removeClass('opacity0');
+        if(list.length < 1){
+            this.$dataList.removeClass('animate-content');
+        }
 
         laypage({
             cont: 'page',

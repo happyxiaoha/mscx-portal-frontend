@@ -1,70 +1,262 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
-    <title>èµ„æºæœåŠ¡åè®®</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/base.css" />
+    <meta http-equiv=Content-Type content="text/html; charset=gb2312">
+    <meta name=Generator content="Microsoft Word 15 (filtered)">
+    <style>
+        <!--
+        /* Font Definitions */
+        @font-face
+        {font-family:ËÎÌå;
+            panose-1:2 1 6 0 3 1 1 1 1 1;}
+        @font-face
+        {font-family:"Cambria Math";
+            panose-1:2 4 5 3 5 4 6 3 2 4;}
+        @font-face
+        {font-family:Calibri;
+            panose-1:2 15 5 2 2 2 4 3 2 4;}
+        @font-face
+        {font-family:Î¢ÈíÑÅºÚ;
+            panose-1:2 11 5 3 2 2 4 2 2 4;}
+        @font-face
+        {font-family:"\@Î¢ÈíÑÅºÚ";
+            panose-1:2 11 5 3 2 2 4 2 2 4;}
+        @font-face
+        {font-family:"\@ËÎÌå";
+            panose-1:2 1 6 0 3 1 1 1 1 1;}
+        /* Style Definitions */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {margin:0cm;
+            margin-bottom:.0001pt;
+            text-align:justify;
+            text-justify:inter-ideograph;
+            font-size:10.5pt;
+            font-family:"Calibri",sans-serif;}
+        p.MsoHeader, li.MsoHeader, div.MsoHeader
+        {mso-style-link:"Ò³Ã¼ Char";
+            margin:0cm;
+            margin-bottom:.0001pt;
+            text-align:center;
+            layout-grid-mode:char;
+            border:none;
+            padding:0cm;
+            font-size:9.0pt;
+            font-family:"Calibri",sans-serif;}
+        p.MsoFooter, li.MsoFooter, div.MsoFooter
+        {mso-style-link:"Ò³½Å Char";
+            margin:0cm;
+            margin-bottom:.0001pt;
+            layout-grid-mode:char;
+            font-size:9.0pt;
+            font-family:"Calibri",sans-serif;}
+        span.Char
+        {mso-style-name:"Ò³Ã¼ Char";
+            mso-style-link:Ò³Ã¼;}
+        span.Char0
+        {mso-style-name:"Ò³½Å Char";
+            mso-style-link:Ò³½Å;}
+        .MsoChpDefault
+        {font-family:"Calibri",sans-serif;}
+        /* Page Definitions */
+        @page WordSection1
+        {size:595.3pt 841.9pt;
+            margin:72.0pt 90.0pt 72.0pt 90.0pt;
+            layout-grid:15.6pt;}
+        div.WordSection1
+        {page:WordSection1;}
+        -->
+    </style>
+
 </head>
-<style>
-    p{
-        text-indent: 20px;
-        padding: 0 30px;
-        line-height: 20px;
-        color: #888;
-    }
-    p.title {
-        font-size: 18px;
-        text-indent: 0;
-        line-height: 24px;
-        color: #444;
-    }
-    p.levl2 {
-        text-indent: 0;
-        font-size: 16px;
-        line-height: 22px;
-    }
-</style>
-<body>
-    <div style="margin: 30px auto;padding: 30px 0;width: 90%;background: #fff;font-size: 14px;">
-        <h2 style="text-align: center;font-size: 30px">èµ„æºæœåŠ¡åè®®</h2>
-        <div class="mt20">
-            <p>æœ¬ã€Šèµ„æºæœåŠ¡åè®®ã€‹ï¼ˆä»¥ä¸‹ç®€ç§°â€œæœ¬ã€Šåè®®ã€‹â€ï¼‰ç³»ç”±ç”¨æˆ·ä¸Žæœ¬å¹³å°å°±æä¾›
-                çš„èµ„æºæœåŠ¡æ‰€è®¢ç«‹çš„ç›¸å…³æƒåˆ©ä¹‰åŠ¡è§„èŒƒã€‚æ‚¨åœ¨ç”³è¯·ä½¿ç”¨å¹³å°çš„æ•°æ®ã€API
-                ã€å¾®æœåŠ¡ç­‰æœåŠ¡èµ„æºå‰ï¼Œéœ€ä»”ç»†é˜…è¯»å¹¶å®Œå…¨ç†è§£æœ¬ã€Šåè®®ã€‹å†…å®¹åŠæœ¬å¹³
-                å°å…¬å¸ƒçš„å…¶ä»–æœåŠ¡è§„åˆ™ï¼ˆä»¥ä¸‹ç»Ÿç§°ä¸ºâ€œæœåŠ¡æ¡æ¬¾â€ï¼‰ï¼Œå¦‚æžœæ‚¨ä¸åŒæ„å—è¯¥ç­‰æœåŠ¡æ¡æ¬¾çš„çº¦æŸï¼Œåº”åœæ­¢ä½¿ç”¨æœ¬å¹³å°çš„èµ„æºæœåŠ¡ã€‚å½“æ‚¨ç‚¹å‡»åŒæ„æŽ¥å—æœ¬åè®®æ—¶ï¼Œå³è§†ä¸ºæ‚¨å·²è®¤çœŸé˜…è¯»æœåŠ¡æ¡æ¬¾å…¨éƒ¨å†…å®¹ï¼Œå¯¹æœåŠ¡æ¡æ¬¾å‡å·²çŸ¥æ™“ã€ç†è§£å¹¶æŽ¥å—ï¼ŒåŒæ„å°†å…¶ä½œä¸ºç¡®å®šåŒæ–¹æƒåˆ©ä¹‰åŠ¡çš„ä¾æ® æœåŠ¡æ¡æ¬¾å¯¹æ‚¨åŠæœ¬å¹³å°å‡å…·æœ‰æ³•å¾‹æ•ˆåŠ›ã€‚</p>
-        <p class="title">1ã€æœåŠ¡å¯¹è±¡</p>
-            <p class="levl2">1.1 åŒæ—¶æ»¡è¶³ä¸‹åˆ—æ¡ä»¶çš„ï¼Œæ–¹å¯è¢«è®¤å®šä¸ºå¹³å°ç”¨æˆ·ï¼š</p>
-            <p>ï¼ˆ1ï¼‰åŒæ„æœ¬ã€Šåè®®ã€‹å†…å®¹å¹¶æŽ¥å—å…¶çº¦æŸï¼›</p>
-            <p>ï¼ˆ2ï¼‰å®Œæˆåœ¨å¹³å°çš„æ³¨å†Œç¨‹åºå¹¶èŽ·å¾—å¹³å°è´¦æˆ·å’Œå¯†ç ;</p>
-            <p class="levl2">1.2 å¹³å°ç”¨æˆ·ç±»åž‹</p>
-            <p>ï¼ˆ1ï¼‰ä¸ªäººç”¨æˆ·ï¼›</p>
-            <p>ï¼ˆ2ï¼‰å•ä½ç”¨æˆ·ï¼›</p>
-            <p class="title">2ã€æœåŠ¡å†…å®¹</p>
-            <p class="levl2">2.1 å¹³å°æ•°æ®æœåŠ¡è¯´æ˜Ž</p>
-            <p>å¹³å°ç”¨æˆ·å¯ä»¥ä½¿ç”¨å¹³å°æä¾›çš„æ•°æ®ã€APIåŠå¾®æœåŠ¡ï¼Œç”¨äºŽå„ä¸ªå¹³å°ä¸Šçš„APPå¼€å‘
-                ã€‚å¦å¤–æ ¹æ®æ•°æ®çš„ç‰¹æ€§ä¸åŒï¼Œä¸åŒæ•°æ®å…·æœ‰ä¸åŒçš„èµ„è´¹æ ‡å‡†åŠèµ é€æ¬¡æ•°ã€‚è¯¦ç»†å¦‚ä¸‹ï¼š</p>
-            <p class="leve2">2.2 å®šåˆ¶æœåŠ¡</p>
-            <p>å¦‚å¹³å°æä¾›çš„ä¸€èˆ¬æ€§æœåŠ¡æ— æ³•æ»¡è¶³ç”¨æˆ·çš„éœ€æ±‚ï¼Œå¹³å°æ„¿æ„ä¸ºç”¨æˆ·æä¾›ç‰¹æ®Šå®šåˆ¶æœåŠ¡ã€‚ç”¨æˆ·å¯è”ç³»å¹³å°å®¢æœå’¨è¯¢å®šåˆ¶æœåŠ¡ç›¸å…³ä¿¡æ¯ã€‚</p>
-            <p class="title">3ã€ æœåŠ¡å†…å®¹çš„å˜æ›´ã€ä¸­æ–­å’Œç»“æŸ</p>
-            <p>...</p>
-            <p class="title">4ã€ç”¨æˆ·ä¹‰åŠ¡</p>
-            <p class="levl2">4.1ã€ä¸å¾—åˆ©ç”¨å¹³å°æä¾›çš„æ•°æ®å±å®³å›½å®¶å®‰å…¨ã€æ³„éœ²å›½å®¶ç§˜å¯†ï¼Œä¸å¾—ä¾µçŠ¯å›½å®¶ç¤¾ä¼šé›†ä½“çš„å’Œå…¬æ°‘çš„åˆæ³•æƒç›Šï¼Œä¸å¾—åˆ©ç”¨å¹³å°æä¾›çš„æ•°æ®åˆ¶ä½œã€å¤åˆ¶å’Œä¼ æ’­ä¸‹åˆ—ä¿¡æ¯ï¼š</p>
-            <p class="title">5ã€è¿çº¦è´£ä»»</p>
-            <p>ï¼ˆ1ï¼‰å¦‚å› å¹³å°è¿åæœ‰å…³æ³•å¾‹ã€æ³•è§„æˆ–æœ¬ã€Šåè®®ã€‹é¡¹ä¸‹ä¹‰åŠ¡è€Œç»™ç”¨æˆ·é€ æˆæŸå¤±ï¼Œå¹³å°åŒæ„æ‰¿æ‹…ç›¸åº”çš„æŸå®³èµ”å¿è´£ä»»ï¼Œå¹¶å‘ç”¨æˆ·èµ”å¿ç”¨æˆ·çš„ç›´æŽ¥æŸå¤±ï¼›</p>
-            <p>ï¼ˆ2ï¼‰ç”¨æˆ·åŒæ„ä¿éšœå’Œç»´æŠ¤å¹³å°åŠå…¶ä»–ç”¨æˆ·çš„åˆ©ç›Šï¼Œå¦‚å› ç”¨æˆ·è¿åæœ‰å…³æ³•å¾‹ã€æ³•è§„æˆ–æœ¬ã€Šåè®®ã€‹çº¦å®šè€Œç»™å¹³å°æˆ–ä»»ä½•å…¶ä»–ç¬¬ä¸‰è€…é€ æˆæŸå¤±ï¼Œç”¨æˆ·åº”æ‰¿æ‹…ç›¸åº”çš„æ³•å¾‹è´£ä»»ã€‚</p>
-            <p class="title">6ã€å…è´£ç”³æ˜Ž</p>
-            <p>å¹³å°æœ‰æƒè§†éœ€è¦å¯¹æœåŠ¡æ¡æ¬¾å†…å®¹ä½œå‡ºè¡¥å……ã€åˆ é™¤æˆ–å˜æ›´ï¼ˆä»¥ä¸‹ç»Ÿç§°â€œæœåŠ¡æ¡æ¬¾å˜æ›´â€ï¼‰ï¼Œå¹¶åœ¨å…¶å®˜æ–¹ç½‘ç«™ç›¸åº”ä½ç½®è¿›è¡Œå…¬å¸ƒï¼Œè€Œæ— éœ€å¦è¡Œé€šçŸ¥ç”¨æˆ·ã€‚è‹¥ç”¨æˆ·ä¸æŽ¥å—æœåŠ¡æ¡æ¬¾å˜æ›´ï¼Œå¯éšæ—¶åœæ­¢ä½¿ç”¨å¹³å°æä¾›çš„æœåŠ¡ã€‚ è‹¥ç”¨æˆ·åœ¨æœåŠ¡æ¡æ¬¾å˜æ›´å…¬ç¤ºåŽä»ç»§ç»­ä½¿ç”¨å¹³å°æä¾›çš„æœåŠ¡ï¼Œåˆ™è§†ä¸ºç”¨æˆ·å·²ç»é˜…è¯»å¹¶æŽ¥å—æœåŠ¡æ¡æ¬¾å˜æ›´ï¼Œå¹¶æ„¿æ„å—å˜æ›´åŽæœåŠ¡æ¡æ¬¾çš„çº¦æŸã€‚</p>
-            <p class="title">7ã€æœåŠ¡æ¡æ¬¾çš„å˜æ›´</p>
-            <p>å¹³å°æœ‰æƒè§†éœ€è¦å¯¹æœåŠ¡æ¡æ¬¾å†…å®¹ä½œå‡ºè¡¥å……ã€åˆ é™¤æˆ–å˜æ›´ï¼ˆä»¥ä¸‹ç»Ÿç§°â€œæœåŠ¡æ¡æ¬¾å˜æ›´â€ï¼‰ï¼Œå¹¶åœ¨å…¶å®˜æ–¹ç½‘ç«™ç›¸åº”ä½ç½®è¿›è¡Œå…¬å¸ƒï¼Œè€Œæ— éœ€å¦è¡Œé€šçŸ¥ç”¨æˆ·ã€‚è‹¥ç”¨æˆ·ä¸æŽ¥å—æœåŠ¡æ¡æ¬¾å˜æ›´ï¼Œå¯éšæ—¶åœæ­¢ä½¿ç”¨å¹³å°æä¾›çš„æœåŠ¡ã€‚ è‹¥ç”¨æˆ·åœ¨æœåŠ¡æ¡æ¬¾å˜æ›´å…¬ç¤ºåŽä»ç»§ç»­ä½¿ç”¨å¹³å°æä¾›çš„æœåŠ¡ï¼Œåˆ™è§†ä¸ºç”¨æˆ·å·²ç»é˜…è¯»å¹¶æŽ¥å—æœåŠ¡æ¡æ¬¾å˜æ›´ï¼Œå¹¶æ„¿æ„å—å˜æ›´åŽæœåŠ¡æ¡æ¬¾çš„çº¦æŸã€‚</p>
-            <p class="title">8ã€æ³•å¾‹é€‚ç”¨åŠäº‰è®®è§£å†³</p>
-            <p>æœ¬ã€Šåè®®ã€‹çš„æ•ˆåŠ›ã€å±¥è¡Œå’Œè§£é‡Šå‡é€‚ç”¨ä¸­åŽäººæ°‘å…±å’Œå›½æ³•å¾‹ã€‚è‹¥ç”¨æˆ·å› æœ¬ã€Šåè®®ã€‹ç›¸å…³å†…å®¹ä¸Žå¹³å°äº§ç”Ÿäº‰è®®ï¼ŒåŒæ–¹å¯åå•†è§£å†³ã€‚åå•†æ— æ³•è§£å†³çš„ï¼Œä»»ä½•ä¸€æ–¹å‡æœ‰æƒå‘å¹³å°è¿è¥æ–¹æ‰€åœ¨åœ°æœ‰ç®¡è¾–æƒçš„æ³•é™¢æèµ·è¯‰è®¼ã€‚</p>
-            <p class="title">9ã€å…¶ä»–è§„å®š</p>
-            <p>...</p>
-        </div>
-    </div>
+
+<body lang=ZH-CN style='text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:15.6pt'>
+
+    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 align=right
+           width="100%" style='width:100.0%'>
+        <tr>
+            <td style='padding:11.25pt 3.75pt 11.25pt 3.75pt;text-align: center'>
+                <p class=MsoNormal align=left style='text-align:center'><b><span
+                        style='font-size:13.5pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;'>¹ãÖÝÊý¾Û×ÊÔ´Ê¹ÓÃÐ­Òé</span></b></p>
+            </td>
+        </tr>
+        <tr>
+            <td style='padding:7.5pt 7.5pt 7.5pt 7.5pt'>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>»¶Ó­Ê¹ÓÃ¹ãÖÝÊý¾Û£¨<span
+                        lang=EN-US>www.gzopendata.com</span>£©£¬±¾¡¶¹ãÖÝÊý¾Û×ÊÔ´Ê¹ÓÃÐ­Òé¡·£¨ÏÂ³Æ¡¶Ð­Òé¡·£©ÏµÓÉÓÃ»§Óë</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:red'>¹ãÖÝ³ÇÍ¶ÖÇ»Û³ÇÊÐ¿Æ¼¼·¢Õ¹ÓÐÏÞ¹«Ë¾</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¾Í¹ãÖÝÊý¾Û£¨<span
+                        lang=EN-US>www.gzopendata.com</span>£©Ìá¹©Êý¾Ý¡¢<span lang=EN-US>API</span>¡¢Î¢·þÎñ´Ó¶øÃæÏòÓÃ»§·þÎñËù¶©Á¢µÄÏà¹ØÈ¨ÀûÒåÎñ¹æ·¶¡£Òò´Ë£¬ÇëÏêÏ¸ÔÄ¶Á²¢³ä·ÖÀí½â±¾¡¶Ð­Òé¡·µÄËùÓÐÄÚÈÝ£¬µ±ÄúÇ©Êð±¾¡¶Ð­Òé¡·ºó£¬¼´ÊÓÎªÍ¬Òâ½ÓÊÜ±¾¡¶Ð­Òé¡·µÄËùÓÐ¹æ·¶²¢Ô¸ÊÜÆäÔ¼Êø£¬±¾¡¶Ð­Òé¡·¶ÔÄú¼°¹ãÖÝÊý¾Û¾ù¾ßÓÐ·¨ÂÉÐ§Á¦¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>ÓÃ»§·þÎñÊÇ¹ãÖÝÊý¾ÛÎª·ûºÏ¹ãÖÝÊý¾ÛÓÃ»§Ìá¹©µÄ×ÊÔ´·þÎñ£¬ÆäÖ÷ÒªÌØµãÊÇÓÃ»§¿ÉÒÔÏíÓÐÊý¾ÝÏÂÔØ¡¢<span
+                        lang=EN-US>API</span>ÉêÇë¡¢<span lang=EN-US>API</span>µ÷ÓÃ¡¢Î¢·þÎñÉêÇë¡¢Î¢·þÎñÑÝÊ¾µÈ¶àÏî·þÎñ£¬ ²»Í¬ÀàÐÍÊý¾Ý¡¢<span
+                        lang=EN-US>API</span>¼°Î¢·þÎñµÄÌ×²ÍÀàÐÍ¾ù²»Í¬£¬ÏêÏ¸¶¨Òå¼°Ê¹ÓÃ¹æÔò¿É²Î¼ûÊý¾Ý¡¢<span lang=EN-US>API</span>¼°Î¢·þÎñÏêÇé×Ê·ÑÌ×²ÍËµÃ÷¡£
+  ³ý±¾¡¶Ð­Òé¡·ÓÐÃ÷È·¹æ¶¨Íâ£¬±¾¡¶Ð­Òé¡·²¢Î´¶ÔÊ¹ÓÃ¹ãÖÝÊý¾ÛÌØ±ðÊý¾Ý¡¢<span lang=EN-US>API</span>¡¢Î¢·þÎñÊ¹ÓÃµÄ¸öÈË»òµ¥Î»¹æ¶¨Ïà¹ØµÄ·þÎñÌõ¿î¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>1</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢·þÎñ¶ÔÏó</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>1.1 </span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>Òª³ÉÎª¹ãÖÝÊý¾ÛÓÃ»§£¬±ØÐëÍ¬Ê±¾ß±¸ÏÂÁÐÌõ¼þ£º</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>1</span>£©ÍêÈ«Í¬Òâ´Ë¡¶¹ãÖÝÊý¾Û×ÊÔ´Ê¹ÓÃÐ­Òé¡·£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>2</span>£©¹ãÖÝÊý¾ÛµÄÕýÊ½×¢²áÓÃ»§£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>2</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢·þÎñÄÚÈÝ</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>2.1</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>Êý¾Ý</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>Êý¾ÝÊÇ¹ãÖÝÊý¾ÛÕûÀí¡¢ÊÕ¼¯µÄÊý¾Ý×ÊÔ´£¬´ËÀà×ÊÔ´Ò»°ãÒÔ<span
+                        lang=EN-US>Excel</span>¡¢<span lang=EN-US>Word</span>»ò<span lang=EN-US>PDF</span>¸ñÊ½Õ¹ÏÖ¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>2.2 API</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>·þÎñ</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¹ãÖÝÊý¾ÛÓÃ»§¿ÉÒÔÊ¹ÓÃ¹ãÖÝÊý¾ÛÌá¹©µÄ<span
+                        lang=EN-US>API</span>£¬ÓÃÓÚÓ¦ÓÃ¿ª·¢¡¢Êý¾Ýµ÷È¡µÈ¡£ÁíÍâ¸ù¾Ý<span lang=EN-US>API</span>µÄÌØÐÔ²»Í¬·ÖÎªÊý¾Ý<span
+                        lang=EN-US>API</span>¡¢¹¤¾ß<span lang=EN-US>API</span>ÒÔ¼°Ä£ÐÍ<span lang=EN-US>API</span>¡£ÏêÏ¸ÈçÏÂ£º</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>1</span>£©Êý¾Ý<span lang=EN-US>API</span>ÒÔÍ¨¹ý½Ó¿ÚµÄ·½Ê½Õ¹ÏÖÊý¾Ý£¬±ÈÈçÈ«¹ú½»Í¨Î¥ÕÂ²éÑ¯<span
+                        lang=EN-US>API</span>£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>2</span>£©¹¤¾ß<span lang=EN-US>API</span>ÒÔÍ¨¹ý½Ó¿ÚÍê³É¹¦ÄÜÊ¹ÓÃ£¬ÌåÏÖ¹¤¾ßµÄÌØÐÔ£¬±ÈÈçÖ§¸¶·þÎñ<span
+                        lang=EN-US>API</span>£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>3</span>£©Ä£ÐÍ<span lang=EN-US>API</span>ÒÔÊýÑ§Ä£ÐÍÒÔ¼°Ô­ÀíÕ¹ÏÖÎªÖ÷£¬±ÈÈçÆóÒµÍ¼Æ×ÏêÇé<span
+                        lang=EN-US>API</span>£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>2.3 </span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>Î¢·þÎñ</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>Î¢·þÎñÊÇÓ¦ÓÃ¼´ÒµÎñµÄÖ±½ÓÕ¹ÏÖ£¬ÓÃ»§¿ÉÒÔÊ¹ÓÃ²é¿´ÑÝÊ¾ÁË½â»ù±¾¹¦ÄÜ£¬ÉêÇë¹ýºó¿ÉÒÔÖ±½ÓÍ¨¹ý<span
+                        lang=EN-US>URL</span>»òÕß<span lang=EN-US>H5</span>µÄ·½Ê½Ö±½ÓÊ¹ÓÃÎ¢·þÎñ¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>3</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢ ·þÎñÄÚÈÝµÄ±ä¸ü¡¢ÖÐ¶ÏºÍ½áÊø</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>1</span>£©¹ãÖÝÊý¾ÛÖÂÁ¦ÓÚÎªÓÃ»§Ìá¹©¸üÓÅÖÊ¸üÎÈ¶¨µÄ×ÊÔ´·þÎñ£¬ÆÚ¼ä¹ãÖÝÊý¾Û¿ÉÄÜ»á×öÒ»Ð©Æ½Ì¨ÓÅ»¯Éý¼¶£¬½«»áÔÚÖØÒªÒ³ÃæÉÏÌáÊ¾ÐÞ¸ÄÄÚÈÝ»òÒÔÆäËû·½Ê½Í¨ÖªÓÃ»§£¬ÈôÓÉÓÚÓÃ»§ÊèºöÍ¨Öª¶øµ¼ÖÂµÄ×ÔÉíÓ¦ÓÃËðÊ§£¬¹ãÖÝÊý¾ÛÎÞÐè¶Ô´Ë³Ðµ£ÈÎºÎÔðÈÎ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>2</span>£©¹ãÖÝÊý¾Û¶ÔÒò²»¿É¿¹Á¦<span lang=EN-US>(</span>°üÀ¨µ«²»ÏÞÓÚ×ÔÈ»ÔÖº¦¡¢°Õ¹¤¡¢É§ÂÒ¡¢ÎïÖÊ¶ÌÈ±»ò¶¨Á¿Åä¸ø¡¢±©¶¯¡¢Õ½ÕùÐÐÎª¡¢Õþ¸®ÐÐÎª¡¢Í¨Ñ¶»òÆäËûÉèÊ©¹ÊÕÏ»òÑÏÖØÉËÍöÊÂ¹ÊµÈ<span
+                        lang=EN-US>)</span>¡¢¼ÆËã»ú²¡¶¾»òºÚ¿Í¹¥»÷µÈÔì³ÉµÄ·þÎñÖÐ¶Ï»ò²»ÄÜÂú×ãÓÃ»§µÄÒªÇó²»³Ðµ£ÔðÈÎ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>3</span>£©ÈôÓÉÓÚÓÃ»§×ÔÉíÔ­Òò£¬²»ÔÙÐèÒª¹ãÖÝÊý¾Û·þÎñ£¬ÓÉÓÃ»§Ïò¹ãÖÝÊý¾ÛÌá³öÓÃ»§Éí·Ý×¢ÏúÉêÇë£¨·¢ËÍÉêÇëÖÁ¹ãÖÝÊý¾Û¹Ù·½Ö§³ÖÓÊÏä</span><span
+                        lang=EN-US style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:red'>citysdk@dcholdings.com
+  </span><span style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;
+  color:#666666'>£©£¬ÉêÇëÍ¨¹ýºóÓÃ»§¼´²»ÔÙÏíÊÜ±¾¡¶Ð­Òé¡·Ô¼¶¨µÄ¹ãÖÝÊý¾Û·þÎñ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>4</span>£©¹ãÖÝÊý¾ÛÓÐÈ¨ÅÐ¶¨ÓÃ»§µÄÐÐÎªÊÇ·ñ·ûºÏ±¾¡¶Ð­Òé¡·µÄÒªÇó£¬Èç¹ûÓÃ»§Î¥±³ÁË±¾¡¶Ð­Òé¡·µÄ¹æ¶¨£¬¹ãÖÝÊý¾ÛÓÐÈ¨ÖÐ¶Ï»òÖÕÖ¹¶ÔÆäÌá¹©µÄ·þÎñ£¬»òÕß²ÉÈ¡ÆäËû¹ãÖÝÊý¾ÛÈÏÎªºÏÊÊµÄ´ëÊ©£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>5</span>£©ÓÃ»§±ØÐëÒ»Ö±·ûºÏÏàÓ¦ÈÏÖ¤Éí·ÝµÄÌõ¼þ£¬·ñÔò¹ãÖÝÊý¾ÛÓÐÈ¨½«ÆäÓÃ»§Éí·ÝÊÕ»Ø£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>6</span>£©¹ãÖÝÊý¾ÛÒªÇóÓÃ»§±ØÐë·ûºÏ¡¶Ð­Òé¡·µÄ¸÷ÏîÒªÇó£¬·ñÔò¹ãÖÝÊý¾ÛÓÐÈ¨ÖÐ¶Ï¶ÔÆäÌá¹©µÄ·þÎñ£¬»òÕß½ûÓÃÆäËùÉêÇëµÄÊý¾Ý¡¢<span
+                        lang=EN-US>API</span>ÒÔ¼°Î¢·þÎñ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>4</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢ÓÃ»§µÄÕÊºÅ£¬ÃÜÂëºÍ°²È«ÐÔ</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>ÓÃ»§Ò»µ©³ÉÎª¹ãÖÝÊý¾ÛÕýÊ½×¢²áÓÃ»§£¬¼´¿ÉÒÔÍ¨¹ý¹ãÖÝÊý¾ÛÓÃ»§ÖÐÐÄÏíÊÜÏàÓ¦È¨ÏÞ´øÀ´µÄ×ÊÔ´·þÎñ¡£ÓÃ»§¿ÉËæÊ±¸ù¾ÝÐèÒª¸Ä±ä×Ô¼ºµÄÃÜÂë£¬²¢Ó¦¶ÔÆäÃÜÂëÑÏ¸ñ±£ÃÜ¡£ÓÃ»§Èô·¢ÏÖÈÎºÎ·Ç·¨Ê¹ÓÃ»ò´æÔÚ°²È«Â©¶´µÄÇé¿ö£¬ÇëÁ¢¼´ÒÔÊéÃæÐÎÊ½Í¨¸æ¹ãÖÝÊý¾Û»ò·¢ËÍÓÊ¼þ¸æÖª¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>5</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢ÓÃ»§ÒåÎñ</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>1</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢²»µÃÀûÓÃ¹ãÖÝÊý¾ÛÌá¹©µÄÊý¾ÝÎ£º¦¹ú¼Ò°²È«¡¢Ð¹Â¶¹ú¼ÒÃØÃÜ£¬²»µÃÇÖ·¸¹ú¼ÒÉç»á¼¯ÌåµÄºÍ¹«ÃñµÄºÏ·¨È¨Òæ£¬²»µÃÀûÓÃ¹ãÖÝÊý¾ÛÌá¹©µÄÊý¾ÝÖÆ×÷¡¢¸´ÖÆºÍ´«²¥ÏÂÁÐÐÅÏ¢£º</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>1</span>£©É¿¶¯¿¹¾Ü¡¢ÆÆ»µÏÜ·¨ºÍ·¨ÂÉ¡¢ÐÐÕþ·¨¹æÊµÊ©µÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>2</span>£©É¿¶¯µß¸²¹ú¼ÒÕþÈ¨£¬ÍÆ·­Éç»áÖ÷ÒåÖÆ¶ÈµÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>3</span>£©É¿¶¯·ÖÁÑ¹ú¼Ò¡¢ÆÆ»µ¹ú¼ÒÍ³Ò»µÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>4</span>£©É¿¶¯Ãñ×å³ðºÞ¡¢Ãñ×åÆçÊÓ£¬ÆÆ»µÃñ×åÍÅ½áµÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>5</span>£©ÄóÔì»òÕßÍáÇúÊÂÊµ£¬É¢²¼Ò¥ÑÔ£¬ÈÅÂÒÉç»áÖÈÐòµÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>6</span>£©ÐûÑï·â½¨ÃÔÐÅ¡¢Òù»à¡¢É«Çé¡¢¶Ä²©¡¢±©Á¦¡¢Ð×É±¡¢¿Ö²À¡¢½ÌËô·¸×ïµÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>7</span>£©¹«È»ÎêÈèËûÈË»òÕßÄóÔìÊÂÊµ·Ì°ùËûÈËµÄ£¬»òÕß½øÐÐÆäËû¶ñÒâ¹¥»÷µÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>8</span>£©Ëðº¦¹ú¼Ò»ú¹ØÐÅÓþµÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>&nbsp;&nbsp;&nbsp;&nbsp;</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>£¨<span
+                        lang=EN-US>9</span>£©ÆäËûÎ¥·´ÏÜ·¨ºÍ·¨ÂÉÐÐÕþ·¨¹æµÄ£»</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>6</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢Î¥Ô¼Åâ³¥</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>ÓÃ»§Í¬Òâ±£ÕÏºÍÎ¬»¤¹ãÖÝÊý¾Û¼°ÆäËûÓÃ»§µÄÀûÒæ£¬ÈçÒòÓÃ»§Î¥·´ÓÐ¹Ø·¨ÂÉ¡¢·¨¹æ»ò±¾¡¶Ð­Òé¡·ÏîÏÂµÄÈÎºÎÌõ¿î¶ø¸ø¹ãÖÝÊý¾Û»òÈÎºÎÆäËûµÚÈýÕßÔì³ÉËðÊ§£¬ÓÃ»§Í¬Òâ³Ðµ£ÓÉ´ËÔì³ÉµÄËðº¦Åâ³¥ÔðÈÎ¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>7</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢·þÎñÌõ¿îµÄ±ä¸ü</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¹ãÖÝÊý¾ÛÓÐÈ¨ÔÚ±ØÒªÊ±ÐÞ¸Ä±¾¡¶Ð­Òé¡·µÄËùÓÐ·þÎñÌõ¿î£¬Èç¹ûÓÃ»§²»½ÓÊÜ·þÎñÌõ¿îµÄÐÞ¸Ä£¬¿ÉÒÔËæÊ±Í£Ö¹Ê¹ÓÃ¹ãÖÝÊý¾ÛÌá¹©µÄ·þÎñ¡£
+  Èç¹ûÓÃ»§¼ÌÐøÏíÓÃ¹ãÖÝÊý¾ÛÊý¾Ý¡¢<span lang=EN-US>API</span>ÒÔ¼°Î¢·þÎñ£¬ÔòÊÓÎª½ÓÊÜ±¾¡¶Ð­Òé¡··þÎñÌõ¿îµÄ±ä¶¯¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>8</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢·¨ÂÉÊÊÓÃ¼°ÕùÒé½â¾ö</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>±¾¡¶Ð­Òé¡·µÄÐ§Á¦ ¡¢ÂÄÐÐºÍ½âÊÍ¾ùÊÊÓÃÖÐ»ªÈËÃñ¹²ºÍ¹ú·¨ÂÉ¡£ÈôÓÃ»§Òò±¾¡¶Ð­Òé¡·Ïà¹ØÄÚÈÝÓë¹ãÖÝÊý¾Û²úÉúÕùÒé£¬Ë«·½¿ÉÐ­ÉÌ½â¾ö¡£Ð­ÉÌÎÞ·¨½â¾öµÄ£¬ÈÎºÎÒ»·½¾ùÓÐÈ¨Ïò¹ãÖÝÊý¾ÛÔËÓª·½ËùÔÚµØÓÐ¹ÜÏ½È¨µÄ·¨ÔºÌáÆðËßËÏ¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>9</span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>¡¢ÆäËû¹æ¶¨</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>9.1 </span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>±¾¡¶Ð­Òé¡·¹¹³ÉË«·½¶Ô±¾¡¶Ð­Òé¡·Ö®Ô¼¶¨ÊÂÏî¼°ÆäËûÓÐ¹ØÊÂÒËµÄÍêÕûÐ­Òé£¬³ý±¾¡¶Ð­Òé¡·¹æ¶¨µÄÖ®Íâ£¬Î´¸³Óè±¾¡¶Ð­Òé¡·¸÷·½ÆäËûÈ¨Àû¡£</span></p>
+                <p class=MsoNormal align=left style='text-align:left'><span lang=EN-US
+                                                                            style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>9.2 </span><span
+                        style='font-size:11.0pt;font-family:"Î¢ÈíÑÅºÚ",sans-serif;color:#666666'>Èç±¾¡¶Ð­Òé¡·ÖÐµÄÈÎºÎÌõ¿îÎÞÂÛÒòºÎÖÖÔ­ÒòÍêÈ«»ò²¿·ÖÎÞÐ§»ò²»¾ßÓÐÖ´ÐÐÁ¦£¬±¾¡¶Ð­Òé¡·µÄÆäÓàÌõ¿îÈÔÓ¦ÓÐÐ§²¢ÇÒÓÐÔ¼ÊøÁ¦¡£</span></p>
+            </td>
+        </tr>
+    </table>
+
+    <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+</div>
 
 </body>
+
 </html>

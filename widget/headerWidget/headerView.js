@@ -41,7 +41,7 @@ var logoutModel = Backbone.Model.extend({
 });
 
 var getUserMsg = Backbone.Model.extend({
-    url: mscxPage.host+'/briefInfo.do?t='+new Date().getTime()
+    url: mscxPage.host+'/briefInfo.do?'
 });
 
 var headerView = Backbone.View.extend({
@@ -55,7 +55,11 @@ var headerView = Backbone.View.extend({
     },
     initialize: function() {
         this.model = new getUserMsg();
-        this.model.fetch();
+        this.model.fetch({
+            data: {
+                t: new Date().getTime()
+            }
+        });
         this.listenTo(this.model, 'sync', this.render);
         this.$el.html(this.template({
             id: this.id,

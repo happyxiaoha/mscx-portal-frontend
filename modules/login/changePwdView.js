@@ -131,8 +131,7 @@ var changePwdView = Backbone.View.extend({
             messages: {
                 password:{
                     required: "请输入密码",
-                    minlength: "密码最少为6位",
-                    maxlength: "密码最多20个字符"
+                    minlength: "密码最少为6位"
                 },
                 passwordConfirm: {
                     required: "请确认密码",

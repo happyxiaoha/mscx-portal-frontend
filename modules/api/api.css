@@ -17,7 +17,7 @@
 .mainDatas .DataList li:nth-child(4n){margin: 0;}
 
 .data-list.data-empty {
-    min-height: initial;
+    min-height: auto;
 }
 
 /*筛选条件*/

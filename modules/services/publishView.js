@@ -181,6 +181,9 @@ var createDemandView = Backbone.View.extend({
         form.ajaxSubmit({
             url: uploadImgUrl,
             success: function(res) {
+                if(typeof (res) === 'string' ){
+                    res = JSON.parse(res)
+                }
                 var params = res.result;
                 if(res.status == 'ERROR') {
                     layer.msg(res.message);

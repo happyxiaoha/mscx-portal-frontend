@@ -281,3 +281,19 @@ select::-ms-expand {
 .page-area {
 	margin: 20px 0 0 0;
 }
+
+
+::-webkit-input-placeholder { /* WebKit browsers */
+	color:    #a8a8a8!important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color:    #a8a8a8!important;
+	opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color:    #a8a8a8!important;
+	opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color:    #a8a8a8!important;
+}

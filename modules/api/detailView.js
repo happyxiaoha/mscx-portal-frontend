@@ -47,7 +47,7 @@ var view = Backbone.View.extend({
             data: {
                 apiServiceId: this.id
             }
-        })
+        });
         this.shareView = new shareView({
             className: 'share posAB'
         });
@@ -58,9 +58,10 @@ var view = Backbone.View.extend({
         var converter = new showdown.Converter();
         var model = this.detailModel.toJSON();
 
-        model.result.apiList.forEach(function(item) {
+
+        _.each(model.result.apiList,function(item) {
             item.directions = converter.makeHtml(item.directions);
-        })
+        });
 
         model.result.rtnCode = converter.makeHtml(model.result.rtnCode);
 
@@ -103,6 +104,10 @@ var view = Backbone.View.extend({
     // 申请
     apply: function() {
         var me = this;
+
+        if(!this.validateLogin()) {
+            return;
+        }
 
         this.applyView = new applyView({
             id: this.id,
@@ -179,6 +184,10 @@ var view = Backbone.View.extend({
     offlineChat: function() {
         var me = this;
 
+        if(!this.validateLogin()) {
+            return;
+        }
+
         this.offlineView = new offlineView({
             id: this.id
         });
@@ -203,6 +212,14 @@ var view = Backbone.View.extend({
                 me.offlineView.remove();
             }
         })
+    },
+    validateLogin: function() {
+        if(!mscxPage.userInfo){
+            layer.msg('请先登录', function() {
+                location.href = 'login.html?service=' + encodeURIComponent(location.href);
+            })
+        }
+        return !!mscxPage.userInfo;
     }
 });
 

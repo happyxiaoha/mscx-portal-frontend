@@ -47,7 +47,7 @@ var view = Backbone.View.extend({
             data: {
                 apiServiceId: this.id
             }
-        })
+        });
         this.shareView = new shareView({
             className: 'share posAB'
         });
@@ -58,9 +58,10 @@ var view = Backbone.View.extend({
         var converter = new showdown.Converter();
         var model = this.detailModel.toJSON();
 
-        model.result.apiList.forEach(function(item) {
+
+        _.each(model.result.apiList,function(item) {
             item.directions = converter.makeHtml(item.directions);
-        })
+        });
 
         model.result.rtnCode = converter.makeHtml(model.result.rtnCode);
 

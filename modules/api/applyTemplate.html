@@ -19,7 +19,7 @@
                 <td><%= item.name %></td>
                 <td><%= item.chargeCount || 0 %></td>
                 <td><%= item.price %></td>
-                <td><input type="number" data-id="<%= item.id %>" data-price="<%= item.price %>" class="number" min="1" value="1"></td>
+                <td><input type="number" data-id="<%= item.id %>" data-limit="<%= item.countLimit %>" data-price="<%= item.price %>" class="number" min="1" max="<%= item.countLimit %>" value="1"></td>
                 <td class="total"><%= item.price %></td>
             </tr>
         <% }) %>

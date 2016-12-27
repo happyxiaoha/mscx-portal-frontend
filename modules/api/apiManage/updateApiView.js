@@ -9,10 +9,11 @@ require('formAjax');
 require('util');
 
 var apiDesModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/getApiServiceDetailById.do'
+    url: mscxPage.request.api + 'service/getMyApiServiceDetailById.do'
 });
-var createApiModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/publishServiceApi.do'
+
+var updateApiModel = Backbone.Model.extend({
+    url: mscxPage.request.api + 'service/modifyServiceApi.do'
 });
 var checkServerId = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/checkApiByIdentification.do'
@@ -26,6 +27,9 @@ var getCategoryTagModel = Backbone.Model.extend({
 var getServiceTypeModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'dict/getServiceObject.do'
 });
+var getPackageModel = Backbone.Model.extend({
+    url: mscxPage.request.api + 'charge/getMyChargeRuleByServiceId.do'
+});
 
 var updateApiView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
@@ -38,9 +42,6 @@ var updateApiView = Backbone.View.extend({
         'change input:radio[name="category"]': 'changeCategory',
         'change input:radio[name="chargeType"]': 'changeChargeType',
         'change input:checkbox[name="serverTypes"]': 'chooseServerTypes',
-        'click .addPrice': 'addChargeLay',
-        'click .removeCharge': 'removeCharge',
-        'click .editCharge':'updateChargeLay',
         'click .addApi': 'addApiLay',
         'click .editApi': 'updateApi',
         'click .deleteApi': 'removeApi',
@@ -51,33 +52,49 @@ var updateApiView = Backbone.View.extend({
     updateIndex: -1,
     apiName: '',
     initialize: function() {
-        console.log(this.id);
+        var that = this;
+        this.$el.html(template);
         this.apiDesModel = new apiDesModel();
+        this.getCategoryModel = new getCategoryModel();
+        this.getCategoryTagModel = new getCategoryTagModel();
+        this.getServiceTypeModel = new getServiceTypeModel();
+        this.getPackageModel = new getPackageModel();
+        this.model = new updateApiModel();
+
         this.apiDesModel.fetch({
             data: {
                 apiServiceId: this.id
             }
         });
         this.apiDesModel.on('change',function (model,res) {
-            console.log(res);
+            that.renderInit();
         });
+        this.getPackageModel.fetch({
+            data: {
+                apiServiceId: this.id
+            }
+        });
+        this.getPackageModel.on('change',function (model,res) {
+            that.buildChargeTable();
+        });
+        this.temps = _.template($('#updateFormMes').html());
+        this.$el.find('#publishApi').html(this.temps({res:{}}));
+    },
+    renderInit: function () {
         var that = this;
-        this.getCategoryModel = new getCategoryModel();
-        this.getCategoryTagModel = new getCategoryTagModel();
-        this.getServiceTypeModel = new getServiceTypeModel();
+        var res = this.apiDesModel.get('result');
+        this.$el.find('#publishApi').html(this.temps({res:res}));
         this.getCategoryModel.on('change',function () {
-            that.renderCategory();
+            that.renderCategory(res.categoryId);
         });
         this.getCategoryTagModel.on('change',function () {
             that.renderCategoryTag();
         });
         this.getServiceTypeModel.on('change',function () {
-            that.renderServiceType();
+            that.renderServiceType(res.serviceObject);
         });
         this.getCategoryModel.fetch();
         this.getServiceTypeModel.fetch();
-
-        this.model = new createApiModel();
         this.model.on('change:tags',function () {
             that.buildChooseTags();
         });
@@ -95,8 +112,12 @@ var updateApiView = Backbone.View.extend({
                 that.buildChargeTable();
             }
         });
-        this.$el.html(template);
-        this.model.set('chargeType','01');
+        this.model.set('chargeType',res.chargeType);
+        this.model.set('tags',res.tags);
+        this.model.set('apiListJson',res.apiListJson);
+        this.model.set('name',res.name);
+        this.model.set('imageUri',res.imageUri);
+        this.model.set('serviceObject',res.serviceObject);
         $('#publishApi').validate(this.validateConfig());
     },
     validateConfig: function () {
@@ -114,7 +135,7 @@ var updateApiView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                that.doPublish();
+                that.doUpdate();
             },
             invalidHandler:function() {
                 that.checkValidateSelf();
@@ -123,7 +144,7 @@ var updateApiView = Backbone.View.extend({
     },
     checkValidateSelf: function () {
         var res = true;
-        if(!this.model.get('imageKey')) {
+        if(!this.model.get('imageUri')) {
             $('.img-error').show();
             res = false;
         }
@@ -163,14 +184,6 @@ var updateApiView = Backbone.View.extend({
             $('.api-error').hide();
         }
 
-        if(this.model.get('chargeType') == '02' && !this.model.get('chargeSetJson')) {
-            $('.package-error').show();
-            res = false;
-        }
-        else {
-            $('.package-error').hide();
-        }
-
         if(!this.model.get('name')) {
             if(!$('.api-server-error').is(':visible')){
                 $('.api-server-error').html('不能为空').show();
@@ -181,46 +194,6 @@ var updateApiView = Backbone.View.extend({
             $('.api-server-error').remove();
         }
         return res;
-    },
-    packageValidateConfig: function () {
-        var that = this;
-        return {
-            rules: {
-                name: {
-                    required: true,
-                    minlength: 2
-                },
-                price: {
-                    required: true,
-                    number: true,
-                    min: 0
-                },
-                chargeCount: {
-                    required: true,
-                    number: true,
-                    min: 0
-                },
-                countLimit: {
-                    number: true,
-                    min: 0
-                },
-                monthLimit: {
-                    number: true,
-                    min: 0
-                },
-                effectDate: {
-                    required: true,
-                    date: true
-                },
-                expiryDate: {
-                    required: true,
-                    date: true
-                }
-            },
-            submitHandler: function () {
-                that.saveChargeJson()
-            }
-        }
     },
     apiValidateConfig: function () {
         var that = this;
@@ -319,13 +292,13 @@ var updateApiView = Backbone.View.extend({
         });
         this.model.set('serviceObject',aServerType.join(','));
     },
-    renderCategory: function () {
+    renderCategory: function (defaultCategoryId) {
         var categoryTemplate = _.template($('#categoryList').html());
         var categoryList = this.getCategoryModel.get('result');
-        $('#serverCategory').html(categoryTemplate({categoryList:categoryList}));
+        $('#serverCategory').html(categoryTemplate({categoryList:categoryList,defCid: defaultCategoryId}));
         if(categoryList.length > 0){
-            this.model.set('categoryId',categoryList[0].categoryId);
-            this.renderTagWithCategory(categoryList[0].categoryId);
+            this.model.set('categoryId',defaultCategoryId);
+            this.renderTagWithCategory(defaultCategoryId);
         }
     },
     renderTagWithCategory: function (cid) {
@@ -340,9 +313,19 @@ var updateApiView = Backbone.View.extend({
         var tagList = this.getCategoryTagModel.get('result');
         this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList}))
     },
-    renderServiceType: function () {
+    renderServiceType: function (serviceObject) {
         var categoryTemplate = _.template($('#serverTypeList').html());
-        var serverTypeList = this.getServiceTypeModel.get('result');
+        var serverTypeList = this.getServiceTypeModel.get('result'),
+            chooseS = serviceObject.split(',');
+        for(var i =0, len = serverTypeList.length; i < len; i++ ){
+            var types = serverTypeList[i],
+                id = types.id;
+            for(var k = 0, klen = chooseS.length;k<klen; k++){
+                if(id == chooseS[k]){
+                    types.isSelect = true;
+                }
+            }
+        }
         $('.server-dist').html(categoryTemplate({serverTypeList: serverTypeList}));
     },
     buildChooseTags: function () {
@@ -386,95 +369,8 @@ var updateApiView = Backbone.View.extend({
             });
         }
     },
-    addChargeLay: function () {
-        var that = this;
-        var addChargeTemplete = _.template($('#chargeManage').html());
-        $('.add-price-list').html(addChargeTemplete({res:{}}));
-
-        var dialog= layer.open({
-            type: 1,
-            btn: ['保存','取消'],
-            title: '新增收费规则',
-            shade: 0.6,
-            shadeClose: true,
-            closeBtn:'1',
-            area: ['500px', '550px'],
-            content: $('.add-price-list'), //捕获的元素
-            success: function () {
-                that.buildDateEvents();
-                $('#addChargeForm').validate(that.packageValidateConfig());
-            },
-            btn1: function () {          //通过
-                $('#addChargeForm').submit();
-            },
-            btn2: function () {         // 不通过
-                $('#addChargeForm').resetForm();
-                layer.close(dialog);
-            }
-        });
-        that.lays = dialog;
-    },
-    removeCharge: function (e) {
-        var chargeSetJson = _.clone(this.model.get('chargeSetJson') || []);
-        var index = $(e.target).closest('tr').index();
-        if(chargeSetJson.length == 1 && index == 0){
-            chargeSetJson = [];
-        }
-        else {
-            chargeSetJson.splice(index,1);
-        }
-        this.model.set('chargeSetJson',chargeSetJson);
-        return false;
-    },
-    updateChargeLay: function (e) {
-        var that = this;
-        var chargeSetJson = _.clone(this.model.get('chargeSetJson') || []);
-        var index = $(e.target).closest('tr').index();
-        var addChargeTemplete = _.template($('#chargeManage').html());
-        this.updateIndex = index;
-        $('.add-price-list').html(addChargeTemplete({res:chargeSetJson[index]}));
-        var dialog= layer.open({
-            type: 1,
-            btn: ['保存','取消'],
-            title: '修改收费规则',
-            shade: 0.6,
-            shadeClose: true,
-            closeBtn:'1',
-            area: ['500px', '550px'],
-            content: $('.add-price-list'), //捕获的元素
-            success: function () {
-                that.buildDateEvents();
-                $('#addChargeForm').validate(that.packageValidateConfig());
-            },
-            cancel: function(index){
-                that.updateIndex = -1;
-            },
-            btn1: function () {          //通过
-                $('#addChargeForm').submit();
-            },
-            btn2: function () {         // 不通过
-                layer.close(dialog);
-                that.updateIndex = -1;
-            }
-        });
-        that.lays = dialog;
-    },
-    saveChargeJson: function () {
-        layer.close(this.lays);
-        var chargeSetJson = _.clone(this.model.get('chargeSetJson') || []);
-        if(this.updateIndex < 0){
-            chargeSetJson.push($('#addChargeForm').serializeObject());
-        }
-        else {
-            chargeSetJson[this.updateIndex] = $('#addChargeForm').serializeObject();
-            this.updateIndex = -1;
-        }
-
-        this.model.set('chargeSetJson',chargeSetJson);
-        $('#addChargeForm').resetForm();
-    },
     buildChargeTable: function () {
-        var chargeSetJson = this.model.get('chargeSetJson');
+        var chargeSetJson = this.getPackageModel.get('result');
         if(!chargeSetJson && this.model.get('chargeType') == '01'){
             $('.api-package').hide();
         }
@@ -516,15 +412,18 @@ var updateApiView = Backbone.View.extend({
     },
     saveApiJson: function () {
         var res = $('#addApiForm').serializeObject();
-        if(this.apiName.indexOf('**'+res.name+'&&')>= 0){
+        if(this.apiName.indexOf('**'+res.name+'&&')>= 0 && this.updateApiName != res.name){
+            $('.api-name-error').html('不能为空').show();
             return;
         }
         layer.close(this.lays);
         var apiListJson = _.clone(this.model.get('apiListJson') || []);
         if(this.updateIndex < 0){
+            res.flag = 'C';
             apiListJson.push(res);
         }
         else {
+            res.flag = 'U';
             apiListJson[this.updateIndex] = res;
             this.updateIndex = -1;
         }
@@ -536,7 +435,9 @@ var updateApiView = Backbone.View.extend({
         var apiListJson = this.model.get('apiListJson');
         this.apiName = '';
         for(var i = 0, len = apiListJson.length; i < len; i++){
-            this.apiName += '**'+apiListJson[i].name+'&&';
+            if(apiListJson[i].flag !=  'D'){
+                this.apiName += '**'+apiListJson[i].name+'&&';
+            }
         }
     },
     buildApiTable: function () {
@@ -550,15 +451,29 @@ var updateApiView = Backbone.View.extend({
         $('#apiTable').html(apiTableTemps({apiList: apiListJson}));
     },
     removeApi: function (e) {
-        var apiListJson = _.clone(this.model.get('apiListJson') || []);
-        var index = $(e.target).closest('tr').index();
-        if(apiListJson.length == 1 && index == 0){
-            apiListJson = [];
-        }
-        else {
-            apiListJson.splice(index,1);
-        }
-        this.model.set('apiListJson',apiListJson);
+        var that = this;
+        var deleteLay = layer.confirm('确认删除这条API吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var apiListJson = _.clone(that.model.get('apiListJson') || []);
+            var index = $(e.target).closest('tr').index();
+            if(apiListJson[index].flag == 'C'){  //当为修改的时候新增数据直接删除
+                if(apiListJson.length == 1 && index == 0){
+                    apiListJson = [];
+                }
+                else {
+                    apiListJson.splice(index,1);
+                }
+            }
+            else {  //初始化的时候带过来的数据
+                apiListJson[index].flag = 'D';
+            }
+            that.model.set('apiListJson',apiListJson);
+            that.model.trigger('change:apiListJson');
+            layer.close(deleteLay);
+        }, function(){
+            layer.close(deleteLay);
+        });
         return false;
     },
     updateApi: function (e) {
@@ -567,6 +482,7 @@ var updateApiView = Backbone.View.extend({
         var index = $(e.target).closest('tr').index();
         var apiManageTemps = _.template($('#apiManageTemps').html());
         this.updateIndex = index;
+        this.updateApiName = apiListJson[index].name;
         $('.add-api-list').html(apiManageTemps({res:apiListJson[index]}));
         var dialog= layer.open({
             type: 1,
@@ -593,7 +509,7 @@ var updateApiView = Backbone.View.extend({
         });
         that.lays = dialog;
     },
-    doPublish: function () {
+    doUpdate: function () {
         var isCheck = this.checkValidateSelf();
         if(isCheck){
             var obj = $('#publishApi').serializeObject();
@@ -663,7 +579,7 @@ var updateApiView = Backbone.View.extend({
             $('.api-name-error').html('不能为空').show();
             return;
         }
-        if(this.apiName.indexOf('**'+name+'&&')>= 0){
+        if(this.apiName.indexOf('**'+name+'&&')>= 0 && this.updateApiName != name){
             $('.api-name-error').html('API标示重复').show();
         }
         else {

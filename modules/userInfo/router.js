@@ -18,6 +18,7 @@ var Routes =  Backbone.Router.extend({
         'sale': 'saleView'
     },
     defaultView:function () {
+        debugger;
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
         mscxPage.views['defaultViewObj'] = new defaultView();
     },

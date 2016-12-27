@@ -376,9 +376,9 @@ var createApiView = Backbone.View.extend({
     addChargeLay: function () {
         var that = this;
         var addChargeTemplete = _.template($('#chargeManage').html());
-        $('.add-price-list').html(addChargeTemplete({res:{}}));
+        $('.package-manage').html(addChargeTemplete({res:{}}));
 
-        var dialog= layer.open({
+        var dialog = layer.open({
             type: 1,
             btn: ['保存','取消'],
             title: '新增收费规则',
@@ -402,15 +402,23 @@ var createApiView = Backbone.View.extend({
         that.lays = dialog;
     },
     removeCharge: function (e) {
-        var chargeSetJson = _.clone(this.model.get('chargeSetJson') || []);
-        var index = $(e.target).closest('tr').index();
-        if(chargeSetJson.length == 1 && index == 0){
-            chargeSetJson = [];
-        }
-        else {
-            chargeSetJson.splice(index,1);
-        }
-        this.model.set('chargeSetJson',chargeSetJson);
+        var that = this;
+        var deleteLay = layer.confirm('确认删除这条套餐吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var chargeSetJson = _.clone(that.model.get('chargeSetJson') || []);
+            var index = $(e.target).closest('tr').index();
+            if(chargeSetJson.length == 1 && index == 0){
+                chargeSetJson = [];
+            }
+            else {
+                chargeSetJson.splice(index,1);
+            }
+            that.model.set('chargeSetJson',chargeSetJson);
+            layer.close(deleteLay);
+        }, function(){
+            layer.close(deleteLay);
+        });
         return false;
     },
     updateChargeLay: function (e) {
@@ -537,15 +545,23 @@ var createApiView = Backbone.View.extend({
         $('#apiTable').html(apiTableTemps({apiList: apiListJson}));
     },
     removeApi: function (e) {
-        var apiListJson = _.clone(this.model.get('apiListJson') || []);
-        var index = $(e.target).closest('tr').index();
-        if(apiListJson.length == 1 && index == 0){
-            apiListJson = [];
-        }
-        else {
-            apiListJson.splice(index,1);
-        }
-        this.model.set('apiListJson',apiListJson);
+        var that = this;
+        var deleteLay = layer.confirm('确认删除这条API吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var apiListJson = _.clone(that.model.get('apiListJson') || []);
+            var index = $(e.target).closest('tr').index();
+            if(apiListJson.length == 1 && index == 0){
+                apiListJson = [];
+            }
+            else {
+                apiListJson.splice(index,1);
+            }
+            that.model.set('apiListJson',apiListJson);
+            layer.close(deleteLay);
+        }, function(){
+            layer.close(deleteLay);
+        });
         return false;
     },
     updateApi: function (e) {

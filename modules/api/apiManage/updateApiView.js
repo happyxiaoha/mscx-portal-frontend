@@ -51,7 +51,6 @@ var updateApiView = Backbone.View.extend({
     updateIndex: -1,
     apiName: '',
     initialize: function() {
-        console.log(this.id);
         this.apiDesModel = new apiDesModel();
         this.apiDesModel.fetch({
             data: {
@@ -59,7 +58,7 @@ var updateApiView = Backbone.View.extend({
             }
         });
         this.apiDesModel.on('change',function (model,res) {
-            console.log(res);
+
         });
         var that = this;
         this.getCategoryModel = new getCategoryModel();

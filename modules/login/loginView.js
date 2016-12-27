@@ -68,6 +68,7 @@ var loginView = Backbone.View.extend({
         return {
             rules: {
                 loginName:{
+                    required: true,
                     letterStart: true,
                     account: true,
                     minlength: 6,

@@ -39,8 +39,9 @@ var view = Backbone.View.extend({
 
         if(apiServiceList.length < 1) {
             this.$sort.hide();
-            this.$dataList.html('暂无数据');
+            this.$dataList.addClass('data-empty').html('暂无数据');
         }else {
+            this.$dataList.removeClass('data-empty');
             this.$sort.show();
         }
         this.$count.html(pageInfo.totalSize || 0);

@@ -43,7 +43,7 @@
 /*下部表格**/
 .table-h{margin-top: 20px}
 .table-h tbody tr td:nth-child(2n){color: #069cd9 !important;}
-.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;}
+.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;padding: 26px 26px;}
 
 .R-Cons .titTopCons ul li span{display: inline-block;font-size: 14px;}
 .R-Cons .titTopCons ul li span:first-child{width: 84px;text-align: right;margin-right: 2px;}

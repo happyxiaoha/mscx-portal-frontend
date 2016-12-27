@@ -29,7 +29,6 @@ var bannerView = Backbone.View.extend({
 
     },
     banner: function (size) {
-        console.log(size*2);
         var galleryTop = new Swiper('.swiper-container', {
             /*        nextButton: '.swiper-button-next',
              prevButton: '.swiper-button-prev',*/

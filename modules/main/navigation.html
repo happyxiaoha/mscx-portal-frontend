@@ -10,7 +10,7 @@
             <% if(item.appList && item.appList.length > 0){ %>
             <div class="rightTips" style="display: none;">
                 <% _.each(item.appList, function(json){ %>
-                <a href="services.html#detail/<%= json.id %>" ><%= json.name %></a>
+                <a href="services.html#detail/<%= json.id %>" title="<%= json.name %>"><%= json.name %></a>
                 <% }) %>
             </div>
             <% }; %>
@@ -39,7 +39,7 @@
         <% if(item.apiServiceList && item.apiServiceList.length > 0){ %>
         <div class="rightTips" style="display: none;">
             <% _.each(item.apiServiceList, function(json){ %>
-            <a href="api.html#detail/<%= json.apiServiceId %>" ><%= json.apiServiceName %></a>
+            <a href="api.html#detail/<%= json.apiServiceId %>" title="<%= json.apiServiceName %>"><%= json.apiServiceName %></a>
             <% }) %>
         </div>
         <% }; %>

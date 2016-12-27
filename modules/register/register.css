@@ -76,9 +76,9 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 
 .header{height: 80px;border-bottom: solid 1px #bbb;}
 .header h1{float:left;margin:14px 0 0 2px;}
-.header h1 a{display: block;color: #333;font-size: 22px;}
+.header h1 a{color: #333;font-size: 22px;}
 .header h1 a img{display: inline-block;}
-.header h1 a span{display: inline-block;line-height: 34px;padding-left: 12px;margin-left: 6px;vertical-align: 22px;font-size: 20px;font-weight: bold;}
+.header h1 span{line-height: 34px;padding-left: 12px;margin-left: 6px;vertical-align: 22px;font-size: 20px;font-weight: bold;}
 /*.header h1 a:hover{text-decoration: none;}*/
 .header .nav{float:left;margin:47px 0 0 70px;}
 .header .nav li{float:left;font-size: 16px;margin:0 40px 0 0;line-height: 18px;}

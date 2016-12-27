@@ -4,7 +4,11 @@
         <input type="hidden" name="id" value="<%= data.id %>" />
         <% } %>
         <!-- top -->
-        <p class="ReleaseTit">发布数据需求</p>
+        <% if(data && data.id) { %>
+        <p class="ReleaseTit">修改数据需求</p>
+        <% }else{ %>
+        <p class="ReleaseTit">新增数据需求</p>
+        <% } %>
         <!-- down -->
         <div class="ReleaseInputs">
             <div class="clearfix ReleaseList">

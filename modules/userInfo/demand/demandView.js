@@ -9,15 +9,15 @@ require('util');
 
 var demandApi = '/ro/mscx-requirement-api/';
 var demandListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryData.do'
+    url: mscxPage.request.demand + 'queryData.do'
 });
 
 var deleteSourceDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'deleteData.do'
+    url: mscxPage.request.demand + 'deleteData.do'
 });
 
 var demandApiListModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryApi.do'
+    url: mscxPage.request.demand + 'queryApi.do'
 });
 var deleteApiDemandModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'deleteApi.do'
@@ -32,13 +32,13 @@ var closeServerDemandModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'closeService.do'
 });
 var closeApiDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'closeApi.do'
+    url: mscxPage.request.demand + 'closeApi.do'
 });
 var deleteServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'deleteService.do'
+    url: mscxPage.request.demand + 'deleteService.do'
 });
 var closeServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'closeService.do'
+    url: mscxPage.request.demand + 'closeService.do'
 });
 
 var demandServersListModel = Backbone.Model.extend({
@@ -56,7 +56,7 @@ var reduceFocusServerModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'cancelServiceFocus.do'
 });
 var reduceFocusServerModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'cancelServiceFocus.do'
+    url: mscxPage.request.demand + 'cancelServiceFocus.do'
 });
 
 var followApiListModel = Backbone.Model.extend({
@@ -72,7 +72,7 @@ var reduceFocusSourcesModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'reduceFocus.do'
 });
 var reduceFocusSourcesModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'reduceFocus.do'
+    url: mscxPage.request.demand + 'reduceFocus.do'
 });
 
 var acceptServersModel = Backbone.Model.extend({
@@ -82,8 +82,22 @@ var acceptApiModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'queryMyApiOrder.do'
 });
 var acceptApiModel = Backbone.Model.extend({
-    url: mscxPage.host+''+demandApi+'queryMyApiOrder.do'
+    url: mscxPage.request.demand + 'queryMyApiOrder.do'
 });
+
+var publishDataModel = Backbone.Model.extend({
+    idAttribute: 'dataId',
+    url: mscxPage.request.demand + 'publishData.do'
+});
+var publishApiModel = Backbone.Model.extend({
+    idAttribute: 'apiId',
+    url: mscxPage.request.demand + 'publishApi.do'
+});
+var publishServiceModel = Backbone.Model.extend({
+    idAttribute: 'serviceId',
+    url: mscxPage.request.demand + 'publishService.do'
+});
+
 
 var demandView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -131,7 +145,8 @@ var resourcesDemandListView = Backbone.View.extend({
         totalPage: 1
     },
     events: {
-        'click .deleteSource': 'deleteSource'
+        'click .deleteSource': 'deleteSource',
+        'click .dataPublish': 'publishDemand'
     },
     initialize: function() {
 
@@ -139,6 +154,9 @@ var resourcesDemandListView = Backbone.View.extend({
         this.templete = _.template($('#resourcesDemandList').html());
 
         this.model = new demandListModel();
+        this.publishDataModel = new publishDataModel();
+
+        this.listenTo(this.publishDataModel, 'sync', this.handlePublish);
         this.model.on('change',function () {
             that.render();
         });
@@ -202,6 +220,20 @@ var resourcesDemandListView = Backbone.View.extend({
         }, function(){
             layer.close(deleteLay);
         });
+    },
+    publishDemand: function(event) {
+        var id = this.$(event.currentTarget).data('id');
+
+        this.publishDataModel.set('id', +id);
+        this.publishDataModel.save();
+    },
+    handlePublish: function() {
+        var model = this.publishDataModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('发布成功！');
+            this.pagObj.pageNum = 1;
+            this.reloadPage();
+        }
     }
 });
 var apiDemandListView = Backbone.View.extend({
@@ -211,12 +243,16 @@ var apiDemandListView = Backbone.View.extend({
     },
     events: {
         'click .deleteApi': 'delteApi',
-        'click .closeApi': 'closeApi'
+        'click .closeApi': 'closeApi',
+        'click .apiPublish': 'publishDemand'
     },
     initialize: function() {
         var that = this;
         this.templete = _.template($('#apiDemandList').html());
         this.model = new demandApiListModel();
+        this.publishApiModel = new publishApiModel();
+
+        this.listenTo(this.publishApiModel, 'sync', this.handlePublish);
         this.model.on('change',function () {
             that.render();
         });
@@ -298,6 +334,20 @@ var apiDemandListView = Backbone.View.extend({
         }, function(){
             layer.close(closeLay);
         });
+    },
+    publishDemand: function(event) {
+        var id = this.$(event.currentTarget).data('id');
+
+        this.publishApiModel.set('id', +id);
+        this.publishApiModel.save();
+    },
+    handlePublish: function() {
+        var model = this.publishApiModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('发布成功！');
+            this.pagObj.pageNum = 1;
+            this.reloadPage();
+        }
     }
 });
 var serversDemandListView = Backbone.View.extend({
@@ -308,13 +358,17 @@ var serversDemandListView = Backbone.View.extend({
     },
     events: {
         'click .deleteServers': 'deleteServers',
-        'click .closeServers': 'closeServers'
+        'click .closeServers': 'closeServers',
+        'click .servicePublish': 'publishDemand'
     },
     initialize: function() {
         var that = this;
         this.templete = _.template($('#serversDemandList').html());
 
         this.model = new demandServersListModel();
+        this.publishServiceModel = new publishServiceModel();
+
+        this.listenTo(this.publishServiceModel, 'sync', this.handlePublish);
         this.model.on('change',function () {
             that.render();
         });
@@ -396,6 +450,20 @@ var serversDemandListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
+    },
+    publishDemand: function(event) {
+        var id = this.$(event.currentTarget).data('id');
+
+        this.publishServiceModel.set('id', +id);
+        this.publishServiceModel.save();
+    },
+    handlePublish: function() {
+        var model = this.publishServiceModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('发布成功！');
+            this.pagObj.pageNum = 1;
+            this.reloadPage();
+        }
     }
 });
 var followListView = Backbone.View.extend({

@@ -68,9 +68,9 @@ var view = Backbone.View.extend({
         var num = $number.val();
         var price = $number.data('price');
 
-        if(num < 0) {
-            $target.val(0);
-            num = 0;
+        if(num < 1) {
+            $target.val(1);
+            num = 1;
         }
 
         $tr.find('.total').html(num * price);

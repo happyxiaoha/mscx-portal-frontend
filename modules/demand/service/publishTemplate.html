@@ -1,6 +1,10 @@
 <div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
     <!-- top -->
-    <p class="ReleaseTit">发布服务开发需求</p>
+    <% if(data && data.id) { %>
+    <p class="ReleaseTit">修改服务开发需求</p>
+    <% }else{ %>
+    <p class="ReleaseTit">新增服务开发需求</p>
+    <% } %>
     <!-- down -->
     <form class="ReleaseInputs" onsubmit="return false;">
         <% if(data && data.id) { %>

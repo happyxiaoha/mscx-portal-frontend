@@ -224,12 +224,16 @@ input[type='checkbox']{margin:2px 3px 3px 4px;padding:0;width:13px;height: 13px;
 	color: #ff4200;
 }
 /* 长度小的select框 */
+select::-ms-expand {
+    opacity:0;
+}
 .smallSelCons{width: 403px;}
-.smallSel{height: 40px;margin: 0 8px;}
+.smallSel{height: 40px;margin: 0 8px;width: 90px;overflow: hidden;}
 .smallSel .smallSelList{
-	width: 85px;
+	width: 120px;
 	background: #fff;
-	border: 1px solid #ccc;
+	/*border: 1px solid #ccc;*/
+	border: 0;
 	height: 26px; 
 	line-height: 24px;
 	text-align: left;
@@ -256,7 +260,7 @@ input[type='checkbox']{margin:2px 3px 3px 4px;padding:0;width:13px;height: 13px;
 	border-top: 6px solid #aaa;
 	border-right: 6px solid transparent;
 	border-left: 6px solid transparent;
-	right: 36px;
+	right: 10px;
 	top: 18px;
 }
 

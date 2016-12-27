@@ -75,7 +75,7 @@
 .useMoney{right:0;top: 60px;font-size: 26px;}
 .useMoney em{font-size: 16px;margin-left: 10px;}
 
-.containerWrap .slideBanner .mleftCons .tabList{min-height: 700px;height: 100%;}
+.containerWrap .slideBanner .mleftCons .tabList{min-height: 200px;height: 100%;}
 .containerWrap .slideBanner .mleftCons .tabList .tab{height: 54px;padding-top: 14px;box-sizing: border-box;}
 .containerWrap .slideBanner .mleftCons .tabList .tab span{display: block;float: left;width: 126px;height: 26px;line-height: 26px;text-align: center;font-size: 14px;border-right: 1px solid #a0a0a0;cursor: pointer;}
 .containerWrap .slideBanner .mleftCons .tabList .tab span.active{color: #3F89EC;}

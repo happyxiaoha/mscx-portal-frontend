@@ -164,11 +164,11 @@
                     <label class="checkbox-inline checkbox-inline-other">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="developLanguageer">
+                            <input type="checkbox" <%= data && data.otherLanguage && "checked" %>
                         </span>
                         </div>
                         其它
-                        <input type="text" value="" id="otherLanguage">
+                        <input type="text" value="<%= data && data.otherLanguage %>" name="otherLanguage" id="otherLanguage">
                     </label>
                 </div>
             </div>

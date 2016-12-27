@@ -69,8 +69,6 @@ var loginView = Backbone.View.extend({
             rules: {
                 loginName:{
                     required: true,
-                    letterStart: true,
-                    account: true,
                     minlength: 6,
                     maxlength: 20
                 },
@@ -98,9 +96,7 @@ var loginView = Backbone.View.extend({
                 loginName:{
                     required: "请输入用户名",
                     minlength: "用户名最少6个字符",
-                    maxlength: "用户名最多20个字符",
-                    letterStart: '用户名必须以字母开头',
-                    account: '用户名只能包含数字字母下划线'
+                    maxlength: "用户名最多20个字符"
                 },
                 password:{
                     required: "请输入密码",

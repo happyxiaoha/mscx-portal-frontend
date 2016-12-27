@@ -120,7 +120,7 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .register-form hr{
     border-top: none;
     border-bottom: dashed 1px #bbb;
-    margin-top: 36px;
+    margin-top: 16px;
     margin-bottom: 24px;
 }
 .po_re em{
@@ -168,4 +168,13 @@ input[type="checkbox"]:checked + label:before{background: url('../../images/logi
 }
 .register-form ul li input.phone{
     width: 198px;
+}
+
+.goto-login{
+    margin-top: 20px;
+    text-align: center;
+}
+.goto-login a{
+    text-decoration: underline;
+    color: #0ab7ef;
 }

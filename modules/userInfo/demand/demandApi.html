@@ -1,0 +1,47 @@
+<div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+    <div class="tab-title"><a class="corff" href="./demand.html#api/publish">新增API需求</a></div>
+    <div class="M-downCons">
+        <div class="D_table M-table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="20%">需求方系统</th>
+                    <th width="48%">需求方系统描述</th>
+                    <th width="10%">状态</th>
+                    <th width="20%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td colspan="4">暂无数据</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="apiPage" class="page-area fr"></div>
+    </div>
+</div>
+<script id="apiDemandList" type="template">
+    <% _.each(apiDemandList, function (aitem) { %>
+    <tr attrId="<%=aitem.id%>">
+        <td><%=aitem.sysName%></td>
+        <td><%=aitem.sysDescription%></td>
+        <td><%=mscxPage.sourceStatus[aitem.statusCode]%></td>
+        <td>
+            <%if(aitem.statusCode == '0'){%>
+                <a href="javascript:;" class="apiPublish" data-id="<%=aitem.id%>">发布</a>
+                <a href="demand.html#api/edit/<%=aitem.id%>" class="editApi">修改</a>
+                <a href="javascript:;" class="deleteApi">删除</a>
+            <%}else if(aitem.statusCode == '2' || aitem.statusCode == '3' || aitem.statusCode == '4'){%>
+                <a href="javascript:;" class="closeApi">关闭</a>
+            <%}%>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(apiDemandList.length == 0){%>
+    <tr>
+        <td colspan="4">暂无数据</td>
+    </tr>
+    <%}%>
+</script>
+

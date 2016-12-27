@@ -48,3 +48,5 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.api-item .downs span:not(:last-child){border-right:1px solid #ccc;}
+.api-item .downs span i{display: block;line-height: 36px;}

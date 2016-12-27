@@ -1,0 +1,134 @@
+<div id="apiTabs" class="topTab clearfix myApiTop">
+    <span class="active">发布的API</span>
+    <span>申请（购买）的API</span>
+    <span>关注的API</span>
+</div>
+<div id="apiInfo"  class="tabDownCons">
+
+</div>
+<script id="myApiList" type="template">
+    <div class="M-mainInfo clearfix bgWhite my-api-list">
+        <div class="tab-title"><button>
+            <a class="corff" href="../api.html#createApi">发布api</a></button>
+        </div>
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="15%">API名称</th>
+                        <th width="36%">API描述</th>
+                        <th width="10%">申请（购买）次数</th>
+                        <th width="8%">状态</th>
+                        <th width="18%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(publishApiList, function (paitem) { %>
+                    <tr attrId="<%=paitem.apiServiceId%>">
+                        <td><%=paitem.apiServiceCName%></td>
+                        <td><%=paitem.description%></td>
+                        <td><%=paitem.applyCount || '-' %></td>
+                        <td><%=paitem.statusDesc%></td>
+                        <td>
+                            <%if(paitem.status == '0'){%>
+                                <a href="javascript:;" class="changePrice">调价</a>
+                                <a href="javascript:;" class="updateApi">编辑</a>
+                                <a href="javascript:;" class="downApi">下架</a>
+                            <%}else if(paitem.status == '3'){%>
+                            <a href="javascript:;" class="changePrice">调价</a>
+                            <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
+                            <a href="javascript:;" class="deleteApi">删除</a>
+                            <%}%>
+                        </td>
+                    </tr>
+                    <% }); %>
+                    <%if(publishApiList.length == 0){%>
+                    <tr>
+                        <td colspan="5">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div class="page-area" id="publishPage"></div>
+        </div>
+    </div>
+</script>
+<script id="apiApplyList" type="template">
+    <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="13%">API名称</th>
+                        <th width="30%">API描述</th>
+                        <th width="10%">申请时间</th>
+                        <th width="8%">收费类型</th>
+                        <th width="10%">使用次数</th>
+                        <th width="10%">剩余次数</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(applyApiList, function (aitem) { %>
+                    <tr attrId="<%=aitem.sourceId%>" attrPackageId="<%=aitem.sourcePakcageId%>">
+                        <td><a target="_blank" href="./api.html#detail/<%=aitem.sourceId%>"><%=aitem.apiName || '-'%></a></td>
+                        <td><%=aitem.apiDesc || '-'%></td>
+                        <td><%=aitem.applyTime%></td>
+                        <td><%=aitem.chargeType%></td>
+                        <td><%=aitem.chargeType%></td>
+                        <td><%=aitem.chargeType%></td>
+                        <td><a class="applyApi" href="api.html#detail/<%=aitem.sourceId%>">再次申请</a></td>
+                    </tr>
+                    <% }); %>
+                    <%if(applyApiList.length == 0){%>
+                    <tr>
+                        <td colspan="7">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="applyApiPages" class="page-area fr"></div>
+        </div>
+    </div>
+</script>
+<script id="followApiList" type="template">
+    <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+        <div class="tab-title"><button><a class="corff" href="../customized/citySdkIw.html">发布服务需求</a></button></div>
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="20%">API名称</th>
+                        <th width="50%">API描述</th>
+                        <th width="15%">关注时间</th>
+                        <th width="15%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(followApiList, function (fitem) { %>
+                    <tr attrId="<%=fitem.apiServiceId%>">
+                        <td><a target="_blank" href="./api.html#detail/<%=fitem.apiServiceId%>"><%=fitem.apiServiceCName%></a></td>
+                        <td><%=fitem.description%></td>
+                        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd') : '-'%></td>
+                        <td>
+                            <a class="cancelFollow" href="javascript:;">取消关注</a>
+                        </td>
+                    </tr>
+                    <% }); %>
+                    <%if(followApiList.length == 0){%>
+                    <tr>
+                        <td colspan="4">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="followApi" class="page-area fr"></div>
+        </div>
+    </div>
+</script>

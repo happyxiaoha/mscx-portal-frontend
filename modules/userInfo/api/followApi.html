@@ -1,0 +1,50 @@
+<div class="M-mainInfo clearfix bgWhite my-api-list">
+    <div class="tab-title"><button>
+        <a class="corff" href="../api.html#createApi">发布api</a></button>
+    </div>
+    <div class="M-downCons">
+        <div class="D_table M-table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="15%">API名称</th>
+                    <th width="36%">API描述</th>
+                    <th width="10%">申请（购买）次数</th>
+                    <th width="8%">状态</th>
+                    <th width="18%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="page-area" id="publishPage"></div>
+    </div>
+</div>
+<script type="template" id="publishTemps">
+    <% _.each(publishApiList, function (paitem) { %>
+    <tr attrId="<%=paitem.apiServiceId%>">
+        <td><%=paitem.apiServiceCName%></td>
+        <td><%=paitem.description%></td>
+        <td><%=paitem.applyCount || '-' %></td>
+        <td><%=paitem.statusDesc%></td>
+        <td>
+            <%if(paitem.status == '0'){%>
+            <a href="javascript:;" class="changePrice">调价</a>
+            <a href="javascript:;" class="updateApi">编辑</a>
+            <a href="javascript:;" class="downApi">下架</a>
+            <%}else if(paitem.status == '3'){%>
+            <a href="javascript:;" class="changePrice">调价</a>
+            <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
+            <a href="javascript:;" class="deleteApi">删除</a>
+            <%}%>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(publishApiList.length == 0){%>
+    <tr>
+        <td colspan="5">暂无数据</td>
+    </tr>
+    <%}%>
+</script>

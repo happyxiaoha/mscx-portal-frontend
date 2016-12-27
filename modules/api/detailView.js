@@ -104,6 +104,10 @@ var view = Backbone.View.extend({
     apply: function() {
         var me = this;
 
+        if(!this.validateLogin()) {
+            return;
+        }
+
         this.applyView = new applyView({
             id: this.id,
             model: {
@@ -179,6 +183,10 @@ var view = Backbone.View.extend({
     offlineChat: function() {
         var me = this;
 
+        if(!this.validateLogin()) {
+            return;
+        }
+
         this.offlineView = new offlineView({
             id: this.id
         });
@@ -203,6 +211,14 @@ var view = Backbone.View.extend({
                 me.offlineView.remove();
             }
         })
+    },
+    validateLogin: function() {
+        if(!mscxPage.userInfo){
+            layer.msg('请先登录', function() {
+                location.href = 'login.html';
+            })
+        }
+        return !!mscxPage.userInfo;
     }
 });
 

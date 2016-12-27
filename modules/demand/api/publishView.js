@@ -17,7 +17,7 @@ var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     events: {
         'click #goBack': 'backHistory',
-        'change .beauty-file input[type="file"]': 'changeFile'
+        'change input[type="file"]': 'changeFile'
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {

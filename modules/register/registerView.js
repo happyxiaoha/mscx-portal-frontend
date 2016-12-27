@@ -27,7 +27,7 @@ var registerView = Backbone.View.extend({
     template: _.template(registerTemplate,{variable: 'data'}),
     events: {
         'click .captchaImg': 'refreshCaptcha',
-        //'blur #captcha': 'checkCaptcha',
+        'change #account': 'validateAccount',
         'input input.registerInput' : 'changeAttribute',
         'click #getCode': 'sendMsgCode'
     },
@@ -83,17 +83,13 @@ var registerView = Backbone.View.extend({
                     letterStart: true,
                     account: true,
                     minlength: 6,
-                    maxlength: 20,
-                    remote: {
-                        url: 'ro/mscx-uc-api/unique/check/user/account/exist.do',
-                        flag: true   //由于用户名存在返回的是true，给个标记方便validate操作
-                    }
+                    maxlength: 20
                 },
                 password:{
                     required: true,
-                    password: true,
                     minlength: 6,
-                    maxlength: 20
+                    maxlength: 20,
+                    password: true
                 },
                 passwordConfirm: {
                     required: true,
@@ -127,7 +123,8 @@ var registerView = Backbone.View.extend({
                 password:{
                     required: "请输入密码",
                     minlength: "密码最少为6位",
-                    maxlength: "密码最多20个字符"
+                    maxlength: "密码最多20个字符",
+                    password: '密码只能包含数字字母下划线中划线,长度为6-20位'
                 },
                 passwordConfirm: {
                     required: "请确认密码",
@@ -156,7 +153,13 @@ var registerView = Backbone.View.extend({
     },
     validateAccount:　function (){
         var account = $('#account').val(),
-            flag = true;
+            test = /^[a-zA-Z][a-zA-Z0-9_]{5,19}$/,
+            that = this;
+        that.flag = true;
+        if(!test.test(account)){
+
+            return
+        }
         this.checkAccountModel.fetch({
             data:{
               account: account
@@ -166,23 +169,21 @@ var registerView = Backbone.View.extend({
                 if(res.result){
                     $('#account').addClass('error');
                     $('#account').after('<label id="account-error" class="error" for="account">该用户名已被注册</label>');
-                    return false;
-                }else
-                return true
+                    that.flag = false;
+                }
             }
         });
     },
     sendMsgCode: function (e) {
         var submitForm = $("#registForm");
-        var check = submitForm.validate().element($("#account"))
-                && submitForm.validate().element($("#password"))
+        var check = submitForm.validate().element($("#password"))
                 && submitForm.validate().element($("#passwordConfirm"))
                 && submitForm.validate().element($("#mobile"))
                 && submitForm.validate().element($("#captcha")),
             $target = $(e.target),
             that = this;
 
-        if( check && that.validateAccount() ){
+        if( that.flag && check ){
             new getSmsCaptchaModel().fetch({
                 data: {
                     mobile: $('#mobile').val(),

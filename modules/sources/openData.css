@@ -101,7 +101,8 @@ span.attention.haves-attention{background: #b7b7b7;}
 .R-Cons .titTop{height: 54px;line-height: 54px;padding-left: 34px;}
 .R-Cons .titTopCons{padding: 26px 40px;}
 .downLoadBtn{
-    width: 86px;
+    min-width: 86px;
+    padding: 0 10px;
     height: 34px;
     border: 1px solid #069cd9;
     color: #069cd9;

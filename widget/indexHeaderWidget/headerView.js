@@ -56,7 +56,11 @@ var headerView = Backbone.View.extend({
     },
     initialize: function() {
         this.model = new getUserMsg();
-        this.model.fetch();
+        this.model.fetch({
+            data: {
+                t: new Date().getTime()
+            }
+        });
         this.listenTo(this.model, 'sync', this.render);
         this.$el.html(this.template({
             id: 'index',

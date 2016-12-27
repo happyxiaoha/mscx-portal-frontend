@@ -48,9 +48,11 @@ var view = Backbone.View.extend({
         var list = result.list || [];
         var pageInfo = result.page || {};
 
-        this.$dataList.html(this.listTemplate(list));
+        this.$dataList.addClass('animate-content padding-side').removeClass('opacity0').html(this.listTemplate(list));
 
-        this.$dataList.removeClass('opacity0');
+        if(list.length < 1){
+            this.$dataList.removeClass('animate-content padding-side');
+        }
 
         laypage({
             cont: 'page',

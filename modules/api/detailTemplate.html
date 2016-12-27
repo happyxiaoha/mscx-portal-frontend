@@ -88,22 +88,24 @@
                 </div>
                 <div class="tabCons animate-content opacity0">
                     <div class="tabConsInfo mt15 clearfix hide">
-                        <% data.result && data.result.apiList.forEach(function(item){ %>
-                            <div class="tabLeft fl">
-                                <span class="active"><%= item.apiCName %></span>
-                            </div>
-                            <div class="fl tabRight api">
-                                <div class="rightCons">
-                                    <p>接口地址：<%= item.uri %></p>
-                                    <p>支持格式：<%= item.requestType %></p>
-                                    <p>请求方式：<%= item.requestMethod %></p>
-                                    <p><%= item.testPacket %></p>
-                                    <div class="markdown-body">
-                                        <%= item.directions %>
-                                    </div>
+                        <div class="tabLeft fl">
+                            <% data.result && data.result.apiList.forEach(function(item, index){ %>
+                            <span data-index="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"><%= item.apiCName %></span>
+                            <% }) %>
+                        </div>
+                        <div class="fl tabRight api">
+                            <% data.result && data.result.apiList.forEach(function(item, index){ %>
+                            <div class="rightCons<%= index == 0 ? '' : ' hide' %>">
+                                <p>接口地址：<%= item.uri %></p>
+                                <p>支持格式：<%= item.requestType %></p>
+                                <p>请求方式：<%= item.requestMethod %></p>
+                                <p><%= item.testPacket %></p>
+                                <div class="markdown-body">
+                                    <%= item.directions %>
                                 </div>
                             </div>
-                        <% }) %>
+                            <% }) %>
+                        </div>
                     </div>
                     <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
                         <div class="markdown-body">

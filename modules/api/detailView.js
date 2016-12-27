@@ -29,7 +29,8 @@ var view = Backbone.View.extend({
         'click .tab span': 'selectTab',
         'click #applyBtn': 'apply',
         'click #followBtn': 'follow',
-        'click #offlineBtn': 'offlineChat'
+        'click #offlineBtn': 'offlineChat',
+        'click .tabLeft span': 'selectAPI'
     },
     initialize: function() {
         this.$el.addClass('grid960 animate-content opacity0');
@@ -89,6 +90,15 @@ var view = Backbone.View.extend({
         this.$tabContent.hide().eq(index).show();
 
         this.$tabWrap.removeClass('opacity0');
+    },
+    selectAPI: function(event) {
+        var $target = this.$(event.currentTarget);
+        var index = $target.data('index');
+
+        $target.parent().find('.active').removeClass('active');
+        $target.addClass('active');
+
+        this.$('.rightCons').hide().eq(index).show();
     },
     // 申请
     apply: function() {

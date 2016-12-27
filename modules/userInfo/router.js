@@ -6,7 +6,8 @@ var Routes =  Backbone.Router.extend({
         '':'defaultView',
         'info': 'defaultView',
         'user':'userView',
-        'user/:id':'userView',
+        'userAuth':'userAuthView',
+        'userPassword':'userPasswordView',
         'account': 'accountView',
         'demand': 'demandView',
         'demand/:id': 'demandView',
@@ -19,15 +20,20 @@ var Routes =  Backbone.Router.extend({
         'shop': 'shopView'
     },
     defaultView:function () {
-        debugger;
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
         mscxPage.views['defaultViewObj'] = new defaultView();
     },
     userView: function (id) {
         var userView = require('userInfo/user/userView.js');
-        mscxPage.views['userViewObj'] = new userView({
-            id: id
-        });
+        mscxPage.views['userViewObj'] = new userView();
+    },
+    userAuthView: function () {
+        var userAuthView = require('userInfo/user/userAuth.js');
+        mscxPage.views['userAuthViewObj'] = new userAuthView();
+    },
+    userPasswordView: function () {
+        var userPasswordView = require('userInfo/user/userPassword.js');
+        mscxPage.views['userPasswordViewObj'] = new userPasswordView();
     },
     accountView: function () {
         var accountView = require('userInfo/account/accountView.js');

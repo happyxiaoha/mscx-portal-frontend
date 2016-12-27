@@ -1,11 +1,10 @@
 /*用户基本信息*/
 .M-mainInfo{padding: 29px 25px;border: 1px solid #ccc;}
-.M-rightMyTxt{width: 620px;}
+.M-rightMyTxt{width: 620px;font-size: 15px;}
 .M-rightMyTxt p{margin-bottom: 20px;}
 .M-rightMyTxt p span{display: inline-block;line-height: 20px}
 .M-rightMyTxt p span:first-child{width: 86px;text-align: right;vertical-align: top;}
 .M-rightMyTxt p span:last-child{width: 510px;word-wrap:break-word;}
-
 /*个人、企业认证*/
 .R-titTab{height: 36px;border-bottom: 1px solid #ccc;}
 .R-titTab span{height: 36px;border: 1px solid transparent;font-size: 14px;padding: 0 20px;display: inline-block;line-height: 36px;text-align: center;cursor: pointer;}

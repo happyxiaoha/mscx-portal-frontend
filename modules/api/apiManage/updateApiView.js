@@ -513,6 +513,7 @@ var updateApiView = Backbone.View.extend({
         var isCheck = this.checkValidateSelf();
         if(isCheck){
             var obj = $('#publishApi').serializeObject();
+            this.model.set('apiServiceId',this.id);
             this.model.set('scope',obj.scope);
             this.model.set('cname',obj.cname);
             this.model.set('description',obj.description);

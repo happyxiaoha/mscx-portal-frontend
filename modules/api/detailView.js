@@ -215,7 +215,7 @@ var view = Backbone.View.extend({
     validateLogin: function() {
         if(!mscxPage.userInfo){
             layer.msg('请先登录', function() {
-                location.href = 'login.html';
+                location.href = 'login.html?service=' + encodeURIComponent(location.href);
             })
         }
         return !!mscxPage.userInfo;

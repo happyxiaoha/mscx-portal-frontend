@@ -28,7 +28,7 @@ var registerView = Backbone.View.extend({
     events: {
         'click .captchaImg': 'refreshCaptcha',
         'change #account': 'validateAccount',
-        'input input.registerInput' : 'changeAttribute',
+        'change input.registerInput' : 'changeAttribute',
         'click #getCode': 'sendMsgCode'
     },
     initialize: function() {

@@ -2,7 +2,8 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./api.html');
+var commonTemplate = require('html!./apiCommon.html');
+var template = require('html!./followApi.html');
 require('./api.css');
 require('util');
 
@@ -23,41 +24,20 @@ var deleteServerDemandModel = Backbone.Model.extend({
 });
 
 
-var apiView = Backbone.View.extend({
+var followListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
-    events: {
-        'click #apiTabs span': 'changeTab'
-    },
-    changeTab: function (e) {
-        var $this = $(e.target),
-            isActive = $this.hasClass('active'),
-            index = $this.index();
-        if(!isActive){
-            $this.parent().find('.active').removeClass('active');
-            $this.addClass('active');
-            new this.childView[index]({el: '#apiInfo'});
-        }
-    },
-    initialize: function() {
-        this.childView = [myApiListView,myApplyListView,serversDemandListView];
-        this.$el.html(template);
-        new myApiListView({el: '#apiInfo'});
-    }
-});
-
-var myApiListView = Backbone.View.extend({
     pagObj: {
         pageSize: 10,
-        pageNum: 1
+        pageNum: 1,
+        totalPage: 0
     },
     events: {
-        
+        'click .cancelFollow': 'cancelFocus'
     },
     initialize: function() {
         var that = this;
-        this.templete = _.template($('#myApiList').html());
-
-        this.model = new myPublicModel();
+        this.$el.html(_.template(commonTemplate)({name:'follow'}));
+        this.model = new followApiListModel();
         this.model.on('change',function () {
             that.render();
         });
@@ -69,130 +49,8 @@ var myApiListView = Backbone.View.extend({
         });
         this.initRender();
     },
-    render: function () {
-        var that = this;
-        var res = this.model.get('result');
-        var publishApiList = [], page = {};
-        if(res){
-            publishApiList = res.list;
-            var page = res.page || {totalPage:0,currentPage:0,totalPage:0};
-            this.pagObj.totalPage = page.totalPage;
-            this.pagObj.pageNum = page.currentPage;
-        }
-        this.$el.html(this.templete({publishApiList:publishApiList}));
-        laypage({
-            cont: 'publishPage',
-            pages: page.totalPage,
-            skip: true,
-            curr: this.pagObj.pageNum || 1,
-            jump: function(obj, first){
-                if(!first){
-                    that.pagObj.pageNum = obj.curr;
-                    that.reloadPage();
-                }
-            }
-        });
-    },
-    reloadPage: function () {
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-    },
     initRender: function () {
-        this.$el.html(this.templete({publishApiList:[]}));
-    }
-});
-var myApplyListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1
-    },
-    events: {
-        // 'click .applyApi': 'applyApiAgain'
-    },
-    initialize: function() {
-        var that = this;
-        this.templete = _.template($('#apiApplyList').html());
-
-        this.model = new applyApiListModel();
-        this.model.on('change',function () {
-            that.render()
-        });
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-        this.render();
-    },
-    render: function () {
-        var that = this,
-            res = this.model.get('result') || {},
-            applyApiList = res.list|| [],
-            page = res.page || {currentPage:1,totalSize:1,totalPage:1};
-
-        this.pagObj.pageNum = page.currentPage;
-        this.pagObj.pageTotal = page.totalSize;
-        this.$el.html(this.templete({applyApiList:applyApiList}));
-        laypage({
-            cont: 'applyApiPages',
-            pages: page.totalPage,
-            skip: true,
-            curr: this.pagObj.pageNum || 1,
-            jump: function(obj, first){
-                if(!first){
-                    that.pagObj.pageNum = obj.curr;
-                    that.reloadPage();
-                }
-            }
-        });
-    },
-    reloadPage: function () {
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-    }
-    // ,
-    // applyApiAgain: function (e) {
-    //     var $this = $(e.target).closest('tr'),
-    //         sourceId = $this.attr('attrId'),
-    //         sourcePakcageId = $this.attr('attrPackageId');
-
-    //     //do apply again，跳转至API详情页面
-    //     location.href = 'api.html#detail/' + sourceId;
-    // }
-});
-var serversDemandListView = Backbone.View.extend({
-    pagObj: {
-        pageSize: 10,
-        pageNum: 1,
-        totalPage: 0
-    },
-    events: {
-        'click .cancelFollow': 'cancelFocus'
-    },
-    initialize: function() {
-        var that = this;
-        this.templete = _.template($('#followApiList').html());
-
-        this.model = new followApiListModel();
-        this.model.on('change',function () {
-            that.render();
-        });
-        this.model.fetch({
-            data: {
-                pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
-            }
-        });
-        this.render();
+        this.$el.find('#apiInfo').html(template);
     },
     render: function () {
         var that = this;
@@ -204,7 +62,8 @@ var serversDemandListView = Backbone.View.extend({
             this.pagObj.totalPage = page.totalPage;
             this.pagObj.pageNum = page.currentPage;
         }
-        this.$el.html(this.templete({followApiList:followApiList}));
+        var temps = _.template($('#followApiList').html());
+        this.$el.find('tbody').html(temps({followApiList:followApiList}));
         laypage({
             cont: 'followApi',
             pages: page.totalPage,
@@ -252,4 +111,5 @@ var serversDemandListView = Backbone.View.extend({
         });
     }
 });
-module.exports = apiView;
+
+module.exports = followListView;

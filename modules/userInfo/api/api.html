@@ -81,6 +81,7 @@
             </thead>
             <tbody>
             <% _.each(packageJson, function (chargeItem) { %>
+            <%if(chargeItem.flag != 'D'){%>
             <tr>
                 <td><%=chargeItem.name%></td>
                 <td><%=chargeItem.price%>元<%=chargeItem.Count%>次</td>
@@ -93,6 +94,7 @@
                     <a href="javascript:;" class="removeCharge">删除</a>
                 </td>
             </tr>
+            <% }%>
             <% }); %>
             <%if(packageJson.length == 0){%>
             <tr>
@@ -146,13 +148,13 @@
             <li>
                 <label>
                     <span><i class="need">*</i>生效日期：</span>
-                    <input type="text" name="effectDate" id="effectDate" value="<%= res.effectDate ? new Date(res.effectDate).format('yyyy-MM-dd') : ''%>">
+                    <input type="text" name="effectDate" id="effectDate" value="<%= res.effectDate ? new Date(res.effectDate).format('yyyy-MM-dd') : ''%>" readonly>
                 </label>
             </li>
             <li>
                 <label>
                     <span><i class="need">*</i>失效日期：</span>
-                    <input type="text" name="expiryDate" id="expiryDate" value="<%= res.expiryDate ? new Date(res.expiryDate).format('yyyy-MM-dd') : ''%>">
+                    <input type="text" name="expiryDate" id="expiryDate" value="<%= res.expiryDate ? new Date(res.expiryDate).format('yyyy-MM-dd') : ''%>" readonly>
                 </label>
             </li>
             <li>

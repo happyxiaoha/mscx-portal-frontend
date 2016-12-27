@@ -164,11 +164,11 @@
                     <label class="checkbox-inline checkbox-inline-other">
                         <div class="checker" id="">
                         <span>
-                            <input type="checkbox" name="developLanguageer">
+                            <input type="checkbox" <%= data && data.otherLanguage && "checked" %>
                         </span>
                         </div>
                         其它
-                        <input type="text" value="" id="otherLanguage">
+                        <input type="text" value="<%= data && data.otherLanguage %>" name="otherLanguage" id="otherLanguage">
                     </label>
                 </div>
             </div>
@@ -222,9 +222,8 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left">附件：</p>
             <div class="fl R_right">
-                <button class="btn beauty-file" type="button">上传文件
-                    <input class="btn btn-xs" id="document-0" type="file" name="file" value="选择文件">
-                </button>
+                <button class="btn beauty-file" type="button">上传文件</button>
+                <input class="btn btn-xs btn-file" id="document-0" type="file" name="file" value="选择文件">
                 <span id="showFileName"><%= data && data.fileName %></span>
             </div>
         </div>

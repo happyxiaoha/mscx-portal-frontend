@@ -17,7 +17,8 @@
 .right-con-wrap .RCconsList p span{display: inline-block;}
 .right-con-wrap .RCconsList p span:first-child{width: 60px;}
 .right-con-wrap .RCconsListBtn p{line-height: 26px;}
-.right-con-wrap .RCconsListBtn button{width: 102px;height: 26px;border: 0;outline: none;display: block;}
+.right-con-wrap .RCconsListBtn a{    text-align: center;
+    line-height: 25px;display:block;width: 102px;height: 26px;border: 0;outline: none;display: block;}
 
 .more{right: 18px;top: 2px;}
 .mainDatas{padding: 20px 15px;margin-top: 16px;background: #fff;}

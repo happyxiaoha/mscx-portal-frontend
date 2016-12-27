@@ -6,10 +6,11 @@ var Routes =  Backbone.Router.extend({
         '':'defaultView',
         'info': 'defaultView',
         'user':'userView',
-        'user/:id':'userView',
+        'userAuth':'userAuthView',
+        'userPassword':'userPasswordView',
         'account': 'accountView',
         'demand': 'demandView',
-        'demand/:id': 'demandView',
+        'apiDemand': 'apiDemandView',
         'sources': 'sourcesView',
         'api': 'apiView',
         'myApi': 'myApiView',
@@ -19,15 +20,20 @@ var Routes =  Backbone.Router.extend({
         'shop': 'shopView'
     },
     defaultView:function () {
-        debugger;
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
         mscxPage.views['defaultViewObj'] = new defaultView();
     },
     userView: function (id) {
         var userView = require('userInfo/user/userView.js');
-        mscxPage.views['userViewObj'] = new userView({
-            id: id
-        });
+        mscxPage.views['userViewObj'] = new userView();
+    },
+    userAuthView: function () {
+        var userAuthView = require('userInfo/user/userAuth.js');
+        mscxPage.views['userAuthViewObj'] = new userAuthView();
+    },
+    userPasswordView: function () {
+        var userPasswordView = require('userInfo/user/userPassword.js');
+        mscxPage.views['userPasswordViewObj'] = new userPasswordView();
     },
     accountView: function () {
         var accountView = require('userInfo/account/accountView.js');
@@ -35,9 +41,11 @@ var Routes =  Backbone.Router.extend({
     },
     demandView: function (id) {
         var demandView = require('userInfo/demand/demandView.js');
-        mscxPage.views['demandViewObj'] = new demandView({
-            id: id
-        });
+        mscxPage.views['demandViewObj'] = new demandView();
+    },
+    apiDemandView: function () {
+        var apiDemandView = require('userInfo/demand/demandApiView.js');
+        mscxPage.views['apiDemandViewObj'] = new apiDemandView();
     },
     sourcesView: function () {
         var sourcesView = require('userInfo/sources/sourcesView.js');
@@ -66,10 +74,6 @@ var Routes =  Backbone.Router.extend({
     shopView: function () {
         var shopView = require('userInfo/orders/shopCarView.js');
         mscxPage.views['shopViewObj'] = new shopView();
-    },
-    saleView: function () {
-        var saleView = require('userInfo/orders/saleView.js');
-        mscxPage.views['saleViewObj'] = new saleView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

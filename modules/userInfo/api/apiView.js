@@ -215,7 +215,7 @@ var apiView = Backbone.View.extend({
     },
     saveCharge: function () {
         var that = this;
-        new savePackageModel().save(JSON.stringify(this.packageList),{
+        new savePackageModel().save({params:this.packageList},{
             success: function () {
                 layer.msg('保存成功',function () {
                     layer.close(that.dig);

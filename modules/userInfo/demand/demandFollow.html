@@ -1,0 +1,345 @@
+<div id="demandTabs" class="topTab clearfix myApiTop">
+    <span>发布的数据需求</span>
+    <span>发布的API需求</span>
+    <span>发布的服务需求</span>
+    <span>我的关注</span>
+    <span>我的接单</span>
+</div>
+<div id="demandInfo"  class="tabDownCons">
+
+</div>
+<script id="resourcesDemandList" type="template">
+    <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+        <div class="tab-title" ><button><a class="corff" href="./demand.html#data/publish">新增数据需求</a></button></div>
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="11%">数据需求名称</th>
+                        <th width="25%">数据需求描述</th>
+                        <th width="8%">发布日期</th>
+                        <th width="8%">状态</th>
+                        <th width="8%">反馈日期</th>
+                        <th width="16%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(demandList, function (item) { %>
+                    <tr attrId="<%=item.id%>">
+                        <td><a  href="../sources.html#detail/<%=item.id%>"><%=item.name%></a></td>
+                        <td><%=item.dataDescription%></td>
+                        <td><%= item.publishTime ? new Date(item.publishTime).format('yyyy-MM-dd') : '-'%></td>
+                        <td><%= mscxPage.sourceStatus[item.statusCode]%></td>
+                        <td><%= item.feedbackTime ? new Date(item.feedbackTime).format('yyyy-MM-dd') : '-'%></td>
+                        <td>
+                            <%if(item.statusCode == '0'){%>
+                                <a href="javascript:;" class="dataPublish" data-id="<%=item.id%>">发布</a>
+                                <a href="./demand.html#data/edit/<%=item.id%>" class="editSource">修改</a>
+                                <a href="javascript:;" class="deleteSource">删除</a>
+                            <%}%>
+                        </td>
+                    </tr>
+                    <% }); %>
+                    <%if(demandList.length == 0){%>
+                    <tr>
+                        <td colspan="6">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="sourcesPage" class="page-area fr"></div>
+        </div>
+    </div>
+</script>
+<script id="apiDemandList" type="template">
+    <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+        <div class="tab-title"><button><a class="corff" href="./demand.html#api/publish">新增API需求</a></button></div>
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="20%">需求方系统</th>
+                        <th width="48%">需求方系统描述</th>
+                        <th width="10%">状态</th>
+                        <th width="20%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(apiDemandList, function (aitem) { %>
+                    <tr attrId="<%=aitem.id%>">
+                        <td><%=aitem.sysName%></td>
+                        <td><%=aitem.sysDescription%></td>
+                        <td><%=mscxPage.sourceStatus[aitem.statusCode]%></td>
+                        <td>
+                            <%if(aitem.statusCode == '0'){%>
+                                <a href="javascript:;" class="apiPublish" data-id="<%=aitem.id%>">发布</a>
+                                <a href="demand.html#api/edit/<%=aitem.id%>" class="editApi">修改</a>
+                                <a href="javascript:;" class="deleteApi">删除</a>
+                            <%}else if(aitem.statusCode == '2' || aitem.statusCode == '3' || aitem.statusCode == '4'){%>
+                                <a href="javascript:;" class="closeApi">关闭</a>
+                            <%}%>
+                        </td>
+                    </tr>
+                    <% }); %>
+                    <%if(apiDemandList.length == 0){%>
+                    <tr>
+                        <td colspan="4">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="apiPage" class="page-area fr"></div>
+        </div>
+    </div>
+</script>
+<script id="serversDemandList" type="template">
+    <div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+        <div class="tab-title"><button><a class="corff" href="./demand.html#service/publish">新增服务需求</a></button></div>
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="20%">服务需求名称</th>
+                        <th width="30%">服务需求描述</th>
+                        <th width="18%">截止日期</th>
+                        <th width="10%">状态</th>
+                        <th width="20%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(serverDemandList, function (sitem) { %>
+                    <tr attrId="<%=sitem.id%>" >
+                        <td><%=sitem.name%></td>
+                        <td><%=sitem.description%></td>
+                        <td><%=sitem.endTime%></td>
+                        <td><%=sitem.statusName%></td>
+                        <td>
+                            <%if(sitem.status == '0'){%>
+                                <a href="javascript:;" class="servicePublish" data-id="<%=sitem.id%>">发布</a>
+                                <a href="./demand.html#service/edit/<%=sitem.id%>" class="editServerApi">修改</a>
+                                <a href="javascript:;" class="deleteServers">删除</a>
+                            <%}else if(sitem.status == '2' || sitem.status == '3' || sitem.status == '4'){%>
+                                <a href="javascript:;" class="closeServers">关闭</a>
+                            <%}%>
+                        </td>
+                    </tr>
+                    <% }); %>
+                    <%if(serverDemandList.length == 0){%>
+                    <tr>
+                        <td colspan="5">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div id="serverPage" class="page-area fr"></div>
+        </div>
+    </div>
+</script>
+<script id="followList" type="template">
+    <div class="R-mainInfo clearfix follow-list">
+        <div class="R-titTab">
+            <span class="active">关注的服务需求</span>
+            <span>关注的API需求</span>
+            <span>关注的数据需求</span>
+        </div>
+        <div id="followArea" class="M-DownCons bgWhite">
+
+        </div>
+        <div id="followAreaPage" class="page-area"></div>
+    </div>
+</script>
+<script id="followServersList" type="template">
+    <div class="D_table M-table">
+        <table>
+            <thead>
+            <tr>
+                <th>服务任务名称</th>
+                <th>发布人</th>
+                <th>预算金额</th>
+                <th>浏览次数</th>
+                <th>关注时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(focusServerList, function (fsitem) { %>
+            <tr attrId="<%=fsitem.serviceId%>">
+                <td><a  href="../sources.html#detail/<%=fsitem.id%>"><%=fsitem.name%></a></td>
+                <td><%= fsitem.publisher%></td>
+                <td><%= fsitem.money%></td>
+                <td><%= fsitem.pageviewAmount%></td>
+                <td><%= fsitem.focusTime ? new Date(fsitem.focusTime).format('yyyy-MM-dd') : '-'%></td>
+                <td>
+                    <a href="javascript:;" class="cancelFocus">取消关注</a>
+                </td>
+            </tr>
+            <% }); %>
+            <%if(focusServerList.length == 0){%>
+            <tr>
+                <td colspan="6">暂无数据</td>
+            </tr>
+            <%}%>
+            </tbody>
+        </table>
+    </div>
+</script>
+<script id="followApiList" type="template">
+    <div class="D_table M-table">
+        <table>
+            <thead>
+            <tr>
+                <th>API任务名称</th>
+                <th>发布人</th>
+                <th>预算金额</th>
+                <th>浏览次数</th>
+                <th>关注时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(focusApiList, function (faitem) { %>
+            <tr attrId="<%=faitem.id%>">
+                <td><a  href="../sources.html#detail/<%=faitem.id%>"><%=faitem.sysName%></a></td>
+                <td><%= faitem.pulibsher%></td>
+                <td><%= faitem.preOffer%></td>
+                <td><%= faitem.pageviewAmount%></td>
+                <td><%= faitem.focusTime ? new Date(faitem.focusTime).format('yyyy-MM-dd') : '-'%></td>
+                <td>
+                    <a href="javascript:;" class="cancelApiFocus">取消关注</a>
+                </td>
+            </tr>
+            <% }); %>
+            <%if(focusApiList.length == 0){%>
+            <tr>
+                <td colspan="6">暂无数据</td>
+            </tr>
+            <%}%>
+            </tbody>
+        </table>
+    </div>
+</script>
+<script id="followSourcesList" type="template">
+    <div class="D_table M-table">
+        <table>
+            <thead>
+            <tr>
+                <th>数据任务名称</th>
+                <th>数据用途</th>
+                <th>归属部门</th>
+                <th>关注时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <% _.each(followSourceList, function (fsitem) { %>
+                <tr attrId="<%=fsitem.id%>">
+                    <td><a  href="../sources.html#detail/<%=fsitem.id%>"><%=fsitem.name%></a></td>
+                    <td><%= fsitem.dataUsage%></td>
+                    <td><%= fsitem.department%></td>
+                    <td><%= fsitem.focusTime ? new Date(fsitem.focusTime).format('yyyy-MM-dd') : '-'%></td>
+                    <td>
+                        <a href="javascript:;" class="cancelSourceslFocus">取消关注</a>
+                    </td>
+                </tr>
+                <% }); %>
+                <%if(followSourceList.length == 0){%>
+                <tr>
+                    <td colspan="6">暂无数据</td>
+                </tr>
+                <%}%>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script id="myAccept" type="template">
+    <div class="R-mainInfo clearfix accept-list">
+        <div class="R-titTab">
+            <span class="active">服务开发需求接单</span>
+            <span>API开发需求接单</span>
+        </div>
+        <div id="acceptArea" class="M-DownCons bgWhite">
+
+        </div>
+        <div id="acceptPages" class="page-area"></div>
+    </div>
+</script>
+<script id="myServerAccept" type="template">
+    <div class="D_table M-table">
+        <table>
+            <thead>
+            <tr>
+                <th>服务名称</th>
+                <th>预算金额</th>
+                <th>截止日期</th>
+                <th>接单日期</th>
+                <th>需求方</th>
+                <th>接单状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(acceptServersList, function (asitem) { %>
+            <tr attrId="<%=asitem.id%>">
+                <td><a  href="../sources.html#detail/<%=asitem.id%>"><%=asitem.name%></a></td>
+                <td><%= asitem.money%></td>
+                <td><%= asitem.endTime ? new Date(asitem.endTime).format('yyyy-MM-dd') : '-'%></td>
+                <td><%= asitem.createdTime ? new Date(asitem.createdTime).format('yyyy-MM-dd') : '-'%></td>
+                <td><%= asitem.reqUser%></td>
+                <td>
+                    <%= asitem.statusName%>
+                </td>
+            </tr>
+            <% }); %>
+            <%if(acceptServersList.length == 0){%>
+            <tr>
+                <td colspan="6">暂无数据</td>
+            </tr>
+            <%}%>
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script id="myApiAccept" type="template">
+    <div class="D_table M-table">
+        <table>
+            <thead>
+            <tr>
+                <th>需求方系统</th>
+                <th>截止时间</th>
+                <th>接单时间</th>
+                <th>需求方</th>
+                <th>接单状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% _.each(acceptApiList, function (aaitem) { %>
+            <tr attrId="<%=aaitem.id%>">
+                <td><a  href="../sources.html#detail/<%=aaitem.id%>"><%=aaitem.sysName%></a></td>
+                <td><%= aaitem.endTime ? new Date(aaitem.endTime).format('yyyy-MM-dd') : '-'%></td>
+                <td><%= aaitem.orderTime ? new Date(aaitem.orderTime).format('yyyy-MM-dd') : '-'%></td>
+                <td><%= aaitem.reqUser%></td>
+                <td>
+                    <%= aaitem.statusName%>
+                </td>
+            </tr>
+            <% }); %>
+            <%if(acceptApiList.length == 0){%>
+            <tr>
+                <td colspan="6">暂无数据</td>
+            </tr>
+            <%}%>
+
+            </tbody>
+        </table>
+    </div>
+</script>
+

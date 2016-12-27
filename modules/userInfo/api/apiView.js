@@ -15,12 +15,16 @@ var getPackageModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'charge/getMyChargeRuleByServiceId.do'
 });
 
-var updatePackageModel = Backbone.Model.extend({
+var savePackageModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'charge/modifyChargeRule.do'
 });
 
 var deleteApiModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/deleteServiceApi.do'
+});
+
+var offlineApiModel = Backbone.Model.extend({
+    url: mscxPage.request.api + 'service/offlineServiceApi.do'
 });
 
 
@@ -36,7 +40,8 @@ var apiView = Backbone.View.extend({
         'click .deleteApi': 'deleteApi',
         'click .addPrice': 'addPackageLay',
         'click .editCharge': 'updateCharge',
-        'click .removeCharge': 'removeCharge'
+        'click .removeCharge': 'removeCharge',
+        'click .downApi': 'downApi'
     },
     updateIndex: -1,
     packageValidateConfig: function () {
@@ -178,7 +183,7 @@ var apiView = Backbone.View.extend({
             $this = $(e.target).closest('tr'),
             sId = $this.attr('attrid'),
             sName = $($this.find('td')[0]).html();
-
+        this.serviceId = sId;
         this.getPackageModel.fetch({
             data: {apiServiceId: sId},
             success: function (model,res) {
@@ -189,7 +194,7 @@ var apiView = Backbone.View.extend({
         function buildLay() {
             var dialog = layer.open({
                 type: 1,
-                btn: ['关闭'],
+                btn: ['保存修改','关闭'],
                 title: sName+'调价',
                 shade: 0.6,
                 shadeClose: true,
@@ -199,15 +204,29 @@ var apiView = Backbone.View.extend({
                 success: function () {
                 },
                 btn1: function () {          //通过
+                    that.saveCharge();
+                },
+                btn2: function () {          //通过
                     layer.close(dialog);
                 }
             });
+            this.dig = dialog;
         }
+    },
+    saveCharge: function () {
+        var that = this;
+        new savePackageModel().save(JSON.stringify(this.packageList),{
+            success: function () {
+                layer.msg('保存成功',function () {
+                    layer.close(that.dig);
+                });
+            }
+        });
     },
     deleteApi: function (e) {
         var that = this,
             $this = $(e.target).closest('tr'),
-            sId = $this.attr('attrid');
+            sId = parseInt($this.attr('attrid'));
         var deleteLay = layer.confirm('确认删除这条API吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
@@ -293,31 +312,63 @@ var apiView = Backbone.View.extend({
             btn: ['确定','取消'] //按钮
         }, function(){
             var index = $(e.target).closest('tr').index();
-            if(packageList.length == 1 && index == 0){
-                packageList = [];
+            if(packageList[index].flag == 'C') {
+                if(packageList.length == 1 && index == 0){
+                    packageList = [];
+                }
+                else {
+                    packageList.splice(index,1);
+                }
             }
             else {
-                packageList.splice(index,1);
+                packageList[index].flag = 'D';
             }
             that.packageList = packageList;
+            that.getPackageModel.set('result',packageList);
+            that.buildPackageTable();
             layer.close(deleteLay);
         }, function(){
             layer.close(deleteLay);
         });
         return false;
     },
+    downApi: function () {
+        var that = this,
+            $this = $(e.target).closest('tr'),
+            sId = parseInt($this.attr('attrid'));
+        var deleteLay = layer.confirm('确认下架这条API吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            new offlineApiModel().save({apiServiceId: sId},{
+                type: 'POST',
+                success: function () {
+                    layer.msg('下架成功!');
+                    that.reloadPage();
+                }
+            });
+            layer.close(deleteLay);
+        }, function(){
+            layer.close(deleteLay);
+        });
+    },
     saveChargeJson: function () {
         layer.close(this.lays);
         var packageList = this.packageList || [];
-        if(this.updateIndex < 0){
-            packageList.push($('#addChargeForm').serializeObject());
+        if(this.updateIndex < 0) {
+            var newPackage = $('#addChargeForm').serializeObject();
+            newPackage.flag = 'C';
+            newPackage.serviceId = this.serviceId;
+            packageList.push(newPackage);
         }
         else {
-            packageList[this.updateIndex] = $('#addChargeForm').serializeObject();
+            var newPackage = $('#addChargeForm').serializeObject();
+            newPackage.flag = 'U';
+            packageList[this.updateIndex] = newPackage;
             this.updateIndex = -1;
         }
         this.packageList = packageList;
         this.getPackageModel.set('result',packageList);
+        this.buildPackageTable();
     }
 });
 

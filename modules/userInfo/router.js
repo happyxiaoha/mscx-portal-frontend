@@ -41,9 +41,11 @@ var Routes =  Backbone.Router.extend({
     },
     demandView: function (id) {
         var demandView = require('userInfo/demand/demandView.js');
-        mscxPage.views['demandViewObj'] = new demandView({
-            id: id
-        });
+        mscxPage.views['demandViewObj'] = new demandView();
+    },
+    apiDemandView: function () {
+        var apiDemandView = require('userInfo/demand/demandApiView.js');
+        mscxPage.views['apiDemandViewObj'] = new apiDemandView();
     },
     sourcesView: function () {
         var sourcesView = require('userInfo/sources/sourcesView.js');

@@ -1,9 +1,33 @@
-<div id="userTabs" class="topTab clearfix InfoTopTit">
-    <span>用户基本信息</span>
-    <span>实名认证</span>
-    <span>修改密码</span>
-</div>
 <div id="userInfoArea"  class="tabDownCons">
+    <div class="M-mainInfo clearfix bgWhite">
+        <img src="../../../images/img15.png" alt="" class="block fl">
+        <div class="M-rightMyTxt fr">
+            <p>
+                <span class="ft16 cor7">用户名：</span>
+                <span class="ft16">-</span>
+            </p>
+            <p>
+                <span class="ft16 cor7">实名认证：</span>
+                <span class="ft16">-</span>
+            </p>
+            <p>
+                <span class="ft16 cor7">APIKey：</span>
+                <span class="ft16">您尚未进行实名认证，完成<a class="corBlue" href="#userAuth">认证</a>后可以查看APIKey</span>
+            </p>
+            <p>
+                <span class="ft16 cor7">secretKey：</span>
+                <span class="ft16">您尚未进行实名认证，完成<a class="corBlue" href="#userAuth">认证</a>后可以查看secretKey</span>
+            </p>
+            <p>
+                <span class="ft16 cor7">手机号码：</span>
+                <span class="ft16">-</span>
+            </p>
+            <p>
+                <span class="ft16 cor7">用户类型：</span>
+                <span class="ft16">-</span>
+            </p>
+        </div>
+    </div>
 </div>
 <script id="userInfo" type="template">
     <div class="M-mainInfo clearfix bgWhite">
@@ -17,6 +41,7 @@
                 <span class="ft16 cor7">实名认证：</span>
                 <span class="ft16"><%=certification%></span>
             </p>
+            <%if(alreadyCertification){%>
             <p>
                 <span class="ft16 cor7">APIKey：</span>
                 <span class="ft16"><%=apiKey%></span>
@@ -25,6 +50,16 @@
                 <span class="ft16 cor7">secretKey：</span>
                 <span class="ft16"><%=secretKey%></span>
             </p>
+            <%}else{%>
+            <p>
+                <span class="ft16 cor7">APIKey：</span>
+                <span class="ft16">您尚未进行实名认证，完成<a class="corBlue" href="#userAuth">认证</a>后可以查看APIKey</span>
+            </p>
+            <p>
+                <span class="ft16 cor7">secretKey：</span>
+                <span class="ft16">您尚未进行实名认证，完成<a class="corBlue" href="#userAuth">认证</a>后可以查看secretKey</span>
+            </p>
+            <%}%>
             <p>
                 <span class="ft16 cor7">手机号码：</span>
                 <span class="ft16"><%=mobile%></span>
@@ -34,209 +69,5 @@
                 <span class="ft16"><%=userType%></span>
             </p>
         </div>
-    </div>
-</script>
-<script id="userAuthentication" type="template">
-    <div id="authTab" class="R-titTab My-titTab">
-        <span class="active">个人</span>
-        <span>企业</span>
-    </div>
-    <div class="inputCons bgWhite">
-
-    </div>
-</script>
-<script id="userPersonAuth" type="template">
-    <div class="inputConsList">
-        <form id="personForm" onsubmit="return false;">
-            <div class="loginTable">
-                <ul>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span>用户名：</span>
-                            <b class="cor4 fl ft14" style="margin-top: 8px;"><%=account%></b>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>姓名：</span>
-                            <input type="text" id="name" name="name" placeholder="请填写与有效身份证上一致的姓名" value="<%=name%>" <%if(name){%>disabled<%}%> >
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>身份证号码：</span>
-                            <input type="text" id="idcard" name="idcard" placeholder="请填写有效身份证号码" value="<%=idcard%>" <%if(name){%>disabled<%}%> >
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE w100">
-                            <span><em>*</em>认证方式：</span>
-                            <select class="identifide" <%if(name){%>disabled<%}%>>
-                                <option value="photo" <%if(certificationType == '01'){%>selected<%}%>>照片认证</option>
-                                <option value="phone" <%if(certificationType == '02'){%>selected<%}%>>手机认证</option>
-                                <option value="creditCard" <%if(certificationType == '03'){%>selected<%}%>>银行卡认证号</option>
-                            </select>
-                        </div>
-                    </li>
-                    <li class="clearfix identifyType" >
-
-                    </li>
-                    <li class="mt48 clearfix">
-                        <%if(!name){%><input type="submit" class="mt20" value="提交" /><%}%>
-
-                    </li>
-                </ul>
-            </div>
-        </form>
-        <form id="ajaxUpload" class="imgForm" action="" method="post" <%if(name){%>style="display: none;"<%}%>>
-            <input type="file" name="photo" class="upload-file">
-            <input type="submit" id="btnAjax">
-        </form>
-        <div id="photo" class="clearfix" style="display: none;">
-            <span><em>*</em>个人照片：</span>
-            <label  class="upLoad mr25 front allInfoImg">
-                <img <%if(photoUrl){%>src="<%=photoUrl%>"<%}else{%>class="hide" <%}%>>
-            </label>
-            <label class="phone-error hide">请上传个人照片</label>
-        </div>
-        <div id="phone" class="clearfix" style="display: none;">
-            <span><em>*</em>手机号码：</span>
-            <input type="text" id="mobile" name="mobile" placeholder="请输入手机号码" value="<%=mobile%>" <%if(mobile){%>disabled<%}%>>
-        </div>
-        <div id="creditCard" style="display: none;">
-            <div class="clearfix mb20" >
-                <span><em>*</em>手机号码：</span>
-                <input type="text" id="mobile1" name="mobile" placeholder="请输入手机号码" value="<%=mobile%>" <%if(mobile){%>disabled<%}%>>
-            </div>
-            <div class="clearfix">
-                <span><em>*</em>银行卡号：</span>
-                <input type="text" id="bankCardNo" name="bankCardNo" placeholder="请输入银行卡号" value="<%=bankCardNo%>" <%if(bankCardNo){%>disabled<%}%>>
-            </div>
-        </div>
-    </div>
-</script>
-<script id="userEnterpriseAuth" type="template">
-    <div class="inputConsList">
-        <%if(status != '02'){%>
-        <form id="ajaxEnterpriseUpload" class="imgForm" action="" method="post" style="top: 343px;left: 175px;width: 136px;height: 99px;" >
-            <input type="file" name="photo" class="upload-file">
-            <input type="submit" id="btnEAjax">
-        </form>
-        <%}%>
-        <form onsubmit="return false;" id="enterpriseForm">
-            <div class="loginTable">
-                <h4 class="ft18">企业信息</h4>
-                <ul class="mt30 mb30 companyCons">
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>公司名称：</span>
-                            <input type="text" name="name" id="companyName" placeholder="请填写有效的公司名称" value="<%=name%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>详情地址：</span>
-                            <input type="text" name="address" id="address" placeholder="请填写详情地址" value="<%=address%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="mt30 mb30 companyCons">
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>营业执照编号：</span>
-                            <input type="text" name="licenceNo" id="licenceNo" placeholder="请填写有效的营业执照编号" value="<%=licenceNo%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span>税务登记证编号：</span>
-                            <input type="text" name="taxRegisterNo" id="taxRegisterNo" placeholder="请填写有效的税务登记证编号" value="<%=taxRegisterNo%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span>组织机构编号：</span>
-                            <input type="text" name="organizationCode" id="organizationCode" placeholder="请填写有效的组织机构编号" value="<%=organizationCode%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="clearfix">
-                            <span><em>*</em>营业执照副本：</span>
-                            <label class="upLoad">
-                                <img id="licencePhoto" alt="" src="<%=licencePicUrl%>" <%if(!licencePicUrl){%>class="hide"<%}%>>
-                            </label>
-                            <label class="phone-error hide">请上传有效的营业执照副本</label>
-                        </div>
-                    </li>
-                </ul>
-                <h4 class="ft18">联系人信息</h4>
-                <ul class="mt30 mb30 companyCons">
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>联系人姓名：</span>
-                            <input type="text" name="contractName" id="contractName" placeholder="请填写有效的联系人姓名" value="<%=contractName%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>联系人身份证号：</span>
-                            <input type="text" name="contractIdcard" id="contractIdcard" placeholder="请填写有效的身份证号码" value="<%=contractIdcard%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>手机号码：</span>
-                            <input type="text" name="contractMobile" id="contractMobile" placeholder="请填写有效的手机号码" value="<%=contractMobile%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <div class="fl clearfix posRE">
-                            <span><em>*</em>公司邮箱：</span>
-                            <input type="text" name="contractEmail" id="contractEmail" placeholder="请填写有效的公司邮箱" value="<%=contractEmail%>" <%if(status == '02'){%>disabled<%}%>>
-                        </div>
-                    </li>
-                    <li class="mt48 clearfix">
-                        <%if(status != '02'){%>
-                        <input type="submit" class="mt20" value="提交" />
-                        <%}%>
-                    </li>
-                </ul>
-            </div>
-        </form>
-    </div>
-</script>
-<script id="userPassword" type="template">
-        <div class="user-password-area bgWhite">
-            <!-- 企业 -->
-            <form action="" onsubmit="return false;" id="userPasswordForm">
-                <div class="loginTable bor0">
-                    <ul class="companyCons">
-                        <li class="clearfix">
-                            <div class="fl clearfix posRE">
-                                <span><em>*</em>旧密码：</span>
-                                <input type="password" name="oldPassword" id="oldPassword" placeholder="请填写原始密码" >
-                                <em class="close">×</em>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="fl clearfix posRE">
-                                <span><em>*</em>新密码：</span>
-                                <input type="password" name="password" id="password" placeholder="请填写新密码">
-                                <em class="close">×</em>
-                            </div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="fl clearfix posRE">
-                                <span><em>*</em>确认新密码：</span>
-                                <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="请再次填写新密码">
-                                <em class="close">×</em>
-                            </div>
-                        </li>
-                        <li class="mt20 clearfix">
-                            <input type="submit" class="mt20" value="提交" />
-                        </li>
-                    </ul>
-                </div>
-            </form>
     </div>
 </script>

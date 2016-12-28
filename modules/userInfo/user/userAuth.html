@@ -34,14 +34,21 @@
                             <select class="identifide" <%if(name){%>disabled<%}%>>
                                 <option value="photo" <%if(certificationType == '01'){%>selected<%}%>>照片认证</option>
                                 <option value="phone" <%if(certificationType == '02'){%>selected<%}%>>手机认证</option>
-                                <option value="creditCard" <%if(certificationType == '03'){%>selected<%}%>>银行卡认证号</option>
+                                <option value="creditCard" <%if(certificationType == '03'){%>selected<%}%>>银行卡号认证</option>
                             </select>
                         </div>
                     </li>
                     <li class="clearfix identifyType" >
 
                     </li>
-                    <li class="mt48 clearfix">
+                    <li class="clearfix">
+                        <%if(status != '02'){%>
+                        <label class="remember fl">
+                            <input class="checkbox fl" id="agreementPer" type="checkbox" name="agreement" value=""/>
+                            我已阅读并接受<a class="golink" href="realNameProtocol.html" target="_blank">《广州数聚用户实名认证协议》</a></label>
+                        <%}%>
+                    </li>
+                    <li class=" clearfix">
                         <%if(!name){%><input type="submit" class="mt20" value="提交" /><%}%>
 
                     </li>
@@ -159,7 +166,15 @@
                             <input type="text" name="contractEmail" id="contractEmail" placeholder="请填写有效的公司邮箱" value="<%=contractEmail%>" <%if(status == '02'){%>disabled<%}%>>
                         </div>
                     </li>
-                    <li class="mt48 clearfix">
+                    <li class="clearfix">
+                        <%if(status != '02'){%>
+                        <label class="remember fl">
+                            <input class="checkbox fl" id="agreement" type="checkbox" name="agreement" value=""/>
+                            我已阅读并接受<a class="golink" href="realNameProtocol.html" target="_blank">《广州数聚用户实名认证协议》</a></label>
+                        <%}%>
+                    </li>
+
+                    <li class="clearfix">
                         <%if(status != '02'){%>
                         <input type="submit" class="mt20" value="提交" />
                         <%}%>

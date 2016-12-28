@@ -31,7 +31,13 @@
 <script id="publishTemps" type="template">
     <% _.each(publishApiList, function (paitem) { %>
     <tr attrId="<%=paitem.apiServiceId%>">
-        <td><%=paitem.apiServiceCName%></td>
+        <%if(paitem.status == '0'){%>
+        <td><a target="_blank" href="./api.html#detail/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a></td>
+        <%}else{%>
+        <td>
+            <a target="_blank" href="./api.html#apiDes/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a>
+        </td>
+        <%}%>
         <td><%=paitem.description%></td>
         <td><%=paitem.applyCount || '-' %></td>
         <td><%=paitem.statusDesc%></td>

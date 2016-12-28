@@ -19,7 +19,7 @@ var view = Backbone.View.extend({
         this.url = location.href;
         this.title = document.title;
         this.desc = '欢迎访问广州大数据共创服务平台';
-        this.pic = '../../images/newicon/ic_newlogo.png';
+        this.pic = '/images/newicon/ic_newlogo.png';
 
         this.$qrcode = this.$('#qrcode');
 

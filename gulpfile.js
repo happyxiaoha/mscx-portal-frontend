@@ -61,7 +61,7 @@ gulp.task('backboneBuild', function() {
 });
 
 gulp.task('copy', function() {
-    return gulp.src(['./css/**/*', './*.html', './lib/**/*'], {base: './'})
+    return gulp.src(['./css/**/*', './*.html', './lib/**/*', './images/newicon/ic_newlogo.png'], {base: './'})
         .pipe(gulp.dest('build'));
 });
 

@@ -23,7 +23,8 @@ var myServerListModel = Backbone.Model.extend({
 
 var template = require('html!./userInfoDefault.html');
 require('./userInfoDefault.css');
-var appItemView = require('servicesItemWidget/servicesItemView.js');
+var apiItemView = require('apiItemWidget/apiItemView.js');
+var serverItemView = require('servicesItemWidget/servicesItemView.js');
 
 var defaultView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -34,6 +35,7 @@ var defaultView = Backbone.View.extend({
         var that = this;
         this.$el.html(template);
         this.$sdataList = this.$('.server-data-list');
+        this.$adataList = this.$('.api-data-list');
         this.model = new defaultModel();
         this.myApiListModel = new myApiListModel();
         this.myServerListModel = new myServerListModel();
@@ -53,6 +55,19 @@ var defaultView = Backbone.View.extend({
             that.renderMyServer();
         });
     },
+    renderMyApi: function () {
+        var apiList = this.myApiListModel.get('result').list;
+        if(apiList.length > 0){
+            this.$adataList.html('');
+            $('.R-myServerList').css('border','1px solid #CCC');
+            _.each(apiList, function(item) {
+                var view = new apiItemView({
+                    model: item
+                });
+                this.$adataList.append(view.$el);
+            }.bind(this));
+        }
+    },
     render: function () {
         var dasTemplate = _.template($('#userDefault').html());
         $('#dashboardAll').html(dasTemplate({'res':this.model.get('result')}));
@@ -63,7 +78,7 @@ var defaultView = Backbone.View.extend({
             this.$sdataList.html('');
             $('.R-myServerList').css('border','1px solid #CCC');
             _.each(apiServiceList, function(item) {
-                var view = new appItemView({
+                var view = new serverItemView({
                     model: item
                 });
                 this.$sdataList.append(view.$el);

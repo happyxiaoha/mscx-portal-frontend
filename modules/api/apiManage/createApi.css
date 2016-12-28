@@ -113,3 +113,4 @@
 .api-server-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
 .api-name-error {color: red;margin-right: 5px;float: right;display: none;}
 .package-area {display: none;}
+.add-price-list input[readonly] {cursor:default;background: #FFF;}

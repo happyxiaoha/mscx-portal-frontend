@@ -5,40 +5,40 @@
             <div class="mleftCons">
                 <div class="serverInfos mb35 clearfix">
                     <div class="fl appImgCons">
-                            <img class="appImg" src="<%= data.imageUri %>" alt="">
+                            <img class="appImg" src="<%- data.imageUri %>" alt="">
                         <div class="viewerNums clearfix">
-                            <p>访问量：<span><%= data.viewCount %></span></p>
+                            <p>访问量：<span><%- data.viewCount %></span></p>
                         </div>
                     </div>
                     <div class="appInfoCons fl posRE">
                         <div class="top mb10 clearfix">
-                            <h2 class="fl mr20"><%= data.name %></h2>
+                            <h2 class="fl mr20"><%- data.name %></h2>
                             <div class="fl mr20">
-                                <span><%= (data.tagNames).replace(',/g',' ') %></span>
+                                <span><%- (data.tagNames).replace(',/g',' ') %></span>
                             </div>
                             <div class="fl">
-                                <span>服务分类：<em><%= data.categoryName %></em></span>
+                                <span>服务分类：<em><%- data.categoryName %></em></span>
                             </div>
                         </div>
                         <div class="down">
                             <div class="left">
                                 <p class="mb15">
-                                    <span class="mr10">服务商：<em><%= data.providerName %></em></span>
+                                    <span class="mr10">服务商：<em><%- data.providerName %></em></span>
                                     <!--<span class="mr25">版本号：<em>7.0.1</em></span>-->
                                 </p>
-                                <p class="mb15"><span>提供方式：<em><%= data.serviceType %></em></span></p>
+                                <p class="mb15"><span>提供方式：<em><%- data.serviceType %></em></span></p>
                                 <p class="mb15">
-                                    <span class="mr10">访问URL：<a href="<%= data.uri %>"><%= data.uri %></a></span>
-                                    <span class="mr25">更新时间：<em><%= (new Date(data.updatedTime).toISOString()).slice(0,10) %></em></span>
+                                    <span class="mr10">访问URL：<a href="<%- data.uri %>"><%- data.uri %></a></span>
+                                    <span class="mr25">更新时间：<em><%- (new Date(data.updatedTime).toISOString()).slice(0,10) %></em></span>
                                 </p>
                             </div>
                             <p class="mb20 line20">
-                                <span>服务简介：<em><%= data.description %></em></span>
+                                <span>服务简介：<em><%- data.description %></em></span>
                             </p>
                         </div>
                         <div>
                             <button id="example">查看演示</button>
-                            <button id="attention" class="bgOrange <%= data.attentionFlag ? 'have-attention' : ''%> "><%= data.attentionFlag ? '取消关注' : '关注'%></button>
+                            <button id="attention" class="bgOrange <%- data.attentionFlag ? 'have-attention' : ''%> "><%- data.attentionFlag ? '取消关注' : '关注'%></button>
                         </div>
                         <!-- 分享 -->
                         <div class="share posAB">
@@ -48,7 +48,7 @@
                         </div>
                         <!-- 费用 -->
                         <div class="useMoney posAB">
-                            <span class="red"><%= data.chargeTypeDesc %><em></em></span>
+                            <span class="red"><%- data.chargeTypeDesc %><em></em></span>
                         </div>
                     </div>
                 </div>
@@ -57,19 +57,25 @@
             <div class="R-Cons">
                 <p class="titTop bggray ft14 corBlue">详情信息</p>
                 <div class="titTopCons picScroll-left">
-                    <a class="next"></a>
-                    <a class="prev"></a>
+                    <a class="next" style="display: none;"></a>
+                    <a class="prev" style="display: none;"></a>
                     <div class="bd">
                         <ul class="picList">
+                            <% if( data.demoImage1){ %>
                             <li>
-                                <div class="pic"><img src="<%= data.demoImage1 %>" /></div>
+                                <div class="pic"><img src="<%- data.demoImage1 %>" /></div>
                             </li>
+                            <% }; %>
+                            <% if( data.demoImage2){ %>
                             <li>
-                                <div class="pic"><img src="<%= data.demoImage2 %>" /></div>
+                                <div class="pic"><img src="<%- data.demoImage2 %>" /></div>
                             </li>
+                            <% }; %>
+                            <% if( data.demoImage3){ %>
                             <li>
-                                <div class="pic"><img src="<%= data.demoImage3 %>" /></div>
+                                <div class="pic"><img src="<%- data.demoImage3 %>" /></div>
                             </li>
+                            <% }; %>
                         </ul>
                     </div>
                 </div>

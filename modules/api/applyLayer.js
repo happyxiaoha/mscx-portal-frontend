@@ -228,10 +228,11 @@ var view = Backbone.View.extend({
     handleFreeOrder: function() {
         var model = this.freeOrderModel.toJSON();
 
-        layer.msg(model.message);
-
         if(model.status == 'OK') {
+            layer.msg('申请成功！');
             layer.close(this.layerIndex);
+        }else {
+            layer.msg(model.message);
         }
     }
 });

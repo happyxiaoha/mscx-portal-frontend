@@ -130,9 +130,10 @@ var createDemandView = Backbone.View.extend({
     handleSubmit: function() {
         var model = this.model.toJSON();
         if(model.status == 'OK') {
-            layer.msg('提交成功，请等待审核', function() {
-                location.href = 'userinfo.html#server';
-            })
+            layer.msg('提交成功，请等待审核');
+            setTimeout(function() {
+                location.href = 'userInfo.html#server';
+            }, 1000);
         }
     },
     renderDetail: function() {

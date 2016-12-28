@@ -27,6 +27,7 @@
     float: left;
     text-align: right;
 }
+.package-manage ul li span.prePrice,.package-manage ul li span.limitPre {width:auto;}
 .package-manage ul li input{
     width: 340px;
     float: left;

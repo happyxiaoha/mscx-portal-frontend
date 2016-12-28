@@ -39,7 +39,7 @@
 .slideBanner .mleftCons .serverInfos .viewerNums p span{display: inline-block;text-align: center;}
 .slideBanner .mleftCons .serverInfos .appInfoCons{width: 710px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .top{line-height: 28px;margin-bottom: 8px;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .top h2{font-size: 18px;margin-right: 16px;}
+.slideBanner .mleftCons .serverInfos .appInfoCons .top h2{max-width: 350px;font-size: 18px;margin-right: 16px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;margin-right: 5px;margin-top: 2px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .left p span a{color: #069cd9;text-decoration: underline;}

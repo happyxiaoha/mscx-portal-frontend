@@ -11,6 +11,9 @@ var Routes =  Backbone.Router.extend({
         'account': 'accountView',
         'demand': 'demandView',
         'apiDemand': 'apiDemandView',
+        'serversDemand': 'serversDemandView',
+        'followDemand': 'followDemandView',
+        'acceptDemand': 'acceptDemandView',
         'sources': 'sourcesView',
         'api': 'apiView',
         'myApi': 'myApiView',
@@ -46,6 +49,18 @@ var Routes =  Backbone.Router.extend({
     apiDemandView: function () {
         var apiDemandView = require('userInfo/demand/demandApiView.js');
         mscxPage.views['apiDemandViewObj'] = new apiDemandView();
+    },
+    serversDemandView: function (id) {
+        var serversDemandView = require('userInfo/demand/demandServersView.js');
+        mscxPage.views['serversDemandViewObj'] = new serversDemandView();
+    },
+    followDemandView: function () {
+        var followDemandView = require('userInfo/demand/demandFollowView.js');
+        mscxPage.views['followDemandViewObj'] = new followDemandView();
+    },
+    acceptDemandView: function () {
+        var acceptDemandView = require('userInfo/demand/demandAcceptView.js');
+        mscxPage.views['acceptDemandViewObj'] = new acceptDemandView();
     },
     sourcesView: function () {
         var sourcesView = require('userInfo/sources/sourcesView.js');

@@ -49,18 +49,25 @@ var openDataDetailView = Backbone.View.extend({
     render: function () {
         this.nJson = this.model.toJSON().result;
         this.$el.toggleClass('loading');
-        this.$el.html(this.template( this.model.toJSON().result));
+        this.$el.html(this.template( this.nJson ));
         this.$appInfoCons = this.$('.share');
         this.$appInfoCons.html(this.shareView.$el);
-        $(".picScroll-left").slide({
-            titCell:".hd ul",
-            mainCell:".bd ul",
-            autoPage:true,
-            effect:"left",
-            autoPlay:false,
-            vis:2,
-            trigger:"click"
-        });
+
+        if(this.nJson.demoImage1 && this.nJson.demoImage2 && this.nJson.demoImage3) {
+            this.$el.find('.next').show();
+            this.$el.find('.prev').show();
+
+            $(".picScroll-left").slide({
+                titCell: ".hd ul",
+                mainCell: ".bd ul",
+                autoPage: true,
+                effect: "left",
+                autoPlay: false,
+                vis: 2,
+                trigger: "click"
+            });
+        }
+
     },
     handleAttention: function(res) {
         var model = res.toJSON(),

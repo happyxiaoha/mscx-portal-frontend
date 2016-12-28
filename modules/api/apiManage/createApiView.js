@@ -43,7 +43,8 @@ var createApiView = Backbone.View.extend({
         'click .deleteApi': 'removeApi',
         'change .upload-file': 'doUploadImg',
         'blur #apiServerId': 'checkServerId',
-        'blur #apiName': 'checkApiName'
+        'blur #apiName': 'checkApiName',
+        'change .charge-type': 'doChargeType'
     },
     updateIndex: -1,
     apiName: '',
@@ -375,7 +376,7 @@ var createApiView = Backbone.View.extend({
     addChargeLay: function () {
         var that = this;
         var addChargeTemplete = _.template($('#chargeManage').html());
-        $('.add-price-list').html(addChargeTemplete({res:{}}));
+        $('.add-price-list').html(addChargeTemplete({res:{'chargeType':'05'}}));
 
         var dialog = layer.open({
             type: 1,
@@ -672,6 +673,17 @@ var createApiView = Backbone.View.extend({
         }
         else {
             $('.api-name-error').hide();
+        }
+    },
+    doChargeType: function () {
+        var sVal = $('.charge-type').val();
+        if(sVal == '04'){
+            $('.prePrice').html('月');
+            $('.limitPre').html('次');
+        }
+        else {
+            $('.limitPre').html('个月');
+            $('.prePrice').html('次');
         }
     }
 });

@@ -181,8 +181,8 @@
     <% _.each(chargeSetJson, function (chargeItem) { %>
     <tr>
         <td><%=chargeItem.name%></td>
-        <td><%=chargeItem.price%>元<%=chargeItem.Count%>次</td>
-        <td><%=chargeItem.countLimit ? chargeItem.countLimit : 0%>次</td>
+        <td><%=chargeItem.price%>元<%=chargeItem.Count%><%if(chargeItem.chargeType == '04'){%>月<%}else{%>次<%}%></td>
+        <td><%=chargeItem.countLimit ? chargeItem.countLimit : 0%><%if(chargeItem.chargeType == '04'){%>次<%}else{%>个月<%}%></td>
         <td><%=chargeItem.monthLimit ? chargeItem.monthLimit : 0%>个月</td>
         <td><%=chargeItem.effectDate%></td>
         <td><%=chargeItem.expiryDate%></td>
@@ -222,7 +222,7 @@
             <li>
                 <label>
                     <span><i class="need">*</i>计费方式：</span>
-                    <select name="chargeType">
+                    <select name="chargeType" class="charge-type">
                         <option value="05" <%if(res && res.chargeType=='05'){%>selected="selected"<%}%>>按次数</option>
                         <option value="04" <%if(res && res.chargeType=='04'){%>selected="selected"<%}%>>按时间</option>
                     </select>
@@ -238,7 +238,10 @@
                 <label>
                     <span><i class="need">*</i>套餐价格：</span>
                     <label><input type="number" class="small" name="price" id="price" value="<%=res && res.price%>">元/</label>
-                    <label><input type="number" class="small" name="chargeCount" id="chargeCount" value="<%=res && res.chargeCount%>">次</label>
+                    <label><input type="number" class="small" name="chargeCount" id="chargeCount" value="<%=res && res.chargeCount%>">
+                        <%if(res.chargeType=='05'){%><span class="prePrice">次</span><%}%>
+                        <%if(res.chargeType=='04'){%><span class="prePrice">月</span><%}%>
+                    </label>
                 </label>
             </li>
             <li>
@@ -252,7 +255,10 @@
                 <label class="gl">
                     <span>使用限制：</span>
                     <input type="number" class="small fl" name="monthLimit" id="monthLimit" value="<%=res && res.monthLimit%>">
-                    <b class="fl">个月</b>
+                    <b class="fl">
+                        <%if(res.chargeType=='05'){%><span class="limitPre">个月</span><%}%>
+                        <%if(res.chargeType=='04'){%><span class="limitPre">次</span><%}%>
+                    </b>
                     <b class="fl ml20">(不填则为无限制)</b>
                 </label>
             </li>

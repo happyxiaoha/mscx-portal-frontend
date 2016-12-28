@@ -41,7 +41,8 @@ var apiView = Backbone.View.extend({
         'click .addPrice': 'addPackageLay',
         'click .editCharge': 'updateCharge',
         'click .removeCharge': 'removeCharge',
-        'click .downApi': 'downApi'
+        'click .downApi': 'downApi',
+        'change .charge-type': 'doChargeType'
     },
     updateIndex: -1,
     packageValidateConfig: function () {
@@ -367,6 +368,17 @@ var apiView = Backbone.View.extend({
         this.packageList = packageList;
         this.getPackageModel.set('result',packageList);
         this.buildPackageTable();
+    },
+    doChargeType: function () {
+        var sVal = $('.charge-type').val();
+        if(sVal == '04'){
+            $('.prePrice').html('月');
+            $('.limitPre').html('次');
+        }
+        else {
+            $('.limitPre').html('个月');
+            $('.prePrice').html('次');
+        }
     }
 });
 

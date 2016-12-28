@@ -16,10 +16,6 @@ var unFollowModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'userAttention/remove.do'
 });
 
-
-
-var showdown = require('markdown');
-
 require('./api.css');
 
 var view = Backbone.View.extend({

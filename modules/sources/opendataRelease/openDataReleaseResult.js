@@ -110,7 +110,9 @@ var view = Backbone.View.extend({
                     success: function (res) {
                         res = res.toJSON();
                         newTarget.location.href = res.result; //在打开的tab页下载
-                        setTimeout(function(){newTarget.close()}, 1000);
+                        if(!window.attachEvent) {
+                            setTimeout(function(){newTarget.close()}, 1000);
+                        }
                     }
                 });
                 layer.close(index);

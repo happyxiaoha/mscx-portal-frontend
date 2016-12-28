@@ -66,9 +66,11 @@ var view = Backbone.View.extend({
 
         layer.close(me.layerIndex);
         if(model.status == 'OK') {
-            layer.msg('接单成功！', function() {
+            layer.msg('接单成功！');
+            setTimeout(function() {
                 me.delegate.fetchDetail();
-            });
+            }, 2000);
+            
         }
     }
 });

@@ -24,7 +24,7 @@ var categoryModel = Backbone.Model.extend({
 })
 // 微服务标签
 var tagModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'tag/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tags/getTagsInfo.do'
 })
 // 上传图片
 var uploadImgUrl = mscxPage.request.app + 'pic/upload.do';

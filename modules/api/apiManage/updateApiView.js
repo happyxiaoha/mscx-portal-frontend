@@ -22,7 +22,7 @@ var getCategoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getApiCategory.do'
 });
 var getCategoryTagModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'tag/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tags/getTagsInfo.do'
 });
 var getServiceTypeModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'dict/getServiceObject.do'

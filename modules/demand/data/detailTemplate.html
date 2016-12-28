@@ -47,18 +47,21 @@
         </ul>
     </div>
 </div>
-<% if(data.feedbackTime || data.feedbackSuggestion){ %>
 <div class="R-Cons">
     <p class="titTop bggray ft14 corBlue">需求反馈</p>
     <div class="titTopCons">
         <ul>
             <li class="mb10">
                 <span>反馈时间：</span>
+                <% if(data.feedbackTime){ %>
                 <span class="cor7"><%= data.feedbackTime && new Date(data.feedbackTime).format('yyyy-MM-dd') %></span>
+                <% }else{ %>
+                <span class="cor7">暂无</span>
+                <% } %>
             </li>
             <li class="mb10">
                 <span>反馈意见：</span>
-                <span class="cor7"><%= data.feedbackSuggestion %></span>
+                <span class="cor7"><%= data.feedbackSuggestion ? data.feedbackSuggestion : '暂无' %></span>
             </li>
             <li class="mb10">
                 <span>数据展现链接：</span>
@@ -67,4 +70,3 @@
         </ul>
     </div>
 </div>
-<% } %>

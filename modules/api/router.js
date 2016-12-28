@@ -9,7 +9,8 @@ var Routes =  Backbone.Router.extend({
         'model': 'modelAPI',
         'detail/:id': 'detail',
         'createApi': 'createApiView',
-        'updateApi/:id': 'updateApiView'
+        'updateApi/:id': 'updateApiView',
+        'apiDes/:id': 'apiDesView'
     },
     dataAPI:function () {
         var APIView = require('api/APIView.js');
@@ -46,6 +47,12 @@ var Routes =  Backbone.Router.extend({
     updateApiView: function (id) {
         var updateApiView = require('api/apiManage/updateApiView.js');
         mscxPage.views['updateApiViewObj'] = new updateApiView({
+            id: id
+        });
+    },
+    apiDesView: function (id) {
+        var apiDesView = require('api/apiManage/apiDesView.js');
+        mscxPage.views['apiDesViewObj'] = new apiDesView({
             id: id
         });
     },

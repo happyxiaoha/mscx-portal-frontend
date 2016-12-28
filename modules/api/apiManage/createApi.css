@@ -115,3 +115,5 @@
 .package-area {display: none;}
 .add-price-list input[readonly] {cursor:default;background: #FFF;}
 .add-price-list ul li span.prePrice,.add-price-list ul li span.limitPre {width:auto;}
+.mes {line-height: 30px;}
+.mes-split {line-height: 30px;margin-right: 5px;}

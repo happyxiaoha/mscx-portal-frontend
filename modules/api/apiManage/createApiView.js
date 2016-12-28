@@ -375,7 +375,7 @@ var createApiView = Backbone.View.extend({
     addChargeLay: function () {
         var that = this;
         var addChargeTemplete = _.template($('#chargeManage').html());
-        $('.package-manage').html(addChargeTemplete({res:{}}));
+        $('.add-price-list').html(addChargeTemplete({res:{}}));
 
         var dialog = layer.open({
             type: 1,

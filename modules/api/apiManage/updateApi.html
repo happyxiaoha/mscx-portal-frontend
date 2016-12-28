@@ -103,7 +103,7 @@
             <label class="server-error">请选择服务对象</label>
         </div>
 
-        <div class="D_table api-package">
+        <div class="D_table api-package" <%if(res.chargeType=='01'){%>style="display: none;"<%}%> >
             <table >
                 <thead>
                 <tr>
@@ -169,7 +169,7 @@
 </script>
 <script id="serverTypeList" type="template">
     <% _.each(serverTypeList, function (titem) { %>
-    <label class="fl"><input type="checkbox" id="t<%=titem.id%>" name="serverTypes" <%if(titem.isSelect){%>checked=true<%}%>><%=titem.dictName%></label>
+    <label class="fl"><input type="checkbox" id="t<%=titem.dictCode%>" name="serverTypes" <%if(titem.isSelect){%>checked=true<%}%>><%=titem.dictName%></label>
     <% }); %>
 </script>
 <script id="packageTableTemps" type="template">

@@ -79,10 +79,12 @@ var updateApiView = Backbone.View.extend({
         });
         this.temps = _.template($('#updateFormMes').html());
         this.$el.find('#publishApi').html(this.temps({res:{}}));
+
     },
     renderInit: function () {
         var that = this;
         var res = this.apiDesModel.get('result');
+
         this.$el.find('#publishApi').html(this.temps({res:res}));
         this.getCategoryModel.on('change',function () {
             that.renderCategory(res.categoryId);
@@ -105,11 +107,12 @@ var updateApiView = Backbone.View.extend({
             that.buildApiTable();
         });
         this.model.on('change:chargeType',function () {
-            if(that.model.get('chargeType') == '01' && that.model.get('chargeSetJson')){
-                that.model.set('chargeSetJson',null);
+            if(that.model.get('chargeType') == '01'){
+                $('.api-package').hide();
             }
             else {
-                that.buildChargeTable();
+                $('.api-package').show();
+                //that.buildChargeTable();
             }
         });
         this.model.set('chargeType',res.chargeType);
@@ -119,6 +122,9 @@ var updateApiView = Backbone.View.extend({
         this.model.set('imageUri',res.imageUri);
         this.model.set('serviceObject',res.serviceObject);
         $('#publishApi').validate(this.validateConfig());
+        if(res.chargeType == '01'){
+            $('.api-package').hide();
+        }
     },
     validateConfig: function () {
         var that = this;

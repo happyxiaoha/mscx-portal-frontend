@@ -22,7 +22,7 @@ var orderView = Backbone.View.extend({
         totalPage: 1
     },
     events: {
-
+        'click .toPay': 'toPay'
     },
     initialize: function() {
         var that = this;
@@ -39,42 +39,23 @@ var orderView = Backbone.View.extend({
         });
         this.initRender();
     },
-    buildList: function (list) {
-        var begObj = {
-            begInx: 0,
-            count: 0,
-            orderNum: null
+    toPay: function (e) {
+        var $this = $(e.target);
+            orderNum = $this.attr('attrOrderId');
+
+        var param = {
+            orderNum: orderNum
         };
-        for(var i = 0, len = list.length; i < len; i++){
-            var obj = list[i],
-                orderNum = obj.orderNum;
-            if(!begObj.orderNum) {
-                begObj.orderNum = orderNum;
-                begObj.begInx = i;
-                begObj.count = 1;
-            }
-            else {
-                if(begObj.orderNum != obj.orderNum){
-                    list[begObj.begInx].count = begObj.count;
-                    begObj.orderNum = orderNum;
-                    begObj.begInx = i;
-                    begObj.count = 1;
-                }
-                else {
-                    obj.isDump = true;
-                    begObj.count++;
-                }
-            }
-            console.log(list);
-        }
-        return list;
+        var base = new Base64;
+        window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
+        location.href = 'pay.html';
+        e.stopPropagation();
     },
     render: function () {
         var res = this.model.get('result'),
             that = this,
             orderList = res.list,
             page = res.page;
-        orderList = this.buildList(orderList);
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
         var temps = _.template($('#orderList').html());
@@ -89,6 +70,14 @@ var orderView = Backbone.View.extend({
                     that.pagObj.pageNum = obj.curr;
                     that.reloadPage();
                 }
+            }
+        });
+    },
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
             }
         });
     },

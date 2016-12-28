@@ -42,7 +42,8 @@ var createDemandView = Backbone.View.extend({
     events: {
         'change .upload-file': 'doUploadImg',
         'click #selectTagBtn': 'getTags',
-        'change #selectCategory': 'saveCategory'
+        'change #selectCategory': 'saveCategory',
+        'keydown input': 'cancelSubmit'
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
@@ -248,6 +249,11 @@ var createDemandView = Backbone.View.extend({
     fillTags: function() {
         this.$('#tagId').val(this.tags.get('tagId'));
         this.$('#tagName').val(this.tags.get('tagName'));
+    },
+    cancelSubmit: function(event) {
+        if(event.keyCode == 13) {
+            event.preventDefault();
+        }
     }
 });
 

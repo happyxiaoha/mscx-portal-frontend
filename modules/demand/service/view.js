@@ -13,7 +13,8 @@ var view = Backbone.View.extend({
     listTemplate: _.template(listTemplate, {variable: 'data'}),
     events: {
         'click .search-btn': 'searchKeyword',
-        'keydown .search-input': 'pressEnter'
+        'keydown .search-input': 'pressEnter',
+        'click #goServicePublish': 'goPublish'
     },
     initialize: function() {
         this.$el.html(this.wrapTemplate());
@@ -98,6 +99,9 @@ var view = Backbone.View.extend({
         if(event.keyCode == 13) {
             this.searchKeyword();
         }
+    },
+    goPublish: function() {
+        location.href = mscxPage.userInfo ? '#service/publish' : 'login.html?service=' + encodeURIComponent(location.href);
     }
 });
 

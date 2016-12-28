@@ -57,11 +57,7 @@ var defaultView = Backbone.View.extend({
         var dasTemplate = _.template($('#userDefault').html());
         $('#dashboardAll').html(dasTemplate({'res':this.model.get('result')}));
     },
-    renderMyApi: function () {
-        console.log(this.myApiListModel.get('result'));
-    },
     renderMyServer: function () {
-        console.log(this.myServerListModel.get('result'));
         var apiServiceList = this.myServerListModel.get('result').list;
         if(apiServiceList.length > 0){
             this.$sdataList.html('');

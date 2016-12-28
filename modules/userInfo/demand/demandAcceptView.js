@@ -14,9 +14,6 @@ var acceptServersModel = Backbone.Model.extend({
 var acceptApiModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'queryMyApiOrder.do'
 });
-var acceptApiModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryMyApiOrder.do'
-});
 
 
 var acceptView = Backbone.View.extend({

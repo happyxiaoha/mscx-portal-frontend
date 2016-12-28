@@ -64,10 +64,14 @@
         <p class="fl">
             <span class="block ft16 corOrange mt14 user-name-area" title="<%=res.user.account%>"><%=res.user.account%></span>
             <a href="#" class="block corBlue message">消息</a>
-            <%if(res.user.userType != 'REGISTER'){%>
-            <a href="#userAuth" class="block corBlue realName mt16">已认证</a>
+            <%if(res.user.certificationInfo.enterpriseProcessing){%>
+                <a href="#userAuth" class="block corBlue realNamenow mt16">认证中</a>
             <%}else{%>
-            <a href="#userAuth" class="block corBlue unrealName mt16">未认证</a>
+                <%if(res.user.userType != 'REGISTER'){%>
+                <a href="#userAuth" class="block corBlue realName mt16">已认证</a>
+                <%}else{%>
+                <a href="#userAuth" class="block corBlue unrealName mt16">未认证</a>
+                <%}%>
             <%}%>
         </p>
     </div>

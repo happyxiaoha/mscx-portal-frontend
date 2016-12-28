@@ -5,13 +5,6 @@ var defaultModel = Backbone.Model.extend({
     url: mscxPage.host+'/personal/dashboard.do'
 });
 
-var myApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'api/getSelfApiList.do'
-});
-
-var myServerListModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'attention/list.do'
-});
 
 var myApiListModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'api/getSelfApiList.do'
@@ -39,6 +32,12 @@ var defaultView = Backbone.View.extend({
         this.model = new defaultModel();
         this.myApiListModel = new myApiListModel();
         this.myServerListModel = new myServerListModel();
+        this.myApiListModel.on('change',function () {
+            that.renderMyApi();
+        });
+        this.myServerListModel.on('change',function () {
+            that.renderMyServer();
+        });
         this.model.fetch();
         this.myApiListModel.fetch({
             page: 1,
@@ -48,12 +47,7 @@ var defaultView = Backbone.View.extend({
         this.model.on('change',function () {
             that.render();
         });
-        this.myApiListModel.on('change',function () {
-            that.renderMyApi();
-        });
-        this.myServerListModel.on('change',function () {
-            that.renderMyServer();
-        });
+
     },
     renderMyApi: function () {
         var apiList = this.myApiListModel.get('result').list;
@@ -61,8 +55,18 @@ var defaultView = Backbone.View.extend({
             this.$adataList.html('');
             $('.R-myServerList').css('border','1px solid #CCC');
             _.each(apiList, function(item) {
+                var chargeType = item.chargeType == '收费'? '02': '01';
+                var newItem = {
+                    apiServiceId : item.sourceId,
+                    iconUrl: item.logoUrl,
+                    apiServiceName: item.apiName,
+                    applyCnt: item.applyCnt || 0,
+                    accessCnt: item.accessCnt || 0,
+                    chargeType: chargeType,
+                    chargeTypeDesc: item.chargeType
+                };
                 var view = new apiItemView({
-                    model: item
+                    model: newItem
                 });
                 this.$adataList.append(view.$el);
             }.bind(this));

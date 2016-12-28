@@ -110,6 +110,9 @@ var userAuthenticationView = Backbone.View.extend({
         this.model.save({},{
             success: function () {
                 layer.msg('提交成功!');
+                setTimeout(function () {
+                    location.href = '#info';
+                },2000);
             }
         })
     },
@@ -123,7 +126,9 @@ var userAuthenticationView = Backbone.View.extend({
         this.model.save({},{
             success: function(){
                 layer.msg('提交成功!');
-                that.renderEnterprise();
+                setTimeout(function () {
+                    location.href = '#info';
+                },2000);
             }
         });
     },

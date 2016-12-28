@@ -529,11 +529,15 @@ var updateApiView = Backbone.View.extend({
         }
     },
     doUploadImg: function () {
-        var $formArea = $('#ajaxUpload');
-        $formArea.attr('action',mscxPage.request.api+'uploadFile.do');
+        var $formArea = $('#ajaxUpload'),
+            uploadImgUrl = mscxPage.request.api+'uploadFile.do';
         var that = this;
-        var options = {
-            success: function (res) {
+        $formArea.ajaxSubmit({
+            url: uploadImgUrl,
+            success: function(res) {
+                if(typeof (res) === 'string' ){
+                    res = JSON.parse(res)
+                }
                 if(res.status == 'ERROR'){
                     $('.img-error').show();
                     layer.alert(res.message,{icon: 2});
@@ -545,14 +549,11 @@ var updateApiView = Backbone.View.extend({
                 $('.allInfoImg').find('img').attr('src',src.imageUri);
                 $('.img-error').hide();
             },
-            error: function () {
+            error: function() {
                 $('.img-error').show();
-                layer.alert('上传失败', {icon: 2});
+                layer.msg('上传失败');
             }
-        };
-        $formArea.ajaxForm(options);
-        $formArea.find('input[type="submit"]').click();
-        $formArea = null;
+        });
     },
     checkServerId: function () {
         var that = this;

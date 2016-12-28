@@ -270,6 +270,7 @@ var userAuthenticationView = Backbone.View.extend({
     uploadFile: function (e) {
         var $this = $(e.target),
             type = 0,
+            uploadImgUrl = '',
             $formArea = $('#ajaxUpload');
         if(!$(e.target).val()){
             return;
@@ -277,14 +278,18 @@ var userAuthenticationView = Backbone.View.extend({
         if($this.parent()[0].id == 'ajaxEnterpriseUpload'){
             type = 1;
             $formArea = $('#ajaxEnterpriseUpload');
-            $formArea.attr('action',mscxPage.request.uc + 'certification/enterprise/upload/licence.do');
+            uploadImgUrl = mscxPage.request.uc + 'certification/enterprise/upload/licence.do';
         }
         else {
-            $formArea.attr('action',mscxPage.request.uc + 'certification/person/upload/photo.do');
+            uploadImgUrl = mscxPage.request.uc + 'certification/person/upload/photo.do';
         }
         var that = this;
-        var options = {
-            success: function (res) {
+        $formArea.ajaxSubmit({
+            url: uploadImgUrl,
+            success: function(res) {
+                if(typeof (res) === 'string' ){
+                    res = JSON.parse(res)
+                }
                 if(res.status == 'ERROR'){
                     layer.alert(res.message,{icon: 2});
                     return;
@@ -300,13 +305,10 @@ var userAuthenticationView = Backbone.View.extend({
                     $('.allInfoImg').find('img').show().attr('src',src.imageUrl);
                 }
             },
-            error: function () {
-                layer.alert('上传失败', {icon: 2});
+            error: function() {
+                layer.msg('上传失败');
             }
-        };
-        $formArea.ajaxForm(options);
-        $formArea.find('input[type="submit"]').click();
-        $formArea = null;
+        });
         e.stopPropagation();
     },
     render: function () {

@@ -30,7 +30,7 @@ var createApiView = Backbone.View.extend({
         'input #createDemandForm input[type="text"]' : 'changeAttribute',
         'input #createDemandForm textarea' : 'changeAttribute',
         'click #chooseTag': 'showTagArea',
-        'click .tag-list-area li': 'chooseTag',
+        //'click .tag-list-area li': 'chooseTag',
         'click .tag-area span': 'deleteTag',
         'change input:radio[name="category"]': 'changeCategory',
         'change input:radio[name="chargeType"]': 'changeChargeType',
@@ -240,7 +240,8 @@ var createApiView = Backbone.View.extend({
     },
     chooseTag: function (e) {
         var $this = $(e.target),
-            sVal = $this.text();
+            sVal = $this.attr('attrid'),
+            text = $this.html();
         var tags = this.model.get('tags') || '';
         if(tags.indexOf(sVal) < 0){
             tags = tags ? tags+','+sVal : sVal;

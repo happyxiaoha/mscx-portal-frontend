@@ -39,8 +39,58 @@ var orderView = Backbone.View.extend({
         });
         this.initRender();
     },
+    buildList: function (list) {
+        var begObj = {
+            begInx: 0,
+            count: 0,
+            orderNum: null
+        };
+        for(var i = 0, len = list.length; i < len; i++){
+            var obj = list[i],
+                orderNum = obj.orderNum;
+            if(!begObj.orderNum) {
+                begObj.orderNum = orderNum;
+                begObj.begInx = i;
+                begObj.count = 1;
+            }
+            else {
+                if(begObj.orderNum != obj.orderNum){
+                    list[begObj.begInx].count = begObj.count;
+                    begObj.orderNum = orderNum;
+                    begObj.begInx = i;
+                    begObj.count = 1;
+                }
+                else {
+                    obj.isDump = true;
+                    begObj.count++;
+                }
+            }
+            console.log(list);
+        }
+        return list;
+    },
     render: function () {
-
+        var res = this.model.get('result'),
+            that = this,
+            orderList = res.list,
+            page = res.page;
+        orderList = this.buildList(orderList);
+        this.pagObj.pageNum = page.currentPage;
+        this.pagObj.totalPage = page.totalPage;
+        var temps = _.template($('#orderList').html());
+        this.$el.find('tbody').html(temps({orderList: orderList}));
+        laypage({
+            cont: 'orderPages',
+            skip: true,
+            pages: this.pagObj.totalPage,
+            curr: this.pagObj.pageNum || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.pagObj.pageNum = obj.curr;
+                    that.reloadPage();
+                }
+            }
+        });
     },
     initRender: function () {
         this.$el.find('#orderInfo').html(orderTemplate);

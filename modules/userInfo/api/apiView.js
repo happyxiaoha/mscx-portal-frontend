@@ -214,12 +214,12 @@ var apiView = Backbone.View.extend({
         }
     },
     saveCharge: function () {
-        var that = this;
         new savePackageModel().save({params:this.packageList},{
             success: function () {
-                layer.msg('保存成功',function () {
-                    layer.close(that.dig);
-                });
+                layer.msg('保存成功');
+                setTimeout(function () {
+                    layer.closeAll();
+                },2000);
             }
         });
     },

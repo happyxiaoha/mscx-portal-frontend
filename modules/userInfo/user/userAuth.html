@@ -58,6 +58,8 @@
                 <img <%if(photoUrl){%>src="<%=photoUrl%>"<%}else{%>class="hide" <%}%>>
             </label>
             <label class="phone-error hide">请上传个人照片</label>
+            <br>
+            <label style="float: left;margin: 20px 10px;">注意：照片中人像需要为唯一或者主要人脸人像至少100×100像素，最大不要超过800x800像素</label>
         </div>
         <div id="phone" class="clearfix" style="display: none;">
             <span><em>*</em>手机号码：</span>
@@ -71,6 +73,8 @@
             <div class="clearfix">
                 <span><em>*</em>银行卡号：</span>
                 <input type="text" id="bankCardNo" name="bankCardNo" placeholder="请输入银行卡号" value="<%=bankCardNo%>" <%if(bankCardNo){%>disabled<%}%>>
+                <br>
+                <label style="margin: 40px 20px 0;">注意：只支持银联卡认证</label>
             </div>
         </div>
     </div>

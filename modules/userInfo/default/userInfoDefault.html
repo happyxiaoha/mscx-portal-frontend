@@ -4,7 +4,7 @@
         <p class="fl">
             <span class="block ft16 corOrange mt14">--</span>
             <a href="#" class="block corBlue message hide">消息</a>
-            <a href="#user/auth" class="block corBlue realName mt16">立刻认证</a>
+            <a href="#userAuth" class="block corBlue unrealName mt16">未认证</a>
         </p>
     </div>
     <div class="fl bgWhite R-cons mr16 clearfix user-cost">
@@ -39,22 +39,22 @@
 <div class="R-myServer common mb25">
     <div class="tit posRE">
         <h2 class="ft16 cor5">我申请的API</h2>
-        <a href="#" class="posAB more ft14 block">更多&gt;&gt;</a>
+        <a href="#myApi" class="posAB more ft14 block">更多&gt;&gt;</a>
     </div>
     <div class="mainDatas">
         <ul class="clearfix DataList">
-            <p class="tc">暂无申请任何API <a href="" class="corBlue">去申请</a></p>
+            <p class="tc">暂无申请任何API</p>
         </ul>
     </div>
 </div>
 <div class="R-myAddServer common">
     <div class="tit posRE">
         <h2 class="ft16 cor5">我关注的服务</h2>
-        <a href="#" class="posAB more ft14 block">更多&gt;&gt;</a>
+        <a href="#server" class="posAB more ft14 block">更多&gt;&gt;</a>
     </div>
     <div class="R-myServerList mt16">
         <ul class="clearfix server-data-list">
-            <p class="tc">暂无关注任何服务<a href="" class="corBlue">去关注</a></p>
+            <p class="tc">暂无关注任何服务</p>
         </ul>
     </div>
 </div>
@@ -64,7 +64,11 @@
         <p class="fl">
             <span class="block ft16 corOrange mt14"><%=res.user.account%></span>
             <a href="#" class="block corBlue message">消息</a>
-            <a href="#user/auth" class="block corBlue realName mt16">立刻认证</a>
+            <%if(res.user.userType != 'REGISTER'){%>
+            <a href="#userAuth" class="block corBlue realName mt16">已认证</a>
+            <%}else{%>
+            <a href="#userAuth" class="block corBlue unrealName mt16">未认证</a>
+            <%}%>
         </p>
     </div>
     <div class="fl bgWhite R-cons mr16 clearfix user-cost">
@@ -91,7 +95,7 @@
         </div>
         <div class="fr RCconsListBtn">
             <p>申请API：<em class="corOrange ft18"><%=res.applyApi%></em>个</p>
-            <a class="corff bgBlue mb8 mt5" href="#">申请服务</a>
+            <a class="corff bgBlue mb8 mt5" href="./services.html">申请服务</a>
             <a class="corff bgBlue" href="./services.html#publish">发布服务</a>
         </div>
     </div>

@@ -129,17 +129,19 @@ var userAuthenticationView = Backbone.View.extend({
     },
     initialize: function() {
         var that = this;
+        this.personAuthModel = new getPersonAuthModel();
+        this.getEnterpriseAuthModel = new getEnterpriseAuthModel();
         if(!mscxPage.userInfo){
             new userInfoModel().fetch({
                 success: function (model,res) {
                     account = res.result.account;
-                    callback()
+                    callback();
                 }
             });
         }
         else {
             account = mscxPage.userInfo;
-            callback()
+            callback();
         }
         function callback() {
             that.getEnterpriseAuthModel.fetch({
@@ -159,8 +161,7 @@ var userAuthenticationView = Backbone.View.extend({
             });
         }
         this.$el.html(_.template(commonTemplate)({name:'userAuth'}));
-        this.personAuthModel = new getPersonAuthModel();
-        this.enterpriseAuthModel = new getEnterpriseAuthModel();
+
         this.render();
     },
     changeAuthType: function (e) {
@@ -239,14 +240,14 @@ var userAuthenticationView = Backbone.View.extend({
     },
     renderEnterprise: function () {
         var that = this;
-        that.enterpriseAuthModel.fetch({
+        that.getEnterpriseAuthModel.fetch({
             success: function () {
                 that.buildEnterprise();
             }
         });
     },
     buildEnterprise: function () {
-        var res = this.enterpriseAuthModel.get('result');
+        var res = this.getEnterpriseAuthModel.get('result');
         res = res || {
                 contractName: '',
                 contractIdCard: '',

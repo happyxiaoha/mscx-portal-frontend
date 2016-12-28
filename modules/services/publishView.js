@@ -248,6 +248,10 @@ var createDemandView = Backbone.View.extend({
     },
     saveCategory: function() {
         this.currentCategory = this.$('#selectCategory').val();
+        this.tags.set({
+            tagId: '',
+            tagName: ''
+        })
     },
     fillTags: function() {
         this.$('#tagId').val(this.tags.get('tagId'));

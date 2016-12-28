@@ -112,7 +112,6 @@ var updateApiView = Backbone.View.extend({
             }
             else {
                 $('.api-package').show();
-                //that.buildChargeTable();
             }
         });
         this.model.set('chargeType',res.chargeType);

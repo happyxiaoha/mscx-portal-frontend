@@ -29,7 +29,23 @@ var userPasswordView = Backbone.View.extend({
                 },
                 passwordConfirm: {
                     required: true,
+                    password: true,
                     equalTo: '#password'
+                }
+            },
+            messages: {
+                passwordConfirm:{
+                    required: '确认密码不能为空',
+                    equalTo: '新密码和确认密码不一致',
+                    password: '密码只能包含数字字母下划线中划线'
+                },
+                password: {
+                    required: '新密码不能为空',
+                    password: '密码只能包含数字字母下划线中划线'
+                },
+                oldPassword: {
+                    required: '旧密码不能为空',
+                    password: '密码只能包含数字字母下划线中划线'
                 }
             },
             submitHandler: function () {

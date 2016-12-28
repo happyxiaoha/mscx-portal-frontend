@@ -113,12 +113,15 @@ var userAuthenticationView = Backbone.View.extend({
             this.model.save({}, {
                 success: function () {
                     layer.msg('提交成功!');
+                    setTimeout(function () {
+                        location.href = '#info';
+                    }, 2000);
                 }
             })
         }
         else {
-            layer.alert('请确认协议！');
-        }
+                layer.alert('请确认协议！');
+            }
     },
     doEnterpriseSave: function () {
         var that = this,
@@ -129,10 +132,12 @@ var userAuthenticationView = Backbone.View.extend({
         }
         $('.phone-error').addClass('hide');
         if(agreement) {
-            this.model.save({}, {
-                success: function () {
+            this.model.save({},{
+                success: function(){
                     layer.msg('提交成功!');
-                    that.renderEnterprise();
+                    setTimeout(function () {
+                        location.href = '#info';
+                    },2000);
                 }
             });
         }

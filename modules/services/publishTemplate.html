@@ -11,7 +11,7 @@
     <!-- down -->
     <div class="ReleaseDownCons pr">
         <!-- SaaS 服务发布内容 -->
-        <form class="ReleaseInputs ReleaseDown" id="publishForm">
+        <form class="ReleaseInputs ReleaseDown" onsubmit="return false;" id="publishForm">
             <div class="clearfix ReleaseList">
                 <% if(data.detail && data.detail.id){ %>
                     <input type="hidden" name="id" value="<%= data.detail.id %>" />

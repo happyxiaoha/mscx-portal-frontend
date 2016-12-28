@@ -200,7 +200,6 @@ var createApiView = Backbone.View.extend({
                     date: true
                 },
                 expiryDate: {
-                    required: true,
                     date: true
                 }
             },

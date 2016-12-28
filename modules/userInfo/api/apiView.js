@@ -330,7 +330,7 @@ var apiView = Backbone.View.extend({
         });
         return false;
     },
-    downApi: function () {
+    downApi: function (e) {
         var that = this,
             $this = $(e.target).closest('tr'),
             sId = parseInt($this.attr('attrid'));

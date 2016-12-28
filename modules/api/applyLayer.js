@@ -176,7 +176,10 @@ var view = Backbone.View.extend({
             num = $number.val(),
             ruleId = $number.data('id');
 
-        if(!ruleId) return;
+        if(!ruleId) {
+            layer.msg('请至少选择一个资源');
+            return;
+        }
 
         this.layerIndex = index;
 

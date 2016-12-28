@@ -23,16 +23,19 @@
 .demand-content .beauty-file {
     position: relative;
     cursor: pointer;
-    width: 200px;
+    width: 80px;
+
 }
 .demand-content .btn-file{
-    opacity: 0;
-    position: relative;
-    left: -220px;
+    opacity: 0; 
+    width: 130px;
+    position: absolute;
+    top: 0;
+    left: -85px;
+    /*background: #111;*/
 }
 .demand-content #showFileName {
     position: relative;
-    left: -260px;
 }
 label.checkbox-inline, .checker {
     display: inline-block;

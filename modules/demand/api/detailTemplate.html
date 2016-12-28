@@ -12,7 +12,7 @@
             <% if(data.myself == 0 && data.flag1 == 0){ %>
             <span id="apply">接单</span>
             <% }else if(data.myself == 0) { %>
-            <span class="disable">已接单</span>
+            <span class="disable">不可接单</span>
             <% } %>
             <% if(data.flag == 0){ %>
             <span id="follow">关注</span>
@@ -49,6 +49,10 @@
             <li class="mb10">
                 <span>需求描述：</span>
                 <span class="cor7"><%= data.description %></span>
+            </li>
+            <li class="mb10">
+                <span>需求用户：</span>
+                <span class="cor7"><%= data.reqUser %></span>
             </li>
             <li class="mb10">
                 <span>附件 ：</span>

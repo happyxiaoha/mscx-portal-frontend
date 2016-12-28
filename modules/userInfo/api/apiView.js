@@ -75,7 +75,6 @@ var apiView = Backbone.View.extend({
                     date: true
                 },
                 expiryDate: {
-                    required: true,
                     date: true
                 }
             },
@@ -210,7 +209,6 @@ var apiView = Backbone.View.extend({
                     layer.close(dialog);
                 }
             });
-            this.dig = dialog;
         }
     },
     saveCharge: function () {

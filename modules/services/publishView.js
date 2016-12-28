@@ -42,7 +42,8 @@ var createDemandView = Backbone.View.extend({
     events: {
         'change .upload-file': 'doUploadImg',
         'click #selectTagBtn': 'getTags',
-        'change #selectCategory': 'saveCategory'
+        'change #selectCategory': 'saveCategory',
+        'keydown input': 'cancelSubmit'
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
@@ -114,7 +115,7 @@ var createDemandView = Backbone.View.extend({
     submitForm: function () {
         var params = this.$form.serializeObject();
 
-        params.serviceObject = params.serviceObject.join(',');
+        params.serviceObject = _.isArray(params.serviceObject) ? params.serviceObject.join(',') : params.serviceObject;
         params.categoryId = +params.categoryId;
         if(params.id) {
             params.id = +params.id;
@@ -129,9 +130,10 @@ var createDemandView = Backbone.View.extend({
     handleSubmit: function() {
         var model = this.model.toJSON();
         if(model.status == 'OK') {
-            layer.msg('提交成功，请等待审核', function() {
-                location.href = 'userinfo.html#server';
-            })
+            layer.msg('提交成功，请等待审核');
+            setTimeout(function() {
+                location.href = 'userInfo.html#server';
+            }, 1000);
         }
     },
     renderDetail: function() {
@@ -248,6 +250,11 @@ var createDemandView = Backbone.View.extend({
     fillTags: function() {
         this.$('#tagId').val(this.tags.get('tagId'));
         this.$('#tagName').val(this.tags.get('tagName'));
+    },
+    cancelSubmit: function(event) {
+        if(event.keyCode == 13) {
+            event.preventDefault();
+        }
     }
 });
 

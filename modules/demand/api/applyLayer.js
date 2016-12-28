@@ -53,7 +53,7 @@ var view = Backbone.View.extend({
         this.model.set(e.target.name, e.target.value);
     },
     submit: function() {
-        this.model.set('id', this.id);
+        this.model.set('id', +this.id);
         this.model.save();
     },
     submitForm: function(index) {

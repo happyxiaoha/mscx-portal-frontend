@@ -205,7 +205,7 @@ var createDemandView = Backbone.View.extend({
 
         _.extend(param, {
             tags: tags,
-            detailTag: detail.result.tags
+            detailTag: detail.result && detail.result.tags || []
         })
 
         this.tagView = new tagView({

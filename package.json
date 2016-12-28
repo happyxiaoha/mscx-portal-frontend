@@ -27,7 +27,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
-    "gulp-clean": "^0.3.2"
+    "gulp-clean": "^0.3.2",
+    "showdown": "^1.5.4"
   },
   "scripts": {
     "test": "none"

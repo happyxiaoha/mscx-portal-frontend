@@ -170,7 +170,13 @@
     <% }); %>
 </script>
 <script id="tagList" type="template">
-    <div class="layerApi"><ul class="provider-list"><% _.each(tagList, function (tagitem) { %><li attrId="<%=tagitem.tagId%>"><%=tagitem.name%></li><% }); %></ul></div>
+    <div class="layerApi">
+        <ul class="provider-list">
+            <% _.each(tagList, function (tagitem) { %>
+            <li attrId="<%=tagitem.tagId%>"><label style="width: 100%;line-height: 16px;"><input type="checkbox" style="width: 20px;"> <%=tagitem.name%></label></li>
+            <% }); %>
+        </ul>
+    </div>
 </script>
 <script id="serverTypeList" type="template">
         <% _.each(serverTypeList, function (titem) { %>

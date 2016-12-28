@@ -29,3 +29,13 @@
 .loginTable ul li label p{text-align: center;font-size: 14px;margin-top: 13px;}
 .loginTable ul li input[type="submit"]{background: #069cd9;text-align: center;height: 40px;border: none;font-size: 14px;color: #fff;margin-left: 190px;padding: 0 26px;}
 .companyCons li span{width: 130px !important;}
+
+.remember{
+    padding-left: 100px;
+}
+.remember input[type='checkbox']{
+    margin-top: -3px;
+}
+.remember a{
+    color: #0ab7ef;
+}

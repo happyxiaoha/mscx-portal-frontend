@@ -57,7 +57,13 @@
 .containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons{width: 710px;}
 .containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top{line-height: 28px;margin-bottom: 8px;}
 .containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top h2{font-size: 18px;margin-right: 16px;}
-.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;margin-right: 5px;margin-top: 2px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;
+    margin-right: 5px;
+    width: 200px;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
 .containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;width: 200px;overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;}

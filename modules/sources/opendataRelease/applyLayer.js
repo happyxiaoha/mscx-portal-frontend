@@ -41,7 +41,6 @@ var view = Backbone.View.extend({
         this.listenTo(this.addCartModel, 'sync', this.handleCart);
         this.listenTo(this.feeOrderModel, 'sync', this.handleFeeOrder);
 
-
         this.render();
 
     },
@@ -74,7 +73,9 @@ var view = Backbone.View.extend({
                     res = res.toJSON();
                     newTarget.location.href = res.result; //在打开的tab页下载
                     layer.close(that.layerIndex);
-                    setTimeout(function(){newTarget.close()}, 1000);
+                    if(!window.attachEvent) {
+                        setTimeout(function(){newTarget.close()}, 1000);
+                    }
                 }
             })
         }else {

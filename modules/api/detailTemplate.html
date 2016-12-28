@@ -23,7 +23,7 @@
                     <div class="top clearfix">
                         <h2 class="fl"><%= data.result && data.result.apiServiceCName %></h2>
                         <div class="fl">
-                            <span><%= data.result && data.result.tagsName %></span>
+                            <span title="<%= data.result && data.result.tagsName %>"><%= data.result && data.result.tagsName %></span>
                         </div>
                     </div>
                     <div class="down">
@@ -44,7 +44,7 @@
                                 <p class="mb15">
                                     <span class="mr10">API状态：<em><%= data.result && data.result.statusDesc %></em></span>
                                    <!-- <span  class="mr25">连接服务：<em>100万</em></span>-->
-                                    <span>服务区域：<em><%= data.result && data.result.scope %></em></span>
+                                    <span>服务区域：<em title="<%= data.result && data.result.scope %>"><%= data.result && data.result.scope %></em></span>
                                 </p>
                                 <p class="mb15">
                                     <span class="mr10" title="<%= data.result && data.result.providerName %>">服务商：<em><%= data.result && data.result.providerName %></em></span>

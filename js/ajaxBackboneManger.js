@@ -11,6 +11,9 @@ Backbone.sync = function(method, model, options) {
         error = options.error;
     
     options.beforeSend = function (xhr) {
+        if(window.attachEvent) {
+            options.cache = false;
+        }
         this.url = mscxPage.host + this.url;
         if (beforeSend) return beforeSend.apply(this, arguments);
     };

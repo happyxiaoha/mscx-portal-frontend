@@ -44,7 +44,8 @@ module.exports = {
         alias: {
             validate: 'lib/jquery.validate.js',
             formAjax: 'lib/jquery.form.js',
-            util: 'lib/util.js'
+            util: 'lib/util.js',
+            showdown: 'lib/showdown.js'
         },
         extensions: ['', '.js', '.css']
     }

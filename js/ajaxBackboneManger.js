@@ -9,11 +9,11 @@ Backbone.sync = function(method, model, options) {
         success = options.success,
         complete = options.complete,
         error = options.error;
+    if(window.attachEvent) {
+        options.cache = false;
+    }
     
     options.beforeSend = function (xhr) {
-        if(window.attachEvent) {
-            options.cache = false;
-        }
         this.url = mscxPage.host + this.url;
         if (beforeSend) return beforeSend.apply(this, arguments);
     };

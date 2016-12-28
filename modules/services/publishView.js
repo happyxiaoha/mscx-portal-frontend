@@ -114,7 +114,7 @@ var createDemandView = Backbone.View.extend({
     submitForm: function () {
         var params = this.$form.serializeObject();
 
-        params.serviceObject = params.serviceObject.join(',');
+        params.serviceObject = _.isArray(params.serviceObject) ? params.serviceObject.join(',') : params.serviceObject;
         params.categoryId = +params.categoryId;
         if(params.id) {
             params.id = +params.id;

@@ -4,7 +4,7 @@
 
 var registerTemplate = require('html!./register.html');
 require('validate');
-require('../../lib/additional-methods.js');
+require('customValidate');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
     url: 'register/captcha.do?t=' + new Date().getTime()

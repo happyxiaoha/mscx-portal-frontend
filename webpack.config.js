@@ -45,7 +45,8 @@ module.exports = {
             validate: 'lib/jquery.validate.js',
             formAjax: 'lib/jquery.form.js',
             util: 'lib/util.js',
-            showdown: 'lib/showdown.js'
+            showdown: 'lib/showdown.js',
+            customValidate: 'lib/additional-methods.js'
         },
         extensions: ['', '.js', '.css']
     }

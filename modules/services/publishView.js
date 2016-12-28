@@ -8,6 +8,7 @@ require('./services.css');
 require('validate');
 require('formAjax');
 require('util');
+require('customValidate');
 
 // 获取微信详情
 var detailModel = Backbone.Model.extend({
@@ -23,7 +24,7 @@ var categoryModel = Backbone.Model.extend({
 })
 // 微服务标签
 var tagModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'tag/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tags/getTagsInfo.do'
 })
 // 上传图片
 var uploadImgUrl = mscxPage.request.app + 'pic/upload.do';
@@ -97,6 +98,7 @@ var createDemandView = Backbone.View.extend({
                 },
                 scope: {
                     required: true,
+                    chineseAndSplit: true
                 },
                 demoUri: {
                     required: true

@@ -5,7 +5,7 @@
 'use strict';
 var changePwdTemplate = require('html!./changePwd.html');
 require('validate');
-require('../../lib/additional-methods.js');
+require('customValidate');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
     url: 'forget/password/captcha.do?t=' + new Date().getTime()

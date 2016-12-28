@@ -30,7 +30,7 @@
                 <p class="fl R_left"><em>*</em>服务名称：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="name" maxlength="100" placeholder="请输入服务名称" value="<%= data.detail && data.detail.name %>">
+                        <input type="text" name="name" maxlength="20" placeholder="请输入服务名称" value="<%= data.detail && data.detail.name %>">
                     </p>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                 <p class="fl R_left"><em>*</em>服务范围：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" placeholder="输入服务的城市" name="scope" value="<%= data.detail && data.detail.scope %>">
+                        <input type="text" placeholder="输入服务的城市，以逗号分隔" name="scope" value="<%= data.detail && data.detail.scope %>" maxlength="50">
                     </p>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                 <p class="fl R_left"><em>*</em>演示地址：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="demoUri" placeholder="输入演示地址" value="<%= data.detail && data.detail.demoUri %>">
+                        <input type="text" name="demoUri" placeholder="输入演示地址" value="<%= data.detail && data.detail.demoUri %>" maxlength="255">
                     </p>
                 </div>
             </div>

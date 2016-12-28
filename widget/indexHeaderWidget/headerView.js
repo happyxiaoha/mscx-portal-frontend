@@ -73,7 +73,7 @@ var headerView = Backbone.View.extend({
         this.$el.html(this.template({
             id: 'index',
             menuList: menuList,
-            username: nJson.result
+            username: nJson.result.name
         }));
         var _c;
         $("#personReal").hover(function(){

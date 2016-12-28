@@ -80,7 +80,7 @@ var createDemandView = Backbone.View.extend({
     },
     submitForm: function () {
         var params = this.$form.serializeObject();
-
+        
         this.model.set(params);
         this.model.save();
     },

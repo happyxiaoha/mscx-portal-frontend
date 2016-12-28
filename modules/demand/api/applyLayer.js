@@ -7,6 +7,7 @@ var model = Backbone.Model.extend({
 })
 
 require('validate');
+require('formAjax');
 
 var view = Backbone.View.extend({
     tagName: 'form',
@@ -15,9 +16,14 @@ var view = Backbone.View.extend({
     events: {
         'input input[type="text"]' : 'changeAttribute',
         'input textarea' : 'changeAttribute',
+        'change input[type="file"]': 'changeFile'
     },
     initialize: function() {
-        this.$el.html(this.template()).attr('onsubmit', 'return false;');
+        this.$el.html(this.template({id: this.id})).attr({
+            onsubmit: 'return false;',
+            method: 'post',
+            enctype: 'multipart/form-data'
+        });
 
         this.model = new model();
 
@@ -53,8 +59,15 @@ var view = Backbone.View.extend({
         this.model.set(e.target.name, e.target.value);
     },
     submit: function() {
-        this.model.set('id', +this.id);
-        this.model.save();
+        this.$el.ajaxSubmit({
+            url: this.model.url,
+            success: function(res) {
+                layer.msg('接单成功！');
+                setTimeout(function() {
+                    location.href = 'userInfo.html#demand/api';
+                }, 2000);
+            }
+        })
     },
     submitForm: function(index) {
         this.layerIndex = index;
@@ -66,10 +79,17 @@ var view = Backbone.View.extend({
 
         layer.close(me.layerIndex);
         if(model.status == 'OK') {
-            layer.msg('接单成功！', function() {
+            layer.msg('接单成功！');
+            setTimeout(function() {
                 me.delegate.fetchDetail();
-            });
+            }, 2000);
         }
+    },
+    changeFile: function(event) {
+        var filePath = $(event.currentTarget).val();
+        var arr = filePath.split('\\');
+        var fileName = arr[arr.length-1];
+        this.$("#showFileName").html(fileName);
     }
 });
 

@@ -1,3 +1,4 @@
+<input type="hidden" name="id" />
 <label>
     <em class="fl">*</em>
     <span>报价：</span>
@@ -20,7 +21,11 @@
 </label>
 <label>
     <span>上传文件：</span>
-    <input type="file" name="orderFile">
+    <div class="pr fl">
+        <button class="btn beauty-file" type="button">选择文件</button>
+        <input class="btn btn-xs btn-file" type="file" name="orderFile" value="选择文件">
+        <i id="showFileName"></i>
+    </div>
 </label>
 <!-- <label>
     <span>上传文件：</span>

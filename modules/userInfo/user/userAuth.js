@@ -102,35 +102,48 @@ var userAuthenticationView = Backbone.View.extend({
         }
     },
     doSavePerson: function () {
+        var that = this,
+            agreement = $('#agreementPer').is(':checked');
         if($('.identifide ').val() == 'photo' && !$('.upload-file').val()){
             $('.identifyType').find('.phone-error').removeClass('hide');
             return;
         }
         $('.identifyType').find('.phone-error').addClass('hide');
-        this.model.save({},{
-            success: function () {
-                layer.msg('提交成功!');
-                setTimeout(function () {
-                    location.href = '#info';
-                },2000);
+        if(agreement) {
+            this.model.save({}, {
+                success: function () {
+                    layer.msg('提交成功!');
+                    setTimeout(function () {
+                        location.href = '#info';
+                    }, 2000);
+                }
+            })
+        }
+        else {
+                layer.alert('请确认协议！');
             }
-        })
     },
     doEnterpriseSave: function () {
+        var that = this,
+            agreement = $('#agreement').is(':checked');
         if(!$('.upload-file').val()){
             $('.phone-error').removeClass('hide');
             return;
         }
         $('.phone-error').addClass('hide');
-        var that = this;
-        this.model.save({},{
-            success: function(){
-                layer.msg('提交成功!');
-                setTimeout(function () {
-                    location.href = '#info';
-                },2000);
-            }
-        });
+        if(agreement) {
+            this.model.save({},{
+                success: function(){
+                    layer.msg('提交成功!');
+                    setTimeout(function () {
+                        location.href = '#info';
+                    },2000);
+                }
+            });
+        }
+        else {
+            layer.alert('请确认协议！');
+        }
     },
     initialize: function() {
         var that = this;

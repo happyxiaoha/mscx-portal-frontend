@@ -65,7 +65,7 @@
                             <td><a href="sources.html#detail/<%=ditem.id%>"><%=ditem.dataSourceName%></a></td>
                             <td><%=ditem.desc%></td>
                             <td><%= ditem.updateTime ? new Date(parseInt(ditem.updateTime)).format('yyyy-MM-dd') : '-'%></td>
-                            <td><%=ditem.displayer%></td>
+                            <td><%=ditem.orgName%></td>
                             <td><a href="javascript:;" class="down-sources">下载</a></td>
                         </tr>
                         <% }); %>

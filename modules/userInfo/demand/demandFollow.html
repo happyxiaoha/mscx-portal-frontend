@@ -25,7 +25,7 @@
             <tbody>
             <% _.each(focusServerList, function (fsitem) { %>
             <tr attrId="<%=fsitem.serviceId%>">
-                <td><a  href="../sources.html#detail/<%=fsitem.id%>"><%=fsitem.name%></a></td>
+                <td><a  href="../demand.html#service/detail/<%=fsitem.serviceId%>"><%=fsitem.name%></a></td>
                 <td><%= fsitem.publisher%></td>
                 <td><%= fsitem.money%></td>
                 <td><%= fsitem.pageviewAmount%></td>
@@ -60,7 +60,7 @@
             <tbody>
             <% _.each(focusApiList, function (faitem) { %>
             <tr attrId="<%=faitem.id%>">
-                <td><a  href="../sources.html#detail/<%=faitem.id%>"><%=faitem.sysName%></a></td>
+                <td><a  href="../demand.html#api/detail/<%=faitem.id%>"><%=faitem.sysName%></a></td>
                 <td><%= faitem.pulibsher%></td>
                 <td><%= faitem.preOffer%></td>
                 <td><%= faitem.pageviewAmount%></td>
@@ -95,7 +95,7 @@
             <tr>
                 <% _.each(followSourceList, function (fsitem) { %>
                 <tr attrId="<%=fsitem.id%>">
-                    <td><a  href="../sources.html#detail/<%=fsitem.id%>"><%=fsitem.name%></a></td>
+                    <td><a  href="../demand.html#data/detail/<%=fsitem.id%>"><%=fsitem.name%></a></td>
                     <td><%= fsitem.dataUsage%></td>
                     <td><%= fsitem.department%></td>
                     <td><%= fsitem.focusTime ? new Date(fsitem.focusTime).format('yyyy-MM-dd') : '-'%></td>

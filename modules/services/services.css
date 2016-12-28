@@ -188,7 +188,7 @@
 .ReleaseDownCons label.error {float: left;color: red;margin-left: 20px;line-height: 30px;}
 .ReleaseDownCons input[type="text"].error {border: 1px solid red !important;float: left;}
 .ReleaseDownCons textarea.error {border: 1px solid red !important;float: left;}
-.allInfoImg {position: relative;border: 1px solid #DDD;padding: 2px;}
+.allInfoImg {position: relative;border: 1px solid #DDD;padding: 2px;overflow: hidden;}
 .allInfoImg img{width: 60px;height: 60px;}
 .allInfoImg input{
     position: absolute;

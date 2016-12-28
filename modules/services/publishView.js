@@ -74,6 +74,7 @@ var createDemandView = Backbone.View.extend({
     validateConfig: function () {
         var me = this;
         return {
+            ignore: '.ignore',
             rules: {
                 name: {
                     required: true,
@@ -192,6 +193,7 @@ var createDemandView = Backbone.View.extend({
                 }else {
                     me.$('#' + id + 'Icon').attr('src', params.uri);
                     me.$('#' + id + 'Key').val(params.key);
+                    me.$('#' + id + 'Key-error').text('')
                 }
             },
             error: function() {
@@ -250,6 +252,7 @@ var createDemandView = Backbone.View.extend({
     fillTags: function() {
         this.$('#tagId').val(this.tags.get('tagId'));
         this.$('#tagName').val(this.tags.get('tagName'));
+        this.$('#tagId-error').text('');
     },
     cancelSubmit: function(event) {
         if(event.keyCode == 13) {

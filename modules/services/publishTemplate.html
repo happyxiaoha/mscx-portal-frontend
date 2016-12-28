@@ -47,14 +47,15 @@
                 <div class="fl R_right">
                     <p class="allInfoImg">
                         <% if(data.detail && data.detail.imageUri){ %>
-                            <img id="serviceIcon" src="<%= data.detail.imageUri %>" alt="">
+                            <img class="fl" id="serviceIcon" src="<%= data.detail.imageUri %>" alt="">
                         <% }else { %>
-                            <img id="serviceIcon" src="../../images/add.png" alt="">
+                            <img class="fl" id="serviceIcon" src="../../images/add.png" alt="">
                         <% } %>
-                        <input type="text" class="hide" value="<%= data.detail && data.detail.imageKey %>" name="imageKey" id="serviceKey">
+                        <input type="hidden" value="<%= data.detail && data.detail.imageKey %>" name="imageKey" id="serviceKey">
                     </p>
                 </div>
-                <label id="imageKey-error" style="display:none;" class="error" for="imageKey"></label>
+                <label id="serviceKey-error" class="error hide" for="serviceKey"></label>
+                <!-- <label id="imageKey-error" style="display:none;" class="error" for="imageKey"></label> -->
                 <!-- <label class="img-error">请上传服务图标</label> -->
             </div>
             <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
@@ -81,7 +82,7 @@
                         <button class="btn btn-primary" id="selectTagBtn">选择</button>
                     </p>
                 </div>
-                <label id="mainSelInput01-error" style="display:none;" class="error" for="mainSelInput01"></label>
+                <label id="tagId-error" style="display:none;" class="error" for="tagId"></label>
             </div>
             <div class="clearfix ReleaseList">
                 <p class="fl R_left"><em>*</em>服务范围：</p>

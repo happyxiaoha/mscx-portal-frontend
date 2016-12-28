@@ -121,12 +121,12 @@ var userAuthenticationView = Backbone.View.extend({
         }
         else {
                 layer.alert('请确认协议！');
-            }
+        }
     },
     doEnterpriseSave: function () {
         var that = this,
             agreement = $('#agreement').is(':checked');
-        if(!$('.upload-file').val()){
+        if(!that.model.get('licencePicUrl')){
             $('.phone-error').removeClass('hide');
             return;
         }
@@ -283,6 +283,9 @@ var userAuthenticationView = Backbone.View.extend({
         res.account = account;
         this.model = res.contractName ? new updateEnterpriseAuthModel(res) : new addEnterpriseAuthModel(res);
         this.$el.find('.inputCons').html(_.template($('#userEnterpriseAuth').html())(res));
+        if(res.contractName){
+            this.model.set('licencePicUrl',res.licencePicUrl)
+        }
         $('#enterpriseForm').validate(this.enterpriseValidateConfig());
     },
     uploadFile: function (e) {

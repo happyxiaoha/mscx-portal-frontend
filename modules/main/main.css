@@ -298,14 +298,15 @@
     background: #fff;
 }
 .apitypelist li{
-    padding: 15px 0 0 55px;
+    padding: 10px 0 0 55px;
     font-size: 14px;
-    background: url("../../images/newicon/ic_blue.png") 30px  19px no-repeat;
+    background: url("../../images/newicon/ic_blue.png") 30px  15px no-repeat;
     line-height: 15px;
     width: 175px;
 }
 .apitypelist li a{
     display: block;
+    height: 20px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -313,7 +314,7 @@
 }
 .apitypelist li:first-child{
     padding-top: 0;
-    background: url("../../images/newicon/ic_blue.png") 30px  4px no-repeat;
+    background: url("../../images/newicon/ic_blue.png") 30px  6px no-repeat;
 }
 .mainDatas-left .more{
     height: 47px;
@@ -346,12 +347,12 @@
     border-top: none;
 }
 .serlist .apitypelist li {
-    background: url("../../images/newicon/ic_zise.png") 30px 19px no-repeat;
+    background: url("../../images/newicon/ic_zise.png") 30px 15px no-repeat;
 }
 
 .serlist .apitypelist li:first-child{
     padding-top: 0;
-    background: url("../../images/newicon/ic_zise.png") 30px  4px no-repeat;
+    background: url("../../images/newicon/ic_zise.png") 30px  6px no-repeat;
 }
 .serlist .mainDatas-left .more{
     border: solid 3px #b461d6;

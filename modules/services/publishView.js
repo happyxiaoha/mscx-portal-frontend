@@ -8,6 +8,7 @@ require('./services.css');
 require('validate');
 require('formAjax');
 require('util');
+require('customValidate');
 
 // 获取微信详情
 var detailModel = Backbone.Model.extend({
@@ -97,6 +98,7 @@ var createDemandView = Backbone.View.extend({
                 },
                 scope: {
                     required: true,
+                    chineseAndSplit: true
                 },
                 demoUri: {
                     required: true

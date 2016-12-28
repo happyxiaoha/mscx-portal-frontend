@@ -5,7 +5,7 @@
 var loginTemplate = require('html!./login.html');
 var changePwdView = require('./changePwdView.js');
 require('validate');
-require('../../lib/additional-methods.js');
+require('customValidate');
 
 var getCaptchaModel = Backbone.Model.extend({   //获取图形验证码
     url: 'login/captcha.do?t=' + new Date().getTime()

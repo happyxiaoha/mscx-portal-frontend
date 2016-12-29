@@ -57,12 +57,13 @@ var view = Backbone.View.extend({
         this.model.set(e.target.name, e.target.value);
     },
     submit: function() {
+        var me = this;
         this.$el.ajaxSubmit({
             url: this.model.url,
             success: function(res) {
                 layer.msg('接单成功！');
                 setTimeout(function() {
-                    location.href = 'userInfo.html#acceptDemand';
+                    me.delegate.fetchDetail();
                 }, 2000);
             }
         })
@@ -70,7 +71,7 @@ var view = Backbone.View.extend({
     submitForm: function(index) {
         this.layerIndex = index;
         this.$el.submit();
-    }
+    },
     changeFile: function(event) {
         var filePath = $(event.currentTarget).val();
         var arr = filePath.split('\\');

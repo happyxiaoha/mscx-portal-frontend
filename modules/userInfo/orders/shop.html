@@ -32,7 +32,7 @@
     <% _.each(shopCarList, function (scitem) { %>
     <li attrId="<%=scitem.id%>">
         <p>
-            <span> <%=scitem.lastUpdateTime ? new Date(scitem.lastUpdateTime).format('yyyy-MM-dd hh:mm:ss') : '-'%></span>
+            <span> <%=scitem.createdTime ? new Date(scitem.createdTime).format('yyyy-MM-dd hh:mm:ss') : '-'%></span>
             <span class="deleteCar fr"></span>
         </p>
         <div class="orderList">

@@ -9,7 +9,7 @@
 .labelleft .ReleaseList .R_left{ width: 120px;}
 .downIcon .downSmalllBtn { top:10px;}
 .ReleaseInputs .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;}
-.ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 630px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;font-size: 14px;}
+.ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 590px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;font-size: 14px;}
 .R_inputs{width: 800px;padding-top: 9px;}
 .R_inputs label{display: inline-block;width: 114px;margin: 0 19px 19px 0;}
 .R_inputs label:nth-child(6n){margin-right: 0;}
@@ -28,7 +28,7 @@
 .newAddDate{width: 130px !important; text-align: center;cursor: default !important;}
 .api-content .allInfoImg {border: 1px solid #DDD;  padding: 2px;}
 .api-content .allInfoImg img {width: 60px;height: 60px;}
-.api-content .imgForm {position: absolute;top: 331px;left: 162px;width: 66px;height: 66px;overflow: hidden;}
+.api-content .imgForm {position: absolute;top: 418px;left: 162px;width: 66px;height: 66px;overflow: hidden;}
 .api-content .imgForm input {opacity: 0;}
 .api-content .imgForm input[type="file"]{z-index: 9999;font-size: 999px;position: absolute;top:0;left: 0;width: 100%;height: 100%;}
 .server-dist {margin-top: 8px;}
@@ -118,3 +118,5 @@
 .add-price-list ul li span.prePrice,.add-price-list ul li span.limitPre {width:auto;}
 .mes {line-height: 30px;}
 .mes-split {line-height: 30px;margin-right: 5px;}
+.input-mes {margin: 10px 0 0 126px;font-size: 12px;color: #999;}
+.input-mes-api{margin: 0;font-size: 12px;color: #999;}

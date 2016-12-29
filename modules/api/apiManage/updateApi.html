@@ -21,9 +21,10 @@
             <p class="fl R_left">服务范围：</p>
             <div class="fl R_right">
                 <p>
-                    <textarea placeholder="多个城市之间以逗号隔开" name="scope" ><%=res.scope%></textarea>
+                    <textarea placeholder="请输入服务范围" name="scope" ><%=res.scope%></textarea>
                 </p>
             </div>
+             <p class="input-mes fl">多个城市之间用中文逗号隔开</p>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">服务名称：</p>
@@ -32,6 +33,7 @@
                     <input type="text" placeholder="请输入服务名称" name="cname" value="<%=res.cname%>">
                 </p>
             </div>
+            <p class="input-mes fl">由中文、英文（大小写）、数字及其组合组成，最多不超过20字</p>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">服务标识：</p>
@@ -41,6 +43,7 @@
                 </p>
             </div>
             <span class="api-server-error">这是必填字段</span>
+            <p class="input-mes fl">由英文、数字及其组合组成，最多不超过20字</p>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">是否收费：</p>
@@ -56,6 +59,7 @@
                     <textarea cols="30" rows="10" placeholder="请输入数据描述" name ="description"><%=res.description%></textarea>
                 </p>
             </div>
+            <p class="input-mes fl">对业务服务进行说明，支持中文、英文（大小写）、数字、符号及其组合输入，输入最多不超过150占位符</p>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">服务图标：</p>
@@ -88,9 +92,10 @@
             <p class="fl R_left">服务返回码：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入服务返回码" name="rtnCode" value="<%=res.rtnCode%>">
+                    <textarea cols="30" rows="10" placeholder="请输入服务返回码" name ="rtnCode"><%=res.rtnCode%></textarea>
                 </p>
             </div>
+            <p class="input-mes fl">调用说明，使用MarkDown格式</p>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">服务对象：</p>
@@ -226,12 +231,14 @@
                 <label>
                     <span><i class="need">*</i>API名称：</span>
                     <input type="text" name="cname" id="cname" value="<%=res.cname%>">
+                    <p class="input-mes-api fl">支持中文、英文（大小写）、数字及其组合组成，最多不超过20字</p>
                 </label>
             </li>
             <li>
                 <label>
                     <span><i class="need">*</i>API标识：</span>
                     <input type="text" name="name" id="apiName" value="<%=res && res.name%>">
+                    <p class="input-mes-api fl">由英文、数字及其组合组成，最多不超过20字</p>
                 </label>
                 <span class="api-name-error">这是必填字段</span>
             </li>
@@ -259,18 +266,21 @@
                 <label>
                     <span><i class="need">*</i>API地址：</span>
                     <input type="text" name="uri" id="uri" value="<%=res && res.uri%>">
+                    <p class="input-mes-api fl">请输入完整的服务访问URL地址(如：http://www.xxxx.cn)</p>
                 </label>
             </li>
             <li>
                 <label>
                     <span><i class="need">*</i>测试报文：</span>
                     <textarea id="testPacket" name="testPacket"><%=res && res.testPacket%></textarea>
+                    <p class="input-mes-api fl">测试报文，用于审核人员进行测试使用，请保证报文的正确性</p>
                 </label>
             </li>
             <li>
                 <label>
                     <span><i class="need">*</i>调用说明：</span>
                     <textarea id="directions" name="directions"><%=res && res.directions%></textarea>
+                    <p class="input-mes-api fl">调用说明，使用MarkDown格式</p>
                 </label>
             </li>
         </ul>

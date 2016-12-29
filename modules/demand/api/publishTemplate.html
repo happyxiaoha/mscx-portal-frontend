@@ -224,7 +224,11 @@
             <div class="fl R_right pr">
                 <button class="btn beauty-file" type="button">上传文件</button>
                 <input class="btn btn-xs btn-file" id="document-0" type="file" name="file" value="选择文件">
+                <% if(data && data.fileName){ %>
+                <a id="showFileName" target="_blank" href="<%= data.fileUrl %>"><%= data && data.fileName %></a>
+                <% } else { %>
                 <span id="showFileName"><%= data && data.fileName %></span>
+                <% } %>
             </div>
         </div>
         <div class="clearfix ReleaseList">

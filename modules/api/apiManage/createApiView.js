@@ -201,7 +201,7 @@ var createApiView = Backbone.View.extend({
             rules: {
                 name: {
                     required: true,
-                    minlength: 2
+                    maxlength: 50
                 },
                 price: {
                     required: true,
@@ -227,6 +227,11 @@ var createApiView = Backbone.View.extend({
                 },
                 expiryDate: {
                     date: true
+                }
+            },
+            messages: {
+                name: {
+                    maxlength: '套餐名称不大于50个字符'
                 }
             },
             submitHandler: function () {
@@ -392,7 +397,6 @@ var createApiView = Backbone.View.extend({
                 newData = new Date(sdata)
             }
             resDate.setDate(newData.getDate()-1);
-            console.log(resDate.getDate());
             return resDate;
         }
         if($('#effectDate').data('daterangepicker')){

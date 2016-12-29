@@ -27,8 +27,6 @@ var view = Backbone.View.extend({
 
         this.model = new model();
 
-        this.listenTo(this.model, 'sync', this.handleSubmit);
-
         this.$el.validate(this.validateConfig());
     },
     validateConfig: function () {
@@ -72,19 +70,7 @@ var view = Backbone.View.extend({
     submitForm: function(index) {
         this.layerIndex = index;
         this.$el.submit();
-    },
-    handleSubmit: function() {
-        var model = this.model.toJSON(),
-            me = this;
-
-        layer.close(me.layerIndex);
-        if(model.status == 'OK') {
-            layer.msg('接单成功！');
-            setTimeout(function() {
-                me.delegate.fetchDetail();
-            }, 2000);
-        }
-    },
+    }
     changeFile: function(event) {
         var filePath = $(event.currentTarget).val();
         var arr = filePath.split('\\');

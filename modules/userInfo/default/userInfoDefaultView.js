@@ -13,7 +13,6 @@ var myApiListModel = Backbone.Model.extend({
 var myServerListModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'attention/list.do'
 });
-
 var template = require('html!./userInfoDefault.html');
 require('./userInfoDefault.css');
 var apiItemView = require('apiItemWidget/apiItemView.js');

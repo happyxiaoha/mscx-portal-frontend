@@ -20,7 +20,7 @@ var publishDataModel = Backbone.Model.extend({
 var demandView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
-        pageSize: 10,
+        pageSize: 5,
         pageNum: 1,
         totalPage: 1
     },

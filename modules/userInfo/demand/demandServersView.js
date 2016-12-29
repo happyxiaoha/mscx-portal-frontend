@@ -17,6 +17,10 @@ var demandServersListModel = Backbone.Model.extend({
 var deleteServerDemandModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'deleteService.do'
 });
+
+var serOrderModel = Backbone.Model.extend({   //查看服务需求接单列表
+    url: mscxPage.request.demand + 'getServiceOrder.do'
+});
 var publishServiceModel = Backbone.Model.extend({
     idAttribute: 'serviceId',
     url: mscxPage.request.demand + 'publishService.do'
@@ -32,7 +36,8 @@ var serversDemandListView = Backbone.View.extend({
     events: {
         'click .deleteServers': 'deleteServers',
         'click .closeServers': 'closeServers',
-        'click .servicePublish': 'publishDemand'
+        'click .servicePublish': 'publishDemand',
+        'click .showSerOrderInfo':　'showSerOrderList'
     },
     initialize: function() {
         this.$el.html(_.template(commonTemplate)({name:'serversDemand'}));
@@ -41,6 +46,9 @@ var serversDemandListView = Backbone.View.extend({
         this.model = new demandServersListModel();
         this.publishServiceModel = new publishServiceModel();
 
+        this.serOrderModel = new serOrderModel();
+
+        this.listenTo(this.serOrderModel, 'sync', this.handleSerOrder);
         this.listenTo(this.publishServiceModel, 'sync', this.handlePublish);
         this.model.on('change',function () {
             that.render();
@@ -138,6 +146,31 @@ var serversDemandListView = Backbone.View.extend({
             this.pagObj.pageNum = 1;
             this.reloadPage();
         }
+    },
+    showSerOrderList: function (e){
+        var attrid = $(e.target).closest('tr').attr('attrId');
+        this.serOrderModel.fetch({
+            data: {
+                id: +attrid
+            }
+        });
+        var dialog = layer.open({
+            type: 1,
+            btn: ['关闭'],
+            title: '接单人列表',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['600px', '500px'],
+            content: $('#serNameList'), //捕获的元素
+            btn1: function () {          //通过
+                layer.close(dialog);
+            }
+        })
+    },
+    handleSerOrder: function(res){
+        res = res.toJSON().result;
+        var temps = _.template($('#serOrderNameList').html());
+        this.$el.find('#orderNameList').html(temps({serOrderList: res}));
     }
 });
 module.exports = serversDemandListView;

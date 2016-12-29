@@ -25,7 +25,7 @@
 <script id="serversDemandList" type="template">
     <% _.each(serverDemandList, function (sitem) { %>
     <tr attrId="<%=sitem.id%>" >
-        <td><%=sitem.name%></td>
+        <td><a href="demand.html#service/detail/<%= sitem.id %>"><%=sitem.name%></a></td>
         <td><%=sitem.description%></td>
         <td><%=sitem.endTime%></td>
         <td><%=sitem.statusName%></td>
@@ -34,8 +34,11 @@
                 <a href="javascript:;" class="servicePublish" data-id="<%=sitem.id%>">发布</a>
                 <a href="./demand.html#service/edit/<%=sitem.id%>" class="editServerApi">修改</a>
                 <a href="javascript:;" class="deleteServers">删除</a>
-            <%}else if(sitem.status == '2' || sitem.status == '3' || sitem.status == '4'){%>
-                <a href="javascript:;" class="closeServers">关闭</a>
+            <%}else if(sitem.status == '2'){%>
+                <a href="javascript:;" class="showSerOrderInfo">查看接单列表</a>
+                <a href="javascript:;" class="closeApi">关闭</a>
+            <%}else if(sitem.status == '5'){%>
+                <a href="javascript:;" class="showSerOrderInfo">查看接单列表</a>
             <%}%>
         </td>
     </tr>
@@ -43,6 +46,53 @@
     <%if(serverDemandList.length == 0){%>
     <tr>
         <td colspan="5">暂无数据</td>
+    </tr>
+    <%}%>
+</script>
+
+
+<div id="serNameList" style="display: none;">
+    <div class="D_table M-table" style="padding: 20px;">
+        <table>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>时间</th>
+                <th>接单人</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>订单状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7">暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script id="serOrderNameList" type="template">
+    <% _.each(serOrderList, function (sitem) { %>
+    <tr>
+        <td>1</td>
+        <td>20161102</td>
+        <td>usersm</td>
+        <td>18611325859</td>
+        <td>skyzzzz@126.com</td>
+        <td>未处理</td>
+        <td>
+            <a class="showInfo">查看方案</a>
+            <a>确认</a>
+            <a>拒绝</a>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(serOrderList.length == 0){%>
+    <tr>
+        <td colspan="7">暂无数据</td>
     </tr>
     <%}%>
 </script>

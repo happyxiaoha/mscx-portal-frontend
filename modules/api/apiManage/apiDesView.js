@@ -178,7 +178,7 @@ var apiView = Backbone.View.extend({
             chooseS = serviceObject.split(',');
         for(var i =0, len = serverTypeList.length; i < len; i++ ){
             var types = serverTypeList[i],
-                id = types.id;
+                id = types.dictCode;
             for(var k = 0, klen = chooseS.length;k<klen; k++){
                 if(id == chooseS[k]){
                     types.isSelect = true;

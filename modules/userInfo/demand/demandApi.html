@@ -24,7 +24,7 @@
 <script id="apiDemandList" type="template">
     <% _.each(apiDemandList, function (aitem) { %>
     <tr attrId="<%=aitem.id%>">
-        <td><%=aitem.sysName%></td>
+        <td><a href="demand.html#api/detail/<%= aitem.id %>"><%=aitem.sysName%></a></td>
         <td><%=aitem.sysDescription%></td>
         <td><%=mscxPage.sourceStatus[aitem.statusCode]%></td>
         <td>
@@ -32,8 +32,11 @@
                 <a href="javascript:;" class="apiPublish" data-id="<%=aitem.id%>">发布</a>
                 <a href="demand.html#api/edit/<%=aitem.id%>" class="editApi">修改</a>
                 <a href="javascript:;" class="deleteApi">删除</a>
-            <%}else if(aitem.statusCode == '2' || aitem.statusCode == '3' || aitem.statusCode == '4'){%>
+            <%}else if(aitem.statusCode == '2'){%>
+                <a href="javascript:;" class="showApiInfo">查看接单列表</a>
                 <a href="javascript:;" class="closeApi">关闭</a>
+            <%}else if( aitem.statusCode == '5'){%>
+            <a href="javascript:;" class="showApiInfo">查看接单列表</a>
             <%}%>
         </td>
     </tr>
@@ -45,3 +48,50 @@
     <%}%>
 </script>
 
+
+<div id="orderNameList" style="display: none;">
+    <div class="D_table M-table" style="padding: 20px;">
+        <table>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>时间</th>
+                <th>接单人</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>订单状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7">暂无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script id="apiOrderNameList" type="template">
+    <% _.each(apiOrderList, function (aitem) { %>
+    <tr>
+        <td>1</td>
+        <td>20161102</td>
+        <td>usersm</td>
+        <td>18611325859</td>
+        <td>skyzzzz@126.com</td>
+        <td>未处理</td>
+        <td>
+            <a class="showInfo">查看方案</a>
+            <a>确认</a>
+            <a>拒绝</a>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(apiOrderList.length == 0){%>
+    <tr>
+        <td colspan="7">暂无数据</td>
+    </tr>
+    <%}%>
+</script>

@@ -176,6 +176,11 @@ var view = Backbone.View.extend({
             num = $number.val(),
             ruleId = $number.data('id');
 
+        if(!isAgree) {
+            layer.msg('请阅读并接受资源服务协议');
+            return;
+        }
+
         if(!ruleId) {
             layer.msg('请至少选择一个资源');
             return;

@@ -26,7 +26,7 @@
 <script id="resourcesDemandList" type="template">
     <% _.each(demandList, function (item) { %>
     <tr attrId="<%=item.id%>">
-        <td><a  href="../sources.html#detail/<%=item.id%>"><%=item.name%></a></td>
+        <td><a  href="demand.html#data/detail/<%=item.id%>"><%=item.name%></a></td>
         <td><%=item.dataDescription%></td>
         <td><%= item.publishTime ? new Date(item.publishTime).format('yyyy-MM-dd') : '-'%></td>
         <td><%= item.statusName %></td>

@@ -24,7 +24,7 @@
             <tbody>
             <% _.each(acceptServersList, function (asitem) { %>
             <tr attrId="<%=asitem.id%>">
-                <td><a  href="../sources.html#detail/<%=asitem.id%>"><%=asitem.name%></a></td>
+                <td><a  href="demand.html#service/detail/<%=asitem.id%>"><%=asitem.name%></a></td>
                 <td><%= asitem.money%></td>
                 <td><%= asitem.endTime ? new Date(asitem.endTime).format('yyyy-MM-dd') : '-'%></td>
                 <td><%= asitem.createdTime ? new Date(asitem.createdTime).format('yyyy-MM-dd') : '-'%></td>
@@ -59,7 +59,7 @@
             <tbody>
             <% _.each(acceptApiList, function (aaitem) { %>
             <tr attrId="<%=aaitem.id%>">
-                <td><a  href="../sources.html#detail/<%=aaitem.id%>"><%=aaitem.sysName%></a></td>
+                <td><a  href="demand.html#api/detail/<%=aaitem.id%>"><%=aaitem.sysName%></a></td>
                 <td><%= aaitem.endTime ? new Date(aaitem.endTime).format('yyyy-MM-dd') : '-'%></td>
                 <td><%= aaitem.orderTime ? new Date(aaitem.orderTime).format('yyyy-MM-dd') : '-'%></td>
                 <td><%= aaitem.reqUser%></td>

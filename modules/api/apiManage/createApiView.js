@@ -92,7 +92,8 @@ var createApiView = Backbone.View.extend({
         return {
             rules: {
                 scope: {
-                    required: true
+                    required: true,
+                    nameSplit: true
                 },
                 cname: {
                     required: true,
@@ -110,6 +111,9 @@ var createApiView = Backbone.View.extend({
                 }
             },
             messages: {
+                scope: {
+                    nameSplit: '多个城市间用中文逗号'
+                },
                 cname:{
                     unSpecial: '服务名称不能包含特殊字符',
                     maxlength: '服务名称不超过20个字'

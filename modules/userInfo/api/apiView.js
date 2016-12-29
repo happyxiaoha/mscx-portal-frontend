@@ -349,8 +349,9 @@ var apiView = Backbone.View.extend({
         var deleteLay = layer.confirm('确认下架这条API吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
-            new offlineApiModel().save({apiServiceId: sId},{
-                type: 'POST',
+            new offlineApiModel().fetch({
+                data:{apiServiceId: sId},
+                type: 'get',
                 success: function () {
                     layer.msg('下架成功!');
                     that.reloadPage();

@@ -67,15 +67,11 @@ var view = Backbone.View.extend({
         var $number = $tr.find('.number');
         var num = $number.val();
         var price = $number.data('price');
-        var limit = $number.data('limit');
+        // var limit = $number.data('limit');
 
         if(num < 1) {
             $target.val(1);
             num = 1;
-        }else if(num > limit) {
-            layer.msg('超出最大购买限制');
-            $target.val(limit);
-            num = limit;
         }
 
         $tr.find('.total').html(num * price);

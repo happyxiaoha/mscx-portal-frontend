@@ -74,7 +74,7 @@ var openDataDetailView = Backbone.View.extend({
             that = this;
         if(model.status == 'OK'){
             that.nJson.attentionFlag = true;
-            $('#attention').html('取消关注').addClass('have-attention');
+            $('#attention').html('取消关注')
         }
 
         layer.msg('关注成功');
@@ -83,7 +83,7 @@ var openDataDetailView = Backbone.View.extend({
         var model = res.toJSON(),
             that = this;
         if(model.status == 'OK') {
-            $('#attention').html('关注').removeClass('have-attention');
+            $('#attention').html('关注')
             this.nJson.attentionFlag = false;
         }
         layer.msg('取消关注成功');

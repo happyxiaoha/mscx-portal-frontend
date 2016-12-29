@@ -64,9 +64,8 @@ var view = Backbone.View.extend({
             pages: pageInfo.totalPage,
             jump: function(obj, first) {
                 if(!first) {
-                    me.trigger('page', {
-                        page: obj.curr,
-                        pageSize: me.pageSize
+                    me.searchParam.set({
+                        page: obj.curr
                     })
                 }
             }

@@ -6,6 +6,10 @@ var template = require('html!./applyTemplate.html');
 var packageModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'charge/getChargeRuleByServiceId.do'
 });
+// 免费api是否已经购买
+var freeIsBaughtModel = Backbone.Model.extend({
+    url: mscxPage.request.order + 'order/purchaseOrNot.do'
+});
 // 免费api下单
 var freeOrderModel = Backbone.Model.extend({
     url: 'order/freeApi/placeOrder.do'
@@ -30,6 +34,7 @@ var view = Backbone.View.extend({
     },
     initialize: function() {
         this.packageModel = new packageModel();
+        this.freeIsBaughtModel = new freeIsBaughtModel();
         this.freeOrderModel = new freeOrderModel();
         this.feeOrderModel = new feeOrderModel();
         this.addCartModel = new addCartModel();
@@ -41,6 +46,7 @@ var view = Backbone.View.extend({
         this.listenTo(this.addCartModel, 'sync', this.handleCart);
         this.listenTo(this.feeOrderModel, 'sync', this.handleFeeOrder);
         this.listenTo(this.freeOrderModel, 'sync', this.handleFreeOrder);
+        this.listenTo(this.freeIsBaughtModel, 'sync', this.handleIsBaughtOrder);
 
         this.on('caculate', this.caculate);
 
@@ -129,9 +135,11 @@ var view = Backbone.View.extend({
         }
     },
     freeOrder: function() {
-        this.freeOrderModel.fetch({
+        this.freeIsBaughtModel.fetch({
             data: {
-                apiId: this.id
+                sourceId: this.id,
+                char_rule_id: '-1',
+                sourceType: '01'
             }
         })
     },
@@ -228,6 +236,20 @@ var view = Backbone.View.extend({
         var base = new Base64;
         window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
         location.href = 'pay.html';
+    },
+    handleIsBaughtOrder: function() {
+        var model = this.freeIsBaughtModel.toJSON();
+
+        if(model.result != '03') {
+            layer.msg('已经订购');
+            return;
+        }
+
+        this.freeOrderModel.fetch({
+            data: {
+                apiId: this.id
+            }
+        })
     },
     handleFreeOrder: function() {
         var model = this.freeOrderModel.toJSON();

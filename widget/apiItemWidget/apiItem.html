@@ -17,7 +17,10 @@
         <em><%= data && data.accessCnt %></em>
     </span>
     <span class="fl">
-        <% if(data && data.chargeType == '02'){ %>
+        <% if(data && data.chargeType == '04'){ %>
+            <em class="red mt3"><%= data && data.price ? '¥' + data.price : '' %></em>
+            <em><%= data && data.chargeCount %>月起</em>
+        <% }else if(data.chargeType == '05'){ %>
             <em class="red mt3"><%= data && data.price ? '¥' + data.price : '' %></em>
             <em><%= data && data.chargeCount %>次起</em>
         <% }else if(data.chargeType == '01'){ %>

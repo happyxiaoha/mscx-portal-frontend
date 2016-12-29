@@ -1,7 +1,9 @@
 <div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
     <!-- top -->
     <p class="ReleaseTit">
-        <% if(data.detail && data.detail.id){ %>
+        <% if(data.showFlag) { %>
+        查看服务
+        <% }else if(data.detail && data.detail.id){ %>
         编辑服务
         <% }else{ %>
         发布新服务
@@ -144,6 +146,7 @@
                 <% } %>
             </div>
         </form>
+        <% if(!data.showFlag){ %>
         <form id="uploadServiceIcon" class="icon-form" action="" method="post">
             <input type="file" id="service" name="pic" class="upload-file">
         </form>
@@ -156,5 +159,6 @@
         <form id="uploadDemoIcon3" class="icon-form" action="" method="post">
             <input type="file" id="demo3" name="pic" class="upload-file">
         </form>
+        <% } %>
     </div>
 </div>

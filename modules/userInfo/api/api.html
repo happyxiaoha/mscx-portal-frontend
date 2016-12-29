@@ -9,7 +9,7 @@
                 <tr>
                     <th width="15%">API名称</th>
                     <th width="36%">API描述</th>
-                    <th width="10%">申请（购买）次数</th>
+                    <th width="10%">申请次数</th>
                     <th width="8%">状态</th>
                     <th width="18%">操作</th>
                 </tr>
@@ -90,7 +90,7 @@
             <%if(chargeItem.flag != 'D'){%>
             <tr>
                 <td><%=chargeItem.name%></td>
-                <td><%=chargeItem.price%>元<%=chargeItem.Count%><%if(chargeItem.chargeType == '04'){%>月<%}else{%>次<%}%></td>
+                <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%><%if(chargeItem.chargeType == '04'){%>月<%}else{%>次<%}%></td>
                 <td><%=chargeItem.countLimit ? chargeItem.countLimit : 0%>次</td>
                 <td><%=chargeItem.monthLimit ? chargeItem.monthLimit : 0%><%if(chargeItem.chargeType == '04'){%>次<%}else{%>个月<%}%></td>
                 <td><%= chargeItem.effectDate ? new Date(chargeItem.effectDate).format('yyyy-MM-dd') : '-'%></td>
@@ -127,6 +127,7 @@
                 <label>
                     <span><i class="need">*</i>套餐名称：</span>
                     <input type="text" name="name" id="packageName" value="<%=res.name%>">
+                    <p class="input-mes-api fl">套餐名称最多不超过50字</p>
                 </label>
             </li>
             <li>
@@ -137,6 +138,7 @@
                         <%if(res.chargeType=='05'){%><span class="prePrice">次</span><%}%>
                         <%if(res.chargeType=='04'){%><span class="prePrice">月</span><%}%>
                     </label>
+                    <p class="input-mes-api fl">套餐价格：大于0元，次数或者月数是大于1的整数</p>
                 </label>
             </li>
             <li>
@@ -156,6 +158,7 @@
                     </b>
                     <b class="fl ml20">(不填则为无限制)</b>
                 </label>
+                <p class="input-mes-api fl">使用限制：次数或者月数是大于1的整数</p>
             </li>
             <li>
                 <label>

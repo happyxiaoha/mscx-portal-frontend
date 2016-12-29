@@ -64,7 +64,6 @@
                 <th>时间</th>
                 <th>接单人</th>
                 <th>电话</th>
-                <th>邮箱</th>
                 <th>订单状态</th>
                 <th>操作</th>
             </tr>
@@ -89,7 +88,6 @@
         <td><%= new Date(aitem.orderTime).format('yyyy-MM-dd') %></td>
         <td><%= aitem.contactUsername %></td>
         <td><%= aitem.contactPhone %></td>
-        <td><%= aitem.contactEmail %></td>
         <td><%= aitem.statusName %></td>
         <td data-id="<%= aitem.id %>" data-reqid="<%= aitem.reqId %>">
             <%if(aitem.statusCode == 'P'){%>
@@ -121,6 +119,10 @@
     <label>
         <span>报价方案简介：</span>
         <textarea readonly><%- palnList.planIntro %></textarea>
+    </label>
+    <label>
+        <span>附件：</span>
+        <a href="<%- palnList.fileUrl %>" target="_blank"><%- palnList.fileName %></a>
     </label>
 </script>
 

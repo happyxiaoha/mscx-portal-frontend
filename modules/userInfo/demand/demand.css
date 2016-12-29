@@ -39,3 +39,7 @@ a{cursor: pointer;}
 .orderDiv label input{
     width: 270px;
 }
+.orderDiv label a{
+    color: #0ab7ef;
+    line-height: 25px;
+}

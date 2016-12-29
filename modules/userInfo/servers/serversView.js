@@ -86,19 +86,37 @@ var myPublishListView = Backbone.View.extend({
     },
     unshelveService: function(event) {
         var id = this.$(event.currentTarget).data('id');
-        this.unshelveModel.fetch({
-            data: {
-                id: id
-            }
-        })
+        var me = this;
+
+        var confirmLay = layer.confirm('确认下架这条服务吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            me.unshelveModel.fetch({
+                data: {
+                    id: id
+                }
+            })
+            layer.close(confirmLay);
+        }, function(){
+            layer.close(confirmLay);
+        });   
     },
     deleteService: function() {
         var id = this.$(event.currentTarget).data('id');
-        this.deleteModel.fetch({
-            data: {
-                id: id
-            }
-        })
+        var me = this;
+
+        var deleteLay = layer.confirm('确认删除这条服务吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            me.deleteModel.fetch({
+                data: {
+                    id: id
+                }
+            })
+            layer.close(deleteLay);
+        }, function(){
+            layer.close(deleteLay);
+        });  
     },
     handleOperation: function() {
         this.pagObj.pageNum = 1;

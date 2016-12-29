@@ -116,7 +116,7 @@
 .package-area {display: none;}
 .add-price-list input[readonly] {cursor:default;background: #FFF;}
 .add-price-list ul li span.prePrice,.add-price-list ul li span.limitPre {width:auto;}
-.mes {line-height: 30px;}
+.mes {line-height: 30px;max-width: 600px;}
 .mes-split {line-height: 30px;margin-right: 5px;}
 .input-mes {margin: 10px 0 0 126px;font-size: 12px;color: #999;}
 .input-mes-api{margin: 0;font-size: 12px;color: #999;}

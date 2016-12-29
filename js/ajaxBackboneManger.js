@@ -29,8 +29,10 @@ Backbone.sync = function(method, model, options) {
             var sHref = window.location.href,
                 sUrl = 'login.html' + '?service='+ encodeURIComponent(sHref);
             location.href = sUrl;
-        }
-        else if(xhr.status == 'ERROR'){
+        }else if(xhr.code == 500900){ // 未实名认证
+            location.href = 'userInfo.html#userAuth';
+
+        }else if(xhr.status == 'ERROR'){
             var pageType = $(document).find('body').data('type');
 
             if(pageType == 'index') return;

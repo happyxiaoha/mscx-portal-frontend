@@ -40,8 +40,10 @@ var defaultView = Backbone.View.extend({
         });
         this.model.fetch();
         this.myApiListModel.fetch({
-            page: 1,
-            pageSize: 4
+            data: {
+                page: 1,
+                pageSize: 4
+            }
         });
         this.myServerListModel.fetch();
         this.model.on('change',function () {

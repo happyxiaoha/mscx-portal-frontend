@@ -320,11 +320,14 @@ var userAuthenticationView = Backbone.View.extend({
                 if(type == 1){
                     that.model.set('licenceImageId',src.imageId);
                     that.model.set('licencePicUrl',src.imageUrl);
-                    $('#licencePhoto').show().attr('src',src.imageUrl);
+                    //alert(src.imageUrl);
+                    $('#licencePhoto').show().attr('src',encodeURI(src.imageUrl));
                 }
                 else {
+                    //alert(src.imageUrl);
+                    //alert(encodeURI(src.imageUrl));
                     that.model.set('photoId',src.imageId);
-                    $('.allInfoImg').find('img').show().attr('src',src.imageUrl);
+                    $('.allInfoImg').find('img').show().attr('src',encodeURI(src.imageUrl));
                 }
             },
             error: function() {

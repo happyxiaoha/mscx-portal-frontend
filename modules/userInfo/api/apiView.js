@@ -141,8 +141,7 @@ var apiView = Backbone.View.extend({
         var $this = $(e.target).closest('tr'),
             index = $this.index(),
             res = this.model.get('result').list;
-        layer.alert(res[index].comments);
-
+        layer.alert(res[index].comments,{title:'拒绝原因'});
     },
     buildPackageTable: function () {
         var res = this.getPackageModel.get('result');

@@ -19,8 +19,23 @@ var deleteServerDemandModel = Backbone.Model.extend({
 });
 
 var serOrderModel = Backbone.Model.extend({   //查看服务需求接单列表
+    url: mscxPage.request.demand + 'queryServiceOrder.do'
+});
+
+var serOrderPlanModel = Backbone.Model.extend({   //查看服务需求接单方案
     url: mscxPage.request.demand + 'getServiceOrder.do'
 });
+
+var addPlanModel = Backbone.Model.extend({   //确认接单
+    idAttribute: 'serviceId',
+    url: mscxPage.request.demand + 'confirmServiceOrder.do'
+});
+
+var refusePlanModel = Backbone.Model.extend({   //拒绝接单
+    idAttribute: 'serviceId',
+    url: mscxPage.request.demand + 'refuseServiceOrder.do'
+});
+
 var publishServiceModel = Backbone.Model.extend({
     idAttribute: 'serviceId',
     url: mscxPage.request.demand + 'publishService.do'
@@ -37,7 +52,10 @@ var serversDemandListView = Backbone.View.extend({
         'click .deleteServers': 'deleteServers',
         'click .closeServers': 'closeServers',
         'click .servicePublish': 'publishDemand',
-        'click .showSerOrderInfo':　'showSerOrderList'
+        'click .showSerOrderInfo':　'showSerOrderList',
+        'click .showSerPlanInfo': 'showPlanInfo',
+        'click .ensureSerPlanInfo': 'ensureSerPlanInfo',
+        'click .refuseSerPlanInfo': 'refuseSerPlanInfo'
     },
     initialize: function() {
         this.$el.html(_.template(commonTemplate)({name:'serversDemand'}));
@@ -47,7 +65,11 @@ var serversDemandListView = Backbone.View.extend({
         this.publishServiceModel = new publishServiceModel();
 
         this.serOrderModel = new serOrderModel();
+        this.serOrderPlanModel = new serOrderPlanModel();
+        this.addPlanModel = new addPlanModel();
+        this.refusePlanModel = new refusePlanModel();
 
+        this.listenTo(this.serOrderPlanModel, 'sync', this.handleSerOrderPlan);
         this.listenTo(this.serOrderModel, 'sync', this.handleSerOrder);
         this.listenTo(this.publishServiceModel, 'sync', this.handlePublish);
         this.model.on('change',function () {
@@ -148,18 +170,21 @@ var serversDemandListView = Backbone.View.extend({
         }
     },
     showSerOrderList: function (e){
-        var attrid = $(e.target).closest('tr').attr('attrId');
+        var that = this;
+        that.serOrderattrid = $(e.target).closest('tr').attr('attrId');
         this.serOrderModel.fetch({
             data: {
-                id: +attrid
+                reqId: +that.serOrderattrid,
+                pageSize: 5
             }
         });
+        this.$el.find('#serNameList tbody').html('');
         var dialog = layer.open({
             type: 1,
             btn: ['关闭'],
             title: '接单人列表',
             shade: 0.6,
-            shadeClose: true,
+            shadeClose: false,
             area: ['600px', '500px'],
             content: $('#serNameList'), //捕获的元素
             btn1: function () {          //通过
@@ -169,8 +194,94 @@ var serversDemandListView = Backbone.View.extend({
     },
     handleSerOrder: function(res){
         res = res.toJSON().result;
+        var that = this;
         var temps = _.template($('#serOrderNameList').html());
-        this.$el.find('#orderNameList').html(temps({serOrderList: res}));
+        this.$el.find('#serNameList tbody').html(temps({serOrderList: res.list}));
+        laypage({
+            cont: 'serOrderPage',
+            skip: true,
+            pages: res.page.totalPage,
+            curr: res.page.currentPage || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.reloadSerOrderPage(obj.curr, res.page.pageSize);
+                }
+            }
+        });
+    },
+    reloadSerOrderPage: function (curr) {
+        this.serOrderModel.fetch({
+            data: {
+                page: curr,
+                reqId: +this.serOrderattrid,
+                pageSize: 5
+            }
+        });
+    },
+    showPlanInfo: function(e){
+        var that = this,
+            planId= $(e.target).closest('td').data('id');
+        this.serOrderPlanModel.fetch({
+            data: {
+                id: +planId
+            }
+        });
+        this.$el.find('#serOrderPlanDiv').html('');
+        var dialog = layer.open({
+            type: 1,
+            btn: ['关闭'],
+            title: '方案详情',
+            shade: 0.6,
+            shadeClose: false,
+            area: ['500px', '320px'],
+            content: $('#serOrderPlanDiv'), //捕获的元素
+            btn1: function () {          //通过
+                layer.close(dialog);
+            }
+        })
+    },
+    handleSerOrderPlan: function(res){
+        res = res.toJSON().result;
+        var that = this;
+        var temps = _.template($('#serPlanInfo').html());
+        this.$el.find('#serOrderPlanDiv').html(temps({palnList: res}));
+    },
+    ensureSerPlanInfo: function(e){
+        var planId = $(e.target).closest('td').data('id'),
+            that = this;
+        that.addPlanModel.save({
+                id: +planId
+            },
+            {success: function(res){
+                res = res.toJSON();
+                if(res.result == 1){
+                    layer.msg('确认接单成功');
+                    that.reloadSerOrderPage('1')
+                }
+                else {
+                    layer.alert('拒绝接单失败');
+                }
+            }
+            }
+        )
+    },
+    refuseSerPlanInfo: function(e){
+        var planId = $(e.target).closest('td').data('id'),
+            that = this;
+        that.refusePlanModel.save({
+                id: +planId
+            },{
+            success: function(res){
+                res = res.toJSON();
+                if(res.result == 1){
+                    layer.msg('拒绝接单成功');
+                    that.reloadSerOrderPage('1')
+                }
+                else {
+                    layer.alert('拒绝接单失败');
+                }
+            }
+        })
     }
 });
 module.exports = serversDemandListView;

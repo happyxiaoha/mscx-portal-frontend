@@ -66,9 +66,15 @@ var headerView = Backbone.View.extend({
             menuList: menuList
         }));
     },
+    ready: function(callback) {
+        callback && callback();
+    },
     render: function () {
         var nJson = this.model.toJSON();
         mscxPage.userInfo = nJson.result;
+
+        this.ready();
+
         this.$el.html(this.template({
             id: this.id,
             menuList: menuList,

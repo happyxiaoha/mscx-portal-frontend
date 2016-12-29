@@ -48,6 +48,7 @@ var view = Backbone.View.extend({
         var result = this.apiModel.toJSON().result || {};
         var list = result.list || [];
         var pageInfo = result.page || {};
+        var me = this;
 
         this.$dataList.addClass('animate-content padding-side').removeClass('opacity0').html(this.listTemplate(list));
 

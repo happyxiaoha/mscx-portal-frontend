@@ -8,14 +8,19 @@ var footer = require('footerWidget/footerView.js');
 var router = require('demand/router.js');
 
 $(function() {
-    new header({
+    var headerView = new header({
         id: 'demand'
     });
     new footer();
-    mscxPage.appRouter = new router();
-    mscxPage.appRouter.on('route', function() {
-        $('body').animate({ scrollTop: '0' }, 100)
+
+    headerView.ready(function() {
+        mscxPage.appRouter = new router();
+
+        mscxPage.appRouter.on('route', function(res) {
+            $('body').animate({ scrollTop: '0' }, 100)
+        })
+        Backbone.history.stop();
+        Backbone.history.start();
     })
-    Backbone.history.stop();
-    Backbone.history.start();
+
 });

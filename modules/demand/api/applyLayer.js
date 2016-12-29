@@ -12,7 +12,7 @@ require('formAjax');
 var view = Backbone.View.extend({
     tagName: 'form',
     className: 'apply-box orderDiv hide',
-    template: _.template(template),
+    template: _.template(template, {variable: 'data'}),
     events: {
         'input input[type="text"]' : 'changeAttribute',
         'input textarea' : 'changeAttribute',

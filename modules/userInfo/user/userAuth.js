@@ -61,6 +61,9 @@ var userAuthenticationView = Backbone.View.extend({
             },
             submitHandler: function () {
                 that.doSavePerson()
+            },
+            invalidHandler:function() {
+                that.savePersonSelf();
             }
         }
     },
@@ -98,7 +101,20 @@ var userAuthenticationView = Backbone.View.extend({
             },
             submitHandler: function () {
                 that.doEnterpriseSave()
+            },
+            invalidHandler:function() {
+                that.saveEnterSelf();
             }
+        }
+    },
+    savePersonSelf: function () {
+        if($('.identifide ').val() == 'photo' && !$('.upload-file').val()){
+            $('.identifyType').find('.phone-error').removeClass('hide');
+        }
+    },
+    saveEnterSelf: function () {
+        if(!this.model.get('licencePicUrl')){
+            $('.phone-error').removeClass('hide');
         }
     },
     doSavePerson: function () {
@@ -321,13 +337,15 @@ var userAuthenticationView = Backbone.View.extend({
                     that.model.set('licenceImageId',src.imageId);
                     that.model.set('licencePicUrl',src.imageUrl);
                     //alert(src.imageUrl);
-                    $('#licencePhoto').show().attr('src',encodeURI(src.imageUrl));
+                    $('.allInfoImg').css('background','url('+src.imageUrl+')');
+                    $('#licencePhoto').show().attr('src',src.imageUrl);
                 }
                 else {
                     //alert(src.imageUrl);
                     //alert(encodeURI(src.imageUrl));
+                    $('.allInfoImg').css('background','url('+src.imageUrl+')');
                     that.model.set('photoId',src.imageId);
-                    $('.allInfoImg').find('img').show().attr('src',encodeURI(src.imageUrl));
+                    $('.allInfoImg').find('img').show().attr('src',src.imageUrl);
                 }
             },
             error: function() {

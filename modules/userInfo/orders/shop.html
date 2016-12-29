@@ -32,24 +32,27 @@
     <% _.each(shopCarList, function (scitem) { %>
     <li attrId="<%=scitem.id%>">
         <p>
-            <span> <%=scitem.lastUpdateTime ? new Date(scitem.lastUpdateTime).format('yyyy-MM-dd') : '-'%></span>
+            <span> <%=scitem.lastUpdateTime ? new Date(scitem.lastUpdateTime).format('yyyy-MM-dd hh:mm:ss') : '-'%></span>
             <span class="deleteCar fr"></span>
         </p>
         <div class="orderList">
-            <span class="ml10"><input class="is-select-shop" type="checkbox" <%if(scitem.applyTimes > 0){%>checked="true"<%}%>></span>
+            <span class="ml10"><input class="is-select-shop" type="checkbox" <%if(scitem.applyTimes > 0 || scitem.resourceType == '02'){%>checked="true"<%}%>></span>
             <%if(scitem.resourceType == '01'){%>
             <a class="resources" href="./api.html#detail/<%=scitem.resourceId%>">
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else{%>
-            <a class="resources" href="./sources.html#detail/<%=scitem.resourceId%>">
-                <img src="<%=scitem.resourceUrl%>">
+            <a class="resources" style="width: 285px;text-align: center;" href="./sources.html#detail/<%=scitem.resourceId%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}%>
             <span class="price"><%=scitem.price%>元</span>
+            <%if(scitem.resourceType == '01'){%>
             <span class="count"><input type="number" class="apply-times" value="<%=scitem.applyTimes%>"></span>
+            <%}else{%>
+            <span class="count"><input type="number" class="apply-times" value="1" readonly></span>
+            <%}%>
             <span class="resourcestype borderT"><%=scitem.resourceDetailType || '-' %></span>
             <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>
         </div>

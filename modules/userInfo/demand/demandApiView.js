@@ -44,6 +44,7 @@ var apiDemandListView = Backbone.View.extend({
         pageNum: 1,
         totalPage: 1
     },
+    
     events: {
         'click .deleteApi': 'delteApi',
         'click .closeApi': 'closeApi',

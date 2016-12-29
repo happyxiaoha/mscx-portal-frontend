@@ -139,8 +139,7 @@ var updateApiView = Backbone.View.extend({
                 },
                 rtnCode: {
                     required: true,
-                    maxlength: 20,
-                    unSpecial: true
+                    maxlength: 20
                 },
                 description: {
                     required: true,
@@ -156,7 +155,6 @@ var updateApiView = Backbone.View.extend({
                     maxlength: '服务名称不超过20个字'
                 },
                 rtnCode:{
-                    unSpecial: '服务返回码不能包含特殊字符',
                     maxlength: '服务返回码不超过20个字'
                 },
                 description: {

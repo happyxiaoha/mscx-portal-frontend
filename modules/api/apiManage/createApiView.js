@@ -161,11 +161,13 @@ var createApiView = Backbone.View.extend({
 
         if(!this.model.get('name')) {
             if(!$('.api-server-error').is(':visible')){
-                $('.api-server-error').html('不能为空').show();
+                $('#apiServerId').addClass('error');
+                $('.api-server-error').html('这是必填字段').show();
             }
             res = false;
         }
         else {
+            $('#apiServerId').removeClass('error');
             $('.api-server-error').remove();
         }
         return res;
@@ -347,30 +349,42 @@ var createApiView = Backbone.View.extend({
         $('.tag-area').html(tagAreaTemplate({tags: tagArray}));
     },
     buildDateEvents: function () {
+        function lastDay(sdata){
+            var resDate = new Date(),
+                newData = new Date();
+            if(sdata){
+                resDate = new Date(sdata);
+                newData = new Date(sdata)
+            }
+            resDate.setDate(newData.getDate()-1);
+            console.log(resDate.getDate());
+            return resDate;
+        }
         if($('#effectDate').data('daterangepicker')){
-            $('#effectDate').data('daterangepicker').setOptions({minDate: new Date(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
+            $('#effectDate').data('daterangepicker').setOptions({minDate: new Date()-1,singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
         }
         else {
+
             $('#effectDate').daterangepicker({
                 format: 'YYYY-MM-DD',
                 singleDatePicker: true,
                 startDate: moment(),
-                minDate: new Date()
+                minDate: lastDay()
             }).on('apply.daterangepicker',function (ev,picker) {
-                $('#expiryDate').data('daterangepicker').setOptions({'minDate': new Date($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
+                $('#expiryDate').data('daterangepicker').setOptions({'minDate': lastDay($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
             });
         }
         if($('#expiryDate').data('daterangepicker')){
-            $('#expiryDate').data('daterangepicker').setOptions({minDate: new Date(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
+            $('#expiryDate').data('daterangepicker').setOptions({minDate: lastDay(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
         }
         else {
             $('#expiryDate').daterangepicker({
                 format: 'YYYY-MM-DD',
                 singleDatePicker: true,
                 startDate: moment(),
-                minDate: new Date()
+                minDate: lastDay()
             }).on('apply.daterangepicker',function (ev,picker) {
-                $('#effectDate').data('daterangepicker').setOptions({'maxDate': new Date($('#expiryDate').val()),minDate: new Date(),singleDatePicker: true,startDate: moment()});
+                $('#effectDate').data('daterangepicker').setOptions({'maxDate': $('#expiryDate').val(),minDate: lastDay(),singleDatePicker: true,startDate: moment()});
             });
         }
     },
@@ -646,7 +660,8 @@ var createApiView = Backbone.View.extend({
         var that = this;
         var sName = $.trim($('#apiServerId').val());
         if(!sName){
-            $('.api-server-error').html('不能为空').show();
+            $('#apiServerId').addClass('error');
+            $('.api-server-error').html('这是必填字段').show();
             return;
         }
         new checkServerId().fetch({
@@ -654,10 +669,12 @@ var createApiView = Backbone.View.extend({
             success: function (model,res) {
                 if(res.result){
                     $('.api-server-error').hide();
+                    $('#apiServerId').removeClass('error');
                     that.model.set('name',sName);
                 }
                 else {
                     that.model.set('name','');
+                    $('#apiServerId').addClass('error');
                     $('.api-server-error').html(res.message).show();
                 }
             }
@@ -666,13 +683,16 @@ var createApiView = Backbone.View.extend({
     checkApiName: function () {
         var name = $.trim($('#apiName').val());
         if(!name){
-            $('.api-name-error').html('不能为空').show();
+            $('#apiName').addClass('error');
+            $('.api-name-error').html('这是必填字段').show();
             return;
         }
         if(this.apiName.indexOf('**'+name+'&&')>= 0){
+            $('#apiName').addClass('error');
             $('.api-name-error').html('API标示重复').show();
         }
         else {
+            $('#apiName').removeClass('error');
             $('.api-name-error').hide();
         }
     },

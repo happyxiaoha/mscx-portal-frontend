@@ -151,30 +151,42 @@ var apiView = Backbone.View.extend({
         $('.package-area').html(packageTemps({packageJson:res}));
     },
     buildDateEvents: function () {
+        function lastDay(sdata){
+            var resDate = new Date(),
+                newData = new Date();
+            if(sdata){
+                resDate = new Date(sdata);
+                newData = new Date(sdata)
+            }
+            resDate.setDate(newData.getDate()-1);
+            console.log(resDate.getDate());
+            return resDate;
+        }
         if($('#effectDate').data('daterangepicker')){
-            $('#effectDate').data('daterangepicker').setOptions({minDate: new Date(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
+            $('#effectDate').data('daterangepicker').setOptions({minDate: new Date()-1,singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
         }
         else {
+
             $('#effectDate').daterangepicker({
                 format: 'YYYY-MM-DD',
                 singleDatePicker: true,
                 startDate: moment(),
-                minDate: new Date()
+                minDate: lastDay()
             }).on('apply.daterangepicker',function (ev,picker) {
-                $('#expiryDate').data('daterangepicker').setOptions({'minDate': new Date($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
+                $('#expiryDate').data('daterangepicker').setOptions({'minDate': lastDay($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
             });
         }
         if($('#expiryDate').data('daterangepicker')){
-            $('#expiryDate').data('daterangepicker').setOptions({minDate: new Date(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
+            $('#expiryDate').data('daterangepicker').setOptions({minDate: lastDay(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
         }
         else {
             $('#expiryDate').daterangepicker({
                 format: 'YYYY-MM-DD',
                 singleDatePicker: true,
                 startDate: moment(),
-                minDate: new Date()
+                minDate: lastDay()
             }).on('apply.daterangepicker',function (ev,picker) {
-                $('#effectDate').data('daterangepicker').setOptions({'maxDate': new Date($('#expiryDate').val()),minDate: new Date(),singleDatePicker: true,startDate: moment()});
+                $('#effectDate').data('daterangepicker').setOptions({'maxDate': $('#expiryDate').val(),minDate: lastDay(),singleDatePicker: true,startDate: moment()});
             });
         }
     },

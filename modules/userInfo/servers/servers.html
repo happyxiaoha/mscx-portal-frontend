@@ -45,6 +45,7 @@
                                 <a href="services.html#show/<%= item.id %>">查看</a>
                             <!-- 拒绝 -->
                             <% }else if(item.status == '3'){ %>
+                                <a href="javascript:;" class="reason" data-comment="<%= item.comments %>">查看原因</a>
                                 <% if(item.isOnline == 'Y'){ %>
                                     <a class="edit" href="services.html#edit/<%= item.id %>">修改</a>
                                     <a class="unshelve" data-id="<%= item.id %>">下架</a>

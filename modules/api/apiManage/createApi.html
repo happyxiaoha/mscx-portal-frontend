@@ -249,6 +249,7 @@
                 <label>
                     <span><i class="need">*</i>套餐名称：</span>
                     <input type="text" name="name" id="packageName" value="<%=res.name%>">
+                    <p class="input-mes-api fl">套餐名称最多不超过50字</p>
                 </label>
             </li>
             <li>
@@ -259,6 +260,7 @@
                         <%if(res.chargeType=='05'){%><span class="prePrice">次</span><%}%>
                         <%if(res.chargeType=='04'){%><span class="prePrice">月</span><%}%>
                     </label>
+                    <p class="input-mes-api fl">套餐价格：大于0元，次数或者月数是大于1的整数</p>
                 </label>
             </li>
             <li>
@@ -278,6 +280,7 @@
                     </b>
                     <b class="fl ml20">(不填则为无限制)</b>
                 </label>
+                <p class="input-mes-api fl">使用限制：次数或者月数是大于1的整数</p>
             </li>
             <li>
                 <label>

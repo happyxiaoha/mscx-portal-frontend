@@ -21,6 +21,9 @@ var publishApiModel = Backbone.Model.extend({
     idAttribute: 'apiId',
     url: mscxPage.request.demand + 'publishApi.do'
 });
+var apiOrderModel = Backbone.Model.extend({   //查看api需求接单列表
+    url: mscxPage.request.demand + 'queryApiOrder.do'
+});
 var apiDemandListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
@@ -31,7 +34,8 @@ var apiDemandListView = Backbone.View.extend({
     events: {
         'click .deleteApi': 'delteApi',
         'click .closeApi': 'closeApi',
-        'click .apiPublish': 'publishDemand'
+        'click .apiPublish': 'publishDemand',
+        'click .showApiInfo': 'showOrderList'
     },
     initialize: function() {
         this.$el.html(_.template(commonTemplate)({name:'apiDemand'}));
@@ -40,7 +44,9 @@ var apiDemandListView = Backbone.View.extend({
 
         this.model = new demandApiListModel();
         this.publishApiModel = new publishApiModel();
+        this.apiOrderModel = new apiOrderModel();
 
+        this.listenTo(this.apiOrderModel, 'sync', this.handleApiOrder);
         this.listenTo(this.publishApiModel, 'sync', this.handlePublish);
         this.model.on('change',function () {
             that.render();
@@ -138,6 +144,31 @@ var apiDemandListView = Backbone.View.extend({
             this.pagObj.pageNum = 1;
             this.reloadPage();
         }
+    },
+    showOrderList: function(e) {
+        var attrid = $(e.target).closest('tr').attr('attrId');
+        this.apiOrderModel.fetch({
+            data: {
+                id: +attrid
+            }
+        });
+        var dialog = layer.open({
+            type: 1,
+            btn: ['关闭'],
+            title: '接单人列表',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['600px', '500px'],
+            content: $('#orderNameList'), //捕获的元素
+            btn1: function () {          //通过
+                layer.close(dialog);
+            }
+        })
+    },
+    handleApiOrder: function(res){
+        res = res.toJSON().result;
+        var temps = _.template($('#apiOrderNameList').html());
+        this.$el.find('#orderNameList').html(temps({apiOrderList: res}));
     }
 });
 module.exports = apiDemandListView;

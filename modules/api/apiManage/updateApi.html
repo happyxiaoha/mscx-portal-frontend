@@ -40,7 +40,7 @@
                     <input type="text" id="apiServerId" placeholder="输入服务标识" name="name" value="<%=res.name%>">
                 </p>
             </div>
-            <span class="api-server-error">不能为空</span>
+            <span class="api-server-error">这是必填字段</span>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">是否收费：</p>
@@ -79,10 +79,8 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left">标签：</p>
             <div class="fl R_right posRE">
-                <p>
                 <div class="tag-area fl"><span class="un-select">未选择任何标签</span></div>
                 <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
-                </p>
             </div>
             <label class="tag-error">请选择标签</label>
         </div>
@@ -153,7 +151,7 @@
 </script>
 <script id="chooseTagArea" type="template">
     <% for(var i=0,len=tags.length; i < len; i++) { %>
-    <span class="fl"><%=tags[i]%></span>
+    <span class="fl"><%=tags[i].name%></span>
     <% } %>
     <%if(tags.length == 0){%>
     <span class="un-select">未选择任何标签</span>
@@ -165,7 +163,19 @@
     <% }); %>
 </script>
 <script id="tagList" type="template">
-    <div class="layerApi"><ul class="provider-list"><% _.each(tagList, function (tagitem) { %><li attrId="<%=tagitem.tagId%>"><%=tagitem.name%></li><% }); %></ul></div>
+    <div class="layerApi"><ul class="provider-list">
+        <% _.each(tagList, function (tagitem) { %>
+        <li>
+            <label style="width: 100%;line-height: 16px;">
+                <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
+                <%=tagitem.name%>
+            </label>
+        </li>
+        <% }); %>
+        <%if(tagList.length == 0){%>
+        <li>此分类无标签</li>
+        <%}%>
+    </ul></div>
 </script>
 <script id="serverTypeList" type="template">
     <% _.each(serverTypeList, function (titem) { %>
@@ -223,7 +233,7 @@
                     <span><i class="need">*</i>API标识：</span>
                     <input type="text" name="name" id="apiName" value="<%=res && res.name%>">
                 </label>
-                <span class="api-name-error"></span>
+                <span class="api-name-error">这是必填字段</span>
             </li>
             <li>
                 <label>

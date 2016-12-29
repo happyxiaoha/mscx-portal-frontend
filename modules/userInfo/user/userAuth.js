@@ -120,7 +120,7 @@ var userAuthenticationView = Backbone.View.extend({
             })
         }
         else {
-                layer.alert('请确认协议！');
+                layer.alert('请确认并勾选实名认证协议！');
         }
     },
     doEnterpriseSave: function () {
@@ -142,7 +142,7 @@ var userAuthenticationView = Backbone.View.extend({
             });
         }
         else {
-            layer.alert('请确认协议！');
+            layer.alert('请确认并勾选实名认证协议！');
         }
     },
     initialize: function() {
@@ -158,7 +158,7 @@ var userAuthenticationView = Backbone.View.extend({
             });
         }
         else {
-            account = mscxPage.userInfo;
+            account = mscxPage.userInfo.account;
             callback();
         }
         function callback() {
@@ -319,6 +319,7 @@ var userAuthenticationView = Backbone.View.extend({
 
                 if(type == 1){
                     that.model.set('licenceImageId',src.imageId);
+                    that.model.set('licencePicUrl',src.imageUrl);
                     $('#licencePhoto').show().attr('src',src.imageUrl);
                 }
                 else {

@@ -1,4 +1,4 @@
-.myServerList{border: 1px solid #ccc;background: #fff;margin-top: 16px;}
+.myServerList{background: #fff;margin-top: 16px;}
 .myServerRight{width: 676px;}
 .myServerRight a{line-height: 28px;}
 .myServerRight p.R-infos{line-height: 20px;margin: 8px 0 11px;height: 44px;overflow: hidden;}
@@ -18,8 +18,11 @@
     border: 1px solid #ccc;
     margin: 16px 0 24px;
 }
+.data-list {
+    border: 1px solid #ccc;
+}
 .data-list.data-empty {
-    padding: 26px 26px 0;
+    padding: 16px 16px;
     min-height: initial;
 }
 .ConditionList{right: 0;top: 0;margin-top: 8px;}

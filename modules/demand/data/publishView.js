@@ -80,7 +80,7 @@ var createDemandView = Backbone.View.extend({
         var model = this.model.toJSON();
         if(model.status == 'OK') {
             layer.msg('提交成功,请耐心等待审核！', function() {
-                location.href = 'userinfo.html#demand';
+                location.href = 'userInfo.html#demand';
             });
         }
     },

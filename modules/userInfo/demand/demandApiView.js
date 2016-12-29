@@ -44,6 +44,7 @@ var apiDemandListView = Backbone.View.extend({
         pageNum: 1,
         totalPage: 1
     },
+    
     events: {
         'click .deleteApi': 'delteApi',
         'click .closeApi': 'closeApi',
@@ -54,6 +55,7 @@ var apiDemandListView = Backbone.View.extend({
         'click .refuseApiPlanInfo': 'refuseApiPlanInfo'
     },
     initialize: function() {
+        this.pagObj.pageNum = 1;
         this.$el.html(_.template(commonTemplate)({name:'apiDemand'}));
 
         var that = this;

@@ -337,15 +337,12 @@ var userAuthenticationView = Backbone.View.extend({
                     that.model.set('licenceImageId',src.imageId);
                     that.model.set('licencePicUrl',src.imageUrl);
                     //alert(src.imageUrl);
-                    $('.allInfoImg').css('background','url('+src.imageUrl+')');
-                    $('#licencePhoto').show().attr('src',src.imageUrl);
+                    //$('#licencePhoto').show().attr('src',src.imageUrl);
+                    $('.upLoad').html('<img src="'+decodeURI(src.imageUrl)+'">');
                 }
                 else {
-                    //alert(src.imageUrl);
-                    //alert(encodeURI(src.imageUrl));
-                    $('.allInfoImg').css('background','url('+src.imageUrl+')');
                     that.model.set('photoId',src.imageId);
-                    $('.allInfoImg').find('img').show().attr('src',src.imageUrl);
+                    $('.allInfoImg').html('<img src="'+decodeURI(src.imageUrl)+'">');
                 }
             },
             error: function() {

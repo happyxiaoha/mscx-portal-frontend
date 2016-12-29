@@ -95,10 +95,31 @@ var createApiView = Backbone.View.extend({
                     required: true
                 },
                 cname: {
-                    required: true
+                    required: true,
+                    maxlength: 20,
+                    unSpecial: true
                 },
                 rtnCode: {
-                    required: true
+                    required: true,
+                    maxlength: 20,
+                    unSpecial: true
+                },
+                description: {
+                    required: true,
+                    maxlength: 150
+                }
+            },
+            messages: {
+                cname:{
+                    unSpecial: '服务名称不能包含特殊字符',
+                    maxlength: '服务名称不超过20个字'
+                },
+                rtnCode:{
+                    unSpecial: '服务返回码不能包含特殊字符',
+                    maxlength: '服务返回码不超过20个字'
+                },
+                description: {
+                    maxlength: '服务简介不超过150个字'
                 }
             },
             submitHandler: function () {
@@ -216,16 +237,28 @@ var createApiView = Backbone.View.extend({
         return {
             rules: {
                 cname: {
-                    required: true
+                    required: true,
+                    maxlength: 20,
+                    unSpecial: true
                 },
                 uri: {
-                    required: true
+                    required: true,
+                    url: true
                 },
                 testPacket: {
                     required: true
                 },
                 directions: {
                     required: true
+                }
+            },
+            messages: {
+                cname:{
+                    unSpecial: 'API名称不能包含特殊字符',
+                    maxlength: 'API名称不超过20个字'
+                },
+                uri:{
+                    url: 'API地址错误'
                 }
             },
             submitHandler: function () {
@@ -667,6 +700,18 @@ var createApiView = Backbone.View.extend({
             $('.api-server-error').html('这是必填字段').show();
             return;
         }
+        else {
+            if(!/^([\u4e00-\u9fa5]+|[a-zA-Z0-9]+)$/ .test( sName )){
+                $('#apiServerId').addClass('error');
+                $('.api-server-error').html('服务标识不能包含特殊字符').show();
+                return;
+            }
+            else if(sName.length >= 20){
+                $('#apiServerId').addClass('error');
+                $('.api-server-error').html('服务标识不能超过20个字').show();
+                return;
+            }
+        }
         new checkServerId().fetch({
             data: {name: sName},
             success: function (model,res) {
@@ -689,6 +734,18 @@ var createApiView = Backbone.View.extend({
             $('#apiName').addClass('error');
             $('.api-name-error').html('这是必填字段').show();
             return;
+        }
+        else {
+            if(!/^([a-zA-Z0-9]+)$/ .test( name )){
+                $('#apiName').addClass('error');
+                $('.api-name-error').html('API标识不能包含中文，特殊字符').show();
+                return;
+            }
+            else if(name.length >= 20){
+                $('#apiName').addClass('error');
+                $('.api-name-error').html('API标识不能超过20个字').show();
+                return;
+            }
         }
         if(this.apiName.indexOf('**'+name+'&&')>= 0 && this.updateApiName != name){
             $('#apiName').addClass('error');

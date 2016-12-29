@@ -240,44 +240,43 @@ var createApiView = Backbone.View.extend({
         this.model.set(e.target.id,e.target.value);
         return false;
     },
-    chooseTag: function (e) {
-        var $this = $(e.target),
-            sVal = $this.attr('attrid'),
-            text = $this.html();
-        var tags = this.model.get('tags') || '';
-        if(tags.indexOf(sVal) < 0){
-            tags = tags ? tags+','+sVal : sVal;
-            this.model.set('tags',tags);
-            layer.closeAll();
-        }
-        else {
-            layer.alert('已经选择该标签',{icon:2});
-        }
+    chooseTags: [],
+    saveTag: function () {
+        var cTags = [],
+            aTags = [];
+        $('input[name="tagGroup"]:checked').each(function() {
+            var $this = $(this),
+                sId = this.id.replace('tag',''),
+                sName = $this.attr('attrName');
+            cTags.push({id:sId,name: sName});
+            aTags.push(sId);
+        });
+        this.chooseTags = cTags;
+        this.model.set('tags',aTags.join(','));
         return false;
     },
     deleteTag: function (e) {
         var $this = $(e.target),
+            newTags = [],
+            newChooseTags = [],
             sVal = $this.text();
         if(!$this.hasClass('un-select')){
-            var tags = this.model.get('tags') || '';
-            if(tags.indexOf(',') < 0){
-                tags = '';
-                this.model.set('tags',tags);
-            }
-            else if(tags.indexOf(sVal) > 0){
-                tags = tags.replace(','+sVal,'');
-                this.model.set('tags',tags);
-            }
-            else if(tags.indexOf(sVal) == 0){
-                tags = tags.replace(sVal+',','');
-                this.model.set('tags',tags);
+            for(var i = 0,len = this.chooseTags.length; i < len; i++){
+                if(this.chooseTags[i].name != sVal){
+                    newTags.push(this.chooseTags[i].id);
+                    newChooseTags.push(this.chooseTags[i]);
+                }
             }
         }
+        this.chooseTags = newChooseTags;
+        this.model.set('tags',newTags.join(','));
     },
     showTagArea: function () {
+        this.renderCategoryTag();
+        var that = this;
         var dialog = layer.open({
             type: 1,
-            btn: ['取消'],
+            btn: ['保存','取消'],
             title: '选择标签',
             shade: 0.6,
             shadeClose: true,
@@ -285,6 +284,10 @@ var createApiView = Backbone.View.extend({
             area: ['350px', '450px'],
             content: $('.tag-list-area'), //捕获的元素
             btn1: function () {
+                that.saveTag();
+                layer.close(dialog);
+            },
+            btn2: function () {
                 layer.close(dialog);
             }
         });
@@ -293,6 +296,7 @@ var createApiView = Backbone.View.extend({
         var sId = parseInt(e.target.id.replace('c',''));
         this.renderTagWithCategory(sId);
         this.model.set('categoryId',sId);
+        this.chooseTags = [];
         this.model.set('tags','');
         return false;
     },
@@ -328,7 +332,11 @@ var createApiView = Backbone.View.extend({
     renderCategoryTag: function () {
         var tagTemplate = _.template($('#tagList').html());
         var tagList = this.getCategoryTagModel.get('result');
-        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList}))
+        var sChooseTags = '';
+        if(this.model.get('tags')){
+            sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
+        }
+        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags}))
     },
     renderServiceType: function () {
         var categoryTemplate = _.template($('#serverTypeList').html());
@@ -336,17 +344,9 @@ var createApiView = Backbone.View.extend({
         $('.server-dist').html(categoryTemplate({serverTypeList: serverTypeList}));
     },
     buildChooseTags: function () {
-        var tags = this.model.get('tags'),
-            tagArray = [];
-        if(tags.indexOf(',') > 0){
-            tagArray = tags.split(',');
-        }
-        else if(tags != '') {
-            tagArray = [tags];
-            $('.tag-error').hide();
-        }
+        var cTags = this.chooseTags;
         var tagAreaTemplate = _.template($('#chooseTagArea').html());
-        $('.tag-area').html(tagAreaTemplate({tags: tagArray}));
+        $('.tag-area').html(tagAreaTemplate({tags: cTags}));
     },
     buildDateEvents: function () {
         function lastDay(sdata){
@@ -526,7 +526,9 @@ var createApiView = Backbone.View.extend({
     },
     saveApiJson: function () {
         var res = $('#addApiForm').serializeObject();
-        if(this.apiName.indexOf('**'+res.name+'&&')>= 0){
+        if(this.apiName.indexOf('**'+res.name+'&&')>= 0 && this.updateApiName != res.name){
+            $('.api-name-error').html('这是必填字段').show();
+            $('#apiName').addClass('error');
             return;
         }
         layer.close(this.lays);
@@ -585,6 +587,7 @@ var createApiView = Backbone.View.extend({
         var index = $(e.target).closest('tr').index();
         var apiManageTemps = _.template($('#apiManageTemps').html());
         this.updateIndex = index;
+        this.updateApiName = apiListJson[index].name;
         $('.add-api-list').html(apiManageTemps({res:apiListJson[index]}));
         var dialog= layer.open({
             type: 1,
@@ -687,7 +690,7 @@ var createApiView = Backbone.View.extend({
             $('.api-name-error').html('这是必填字段').show();
             return;
         }
-        if(this.apiName.indexOf('**'+name+'&&')>= 0){
+        if(this.apiName.indexOf('**'+name+'&&')>= 0 && this.updateApiName != name){
             $('#apiName').addClass('error');
             $('.api-name-error').html('API标示重复').show();
         }

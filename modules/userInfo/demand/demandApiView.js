@@ -230,7 +230,7 @@ var apiDemandListView = Backbone.View.extend({
             title: '方案详情',
             shade: 0.6,
             shadeClose: false,
-            area: ['500px', '320px'],
+            area: ['500px', '350px'],
             content: $('#apiOrderPlanDiv'), //捕获的元素
             btn1: function () {          //通过
                 layer.close(dialog);

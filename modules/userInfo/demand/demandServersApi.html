@@ -68,7 +68,6 @@
                 <th>时间</th>
                 <th>接单人</th>
                 <th>电话</th>
-                <th>邮箱</th>
                 <th>订单状态</th>
                 <th>操作</th>
             </tr>
@@ -92,7 +91,6 @@
         <td><%= new Date(sitem.createdTime).format('yyyy-MM-dd')%></td>
         <td><%= sitem.contactUsername %></td>
         <td><%= sitem.contactPhone %></td>
-        <td><%= sitem.contactEmail %></td>
         <td><%= sitem.statusName %></td>
         <td data-id="<%= sitem.id %>">
             <%if(sitem.status == 'P'){%>

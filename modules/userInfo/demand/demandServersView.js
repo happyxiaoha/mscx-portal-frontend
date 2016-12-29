@@ -44,7 +44,7 @@ var publishServiceModel = Backbone.Model.extend({
 var serversDemandListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
-        pageSize: 10,
+        pageSize: 5,
         pageNum: 1,
         totalPage: 0
     },

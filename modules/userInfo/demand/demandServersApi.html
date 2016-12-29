@@ -25,8 +25,16 @@
 <script id="serversDemandList" type="template">
     <% _.each(serverDemandList, function (sitem) { %>
     <tr attrId="<%=sitem.id%>" >
-        <td><a href="demand.html#service/detail/<%= sitem.id %>" target="_blank"><%=sitem.name%></a></td>
-        <td><%=sitem.description%></td>
+        <td>
+        <%if(sitem.status == '0'){%>
+          <%=sitem.name || '-'%>
+        <%}else{%>
+
+            <a target="_blank" href="demand.html#service/detail/<%= sitem.id %>"><%=sitem.name || '-'%></a>
+
+        <%}%>
+        </td>
+        <td><%= sitem.description || '-'%></td>
         <td><%=sitem.endTime%></td>
         <td><%=sitem.statusName%></td>
         <td>

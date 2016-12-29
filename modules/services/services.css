@@ -1,7 +1,7 @@
 .myServerList{background: #fff;margin-top: 16px;}
 .myServerRight{width: 676px;}
 .myServerRight a{line-height: 28px;}
-.myServerRight p.R-infos{line-height: 20px;margin: 8px 0 11px;height: 44px;overflow: hidden;}
+.myServerRight p.R-infos{word-break: break-all;line-height: 20px;margin: 8px 0 11px;height: 44px;overflow: hidden;}
 .myServerRight p span{margin-right: 28px;}
 .citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}
 /*公共 左边样式*/
@@ -47,7 +47,7 @@
 .slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .left p span a{color: #069cd9;text-decoration: underline;}
 
-.slideBanner .mleftCons .serverInfos .appInfoCons em{color: #444;}
+.slideBanner .mleftCons .serverInfos .appInfoCons em{color: #444;word-break: break-all;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .left{padding-right: 34px;}
 .appInfoCons button{height: 36px;line-height: 36px;text-align: center;color: #fff;font-size: 16px;background: #3F89EC;border: 0;margin-top: 3px;padding: 0 36px;outline: none;margin-right: 32px;}
 

@@ -33,9 +33,9 @@ var myPublishListView = Backbone.View.extend({
         'click .reason': 'showReason'
     },
     initialize: function() {
-        this.$el.html(this.commonTemplate({name:'demand'}));
+        this.$el.html(this.commonTemplate({name:'publish'}));
 
-        this.templete = _.template($('#serverPublishList').html());
+        this.$content = this.$('#serverInfo');
 
         this.model = new publishListModel();
         this.unshelveModel = new unshelveModel();
@@ -51,7 +51,6 @@ var myPublishListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
-        this.initRender();
     },
     render: function () {
         var res = this.model.get('result'),
@@ -60,7 +59,7 @@ var myPublishListView = Backbone.View.extend({
             page = res.page;
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
-        this.$el.html(this.templete({serverList:serverList}));
+        this.$content.html(this.template({serverList:serverList}));
         laypage({
             cont: 'serverPage',
             skip: true,
@@ -74,9 +73,9 @@ var myPublishListView = Backbone.View.extend({
             }
         });
     },
-    initRender: function () {
-        this.$el.html(this.templete({serverList:[]}));
-    },
+    // initRender: function () {
+    //     this.$el.html(this.templete({serverList:[]}));
+    // },
     reloadPage: function () {
         this.model.fetch({
             data: {
@@ -114,4 +113,4 @@ var myPublishListView = Backbone.View.extend({
     }
 });
 
-module.exports = serversView;
+module.exports = myPublishListView;

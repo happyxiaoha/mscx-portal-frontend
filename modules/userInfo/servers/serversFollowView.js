@@ -26,7 +26,9 @@ var myFollowListView = Backbone.View.extend({
         'click .unfollow': 'unFollowService'
     },
     initialize: function() {
-        this.templete = _.template($('#serverFollowList').html());
+        this.$el.html(this.commonTemplate({name:'follow'}));
+
+        this.$content = this.$('#serverInfo');
 
         this.model = new followListModel();
         this.unfollowModel = new unfollowModel();
@@ -39,7 +41,6 @@ var myFollowListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
-        this.initRender();
     },
     render: function () {
         var res = this.model.get('result'),
@@ -48,7 +49,7 @@ var myFollowListView = Backbone.View.extend({
             page = res.page;
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
-        this.$el.html(this.templete({followList: followList}));
+        this.$content.html(this.template({followList: followList}));
         laypage({
             cont: 'serverPage',
             skip: true,
@@ -62,9 +63,9 @@ var myFollowListView = Backbone.View.extend({
             }
         });
     },
-    initRender: function () {
-        this.$el.html(this.templete({followList:[]}));
-    },
+    // initRender: function () {
+    //     this.$el.html(this.templete({followList:[]}));
+    // },
     reloadPage: function () {
         this.model.fetch({
             data: {

@@ -1,6 +1,6 @@
 <div id="demandTabs" class="topTab clearfix myApiTop">
-    <span class="active">发布的服务</span>
-    <span>关注的服务</span>
+    <span <%= (name == 'publish' ? 'class=active' : '' )%>><a href="#server">发布的服务</a></span>
+    <span <%= (name == 'follow' ? 'class=active' : '' )%>><a href="#serverFollow">关注的服务</a></span>
 </div>
 <div id="serverInfo"  class="tabDownCons">
 

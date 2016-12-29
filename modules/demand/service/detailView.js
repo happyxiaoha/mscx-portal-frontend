@@ -63,7 +63,7 @@ var view = Backbone.View.extend({
     apply: function() {
         var me = this;
         
-        if(!this.validateLogin()) {
+        if(!mscxPage.isLogin()) {
             return;
         }
 
@@ -116,12 +116,6 @@ var view = Backbone.View.extend({
             this.attentionFlag = false;
             this.$('#follow').text('关注');
         }
-    },
-    validateLogin: function() {
-        if(!mscxPage.userInfo){
-            location.href = 'login.html?service=' + encodeURIComponent(location.href);
-        }
-        return !!mscxPage.userInfo;
     }
 });
 

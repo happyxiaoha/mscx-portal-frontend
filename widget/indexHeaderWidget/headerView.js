@@ -73,7 +73,7 @@ var headerView = Backbone.View.extend({
         this.$el.html(this.template({
             id: 'index',
             menuList: menuList,
-            username: nJson.result && nJson.result.name
+            username: nJson.result && (nJson.result.name || nJson.result.account)
         }));
         var _c;
         $("#personReal").hover(function(){

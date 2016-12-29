@@ -102,7 +102,7 @@ var view = Backbone.View.extend({
         }
     },
     goPublish: function() {
-        location.href = mscxPage.userInfo ? '#api/publish' : 'login.html?service=' + encodeURIComponent(location.href);
+        mscxPage.isLogin() && mscxPage.isRealName() && (location.href = '#api/publish');
     }
 });
 

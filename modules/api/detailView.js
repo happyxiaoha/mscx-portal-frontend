@@ -103,7 +103,7 @@ var view = Backbone.View.extend({
     apply: function() {
         var me = this;
 
-        if(!this.validateLogin()) {
+        if(!mscxPage.isLogin()) {
             return;
         }
 
@@ -182,7 +182,7 @@ var view = Backbone.View.extend({
     offlineChat: function() {
         var me = this;
 
-        if(!this.validateLogin()) {
+        if(!mscxPage.isLogin()) {
             return;
         }
 
@@ -210,12 +210,6 @@ var view = Backbone.View.extend({
                 me.offlineView.remove();
             }
         })
-    },
-    validateLogin: function() {
-        if(!mscxPage.userInfo){
-            location.href = 'login.html?service=' + encodeURIComponent(location.href);
-        }
-        return !!mscxPage.userInfo;
     }
 });
 

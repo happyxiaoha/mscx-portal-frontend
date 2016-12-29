@@ -66,18 +66,30 @@ var Routes =  Backbone.Router.extend({
         });
     },
     dataPublishView: function(id) {
+        if(!mscxPage.isLogin() || !mscxPage.isRealName()) {
+            return;
+        }
+
         var dataPublishView = require('demand/data/publishView.js');
         mscxPage.views['dataPublishView'] = new dataPublishView({
             id: id
         });
     },
     apiPublishView: function(id) {
+        if(!mscxPage.isLogin() || !mscxPage.isRealName()) {
+            return;
+        }
+
         var apiPublishView = require('demand/api/publishView.js');
         mscxPage.views['apiPublishView'] = new apiPublishView({
             id: id
         });
     },
     servicePublishView: function(id) {
+        if(!mscxPage.isLogin() || !mscxPage.isRealName()) {
+            return;
+        }
+        
         var servicePublishView = require('demand/service/publishView.js');
         mscxPage.views['servicePublishView'] = new servicePublishView({
             id: id

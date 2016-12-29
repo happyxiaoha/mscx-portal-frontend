@@ -54,7 +54,8 @@ var myPublishListView = Backbone.View.extend({
     },
     events: {
         'click .unshelve': 'unshelveService',
-        'click .delete': 'deleteService'
+        'click .delete': 'deleteService',
+        'click .reason': 'showReason'
     },
     initialize: function() {
         this.templete = _.template($('#serverPublishList').html());
@@ -126,6 +127,13 @@ var myPublishListView = Backbone.View.extend({
     handleOperation: function() {
         this.pagObj.pageNum = 1;
         this.reloadPage();
+    },
+    showReason: function(event) {
+        var comment = this.$(event.currentTarget).data('comment');
+        layer.open({
+            title: '拒绝原因',
+            content: comment
+        });
     }
 });
 

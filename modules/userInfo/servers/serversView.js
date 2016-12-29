@@ -101,7 +101,7 @@ var myPublishListView = Backbone.View.extend({
             layer.close(confirmLay);
         });   
     },
-    deleteService: function() {
+    deleteService: function(event) {
         var id = this.$(event.currentTarget).data('id');
         var me = this;
 

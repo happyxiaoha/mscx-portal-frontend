@@ -129,9 +129,9 @@ var serversDemandListView = Backbone.View.extend({
             layer.close(deleteLay);
         });
     },
-    closeServers: function () {
+    closeServers: function (e) {
         var that = this;
-        var closeLay = layer.confirm('确认关闭这条数据需求吗？', {
+        var closeLay = layer.confirm('确认关闭这条服务需求吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
             var sId = $(e.target).closest('tr').attr('attrid');

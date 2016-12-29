@@ -46,7 +46,7 @@
             </li>
             <li class="mb10">
                 <span>发布日期：</span>
-                <span class="cor7"><%= new Date(data.publishTime).format('yyyy-MM-dd') %></span>
+                <span class="cor7"><%= data.publishTime && new Date(data.publishTime).format('yyyy-MM-dd') %></span>
             </li>
         </ul>
     </div>

@@ -24,7 +24,7 @@
 <script id="apiDemandList" type="template">
     <% _.each(apiDemandList, function (aitem) { %>
     <tr attrId="<%=aitem.id%>">
-        <td><a href="demand.html#api/detail/<%= aitem.id %>"><%=aitem.sysName%></a></td>
+        <td><a href="demand.html#api/detail/<%= aitem.id %>" target="_blank"><%=aitem.sysName%></a></td>
         <td><%=aitem.sysDescription%></td>
         <td><%=mscxPage.sourceStatus[aitem.statusCode]%></td>
         <td>

@@ -62,7 +62,7 @@ var view = Backbone.View.extend({
     render: function() {
         var model = this.detailModel.toJSON();
 
-        this.attentionFlag = model.result.flag;
+        this.attentionFlag = model.result && model.result.flag;
         this.$el.html(this.template(model.result)).removeClass('opacity0');
     },
     apply: function() {

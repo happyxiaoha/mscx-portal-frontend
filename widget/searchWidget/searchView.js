@@ -56,7 +56,7 @@ var Models = {
     })),
     // 标签详情 根据categoryId获取
     detailTags: new (Backbone.Model.extend({
-        url: mscxPage.request.dict + 'tag/getTagsInfo.do'
+        url: mscxPage.request.dict + 'tags/getTagsInfo.do'
     })),
     // 收费类型
     chargeWay: new (Backbone.Model.extend({

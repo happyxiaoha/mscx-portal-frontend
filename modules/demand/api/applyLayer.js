@@ -64,7 +64,7 @@ var view = Backbone.View.extend({
             success: function(res) {
                 layer.msg('接单成功！');
                 setTimeout(function() {
-                    location.href = 'userInfo.html#demand/api';
+                    location.href = 'userInfo.html#acceptDemand';
                 }, 2000);
             }
         })

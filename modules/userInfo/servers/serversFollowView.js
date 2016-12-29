@@ -76,13 +76,21 @@ var myFollowListView = Backbone.View.extend({
     },
     unFollowService: function(event) {
         var id = this.$(event.currentTarget).data('id');
+        var me = this;
 
-        this.pagObj.pageNum = 1;
-        this.unfollowModel.fetch({
-            data: {
-                id: parseInt(id)
-            }
-        })
+        var unfollowLay = layer.confirm('确认取消关注这条服务吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            me.pagObj.pageNum = 1;
+            me.unfollowModel.fetch({
+                data: {
+                    id: parseInt(id)
+                }
+            })
+            layer.close(unfollowLay);
+        }, function(){
+            layer.close(unfollowLay);
+        });
     }
 });
 

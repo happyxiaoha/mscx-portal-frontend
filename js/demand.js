@@ -13,7 +13,7 @@ $(function() {
     });
     new footer();
 
-    headerView.ready(function() {
+    headerView.addDidRender(function() {
         mscxPage.appRouter = new router();
 
         mscxPage.appRouter.on('route', function(res) {

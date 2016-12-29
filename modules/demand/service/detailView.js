@@ -63,7 +63,7 @@ var view = Backbone.View.extend({
     apply: function() {
         var me = this;
         
-        if(!mscxPage.isLogin()) {
+        if(!mscxPage.isLogin() || !mscxPage.isRealName()) {
             return;
         }
 

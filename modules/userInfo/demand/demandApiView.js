@@ -24,6 +24,19 @@ var publishApiModel = Backbone.Model.extend({
 var apiOrderModel = Backbone.Model.extend({   //查看api需求接单列表
     url: mscxPage.request.demand + 'queryApiOrder.do'
 });
+var apiOrderPlanModel = Backbone.Model.extend({   //查看api需求接单方案
+    url: mscxPage.request.demand + 'apiOrderDetail.do'
+});
+
+var addApiPlanModel = Backbone.Model.extend({   //确认接单
+    idAttribute: 'apiId',
+    url: mscxPage.request.demand + 'confirmApiOrder.do'
+});
+
+var refuseApiPlanModel = Backbone.Model.extend({   //拒绝接单
+    idAttribute: 'apiId',
+    url: mscxPage.request.demand + 'refuseApiOrder.do'
+});
 var apiDemandListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
@@ -35,7 +48,10 @@ var apiDemandListView = Backbone.View.extend({
         'click .deleteApi': 'delteApi',
         'click .closeApi': 'closeApi',
         'click .apiPublish': 'publishDemand',
-        'click .showApiInfo': 'showOrderList'
+        'click .showApiInfo': 'showOrderList',
+        'click .showApiPlanInfo': 'showApiPlanInfo',
+        'click .ensureApiPlanInfo': 'ensureApiPlanInfo',
+        'click .refuseApiPlanInfo': 'refuseApiPlanInfo'
     },
     initialize: function() {
         this.$el.html(_.template(commonTemplate)({name:'apiDemand'}));
@@ -45,7 +61,11 @@ var apiDemandListView = Backbone.View.extend({
         this.model = new demandApiListModel();
         this.publishApiModel = new publishApiModel();
         this.apiOrderModel = new apiOrderModel();
+        this.apiOrderPlanModel = new apiOrderPlanModel();
+        this.addApiPlanModel = new addApiPlanModel();
+        this.refuseApiPlanModel = new refuseApiPlanModel();
 
+        this.listenTo(this.apiOrderPlanModel, 'sync', this.handleApiOrderPlan);
         this.listenTo(this.apiOrderModel, 'sync', this.handleApiOrder);
         this.listenTo(this.publishApiModel, 'sync', this.handlePublish);
         this.model.on('change',function () {
@@ -146,20 +166,22 @@ var apiDemandListView = Backbone.View.extend({
         }
     },
     showOrderList: function(e) {
-        var attrid = $(e.target).closest('tr').attr('attrId');
+        this.apiOrderattrid = $(e.target).closest('tr').attr('attrId');
         this.apiOrderModel.fetch({
             data: {
-                id: +attrid
+                id: +this.apiOrderattrid,
+                pageSize: 5
             }
         });
+        this.$el.find('#demandApiOrderNameList tbody').html('');
         var dialog = layer.open({
             type: 1,
             btn: ['关闭'],
             title: '接单人列表',
             shade: 0.6,
-            shadeClose: true,
+            shadeClose: false,
             area: ['600px', '500px'],
-            content: $('#orderNameList'), //捕获的元素
+            content: $('#demandApiOrderNameList'), //捕获的元素
             btn1: function () {          //通过
                 layer.close(dialog);
             }
@@ -167,8 +189,98 @@ var apiDemandListView = Backbone.View.extend({
     },
     handleApiOrder: function(res){
         res = res.toJSON().result;
-        var temps = _.template($('#apiOrderNameList').html());
-        this.$el.find('#orderNameList').html(temps({apiOrderList: res}));
+        var that = this;
+        var temps = _.template($('#demondApiOrderNameList').html());
+        this.$el.find('#demandApiOrderNameList tbody').html(temps({apiOrderList: res.list}));
+        laypage({
+            cont: 'apiOrderPage',
+            skip: true,
+            pages: res.page.totalPage,
+            curr: res.page.currentPage || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.reloadApiOrderPage(obj.curr, res.page.pageSize);
+                }
+            }
+        });
+    },
+    reloadApiOrderPage: function (curr) {
+        this.apiOrderModel.fetch({
+            data: {
+                page: curr,
+                id: +this.apiOrderattrid,
+                pageSize: 5
+            }
+        });
+    },
+    showApiPlanInfo: function(e){
+        var that = this,
+            planId= $(e.target).closest('td').data('id');
+        this.apiOrderPlanModel.fetch({
+            data: {
+                id: +planId
+            }
+        });
+        this.$el.find('#apiOrderPlanDiv').html('');
+        var dialog = layer.open({
+            type: 1,
+            btn: ['关闭'],
+            title: '方案详情',
+            shade: 0.6,
+            shadeClose: false,
+            area: ['500px', '320px'],
+            content: $('#apiOrderPlanDiv'), //捕获的元素
+            btn1: function () {          //通过
+                layer.close(dialog);
+            }
+        })
+    },
+    handleApiOrderPlan: function(res){
+        res = res.toJSON().result;
+        var that = this;
+        var temps = _.template($('#apiPlanInfo').html());
+        this.$el.find('#apiOrderPlanDiv').html(temps({palnList: res}));
+    },
+    ensureApiPlanInfo: function(e){
+        var planId = $(e.target).closest('td').data('id'),
+            reqid = $(e.target).closest('td').data('reqid'),
+            that = this;
+        that.addApiPlanModel.save({
+                id: +planId,
+                reqId: +reqid
+            },
+            {success: function(res){
+                res = res.toJSON();
+                if(res.result == 1){
+                    layer.msg('确认接单成功');
+                    that.reloadApiOrderPage('1')
+                }
+                else {
+                    layer.alert('确认接单失败');
+                }
+            }
+            }
+        )
+    },
+    refuseApiPlanInfo: function(e){
+        var planId = $(e.target).closest('td').data('id'),
+            reqid = $(e.target).closest('td').data('reqid'),
+            that = this;
+        that.refuseApiPlanModel.save({
+            id: +planId,
+            reqId: +reqid
+        },{
+            success: function(res){
+                res = res.toJSON();
+                if(res.result == 1){
+                    layer.msg('拒绝接单成功');
+                    that.reloadApiOrderPage('1')
+                }
+                else {
+                    layer.alert('拒绝接单失败');
+                }
+            }
+        })
     }
 });
 module.exports = apiDemandListView;

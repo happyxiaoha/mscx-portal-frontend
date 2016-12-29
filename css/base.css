@@ -297,3 +297,7 @@ select::-ms-expand {
 :-ms-input-placeholder { /* Internet Explorer 10+ */
 	color:    #a8a8a8!important;
 }
+
+table tr td{
+	word-break: break-all;
+}

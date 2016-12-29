@@ -16,3 +16,26 @@
 .D_table table tbody tr td a {
     color: #3f89ec;
 }
+a{cursor: pointer;}
+
+
+.orderDiv {padding: 20px 30px;font-size: 14px;}
+.orderDiv label{
+    float: left;
+    padding: 5px 0;
+}
+.orderDiv label span{
+    display: block;
+    float: left;
+    width: 100px;
+    line-height: 26px;
+}
+.orderDiv label textarea{
+    width: 270px;
+    padding: 4px 6px;
+    height: 70px;
+    float: left;
+}
+.orderDiv label input{
+    width: 270px;
+}

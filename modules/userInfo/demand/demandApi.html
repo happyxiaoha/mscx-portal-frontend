@@ -49,7 +49,7 @@
 </script>
 
 
-<div id="orderNameList" style="display: none;">
+<div id="demandApiOrderNameList" style="display: none;">
     <div class="D_table M-table" style="padding: 20px;">
         <table>
             <thead>
@@ -70,22 +70,29 @@
             </tbody>
         </table>
     </div>
+    <div id="apiOrderPage" class="fr">
+
+    </div>
 </div>
 
 
-<script id="apiOrderNameList" type="template">
-    <% _.each(apiOrderList, function (aitem) { %>
+<script id="demondApiOrderNameList" type="template">
+    <% _.each(apiOrderList, function (aitem,index) { %>
     <tr>
-        <td>1</td>
-        <td>20161102</td>
-        <td>usersm</td>
-        <td>18611325859</td>
-        <td>skyzzzz@126.com</td>
-        <td>未处理</td>
-        <td>
-            <a class="showInfo">查看方案</a>
-            <a>确认</a>
-            <a>拒绝</a>
+        <td><%= (index+1) %></td>
+        <td><%= new Date(aitem.orderTime).format('yyyy-MM-dd') %></td>
+        <td><%= aitem.contactUsername %></td>
+        <td><%= aitem.contactPhone %></td>
+        <td><%= aitem.contactEmail %></td>
+        <td><%= aitem.statusName %></td>
+        <td data-id="<%= aitem.id %>" data-reqid="<%= aitem.reqId %>">
+            <%if(aitem.statusCode == 'P'){%>
+            <a class="showApiPlanInfo">查看方案</a>
+            <a class="ensureApiPlanInfo">确认</a>
+            <a class="refuseApiPlanInfo">拒绝</a>
+            <%}else{%>
+            <a class="showApiPlanInfo">查看方案</a>
+            <%};%>
         </td>
     </tr>
     <% }); %>
@@ -95,3 +102,19 @@
     </tr>
     <%}%>
 </script>
+
+<div class="orderDiv" id="apiOrderPlanDiv"  style="display: none;">
+
+</div>
+
+<script id="apiPlanInfo" type="template">
+    <label>
+        <span>方案报价：</span>
+        <textarea readonly><%- palnList.price %></textarea>
+    </label>
+    <label>
+        <span>报价方案简介：</span>
+        <textarea readonly><%- palnList.planIntro %></textarea>
+    </label>
+</script>
+

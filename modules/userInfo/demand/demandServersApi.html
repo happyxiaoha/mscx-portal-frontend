@@ -72,21 +72,28 @@
             </tbody>
         </table>
     </div>
+    <div id="serOrderPage" class="fr">
+
+    </div>
 </div>
 
 <script id="serOrderNameList" type="template">
-    <% _.each(serOrderList, function (sitem) { %>
+    <% _.each(serOrderList, function (sitem,index) { %>
     <tr>
-        <td>1</td>
-        <td>20161102</td>
-        <td>usersm</td>
-        <td>18611325859</td>
-        <td>skyzzzz@126.com</td>
-        <td>未处理</td>
-        <td>
-            <a class="showInfo">查看方案</a>
-            <a>确认</a>
-            <a>拒绝</a>
+        <td><%= (index+1)%></td>
+        <td><%= new Date(sitem.createdTime).format('yyyy-MM-dd')%></td>
+        <td><%= sitem.contactUsername %></td>
+        <td><%= sitem.contactPhone %></td>
+        <td><%= sitem.contactEmail %></td>
+        <td><%= sitem.statusName %></td>
+        <td data-id="<%= sitem.id %>">
+            <%if(sitem.status == 'P'){%>
+            <a class="showSerPlanInfo">查看方案</a>
+            <a class="ensureSerPlanInfo">确认</a>
+            <a class="refuseSerPlanInfo">拒绝</a>
+            <%}else{%>
+            <a class="showSerPlanInfo">查看方案</a>
+            <%};%>
         </td>
     </tr>
     <% }); %>
@@ -95,5 +102,21 @@
         <td colspan="7">暂无数据</td>
     </tr>
     <%}%>
+</script>
+
+
+<div class="orderDiv" id="serOrderPlanDiv"  style="display: none;">
+
+</div>
+
+<script id="serPlanInfo" type="template">
+    <label>
+        <span>方案报价：</span>
+        <textarea readonly><%- palnList.price %></textarea>
+    </label>
+    <label>
+        <span>报价方案简介：</span>
+        <textarea readonly><%- palnList.planIntro %></textarea>
+    </label>
 </script>
 

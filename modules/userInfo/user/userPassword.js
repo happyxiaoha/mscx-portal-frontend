@@ -9,7 +9,9 @@ require('validate');
 var userPasswordManagerModel = Backbone.Model.extend({
     url: mscxPage.request.uc + 'change/password.do'
 });
-
+var userInfoModel = Backbone.Model.extend({
+    url: mscxPage.request.uc + 'user/info/mine.do'
+});
 var userPasswordView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
@@ -68,11 +70,33 @@ var userPasswordView = Backbone.View.extend({
         this.model.set(e.target.id,e.target.value);
         return false;
     },
+    renderUserCommon: function (isDisplay) {
+        this.$el.html(_.template(commonTemplate)({name:'userPassword',isDisplay:isDisplay}));
+    },
     initialize: function() {
-        this.$el.html(_.template(commonTemplate)({name:'userPassword'}));
-        this.$el.find('#userInfoArea').html(template);
-        this.model = new userPasswordManagerModel();
-        $('#userPasswordForm').validate(this.validateConfig());
+        var that = this;
+        if(mscxPage.userInfo){
+            var isDis = mscxPage.userInfo.userType == 'PARTNER_ORG' || mscxPage.userInfo.userType == 'PARTNER_GOV' ? true : false;
+            this.renderUserCommon(isDis);
+            callback();
+        }
+        else {
+            new userInfoModel().fetch({
+                success: function (model,res) {
+                    var useType = res.result.userType;
+                    var isDis = useType == '合作伙伴'? true : false;
+                    that.renderUserCommon(isDis);
+                    callback();
+                }
+            });
+            callback();
+        }
+        function callback() {
+            that.$el.find('#userInfoArea').html(template);
+            that.model = new userPasswordManagerModel();
+            $('#userPasswordForm').validate(that.validateConfig());
+        }
+
     }
 });
 module.exports = userPasswordView;

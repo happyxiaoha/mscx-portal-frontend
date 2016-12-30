@@ -25,8 +25,8 @@
     <% _.each(apiDemandList, function (aitem) { %>
     <tr attrId="<%=aitem.id%>">
         <td>
-        <%if(aitem.statusCode == '0'){%>
-         <%=aitem.sysName || '-'%>
+        <%if(aitem.statusCode == '0'|| aitem.statusCode == '1'){%>
+            <a target="_blank" href="demand.html#api/des/<%= aitem.id %>"><%=aitem.sysName || '-'%></a>
         <%}else{%>
             <a target="_blank" href="demand.html#api/detail/<%= aitem.id %>"><%=aitem.sysName || '-'%></a>
         <%}%>

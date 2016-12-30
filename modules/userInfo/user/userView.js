@@ -17,15 +17,25 @@ var userView = Backbone.View.extend({
     events: {
 
     },
+    renderUserCommon: function (isDisplay) {
+        this.$el.html(_.template(commonTemplate)({name:'user',isDisplay:isDisplay}));
+    },
     initialize: function() {
         var that = this;
-        this.$el.html(_.template(commonTemplate)({name:'user'}));
+        if(mscxPage.userInfo){
+            var isDis = mscxPage.userInfo.userType == 'PARTNER_ORG' || mscxPage.userInfo.userType == 'PARTNER_GOV' ? true : false;
+            that.renderUserCommon(isDis);
+            that.initRender();
+        }
         this.model = new userInfoModel();
         this.model.fetch();
         this.model.on('change',function () {
+            var useType = that.model.get('result').userType;
+            var isDis = useType == '合作伙伴'? true : false;
+            that.renderUserCommon(isDis);
+            that.initRender();
             that.render();
         });
-        this.initRender();
     },
     render: function () {
         var temps = _.template($('#userInfo').html());

@@ -15,7 +15,10 @@ var Routes =  Backbone.Router.extend({
         'service/edit/:id': 'servicePublishView',
         'data/publish': 'dataPublishView',
         'api/publish': 'apiPublishView',
-        'service/publish': 'servicePublishView'
+        'service/publish': 'servicePublishView',
+        'service/des/:id': 'serviceDesView',
+        'api/des/:id': 'apiDesView',
+        'data/des/:id': 'dataDesView'
     },
     dataDemandView: function () {
         var demandView = require('demand/demandView.js');
@@ -62,6 +65,36 @@ var Routes =  Backbone.Router.extend({
         detailView && detailView.undelegateEvents() && detailView.stopListening();
 
         mscxPage.views['serviceDetailView'] = new view({
+            id: id
+        });
+    },
+    serviceDesView: function(id){
+        var view = require('demand/service/desView.js');
+
+        var desView = mscxPage.views['serviceDesView'];
+        desView && desView.undelegateEvents() && desView.stopListening();
+
+        mscxPage.views['serviceDesView'] = new view({
+            id: id
+        });
+    },
+    apiDesView: function(id){
+        var view = require('demand/api/desView.js');
+
+        var apidesView = mscxPage.views['apiDesView'];
+        apidesView && apidesView.undelegateEvents() && apidesView.stopListening();
+
+        mscxPage.views['apiDesView'] = new view({
+            id: id
+        });
+    },
+    dataDesView: function(id){
+        var view = require('demand/data/desView.js');
+
+        var datadesView = mscxPage.views['dataDesView'];
+        datadesView && datadesView.undelegateEvents() && datadesView.stopListening();
+
+        mscxPage.views['dataDesView'] = new view({
             id: id
         });
     },

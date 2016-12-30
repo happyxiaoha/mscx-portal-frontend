@@ -102,6 +102,9 @@ var openDataDetailView = Backbone.View.extend({
     offlineChat: function() {
         var me = this;
 
+        if(!mscxPage.isLogin()) {
+            return;
+        }
         this.offlineView = new offlineView({
             id: this.id
         });

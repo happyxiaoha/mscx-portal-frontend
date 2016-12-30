@@ -1,6 +1,8 @@
 <div id="userTabs" class="topTab clearfix InfoTopTit">
     <span <%= (name == 'user' ? 'class=active' : '' ) %> ><a href="#user">用户基本信息</a></span>
+    <%if(!isDisplay){%>
     <span <%= (name == 'userAuth' ? 'class=active' : '' ) %> ><a href="#userAuth">实名认证</a></span>
+    <%}%>
     <span <%= (name == 'userPassword' ? 'class=active' : '' ) %>><a href="#userPassword">修改密码</a></span>
 </div>
 <div id="userInfoArea"  class="tabDownCons">

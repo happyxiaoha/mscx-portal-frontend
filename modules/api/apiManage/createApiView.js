@@ -44,7 +44,8 @@ var createApiView = Backbone.View.extend({
         'change .upload-file': 'doUploadImg',
         'blur #apiServerId': 'checkServerId',
         'blur #apiName': 'checkApiName',
-        'change .charge-type': 'doChargeType'
+        'change .charge-type': 'doChargeType',
+        'change input:radio[name="countLimit"]': 'changeLimit',
     },
     updateIndex: -1,
     apiName: '',
@@ -210,10 +211,6 @@ var createApiView = Backbone.View.extend({
                 },
                 chargeCount: {
                     required: true,
-                    number: true,
-                    min: 0
-                },
-                countLimit: {
                     number: true,
                     min: 0
                 },

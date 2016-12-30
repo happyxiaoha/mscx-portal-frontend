@@ -138,7 +138,7 @@
 .sl-search input[type="text"]{outline: none;margin: 0;height:24px;border:none;box-shadow: none;display: inline-block;padding: 0 12px;vertical-align: 8px;width: 276px;}
 .sl-search span{width: 24px;display: inline-block;height: 24px;background: url(../../images/img07.png) no-repeat center center;cursor: pointer;vertical-align: 1px;}
 
-.downLoadCons{right: -16px;top: 50%;margin-top: -43px;height: 86px;border-left: 1px solid #ccc;width: 166px;text-align: center;background: #fff;padding-top: 3px;}
+.downLoadCons{right: -16px;top: 50%;margin-top: -43px;height: 86px;border-left: 1px solid #ccc;width: 166px;text-align: center;padding-top: 3px;}
 .downLoadCons p em{display: inline-block;margin: 0 5px;}
 .downLoadCons p{margin-bottom: 5px;}
 .downLoadCons p.stop{color: #ccc;}

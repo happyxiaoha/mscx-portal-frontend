@@ -2,13 +2,13 @@
     <% data && data.forEach(function(item) { %>
     <li>
         <p class="posRE mb20">
-            <a href="#api/detail/<%= item.id %>" class="corOrange ft16 mr72"><%= item.sysName %></a>
+            <a href="#api/detail/<%= item.id %>" class="corOrange ft16 mr35"><%= item.sysName %></a>
             <span>内网系统：</span>
-            <span class="corBlue mr72"><%= item.netType %></span>
+            <span class="corBlue mr35"><%= item.netType %></span>
             <span>所属单位：</span>
             <span class="corBlue mr72"><%= item.department %></span>
         </p>
-        <p class="cor4 mb20 line22">需求描述：<span><%= item.name %></span></p>
+        <p class="cor4 mb20 line22 wd660">需求描述：<span><%= item.name %></span></p>
         <p class="posRE ">
             <span>需求用户：</span>
             <span class="corBlue mr72"><%= item.reqUser %></span>
@@ -18,7 +18,13 @@
             <span class="corBlue"><%= new Date(item.endTime).format('yyyy.MM.dd') %></span>
         </p>
         <div class="posAB downLoadCons">
-            <p class="ft12 corOrange">新任务</p>
+            <p class="ft12 corOrange">
+                <% if(item.statusCode == 2) { %>
+                    新任务
+                <% }else if(item.statusCode == 5){ %>
+                    已结束
+                <% } %>
+            </p>
             <a href="#api/detail/<%= item.id %>">接单</a>
             <p class="ft12">已浏览<em class="corOrange ft16"><%= item.pageviewAmount %></em>次</p>
         </div>

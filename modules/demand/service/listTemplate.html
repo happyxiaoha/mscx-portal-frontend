@@ -17,7 +17,13 @@
             </p>
         </div>
         <div class="posAB downLoadCons">
-            <p class="ft12 corOrange">新任务</p>
+            <p class="ft12 corOrange">
+                <% if(item.statusCode == 2) { %>
+                    新任务
+                <% }else if(item.statusCode == 5){ %>
+                    已结束
+                <% } %>
+            </p>
             <a href="#service/detail/<%= item.id %>">接单</a>
             <p class="ft12">已浏览<em class="corOrange ft16"><%= item.pageviewAmount %></em>次</p>
         </div>

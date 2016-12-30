@@ -116,6 +116,7 @@
         <ul>
             <li>
                 <label>
+                    <input type="hidden" name="id" value="<%=res.id%>">
                     <span><i class="need">*</i>计费方式：</span>
                     <select name="chargeType" class="charge-type">
                         <option value="05" <%if(res && res.chargeType=='05'){%>selected="selected"<%}%>>按次数</option>

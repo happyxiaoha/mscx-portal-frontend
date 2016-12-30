@@ -119,4 +119,4 @@
 .mes {line-height: 30px;max-width: 600px;}
 .mes-split {line-height: 30px;margin-right: 5px;}
 .input-mes {margin: 10px 0 0 126px;font-size: 12px;color: #999;}
-.input-mes-api{margin: 0;font-size: 12px;color: #999;}
+.input-mes-api{margin: 0 0 0 9px;font-size: 12px;color: #999;}

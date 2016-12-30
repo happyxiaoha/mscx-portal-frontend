@@ -63,10 +63,6 @@ var apiView = Backbone.View.extend({
                     number: true,
                     min: 0
                 },
-                countLimit: {
-                    number: true,
-                    min: 0
-                },
                 monthLimit: {
                     number: true,
                     min: 0
@@ -384,7 +380,6 @@ var apiView = Backbone.View.extend({
             packageList[this.updateIndex] = newPackage;
             this.updateIndex = -1;
         }
-        debugger;
         this.packageList = packageList;
         this.getPackageModel.set('result',packageList);
         this.buildPackageTable();

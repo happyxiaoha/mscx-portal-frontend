@@ -272,6 +272,8 @@ var view = Backbone.View.extend({
     changeProvinces: function(event) {
         var code = this.$provinceSel.val();
 
+        this.$provinceSel.attr('title', this.$provinceSel.find('option:selected').text());
+
         this.province = _.find(Resource.provinces, function(item) {
             return item.code == code;
         });
@@ -287,6 +289,8 @@ var view = Backbone.View.extend({
     changeCities: function(event) {
         var code = this.$citySel.val();
 
+        this.$citySel.attr('title', this.$citySel.find('option:selected').text());
+
         this.city = _.find(this.province.cities, function(item) {
             return item.code == code;
         });
@@ -300,6 +304,8 @@ var view = Backbone.View.extend({
     },
     changeAreas: function(event) {
         var code = this.$areaSel.val();
+
+        this.$areaSel.attr('title', this.$areaSel.find('option:selected').text());
 
         this.searchParams.set({
             page: 1,

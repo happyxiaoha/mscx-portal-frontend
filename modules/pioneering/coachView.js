@@ -4,8 +4,8 @@ var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var Resource = require('./resource.js');
 var template = '<div class="rightMenuWrap fl boxShadiow boxSizing bgWhite common"><div class="common posRE animate-content opacity0" id="topPart"></div><div id="downPart" class="common posRE animate-content opacity0"></div></div>';
 
-var cmsUrl = Resource.cmsHost + 'datainfo/pioneercoach/index.html';
-var cmsPolicyUrl = Resource.cmsHost + 'datainfo/policyread/index.html';
+var cmsUrl = Resource.cmsHost + 'static_html/datainfo/pioneercoach/index.html';
+var cmsPolicyUrl = Resource.cmsHost + 'static_html/datainfo/policyread/index.html';
 require('./pioneering.css');
 
 var view = Backbone.View.extend({
@@ -28,6 +28,7 @@ var view = Backbone.View.extend({
 
         var me = this;
 
+        window.portalUrl = Resource.cmsHost;
         window.frameUrl = '#news/detail/';
         window.jumpToPage = function(url) {
             me.$downPart.load(url);

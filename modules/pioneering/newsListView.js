@@ -2,7 +2,7 @@
 
 var template = '<div class="noticeList grid960 animate-content opacity0"></div>';
 var Resource = require('./resource.js');
-var cmsUrl = Resource.cmsHost + 'datainfo/businessinfo/index.html';
+var cmsUrl = Resource.cmsHost + 'static_html/datainfo/businessinfo/index.html';
 
 require('./pioneering.css');
 
@@ -19,6 +19,7 @@ var view = Backbone.View.extend({
 
         var me = this;
 
+        window.portalUrl = Resource.cmsHost;
         window.frameUrl = '#news/detail/';
         window.jumpToPage = function(url) {
             me.$list.load(url);

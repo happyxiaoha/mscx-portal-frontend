@@ -4,7 +4,7 @@ var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var Resource = require('./resource.js');
 var template = '<div class="api-env rightMenuWrap fl boxShadiow boxSizing bgWhite common animate-content opacity0"></div>';
 
-var cmsUrl = Resource.cmsHost + 'datainfo/apiinfo/index.html'
+var cmsUrl = Resource.cmsHost + 'static_html/datainfo/apiinfo/index.html'
 
 require('./pioneering.css');
 

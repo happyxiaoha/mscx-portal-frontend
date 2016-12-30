@@ -4,7 +4,7 @@ var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var Resource = require('./resource.js');
 var template = '<div class="server-env rightMenuWrap fl boxShadiow boxSizing bgWhite common animate-content opacity0"></div>';
 
-var cmsUrl = Resource.cmsHost + 'datainfo/serverdev/index.html'
+var cmsUrl = Resource.cmsHost + 'static_html/datainfo/serverdev/index.html'
 
 require('./pioneering.css');
 

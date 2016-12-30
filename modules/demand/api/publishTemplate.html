@@ -13,7 +13,7 @@
             <p class="fl R_left"><em>*</em>需求说明：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" placeholder="请输入需求描述信息" name="name" value="<%= data && data.name %>" id="requirement-description">
+                    <input type="text" maxlength="100" placeholder="请输入需求描述信息" name="name" value="<%= data && data.name %>" id="requirement-description">
                 </p>
             </div>
         </div>
@@ -21,7 +21,7 @@
             <p class="fl R_left"><em>*</em>系统名称：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="sysName" placeholder="请输入系统名称" value="<%= data && data.sysName %>" id="system-name">
+                    <input type="text" name="sysName" maxlength="50" placeholder="请输入系统名称" value="<%= data && data.sysName %>" id="system-name">
                 </p>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <p class="fl R_left">系统描述：</p>
             <div class="fl R_right">
                 <p>
-                    <textarea cols="30" rows="10" name="sysDescription" placeholder="请输入系统描述" id="system-description"><%= data && data.sysDescription %></textarea>
+                    <textarea cols="30" rows="10" maxlength="1000" name="sysDescription" placeholder="请输入系统描述" id="system-description"><%= data && data.sysDescription %></textarea>
                 </p>
             </div>
         </div>
@@ -48,7 +48,7 @@
             <p class="fl R_left"><em>*</em>归属单位 ：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" value="<%= data && data.department %>" name="department" placeholder="请输入所属单位" id="system-belongCompany">
+                    <input type="text" value="<%= data && data.department %>" name="department" placeholder="请输入所属单位" maxlength="64" id="system-belongCompany">
                 </p>
             </div>
         </div>
@@ -199,7 +199,7 @@
             <p class="fl R_left"><em>*</em>联系人：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" value="<%= data && data.contactUsername %>" name="contactUsername" placeholder="请输入联系人信息" id="system-contact-who">
+                    <input type="text" value="<%= data && data.contactUsername %>" name="contactUsername" maxlength="50" placeholder="请输入联系人信息" id="system-contact-who">
                 </p>
             </div>
         </div>

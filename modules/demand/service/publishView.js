@@ -48,7 +48,8 @@ var createDemandView = Backbone.View.extend({
             rules: {
                 name: {
                     required: true,
-                    minlength: 2
+                    minlength: 2,
+                    maxlength: 100
                 },
                 required: {
                     required: true
@@ -57,13 +58,15 @@ var createDemandView = Backbone.View.extend({
                     required: true
                 },
                 money: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 endTime: {
                     required: true
                 },
                 contactUsername: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 contactPhone: {
                     required: true,

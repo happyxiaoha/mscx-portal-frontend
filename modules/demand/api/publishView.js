@@ -40,13 +40,19 @@ var createDemandView = Backbone.View.extend({
             rules: {
                 name: {
                     required: true,
-                    minlength: 2
+                    minlength: 2,
+                    maxlength: 100
                 },
                 sysName: {
-                    required: true
+                    required: true,
+                    maxlength: 50
+                },
+                sysDescription: {
+                    maxlength: 1000
                 },
                 department: {
-                    required: true
+                    required: true,
+                    maxlength: 64
                 },
                 ownership: {
                     required: true
@@ -56,13 +62,15 @@ var createDemandView = Backbone.View.extend({
                 },
                 interfaceNum: {
                     required: true,
-                    number: true
+                    number: true,
+                    min: 1
                 },
                 endTime: {
                     required: true
                 },
                 contactUsername: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 contactPhone: {
                     required: true,
@@ -70,7 +78,8 @@ var createDemandView = Backbone.View.extend({
                 },
                 preOffer: {
                     required: true,
-                    number: true
+                    number: true,
+                    min: 1
                 }
             },
             submitHandler: function () {
@@ -82,10 +91,14 @@ var createDemandView = Backbone.View.extend({
         this.$form.ajaxSubmit({
             url: this.formAction,
             success: function(res) {
-                layer.msg('提交成功,请耐心等待审核！');
-                setTimeout(function() {
-                    location.href = 'userInfo.html#apiDemand';
-                }, 2000);
+                if(res.status == 'ERROR'){
+                    layer.msg(res.message);
+                }else {
+                    layer.msg('提交成功,请耐心等待审核！');
+                    setTimeout(function() {
+                        location.href = 'userInfo.html#apiDemand';
+                    }, 2000);
+                }
             }
         })
     },

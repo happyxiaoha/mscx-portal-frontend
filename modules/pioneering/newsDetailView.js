@@ -14,7 +14,7 @@ var view = Backbone.View.extend({
             className: 'share posAB'
         });
 
-        this.$el.load(this.model.url + '?time=' + +(new Date()), function() {
+        this.$el.load(decodeURIComponent(this.model.url) + '?time=' + +(new Date()), function() {
             me.$el.removeClass('opacity0');
             // 添加分享组件
             me.$('.TopTit').addClass('pr').append(me.shareView.$el);

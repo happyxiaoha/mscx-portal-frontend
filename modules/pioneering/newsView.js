@@ -4,7 +4,7 @@ var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var Resource = require('./resource.js');
 var template = '<div class="layLeft common clearfix fl bgBoxShodow animate-content opacity0"></div>';
 
-var cmsUrl = Resource.cmsHost + 'datainfo/latestnews/index.html';
+var cmsUrl = Resource.cmsHost + 'static_html/datainfo/latestnews/index.html';
 
 require('./pioneering.css');
 
@@ -26,6 +26,7 @@ var view = Backbone.View.extend({
 
         window.frameUrl = '#news/detail/';
         window.listUrl = '#news/list';
+        window.portalUrl = Resource.cmsHost;
 
         this.$layLeft.load(cmsUrl + '?time=' + +(new Date()), function() {
             me.$layLeft.removeClass('opacity0');

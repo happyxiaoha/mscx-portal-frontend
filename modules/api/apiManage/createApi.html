@@ -354,16 +354,15 @@
             </li>
             <li>
                 <label>
-                    <span><i class="need">*</i>测试报文：</span>
-                    <textarea id="testPacket" name="testPacket"><%=res && res.testPacket%></textarea>
-                    <p class="input-mes-api fl">测试报文，用于审核人员进行测试使用，请保证报文的正确性</p>
+                    <span><i class="need">*</i>参数和返回示例：</span>
+                    <textarea id="directions" name="directions"><%=res && res.directions%></textarea>
+                    <p class="input-mes-api fl">参数和返回示例，使用MarkDown格式</p>
                 </label>
             </li>
             <li>
                 <label>
-                    <span><i class="need">*</i>调用说明：</span>
-                    <textarea id="directions" name="directions"><%=res && res.directions%></textarea>
-                    <p class="input-mes-api fl">调用说明，使用MarkDown格式</p>
+                    <span><i class="need">*</i>备注信息：</span>
+                    <textarea id="testPacket" name="testPacket"><%=res && res.testPacket%></textarea>
                 </label>
             </li>
         </ul>

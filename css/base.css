@@ -254,14 +254,23 @@ select::-ms-expand {
 	display: inline-block;
 	margin: 0 6px;
 }
-.smallSel .downSmalllBtn{
-	display: block;
+.smallSel p.select-wrapper {
 	position: absolute;
-	border-top: 6px solid #aaa;
-	border-right: 6px solid transparent;
-	border-left: 6px solid transparent;
-	right: 10px;
-	top: 18px;
+    top: 7px;
+    right: 0;
+    height: 26px;
+    width: 20px;
+    background: #fff;
+}
+.smallSel .downSmalllBtn{
+    display: block;
+    position: absolute;
+    border-top: 6px solid #aaa;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    right: 7px;
+    top: 11px;
+    background: #fff;
 }
 
 .common .tit{position: relative; height: 24px;line-height: 24px;padding-left: 16px;}

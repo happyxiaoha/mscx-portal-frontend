@@ -9,7 +9,7 @@
                 <tr>
                     <th width="15%">API名称</th>
                     <th width="36%">API描述</th>
-                    <th width="10%">申请（购买）次数</th>
+                    <th width="10%">申请次数</th>
                     <th width="8%">状态</th>
                     <th width="18%">操作</th>
                 </tr>
@@ -116,6 +116,7 @@
         <ul>
             <li>
                 <label>
+                    <input type="hidden" name="id" value="<%=res.id%>">
                     <span><i class="need">*</i>计费方式：</span>
                     <select name="chargeType" class="charge-type">
                         <option value="05" <%if(res && res.chargeType=='05'){%>selected="selected"<%}%>>按次数</option>

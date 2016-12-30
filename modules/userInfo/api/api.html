@@ -91,7 +91,7 @@
             <tr>
                 <td><%=chargeItem.name%></td>
                 <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%><%if(chargeItem.chargeType == '04'){%>月<%}else{%>次<%}%></td>
-                <td><%=chargeItem.countLimit ? chargeItem.countLimit : 0%>次</td>
+                <td><%=chargeItem.countLimit == 1 ? '限制一次' : '不限制'%></td>
                 <td><%=chargeItem.monthLimit ? chargeItem.monthLimit : 0%><%if(chargeItem.chargeType == '04'){%>次<%}else{%>个月<%}%></td>
                 <td><%= chargeItem.effectDate ? new Date(chargeItem.effectDate).format('yyyy-MM-dd') : '-'%></td>
                 <td><%= chargeItem.expiryDate ? new Date(chargeItem.expiryDate).format('yyyy-MM-dd') : '-'%></td>
@@ -145,8 +145,9 @@
             <li>
                 <label>
                     <span>购买限制：</span>
-                    <input type="number" class="small fl" name="countLimit" id="countLimit" value="<%=res && res.countLimit%>">
-                    <b class="fl ml20">(不填则为无限制)</b>
+                    <label title="不限制"><input type="radio" value="-1" name="countLimit" style="margin: 0;" <%if(res || res.countLimit == '-1'){%>checked<%}%>>不限制</label>
+                    <label title="限制一次" style="margin-left: 5px;"><input value="1" type="radio" name="countLimit" style="margin: 0;" <%if(res.countLimit == '1'){%>checked<%}%>>限制一次</label>
+
                 </label>
             </li>
             <li>

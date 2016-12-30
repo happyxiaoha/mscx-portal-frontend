@@ -169,13 +169,27 @@ var userAuthenticationView = Backbone.View.extend({
             new userInfoModel().fetch({
                 success: function (model,res) {
                     account = res.result.account;
-                    callback();
+                    var useType = res.result.userType;
+                    var isDis = useType == '合作伙伴'? true : false;
+                    if(isDis){
+                        location.href = '#user';
+                    }
+                    else {
+                        callback();
+                    }
+
                 }
             });
         }
         else {
             account = mscxPage.userInfo.account;
-            callback();
+            var isDis = mscxPage.userInfo.userType == 'PARTNER_ORG' || mscxPage.userInfo.userType == 'PARTNER_GOV' ? true : false;
+            if(isDis){
+               location.href = '#user';
+            }
+            else {
+                callback();
+            }
         }
         function callback() {
             that.getEnterpriseAuthModel.fetch({
@@ -194,7 +208,7 @@ var userAuthenticationView = Backbone.View.extend({
                 }
             });
         }
-        this.$el.html(_.template(commonTemplate)({name:'userAuth'}));
+        this.$el.html(_.template(commonTemplate)({name:'userAuth',isDisplay:false}));
 
         this.render();
     },

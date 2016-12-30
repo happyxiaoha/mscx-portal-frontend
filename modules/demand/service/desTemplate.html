@@ -1,0 +1,81 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow des">
+    <!-- top -->
+<div class="ReleaseTit w100">
+    <p >查看服务开发需求</p>
+</div>
+    <!-- down -->
+    <form class="ReleaseInputs" onsubmit="return false;">
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>任务名称：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.name %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>任务描述：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.description %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>任务要求：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.required %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>任务金额：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.money %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>截止日期：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && new Date(data.endTime).format('yyyy-MM-dd') %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>联系人信息：</p>
+            <div class="fl R_right">
+                <p>
+                   <%= data && data.contactUsername %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>联系人电话：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.contactPhone %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">邮箱：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.contactEmail %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">地址：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.contactAddress %>
+                </p>
+            </div>
+        </div>
+    </form>
+</div>

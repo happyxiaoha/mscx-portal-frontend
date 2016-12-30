@@ -27,8 +27,8 @@
     <% _.each(demandList, function (item) { %>
     <tr attrId="<%=item.id%>">
         <td>
-            <%if(item.statusCode == '0'){%>
-            <%= item.name || '-' %>
+            <%if(item.statusCode == '0' || item.statusCode == '1'){%>
+            <a target="_blank" href="demand.html#data/des/<%=item.id%>"><%=item.name || '-'%></a>
             <%}else{%>
             <a target="_blank" href="demand.html#data/detail/<%=item.id%>"><%=item.name || '-'%></a>
             <%}%>

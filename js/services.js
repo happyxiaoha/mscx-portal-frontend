@@ -9,7 +9,7 @@ var router = require('../modules/services/router.js');
 require('../modules/services/services.css');
 
 $(function() {
-    new header({
+    var headerView = new header({
         id: 'service'
     });
     new footer();

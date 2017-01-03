@@ -4,7 +4,7 @@
         <form id="publishApi" onsubmit="return false;">
         <div class="ReleaseInputs labelleft ReleaseDown">
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">服务范围：</p>
+                <p class="fl R_left"><i class="need">*</i>服务范围：</p>
                 <div class="fl R_right">
                     <p>
                         <textarea placeholder="请输入服务范围" name="scope"></textarea>
@@ -13,7 +13,7 @@
                 <p class="input-mes fl">多个城市之间用中文逗号隔开</p>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">服务名称：</p>
+                <p class="fl R_left"><i class="need">*</i>服务名称：</p>
                 <div class="fl R_right">
                     <p>
                         <input type="text" placeholder="请输入服务名称" name="cname">
@@ -22,7 +22,7 @@
                 <p class="input-mes fl">由中文、英文（大小写）、数字及其组合组成，最多不超过20字</p>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">服务标识：</p>
+                <p class="fl R_left"><i class="need">*</i>服务标识：</p>
                 <div class="fl R_right">
                     <p>
                         <input type="text" id="apiServerId" placeholder="输入服务标识" name="name">
@@ -32,14 +32,14 @@
                 <p class="input-mes fl">由英文、数字及其组合组成，最多不超过20字</p>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">是否收费：</p>
+                <p class="fl R_left"><i class="need">*</i>是否收费：</p>
                 <div class="fl R_right chargeTypeRadio">
                     <label><input type="radio" name="chargeType" id="ct01" checked>免费</label>
                     <label><input type="radio" name="chargeType" id="ct02">收费</label>
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">服务简介：</p>
+                <p class="fl R_left"><i class="need">*</i>服务简介：</p>
                 <div class="fl R_right">
                     <p>
                         <textarea cols="30" rows="10" placeholder="请输入服务简介" name ="description"></textarea>
@@ -48,7 +48,7 @@
                 <p class="input-mes fl">对业务服务进行说明，支持中文、英文（大小写）、数字、符号及其组合输入，输入最多不超过150占位符</p>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">服务图标：</p>
+                <p class="fl R_left"><i class="need">*</i>服务图标：</p>
                 <div class="fl R_right">
                     <p class="allInfoImg">
                         <img src="../../../images/add.png" alt="">
@@ -58,7 +58,7 @@
             </div>
             <!-- 增加 选择框及选择按钮  2016-09-05-->
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">服务分类：</p>
+                <p class="fl R_left"><i class="need">*</i>服务分类：</p>
                 <div class="fl R_right posRE">
                     <p id="serverCategory" class="checkboxlist">
                         <label><input type="radio">生活账单</label>
@@ -71,7 +71,7 @@
             </div>
 
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">标签：</p>
+                <p class="fl R_left"><i class="need">*</i>标签：</p>
                 <div class="fl R_right posRE">
                     <div class="tag-area fl"><span class="un-select">未选择任何标签</span></div>
                     <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
@@ -79,7 +79,7 @@
                 <label class="tag-error">请选择标签</label>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">服务返回码：</p>
+                <p class="fl R_left"><i class="need">*</i>服务返回码：</p>
                 <div class="fl R_right">
                     <p>
                         <textarea cols="30" rows="10" placeholder="请输入服务返回码" name ="rtnCode"></textarea>
@@ -88,7 +88,7 @@
                 <p class="input-mes fl">调用说明，使用MarkDown格式</p>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">服务对象：</p>
+                <p class="fl R_left"><i class="need">*</i>服务对象：</p>
                 <div class="fl R_right">
                     <p class="server-dist">
 
@@ -361,7 +361,7 @@
             </li>
             <li>
                 <label>
-                    <span><i class="need">*</i>备注信息：</span>
+                    <span>备注信息：</span>
                     <textarea id="testPacket" name="testPacket"><%=res && res.testPacket%></textarea>
                 </label>
             </li>

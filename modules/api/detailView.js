@@ -160,22 +160,22 @@ var view = Backbone.View.extend({
         var result = this.followModel.toJSON();
 
         if(result.status == 'OK') {
-            layer.msg('关注成功！');
+            layer.msg('关注成功');
             this.attentionFlag = !this.attentionFlag;
             this.$('#followBtn').text('取消关注');
         }else {
-            layer.msg('关注失败！');
+            layer.msg('关注失败');
         }
     },
     handleUnFollow: function() {
         var result = this.unFollowModel.toJSON();
 
         if(result.status == 'OK') {
-            layer.msg('取消关注成功！');
+            layer.msg('取消关注成功');
             this.attentionFlag = !this.attentionFlag;
             this.$('#followBtn').text('关注');
         }else {
-            layer.msg('取消关注失败！');
+            layer.msg('取消关注失败');
         }
     },
     // 线下洽谈

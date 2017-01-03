@@ -29,7 +29,7 @@ var view = Backbone.View.extend({
         var me = this;
 
         window.portalUrl = Resource.cmsHost;
-        window.frameUrl = '#news/detail/';
+        window.frameUrl = '?';
         window.jumpToPage = function(url) {
             me.$downPart.load(url);
         }

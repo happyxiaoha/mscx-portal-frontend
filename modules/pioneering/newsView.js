@@ -24,7 +24,7 @@ var view = Backbone.View.extend({
         this.$layLeft = this.$('.layLeft');
         var me = this;
 
-        window.frameUrl = '#news/detail/';
+        window.frameUrl = '?';
         window.listUrl = '#news/list';
         window.portalUrl = Resource.cmsHost;
 

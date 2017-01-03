@@ -27,6 +27,10 @@ var Routes =  Backbone.Router.extend({
         });
     },
     publishView: function (id) {
+        if(!mscxPage.isLogin() || !mscxPage.isRealName()) {
+            return;
+        }
+        
         var view = require('services/publishView.js');
 
         var publishView = mscxPage.views['publishView'];

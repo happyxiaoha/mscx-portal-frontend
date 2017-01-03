@@ -20,16 +20,20 @@ var view = Backbone.View.extend({
             rules: {
                 resReq:{
                     required: true,
+                    maxlength: 500
                 },
                 purpose:{
                     required: true,
+                    maxlength: 500
                 },
                 contact: {
                     required: true,
+                    maxlength: 50
                 },
                 contactNo: {
                     required: true,
-                    telephone: true
+                    telephone: true,
+                    maxlength: 20
                 }
             },
             submitHandler: function () {

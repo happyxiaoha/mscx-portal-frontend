@@ -66,7 +66,7 @@ var view = Backbone.View.extend({
 
         layer.close(me.layerIndex);
         if(model.status == 'OK') {
-            layer.msg('接单成功！');
+            layer.msg('接单申请提交成功，等待发布人审核');
             setTimeout(function() {
                 me.delegate.fetchDetail();
             }, 2000);

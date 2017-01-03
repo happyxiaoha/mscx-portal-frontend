@@ -43,7 +43,7 @@
             <td><a  href="./api.html##detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>API</td>
             <%}%>
-            <td><%= olaitem.orderTime ? new Date(olaitem.orderTime).format('yyyy-MM-dd hh:mm:ss') : '-'%></td>
+            <td><%= olaitem.orderTime ? olaitem.orderTime : '-'%></td>
             <td><%= soitem.itemCash%></td>
             <%if(soitem.resourceType == '02'){%>
             <td>-</td>

@@ -10,8 +10,9 @@
                     <% }else{ %>
                     <a href="services.html#detail/<%- item.id %>" class="apihref">
                         <% };%>
-
+                    <% if(item.imgUri){ %>
                 <img src="<%- item.imgUri %>">
+                        <% };%>
                 <p><span><%- item.name %></span></p>
             </a>
         </div>

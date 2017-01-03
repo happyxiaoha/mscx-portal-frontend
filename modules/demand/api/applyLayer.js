@@ -35,7 +35,8 @@ var view = Backbone.View.extend({
             rules: {
                 price: {
                     required: true,
-                    number: true
+                    number: true,
+                    min: 0
                 },
                 planIntro: {
                     required: true

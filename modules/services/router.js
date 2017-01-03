@@ -37,16 +37,15 @@ var Routes =  Backbone.Router.extend({
         });
     },
     showView: function (id) {
-        var view = require('services/publishView.js');
+        var view = require('services/desView.js');
         
-        var publishView = mscxPage.views['publishView'];
-        publishView && publishView.undelegateEvents() && publishView.stopListening();
+        var showView = mscxPage.views['showView'];
+        showView && showView.undelegateEvents() && showView.stopListening();
 
         var view = new view({
             id: id
         });
-        view.showFlag = true;
-        mscxPage.views['publishView'] = view;
+        mscxPage.views['showView'] = view;
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

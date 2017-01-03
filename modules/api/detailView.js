@@ -59,6 +59,7 @@ var view = Backbone.View.extend({
 
         _.each(model.result.apiList,function(item) {
             item.directions = converter.makeHtml(item.directions);
+            item.testPacket = converter.makeHtml(item.testPacket);
         });
 
         model.result.rtnCode = converter.makeHtml(model.result.rtnCode);

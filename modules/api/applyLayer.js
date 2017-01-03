@@ -228,6 +228,13 @@ var view = Backbone.View.extend({
             return;
         }
 
+        // 如果是0元套餐，不需要跳转到支付页面，直接提示成功
+        if(this.amount == 0 && this.chargeType == '02') {
+            layer.msg('购买成功！');
+            layer.close(this.layerIndex);
+            return;
+        }
+
         var param = {
             orderNum: model.result,
             amount: this.amount

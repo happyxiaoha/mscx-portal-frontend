@@ -37,6 +37,9 @@ var bannerView = Backbone.View.extend({
             direction: 'vertical',
             loopedSlides:8
         });
+        if(size>4){
+            size = 4;
+        }
         var galleryThumbs = new Swiper('.swiper-right', {
             spaceBetween: 10,
             slidesPerView: size,

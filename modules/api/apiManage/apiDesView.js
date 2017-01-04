@@ -40,7 +40,8 @@ var apiView = Backbone.View.extend({
         this.getServiceTypeModel = new getServiceTypeModel();
         this.getPackageModel = new getPackageModel();
         //this.model = new updateApiModel();
-
+        this.temps = _.template($('#updateFormMes').html());
+        this.$el.find('#publishApi').html(this.temps({res:{}}));
         this.model.fetch({
             data: {
                 apiServiceId: this.id
@@ -49,23 +50,20 @@ var apiView = Backbone.View.extend({
         this.model.on('change',function (model,res) {
             that.renderInit();
         });
-        this.getPackageModel.fetch({
-            data: {
-                apiServiceId: this.id
-            }
-        });
-        this.getPackageModel.on('change',function (model,res) {
-            that.buildChargeTable();
-        });
-        this.temps = _.template($('#updateFormMes').html());
-        this.$el.find('#publishApi').html(this.temps({res:{}}));
-
     },
     renderInit: function () {
         var that = this;
         var res = this.model.toJSON();
 
         this.$el.find('#publishApi').html(this.temps({res:res}));
+        this.getPackageModel.fetch({
+            data: {
+                apiServiceId: this.id
+            },
+            success: function () {
+                that.buildChargeTable();
+            }
+        });
         this.getCategoryModel.on('change',function () {
             that.renderCategory(res.categoryId);
         });
@@ -74,12 +72,12 @@ var apiView = Backbone.View.extend({
         });
         this.getCategoryModel.fetch();
         this.getServiceTypeModel.fetch();
+        /*
         this.model.on('change:chargeSetJson',function () {
             that.buildChargeTable();
         });
-        this.model.on('change:apiListJson',function () {
-            that.buildApiTable();
-        });
+         */
+
         this.model.on('change:chargeType',function () {
             if(that.model.get('chargeType') == '01'){
                 $('.api-package').hide();
@@ -93,6 +91,7 @@ var apiView = Backbone.View.extend({
         this.model.set('name',res.name);
         this.model.set('imageUri',res.imageUri);
         this.model.set('serviceObject',res.serviceObject);
+        that.buildApiTable();
         if(res.chargeType == '01'){
             $('.api-package').hide();
         }
@@ -231,7 +230,7 @@ var apiView = Backbone.View.extend({
             }
             $('.api-package').show();
             var packageTableTemps = _.template($('#packageTableTemps').html());
-            $('#packageTable').html(packageTableTemps({chargeSetJson: chargeSetJson}));
+            $('.package-table').html(packageTableTemps({chargeSetJson: chargeSetJson}));
         }
     },
     addApiLay: function () {

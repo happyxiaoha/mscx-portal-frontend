@@ -291,7 +291,6 @@ var updateApiView = Backbone.View.extend({
                 }
             }
         }
-        console.log(this.chooseTags);
     },
     deleteTag: function (e) {
         var $this = $(e.target).closest('p').find('span'),

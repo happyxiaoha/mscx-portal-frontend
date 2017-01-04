@@ -91,9 +91,10 @@
     display: block;
     position: relative;
     border-radius: 5px;}
-.tag-area span:after {content: '.';display: block;background: url('../../../images/delete1.png') no-repeat 0;width: 25px;height: 25px;    position: absolute;
-    top: -12px;
-    right: -12px;
+.tag-area .tag-list {position: relative;}
+.tag-area .remove-tags-btn{display: block;background: url('../../../images/delete1.png') no-repeat 0;width: 25px;height: 25px;    position: absolute;
+    top: -8px;
+    right: 6px;
     cursor: pointer;}
 .tag-area span.un-select:after {background:none;display: none;}
 .add-price-list,.add-api-list {display: none}

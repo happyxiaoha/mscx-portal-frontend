@@ -37,7 +37,7 @@ var updateApiView = Backbone.View.extend({
         'input #createDemandForm input[type="text"]' : 'changeAttribute',
         'input #createDemandForm textarea' : 'changeAttribute',
         'click #chooseTag': 'showTagArea',
-        'click .tag-area span': 'deleteTag',
+        'click .tag-area .remove-tags-btn': 'deleteTag',
         'change input:radio[name="category"]': 'changeCategory',
         'change input:radio[name="chargeType"]': 'changeChargeType',
         'change input:checkbox[name="serverTypes"]': 'chooseServerTypes',
@@ -74,7 +74,7 @@ var updateApiView = Backbone.View.extend({
             }
         });
         this.getPackageModel.on('change',function (model,res) {
-            that.buildChargeTable();
+            that.model.set('chargeSetJson',res.result);
         });
         this.temps = _.template($('#updateFormMes').html());
         this.$el.find('#publishApi').html(this.temps({res:{}}));
@@ -114,6 +114,7 @@ var updateApiView = Backbone.View.extend({
             }
         });
         this.model.set('chargeType',res.chargeType);
+        this.chooseSelectTags(res.tagsName);
         this.model.set('tags',res.tags);
         this.model.set('apiListJson',res.apiListJson);
         this.model.set('name',res.name);
@@ -277,11 +278,28 @@ var updateApiView = Backbone.View.extend({
         this.model.set('tags',aTags.join(','));
         return false;
     },
+    rebuildTags: function () {
+        var tags = this.model.get('tags'),
+            chooseTagArray = this.chooseTags,
+            tagsArray = this.getCategoryTagModel.get('result');
+
+        for (var i = 0 ,len = tagsArray.length; i < len; i++){
+            for(var k = 0 , klen = chooseTagArray.length ; k < klen; k++){
+                if(chooseTagArray[k].name == tagsArray[i].name){
+                    this.chooseTags[k].id = tagsArray[i].tagId;
+                }
+            }
+        }
+        console.log(this.chooseTags);
+    },
     deleteTag: function (e) {
-        var $this = $(e.target),
+        var $this = $(e.target).closest('p').find('span'),
             newTags = [],
             newChooseTags = [],
             sVal = $this.text();
+        if(!this.chooseTags[0].id){
+            this.rebuildTags();
+        }
         if(!$this.hasClass('un-select')){
             for(var i = 0,len = this.chooseTags.length; i < len; i++){
                 if(this.chooseTags[i].name != sVal){
@@ -317,6 +335,7 @@ var updateApiView = Backbone.View.extend({
     changeCategory: function (e) {
         var sId = parseInt(e.target.id.replace('c',''));
         this.renderTagWithCategory(sId);
+        this.chooseTags = [];
         this.model.set('categoryId',sId);
         this.model.set('tags','');
         return false;
@@ -374,6 +393,20 @@ var updateApiView = Backbone.View.extend({
         }
         $('.server-dist').html(categoryTemplate({serverTypeList: serverTypeList}));
     },
+    chooseSelectTags: function (chooseTags) {
+        var chooseArray = [];
+        if(chooseTags.indexOf(',')>=0){
+            chooseArray = chooseTags.split(',');
+        }
+        else {
+            chooseArray = [chooseTags];
+        }
+        for(var k = 0, kLen = chooseArray.length; k < kLen; k++){
+            if(chooseArray[k]) {
+                this.chooseTags.push({name:chooseArray[k]});
+            }
+        }
+    },
     buildChooseTags: function () {
         var cTags = this.chooseTags;
         var tagAreaTemplate = _.template($('#chooseTagArea').html());
@@ -409,6 +442,7 @@ var updateApiView = Backbone.View.extend({
     },
     buildChargeTable: function () {
         var chargeSetJson = this.getPackageModel.get('result');
+        debugger;
         if(!chargeSetJson && this.model.get('chargeType') == '01'){
             $('.api-package').hide();
         }

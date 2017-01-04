@@ -529,10 +529,12 @@
     background: url("../../images/newicon/loading.gif") center center no-repeat #fff !important;
 }*/
 
-/*
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 1300px){
     .grid1190{
         width: 1000px;
+    }
+    .header .searchCons{
+        margin: 0 20px 0 0;
     }
     .left-banner{
         width: 160px;
@@ -544,10 +546,16 @@
         width: 160px;
     }
     .navCons{
-        margin-left: 60px;
+        margin-left: 30px;
+    }
+    .navCons .nav li{
+        padding: 0 14px;
     }
     .header .searchCons .search{
-        width: 180px;
+        width: 170px;
+    }
+    .header .searchCons{
+        margin: 0 20px 0 0;
     }
     .bannger{
         width: 660px;
@@ -592,4 +600,4 @@
         margin-left:50px;
         padding: 10px 0 10px 50px;
     }
-}*/
+}

@@ -69,14 +69,6 @@ var updateApiView = Backbone.View.extend({
         this.apiDesModel.on('change',function (model,res) {
             that.renderInit();
         });
-        this.getPackageModel.fetch({
-            data: {
-                apiServiceId: this.id
-            }
-        });
-        this.getPackageModel.on('change',function (model,res) {
-            that.model.set('chargeSetJson',res.result);
-        });
         this.temps = _.template($('#updateFormMes').html());
         this.$el.find('#publishApi').html(this.temps({res:{}}));
 
@@ -84,8 +76,15 @@ var updateApiView = Backbone.View.extend({
     renderInit: function () {
         var that = this;
         var res = this.apiDesModel.get('result');
-
         this.$el.find('#publishApi').html(this.temps({res:res}));
+        this.getPackageModel.fetch({
+            data: {
+                apiServiceId: this.id
+            }
+        });
+        this.getPackageModel.on('change',function (model) {
+            that.model.set('chargeSetJson',model.get('result'));
+        });
         this.getCategoryModel.on('change',function () {
             that.renderCategory(res.categoryId);
         });
@@ -291,7 +290,6 @@ var updateApiView = Backbone.View.extend({
                 }
             }
         }
-        console.log(this.chooseTags);
     },
     deleteTag: function (e) {
         var $this = $(e.target).closest('p').find('span'),
@@ -443,7 +441,6 @@ var updateApiView = Backbone.View.extend({
     },
     buildChargeTable: function () {
         var chargeSetJson = this.getPackageModel.get('result');
-        debugger;
         if(!chargeSetJson && this.model.get('chargeType') == '01'){
             $('.api-package').hide();
         }

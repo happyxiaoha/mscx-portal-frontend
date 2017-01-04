@@ -111,9 +111,9 @@ var headerView = Backbone.View.extend({
         window.open('search.html','_self');
     },
     keyDownSearch: function(e){
-        e.preventDefault();
         var that = this;
         if (e.keyCode == "13") {
+            e.preventDefault();
             //回车执行查询
             that.search();
         }

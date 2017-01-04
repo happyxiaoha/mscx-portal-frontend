@@ -73,7 +73,7 @@ var view = Backbone.View.extend({
                     res = res.toJSON();
                     newTarget.location.href = res.result; //在打开的tab页下载
                     layer.close(that.layerIndex);
-                    if(!window.attachEvent) {
+                    if(!that.isIE()){
                         setTimeout(function(){newTarget.close()}, 1000);
                     }
                 }
@@ -153,6 +153,12 @@ var view = Backbone.View.extend({
         if(model.status == 'OK') {
             layer.close(this.layerIndex);
         }
+    },
+    isIE: function() { //ie?
+        if (!!window.ActiveXObject || "ActiveXObject" in window)
+            return true;
+        else
+            return false;
     }
 });
 

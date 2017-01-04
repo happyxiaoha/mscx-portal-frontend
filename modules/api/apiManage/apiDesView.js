@@ -7,15 +7,13 @@ require('./createApi.css');
 require('util');
 
 var apiDesModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/getMyApiServiceDetailById.do'
+    url: mscxPage.request.api + 'service/getMyApiServiceDetailById.do',
+    parse: function (res) {
+        return res.result
+    }
 });
 
-var updateApiModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/modifyServiceApi.do'
-});
-var checkServerId = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/checkApiByIdentification.do'
-});
+
 var getCategoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getApiCategory.do'
 });
@@ -36,19 +34,19 @@ var apiView = Backbone.View.extend({
     initialize: function() {
         var that = this;
         this.$el.html(template);
-        this.apiDesModel = new apiDesModel();
+        this.model = new apiDesModel();
         this.getCategoryModel = new getCategoryModel();
         this.getCategoryTagModel = new getCategoryTagModel();
         this.getServiceTypeModel = new getServiceTypeModel();
         this.getPackageModel = new getPackageModel();
-        this.model = new updateApiModel();
+        //this.model = new updateApiModel();
 
-        this.apiDesModel.fetch({
+        this.model.fetch({
             data: {
                 apiServiceId: this.id
             }
         });
-        this.apiDesModel.on('change',function (model,res) {
+        this.model.on('change',function (model,res) {
             that.renderInit();
         });
         this.getPackageModel.fetch({
@@ -65,7 +63,7 @@ var apiView = Backbone.View.extend({
     },
     renderInit: function () {
         var that = this;
-        var res = this.apiDesModel.get('result');
+        var res = this.model.toJSON();
 
         this.$el.find('#publishApi').html(this.temps({res:res}));
         this.getCategoryModel.on('change',function () {
@@ -138,9 +136,9 @@ var apiView = Backbone.View.extend({
     },
     changeCategory: function (e) {
         var sId = parseInt(e.target.id.replace('c',''));
-        this.renderTagWithCategory(sId);
+        //this.renderTagWithCategory(sId);
         this.model.set('categoryId',sId);
-        this.model.set('tags','');
+        //this.model.set('tags','');
         return false;
     },
     changeChargeType: function (e) {
@@ -162,15 +160,8 @@ var apiView = Backbone.View.extend({
         $('#serverCategory').html(categoryTemplate({categoryList:categoryList,defCid: defaultCategoryId}));
         if(categoryList.length > 0){
             this.model.set('categoryId',defaultCategoryId);
-            this.renderTagWithCategory(defaultCategoryId);
+            //this.renderTagWithCategory(defaultCategoryId);
         }
-    },
-    renderTagWithCategory: function (cid) {
-        this.getCategoryTagModel.fetch({
-            data: {
-                categoryId: cid
-            }
-        });
     },
     renderServiceType: function (serviceObject) {
         var categoryTemplate = _.template($('#serverTypeList').html());

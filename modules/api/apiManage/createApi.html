@@ -271,7 +271,7 @@
                         <%if(res.chargeType=='05'){%><span class="prePrice">次</span><%}%>
                         <%if(res.chargeType=='04'){%><span class="prePrice">月</span><%}%>
                     </label>
-                    <p class="input-mes-api fl">套餐价格：大于0元，次数或者月数是大于1的整数</p>
+                    <p class="input-mes-api fl">价格大于0元，次数或者月数是大于1的整数</p>
                 </label>
             </li>
             <li>
@@ -295,7 +295,7 @@
                     </b>
                     <b class="fl ml20">(不填则为无限制)</b>
                 </label>
-                <p class="input-mes-api fl">使用限制：次数或者月数是大于1的整数</p>
+                <p class="input-mes-api fl">次数或者月数是大于1的整数</p>
             </li>
             <li>
                 <label>
@@ -365,7 +365,7 @@
             </li>
             <li>
                 <label>
-                    <span><i class="need">*</i>参数和返回示例：</span>
+                    <span><i class="need">*</i>返回和示例：</span>
                     <textarea id="directions" name="directions"><%=res && res.directions%></textarea>
                     <p class="input-mes-api fl">参数和返回示例，使用MarkDown格式</p>
                 </label>

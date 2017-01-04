@@ -13,19 +13,19 @@ require('customValidate');
 // 获取微信详情
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'publish/get.do'
-})
+});
 // 服务对象
 var objectModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'dict/getServiceObject.do'
-})
+});
 // 微服务分类
 var categoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getServiceCategory.do'
-})
+});
 // 微服务标签
 var tagModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'tags/getTagsInfo.do'
-})
+});
 // 上传图片
 var uploadImgUrl = mscxPage.request.app + 'pic/upload.do';
 
@@ -117,15 +117,21 @@ var createDemandView = Backbone.View.extend({
     },
     submitForm: function () {
         var params = this.$form.serializeObject();
+        var that = this,
+            agreement = $('#agreementCheckbox').is(':checked');
+        if(agreement) {
+            params.serviceObject = _.isArray(params.serviceObject) ? params.serviceObject.join(',') : params.serviceObject;
+            params.categoryId = +params.categoryId;
+            if (params.id) {
+                params.id = +params.id;
+            }
 
-        params.serviceObject = _.isArray(params.serviceObject) ? params.serviceObject.join(',') : params.serviceObject;
-        params.categoryId = +params.categoryId;
-        if(params.id) {
-            params.id = +params.id;
+            this.model.set(params);
+            this.model.save();
         }
-
-        this.model.set(params);
-        this.model.save();
+        else {
+            layer.alert('请确认协议！');
+        }
     },
     backHistory: function () {
         history.back();

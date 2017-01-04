@@ -53,13 +53,28 @@ var view = Backbone.View.extend({
         return this;
     },
     render: function() {
-        var converter = new showdown.Converter();
+        var converter = new showdown.Converter({
+            omitExtraWLInCodeBlocks: true,
+            noHeaderId: false,
+            parseImgDimensions: true,
+            simplifiedAutoLink: true,
+            literalMidWordUnderscores: true,
+            strikethrough: true,
+            tables: true,
+            tablesHeaderId: false,
+            ghCodeBlocks: true,
+            tasklists: true,
+            smoothLivePreview: true,
+            prefixHeaderId: false,
+            disableForced4SpacesIndentedSublists: false
+        });
+
+        
         var model = this.detailModel.toJSON();
 
-
         _.each(model.result.apiList,function(item) {
-            item.directions = converter.makeHtml(item.directions);
             item.testPacket = converter.makeHtml(item.testPacket);
+            item.directions = converter.makeHtml(item.directions);
         });
 
         model.result.rtnCode = converter.makeHtml(model.result.rtnCode);

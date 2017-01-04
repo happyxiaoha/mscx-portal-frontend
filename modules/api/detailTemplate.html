@@ -93,7 +93,7 @@
                             <span data-index="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"><%= item.apiCName %></span>
                             <% }) %>
                         </div>
-                        <div class="fl tabRight api">
+                        <div class="fl tabRight api markdown-body">
                             <% data.result && data.result.apiList.forEach(function(item, index){ %>
                             <div class="rightCons<%= index == 0 ? '' : ' hide' %>">
                                 <p>接口地址：<%= item.uri %></p>
@@ -108,10 +108,8 @@
                             <% }) %>
                         </div>
                     </div>
-                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
-                        <div class="markdown-body">
-                            <%= data.result.rtnCode %>
-                        </div>
+                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14 markdown-body">
+                        <%= data.result.rtnCode %>
                     </div>
                     <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
                         <div class="tableCons mb30 D_table">

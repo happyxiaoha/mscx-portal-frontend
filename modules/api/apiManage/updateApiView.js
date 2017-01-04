@@ -51,6 +51,7 @@ var updateApiView = Backbone.View.extend({
     updateIndex: -1,
     apiName: '',
     initialize: function() {
+        this.$el.data('isLogo',1);
         var that = this;
         this.$el.html(template);
         this.apiDesModel = new apiDesModel();

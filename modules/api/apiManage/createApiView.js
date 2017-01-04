@@ -50,6 +50,7 @@ var createApiView = Backbone.View.extend({
     updateIndex: -1,
     apiName: '',
     initialize: function() {
+        this.$el.data('isLogo',1);
         var that = this;
         this.getCategoryModel = new getCategoryModel();
         this.getCategoryTagModel = new getCategoryTagModel();

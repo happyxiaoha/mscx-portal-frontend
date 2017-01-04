@@ -69,12 +69,19 @@ var headerView = Backbone.View.extend({
     addDidRender: function(callback) {
         this.didRender = callback;
     },
+    renderLogoPage: function (res) {
+        if(!res && $(mscxPage.domEl.apiEl) && $(mscxPage.domEl.apiEl).data('isLogo') == 1){
+            var sHref = window.location.href,
+                sUrl = 'login.html' + '?service='+ encodeURIComponent(sHref);
+            location.href = sUrl;
+        }
+    },
     render: function () {
         var nJson = this.model.toJSON();
         mscxPage.userInfo = nJson.result;
-
+        this.renderLogoPage(nJson.result);
         this.didRender && this.didRender();
-
+        if(!nJson.result)
         this.$el.html(this.template({
             id: this.id,
             menuList: menuList,

@@ -32,7 +32,7 @@
                 <p class="fl R_left"><em>*</em>服务名称：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="name" maxlength="20" placeholder="请输入服务名称" value="<%= data.detail && data.detail.name %>">
+                        <input type="text" name="name" placeholder="请输入服务名称" value="<%= data.detail && data.detail.name %>">
                     </p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 <p class="fl R_left"><em>*</em>服务简介：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea name="description" id="" maxlength="500" cols="30" rows="10" placeholder="请输入数据描述"><%= data.detail && data.detail.description %></textarea>
+                        <textarea name="description" id="" cols="30" rows="10" placeholder="请输入数据描述"><%= data.detail && data.detail.description %></textarea maxlength="500">
                     </p>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                 <p class="fl R_left"><em>*</em>服务范围：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" placeholder="输入服务的城市，以逗号分隔" name="scope" value="<%= data.detail && data.detail.scope %>" maxlength="50">
+                        <input type="text" placeholder="输入服务的城市，以逗号分隔" name="scope" value="<%= data.detail && data.detail.scope %>">
                     </p>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                 <p class="fl R_left"><em>*</em>演示地址：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="demoUri" placeholder="输入演示地址" value="<%= data.detail && data.detail.demoUri %>" maxlength="255">
+                        <input type="text" name="demoUri" placeholder="输入演示地址" value="<%= data.detail && data.detail.demoUri %>">
                     </p>
                 </div>
             </div>

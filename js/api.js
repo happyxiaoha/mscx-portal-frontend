@@ -15,6 +15,11 @@ $(function() {
     mscxPage.appRouter = new router();
     mscxPage.appRouter.on('route', function() {
         $('html,body').animate({ scrollTop: '0' }, 100);
+
+        if(location.search){
+            mscxPage.views['dataAPIObj'] && mscxPage.views['dataAPIObj'].remove();
+            this.detail(location.search.split('?')[1].split('\/')[1]);
+        }
     })
     Backbone.history.stop();
     Backbone.history.start();

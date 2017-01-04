@@ -156,7 +156,11 @@ var openDataDetailView = Backbone.View.extend({
                     success: function(res){
                         res = res.toJSON();
                         newTarget.location.href= res.result; //在打开的tab页下载
-                        setTimeout(function(){newTarget.close()}, 1000);
+
+                        if(!that.isIE()){
+                            setTimeout(function(){newTarget.close()}, 1000);
+                        }
+
                     }
                 }) ;
                 layer.close(index)
@@ -207,7 +211,12 @@ var openDataDetailView = Backbone.View.extend({
             };
             layer.open(_.extend(layerParam, btnCallback));
         }
-
+    },
+    isIE: function() { //ie?
+        if (!!window.ActiveXObject || "ActiveXObject" in window)
+            return true;
+        else
+            return false;
     }
 });
 

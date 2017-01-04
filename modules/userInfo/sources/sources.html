@@ -26,7 +26,7 @@
                         <td><a href="sources.html#detail/<%=fitem.dataInfoId%>"><%=fitem.name%></a></td>
                         <td><%=fitem.orgName%></td>
                         <td><%= fitem.updatedTime ? new Date(fitem.updatedTime).format('yyyy-MM-dd') : '-'%></td>
-                        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd') : '-'%></td>
+                        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></td>
                         <td><%=fitem.desc%></td>
                         <td><a class="removeAttention" href="javascript:;">取消关注</a></td>
                     </tr>

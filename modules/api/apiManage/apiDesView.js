@@ -3,6 +3,8 @@
  */
 
 var template = require('html!./apiDes.html');
+var showdown = require('showdown');
+
 require('./createApi.css');
 require('util');
 
@@ -54,6 +56,10 @@ var apiView = Backbone.View.extend({
     renderInit: function () {
         var that = this;
         var res = this.model.toJSON();
+
+        var converter = new showdown.Converter();
+
+        res.rtnCode = converter.makeHtml(res.rtnCode);
 
         this.$el.find('#publishApi').html(this.temps({res:res}));
         this.getPackageModel.fetch({

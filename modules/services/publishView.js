@@ -79,7 +79,8 @@ var createDemandView = Backbone.View.extend({
             rules: {
                 name: {
                     required: true,
-                    minlength: 2
+                    minlength: 2,
+                    maxlength: 20
                 },
                 categoryId: {
                     required: true
@@ -98,16 +99,20 @@ var createDemandView = Backbone.View.extend({
                 },
                 scope: {
                     required: true,
-                    chineseAndSplit: true
+                    chineseAndSplit: true,
+                    maxlength: 50
                 },
                 demoUri: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 uri: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 description: {
-                    required: true
+                    required: true,
+                    maxlength: 500
                 }
             },
             submitHandler: function () {

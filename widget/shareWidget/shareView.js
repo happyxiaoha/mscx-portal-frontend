@@ -38,7 +38,7 @@ var view = Backbone.View.extend({
         this.open(url);
     },
     shareWeibo: function() {
-        var url = 'http://service.weibo.com/share/share.php?url=' + this.url + '&appkey=' + this.sinaAppkey + '&site=' + this.url + '&title=' + this.title + "&pic=" + this.pic;
+        var url = 'http://service.weibo.com/share/share.php?url=' + this.url + '&appkey=' + this.sinaAppkey + '&site=' + this.url + '&title=' + this.desc + "&pic=" + this.pic;
         this.open(url)
     },
     shareWeixin: function() {

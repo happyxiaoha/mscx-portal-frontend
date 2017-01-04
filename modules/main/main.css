@@ -533,6 +533,9 @@
     .grid1190{
         width: 1000px;
     }
+    .header .searchCons{
+        margin: 0 20px 0 0;
+    }
     .left-banner{
         width: 160px;
     }
@@ -543,10 +546,16 @@
         width: 160px;
     }
     .navCons{
-        margin-left: 60px;
+        margin-left: 30px;
+    }
+    .navCons .nav li{
+        padding: 0 14px;
     }
     .header .searchCons .search{
-        width: 180px;
+        width: 170px;
+    }
+    .header .searchCons{
+        margin: 0 20px 0 0;
     }
     .bannger{
         width: 660px;

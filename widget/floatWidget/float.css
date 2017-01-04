@@ -59,7 +59,7 @@
     position: fixed;
     top: 50%;
     margin-top: -120px;
-    z-index: 2000000000;
+    z-index: 200;
     right: 80px;
     background: url("../../images/codeBg.png") no-repeat;
 }

@@ -243,6 +243,12 @@
 .des p a{
    color: #0ab7ef;
 }
+.R_right label a{
+    color: #0ab7ef;
+}
+.ml50{
+    margin-left: 50px;
+}
 /*2016-09-08 新增下拉选择*/
 /*.classifyList{position: relative;}
 .classifyList p{width: 150px;background: #fff;border: 1px solid #ccc;height:32px; line-height:32px;text-align: left;padding: 0 10px;box-sizing: border-box;position: relative;cursor: pointer;}

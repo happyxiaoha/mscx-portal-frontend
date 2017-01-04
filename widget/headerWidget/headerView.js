@@ -81,7 +81,6 @@ var headerView = Backbone.View.extend({
         mscxPage.userInfo = nJson.result;
         this.renderLogoPage(nJson.result);
         this.didRender && this.didRender();
-        if(!nJson.result)
         this.$el.html(this.template({
             id: this.id,
             menuList: menuList,

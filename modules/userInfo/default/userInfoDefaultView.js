@@ -56,13 +56,15 @@ var defaultView = Backbone.View.extend({
             this.$adataList.html('');
             $('.R-myServerList').css('border','1px solid #CCC');
             _.each(apiList, function(item) {
-                var chargeType = item.chargeType == '收费'? '02': '01';
+                var chargeType = item.typeStatus;
                 var newItem = {
                     apiServiceId : item.sourceId,
                     iconUrl: item.logoUrl,
                     apiServiceName: item.apiName,
                     applyCnt: item.applyCnt || 0,
                     accessCnt: item.accessCnt || 0,
+                    price: item.price || 0,
+                    chargeCount: item.chargeCount || 0,
                     chargeType: chargeType,
                     chargeTypeDesc: item.chargeType
                 };

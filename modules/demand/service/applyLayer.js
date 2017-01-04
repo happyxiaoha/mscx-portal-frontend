@@ -4,9 +4,10 @@ var template = require('html!./applyTemplate.html');
 var model = Backbone.Model.extend({
     idAttribute: 'serviceId',
     url: mscxPage.request.demand + 'addServiceOrder.do'
-})
+});
 
 require('validate');
+require('customValidate');
 
 var view = Backbone.View.extend({
     tagName: 'form',
@@ -14,7 +15,7 @@ var view = Backbone.View.extend({
     template: _.template(template),
     events: {
         'input input[type="text"]' : 'changeAttribute',
-        'input textarea' : 'changeAttribute',
+        'input textarea' : 'changeAttribute'
     },
     initialize: function() {
         this.$el.html(this.template()).attr('onsubmit', 'return false;');
@@ -41,7 +42,7 @@ var view = Backbone.View.extend({
                 },
                 contactPhone: {
                     required: true,
-                    telephone: true
+                    phone: true
                 }
             },
             submitHandler: function () {

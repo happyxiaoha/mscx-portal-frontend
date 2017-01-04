@@ -4,10 +4,11 @@ var template = require('html!./applyTemplate.html');
 var model = Backbone.Model.extend({
     idAttribute: 'apiId',
     url: mscxPage.request.demand + 'addApiOrder.do'
-})
+});
 
 require('validate');
 require('formAjax');
+require('customValidate');
 
 var view = Backbone.View.extend({
     tagName: 'form',
@@ -46,7 +47,7 @@ var view = Backbone.View.extend({
                 },
                 contactPhone: {
                     required: true,
-                    telephone: true
+                    phone: true
                 }
             },
             submitHandler: function () {

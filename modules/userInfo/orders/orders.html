@@ -48,7 +48,12 @@
             <%if(soitem.resourceType == '02'){%>
             <td>-</td>
             <%}else {%>
-            <td><%= parseInt(soitem.defaulTime || 0)*parseInt(soitem.itemNumber || 0) %></td>
+            <td>
+                <%if(soitem.defaulTime == -1) {%>
+                无次数限制
+                <%}else { %>
+                <%=parseInt(soitem.defaulTime || 0)%>
+                <%} %></td>
             <%}%>
             <td><%= soitem.itemCashTotal%></td>
             <td><%= olaitem.orderStatus%></td>

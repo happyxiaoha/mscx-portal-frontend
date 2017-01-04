@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require("path");
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({name:'common'});
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({name:'common',minChunks: 2});
 //PostCSS plugins
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");

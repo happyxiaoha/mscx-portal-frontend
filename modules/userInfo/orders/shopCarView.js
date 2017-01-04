@@ -239,12 +239,20 @@ var shopCarView = Backbone.View.extend({
                     cartIds: this.shopArray.join(',')
                 },
                 success: function (model,res) {
-                    var param = {
-                        orderNum: res.result
-                    };
-                    var base = new Base64;
-                    window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
-                    location.href = 'pay.html';
+                    if(parseInt($('.total-price').html().replace('￥','')) == 0){
+                        layer.msg('购买成功!');
+                        setTimeout(function () {
+                            location.href = 'userInfo.html#order';
+                        },1000);
+                    }
+                    else {
+                        var param = {
+                            orderNum: res.result
+                        };
+                        var base = new Base64;
+                        window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
+                        location.href = 'pay.html';
+                    }
                 }
             });
         }

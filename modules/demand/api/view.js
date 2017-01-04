@@ -97,8 +97,8 @@ var view = Backbone.View.extend({
         })
     },
     pressEnter: function(event) {
-        event.preventDefault();
         if(event.keyCode == 13) {
+            event.preventDefault();
             this.searchKeyword();
         }
     },

@@ -213,10 +213,12 @@ var createApiView = Backbone.View.extend({
                 chargeCount: {
                     required: true,
                     number: true,
+                    integers: true,
                     min: 0
                 },
                 monthLimit: {
                     number: true,
+                    integers: true,
                     min: 0
                 },
                 effectDate: {
@@ -230,6 +232,12 @@ var createApiView = Backbone.View.extend({
             messages: {
                 name: {
                     maxlength: '套餐名称不大于50个字符'
+                },
+                chargeCount: {
+                    integers: '大于1的正整数'
+                },
+                monthLimit: {
+                    integers: '大于1的正整数'
                 }
             },
             submitHandler: function () {

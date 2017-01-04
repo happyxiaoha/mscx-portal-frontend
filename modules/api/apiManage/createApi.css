@@ -122,3 +122,6 @@
 .input-mes-api{margin: 0 0 0 9px;font-size: 12px;color: #999;}
 .add-api-list ul li span {width: 70px;  display: inline-block;  float: left;}
 .add-api-list ul li span.api-name-error {color: red;margin-right: 5px;float: right !important;display: none;width: auto !important;}
+.R_right label a{
+    color: #0ab7ef;
+}

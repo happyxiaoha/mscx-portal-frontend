@@ -89,7 +89,7 @@ var demandView = Backbone.View.extend({
     handlePublish: function() {
         var model = this.publishDataModel.toJSON();
         if(model.status == 'OK') {
-            layer.msg('发布成功！');
+            layer.msg('发布成功，请耐心等待审核');
             this.pagObj.pageNum = 1;
             this.reloadPage();
         }

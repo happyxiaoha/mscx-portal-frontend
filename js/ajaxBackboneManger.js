@@ -9,7 +9,7 @@ Backbone.sync = function(method, model, options) {
         success = options.success,
         complete = options.complete,
         error = options.error;
-    if(window.attachEvent) {
+    if(isIE()) {
         options.cache = false;
     }
     
@@ -66,3 +66,10 @@ $(function () {
     });
     $document = null;
 });
+
+function isIE() { //ie?
+    if (!!window.ActiveXObject || "ActiveXObject" in window)
+        return true;
+    else
+        return false;
+}

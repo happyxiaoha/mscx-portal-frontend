@@ -101,7 +101,11 @@ var openDataDetailView = Backbone.View.extend({
         }
     },
     showExample: function () {
-        var that =this;
+        var that =this,
+            url = that.nJson.demoUri;
+        if(url.indexOf('http') < 0){
+            url = 'http://' + url
+        }
         layer.open({
             type: 2,
             title: that.nJson.name+'演示',
@@ -109,7 +113,7 @@ var openDataDetailView = Backbone.View.extend({
             maxmin: true,
             shade: 0.8,
             area: ['500px', '500px'],
-            content: that.nJson.demoUri //iframe的url
+            content: url //iframe的url
         });
     }
 });

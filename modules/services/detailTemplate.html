@@ -28,7 +28,13 @@
                                 </p>
                                 <p class="mb15"><span>提供方式：<em><%- data.serviceType %></em></span></p>
                                 <p class="mb15">
-                                    <span class="mr10">访问URL：<a href="<%- data.uri %>"><%- data.uri %></a></span>
+                                    <span class="mr10">访问URL：
+                                        <% if(data.uri.indexOf('http') < 0){ %>
+                                        <a href="http://<%- data.uri %>" target="_blank">
+                                            <% }else{ %>
+                                            <a href="<%- data.uri %>" target="_blank">
+                                                <% }; %>
+                                            <%- data.uri %></a></span>
                                     <span class="mr25">更新时间：<em><%- (new Date(data.updatedTime).toISOString()).slice(0,10) %></em></span>
                                 </p>
                             </div>

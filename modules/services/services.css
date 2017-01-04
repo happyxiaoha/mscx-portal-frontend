@@ -178,7 +178,7 @@
     background: #b7b7b7!important;
 }
 /* 发布新服务 */
-.ReleaseMainCons .ReleaseTit{font-size: 24px;color: #333;padding: 36px 28px 26px;border-bottom: 5px solid #e7e7e7;}
+.ReleaseMainCons .ReleaseTit{font-size: 24px;color: #333;padding: 36px 28px 26px;border-bottom: 5px solid #e7e7e7;max-width: 100%;}
 .ReleaseInputs{padding: 24px 36px;font-size: 14px;}
 .ReleaseInputs .ReleaseList{margin-bottom: 15px;}
 .ReleaseInputs .ReleaseList .R_left{color:#8b8b8b;line-height: 32px;width: 120px;margin-right: 6px;text-align: right; }
@@ -234,6 +234,14 @@
 }
 .tag-list-area .provider-list li:hover{
     background: #eee;
+}
+.des p{
+    line-height: 32px;
+    max-width: 700px;
+    word-break: break-all;
+}
+.des p a{
+   color: #0ab7ef;
 }
 /*2016-09-08 新增下拉选择*/
 /*.classifyList{position: relative;}

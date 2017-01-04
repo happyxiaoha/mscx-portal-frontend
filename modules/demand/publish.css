@@ -19,6 +19,8 @@
 .demand-content .checkbox-border {line-height: 32px;}
 .demand-content #otherLanguage {
     width: 100px;
+    float: right;
+    margin-left: 10px;
 }
 .demand-content .beauty-file {
     position: relative;

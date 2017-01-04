@@ -35,7 +35,8 @@ var view = Backbone.View.extend({
             rules: {
                 price: {
                     required: true,
-                    number: true
+                    number: true,
+                    min: 0
                 },
                 planIntro: {
                     required: true
@@ -61,7 +62,7 @@ var view = Backbone.View.extend({
         this.$el.ajaxSubmit({
             url: this.model.url,
             success: function(res) {
-                layer.msg('接单成功！');
+                layer.msg('接单申请提交成功，等待发布人审核');
                 setTimeout(function() {
                     me.delegate.fetchDetail();
                 }, 2000);

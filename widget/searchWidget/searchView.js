@@ -215,7 +215,7 @@ var view = Backbone.View.extend({
 
         var $moreWrap = this.$('.tag-wrap .sl-ext');
         // 处理 更多 按钮是否出现
-        if(model.toJSON().result.length > 7) {
+        if(model.toJSON().result.length > 5) {
             $moreWrap.show();
         }else {
             $moreWrap.hide();

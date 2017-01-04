@@ -1,0 +1,110 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow des">
+    <!-- top -->
+    <p class="ReleaseTit">
+        查看服务
+    </p>
+    <!-- 2016-09-08 新增 tab切换 -->
+    <!-- down -->
+    <div class="ReleaseDownCons pr">
+        <!-- SaaS 服务发布内容 -->
+        <form class="ReleaseInputs ReleaseDown" onsubmit="return false;" id="publishForm">
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务对象：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.serviceObjectNames %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务名称：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.name %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务简介：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.description %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务图标：</p>
+                <div class="fl R_right">
+                    <p class="allInfoImg">
+                        <% if(data && data.imageUri){ %>
+                            <img class="fl" id="serviceIcon" src="<%= data.imageUri %>" alt="">
+                        <% } %>
+                    </p>
+                </div>
+            </div>
+            <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
+            <div class="clearfix ReleaseList ">
+                <p class="fl R_left">分类：</p>
+                <div class="fl R_right">
+                    <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
+                    <div class="classifyList Travel01">
+                        <p><%= data && data.categoryName %></p>
+                    </div>
+                </div>
+            </div>
+            <!-- 增加 选择框及选择按钮  2016-09-05-->
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">标签：</p>
+                <div class="fl R_right posRE">
+                    <p>
+                        <%= data && data.tagNames %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务范围：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.scope %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">演示地址：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.demoUri %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">访问URL：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.uri %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">示例图片：</p>
+                <div class="fl R_right">
+                    <% if(data && data.demoImage1){ %>
+                    <p class="allInfoImg fl mr10">
+                        <img id="demo1Icon" src="<%= data.demoImage1 %>" alt="">
+                    </p>
+                    <% } %>
+                    <% if(data && data.demoImage2){ %>
+                    <p class="allInfoImg fl mr10">
+                        <img id="demo2Icon" src="<%= data.demoImage2 %>" alt="">
+                    </p>
+                    <% } %>
+                    <% if(data && data.demoImage3){ %>
+                    <p class="allInfoImg fl">
+                        <img id="demo3Icon" src="<%= data.demoImage3 %>" alt="">
+                    </p>
+                    <% } %>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

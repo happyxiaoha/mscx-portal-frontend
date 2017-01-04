@@ -649,20 +649,27 @@ var createApiView = Backbone.View.extend({
     },
     doPublish: function () {
         var isCheck = this.checkValidateSelf();
-        if(isCheck){
-            var obj = $('#publishApi').serializeObject();
-            this.model.set('scope',obj.scope);
-            this.model.set('cname',obj.cname);
-            this.model.set('description',obj.description);
-            this.model.set('rtnCode',obj.rtnCode || '');
-            this.model.save({},{
-                success: function () {
-                    layer.msg('发布成功!');
-                    setTimeout(function () {
-                        location.href = 'userInfo.html#api';
-                    },1000);
-                }
-            })
+        var that = this,
+            agreement = $('#agreementCheckbox').is(':checked');
+        if(agreement) {
+            if (isCheck) {
+                var obj = $('#publishApi').serializeObject();
+                this.model.set('scope', obj.scope);
+                this.model.set('cname', obj.cname);
+                this.model.set('description', obj.description);
+                this.model.set('rtnCode', obj.rtnCode || '');
+                this.model.save({}, {
+                    success: function () {
+                        layer.msg('发布成功!');
+                        setTimeout(function () {
+                            location.href = 'userInfo.html#api';
+                        }, 1000);
+                    }
+                })
+            }
+        }
+        else {
+            layer.alert('请确认协议！');
         }
     },
     doUploadImg: function () {

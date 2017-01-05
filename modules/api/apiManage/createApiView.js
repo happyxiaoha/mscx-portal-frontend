@@ -38,6 +38,7 @@ var createApiView = Backbone.View.extend({
         'click .addPrice': 'addChargeLay',
         'click .removeCharge': 'removeCharge',
         'click .editCharge':'updateChargeLay',
+        'click .editChargeOth':'updateChargeOth',
         'click .addApi': 'addApiLay',
         'click .editApi': 'updateApi',
         'click .deleteApi': 'removeApi',
@@ -403,19 +404,32 @@ var createApiView = Backbone.View.extend({
             resDate.setDate(newData.getDate()-1);
             return resDate;
         }
+
         if($('#effectDate').data('daterangepicker')){
-            $('#effectDate').data('daterangepicker').setOptions({minDate: new Date()-1,singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
+            $('#effectDate').data('daterangepicker').setOptions({minDate: lastDay(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
         }
         else {
-
-            $('#effectDate').daterangepicker({
-                format: 'YYYY-MM-DD',
-                singleDatePicker: true,
-                startDate: moment(),
-                minDate: lastDay()
-            }).on('apply.daterangepicker',function (ev,picker) {
-                $('#expiryDate').data('daterangepicker').setOptions({'minDate': lastDay($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
-            });
+            if($('#expiryDate').val()){
+                $('#effectDate').daterangepicker({
+                    format: 'YYYY-MM-DD',
+                    singleDatePicker: true,
+                    startDate: moment(),
+                    minDate: lastDay(),
+                    maxDate: lastDay($('#expiryDate').val())
+                }).on('apply.daterangepicker',function (ev,picker) {
+                    $('#expiryDate').data('daterangepicker').setOptions({'minDate': lastDay($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
+                });
+            }
+            else {
+                $('#effectDate').daterangepicker({
+                    format: 'YYYY-MM-DD',
+                    singleDatePicker: true,
+                    startDate: moment(),
+                    minDate: lastDay()
+                }).on('apply.daterangepicker',function (ev,picker) {
+                    $('#expiryDate').data('daterangepicker').setOptions({'minDate': lastDay($('#effectDate').val()),singleDatePicker: true,startDate: moment()});
+                });
+            }
         }
         if($('#expiryDate').data('daterangepicker')){
             $('#expiryDate').data('daterangepicker').setOptions({minDate: lastDay(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
@@ -425,9 +439,16 @@ var createApiView = Backbone.View.extend({
                 format: 'YYYY-MM-DD',
                 singleDatePicker: true,
                 startDate: moment(),
-                minDate: lastDay()
+                minDate: lastDay($('#effectDate').val())
             }).on('apply.daterangepicker',function (ev,picker) {
-                $('#effectDate').data('daterangepicker').setOptions({'maxDate': $('#expiryDate').val(),minDate: lastDay(),singleDatePicker: true,startDate: moment()});
+                if($('#effectDate').length > 0) {
+                    $('#effectDate').data('daterangepicker').setOptions({
+                        'maxDate': $('#expiryDate').val(),
+                        minDate: lastDay(),
+                        singleDatePicker: true,
+                        startDate: moment()
+                    });
+                }
             });
         }
     },
@@ -478,6 +499,45 @@ var createApiView = Backbone.View.extend({
             layer.close(deleteLay);
         });
         return false;
+    },
+    updateChargeOth: function (e) {
+        var that = this;
+        var chargeSetJson = _.clone(this.model.get('chargeSetJson') || []);
+        var index = $(e.target).closest('tr').index();
+        var addChargeTemplete = _.template($('#chargeManage').html());
+        this.updateIndex = index;
+        chargeSetJson[index].isOth = true;
+        $('.add-price-list').html(addChargeTemplete({res:chargeSetJson[index]}));
+        var dialog= layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '修改收费规则',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['500px', '550px'],
+            content: $('.add-price-list'), //捕获的元素
+            success: function () {
+                $('.need').hide();
+                that.buildDateEvents();
+                //$('#addChargeForm').validate(that.packageValidateConfig());
+            },
+            cancel: function(index){
+                that.updateIndex = -1;
+            },
+            btn1: function () {          //通过
+                var chargeSetJson = _.clone(that.model.get('chargeSetJson') || []),
+                    nowPackageObj = chargeSetJson[that.updateIndex];
+                nowPackageObj.expiryDate = $('#expiryDate').val();
+                that.updateIndex = -1;
+                that.model.set('chargeSetJson',chargeSetJson);
+                layer.close(dialog);
+            },
+            btn2: function () {         // 不通过
+                layer.close(dialog);
+                that.updateIndex = -1;
+            }
+        });
     },
     updateChargeLay: function (e) {
         var that = this;

@@ -44,6 +44,10 @@
     float: left;
     line-height: 27px;
 }
+.add-price-list ul li {
+    width: 100%;
+}
+.add-price-list  ul li p.mes {float: left;max-width: 200px;margin-left: 10px;line-height: 30px;}
 .tag-list-area .layerApi ul,.add-price-list ul{
     padding: 10px 20px;
 }

@@ -68,8 +68,7 @@
 .navCons .nav li.active{background: #0683b6;}
 .navCons .nav li:hover{background: #0683b6;}
 .navCons .nav li a{color: #fff;display: block;}
-.navCons .nav li a:hover,.navCons .nav li a:link{background: transparent;color: #fff !important;}
-.navCons .nav li a:hover{color: #333;}
+.navCons .nav li a:hover,.navCons .nav li a:link{background: transparent;color: #fff;}
 .navCons .links{font-size: 16px;}
 .navCons .links a{color: #fff; display: inline-block;}
 .navCons .links a:first-child{width: 30px;height:31px;vertical-align: -10px;background: url(../../images/img03.png) no-repeat left center;margin-right: 12px; cursor: pointer;}

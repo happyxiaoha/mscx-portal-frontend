@@ -31,7 +31,7 @@ var userView = Backbone.View.extend({
         this.model.fetch();
         this.model.on('change',function () {
             var useType = that.model.get('result').userType;
-            var isDis = useType == '合作伙伴'? true : false;
+            var isDis = useType == '合作伙伴' || useType == '政府' ? true : false;
             that.renderUserCommon(isDis);
             that.initRender();
             that.render();

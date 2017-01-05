@@ -24,7 +24,7 @@
             <tbody>
             <% _.each(acceptServersList, function (asitem) { %>
             <tr attrId="<%=asitem.id%>">
-                <td><a  href="demand.html#service/detail/<%=asitem.id%>"><%=asitem.name%></a></td>
+                <td><a  href="demand.html#service/detail/<%=asitem.reqId%>"><%=asitem.name%></a></td>
                 <td><%= asitem.money%></td>
                 <td><%= asitem.endTime ? new Date(asitem.endTime).format('yyyy-MM-dd') : '-'%></td>
                 <td><%= asitem.createdTime ? new Date(asitem.createdTime).format('yyyy-MM-dd') : '-'%></td>

@@ -20,7 +20,7 @@ require('util');
 var view = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     events: {
-        'click #apply': 'apply',
+        'click #applyService': 'apply',
         'click #follow': 'follow'
     },
     template: _.template(template, {variable: 'data'}),

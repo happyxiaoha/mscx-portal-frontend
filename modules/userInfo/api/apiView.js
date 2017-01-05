@@ -237,7 +237,7 @@ var apiView = Backbone.View.extend({
         var that = this;
         new savePackageModel().save({params:this.packageList},{
             success: function () {
-                layer.msg('保存成功');
+                layer.msg('保存成功,已提交审核!');
                 setTimeout(function () {
                     layer.closeAll();
                     that.reloadPage();

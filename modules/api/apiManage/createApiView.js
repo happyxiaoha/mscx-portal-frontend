@@ -544,7 +544,7 @@ var createApiView = Backbone.View.extend({
     limitPriceFun: function (e) {
         if(e.target.id == 'price'){
             var $this = $(e.target),
-                sVal = parseInt($.trim($this.val())),
+                sVal = parseFloat($.trim($this.val())),
                 $limitInput = $('input[name="countLimit"]');
             if(sVal === 0) {
                 $($limitInput[0]).attr('disabled',true);

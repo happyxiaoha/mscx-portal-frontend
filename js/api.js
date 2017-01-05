@@ -22,5 +22,6 @@ $(function() {
         }
     })
     Backbone.history.stop();
+    //Backbone.history.start({pushState: true,root: '/api/'});
     Backbone.history.start();
 });

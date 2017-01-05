@@ -11,5 +11,4 @@ $(function() {
     new header();
     new footer();
     new mainView();
-
 });

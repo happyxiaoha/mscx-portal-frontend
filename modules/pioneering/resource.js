@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    cmsHost: 'http://mscx-portal.eastdc.cn:82/',
+    cmsHost: location.protocol + '//' + location.host + '/',
     maps: [
         {
             name: '创业资讯',

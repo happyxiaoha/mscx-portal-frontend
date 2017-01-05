@@ -4,7 +4,7 @@
             <img src="../../images/newicon/ic_newlogo.png">
         </a>
     </h1>
-    <div class="navCons fl mt20">
+    <div class="navCons fl mt20 index">
         <ul class="nav fl">
             <% _.each(data.menuList, function (item) { %>
             <li <%= (data.id == item.key ? 'class=active' : '' ) %>><a href="<%= item.url %>"><%= item.name %></a></li>

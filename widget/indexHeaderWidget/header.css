@@ -92,3 +92,5 @@ a{
 .dropMenu li.logout{
     background: url("../../images/newicon/ic_logout.png") 12px center no-repeat;
 }
+.navCons.index .nav li.active {background: none;}
+.navCons.index .nav li:hover{background: none;}

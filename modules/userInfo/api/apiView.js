@@ -42,6 +42,7 @@ var apiView = Backbone.View.extend({
         'click .editCharge': 'updateCharge',
         'click .removeCharge': 'removeCharge',
         'click .downApi': 'downApi',
+        'blur #price': 'limitPriceFun',
         'change .charge-type': 'doChargeType'
     },
     updateIndex: -1,
@@ -168,7 +169,6 @@ var apiView = Backbone.View.extend({
                 newData = new Date(sdata)
             }
             resDate.setDate(newData.getDate()-1);
-            console.log(resDate.getDate());
             return resDate;
         }
         if($('#effectDate').data('daterangepicker')){
@@ -266,6 +266,21 @@ var apiView = Backbone.View.extend({
         }, function(){
             layer.close(deleteLay);
         });
+    },
+    limitPriceFun: function (e) {
+        if(e.target.id == 'price'){
+            var $this = $(e.target),
+                sVal = parseInt($.trim($this.val())),
+                $limitInput = $('input[name="countLimit"]');
+            if(sVal === 0) {
+                $($limitInput[0]).attr('disabled',true);
+                $($limitInput[1]).prop("checked",true)
+            }
+            else {
+                $($limitInput[0]).attr('disabled',false);
+            }
+            $limitInput = null;
+        }
     },
     addPackageLay: function () {
         var that = this;

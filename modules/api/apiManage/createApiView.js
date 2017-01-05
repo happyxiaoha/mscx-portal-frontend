@@ -46,6 +46,7 @@ var createApiView = Backbone.View.extend({
         'blur #apiName': 'checkApiName',
         'change .charge-type': 'doChargeType',
         'change input:radio[name="countLimit"]': 'changeLimit',
+        'blur #price': 'limitPriceFun'
     },
     updateIndex: -1,
     apiName: '',
@@ -538,6 +539,21 @@ var createApiView = Backbone.View.extend({
             $('.api-package').show();
             var packageTableTemps = _.template($('#packageTableTemps').html());
             $('#packageTable').html(packageTableTemps({chargeSetJson: chargeSetJson}));
+        }
+    },
+    limitPriceFun: function (e) {
+        if(e.target.id == 'price'){
+            var $this = $(e.target),
+                sVal = parseInt($.trim($this.val())),
+                $limitInput = $('input[name="countLimit"]');
+            if(sVal === 0) {
+                $($limitInput[0]).attr('disabled',true);
+                $($limitInput[1]).prop("checked",true)
+            }
+            else {
+                $($limitInput[0]).attr('disabled',false);
+            }
+            $limitInput = null;
         }
     },
     addApiLay: function () {

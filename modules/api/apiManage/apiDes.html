@@ -28,12 +28,6 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left">是否收费：</p>
-            <div class="fl R_right chargeTypeRadio">
-                <p class="mes"><%if(res.chargeType=='01'){%>免费<%}%><%if(res.chargeType=='02'){%>收费<%}%></p>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
             <p class="fl R_left">服务简介：</p>
             <div class="fl R_right">
                 <p class="mes"><%=res.description%></p>
@@ -75,7 +69,12 @@
             </div>
             <label class="server-error">请选择服务对象</label>
         </div>
-
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">是否收费：</p>
+            <div class="fl R_right chargeTypeRadio">
+                <p class="mes"><%if(res.chargeType=='01'){%>免费<%}%><%if(res.chargeType=='02'){%>收费<%}%></p>
+            </div>
+        </div>
         <div class="D_table api-package" <%if(res.chargeType=='01'){%>style="display: none;"<%}%> >
             <table >
                 <thead>

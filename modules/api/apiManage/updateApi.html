@@ -1,5 +1,5 @@
 <div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
-    <p class="ReleaseTit">发布新API</p>
+    <p class="ReleaseTit">修改API</p>
     <div class="ReleaseDownCons">
         <form id="publishApi" onsubmit="return false;">
 
@@ -44,13 +44,6 @@
             </div>
             <span class="api-server-error">这是必填字段</span>
             <p class="input-mes fl">由英文、数字及其组合组成，最多不超过20字</p>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left"><i class="need">*</i>是否收费：</p>
-            <div class="fl R_right chargeTypeRadio">
-                <label><input type="radio" name="chargeType" id="ct01" <%if(res.chargeType=='01'){%>checked<%}%>>免费</label>
-                <label><input type="radio" name="chargeType" id="ct02" <%if(res.chargeType=='02'){%>checked<%}%>>收费</label>
-            </div>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><i class="need">*</i>服务简介：</p>
@@ -105,7 +98,13 @@
             </div>
             <label class="server-error">请选择服务对象</label>
         </div>
-
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>是否收费：</p>
+            <div class="fl R_right chargeTypeRadio">
+                <label><input type="radio" name="chargeType" id="ct01" <%if(res.chargeType=='01'){%>checked<%}%>>免费</label>
+                <label><input type="radio" name="chargeType" id="ct02" <%if(res.chargeType=='02'){%>checked<%}%>>收费</label>
+            </div>
+        </div>
         <div class="D_table api-package" <%if(res.chargeType=='01'){%>style="display: none;"<%}%> >
             <table >
                 <thead>

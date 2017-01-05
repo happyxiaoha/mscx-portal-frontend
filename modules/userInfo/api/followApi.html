@@ -26,7 +26,7 @@
     <tr attrId="<%=fitem.apiServiceId%>">
         <td><a target="_blank" href="./api.html#detail/<%=fitem.apiServiceId%>"><%=fitem.apiServiceCName%></a></td>
         <td><%=fitem.description%></td>
-        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd hh:mm:ss') : '-'%></td>
+        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></td>
         <td>
             <a class="cancelFollow" href="javascript:;">取消关注</a>
         </td>

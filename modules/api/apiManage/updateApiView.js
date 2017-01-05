@@ -591,7 +591,7 @@ var updateApiView = Backbone.View.extend({
             this.model.set('rtnCode',obj.rtnCode || '');
             this.model.save({},{
                 success: function () {
-                    layer.msg('修改成功!');
+                    layer.msg('修改成功，已提交审核!');
                     setTimeout(function () {
                         location.href = 'userInfo.html#api';
                     },1000);

@@ -7,6 +7,7 @@ var offlineModel = Backbone.Model.extend({
 });
 
 require('validate');
+require('customValidate');
 
 var view = Backbone.View.extend({
     tagName: 'div',
@@ -32,7 +33,7 @@ var view = Backbone.View.extend({
                 },
                 contactNo: {
                     required: true,
-                    telephone: true,
+                    phone: true,
                     maxlength: 20
                 }
             },

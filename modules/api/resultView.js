@@ -15,7 +15,9 @@ var view = Backbone.View.extend({
     },
     template: _.template(resultTemplate, {variable: 'data'}),
     initialize: function() {
-        this.$el.html(this.template());
+        this.$el.html(this.template({
+            id: this.id
+        }));
 
         this.$dataList = this.$('.data-list');
         this.$page = this.$('.page');

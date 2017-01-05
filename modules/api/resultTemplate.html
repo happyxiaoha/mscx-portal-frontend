@@ -1,5 +1,6 @@
 <div class="tit">
-    <h2 class="ft16 cor5">符合条件的数据API（共<span id="count"></span>个）</h2>
+    <h2 class="ft16 cor5">
+    符合条件的<% if(data.id == 'data'){ %>数据<% }else if(data.id == 'tool'){ %>工具<% }else if(data.id == 'model'){ %>模型<% } %>API（共<span id="count"></span>个）</h2>
 </div>
 <div class="ConditionList posAB sort">
     <a href="javascript:;" class="active">默认排序</a>

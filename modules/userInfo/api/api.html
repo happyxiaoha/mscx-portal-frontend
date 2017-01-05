@@ -92,7 +92,12 @@
                 <td><%=chargeItem.name%></td>
                 <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%><%if(chargeItem.chargeType == '04'){%>月<%}else{%>次<%}%></td>
                 <td><%=chargeItem.countLimit == 1 ? '限制一次' : '不限制'%></td>
-                <td><%=chargeItem.monthLimit ? chargeItem.monthLimit : 0%><%if(chargeItem.chargeType == '04'){%>次<%}else{%>个月<%}%></td>
+                <td><%if(chargeItem.monthLimit){%>
+                    <%=chargeItem.monthLimit%><%= chargeItem.chargeType == '04' ? '次' : '个月'%>
+                    <%}else{%>
+                    <%='不限制'%>
+                    <%}%>
+                </td>
                 <td><%= chargeItem.effectDate ? new Date(chargeItem.effectDate).format('yyyy-MM-dd') : '-'%></td>
                 <td><%= chargeItem.expiryDate ? new Date(chargeItem.expiryDate).format('yyyy-MM-dd') : '-'%></td>
                 <td>

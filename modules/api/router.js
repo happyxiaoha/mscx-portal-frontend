@@ -13,6 +13,8 @@ var Routes =  Backbone.Router.extend({
         'apiDes/:id': 'apiDesView'
     },
     dataAPI:function () {
+        if(location.search) return;
+        
         var APIView = require('api/APIView.js');
         mscxPage.views['dataAPIObj'] = new APIView({
             id: 'data'

@@ -13,6 +13,8 @@ var Routes =  Backbone.Router.extend({
         'detail/:id':'openDataDetailView'
     },
     dataThemeView:function () {
+        if(location.search) return;
+        
         var openDataView = require('./opendata/openDataView.js');
 
         var dataThemeView = mscxPage.views['openDataViewObj'];

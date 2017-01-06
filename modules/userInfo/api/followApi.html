@@ -24,7 +24,7 @@
 <script id="followApiList" type="template">
     <% _.each(followApiList, function (fitem) { %>
     <tr attrId="<%=fitem.apiServiceId%>">
-        <td><a target="_blank" href="./api.html#detail/<%=fitem.apiServiceId%>"><%=fitem.apiServiceCName%></a></td>
+        <td><a target="_blank" href="./api.html?detail/<%=fitem.apiServiceId%>"><%=fitem.apiServiceCName%></a></td>
         <td><%=fitem.description%></td>
         <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></td>
         <td>

@@ -32,7 +32,7 @@
     <% _.each(publishApiList, function (paitem) { %>
     <tr attrId="<%=paitem.apiServiceId%>">
         <%if(paitem.status == '0'){%>
-        <td><a target="_blank" href="./api.html#detail/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a></td>
+        <td><a target="_blank" href="./api.html?detail/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a></td>
         <%}else{%>
         <td>
             <a target="_blank" href="./api.html#apiDes/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a>

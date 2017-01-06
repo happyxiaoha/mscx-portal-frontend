@@ -37,10 +37,10 @@
             <td rowspan="<%=olaitem.sourceDetail.length%>"><%=olaitem.orderNum%></td>
             <%}%>
             <%if(soitem.resourceType == '02'){%>
-            <td><a  href="./sources.html#detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
+            <td><a  href="./sources.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>数据</td>
             <%}else {%>
-            <td><a  href="./api.html##detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
+            <td><a  href="./api.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>API</td>
             <%}%>
             <td><%= olaitem.orderTime ? olaitem.orderTime : '-'%></td>

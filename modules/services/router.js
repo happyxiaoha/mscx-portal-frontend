@@ -12,6 +12,8 @@ var Routes =  Backbone.Router.extend({
         'show/:id': 'showView'
     },
     serviceView: function () {
+        if(location.search) return;
+        
         var serviceView = require('services/servicesView.js');
         mscxPage.views['servicesObj'] = new serviceView({
             id: 'service'

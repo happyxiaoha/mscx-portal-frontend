@@ -15,7 +15,7 @@ var checkServerId = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/checkApiByIdentification.do'
 });
 var getFeeModel = Backbone.Model.extend({
-    url: mscxPage.request.api + '/service/getFee.do'
+    url: mscxPage.request.api + 'service/getFee.do'
 });
 var getCategoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getApiCategory.do'
@@ -50,7 +50,8 @@ var createApiView = Backbone.View.extend({
         'blur #apiName': 'checkApiName',
         'change .charge-type': 'doChargeType',
         'change input:radio[name="countLimit"]': 'changeLimit',
-        'blur #price': 'limitPriceFun'
+        'blur #price': 'limitPriceFun',
+        'blur #chargeCount': 'disChargeCount'
     },
     updateIndex: -1,
     apiName: '',
@@ -562,6 +563,7 @@ var createApiView = Backbone.View.extend({
             success: function () {
                 that.buildDateEvents();
                 $('#addChargeForm').validate(that.packageValidateConfig());
+                that.displayFeeMes(chargeSetJson[index].price);
             },
             cancel: function(index){
                 that.updateIndex = -1;
@@ -605,6 +607,21 @@ var createApiView = Backbone.View.extend({
             $('#packageTable').html(packageTableTemps({chargeSetJson: chargeSetJson}));
         }
     },
+    displayFeeMes: function (sVal) {
+        new getFeeModel().fetch({
+            type:'GET',
+            data: {
+                price: sVal
+            },
+            success: function(model){
+                var res = model.get('result');
+                $('.earning-count').html(res.earningCount);
+                $('.fee-count').html(res.feeCount);
+                $('.earning-percent').html(res.earningPercent*100);
+                $('.fee-percent').html(res.feePercent*100);
+            }
+        });
+    },
     limitPriceFun: function (e) {
         if(e.target.id == 'price'){
             var $this = $(e.target),
@@ -618,18 +635,19 @@ var createApiView = Backbone.View.extend({
                 $($limitInput[0]).attr('disabled',false);
             }
             if(!$this.hasClass('error') && sVal > 0){
-                new getFeeModel().fetch({
-                    type:'GET',
-                    data: {
-                        price: sVal
-                    },
-                    success: function(){
-
-                    }
-                })
+                this.displayFeeMes(sVal);
             }
             $this = null;
             $limitInput = null;
+        }
+    },
+    disChargeCount: function (e) {
+        if(e.target.id == 'chargeCount'){
+            var $this = $(e.target),
+                sVal = parseFloat($.trim($this.val()));
+            if(!$this.hasClass('error') && sVal > 0){
+                $('.charge-count').html(sVal);
+            }
         }
     },
     addApiLay: function () {
@@ -869,10 +887,12 @@ var createApiView = Backbone.View.extend({
         if(sVal == '04'){
             $('.prePrice').html('月');
             $('.limitPre').html('次');
+            $('.price-per').html('月');
         }
         else {
             $('.limitPre').html('个月');
             $('.prePrice').html('次');
+            $('.price-per').html('次');
         }
     }
 });

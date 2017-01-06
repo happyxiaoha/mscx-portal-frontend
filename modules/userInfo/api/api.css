@@ -40,3 +40,5 @@
 .input-mes-api {
     margin: 0 0 0 70px;font-size: 12px;color: #999;
 }
+.input-mes-api-price {color: #f89406;min-width: 200px;margin: 0 0 0 70px;font-size: 12px;}
+.input-mes-api-price span {width: auto !important;display: inline!important;float: none!important;}

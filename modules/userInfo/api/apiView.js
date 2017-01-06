@@ -14,7 +14,9 @@ var myPublicModel = Backbone.Model.extend({
 var getPackageModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'charge/getMyChargeRuleByServiceId.do'
 });
-
+var getFeeModel = Backbone.Model.extend({
+    url: mscxPage.request.api + 'service/getFee.do'
+});
 var savePackageModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'charge/modifyChargeRule.do'
 });
@@ -44,6 +46,7 @@ var apiView = Backbone.View.extend({
         'click .removeCharge': 'removeCharge',
         'click .downApi': 'downApi',
         'blur #price': 'limitPriceFun',
+        'blur #chargeCount': 'disChargeCount',
         'change .charge-type': 'doChargeType'
     },
     updateIndex: -1,
@@ -269,6 +272,21 @@ var apiView = Backbone.View.extend({
             layer.close(deleteLay);
         });
     },
+    displayFeeMes: function (sVal) {
+        new getFeeModel().fetch({
+            type:'GET',
+            data: {
+                price: sVal
+            },
+            success: function(model){
+                var res = model.get('result');
+                $('.earning-count').html(res.earningCount);
+                $('.fee-count').html(res.feeCount);
+                $('.earning-percent').html(res.earningPercent*100);
+                $('.fee-percent').html(res.feePercent*100);
+            }
+        });
+    },
     limitPriceFun: function (e) {
         if(e.target.id == 'price'){
             var $this = $(e.target),
@@ -281,7 +299,19 @@ var apiView = Backbone.View.extend({
             else {
                 $($limitInput[0]).attr('disabled',false);
             }
+            if(!$this.hasClass('error') && sVal > 0){
+                this.displayFeeMes(sVal);
+            }
             $limitInput = null;
+        }
+    },
+    disChargeCount: function (e) {
+        if(e.target.id == 'chargeCount'){
+            var $this = $(e.target),
+                sVal = parseFloat($.trim($this.val()));
+            if(!$this.hasClass('error') && sVal > 0){
+                $('.charge-count').html(sVal);
+            }
         }
     },
     addPackageLay: function () {
@@ -373,6 +403,7 @@ var apiView = Backbone.View.extend({
             success: function () {
                 that.buildDateEvents();
                 $('#addChargeForm').validate(that.packageValidateConfig());
+                that.displayFeeMes(packageList[index].price);
             },
             cancel: function(index){
                 that.updateIndex = -1;

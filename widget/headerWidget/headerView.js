@@ -75,6 +75,11 @@ var headerView = Backbone.View.extend({
                 sUrl = 'login.html' + '?service='+ encodeURIComponent(sHref);
             location.href = sUrl;
         }
+        if(!res && $(mscxPage.domEl.userCenterLeft).length > 0){
+            var sHref = window.location.href,
+                sUrl = 'login.html' + '?service='+ encodeURIComponent(sHref);
+            location.href = sUrl;
+        }
     },
     render: function () {
         var nJson = this.model.toJSON();

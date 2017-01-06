@@ -37,6 +37,7 @@ var apiView = Backbone.View.extend({
     events: {
         'click .displayMes': 'displayMes',
         'click .changePrice': 'changePrice',
+        'click .editChargeOth': 'updateChargeOth',
         'click .deleteApi': 'deleteApi',
         'click .addPrice': 'addPackageLay',
         'click .editCharge': 'updateCharge',
@@ -172,10 +173,9 @@ var apiView = Backbone.View.extend({
             return resDate;
         }
         if($('#effectDate').data('daterangepicker')){
-            $('#effectDate').data('daterangepicker').setOptions({minDate: new Date()-1,singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
+            $('#effectDate').data('daterangepicker').setOptions({minDate: lastDay(),singleDatePicker: true,startDate: moment(),format: 'YYYY-MM-DD'})
         }
         else {
-
             $('#effectDate').daterangepicker({
                 format: 'YYYY-MM-DD',
                 singleDatePicker: true,
@@ -195,7 +195,9 @@ var apiView = Backbone.View.extend({
                 startDate: moment(),
                 minDate: lastDay()
             }).on('apply.daterangepicker',function (ev,picker) {
-                $('#effectDate').data('daterangepicker').setOptions({'maxDate': $('#expiryDate').val(),minDate: lastDay(),singleDatePicker: true,startDate: moment()});
+                if($('#effectDate').length > 0){
+                    $('#effectDate').data('daterangepicker').setOptions({'maxDate': $('#expiryDate').val(),minDate: lastDay(),singleDatePicker: true,startDate: moment()});
+                }
             });
         }
     },
@@ -270,7 +272,7 @@ var apiView = Backbone.View.extend({
     limitPriceFun: function (e) {
         if(e.target.id == 'price'){
             var $this = $(e.target),
-                sVal = parseInt($.trim($this.val())),
+                sVal = parseFloat($.trim($this.val())),
                 $limitInput = $('input[name="countLimit"]');
             if(sVal === 0) {
                 $($limitInput[0]).attr('disabled',true);
@@ -308,6 +310,49 @@ var apiView = Backbone.View.extend({
             }
         });
         that.lays = dialog;
+    },
+    updateChargeOth: function (e) {
+        var that = this;
+        var packageList = this.packageList || [];
+        var index = $(e.target).closest('tr').index();
+        var addChargeTemplete = _.template($('#chargeManage').html());
+        this.updateIndex = index;
+        packageList[index].isOth = true;
+        $('.package-manage').html(addChargeTemplete({res:packageList[index]}));
+        var dialog= layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '修改收费规则',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['500px', '550px'],
+            content: $('.package-manage'), //捕获的元素
+            success: function () {
+                $('.need').hide();
+                that.buildDateEvents();
+                //$('#addChargeForm').validate(that.packageValidateConfig());
+            },
+            cancel: function(index){
+                that.updateIndex = -1;
+            },
+            btn1: function () {          //通过
+                var packageList = that.packageList || [],
+                    nowPackageObj = packageList[that.updateIndex];
+                nowPackageObj.flag = nowPackageObj.flag == 'C' ? 'C': 'U';
+                nowPackageObj.expiryDate = $('#expiryDate').val();
+                packageList[that.updateIndex] = nowPackageObj;
+                that.updateIndex = -1;
+                that.packageList = packageList;
+                that.getPackageModel.set('result',packageList);
+                that.buildPackageTable();
+                layer.close(dialog);
+            },
+            btn2: function () {         // 不通过
+                layer.close(dialog);
+                that.updateIndex = -1;
+            }
+        });
     },
     updateCharge: function (e) {
         var that = this;
@@ -400,7 +445,7 @@ var apiView = Backbone.View.extend({
         }
         else {
             var newPackage = $('#addChargeForm').serializeObject();
-            newPackage.flag = 'U';
+            newPackage.flag = newPackage.flag == 'C' ? 'C': 'U';
             packageList[this.updateIndex] = newPackage;
             this.updateIndex = -1;
         }

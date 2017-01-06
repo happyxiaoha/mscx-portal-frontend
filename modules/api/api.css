@@ -49,8 +49,8 @@
 .containerWrap .slideBanner{ position: relative;margin-top: 40px;padding-bottom: 50px;}
 .containerWrap .slideBanner .mleftCons .serverInfos{padding: 0 40px;}
 .containerWrap .slideBanner .mleftCons .serverInfos .appImgCons{width: 142px;margin-right: 26px;}
-.containerWrap .slideBanner .mleftCons .serverInfos .appImg{width: 142px;height: 142px;box-sizing: border-box;background: #fff;border: 1px solid #ddd;padding: 13px;border-radius: 10px;}
-/*.containerWrap .slideBanner .mleftCons .serverInfos .appImg img{margin: 14px auto 24px;display: block;}*/
+.containerWrap .slideBanner .mleftCons .serverInfos .appImg{width: 142px;height: 142px;box-sizing: border-box;background: #fff;border: 1px solid #ddd;padding: 13px;border-radius: 10px;display: table-cell;vertical-align: middle;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appImg img{width: 115px;}
 .containerWrap .slideBanner .mleftCons .serverInfos .viewerNums{padding-top: 15px;}
 .containerWrap .slideBanner .mleftCons .serverInfos .viewerNums p{width: 50%;text-align: center;}
 .containerWrap .slideBanner .mleftCons .serverInfos .viewerNums p span{display: block;text-align: center;}

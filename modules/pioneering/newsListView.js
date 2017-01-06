@@ -22,7 +22,7 @@ var view = Backbone.View.extend({
         window.portalUrl = Resource.cmsHost;
         window.frameUrl = '?';
         window.jumpToPage = function(url) {
-            me.$list.load(url + '?time=' + +(new Date());
+            me.$list.load(url + '?time=' + +(new Date()));
         }
 
         this.$list.load(cmsUrl + '?time=' + +(new Date()), function() {

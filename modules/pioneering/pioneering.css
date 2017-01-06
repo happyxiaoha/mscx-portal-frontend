@@ -229,3 +229,10 @@
 .D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}
+
+.pioneering-content table {
+    font-size: 14px;
+}
+.pioneering-content table tr, .pioneering-content table td {
+    padding: 10px;
+}

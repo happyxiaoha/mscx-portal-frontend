@@ -31,7 +31,7 @@ var view = Backbone.View.extend({
         window.portalUrl = Resource.cmsHost;
         window.frameUrl = '?';
         window.jumpToPage = function(url) {
-            me.$downPart.load(url);
+            me.$downPart.load(url + '?t=' + +(new Date()));
         }
 
         this.$topPart.load(cmsUrl + '?time=' + +(new Date()), function() {

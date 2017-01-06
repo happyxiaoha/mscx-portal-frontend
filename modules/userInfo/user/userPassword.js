@@ -61,7 +61,7 @@ var userPasswordView = Backbone.View.extend({
             success: function () {
                 layer.msg('修改密码成功!');
                 setTimeout(function () {
-                    location.href = 'login.html'
+                    location.href = '#info';
                 },2000);
             }
         });

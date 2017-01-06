@@ -14,6 +14,9 @@ var createApiModel = Backbone.Model.extend({
 var checkServerId = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/checkApiByIdentification.do'
 });
+var getFeeModel = Backbone.Model.extend({
+    url: mscxPage.request.api + '/service/getFee.do'
+});
 var getCategoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getApiCategory.do'
 });
@@ -614,6 +617,18 @@ var createApiView = Backbone.View.extend({
             else {
                 $($limitInput[0]).attr('disabled',false);
             }
+            if(!$this.hasClass('error') && sVal > 0){
+                new getFeeModel().fetch({
+                    type:'GET',
+                    data: {
+                        price: sVal
+                    },
+                    success: function(){
+
+                    }
+                })
+            }
+            $this = null;
             $limitInput = null;
         }
     },

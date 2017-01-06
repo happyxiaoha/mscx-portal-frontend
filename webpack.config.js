@@ -9,7 +9,7 @@ module.exports = {
     entry: { },
     output: {
         path: path.join(__dirname, './build/dist/'), //文件输出目录
-        publicPath: './dist/',
+        publicPath: '../dist/',
         filename: '[name].js'
     },
     plugins: [commonsPlugin,new ExtractTextPlugin("[name].css")

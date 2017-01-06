@@ -527,8 +527,9 @@ var createApiView = Backbone.View.extend({
             },
             btn1: function () {          //通过
                 var chargeSetJson = _.clone(that.model.get('chargeSetJson') || []),
-                    nowPackageObj = chargeSetJson[that.updateIndex];
-                nowPackageObj.expiryDate = $('#expiryDate').val();
+                    newChargeJson = _.clone(chargeSetJson[that.updateIndex]);
+                newChargeJson.expiryDate = $('#expiryDate').val();
+                chargeSetJson[that.updateIndex] = newChargeJson;
                 that.updateIndex = -1;
                 that.model.set('chargeSetJson',chargeSetJson);
                 layer.close(dialog);

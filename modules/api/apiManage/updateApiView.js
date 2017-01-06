@@ -647,7 +647,7 @@ var updateApiView = Backbone.View.extend({
             }
         }
         new checkServerId().fetch({
-            data: {name: sName},
+            data: {name: sName,apiServiceId:this.id},
             success: function (model,res) {
                 if(res.result){
                     $('.api-server-error').hide();

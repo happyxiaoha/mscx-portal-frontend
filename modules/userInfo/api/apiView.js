@@ -339,7 +339,7 @@ var apiView = Backbone.View.extend({
             btn1: function () {          //通过
                 var packageList = that.packageList || [],
                     nowPackageObj = packageList[that.updateIndex];
-                nowPackageObj.flag = 'U';
+                nowPackageObj.flag = nowPackageObj.flag == 'C' ? 'C': 'U';
                 nowPackageObj.expiryDate = $('#expiryDate').val();
                 packageList[that.updateIndex] = nowPackageObj;
                 that.updateIndex = -1;
@@ -445,7 +445,7 @@ var apiView = Backbone.View.extend({
         }
         else {
             var newPackage = $('#addChargeForm').serializeObject();
-            newPackage.flag = 'U';
+            newPackage.flag = newPackage.flag == 'C' ? 'C': 'U';
             packageList[this.updateIndex] = newPackage;
             this.updateIndex = -1;
         }

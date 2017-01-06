@@ -15,4 +15,5 @@ $(function() {
     mscxPage.appRouter = new router();
     Backbone.history.stop();
     Backbone.history.start();
+    $(mscxPage.domEl.userCenterLeft).data('isLogo',1);
 });

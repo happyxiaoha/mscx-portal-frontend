@@ -524,10 +524,9 @@
 .partner ul li{ width: 234px;background: #fafafa; float:left; padding: 30px 5px;  display:inline; border-right: solid 1px #eee;text-align: center }
 .partner ul li img{height:60px;width: 160px; }
 
-/*
 .loading{
     background: url("../../images/newicon/loading.gif") center center no-repeat #fff !important;
-}*/
+}
 
 @media screen and (max-width: 1300px){
     .grid1190{

@@ -261,8 +261,7 @@ var createApiView = Backbone.View.extend({
                     unSpecial: true
                 },
                 uri: {
-                    required: true,
-                    url: true
+                    required: true
                 },
                 directions: {
                     required: true
@@ -272,9 +271,6 @@ var createApiView = Backbone.View.extend({
                 cname:{
                     unSpecial: 'API名称不能包含特殊字符',
                     maxlength: 'API名称不超过20个字'
-                },
-                uri:{
-                    url: 'API地址错误'
                 }
             },
             submitHandler: function () {

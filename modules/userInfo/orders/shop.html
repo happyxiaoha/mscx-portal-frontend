@@ -30,6 +30,33 @@
 
 <script id="carMessage" type="template">
     <% _.each(shopCarList, function (scitem) { %>
+    <%if(!scitem.chargeRuleValid || !scitem.resourceValid){%>
+    <li attrId="<%=scitem.id%>">
+        <p>
+            <span> <%=scitem.createdTime ? new Date(scitem.createdTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></span>
+            <span class="deleteCar fr"></span>
+        </p>
+        <div class="orderList">
+            <span class="ml10"></span>
+            <%if(scitem.resourceType == '01'){%>
+            <a class="resources" href="./api.html?detail/<%=scitem.resourceId%>">
+                <img src="<%=scitem.resourceUrl%>">
+                <p><%=scitem.resourceName%></p>
+            </a>
+            <%}else{%>
+            <a class="resources" style="width: 285px;text-align: center;" href="./sources.html?detail/<%=scitem.resourceId%>">
+                <p><%=scitem.resourceName%></p>
+            </a>
+            <%}%>
+            <span class="price"><%=scitem.price%>元</span>
+            <span class="count">
+                <img src="../../../images/downed.png">
+            </span>
+            <span class="resourcestype borderT"><%=scitem.resourceDetailType || '-' %></span>
+            <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>
+        </div>
+    </li>
+    <%}else{%>
     <li attrId="<%=scitem.id%>">
         <p>
             <span> <%=scitem.createdTime ? new Date(scitem.createdTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></span>
@@ -57,5 +84,6 @@
             <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>
         </div>
     </li>
+    <%}%>
     <%});%>
 </script>

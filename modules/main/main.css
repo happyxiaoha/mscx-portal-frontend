@@ -251,6 +251,9 @@
 .layer .tabChange ul li p{
     bottom: 0;
     width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .layer .tabChange ul li p span{
     margin-right: 15px;
@@ -505,6 +508,9 @@
     margin-top: 15px;
     font-size: 16px;
     margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .swiper-right .swiper-slide-active {

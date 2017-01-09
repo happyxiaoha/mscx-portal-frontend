@@ -33,7 +33,7 @@ var view = Backbone.View.extend({
                 },
                 contactNo: {
                     required: true,
-                    phone: true,
+                    contactWay: true,
                     maxlength: 20
                 }
             },

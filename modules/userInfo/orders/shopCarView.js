@@ -239,7 +239,7 @@ var shopCarView = Backbone.View.extend({
                     cartIds: this.shopArray.join(',')
                 },
                 success: function (model,res) {
-                    if(parseInt($('.total-price').html().replace('￥','')) == 0){
+                    if(parseFloat($('.total-price').html().replace('￥','')) == 0){
                         layer.msg('购买成功!');
                         setTimeout(function () {
                             location.href = 'userInfo.html#order';

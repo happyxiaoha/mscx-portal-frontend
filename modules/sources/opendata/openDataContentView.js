@@ -14,14 +14,11 @@ var openDataThemeView = Backbone.View.extend({
     },
     initialize: function() {
         this.model = new openDataThemeListModel();
-
-        this.$el.toggleClass('loading');
         this.model.fetch();
         this.listenTo(this.model,'sync',this.render);
     },
     render: function() {
         var nJson = this.model.toJSON();
-        this.$el.toggleClass('loading');
         this.$el.html(this.template(nJson.result));
     }
 });

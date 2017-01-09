@@ -50,7 +50,7 @@ var registerView = Backbone.View.extend({
                       res = res.toJSON();
                      if(res.message == 'success'){
                          layer.confirm('注册成功', {
-                             btn: ['去登陆','去首页'] //按钮
+                             btn: ['去登录','去首页'] //按钮
                          }, function(){
                              window.open('login.html','_self');
                          }, function(){

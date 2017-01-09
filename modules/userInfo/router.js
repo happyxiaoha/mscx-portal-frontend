@@ -20,6 +20,7 @@ var Routes =  Backbone.Router.extend({
         'follow': 'followView',
         'server': 'serverView',
         'serverFollow': 'serverFollowView',
+        'serverApply': 'serverApplyView',
         'order': 'orderView',
         'shop': 'shopView'
     },
@@ -74,6 +75,10 @@ var Routes =  Backbone.Router.extend({
     serverFollowView: function () {
         var serverFollowView = require('userInfo/servers/serversFollowView.js');
         mscxPage.views['serverFollowViewObj'] = new serverFollowView();
+    },
+    serverApplyView: function () {
+        var serverApplyView = require('userInfo/servers/serversApplyView.js');
+        mscxPage.views['serverApplyViewObj'] = new serverApplyView();
     },
     apiView: function () {
         var apiView = require('userInfo/api/apiView.js');

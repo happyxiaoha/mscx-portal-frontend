@@ -6,6 +6,7 @@
 
 var serviceDetailModelTemplate = require('html!./detailTemplate.html');
 var shareView = require('shareWidget/shareView.js');
+var applyView = require('./applyLayer.js');
 
 var serviceDetailModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'get.do'
@@ -27,7 +28,8 @@ var openDataDetailView = Backbone.View.extend({
     template: _.template(serviceDetailModelTemplate,{variable: 'data'}),
     events: {
         'click #attention': 'attentionData',
-        'click #example': 'showExample'
+        'click #example': 'showExample',
+        'click #applyBtn': 'apply'
     },
     initialize: function() {
         this.$el.html();
@@ -115,6 +117,45 @@ var openDataDetailView = Backbone.View.extend({
             area: ['500px', '500px'],
             content: url //iframe的url
         });
+    },
+    // 申请
+    apply: function() {
+        var me = this;
+
+        if(!mscxPage.isLogin()) {
+            return;
+        }
+
+        this.applyView = new applyView({
+            id: this.id,
+            model: {
+                chargeType: this.chargeType
+            }
+        });
+        this.$el.append(this.applyView.$el);
+
+        this.applyView.delegate = this;
+
+        var btn = this.chargeType == '01' ? ['完成'] : ['立即支付', '加入购物车']
+
+        layer.open({
+            type: 1,
+            btn: btn,
+            title: '选择您要购买的套餐：',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px'],
+            content: this.applyView.$el,
+            btn1: function (index) {
+                me.applyView.order(index);
+            },
+            btn2: function(index) {
+                me.applyView.addCart(index);
+            },
+            end: function() {
+                me.applyView.remove();
+            }
+        })
     }
 });
 

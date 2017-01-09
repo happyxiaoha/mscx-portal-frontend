@@ -258,3 +258,27 @@
 .classifyDowns li{cursor: pointer; float: inherit !important; margin: 0 !important;border-bottom: 1px solid #ccc !important;width: 148px !important;height: 30px;line-height: 30px;text-align: left !important;padding: 0 10px;box-sizing: border-box;}
 .classifyDowns li:hover{background: #eee;}
 .classifyDowns li:last-child{border-bottom: 0 !important;}*/
+
+.apply-box {
+    padding: 5px 30px;
+}
+.apply-box .D_table {
+    min-height: 280px;
+}
+.apply-box .D_table table tr td input[type='number'],
+.layer-table .D_table table tr td input[type='number']{
+    width: 40px;
+}
+.apply-box,.layer-table{
+    padding: 5px 30px;
+}
+.apply-box p label,.layer-table p label{
+    float: left;
+}
+.apply-box p label a,.layer-table p label a{
+    color: #00aff6;
+}
+.apply-box p span, .layer-table p span{
+    font-size: 16px;
+    float: right;
+}

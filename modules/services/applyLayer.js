@@ -4,7 +4,7 @@ var template = require('html!./applyTemplate.html');
 
 // 微服务套餐
 var packageModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'charge/getChargeRuleByServiceId.do'
+    url: mscxPage.request.app + 'publish/chargeRule/get.do'
 });
 // 免费微服务是否已经购买
 var freeIsBaughtModel = Backbone.Model.extend({
@@ -57,7 +57,7 @@ var view = Backbone.View.extend({
             this.packageModel.fetch({
                 async: false,
                 data: {
-                    apiServiceId: this.id
+                    appId: this.id
                 }
             })
         }      

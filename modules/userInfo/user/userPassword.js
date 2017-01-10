@@ -7,7 +7,7 @@ require('./user.css');
 require('validate');
 
 var userPasswordManagerModel = Backbone.Model.extend({
-    url: mscxPage.request.uc + 'change/password.do'
+    url: 'change/password.do'
 });
 var userInfoModel = Backbone.Model.extend({
     url: mscxPage.request.uc + 'user/info/mine.do'
@@ -23,10 +23,14 @@ var userPasswordView = Backbone.View.extend({
             rules: {
                 oldPassword: {
                     required: true,
+                    minlength: 8,
+                    maxlength: 20,
                     password: true
                 },
                 password: {
                     required: true,
+                    minlength: 8,
+                    maxlength: 20,
                     password: true
                 },
                 passwordConfirm: {
@@ -43,10 +47,14 @@ var userPasswordView = Backbone.View.extend({
                 },
                 password: {
                     required: '新密码不能为空',
+                    minlength: '新密码的最小长度是8位',
+                    maxlength: '新密码的最大长度是20位',
                     password: '密码只能包含数字字母下划线中划线'
                 },
                 oldPassword: {
                     required: '旧密码不能为空',
+                    minlength: '旧密码的最小长度是8位',
+                    maxlength: '旧密码的最大长度是20位',
                     password: '密码只能包含数字字母下划线中划线'
                 }
             },

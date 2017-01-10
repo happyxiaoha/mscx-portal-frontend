@@ -21,7 +21,8 @@ var searchView = Backbone.View.extend({
     template: _.template(searchTemplate,{variable: 'data'}),
     events: {
         'click .search-type span': 'changeType',
-        'click .searchBtn': 'search'
+        'click .searchBtn': 'search',
+        'keydown #searchValue': 'keyDownSearch'
     },
     initialize: function() {
 
@@ -39,11 +40,20 @@ var searchView = Backbone.View.extend({
 
         this.initView(this.dataType);
     },
+    keyDownSearch: function(e){
+        var that = this;
+        if (e.keyCode == "13") {
+            //回车执行查询
+            that.search();
+        }
+    },
     search: function () {
        var $searchInput = $('#searchValue'),
            $allSearch = $('.allSearch'),
+           oldKey = window.localStorage.getItem('keyword'),
            data = $.trim($allSearch.html());
            this.id = $.trim($searchInput.val());
+        if(oldKey === this.id) return;
         window.localStorage.setItem('keyword', this.id);
         this.initView(data);
     },
@@ -74,8 +84,8 @@ var searchView = Backbone.View.extend({
     changeType: function (e) {
         var $target = $(e.target),
             $allSearch = $('.allSearch'),
-            $searchInput = $('#searchValue'),
             data = $target.data('type');
+        if($target.hasClass('active')) return;
         $allSearch.html(data);
         $target.addClass('active').siblings().removeClass('active');
         $('.SearchList').eq($target.index()).show().siblings('.SearchList').hide();

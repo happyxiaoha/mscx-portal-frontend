@@ -83,6 +83,7 @@ a{
 }
 .noLogin{
     width: 150px;
+    text-align: center;
 }
     /*个人信息下拉菜单*/
 .dropMenu{
@@ -112,3 +113,7 @@ a{
 
  .navCons.index .nav li a:link{color: #333;}
 .navCons.index .nav li a:hover{color: #0095d1;}
+
+@media screen and (max-width: 1300px){
+
+}

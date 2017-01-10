@@ -64,7 +64,7 @@ var registerView = Backbone.View.extend({
             });
         }
         else {
-            layer.alert('请确认协议！');
+            layer.alert('请阅读并勾选协议！');
         }
     },
     changeAttribute: function (e) {
@@ -143,7 +143,7 @@ var registerView = Backbone.View.extend({
                     required: "请输入手机验证码"
                 },
                 agreement: {
-                    required: '请点击确认协议'
+                    required: '请阅读并勾选协议！'
                 }
             },
             submitHandler: function () {

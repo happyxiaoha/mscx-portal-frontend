@@ -30,6 +30,9 @@ var getServiceTypeModel = Backbone.Model.extend({
 var getPackageModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'charge/getMyChargeRuleByServiceId.do'
 });
+var getCategoryModel2 = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'category/getApiTypeAndCategory.do'
+});
 
 var updateApiView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
@@ -55,7 +58,7 @@ var updateApiView = Backbone.View.extend({
         var that = this;
         this.$el.html(template);
         this.apiDesModel = new apiDesModel();
-        this.getCategoryModel = new getCategoryModel();
+        this.getCategoryModel = new getCategoryModel2();
         this.getCategoryTagModel = new getCategoryTagModel();
         this.getServiceTypeModel = new getServiceTypeModel();
         this.getPackageModel = new getPackageModel();
@@ -114,6 +117,7 @@ var updateApiView = Backbone.View.extend({
             }
         });
         this.model.set('chargeType',res.chargeType);
+        this.model.set('type',res.type);
         this.chooseSelectTags(res.tagsName);
         this.model.set('tags',res.tags);
         this.model.set('apiListJson',res.apiListJson);
@@ -328,10 +332,12 @@ var updateApiView = Backbone.View.extend({
         });
     },
     changeCategory: function (e) {
-        var sId = parseInt(e.target.id.replace('c',''));
+        var sId = parseInt(e.target.id.replace('c','')),
+            type = $(e.target).closest('.category-block-area').find('p').data('typeid');
         this.renderTagWithCategory(sId);
         this.chooseTags = [];
         this.model.set('categoryId',sId);
+        this.model.set('type',type);
         this.model.set('tags','');
         return false;
     },

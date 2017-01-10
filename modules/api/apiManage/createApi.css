@@ -131,3 +131,6 @@
 .R_right label a{
     color: #0ab7ef;
 }
+.category-block-area {overflow: hidden;font-size: 12px;}
+.category-block-area >p {  height: 30px; line-height: 30px; margin-right: 10px;  float: left;  overflow: hidden;    font-weight: bold;}
+.category-block-area >div {width: 80%;float: left;}

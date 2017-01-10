@@ -26,6 +26,9 @@ var getCategoryTagModel = Backbone.Model.extend({
 var getServiceTypeModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'dict/getServiceObject.do'
 });
+var getCategoryModel2 = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'category/getApiTypeAndCategory.do'
+});
 
 var createApiView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
@@ -34,7 +37,7 @@ var createApiView = Backbone.View.extend({
         'input #createDemandForm textarea' : 'changeAttribute',
         'click #chooseTag': 'showTagArea',
         //'click .tag-list-area li': 'chooseTag',
-        'click .tag-area span': 'deleteTag',
+        'click .tag-area .remove-tags-btn': 'deleteTag',
         'change input:radio[name="category"]': 'changeCategory',
         'change input:radio[name="chargeType"]': 'changeChargeType',
         'change input:checkbox[name="serverTypes"]': 'chooseServerTypes',
@@ -58,7 +61,9 @@ var createApiView = Backbone.View.extend({
     initialize: function() {
         this.$el.data('isLogin',1);
         var that = this;
-        this.getCategoryModel = new getCategoryModel();
+        this.getCategoryModel = new getCategoryModel2();
+        //this.getCategoryModel2 = new getCategoryModel2();
+        //this.getCategoryModel2.fetch();
         this.getCategoryTagModel = new getCategoryTagModel();
         this.getServiceTypeModel = new getServiceTypeModel();
         this.getCategoryModel.on('change',function () {
@@ -301,7 +306,7 @@ var createApiView = Backbone.View.extend({
         return false;
     },
     deleteTag: function (e) {
-        var $this = $(e.target),
+        var $this = $(e.target).closest('p').find('span'),
             newTags = [],
             newChooseTags = [],
             sVal = $this.text();
@@ -338,9 +343,11 @@ var createApiView = Backbone.View.extend({
         });
     },
     changeCategory: function (e) {
-        var sId = parseInt(e.target.id.replace('c',''));
+        var sId = parseInt(e.target.id.replace('c','')),
+            type = $(e.target).closest('.category-block-area').find('p').data('typeid');
         this.renderTagWithCategory(sId);
         this.model.set('categoryId',sId);
+        this.model.set('type',type);
         this.chooseTags = [];
         this.model.set('tags','');
         return false;
@@ -363,8 +370,9 @@ var createApiView = Backbone.View.extend({
         var categoryList = this.getCategoryModel.get('result');
         $('#serverCategory').html(categoryTemplate({categoryList:categoryList}));
         if(categoryList.length > 0){
-            this.model.set('categoryId',categoryList[0].categoryId);
-            this.renderTagWithCategory(categoryList[0].categoryId);
+            this.model.set('categoryId',categoryList[0].categoryList[0].categoryId);
+            this.model.set('type',categoryList[0].typeId);
+            this.renderTagWithCategory(categoryList[0].categoryList[0].categoryId);
         }
     },
     renderTagWithCategory: function (cid) {
@@ -764,8 +772,7 @@ var createApiView = Backbone.View.extend({
     },
     doPublish: function () {
         var isCheck = this.checkValidateSelf();
-        var that = this,
-            agreement = $('#agreementCheckbox').is(':checked');
+        var agreement = $('#agreementCheckbox').is(':checked');
         if(agreement) {
             if (isCheck) {
                 var obj = $('#publishApi').serializeObject();
@@ -780,7 +787,7 @@ var createApiView = Backbone.View.extend({
                             location.href = 'userInfo.html#api';
                         }, 1000);
                     }
-                })
+                });
             }
         }
         else {

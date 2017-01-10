@@ -1,6 +1,6 @@
 /*侧导航*/
 .leftMenuWrap{margin-right: 5px;}
-.leftMenuWrap ul{width: 64px;background: #dcdcdc;margin-top: 12px;}
+.leftMenuWrap ul{width: 64px;background: #dcdcdc;/*margin-top: 12px;*/}
 .leftMenuWrap ul li a,.leftMenuWrap ul li p{text-align: center;height: 100px;display: block;width: 100%;}
 .leftMenuWrap ul li span{display: block;color:#069cd9;display: none;margin-top: 60px;}
 .leftMenuWrap ul li a.active{border: 1px solid #ccc;box-sizing:border-box;margin-left: -16px;width: 80px;background-color: #fff !important;position: relative;}

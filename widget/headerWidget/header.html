@@ -1,10 +1,17 @@
-<div class="header grid960">
+<div class="header grid1190">
     <h1 class="logo fl">
         <a href="index.html">
             <img src="../../images/newicon/ic_newlogo.png">
         </a>
     </h1>
-    <div class="left-area fr clearfix">
+    <div class="navCons fl mt20 index">
+        <ul class="nav fl">
+            <% _.each(data.menuList, function (item) { %>
+            <li <%= (data.id == item.key ? 'class=active' : '' ) %>><a href="<%= item.url %>"><%= item.name %></a></li>
+            <%})%>
+        </ul>
+    </div>
+    <div class="haslogin fr clearfix">
         <div class="searchCons fl">
             <input type="text" class="search" id="inputs" placeholder="请输入要查找的内容">
             <a class="search-img"></a>
@@ -31,15 +38,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="navCons clearfix bgBlue">
-    <div class="grid960">
-        <ul class="nav fl">
-            <% _.each(data.menuList, function (item) { %>
-                <li <%= (data.id == item.key ? 'class=active' : '' ) %>><a href="<%=item.url%>"><%=item.name%></a></li>
-            <%})%>
-        </ul>
     </div>
 </div>

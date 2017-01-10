@@ -6,6 +6,17 @@ a{
     color: #6e7782;
     cursor: pointer;
 }
+.navCons{height: 50px;line-height: 50px;margin-left: 60px;}
+
+.navCons .nav li{float:left;font-size: 16px;padding:0 17px;}
+.navCons .nav li.active a{color: #4786f3;}
+.navCons .nav li a{color: #484848;display: block;}
+.navCons .nav li a:hover{color: #0095d1;background: transparent;}
+.navCons .links{font-size: 16px;}
+.navCons .links a{color: #0095d1; display: inline-block;}
+.navCons .links a:first-child{width: 24px;height:24px;vertical-align: -7px;background: url(../../images/newtel.png) no-repeat left center;margin-right: 10px; cursor: pointer;}
+.navCons .links a:nth-child(2){background: url(../../images/newtel02.png) no-repeat 10px center;padding: 0 10px 0 44px;cursor: pointer;}
+
 .header{height: 90px;}
 .header h1{margin:20px 0 0;}
 .header h1 a{display: block;}
@@ -15,7 +26,7 @@ a{
 .header .searchCons{margin: 0 30px 0 0;background: #fff;position: relative}
 .header .searchCons .search-img{position: absolute;top: 0; right: 0;height: 38px;width: 38px;background: url("../../images/img01.png") center center no-repeat;cursor: pointer}
 .header .searchCons input{display: inline-block;margin: 0;}
-.header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 0;box-shadow: none;padding-left: 10px;padding-right: 16px;}
+.header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 36px;box-shadow: none;padding-left: 10px;padding-right: 16px;}
 .header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
 .header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
 .header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
@@ -70,7 +81,11 @@ a{
     background: #f9f9f9;
     margin-top: 2px;
 }
-/*个人信息下拉菜单*/
+.noLogin{
+    width: 150px;
+    text-align: center;
+}
+    /*个人信息下拉菜单*/
 .dropMenu{
     position: absolute;
     border: solid 1px #eee;
@@ -98,3 +113,7 @@ a{
 
  .navCons.index .nav li a:link{color: #333;}
 .navCons.index .nav li a:hover{color: #0095d1;}
+
+@media screen and (max-width: 1300px){
+
+}

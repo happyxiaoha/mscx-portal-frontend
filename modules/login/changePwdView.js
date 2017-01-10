@@ -120,7 +120,7 @@ var changePwdView = Backbone.View.extend({
                 password:{
                     required: true,
                     password: true,
-                    minlength: 6,
+                    minlength: 8,
                     maxlength: 20
                 },
                 passwordConfirm: {
@@ -131,8 +131,8 @@ var changePwdView = Backbone.View.extend({
             messages: {
                 password:{
                     required: "请输入密码",
-                    minlength: "密码最少为6位",
-                    password: '密码只能包含数字字母下划线中划线,长度为6-20位'
+                    minlength: "密码最少为8位",
+                    password: '密码只能包含数字字母下划线中划线,长度为8-20位'
                 },
                 passwordConfirm: {
                     required: "请确认密码",

@@ -13,11 +13,11 @@
                     <% if(item.imgUri){ %>
                 <img src="<%- item.imgUri %>">
                         <% };%>
-                <p><span><%- item.name %></span></p>
+                <p title="<%- item.name %>"><span><%- item.name %></span></p>
             </a>
         </div>
         <% if(item.sourceType ==='01'){ %>
-        <a href="api.html#detail/<%- item.id %>" class="apiname">
+        <a title="<%- item.name %>" href="api.html#detail/<%- item.id %>" class="apiname">
             <% }else if(item.sourceType ==='02'){ %>
             <a href="sources.html#detail/<%- item.id %>" class="apiname">
                 <% }else{ %>

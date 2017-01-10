@@ -311,3 +311,76 @@ select::-ms-expand {
 table tr td{
 	word-break: break-all;
 }
+
+@media screen and (max-width: 1300px){
+	.grid1190{
+		width: 1000px;
+	}
+	.header .searchCons{
+		margin: 0 20px 0 0;
+	}
+	.left-banner{
+		width: 160px;
+	}
+	.downCons ul li .rightTips{
+		left: 160px;
+	}
+	.container{
+		width: 160px;
+	}
+	.navCons{
+		margin-left: 30px;
+	}
+	.navCons .nav li{
+		padding: 0 14px;
+	}
+	.header .searchCons .search{
+		width: 170px;
+	}
+	.header .searchCons{
+		margin: 0 20px 0 0;
+	}
+	.bannger{
+		width: 660px;
+	}
+	.layer .tabChange ul li{
+		width: 320px;
+	}
+	.layer .tabChange ul li .iconforapi{
+		width: 300px;
+	}
+	.mainDatas-left{
+		width: 210px;
+	}
+	.ser-img-box img{
+		height: 107px;
+	}
+	.apitypelist{
+		width: 204px;
+	}
+	.mainDatas-left .more{
+		width: 204px;
+	}
+	.apitypelist li{
+		width: 148px;
+	}
+	.dataListDiv{
+		width: 788px;
+	}
+	.DataList li{
+		width: 195px;
+	}
+	.partner{
+		width: 998px;
+	}
+	.footer ul{
+		margin-left: 100px;
+	}
+	.footer ul li a{
+		width: 120px;
+	}
+	.forhelp{
+		margin-left:50px;
+		padding: 10px 0 10px 50px;
+	}
+}

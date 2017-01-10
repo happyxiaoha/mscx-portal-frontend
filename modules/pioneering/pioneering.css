@@ -155,6 +155,8 @@
 }
 .layLeft ul.zixun li img{
     border: solid 1px #dcdcdc;
+    width: 262px;
+    height: 152px;
 }
 .layLeft ul.zixun li a{
     float: left;

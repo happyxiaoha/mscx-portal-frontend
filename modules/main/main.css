@@ -1,13 +1,3 @@
-.navCons{height: 50px;line-height: 50px;margin-left: 60px;}
-
-.navCons .nav li{float:left;font-size: 16px;padding:0 18px;}
-.navCons .nav li.active a{color: #4786f3;}
-.navCons .nav li a{color: #484848;display: block;}
-.navCons .nav li a:hover{color: #0095d1;background: transparent;}
-.navCons .links{font-size: 16px;}
-.navCons .links a{color: #0095d1; display: inline-block;}
-.navCons .links a:first-child{width: 24px;height:24px;vertical-align: -7px;background: url(../../images/newtel.png) no-repeat left center;margin-right: 10px; cursor: pointer;}
-.navCons .links a:nth-child(2){background: url(../../images/newtel02.png) no-repeat 10px center;padding: 0 10px 0 44px;cursor: pointer;}
 
 /**************************banner   start*******************************/
 

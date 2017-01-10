@@ -34,7 +34,7 @@ var searchView = Backbone.View.extend({
         this.listenTo( this.searchDataModel, 'sync', this.initDataResult);
         this.listenTo( this.searchSerModel, 'sync', this.initSerResult);
         this.id = window.localStorage.getItem('keyword');
-        this.dataType = window.localStorage.getItem('dataType') || 'Api';
+        this.dataType = window.localStorage.getItem('dataType') || 'API';
 
         this.$el.html(this.template({'keyword': this.id,'dataType': this.dataType}));
 
@@ -58,8 +58,8 @@ var searchView = Backbone.View.extend({
         this.initView(data);
     },
     initView: function(data){
-        if(data == 'Api'){
-            window.localStorage.setItem('dataType', 'Api');
+        if(data == 'API'){
+            window.localStorage.setItem('dataType', 'API');
             this.searchApiModel.fetch({
                 data:{
                     keyword:　this.id

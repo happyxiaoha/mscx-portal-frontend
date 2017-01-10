@@ -113,7 +113,7 @@ var headerView = Backbone.View.extend({
         var $inputs = $('#inputs'),
             keyWord = $.trim($inputs.val());
         window.localStorage.setItem('keyword', keyWord);
-        window.localStorage.setItem('dataType','Api');
+        window.localStorage.setItem('dataType','API');
         window.open('search.html','_self');
     }
 });

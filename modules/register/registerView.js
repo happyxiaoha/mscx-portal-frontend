@@ -64,7 +64,7 @@ var registerView = Backbone.View.extend({
             });
         }
         else {
-            layer.alert('请确认协议！');
+            layer.alert('请阅读并勾选协议！');
         }
     },
     changeAttribute: function (e) {

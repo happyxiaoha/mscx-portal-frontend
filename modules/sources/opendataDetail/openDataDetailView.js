@@ -7,7 +7,7 @@
 var openDataDetailTemplate = require('html!./openDataDetailView.html');
 var shareView = require('shareWidget/shareView.js');
 var applyView = require('../opendataRelease/applyLayer.js');
-var offlineView = require('./offlineLayer.js');
+var offlineView = require('offlineWidget/offlineLayer.js');
 
 var openDataDetailModel = Backbone.Model.extend({
     url: mscxPage.request.data + 'getDataDetail.do'
@@ -106,7 +106,11 @@ var openDataDetailView = Backbone.View.extend({
             return;
         }
         this.offlineView = new offlineView({
-            id: this.id
+            model: {
+                apiServiceId: this.id,
+                cname: this.model.toJSON().result.name,
+                type: 5
+            }
         });
         this.offlineView.delegate = this;
         this.$el.append(this.offlineView.$el);

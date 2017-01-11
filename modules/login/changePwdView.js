@@ -35,6 +35,7 @@ var changePwdView = Backbone.View.extend({
     initialize: function () {
         this.model = new resetPwdModel();
         this.$el.html(this.template());
+        this.refreshCaptcha();
         this.render();
     },
     render: function () {

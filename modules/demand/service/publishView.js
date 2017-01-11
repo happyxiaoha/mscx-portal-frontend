@@ -93,7 +93,7 @@ var createDemandView = Backbone.View.extend({
     handleSubmit: function() {
         var model = this.model.toJSON();
         if(model.status == 'OK') {
-            layer.msg('创建成功，请至用户中心我的需求内发布');
+            layer.msg((this.id ? '修改' : '创建') + '成功，请至用户中心我的需求内发布');
             setTimeout(function() {
                 location.href = 'userInfo.html#serversDemand';
             }, 2000);

@@ -24,7 +24,7 @@ var loginView = Backbone.View.extend({
     template: _.template(loginTemplate,{variable: 'data'}),
     events: {
         'click .captchaImg': 'refreshCaptcha',
-        'input .loginTable input' : 'changeAttribute',
+        //'input .loginTable input' : 'changeAttribute',
         'click #forgetPwd': 'forgetPwd'
     },
     initialize: function() {
@@ -36,8 +36,16 @@ var loginView = Backbone.View.extend({
         $('#loginform').validate(this.loginValidateConfig());
     },
     login: function(){
-        var that = this;
-        that.model.save({},{
+        var that = this,
+            account = $('#loginName').val(),
+            password = $('#password').val(),
+            captcha = $('#captcha').val();
+
+        that.model.save({
+            loginName: account,
+            password: password,
+            captcha: captcha
+        },{
             success: function (res) {
                   res = res.toJSON();
                 if(res.status == 'OK'){

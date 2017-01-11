@@ -283,7 +283,7 @@
     width: 238px;
 }
 .apitypelist{
-    width: 232px;
+    width: 233px;
     height:285px;
     border: solid 3px #42a5f5;
     border-top: none;
@@ -317,7 +317,7 @@
     text-indent: 30px;
     border: solid 3px #42a5f5;
     border-top: none;
-    width: 232px;
+    width: 233px;
     font-size: 14px;
     display: block;
 }
@@ -358,8 +358,9 @@
 
 }
 .DataList li {
-    width: 236px;
-    height: 238px;
+    width: 25%;
+    box-sizing: border-box;
+    height: 240px;
     float: left;
     background: #fff;
     border: solid 1px #dae0e5;
@@ -522,6 +523,10 @@
 
 .loading{
     background: url("../../images/newicon/loading.gif") center center no-repeat #fff !important;
+}
+.apihref>img{
+    position: absolute;
+    max-height: 180px;
 }
 
 @media screen and (max-width: 1300px){

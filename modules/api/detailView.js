@@ -2,7 +2,7 @@
 
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
-var offlineView = require('./offlineLayer.js');
+var offlineView = require('offlineWidget/offlineLayer.js');
 var shareView = require('shareWidget/shareView.js');
 
 var detailModel = Backbone.Model.extend({
@@ -197,13 +197,18 @@ var view = Backbone.View.extend({
     // 线下洽谈
     offlineChat: function() {
         var me = this;
+        var detail = this.detailModel.toJSON().result;
 
         if(!mscxPage.isLogin()) {
             return;
         }
 
         this.offlineView = new offlineView({
-            id: this.id
+            model: {
+                apiServiceId: this.id,
+                cname: detail.apiServiceCName,
+                type: detail.type
+            }
         });
         this.offlineView.delegate = this;
         this.$el.append(this.offlineView.$el);

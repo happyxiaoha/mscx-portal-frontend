@@ -13,30 +13,30 @@ var view = Backbone.View.extend({
     tagName: 'div',
     className: 'offline-box hide',
     template: _.template(template, {variable: 'data'}),
-    events: {
-        'input input' : 'changeAttribute',
-        'input textarea' : 'changeAttribute'
-    },
     validateConfig: function () {
         var me = this;
         return {
             rules: {
                 resReq:{
-                    required: true
+                    required: true,
+                    maxlength: 500
                 },
                 purpose:{
-                    required: true
+                    required: true,
+                    maxlength: 500
                 },
                 contact: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 contactNo: {
                     required: true,
-                    contactWay: true
+                    contactWay: true,
+                    maxlength: 20
                 }
             },
             submitHandler: function () {
-                me.save();
+                me.fetch();
             }
         }
     },
@@ -46,25 +46,27 @@ var view = Backbone.View.extend({
         this.$form.validate(this.validateConfig());
 
         this.offlineModel = new offlineModel();
-        this.offlineModel.set('dataId', this.id);
         this.listenTo(this.offlineModel, 'sync', this.handleSubmit);
-    },
-
-    changeAttribute: function (e) {
-        this.offlineModel.set(e.target.id,e.target.value);
-        return false;
     },
     submit: function(index) {
         this.layerIndex = index;
         this.$form.submit();
     },
-    save: function() {
-        this.offlineModel.save({})
+    fetch: function() {
+        var params = this.$form.serialize();
+
+        params += '&' + $.param(this.model);
+        
+        this.offlineModel.fetch({
+            data: params
+        })
     },
     handleSubmit: function() {
         var model = this.offlineModel.toJSON();
 
-        layer.alert('线下洽谈申请成功！');
+        // layer.alert(model.message);
+
+        layer.msg('线下洽谈申请成功！');
 
         if(model.status == 'OK') {
             layer.close(this.layerIndex);

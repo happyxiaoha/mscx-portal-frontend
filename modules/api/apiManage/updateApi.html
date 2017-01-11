@@ -165,8 +165,15 @@
     <%}%>
 </script>
 <script id="categoryList" type="template">
-    <% _.each(categoryList, function (citem) { %>
-    <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == defCid){%>checked<%}%> ><%=citem.categoryName%></label>
+    <% _.each(categoryList, function (fcitem) { %>
+    <div class="category-block-area">
+        <p data-typeId = "<%=fcitem.typeId%>"><%=fcitem.typeName%>:</p>
+        <div>
+            <% _.each(fcitem.categoryList, function (citem) { %>
+            <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == categoryList[0].categoryList[0].categoryId){%>checked<%}%> ><%=citem.categoryName%></label>
+            <% })%>
+        </div>
+    </div>
     <% }); %>
 </script>
 <script id="tagList" type="template">

@@ -171,15 +171,25 @@
 </div>
 <script id="chooseTagArea" type="template">
     <% for(var i=0,len=tags.length; i < len; i++) { %>
-    <span class="fl"><%=tags[i].name%></span>
+    <p class="fl tag-list">
+        <span><%=tags[i].name%></span>
+        <i class="remove-tags-btn"></i>
+    </p>
     <% } %>
     <%if(tags.length == 0){%>
     <span class="un-select">未选择任何标签</span>
     <%}%>
 </script>
 <script id="categoryList" type="template">
-    <% _.each(categoryList, function (citem) { %>
-        <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == categoryList[0].categoryId){%>checked<%}%> ><%=citem.categoryName%></label>
+    <% _.each(categoryList, function (fcitem) { %>
+        <div class="category-block-area">
+            <p data-typeId = "<%=fcitem.typeId%>"><%=fcitem.typeName%>:</p>
+            <div>
+            <% _.each(fcitem.categoryList, function (citem) { %>
+            <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == categoryList[0].categoryList[0].categoryId){%>checked<%}%> ><%=citem.categoryName%></label>
+            <% })%>
+            </div>
+        </div>
     <% }); %>
 </script>
 <script id="tagList" type="template">

@@ -115,6 +115,7 @@ var loginView = Backbone.View.extend({
         }
     },
     forgetPwd: function () {
+        var that = this;
         var dialog= layer.open({
             type: 1,
             btn: [],
@@ -124,7 +125,10 @@ var loginView = Backbone.View.extend({
             area: ['520px', '450px'],
             content: $('#changePwd'), //捕获的元素
             success: function(index) {
-               new changePwdView(index);
+              that.changePwdView =  new changePwdView(index);
+            },
+            end: function(){
+                that.changePwdView && that.changePwdView.undelegateEvents() && that.changePwdView.stopListening();
             }
         })
     }

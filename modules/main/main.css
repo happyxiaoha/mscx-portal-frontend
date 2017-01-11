@@ -526,7 +526,8 @@
 }
 .apihref>img{
     position: absolute;
-    max-height: 180px;
+    max-height: 190px;
+    right: 0;
 }
 
 @media screen and (max-width: 1300px){

@@ -5,7 +5,15 @@
         <p>
             <span class="cor7 mr25 ft14">访问量：<em class="cor7"><%= data.pageviewAmount %></em></span>
             <span class="cor7 mr25 ft14">关注量：<em class="cor7"><%= data.focusAmount %></em></span>
-            <span class="cor7 mr25 ft14"><em class="red"><%= data.statusName %></em></span>
+            <span class="cor7 mr25 ft14">
+                <em class="red">
+                <% if(data.statusCode == 2) { %>
+                    新任务
+                <% }else if(data.statusCode == 5){ %>
+                    已结束
+                <% } %>
+                </em>
+            </span>
         </p>
     </div>
     <div class="fr R-shareStarCons">

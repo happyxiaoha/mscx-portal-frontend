@@ -57,6 +57,9 @@ var openDataDetailView = Backbone.View.extend({
         this.$appInfoCons = this.$('.share');
         this.$appInfoCons.html(this.shareView.$el);
 
+        this.resourceType = this.nJson.resourceType;
+        this.chargeType = this.nJson.chargeType;
+
         if(this.nJson){
          if(this.nJson.demoImage1 && this.nJson.demoImage2 && this.nJson.demoImage3) {
             this.$el.find('.next').show();

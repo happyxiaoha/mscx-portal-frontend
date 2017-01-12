@@ -82,9 +82,7 @@ var loginView = Backbone.View.extend({
                     maxlength: 20
                 },
                 password:{
-                    required: true,
-                    minlength: 8,
-                    maxlength: 20
+                    required: true
                 },
                 captcha: {
                     required: true,
@@ -99,9 +97,7 @@ var loginView = Backbone.View.extend({
                     maxlength: "用户名最多20个字符"
                 },
                 password:{
-                    required: "请输入密码",
-                    minlength: "密码最少为8位",
-                    maxlength: "密码最多20个字符"
+                    required: "请输入密码"
                 },
                 captcha: {
                     required: "请输入验证码",

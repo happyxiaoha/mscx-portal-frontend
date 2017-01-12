@@ -266,7 +266,6 @@
 .classifyDowns li{cursor: pointer; float: inherit !important; margin: 0 !important;border-bottom: 1px solid #ccc !important;width: 148px !important;height: 30px;line-height: 30px;text-align: left !important;padding: 0 10px;box-sizing: border-box;}
 .classifyDowns li:hover{background: #eee;}
 .classifyDowns li:last-child{border-bottom: 0 !important;}*/
-
 .apply-box {
     padding: 5px 30px;
 }

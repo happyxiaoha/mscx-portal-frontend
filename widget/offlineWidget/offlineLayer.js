@@ -6,6 +6,7 @@ var offlineModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'service/apiOfflineMeet.do'
 });
 
+require('./offline.css');
 require('validate');
 require('customValidate');
 

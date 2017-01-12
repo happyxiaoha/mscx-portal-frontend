@@ -165,11 +165,11 @@ var downloadSourcesListView = Backbone.View.extend({
             }
         });
     },
-    pageChange: function () {
+    pageChange: function (curr) {
         this.model.fetch({
             data: {
                 pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
+                page: curr || this.pagObj.pageNum
             }
         });
     },

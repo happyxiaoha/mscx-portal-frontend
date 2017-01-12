@@ -2,7 +2,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <% _.each(data, function(item){ %>
-            <a href="#" class="swiper-slide">
+            <a <%=  item.bannerUrl ? 'href ='+ item.bannerUrl : '' %> class="swiper-slide">
                 <img src="<%= item.bigBannerPic %>" alt="<%= item.title %>">
             </a>
             <% }); %>
@@ -23,7 +23,7 @@
     <div class="swiper-right">
         <div class="swiper-wrapper rightBannner">
             <% _.each(data, function(item){ %>
-            <a href="#" class="swiper-slide">
+            <a class="swiper-slide">
                 <img src="<%= item.smallBannerPic %>" alt="<%= item.title %>">
             </a>
             <% }); %>

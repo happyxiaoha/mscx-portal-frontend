@@ -26,11 +26,7 @@
     <% _.each(serverDemandList, function (sitem) { %>
     <tr attrId="<%=sitem.id%>" >
         <td>
-        <%if(sitem.status == '0' || sitem.status == '1'){%>
             <a target="_blank" href="demand.html#service/des/<%= sitem.id %>"><%=sitem.name || '-'%></a>
-            <%}else{%>
-            <a target="_blank" href="demand.html#service/detail/<%= sitem.id %>"><%=sitem.name || '-'%></a>
-        <%}%>
         </td>
         <td><%= sitem.description || '-'%></td>
         <td><%=sitem.endTime%></td>

@@ -141,6 +141,52 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>是否收费：</p>
+                <div class="fl R_right charge-type-radio">
+                    <% if(data.showFlag || data.detail && data.detail.id) { %>
+                    <input type="hidden" name="chargeType" value="<%= data.detail.chargeType %>" />
+                    <label><input type="radio" name="chargeType" value="01" id="ct01" <%if(data.detail.chargeType=='01'){%>checked<%}%> disabled>免费</label>
+                    <label><input type="radio" name="chargeType" value="02" id="ct02" <%if(data.detail.chargeType=='02'){%>checked<%}%> disabled>收费</label>
+                    <% }else{ %>
+                    <label><input type="radio" name="chargeType" value="01" id="ct01" <%if(!data.detail || data.detail.chargeType=='01'){%>checked<%}%>>免费</label>
+                    <label><input type="radio" name="chargeType" value="02" id="ct02" <%if(data.detail && data.detail.chargeType=='02'){%>checked<%}%>>收费</label>
+                    <% } %>
+                </div>
+            </div>
+            <div class="D_table server-package" <%if(!data.detail || data.detail.chargeType=='01'){%>style="display: none;"<%}%>>
+                <table >
+                    <thead>
+                    <tr>
+                        <th>套餐名称</th>
+                        <th>套餐价格</th>
+                        <th>购买限制</th>
+                        <th>使用限制</th>
+                        <th>生效日期</th>
+                        <th>失效日期</th>
+                        <% if(data.showFlag || data.detail && data.detail.id) { %>
+                        <% }else{ %>
+                        <th>操作</th>
+                        <% } %>
+
+                    </tr>
+                    </thead>
+                    <tbody id="packageTable">
+                    <tr>
+                        <td colspan="7">暂无数据</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <% if(data.showFlag || data.detail && data.detail.id) { %>
+            <div class="clearfix ReleaseList mt20 server-package">
+            </div>
+            <% }else{ %>
+            <div class="clearfix ReleaseList mt20 server-package">
+                <label class="package-error">套餐不能为空</label>
+                <span class="newSelBtn addPrice fr bgBlue" style="padding: 3px 10px;">新增收费规则</span>
+            </div>
+            <% } %>
+            <div class="clearfix ReleaseList">
                 <div class="fl R_right">
                     <label class="ml50">
                         <input type="checkbox" id="agreementCheckbox">
@@ -170,5 +216,6 @@
             <input type="file" id="demo3" name="pic" class="upload-file">
         </form>
         <% } %>
+        <div class="server-package-area"></div>
     </div>
 </div>

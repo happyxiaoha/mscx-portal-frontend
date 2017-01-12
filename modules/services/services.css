@@ -44,8 +44,16 @@
 .slideBanner .mleftCons .serverInfos .appInfoCons .top{line-height: 28px;margin-bottom: 8px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .top h2{max-width: 350px;font-size: 18px;margin-right: 16px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;margin-right: 5px;margin-top: 2px;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .left p span a{color: #069cd9;text-decoration: underline;}
+.slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;max-width: 600px;}
+.slideBanner .mleftCons .serverInfos .appInfoCons .left p span a{
+    color: #069cd9;
+    text-decoration: underline;
+    max-width: 360px;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;}
 
 .slideBanner .mleftCons .serverInfos .appInfoCons em{color: #444;word-break: break-all;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .left{padding-right: 34px;}
@@ -282,3 +290,12 @@
     font-size: 16px;
     float: right;
 }
+
+/*套餐部分*/
+.charge-type-radio {width: 690px;}
+.charge-type-radio label{height: 30px;line-height: 30px;width: 80px;float: left;}
+.charge-type-radio label input[type="radio"] {margin: 0 5px 0 0;}
+.server-package .addPrice{right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;}
+.server-package .package-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
+.server-package-area {display: none;}
+/*end 套餐部分*/

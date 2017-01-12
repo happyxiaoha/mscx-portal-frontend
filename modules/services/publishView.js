@@ -3,6 +3,7 @@
  */
 
 var template = require('html!./publishTemplate.html');
+var packageTabletemplate = require('html!./packageTableTemplate.html');
 var tagView = require('./tagsLayer.js');
 require('./services.css');
 require('validate');
@@ -10,6 +11,7 @@ require('formAjax');
 require('util');
 require('customValidate');
 
+var packageWidgetView = require('packageWidget/packageItemView.js');
 // 获取微信详情
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'publish/get.do'
@@ -29,6 +31,11 @@ var tagModel = Backbone.Model.extend({
 // 上传图片
 var uploadImgUrl = mscxPage.request.app + 'pic/upload.do';
 
+// 获取套餐信息
+var detailChargeModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'publish/chargeRule/get.do'
+});
+
 var addModel = Backbone.Model.extend({
     idAttribute: 'addId',
     url: mscxPage.request.app + 'apply.do'
@@ -44,7 +51,11 @@ var createDemandView = Backbone.View.extend({
         'change .upload-file': 'doUploadImg',
         'click #selectTagBtn': 'getTags',
         'change #selectCategory': 'saveCategory',
-        'keydown input': 'cancelSubmit'
+        'keydown input': 'cancelSubmit',
+        'click input:radio[name="chargeType"]': 'changeChargeType',
+        'click .addPrice': 'addChargePackage',
+        'click .editCharge': 'updateChargeLay',
+        'click .removeCharge': 'removeCharge'
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
@@ -117,25 +128,47 @@ var createDemandView = Backbone.View.extend({
             },
             submitHandler: function () {
                 me.submitForm();
+            },
+            invalidHandler:function() {
+                me.checkValidateSelf();
+            }
+        }
+    },
+    checkValidateSelf: function () {
+        if(this.chargeType == '02'){
+            if(!this.chargeRule || this.chargeRule.length == 0){
+                $('.package-error').show();
             }
         }
     },
     submitForm: function () {
-        var params = this.$form.serializeObject();
-        var that = this,
-            agreement = $('#agreementCheckbox').is(':checked');
-        if(agreement) {
-            params.serviceObject = _.isArray(params.serviceObject) ? params.serviceObject.join(',') : params.serviceObject;
-            params.categoryId = +params.categoryId;
-            if (params.id) {
-                params.id = +params.id;
+        if(this.chargeType == '02'){
+            if(!this.chargeRule || this.chargeRule.length == 0){
+                $('.package-error').show();
+                return;
             }
-
-            this.model.set(params);
+        }
+        var app = this.$form.serializeObject();
+        var agreement = $('#agreementCheckbox').is(':checked');
+        if(agreement) {
+            app.serviceObject = _.isArray(app.serviceObject) ? app.serviceObject.join(',') : app.serviceObject;
+            app.categoryId = +app.categoryId;
+            if (app.id) {
+                app.id = +app.id;
+            }
+            if(this.model.idAttribute == 'modifyId'){
+                this.model.set(app);
+            }
+            else {
+                this.model.set({
+                    app: app,
+                    chargeRule: this.chargeRule
+                });
+            }
             this.model.save();
         }
         else {
-            layer.alert('请确认协议！');
+            layer.alert('请阅读并勾选协议！');
         }
     },
     backHistory: function () {
@@ -150,18 +183,37 @@ var createDemandView = Backbone.View.extend({
             }, 1000);
         }
     },
+    renderPackageUpdate: function (appId) {
+        var that = this;
+        new detailChargeModel().fetch({
+            data: {
+                'appId': appId
+            },
+            'success': function (model) {
+                that.chargeRule = model.get('result');
+                var isUpdate = true;
+                that.buildChargeTable(isUpdate);
+            }
+        });
+    },
     renderDetail: function() {
         var params = {};
         var detail = this.detailModel.toJSON();
         var object = this.objectModel.toJSON();
         var category = this.categoryModel.toJSON();
-
+        this.chargeType = '01';
+        if(detail.result && detail.result.chargeType){
+            this.chargeType = detail.result.chargeType;
+        }
+        if(this.chargeType == '02'){
+            this.renderPackageUpdate(detail.result.id);
+        }
         _.extend(params, {
             detail: detail.result,
             objects: object.result,
             category: category.result,
             showFlag: this.showFlag
-        })
+        });
 
         this.$el.html(this.template(params));
 
@@ -275,6 +327,108 @@ var createDemandView = Backbone.View.extend({
         if(event.keyCode == 13) {
             event.preventDefault();
         }
+    },
+    updateIndex: -1,
+    buildChargeTable: function (isUpdate) {
+        var chargeSetJson = this.chargeRule || [];
+        if(chargeSetJson.length > 0){
+            $('.package-error').hide();
+        }
+        var packageTableTemps = _.template(packageTabletemplate);
+        $('#packageTable').html(packageTableTemps({chargeSetJson: chargeSetJson,isUpdate:isUpdate}));
+    },
+    saveCharge: function () {
+        layer.closeAll();
+        var chargeRule = this.chargeRule || [];
+        if(this.updateIndex < 0){
+            chargeRule.push($('#serverChargePackage').serializeObject());
+        }
+        else {
+            chargeRule[this.updateIndex] = $('#serverChargePackage').serializeObject();
+            this.updateIndex = -1;
+        }
+        this.chargeRule = chargeRule;
+        this.buildChargeTable();
+    },
+    changeChargeType: function (e) {
+        var sId = e.target.id.replace('ct','');
+        this.chargeType = sId;
+        sId == '01' ?  $('.server-package').hide() : $('.server-package').show(),this.buildChargeTable();
+        e.stopPropagation();
+    },
+    addChargePackage: function () {
+        var that = this;
+        new packageWidgetView({
+            el: '.server-package-area',
+            attributes : {callbackFun:function(){that.saveCharge()}},
+            model: {}
+        });
+        var dialog = layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '新增收费规则',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['500px', '550px'],
+            content: $('.server-package-area'), //捕获的元素
+            btn1: function () {          //通过
+                $('#serverChargePackage').submit();
+            },
+            btn2: function () {         // 不通过
+                layer.close(dialog);
+            }
+        });
+        return false;
+    },
+    updateChargeLay: function (e) {
+        var that = this;
+        var chargeSetJson = that.chargeRule;
+        var index = $(e.target).closest('tr').index();
+        this.updateIndex = index;
+        new packageWidgetView({
+            el: '.server-package-area',
+            attributes : {callbackFun:function(){that.saveCharge()}},
+            model: chargeSetJson[index]
+        });
+        var dialog = layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '修改收费规则',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['500px', '550px'],
+            content: $('.server-package-area'), //捕获的元素
+            btn1: function () {          //通过
+                $('#serverChargePackage').submit();
+            },
+            btn2: function () {         // 不通过
+                layer.close(dialog);
+            }
+        });
+        return false;
+    },
+    removeCharge: function (e) {
+        var that = this;
+        var deleteLay = layer.confirm('确认删除这条套餐吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var chargeSetJson = that.chargeRule;
+            var index = $(e.target).closest('tr').index();
+            if(chargeSetJson.length == 1 && index == 0){
+                chargeSetJson = [];
+            }
+            else {
+                chargeSetJson.splice(index,1);
+            }
+            that.chargeRule = chargeSetJson;
+            that.buildChargeTable();
+            layer.close(deleteLay);
+        }, function(){
+            layer.close(deleteLay);
+        });
+        return false;
     }
 });
 

@@ -43,22 +43,22 @@
         <td><%=paitem.statusDesc%></td>
         <td>
             <%if(paitem.status == '0'){%>
-            <%if(paitem.chargeType == '02'){%>
-            <a href="javascript:;" class="changePrice">调价</a>
-            <%}%>
-            <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
+                <%if(paitem.chargeType == '02'){%>
+                <a href="javascript:;" class="changePrice">调价</a>
+                <%}%>
+                <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
                 <a href="javascript:;" class="downApi">下架</a>
             <%}else if(paitem.status == '3'){%>
-            <a href="javascript:;" class="displayMes">查看</a>
-            <%if(paitem.chargeType == '02'){%>
-            <a href="javascript:;" class="changePrice">调价</a>
-            <%}%>
-            <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
-            <%if(paitem.isOnline == 'N'){%>
-            <a href="javascript:;" class="deleteApi">删除</a>
-            <%}else{%>
-            <a href="javascript:;" class="downApi">下架</a>
-            <%}%>
+                <a href="javascript:;" class="displayMes">查看</a>
+                <%if(paitem.chargeType == '02'){%>
+                <a href="javascript:;" class="changePrice">调价</a>
+                <%}%>
+                <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
+                <%if(paitem.isOnline == 'N'){%>
+                    <a href="javascript:;" class="deleteApi">删除</a>
+                <%}else{%>
+                    <a href="javascript:;" class="downApi">下架</a>
+                <%}%>
             <%}%>
         </td>
     </tr>
@@ -205,6 +205,7 @@
                 <label>
                     <span><i class="need">*</i>生效日期：</span>
                     <%if(res.isOth){%>
+                    <input type="hidden" id="effectDate" value="<%= res.effectDate ? new Date(res.effectDate).format('yyyy-MM-dd') : ''%>">
                     <p class="mes"><%=new Date(res.effectDate).format('yyyy-MM-dd')%></p>
                     <%}else{%>
                     <input type="text" name="effectDate" id="effectDate" value="<%= res.effectDate ? new Date(res.effectDate).format('yyyy-MM-dd') : ''%>" readonly>

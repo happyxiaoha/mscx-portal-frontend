@@ -33,6 +33,7 @@ var loginView = Backbone.View.extend({
         this.render();
     },
     render: function () {
+        this.refreshCaptcha();
         $('#loginform').validate(this.loginValidateConfig());
     },
     login: function(){
@@ -64,10 +65,10 @@ var loginView = Backbone.View.extend({
             }
         });
     },
-    changeAttribute: function (e) {
+   /* changeAttribute: function (e) {
        this.model.set(e.target.id,e.target.value);
         return false;
-    },
+    },*/
     refreshCaptcha: function () {
         $('.captchaImg').attr('src','/login/captcha.do?t='+ new Date().getTime());
     },
@@ -81,23 +82,12 @@ var loginView = Backbone.View.extend({
                     maxlength: 20
                 },
                 password:{
-                    required: true,
-                    password: true,
-                    minlength: 6,
-                    maxlength: 20
+                    required: true
                 },
                 captcha: {
                     required: true,
                     minlength: 4,
                     maxlength: 4
-                   /* remote: {
-                        url: '/login/captcha/check.do',
-                        data: {
-                            captcha: function () {
-                                return $("#captcha").val();
-                            }
-                        }
-                    }*/
                 }
             },
             messages: {
@@ -107,9 +97,7 @@ var loginView = Backbone.View.extend({
                     maxlength: "用户名最多20个字符"
                 },
                 password:{
-                    required: "请输入密码",
-                    minlength: "密码最少为8位",
-                    maxlength: "密码最多20个字符"
+                    required: "请输入密码"
                 },
                 captcha: {
                     required: "请输入验证码",

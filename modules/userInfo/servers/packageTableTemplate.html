@@ -1,0 +1,55 @@
+<div class="D_table M-table" style="padding: 20px;">
+    <div class="tab-title">
+        <button class="addPrice">增加</button>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>套餐名称</th>
+            <th>套餐价格</th>
+            <th>购买限制</th>
+            <th>使用限制</th>
+            <th>生效日期</th>
+            <th>失效日期</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% _.each(chargeSetJson, function (chargeItem) { %>
+        <%if(chargeItem.flag != 'D'){%>
+        <tr>
+            <td><%=chargeItem.name%></td>
+            <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%>月</td>
+            <td><%=chargeItem.boughtLimit == 1 ? '限制一次' : '不限制'%></td>
+            <td><%if(!chargeItem.invokeLimit || chargeItem.invokeLimit == '-1'){%>
+                不限制
+                <%}else{%>
+                <%=chargeItem.invokeLimit%>次
+                <%}%>
+            </td>
+            <td><%=new Date(chargeItem.effectDate).format('yyyy-MM-dd')%></td>
+            <td><%=chargeItem.expiryDate ? new Date(chargeItem.expiryDate).format('yyyy-MM-dd') : '-'%></td>
+            <td>
+                <%if(new Date(new Date().format('yyyy-MM-dd')).getTime() < new Date(chargeItem.effectDate).getTime()){%>
+                <a href="javascript:;" class="editCharge">修改</a>
+                <a href="javascript:;" class="removeCharge">删除</a>
+                <%}else if(new Date(new Date().format('yyyy-MM-dd')).getTime() == new Date(chargeItem.effectDate).getTime() && chargeItem.flag == 'C'){%>
+                <a href="javascript:;" class="editCharge">修改</a>
+                <a href="javascript:;" class="removeCharge">删除</a>
+                <%}else if(!chargeItem.expiryDate && new Date(new Date().format('yyyy-MM-dd')).getTime() >= new Date(chargeItem.effectDate).getTime()){%>
+                <a href="javascript:;" class="editChargeOth">修改</a>
+                <%}else if(new Date(new Date().format('yyyy-MM-dd')).getTime() >= new Date(chargeItem.effectDate).getTime() && new Date(new Date().format('yyyy-MM-dd')).getTime() <= new Date(chargeItem.expiryDate).getTime()){%>
+                <a href="javascript:;" class="editChargeOth">修改</a>
+                <%}%>
+            </td>
+        </tr>
+        <%}%>
+        <% }); %>
+        <%if(chargeSetJson.length == 0){%>
+        <tr>
+            <td colspan="7">暂无数据</td>
+        </tr>
+        <%}%>
+        </tbody>
+    </table>
+</div>

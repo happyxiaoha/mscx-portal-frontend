@@ -28,7 +28,7 @@ var changePwdView = Backbone.View.extend({
     el: '#changePwd',
     template: _.template(changePwdTemplate),
     events: {
-        'change input.changeInput' : 'changeAttribute',
+        //'change change.changeInput' : 'changeAttribute',
         'click #getCode': 'sendMsgCode',
         'click .captchaImgChange': 'refreshCaptcha'
     },
@@ -42,8 +42,17 @@ var changePwdView = Backbone.View.extend({
         $('#changePwdForm').validate(this.changePwdValidateConfig());
     },
     changePwd: function() {
-        var that = this;
-        that.model.save({},{
+        var that = this,
+            mobile = $('#mobile').val(),
+            authCode = $('#authCode').val(),
+            newPwd = $('#newPassword').val(),
+            passwordConfirm = $('#passwordConfirm').val();
+        that.model.save({
+            mobile: mobile,
+            authCode: authCode,
+            password: newPwd,
+            passwordConfirm: passwordConfirm
+        },{
             type: 'POST',
             success: function (res) {
                 res = res.toJSON();

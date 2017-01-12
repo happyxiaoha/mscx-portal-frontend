@@ -6,6 +6,7 @@
 
 var serviceDetailModelTemplate = require('html!./detailTemplate.html');
 var shareView = require('shareWidget/shareView.js');
+var offlineView = require('offlineWidget/offlineLayer.js');
 var applyView = require('./applyLayer.js');
 
 var serviceDetailModel = Backbone.Model.extend({
@@ -29,6 +30,7 @@ var openDataDetailView = Backbone.View.extend({
     events: {
         'click #attention': 'attentionData',
         'click #example': 'showExample',
+        'click #offlineBtn': 'offlineChat',
         'click #applyBtn': 'apply'
     },
     initialize: function() {
@@ -54,6 +56,9 @@ var openDataDetailView = Backbone.View.extend({
         this.$el.html(this.template( this.nJson ));
         this.$appInfoCons = this.$('.share');
         this.$appInfoCons.html(this.shareView.$el);
+
+        this.resourceType = this.nJson.resourceType;
+        this.chargeType = this.nJson.chargeType;
 
         if(this.nJson){
          if(this.nJson.demoImage1 && this.nJson.demoImage2 && this.nJson.demoImage3) {
@@ -155,6 +160,44 @@ var openDataDetailView = Backbone.View.extend({
             },
             end: function() {
                 me.applyView.remove();
+            }
+        })
+    },
+    // 线下洽谈
+    offlineChat: function() {
+        var me = this;
+        var detail = this.model.toJSON().result;
+
+        if(!mscxPage.isLogin()) {
+            return;
+        }
+
+        this.offlineView = new offlineView({
+            model: {
+                apiServiceId: this.id,
+                cname: detail.name,
+                type: 6
+            }
+        });
+        this.offlineView.delegate = this;
+        this.$el.append(this.offlineView.$el);
+        
+        layer.open({
+            type: 1,
+            btn: ['确定','取消'],
+            title: '<p class="ft22">线下洽谈申请</p>',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px', '450px'],
+            content: this.offlineView.$el,
+            btn1: function (index) {
+                me.offlineView.submit(index);
+            },
+            btn2: function (index) {
+                layer.close(index);
+            },
+            end: function() {
+                me.offlineView.remove();
             }
         })
     }

@@ -266,7 +266,13 @@
 .classifyDowns li{cursor: pointer; float: inherit !important; margin: 0 !important;border-bottom: 1px solid #ccc !important;width: 148px !important;height: 30px;line-height: 30px;text-align: left !important;padding: 0 10px;box-sizing: border-box;}
 .classifyDowns li:hover{background: #eee;}
 .classifyDowns li:last-child{border-bottom: 0 !important;}*/
-
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}
+.D_table table tr {cursor: pointer;}
 .apply-box {
     padding: 5px 30px;
 }
@@ -287,7 +293,7 @@
     color: #00aff6;
 }
 .apply-box p span, .layer-table p span{
-    font-size: 16px;
+    font-size: 14px;
     float: right;
 }
 

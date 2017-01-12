@@ -167,39 +167,3 @@ span.attention.haves-attention{background: #b7b7b7;}
     font-size: 16px;
     float: right;
 }
-/* 线下洽谈弹层 */
-.offline-box,.orderDiv {padding: 20px 30px;font-size: 14px;}
-.offline-box label,.orderDiv label{
-    float: left;
-    padding: 5px 0;
-}
-.offline-box label span,
-.orderDiv label span{
-    display: block;
-    float: left;
-    width: 100px;
-    line-height: 26px;
-}
-.offline-box label textarea,
-.orderDiv label textarea{
-    width: 270px;
-    padding: 4px 6px;
-    height: 70px;
-    float: left;
-}
-.offline-box label input,
-.orderDiv label input{
-    width: 270px;
-}
-/*button .offline-btn {
-    border-radius: 5px;
-    border: solid 1px #8b8b8b;
-    background: #fff;
-    color: #8a8a8a;
-}*/
-
-.offline-box form label.error {
-    color: #e66c6b;
-    padding: 0;
-    margin-left: 110px;
-}

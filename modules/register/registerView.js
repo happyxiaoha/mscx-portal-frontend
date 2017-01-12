@@ -28,7 +28,7 @@ var registerView = Backbone.View.extend({
     events: {
         'click .captchaImg': 'refreshCaptcha',
         'change #account': 'validateAccount',
-        'change input.registerInput' : 'changeAttribute',
+        //'change input.registerInput' : 'changeAttribute',
         'click #getCode': 'sendMsgCode'
     },
     initialize: function() {
@@ -38,13 +38,30 @@ var registerView = Backbone.View.extend({
         this.render();
     },
     render: function () {
+        this.refreshCaptcha();
         $('#registForm').validate(this.registerValidateConfig());
     },
     register: function(){
         var that = this,
             agreement = $('#agreement').is(':checked');
+        if(!that.flag){
+            $('#account-error').html('该用户名已被注册').show();
+            return
+        }
+        var account = $('#account').val(),
+            password = $('#password').val(),
+            passwordConfirm = $('#passwordConfirm').val(),
+            mobile = $('#mobile').val(),
+            authCode = $('#authCode').val();
+
         if(agreement){
-            that.model.save({},{
+            that.model.save({
+                account: account,
+                password: password,
+                passwordConfirm: passwordConfirm,
+                mobile: mobile,
+                authCode: authCode
+            },{
                 type: 'POST',
                 success: function (res) {
                       res = res.toJSON();
@@ -87,8 +104,6 @@ var registerView = Backbone.View.extend({
                 },
                 password:{
                     required: true,
-                    minlength: 8,
-                    maxlength: 20,
                     password: true
                 },
                 passwordConfirm: {
@@ -106,9 +121,6 @@ var registerView = Backbone.View.extend({
                 },
                 authCode: {
                     required: true
-                },
-                agreement: {
-                    required: true
                 }
             },
             messages: {
@@ -122,8 +134,6 @@ var registerView = Backbone.View.extend({
                 },
                 password:{
                     required: "请输入密码",
-                    minlength: "密码最少为8位",
-                    maxlength: "密码最多20个字符",
                     password: '密码只能包含数字字母下划线中划线,长度为8-20位'
                 },
                 passwordConfirm: {
@@ -148,7 +158,8 @@ var registerView = Backbone.View.extend({
             },
             submitHandler: function () {
                 that.register()
-            }
+            },
+            ignore: '.ignore'
         }
     },
     validateAccount:　function (){
@@ -156,8 +167,8 @@ var registerView = Backbone.View.extend({
             test = /^[a-zA-Z][a-zA-Z0-9_]{5,19}$/,
             that = this;
         that.flag = true;
+        $('#account').removeClass('ignore');
         if(!test.test(account)){
-
             return
         }
         this.checkAccountModel.fetch({
@@ -167,8 +178,13 @@ var registerView = Backbone.View.extend({
             success: function(res){
                 res = res.toJSON();
                 if(res.result){
-                    $('#account').addClass('error');
-                    $('#account').after('<label id="account-error" class="error" for="account">该用户名已被注册</label>');
+                    $('#account').addClass('error').addClass('ignore');
+                    if($('#account-error').length == 0){
+                        $('#account').after('<label id="account-error" class="error" for="account">该用户名已被注册</label>');
+                    }
+                    else {
+                        $('#account-error').html('该用户名已被注册').show();
+                    }
                     that.flag = false;
                 }
             }
@@ -176,6 +192,13 @@ var registerView = Backbone.View.extend({
     },
     sendMsgCode: function (e) {
         var submitForm = $("#registForm");
+        if(!submitForm.validate().element($("#account"))){
+            return
+        }
+        if(!this.flag){
+            $('#account-error').html('该用户名已被注册').show();
+            return
+        }
         var check = submitForm.validate().element($("#password"))
                 && submitForm.validate().element($("#passwordConfirm"))
                 && submitForm.validate().element($("#mobile"))

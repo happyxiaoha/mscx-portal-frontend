@@ -33,6 +33,7 @@ var loginView = Backbone.View.extend({
         this.render();
     },
     render: function () {
+        this.refreshCaptcha();
         $('#loginform').validate(this.loginValidateConfig());
     },
     login: function(){
@@ -64,10 +65,10 @@ var loginView = Backbone.View.extend({
             }
         });
     },
-    changeAttribute: function (e) {
+   /* changeAttribute: function (e) {
        this.model.set(e.target.id,e.target.value);
         return false;
-    },
+    },*/
     refreshCaptcha: function () {
         $('.captchaImg').attr('src','/login/captcha.do?t='+ new Date().getTime());
     },
@@ -82,22 +83,13 @@ var loginView = Backbone.View.extend({
                 },
                 password:{
                     required: true,
-                    password: true,
-                    minlength: 6,
+                    minlength: 8,
                     maxlength: 20
                 },
                 captcha: {
                     required: true,
                     minlength: 4,
                     maxlength: 4
-                   /* remote: {
-                        url: '/login/captcha/check.do',
-                        data: {
-                            captcha: function () {
-                                return $("#captcha").val();
-                            }
-                        }
-                    }*/
                 }
             },
             messages: {

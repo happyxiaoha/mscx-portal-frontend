@@ -4,7 +4,7 @@ var template = require('html!./applyTemplate.html');
 
 // 微服务套餐
 var packageModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'publish/chargeRule/get.do'
+    url: mscxPage.request.app + 'chargeRule/get.do'
 });
 // 免费微服务是否已经购买
 var freeIsBaughtModel = Backbone.Model.extend({
@@ -66,6 +66,8 @@ var view = Backbone.View.extend({
         this.packageModel.set('chargeType', this.chargeType);
         this.$el.html(this.template(this.packageModel.toJSON()));
         this.trigger('caculate');
+
+        return this;
     },
     changeTdTotal: function(event) {
         var $target = this.$(event.currentTarget);
@@ -139,7 +141,7 @@ var view = Backbone.View.extend({
             data: {
                 sourceId: this.id,
                 char_rule_id: '-1',
-                sourceType: '01'
+                sourceType: this.delegate.resourceType
             }
         })
     },

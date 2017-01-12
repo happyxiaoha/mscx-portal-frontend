@@ -55,7 +55,9 @@ var view = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                that.callbackSave();
+                if(that.callbackSave){
+                    that.callbackSave();
+                }
             }
         }
     },
@@ -163,7 +165,7 @@ var view = Backbone.View.extend({
         }
     },
     initialize: function() {
-        this.callbackSave = this.attributes.callbackFun;
+        this.callbackSave = this.attributes ? this.attributes.callbackFun : null;
         var res = this.model;
         this.$el.addClass('server-package-manage').html(this.template({'res':res}));
         if(res.price){

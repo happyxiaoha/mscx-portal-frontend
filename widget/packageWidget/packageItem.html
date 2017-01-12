@@ -66,6 +66,7 @@
             <label>
                 <span><i class="need">*</i>生效日期：</span>
                 <%if(res.isOth){%>
+                <input type="hidden" id="effectDate" value="<%= res.effectDate ? new Date(res.effectDate).format('yyyy-MM-dd') : ''%>">
                 <p class="mes"><%=new Date(res.effectDate).format('yyyy-MM-dd')%></p>
                 <%}else{%>
                 <input type="text" name="effectDate" id="effectDate" value="<%= res.effectDate ? new Date(res.effectDate).format('yyyy-MM-dd') : ''%>" readonly>

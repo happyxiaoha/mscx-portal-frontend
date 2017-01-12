@@ -213,7 +213,7 @@ var apiView = Backbone.View.extend({
         this.getPackageModel.fetch({
             data: {apiServiceId: sId},
             success: function (model,res) {
-                that.buildPackageTable()
+                that.buildPackageTable();
                 buildLay();
             }
         });
@@ -230,7 +230,13 @@ var apiView = Backbone.View.extend({
                 success: function () {
                 },
                 btn1: function () {          //通过
-                    that.saveCharge();
+                    var conf = layer.confirm('请重新审核，请确认！', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){
+                        that.saveCharge();
+                    }, function(){
+                        layer.close(conf);
+                    });
                 },
                 btn2: function () {          //通过
                     layer.close(dialog);

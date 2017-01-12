@@ -43,6 +43,10 @@ var registerView = Backbone.View.extend({
     register: function(){
         var that = this,
             agreement = $('#agreement').is(':checked');
+        if(!that.flag){
+            $('#account-error').html('该用户名已被注册').show();
+            return
+        }
         if(agreement){
             that.model.save({},{
                 type: 'POST',
@@ -106,9 +110,6 @@ var registerView = Backbone.View.extend({
                 },
                 authCode: {
                     required: true
-                },
-                agreement: {
-                    required: true
                 }
             },
             messages: {
@@ -148,7 +149,8 @@ var registerView = Backbone.View.extend({
             },
             submitHandler: function () {
                 that.register()
-            }
+            },
+            ignore: '.ignore'
         }
     },
     validateAccount:　function (){
@@ -156,8 +158,8 @@ var registerView = Backbone.View.extend({
             test = /^[a-zA-Z][a-zA-Z0-9_]{5,19}$/,
             that = this;
         that.flag = true;
+        $('#account').removeClass('ignore');
         if(!test.test(account)){
-
             return
         }
         this.checkAccountModel.fetch({
@@ -167,8 +169,13 @@ var registerView = Backbone.View.extend({
             success: function(res){
                 res = res.toJSON();
                 if(res.result){
-                    $('#account').addClass('error');
-                    $('#account').after('<label id="account-error" class="error" for="account">该用户名已被注册</label>');
+                    $('#account').addClass('error').addClass('ignore');
+                    if($('#account-error').length == 0){
+                        $('#account').after('<label id="account-error" class="error" for="account">该用户名已被注册</label>');
+                    }
+                    else {
+                        $('#account-error').html('该用户名已被注册').show();
+                    }
                     that.flag = false;
                 }
             }
@@ -176,6 +183,13 @@ var registerView = Backbone.View.extend({
     },
     sendMsgCode: function (e) {
         var submitForm = $("#registForm");
+        if(!submitForm.validate().element($("#account"))){
+            return
+        }
+        if(!this.flag){
+            $('#account-error').html('该用户名已被注册').show();
+            return
+        }
         var check = submitForm.validate().element($("#password"))
                 && submitForm.validate().element($("#passwordConfirm"))
                 && submitForm.validate().element($("#mobile"))

@@ -268,7 +268,7 @@ var createApiView = Backbone.View.extend({
                 uri: {
                     required: true
                 },
-                directions: {
+                testPacket: {
                     required: true
                 }
             },
@@ -633,7 +633,9 @@ var createApiView = Backbone.View.extend({
                 $limitInput = $('input[name="countLimit"]');
             if(sVal === 0) {
                 $($limitInput[0]).attr('disabled',true);
-                $($limitInput[1]).prop("checked",true)
+                $($limitInput[1]).prop("checked",true);
+                $('.earning-count').html(0);
+                $('.fee-count').html(0);
             }
             else {
                 $($limitInput[0]).attr('disabled',false);

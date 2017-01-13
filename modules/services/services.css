@@ -305,3 +305,7 @@
 .server-package .package-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
 .server-package-area {display: none;}
 /*end 套餐部分*/
+/*服务新增*/
+.server-url .add-server-url {right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;}
+.server-url .url-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
+/*end*/

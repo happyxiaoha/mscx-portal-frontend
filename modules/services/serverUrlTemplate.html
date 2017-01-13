@@ -1,0 +1,16 @@
+<form id="serverUrlForm" onsubmit="return false;">
+    <ul>
+        <li>
+            <label>
+                <span><i class="need">*</i>服务URL：</span>
+                <input type="text" name="url" value="<%=res && res.url%>">
+            </label>
+        </li>
+        <li>
+            <label>
+                <span><i class="need">*</i>服务描述：</span>
+                <textarea name="description"><%=res && res.description%></textarea>
+            </label>
+        </li>
+    </ul>
+</form>

@@ -155,13 +155,14 @@ var shopCarView = Backbone.View.extend({
         var that = this;
         that.shopArray = [];
         that.shopObj = {};
+
         $('.amount-dis').each(function () {
             var $this = $(this),
                 $li = $this.closest('li'),
                 sId = $li.attr('attrid'),
                 isChecked = $li.find('input[type="checkbox"]').is(":checked"),
                 iPrice = parseFloat($li.find('.price').html().replace('元')),
-                iNumber = $.trim($li.find('.apply-times').val()),
+                iNumber = parseInt($.trim($li.find('.apply-times').val())),
                 iTotal = iPrice*iNumber;
             that.shopObj[sId] = {
                 num: iNumber,
@@ -171,8 +172,8 @@ var shopCarView = Backbone.View.extend({
                 $this.html(iTotal);
             }
             if(isChecked) {
-                    that.shopArray.push(sId);
-                totalCount += iTotal;
+                that.shopArray.push(sId);
+                totalCount = (iTotal*100 + totalCount*100)/100;
                 iCount++;
             }
         });

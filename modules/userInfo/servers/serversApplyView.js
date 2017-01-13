@@ -7,9 +7,8 @@ var template = require('html!./apply.html');
 require('./servers.css');
 require('util');
 
-
-var publishListModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'publish/list.do'
+var applyListModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'weiApp/getSelfWeiAppList.do'
 });
 
 // 申请的服务

@@ -45,7 +45,7 @@ var changePwdView = Backbone.View.extend({
         var that = this,
             mobile = $('#mobile').val(),
             authCode = $('#authCode').val(),
-            newPwd = $('#newPwd').val(),
+            newPwd = $('#newPassword').val(),
             passwordConfirm = $('#passwordConfirm').val();
         that.model.save({
             mobile: mobile,

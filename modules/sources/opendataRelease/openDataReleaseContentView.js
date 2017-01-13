@@ -24,10 +24,7 @@ var openDataReleaseContentView = Backbone.View.extend({
             model: {
                 title: '开放数据',
                 options: ['objects','orgs', 'range', 'openDataCategory', 'openDataTags', 'chargeWay'],
-                defaults: {
-                    categoryId: this.model.categoryId,
-                    orgId: this.model.orgId
-                }
+                defaults: this.model
             }
         });
 

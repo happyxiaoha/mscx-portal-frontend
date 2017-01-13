@@ -34,13 +34,13 @@
                     <div class="sl-v-list">
                         <div class="smallSelCons clearfix">
                             <div class="smallSel fl posRE">
-                                <select class="smallSelList" id="provinceSel">
+                                <select data-default="<%= data.defaults && data.defaults.defaultCity ? data.defaults.defaultCity.province.code : '' %>" class="smallSelList" id="provinceSel">
                                 </select>
                                 <p class="select-wrapper"><em class="downSmalllBtn"></em></p>
                             </div>
                             <span class="fl">省</span>
                             <div class="smallSel fl posRE">
-                                <select class="smallSelList" id="citySel">
+                                <select data-default="<%= data.defaults && data.defaults.defaultCity ? data.defaults.defaultCity.city.code : '' %>" class="smallSelList" id="citySel">
                                     <option value="0">不限</option>
                                 </select>
                                 <p class="select-wrapper"><em class="downSmalllBtn"></em></p>
@@ -168,7 +168,7 @@
 
                         <% data.chargeWay.result.forEach(function(item) { %>
                             <li class="active">
-                                <input type="checkbox" data-type="chargeType" value="<%= item.dictCode %>" id="chargeWay<%= item.dictCode %>">
+                                <input type="checkbox" <%= data.defaults && data.defaults.chargeType == item.dictCode && 'checked' %> data-type="chargeType" value="<%= item.dictCode %>" id="chargeWay<%= item.dictCode %>">
                                 <label for="chargeWay<%= item.dictCode %>"><%= item.dictName %></label>
                             </li>
                         <% }) %>
@@ -179,7 +179,7 @@
 
             <!-- 搜索 -->
             <div class="sl-search">
-                <input type="text" class="search-input" maxlength="30">
+                <input type="text" class="search-input" value="<%= data.defaults && data.defaults.keyword %>" maxlength="30">
                 <span class="search-btn"></span>
             </div>
         </div>

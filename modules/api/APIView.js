@@ -21,7 +21,8 @@ var view = Backbone.View.extend({
         this.$el.append(this.leftMenuView.$el);
         
         this.contentView = new contentView({
-            id: this.id
+            id: this.id,
+            model: this.model || {}
         });
 
         this.$el.append(this.contentView.$el);

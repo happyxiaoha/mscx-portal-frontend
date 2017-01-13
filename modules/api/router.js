@@ -5,31 +5,50 @@ var Routes =  Backbone.Router.extend({
     routes: {
         '': 'dataAPI',
         'data': 'dataAPI',
-        'tool': 'toolAPI',
-        'model': 'modelAPI',
+        'data(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'dataAPI',
+        'tool(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'toolAPI',
+        'model(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'modelAPI',
         'detail/:id': 'detail',
         'createApi': 'createApiView',
         'updateApi/:id': 'updateApiView',
         'apiDes/:id': 'apiDesView'
     },
-    dataAPI:function () {
+    dataAPI:function (keyword, scope, chargeType, orderBy) {
         if(location.search) return;
         
         var APIView = require('api/APIView.js');
         mscxPage.views['dataAPIObj'] = new APIView({
-            id: 'data'
+            id: 'data',
+            model: {
+                keyword: keyword,
+                scope: scope,
+                chargeType: chargeType,
+                orderBy: orderBy
+            }
         });
     },
-    toolAPI:function () {
+    toolAPI:function (keyword, scope, chargeType, orderBy) {
         var APIView = require('api/APIView.js');
         mscxPage.views['toolAPIObj'] = new APIView({
-            id: 'tool'
+            id: 'tool',
+            model: {
+                keyword: keyword,
+                scope: scope,
+                chargeType: chargeType,
+                orderBy: orderBy
+            }
         });
     },
-    modelAPI:function () {
+    modelAPI:function (keyword, scope, chargeType, orderBy) {
         var APIView = require('api/APIView.js');
         mscxPage.views['modelAPIObj'] = new APIView({
-            id: 'model'
+            id: 'model',
+            model: {
+                keyword: keyword,
+                scope: scope,
+                chargeType: chargeType,
+                orderBy: orderBy
+            }
         });
     },
     detail: function(id) {

@@ -6,17 +6,24 @@ var Routes =  Backbone.Router.extend({
     routes: {
         '': 'serviceView',
         'service': 'serviceView',
+        'service(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'serviceView',
         'detail/:id': 'detailView',
         'publish': 'publishView',
         'edit/:id': 'publishView',
         'show/:id': 'showView'
     },
-    serviceView: function () {
+    serviceView: function (keyword, scope, chargeType, orderBy) {
         if(location.search) return;
         
         var serviceView = require('services/servicesView.js');
         mscxPage.views['servicesObj'] = new serviceView({
-            id: 'service'
+            id: 'service',
+            model: {
+                keyword: keyword,
+                scope: scope,
+                chargeType: chargeType,
+                orderBy: orderBy
+            }
         });
     },
     detailView: function(id) {

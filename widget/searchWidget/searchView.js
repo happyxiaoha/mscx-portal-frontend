@@ -124,6 +124,7 @@ var view = Backbone.View.extend({
     },
     renderBox: function() {
         this.$el.toggleClass('search-loading');
+        this.searchParamSilent = {silent: true};
         var model = this.model.toJSON ? this.model.toJSON() : this.model;
         var params = {};
 
@@ -142,6 +143,12 @@ var view = Backbone.View.extend({
             }
         }
 
+        // 如果带地区查询条件，需要默认选中相应的省市区联动
+        if(model.defaults && model.defaults.scope) {
+            model.defaults.defaultCity = this.getDefaultCity(model.defaults.scope);
+        }
+        _.extend(params.defaults, model.defaults);
+
         this.$el.html(this.template(params));
         // 省市区联动
         this.$provinceSel = this.$('#provinceSel');
@@ -150,13 +157,22 @@ var view = Backbone.View.extend({
 
         this.$provinceSel.append(this.scopeTemplate(Resource.provinces));
 
+        var defaultProvince = this.$provinceSel.data('default');
+
+        if(defaultProvince) {
+            this.$provinceSel.val(defaultProvince).trigger('change');
+        }
+
         // 如果自带默认查询条件
         if(model.defaults) {
-            this.searchParams.set(model.defaults, {silent: true});
+            this.searchParams.set(_.pick(model.defaults, ['keyword', 'scope', 'chargeType', 'orderBy', 'categoryId', 'tagId', 'orgId']), {silent: true});
             
+            model.defaults.orderBy && this.delegate.$el.find('.sort a').removeClass('active').filter('[data-type="' + model.defaults.orderBy + '"]').addClass('active');
             model.defaults.categoryId && this.fetchTags();
         }
         
+        // param准备阶段结束
+        this.searchParamSilent.silent = false;
         // 默认触发查询
         this.searchData();
     },
@@ -271,6 +287,7 @@ var view = Backbone.View.extend({
     },
     changeProvinces: function(event) {
         var code = this.$provinceSel.val();
+        var defaultCity = this.$citySel.data('default');
 
         this.$provinceSel.attr('title', this.$provinceSel.find('option:selected').text());
 
@@ -281,10 +298,14 @@ var view = Backbone.View.extend({
         this.$citySel.html(this.scopeTemplate(this.province && this.province.cities || []));
         this.$areaSel.html(this.scopeTemplate([]));
 
+        if(defaultCity) {
+            this.$citySel.val(defaultCity).data('default', '').trigger('change');
+        }
+
         this.searchParams.set({
             page: 1,
             scope: code == 0 ? '' : this.$provinceSel.find(':selected').text()
-        });
+        }, this.searchParamSilent);
     },
     changeCities: function(event) {
         var code = this.$citySel.val();
@@ -300,7 +321,7 @@ var view = Backbone.View.extend({
         this.searchParams.set({
             page: 1,
             scope: code == 0 ? this.$provinceSel.find(':selected').text() : this.$citySel.find(':selected').text()
-        });
+        }, this.searchParamSilent);
     },
     changeAreas: function(event) {
         var code = this.$areaSel.val();
@@ -311,6 +332,24 @@ var view = Backbone.View.extend({
             page: 1,
             scope: code == 0 ? this.$citySel.find(':selected').text() : this.$areaSel.find(':selected').text()
         });
+    },
+    getDefaultCity: function(scope) {
+        var city, province;
+
+        for(var m = 0, n = Resource.provinces.length; m < n; m++) {
+            province = Resource.provinces[m];
+
+            for(var i = 0, l = province.cities.length; i < l; i++) {
+                city = province.cities[i];
+
+                if(city.name.indexOf(scope) > -1) {
+                    return {
+                        province: province,
+                        city: city
+                    }
+                }
+            }
+        }
     }
 });
 

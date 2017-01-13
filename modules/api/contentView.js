@@ -25,7 +25,8 @@ var view = Backbone.View.extend({
                 title: _.find(Resource.maps, function(item){
                     return item.key == this.id 
                 }.bind(this)).name,
-                options: ['objects', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay']
+                options: ['objects', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
+                defaults: this.model
             }
         });
 

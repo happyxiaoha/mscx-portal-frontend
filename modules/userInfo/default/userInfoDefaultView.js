@@ -66,6 +66,7 @@ var defaultView = Backbone.View.extend({
                     apiServiceId : item.sourceId,
                     iconUrl: item.logoUrl,
                     apiServiceName: item.apiName,
+                    viewCnt: item.viewCnt || 0,
                     applyCnt: item.applyCnt || 0,
                     accessCnt: item.accessCnt || 0,
                     price: item.price || 0,

@@ -57,7 +57,7 @@
             <div class="fl R_right checkbox-border">
                 <div class="radio-list">
                     <label class="radio-inline">
-                        <% if(!data){ %>
+                        <% if(!data.id){ %>
                         <input type="radio" checked name="ownership" value="Y">
                         <% }else { %>
                         <input type="radio" <%= data && data.ownership == 'Y' && "checked" %> name="ownership" value="Y">
@@ -87,7 +87,7 @@
             <div class="fl R_right checkbox-border">
                 <div class="radio-list">
                     <label class="radio-inline checkbox-border">
-                        <% if(!data){ %>
+                        <% if(!data.id){ %>
                         <input type="radio" checked name="netType" value="inner">
                         <% }else { %>
                         <input type="radio" <%= data && data.netType == 'inner' && "checked" %> name="netType" value="inner">
@@ -231,7 +231,7 @@
             <p class="fl R_left wd160"><em>*</em>是否需要平台撮合交易：</p>
             <div class="radio-list">
                 <label class="radio-inline">
-                    <% if(!data){ %>
+                    <% if(!data.id){ %>
                     <input type="radio" checked name="matchmakeTrade" value="Y">
                     <% }else { %>
                     <input type="radio" <%= data && data.matchmakeTrade == 'Y' && "checked" %> name="matchmakeTrade" value="Y">
@@ -250,7 +250,7 @@
                 <input type="hidden" name="categoryName" id="categoryName" value="" />
                 <!-- 数据API分类 -->
                 <label class="block-radio">
-                    <% if(!data){ %>
+                    <% if(!data.id){ %>
                     <input type="radio" checked name="apiCategory" data-select="dataCategory" value="数据API">
                     <% }else { %>
                     <input type="radio" data-select="dataCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 2 && "checked" %> name="apiCategory" value="Y">

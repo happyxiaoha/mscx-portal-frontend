@@ -23,6 +23,7 @@
                         <div class="down">
                             <div class="left">
                                 <p class="mb15 line22">
+                                    <span>服务状态：<em><%- data.statusDesc %></em></span>
                                     <span class="mr10">服务商：<em><%- data.providerName %></em></span>
                                     <span>提供方式：<em><%- data.serviceType %></em></span>
                                     <!--<span class="mr25">版本号：<em>7.0.1</em></span>-->
@@ -42,12 +43,14 @@
                                 <span>服务简介：<em><%- data.description %></em></span>
                             </p>
                         </div>
+                        <%if(data.status == '0'){%>
                         <div>
                             <button id="applyBtn">申请</button>
                             <button id="example">查看演示</button>
                             <button id="attention" class="bgOrange"><%- data.attentionFlag ? '取消关注' : '关注'%></button>
                             <button id="offlineBtn" class="fr" style="margin-right: 0;">线下洽谈申请</button>
                         </div>
+                        <%}%>
                         <!-- 分享 -->
                         <div class="share posAB">
                             <a href="#" id="sahreWeixin"></a>

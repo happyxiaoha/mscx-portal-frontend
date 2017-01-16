@@ -57,6 +57,7 @@
                             <span>服务简介：<em><%= data.result && data.result.description %></em></span>
                         </p>
                     </div>
+                    <%if(data.status == '0'){%>
                     <div>
                         <button id="applyBtn">申请</button>
                         <!-- <button><a class="corff" href="./serverAplication.html">API测试</a></button> -->
@@ -67,6 +68,7 @@
                         <% } %>
                         <button id="offlineBtn" class="fr" style="margin-right: 0;">线下洽谈申请</button>
                     </div>
+                    <%}%>
                     <!-- 分享 -->
                     <div class="share posAB">
                         <a href="#" id="sahreWeixin"></a>

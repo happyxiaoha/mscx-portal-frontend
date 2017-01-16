@@ -230,7 +230,7 @@ var apiView = Backbone.View.extend({
                 success: function () {
                 },
                 btn1: function () {          //通过
-                    var conf = layer.confirm('请重新审核，请确认！', {
+                    var conf = layer.confirm('将重新审核，请确认！', {
                         btn: ['确定','取消'] //按钮
                     }, function(){
                         that.saveCharge();

@@ -149,7 +149,7 @@ var createDemandView = Backbone.View.extend({
         }
     },
     checkIdentify: function () {
-        var that = this;
+        var me = this;
         var identify = $.trim($('#identify').val());
         var check = this.$form.validate().element($("#identify"));
         $('.server-identify-error').remove();
@@ -201,6 +201,10 @@ var createDemandView = Backbone.View.extend({
             }
             if(this.model.idAttribute == 'modifyId'){
                 //this.model.set(app);
+                this.model.set({
+                    app: app,
+                    url: this.serverUrlList
+                });
             }
             else {
                 this.model.set({
@@ -235,8 +239,7 @@ var createDemandView = Backbone.View.extend({
             },
             'success': function (model) {
                 that.chargeRule = model.get('result');
-                var isUpdate = true;
-                that.buildChargeTable(isUpdate);
+                that.buildChargeTable();
             }
         });
     },
@@ -248,6 +251,7 @@ var createDemandView = Backbone.View.extend({
         this.chargeType = '01';
         if(detail.result && detail.result.chargeType){
             this.chargeType = detail.result.chargeType;
+            this.appId = detail.result.id;
         }
         if(this.chargeType == '02'){
             this.renderPackageUpdate(detail.result.id);
@@ -267,7 +271,7 @@ var createDemandView = Backbone.View.extend({
         this.$uploadDemoIcon2 = this.$('#uploadDemoIcon2');
         this.$uploadDemoIcon3 = this.$('#uploadDemoIcon3');
         this.$form.validate(this.validateConfig());
-
+        this.serverUrlList = detail.result ? detail.result.url : [];
         this.currentCategory = this.$('#selectCategory').val();
     },
     doUploadImg: function(event) {
@@ -373,11 +377,12 @@ var createDemandView = Backbone.View.extend({
         }
     },
     updateIndex: -1,
-    buildChargeTable: function (isUpdate) {
+    buildChargeTable: function () {
         var chargeSetJson = this.chargeRule || [];
         if(chargeSetJson.length > 0){
             $('.package-error').hide();
         }
+        var isUpdate = this.model.idAttribute == 'modifyId' ? true : false;
         var packageTableTemps = _.template(packageTabletemplate);
         $('#packageTable').html(packageTableTemps({chargeSetJson: chargeSetJson,isUpdate:isUpdate}));
     },
@@ -499,14 +504,30 @@ var createDemandView = Backbone.View.extend({
         $('#serverTable').html(_.template(serverUrlTableTemplate)({serverUrlList:serverList}));
     },
     saveServerIrl: function () {
-        debugger;
         var res = $('#serverUrlForm').serializeObject();
         var serverList = this.serverUrlList || [];
-        if(this.updateIndex < 0){
-            serverList.push(res);
+
+        if(this.model.idAttribute == 'modifyId'){
+            if(this.updateIndex < 0){
+                res.flag = 'C';
+                res.appId = this.appId;
+                serverList.push(res);
+            }
+            else {
+                var nowRes = serverList[this.updateIndex];
+                nowRes.url = res.url;
+                nowRes.description = res.description;
+                nowRes.flag = nowRes.flag || 'U';
+                serverList[this.updateIndex] = nowRes;
+            }
         }
         else {
-            serverList[this.updateIndex] = res;
+            if(this.updateIndex < 0){
+                serverList.push(res);
+            }
+            else {
+                serverList[this.updateIndex] = res;
+            }
         }
         this.serverUrlList = serverList;
         this.buildServerUrlTable();
@@ -572,11 +593,16 @@ var createDemandView = Backbone.View.extend({
         }, function(){
             var serverUrlList = that.serverUrlList;
             var index = $(e.target).closest('tr').index();
-            if(serverUrlList.length == 1 && index == 0){
-                serverUrlList = [];
+            if(that.model.idAttribute == 'modifyId' && serverUrlList[index].flag != 'C'){
+                serverUrlList[index].flag = 'D';
             }
             else {
-                serverUrlList.splice(index,1);
+                if(serverUrlList.length == 1 && index == 0){
+                    serverUrlList = [];
+                }
+                else {
+                    serverUrlList.splice(index,1);
+                }
             }
             that.serverUrlList = serverUrlList;
             that.buildServerUrlTable();

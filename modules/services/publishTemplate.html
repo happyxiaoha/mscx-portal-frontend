@@ -40,7 +40,7 @@
                 <p class="fl R_left"><em>*</em>服务标识：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" id="identify" name="identify" placeholder="服务标示" value="<%= data.detail && data.detail.identify %>">
+                        <input type="text" id="identify" name="identify" placeholder="服务标示" value="<%= data.detail && data.detail.identify %>" <%if(data.detail && data.detail.isOnline == 'Y'){%>disabled<%}%>>
                     </p>
                 </div>
                 <p class="input-mes fl">服务标识应当以字母或数字开头结尾，允许出现横线及下划线，长度在2-30个字符之间</p>
@@ -52,7 +52,7 @@
                         <textarea name="description" id="" cols="30" rows="10" placeholder="请输入数据描述"><%= data.detail && data.detail.description %></textarea maxlength="500">
                     </p>
                 </div>
-                <label id="description-error" class="error ml125" for="description"></label>
+                <label id="description-error" class="error ml125" ></label>
             </div>
             <div class="clearfix ReleaseList">
                 <p class="fl R_left"><em>*</em>服务图标：</p>
@@ -152,14 +152,8 @@
             <div class="clearfix ReleaseList">
                 <p class="fl R_left"><i class="need">*</i>是否收费：</p>
                 <div class="fl R_right charge-type-radio">
-                    <% if(data.showFlag || data.detail && data.detail.id) { %>
-                    <input type="hidden" name="chargeType" value="<%= data.detail.chargeType %>" />
-                    <label><input type="radio" name="chargeType" value="01" id="ct01" <%if(data.detail.chargeType=='01'){%>checked<%}%> disabled>免费</label>
-                    <label><input type="radio" name="chargeType" value="02" id="ct02" <%if(data.detail.chargeType=='02'){%>checked<%}%> disabled>收费</label>
-                    <% }else{ %>
                     <label><input type="radio" name="chargeType" value="01" id="ct01" <%if(!data.detail || data.detail.chargeType=='01'){%>checked<%}%>>免费</label>
                     <label><input type="radio" name="chargeType" value="02" id="ct02" <%if(data.detail && data.detail.chargeType=='02'){%>checked<%}%>>收费</label>
-                    <% } %>
                 </div>
             </div>
             <div class="D_table server-package" <%if(!data.detail || data.detail.chargeType=='01'){%>style="display: none;"<%}%>>
@@ -205,21 +199,29 @@
                     </tr>
                     </thead>
                     <tbody id="serverTable">
-                    <tr>
-                        <td colspan="3">暂无数据</td>
-                    </tr>
+                        <%var urlArray = data.detail ? data.detail.url : []; _.each(urlArray, function (sulist) { %>
+                        <tr>
+                            <td><%=sulist.url%></td>
+                            <td><%=sulist.description%></td>
+                            <td>
+                                <a href="javascript:;" class="editServerUrl">修改</a>
+                                <a href="javascript:;" class="deleteServerUrl">删除</a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                        <%if(urlArray.length == 0){%>
+                        <tr>
+                            <td colspan="3">暂无数据</td>
+                        </tr>
+                        <%}%>
                     </tbody>
                 </table>
             </div>
-            <% if(data.showFlag || data.detail && data.detail.id) { %>
-            <div class="clearfix ReleaseList mt20 server-url">
-            </div>
-            <% }else{ %>
-            <div class="clearfix ReleaseList mt20 server-url" <%if(!data.detail || data.detail.chargeType=='01'){%>style="display: none;"<%}%>>
+
+            <div class="clearfix ReleaseList mt20 server-url" <% if(!data.detail) { %>style="display: none;"<%}%>>
                 <label class="url-error">服务URL不能为空</label>
                 <span class="newSelBtn add-server-url fr bgBlue" style="padding: 3px 10px;">新增服务URL</span>
             </div>
-            <% } %>
             <div class="clearfix ReleaseList">
                 <div class="fl R_right">
                     <label class="ml50">

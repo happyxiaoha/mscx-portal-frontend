@@ -12,11 +12,11 @@ var freeIsBaughtModel = Backbone.Model.extend({
 });
 // 免费微服务下单
 var freeOrderModel = Backbone.Model.extend({
-    url: 'order/freeApi/placeOrder.do'
+    url: 'order/freeApp/placeOrder.do'
 });
 // 收费微服务下单
 var feeOrderModel = Backbone.Model.extend({
-    url: 'order/feeApi/placeOrder.do'
+    url: 'order/feeApp/placeOrder.do'
 });
 // 加入购物车
 var addCartModel = Backbone.Model.extend({
@@ -164,7 +164,7 @@ var view = Backbone.View.extend({
 
         this.feeOrderModel.fetch({
             data: {
-                apiId: this.id,
+                appId: this.id,
                 charRuleId: ruleId,
                 itemNum: num
             }
@@ -256,7 +256,7 @@ var view = Backbone.View.extend({
 
         this.freeOrderModel.fetch({
             data: {
-                apiId: this.id
+                appId: this.id
             }
         })
     },

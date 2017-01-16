@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>联系人信息：</p>
+            <p class="fl R_left"><em>*</em>主联系人信息：</p>
             <div class="fl R_right">
                 <p>
                     <input type="text" maxlength="50" name="contactUsername" placeholder="请输入联系人信息" value="<%= data && data.contactUsername %>">
@@ -59,11 +59,54 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>联系人电话：</p>
+            <p class="fl R_left"><em>*</em>主联系人电话：</p>
             <div class="fl R_right">
                 <p>
                     <input type="text" name="contactPhone" placeholder="请输入联系人电话" value="<%= data && data.contactPhone %>">
                 </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">备用联系人信息：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" readonly value="<%= data && data.contactUsername %>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left wd160">备用联系人电话：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" readonly value="<%= data && data.contactPhone %>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left wd160"><em>*</em>是否需要平台撮合交易：</p>
+            <div class="radio-list">
+                <label class="radio-inline">
+                    <% if(!data.id){ %>
+                    <input type="radio" checked name="matchmakeTrade" value="Y">
+                    <% }else { %>
+                    <input type="radio" <%= data && data.matchmakeTrade == 'Y' && "checked" %> name="matchmakeTrade" value="Y">
+                    <% } %>
+                    是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" <%= data && data.matchmakeTrade == 'N' && "checked" %> name="matchmakeTrade" value="N">
+                    否
+                </label>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>分类：</p>
+            <div class="fl R_right wd660 category">
+                <input type="hidden" name="categoryName" id="categoryName" value="" />
+                <!-- 服务分类 -->
+                <select name="categoryId" data-default="<%= data && data.categoryId ? data.categoryId : '' %>" %> id="dataCategory">
+                </select>
+                <div class="clearfix"></div>
             </div>
         </div>
         <div class="clearfix ReleaseList">

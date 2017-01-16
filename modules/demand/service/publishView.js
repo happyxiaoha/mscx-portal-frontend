@@ -10,6 +10,10 @@ require('util');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'getServiceDetailOfMe.do'
 })
+// 微服务分类
+var serviceCategory = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'category/getServiceCategory.do'
+});
 var addModel = Backbone.Model.extend({
     idAttribute: 'addId',
     url: mscxPage.request.demand + 'addService.do'
@@ -28,6 +32,10 @@ var createDemandView = Backbone.View.extend({
     initialize: function() {
         // 如果有ID则说明是进入修改页面
         this.detailModel = new detailModel();
+        this.serviceCategory = new serviceCategory();
+
+        this.listenTo(this.serviceCategory, 'sync', this.renderServiceCategory);
+
         if(this.id) {
             this.listenTo(this.detailModel, 'sync', this.renderDetail);
             this.detailModel.fetch({
@@ -114,6 +122,8 @@ var createDemandView = Backbone.View.extend({
     renderDetail: function() {
         var model = this.detailModel.toJSON();
 
+        model.result = model.result || {};
+
         this.$el.html(this.template(model.result));
 
         this.$form = this.$('form');
@@ -128,6 +138,15 @@ var createDemandView = Backbone.View.extend({
             minDate: (new Date()).format('yyyy-MM-dd')
         });
         this.$endTime.on('apply.daterangepicker', this.changeDate.bind(this));
+    },
+    renderServiceCategory: function() {
+        var model = this.serviceCategory.toJSON();
+        var $serviceCategory = this.$('#serviceCategory');
+        $serviceCategory.html(this.optionTemplate(_.extend(model, {type: 2})));
+
+        if($serviceCategory.data('default')) {
+            $serviceCategory.val($serviceCategory.data('default'));
+        }
     }
 });
 

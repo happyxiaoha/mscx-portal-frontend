@@ -8,7 +8,7 @@ require('./servers.css');
 require('util');
 
 var applyListModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'weiApp/getSelfWeiAppList.do'
+    url: mscxPage.request.order + 'weiApp/getSelfWeiAppList.do'
 });
 
 // 申请的服务
@@ -30,12 +30,8 @@ var myApplyListView = Backbone.View.extend({
 
         this.$content = this.$('#serverInfo');
 
-        this.model = new publishListModel();
-        // this.unshelveModel = new unshelveModel();
-        // this.deleteModel = new deleteModel();
-
-        // this.listenTo(this.deleteModel, 'sync', this.handleOperation);
-        // this.listenTo(this.unshelveModel, 'sync', this.handleOperation);
+        this.model = new applyListModel();
+        
         this.listenTo(this.model, 'sync', this.render);
 
         this.model.fetch({
@@ -75,51 +71,6 @@ var myApplyListView = Backbone.View.extend({
                 pageSize: this.pagObj.pageSize,
                 page: this.pagObj.pageNum
             }
-        });
-    },
-    unshelveService: function(event) {
-        var id = this.$(event.currentTarget).data('id');
-        var me = this;
-
-        var confirmLay = layer.confirm('确认下架这条服务吗？', {
-            btn: ['确定','取消'] //按钮
-        }, function(){
-            me.unshelveModel.fetch({
-                data: {
-                    id: id
-                }
-            })
-            layer.close(confirmLay);
-        }, function(){
-            layer.close(confirmLay);
-        });   
-    },
-    deleteService: function(event) {
-        var id = this.$(event.currentTarget).data('id');
-        var me = this;
-
-        var deleteLay = layer.confirm('确认删除这条服务吗？', {
-            btn: ['确定','取消'] //按钮
-        }, function(){
-            me.deleteModel.fetch({
-                data: {
-                    id: id
-                }
-            })
-            layer.close(deleteLay);
-        }, function(){
-            layer.close(deleteLay);
-        });  
-    },
-    handleOperation: function() {
-        this.pagObj.pageNum = 1;
-        this.reloadPage();
-    },
-    showReason: function(event) {
-        var comment = this.$(event.currentTarget).data('comment');
-        layer.open({
-            title: '拒绝原因',
-            content: comment
         });
     }
 });

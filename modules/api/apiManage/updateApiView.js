@@ -583,18 +583,19 @@ var updateApiView = Backbone.View.extend({
         that.lays = dialog;
     },
     doUpdate: function () {
+        var that = this;
         var isCheck = this.checkValidateSelf();
         if(isCheck){
             var conf = layer.confirm('将重新审核，请确认！', {
                 btn: ['确定','取消'] //按钮
             }, function(){
                 var obj = $('#publishApi').serializeObject();
-                this.model.set('apiServiceId',this.id);
-                this.model.set('scope',obj.scope);
-                this.model.set('cname',obj.cname);
-                this.model.set('description',obj.description);
-                this.model.set('rtnCode',obj.rtnCode || '');
-                this.model.save({},{
+                that.model.set('apiServiceId',this.id);
+                that.model.set('scope',obj.scope);
+                that.model.set('cname',obj.cname);
+                that.model.set('description',obj.description);
+                that.model.set('rtnCode',obj.rtnCode || '');
+                that.model.save({},{
                     success: function () {
                         layer.msg('修改成功，已提交审核!');
                         setTimeout(function () {

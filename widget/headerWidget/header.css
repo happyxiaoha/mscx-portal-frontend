@@ -65,6 +65,9 @@ a{
 .dropMenu li.logout{
     background: url("../../images/newicon/ic_logout.png") 12px center no-repeat;
 }
+.dropMenu li.develop{
+    background: url("../../images/newicon/ic_develop.png") 12px center no-repeat;
+}
 .personIcon{
     min-width: 100px;
     padding-right: 10px;

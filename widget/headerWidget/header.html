@@ -33,6 +33,11 @@
                         <li class="usercenter">
                             <a href="userInfo.html">用户中心</a>
                         </li>
+                        <% if(data.isRealName){ %>
+                        <li class="develop">
+                            <a href="/developer/portal.do">开发者门户</a>
+                        </li>
+                        <% } %>
                         <li class="logout"><a id="exit">退出</a></li>
                     </ul>
                 </div>

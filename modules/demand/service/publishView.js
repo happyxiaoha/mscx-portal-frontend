@@ -3,6 +3,7 @@
  */
 
 var template = require('html!./publishTemplate.html');
+var optionTemplate = require('html!./optionTemplate.html');
 require('../publish.css');
 require('validate');
 require('util');
@@ -29,6 +30,7 @@ var createDemandView = Backbone.View.extend({
         'click #goBack': 'backHistory'
     },
     template: _.template(template, {variable: 'data'}),
+    optionTemplate: _.template(optionTemplate, {variable: 'data'}),
     initialize: function() {
         // 如果有ID则说明是进入修改页面
         this.detailModel = new detailModel();
@@ -126,8 +128,13 @@ var createDemandView = Backbone.View.extend({
         var model = this.detailModel.toJSON();
 
         model.result = model.result || {};
+        _.extend(model.result, {
+            userInfo: mscxPage.userInfo
+        });
 
         this.$el.html(this.template(model.result));
+
+        this.serviceCategory.fetch();
 
         this.$form = this.$('form');
         this.$form.validate(this.validateConfig());
@@ -144,8 +151,8 @@ var createDemandView = Backbone.View.extend({
     },
     renderServiceCategory: function() {
         var model = this.serviceCategory.toJSON();
-        var $serviceCategory = this.$('#serviceCategory');
-        $serviceCategory.html(this.optionTemplate(_.extend(model, {type: 2})));
+        var $serviceCategory = this.$('#category');
+        $serviceCategory.html(this.optionTemplate(model));
 
         if($serviceCategory.data('default')) {
             $serviceCategory.val($serviceCategory.data('default'));

@@ -5,6 +5,7 @@
 var template = require('html!./publishTemplate.html');
 var packageTabletemplate = require('html!./packageTableTemplate.html');
 var serverUrlTemplate = require('html!./serverUrlTemplate.html');
+var serverUrlTableTemplate = require('html!./serverUrlTableTemplate.html');
 var tagView = require('./tagsLayer.js');
 require('./services.css');
 require('validate');
@@ -46,6 +47,10 @@ var modifyModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'modify.do'
 });
 
+var checkUnique = Backbone.Model.extend({
+    url: mscxPage.request.app + 'checkUnique.do'
+});
+
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     events: {
@@ -53,11 +58,14 @@ var createDemandView = Backbone.View.extend({
         'click #selectTagBtn': 'getTags',
         'change #selectCategory': 'saveCategory',
         'keydown input': 'cancelSubmit',
+        'blur #identify': 'checkIdentify',
         'click input:radio[name="chargeType"]': 'changeChargeType',
         'click .addPrice': 'addChargePackage',
         'click .editCharge': 'updateChargeLay',
         'click .removeCharge': 'removeCharge',
-        'click .add-server-url': 'addServerLay'
+        'click .add-server-url': 'addServerLay',
+        'click .editServerUrl': 'updateServerLay',
+        'click .deleteServerUrl': 'deleteServerUrl'
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
@@ -126,6 +134,10 @@ var createDemandView = Backbone.View.extend({
                 description: {
                     required: true,
                     maxlength: 500
+                },
+                identify: {
+                    required: true,
+                    identify: true
                 }
             },
             submitHandler: function () {
@@ -136,10 +148,35 @@ var createDemandView = Backbone.View.extend({
             }
         }
     },
+    checkIdentify: function () {
+        var that = this;
+        var identify = $.trim($('#identify').val());
+        var check = this.$form.validate().element($("#identify"));
+        $('.server-identify-error').remove();
+        if(check){
+            new checkUnique().fetch({
+                data: {identify: identify},
+                success: function (model,res) {
+                    if(res.result){
+                        $('.server-identify-error').remove();
+                        $('#identify').removeClass('error');
+                    }
+                    else {
+                        $('#identify').addClass('error');
+                        $('<span class="server-identify-error">'+res.message+'</span>').insertAfter('#identify');
+                    }
+                }
+            });
+        }
+    },
     checkValidateSelf: function () {
         if(this.chargeType == '02'){
             if(!this.chargeRule || this.chargeRule.length == 0){
                 $('.package-error').show();
+            }
+            if(!this.serverUrlList || this.serverUrlList.length == 0){
+                $('.url-error').show();
+                return;
             }
         }
     },
@@ -147,6 +184,10 @@ var createDemandView = Backbone.View.extend({
         if(this.chargeType == '02'){
             if(!this.chargeRule || this.chargeRule.length == 0){
                 $('.package-error').show();
+                return;
+            }
+            if(!this.serverUrlList || this.serverUrlList.length == 0){
+                $('.url-error').show();
                 return;
             }
         }
@@ -159,12 +200,13 @@ var createDemandView = Backbone.View.extend({
                 app.id = +app.id;
             }
             if(this.model.idAttribute == 'modifyId'){
-                this.model.set(app);
+                //this.model.set(app);
             }
             else {
                 this.model.set({
                     app: app,
-                    chargeRule: this.chargeRule
+                    chargeRule: this.chargeRule,
+                    url: this.serverUrlList
                 });
             }
             this.model.save();
@@ -432,8 +474,117 @@ var createDemandView = Backbone.View.extend({
         });
         return false;
     },
+    serverUrlConfig: function () {
+        var me = this;
+        return {
+            ignore: '.ignore',
+            rules: {
+                url: {
+                    required: true
+                },
+                description: {
+                    required: true
+                }
+            },
+            submitHandler: function () {
+                me.saveServerIrl();
+            }
+        }
+    },
+    buildServerUrlTable: function () {
+        var serverList = this.serverUrlList || [];
+        if(serverList.length > 0){
+            $('.url-error').hide();
+        }
+        $('#serverTable').html(_.template(serverUrlTableTemplate)({serverUrlList:serverList}));
+    },
+    saveServerIrl: function () {
+        debugger;
+        var res = $('#serverUrlForm').serializeObject();
+        var serverList = this.serverUrlList || [];
+        if(this.updateIndex < 0){
+            serverList.push(res);
+        }
+        else {
+            serverList[this.updateIndex] = res;
+        }
+        this.serverUrlList = serverList;
+        this.buildServerUrlTable();
+        layer.close(this.serDig);
+    },
     addServerLay: function () {
-        
+        var me = this;
+        $('.server-url-area').html(_.template(serverUrlTemplate)({res:{}}));
+        var dialog = layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '新增服务URL',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['500px', '350px'],
+            content: $('.server-url-area'), //捕获的元素
+            success: function(){
+                $('#serverUrlForm').validate(me.serverUrlConfig());
+            },
+            btn1: function () {          //通过
+                $('#serverUrlForm').submit();
+            },
+            btn2: function () {         // 不通过
+                layer.close(dialog);
+            }
+        });
+        this.serDig = dialog;
+        return false;
+    },
+    updateServerLay: function (e) {
+        var me = this;
+        var serverUrlList = me.serverUrlList;
+        var index = $(e.target).closest('tr').index();
+        this.updateIndex = index;
+        $('.server-url-area').html(_.template(serverUrlTemplate)({res:serverUrlList[index]}));
+        var dialog = layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '新增服务URL',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['500px', '350px'],
+            content: $('.server-url-area'), //捕获的元素
+            success: function(){
+                $('#serverUrlForm').validate(me.serverUrlConfig());
+            },
+            btn1: function () {          //通过
+                $('#serverUrlForm').submit();
+            },
+            btn2: function () {         // 不通过
+                layer.close(dialog);
+            }
+        });
+        this.serDig = dialog;
+        return false;
+    },
+    deleteServerUrl: function (e) {
+        var that = this;
+        var deleteLay = layer.confirm('确认删除这条服务URL吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var serverUrlList = that.serverUrlList;
+            var index = $(e.target).closest('tr').index();
+            if(serverUrlList.length == 1 && index == 0){
+                serverUrlList = [];
+            }
+            else {
+                serverUrlList.splice(index,1);
+            }
+            that.serverUrlList = serverUrlList;
+            that.buildServerUrlTable();
+            layer.close(deleteLay);
+        }, function(){
+            layer.close(deleteLay);
+        });
+        return false;
     }
 });
 

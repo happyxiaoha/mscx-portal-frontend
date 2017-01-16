@@ -857,7 +857,7 @@ var createApiView = Backbone.View.extend({
                     $('.api-server-error').html(res.message).show();
                 }
             }
-        })
+        });
     },
     checkApiName: function () {
         var name = $.trim($('#apiName').val());

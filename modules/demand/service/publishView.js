@@ -92,7 +92,10 @@ var createDemandView = Backbone.View.extend({
     },
     submitForm: function () {
         var params = this.$form.serializeObject();
-        
+
+        var categoryName = this.$('#category').find('option:selected').text();
+        params.categoryName = categoryName;
+
         this.model.set(params);
         this.model.save();
     },

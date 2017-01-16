@@ -38,8 +38,13 @@
         </p>
         <div class="orderList">
             <span class="ml10"style="width: 20px;height: 2px;"></span>
-            <%if(scitem.resourceType == '01'){%>
+            <%if(scitem.resourceType == '01' || scitem.resourceType == '03'){%>
             <a class="resources" href="./api.html?detail/<%=scitem.resourceId%>">
+                <img src="<%=scitem.resourceUrl%>">
+                <p><%=scitem.resourceName%></p>
+            </a>
+            <%}else if(scitem.resourceType == '03'){%>
+            <a class="resources" href="./services.html?detail/<%=scitem.resourceId%>">
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
@@ -69,13 +74,18 @@
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
+            <%}else if(scitem.resourceType == '03'){%>
+            <a class="resources" href="./services.html?detail/<%=scitem.resourceId%>">
+                <img src="<%=scitem.resourceUrl%>">
+                <p><%=scitem.resourceName%></p>
+            </a>
             <%}else{%>
             <a class="resources" style="width: 285px;text-align: center;" href="./sources.html?detail/<%=scitem.resourceId%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}%>
             <span class="price"><%=scitem.price%>元</span>
-            <%if(scitem.resourceType == '01'){%>
+            <%if(scitem.resourceType == '01' || scitem.resourceType == '03'){%>
             <span class="count"><input type="number" class="apply-times" value="<%=scitem.applyTimes%>"></span>
             <%}else{%>
             <span class="count"><input type="number" class="apply-times" value="1" readonly></span>

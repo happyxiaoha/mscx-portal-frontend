@@ -4,6 +4,7 @@
 
 var template = require('html!./publishTemplate.html');
 var packageTabletemplate = require('html!./packageTableTemplate.html');
+var serverUrlTemplate = require('html!./serverUrlTemplate.html');
 var tagView = require('./tagsLayer.js');
 require('./services.css');
 require('validate');
@@ -55,7 +56,8 @@ var createDemandView = Backbone.View.extend({
         'click input:radio[name="chargeType"]': 'changeChargeType',
         'click .addPrice': 'addChargePackage',
         'click .editCharge': 'updateChargeLay',
-        'click .removeCharge': 'removeCharge'
+        'click .removeCharge': 'removeCharge',
+        'click .add-server-url': 'addServerLay'
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
@@ -353,7 +355,7 @@ var createDemandView = Backbone.View.extend({
     changeChargeType: function (e) {
         var sId = e.target.id.replace('ct','');
         this.chargeType = sId;
-        sId == '01' ?  $('.server-package').hide() : $('.server-package').show(),this.buildChargeTable();
+        sId == '01' ?  ($('.server-package').hide(),$('.server-url').hide()) : ($('.server-package').show(),$('.server-url').show(),this.buildChargeTable());
         e.stopPropagation();
     },
     addChargePackage: function () {
@@ -429,6 +431,9 @@ var createDemandView = Backbone.View.extend({
             layer.close(deleteLay);
         });
         return false;
+    },
+    addServerLay: function () {
+        
     }
 });
 

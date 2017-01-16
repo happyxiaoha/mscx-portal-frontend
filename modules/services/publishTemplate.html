@@ -181,9 +181,34 @@
             <div class="clearfix ReleaseList mt20 server-package">
             </div>
             <% }else{ %>
-            <div class="clearfix ReleaseList mt20 server-package">
+            <div class="clearfix ReleaseList mt20 server-package" <%if(!data.detail || data.detail.chargeType=='01'){%>style="display: none;"<%}%>>
                 <label class="package-error">套餐不能为空</label>
                 <span class="newSelBtn addPrice fr bgBlue" style="padding: 3px 10px;">新增收费规则</span>
+            </div>
+            <% } %>
+            <div class="D_table server-url" <%if(!data.detail || data.detail.chargeType=='01'){%>style="display: none;"<%}%>>
+                <table >
+                    <thead>
+                    <tr>
+                        <th>服务URL</th>
+                        <th>服务描述</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="serverTable">
+                    <tr>
+                        <td colspan="3">暂无数据</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <% if(data.showFlag || data.detail && data.detail.id) { %>
+            <div class="clearfix ReleaseList mt20 server-url">
+            </div>
+            <% }else{ %>
+            <div class="clearfix ReleaseList mt20 server-url" <%if(!data.detail || data.detail.chargeType=='01'){%>style="display: none;"<%}%>>
+                <label class="url-error">服务URL不能为空</label>
+                <span class="newSelBtn add-server-url fr bgBlue" style="padding: 3px 10px;">新增服务URL</span>
             </div>
             <% } %>
             <div class="clearfix ReleaseList">

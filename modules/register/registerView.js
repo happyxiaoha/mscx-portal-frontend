@@ -216,6 +216,7 @@ var registerView = Backbone.View.extend({
                     res = res.toJSON().message;
                     if(res == 'success'){
                         layer.msg('验证码发送成功');
+                        $('#authCode').removeAttr('readonly');
                         $('#authCode').val('');
                         $target.attr('disabled','disabled');
                         $target.html('<b id="jumpTime">60</b>秒后可重新发送');

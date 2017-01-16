@@ -115,19 +115,31 @@
                     <li class="clearfix">
                         <div class="fl clearfix posRE">
                             <span><em>*</em>营业执照编号：</span>
-                            <input type="text" name="licenceNo" id="licenceNo" placeholder="请填写有效的营业执照编号" value="<%=licenceNo%>" <%if(status == '02'){%>disabled<%}%>>
+                            <%if(status == '02'){%>
+                            <input type="text" name="licenceNo" id="licenceNo" placeholder="请填写有效的营业执照编号" value="<%=licenceNo || '-'%>" disabled>
+                            <%}else{%>
+                            <input type="text" name="licenceNo" id="licenceNo" placeholder="请填写有效的营业执照编号" value="<%=licenceNo%>">
+                            <%}%>
                         </div>
                     </li>
                     <li class="clearfix">
                         <div class="fl clearfix posRE">
                             <span>税务登记证编号：</span>
-                            <input type="text" name="taxRegisterNo" id="taxRegisterNo" placeholder="请填写有效的税务登记证编号" value="<%=taxRegisterNo%>" <%if(status == '02'){%>disabled<%}%>>
+                            <%if(status == '02'){%>
+                            <input type="text" name="taxRegisterNo" id="taxRegisterNo" placeholder="请填写有效的税务登记证编号" value="<%=taxRegisterNo || '-'%>" disabled>
+                            <%}else{%>
+                            <input type="text" name="taxRegisterNo" id="taxRegisterNo" placeholder="请填写有效的税务登记证编号" value="<%=taxRegisterNo%>">
+                            <%}%>
                         </div>
                     </li>
                     <li class="clearfix">
                         <div class="fl clearfix posRE">
                             <span>组织机构编号：</span>
-                            <input type="text" name="organizationCode" id="organizationCode" placeholder="请填写有效的组织机构编号" value="<%=organizationCode%>" <%if(status == '02'){%>disabled<%}%>>
+                            <%if(status == '02'){%>
+                            <input type="text" name="organizationCode" id="organizationCode" placeholder="请填写有效的组织机构编号" value="<%=organizationCode || '-'%>" disabled>
+                            <%}else{%>
+                            <input type="text" name="organizationCode" id="organizationCode" placeholder="请填写有效的组织机构编号" value="<%=organizationCode%>">
+                            <%}%>
                         </div>
                     </li>
                     <li class="clearfix">

@@ -585,20 +585,26 @@ var updateApiView = Backbone.View.extend({
     doUpdate: function () {
         var isCheck = this.checkValidateSelf();
         if(isCheck){
-            var obj = $('#publishApi').serializeObject();
-            this.model.set('apiServiceId',this.id);
-            this.model.set('scope',obj.scope);
-            this.model.set('cname',obj.cname);
-            this.model.set('description',obj.description);
-            this.model.set('rtnCode',obj.rtnCode || '');
-            this.model.save({},{
-                success: function () {
-                    layer.msg('修改成功，已提交审核!');
-                    setTimeout(function () {
-                        location.href = 'userInfo.html#api';
-                    },1000);
-                }
-            })
+            var conf = layer.confirm('将重新审核，请确认！', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                var obj = $('#publishApi').serializeObject();
+                this.model.set('apiServiceId',this.id);
+                this.model.set('scope',obj.scope);
+                this.model.set('cname',obj.cname);
+                this.model.set('description',obj.description);
+                this.model.set('rtnCode',obj.rtnCode || '');
+                this.model.save({},{
+                    success: function () {
+                        layer.msg('修改成功，已提交审核!');
+                        setTimeout(function () {
+                            location.href = 'userInfo.html#api';
+                        },1000);
+                    }
+                });
+            }, function(){
+                layer.close(conf);
+            });
         }
     },
     doUploadImg: function () {

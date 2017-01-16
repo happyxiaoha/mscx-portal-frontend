@@ -181,6 +181,7 @@ var createDemandView = Backbone.View.extend({
         }
     },
     submitForm: function () {
+        var me = this;
         if(this.chargeType == '02'){
             if(!this.chargeRule || this.chargeRule.length == 0){
                 $('.package-error').show();
@@ -205,6 +206,13 @@ var createDemandView = Backbone.View.extend({
                     app: app,
                     url: this.serverUrlList
                 });
+                var conf = layer.confirm('将重新审核，请确认！', {
+                    btn: ['确定','取消'] //按钮
+                }, function(){
+                    me.model.save();
+                }, function(){
+                    layer.close(conf);
+                });
             }
             else {
                 this.model.set({
@@ -212,8 +220,8 @@ var createDemandView = Backbone.View.extend({
                     chargeRule: this.chargeRule,
                     url: this.serverUrlList
                 });
+                this.model.save();
             }
-            this.model.save();
         }
         else {
             layer.alert('请阅读并勾选协议！');

@@ -265,7 +265,7 @@
                     <input type="radio" data-select="modelCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 3 && "checked" %> name="apiCategory" value="模型API">
                     模型API
                 </label>
-                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 3 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId && data.categoryId.split(',')[0] != 3 && "disabled" %> id="modelCategory">
+                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 3 ? data.categoryId.split(',')[1] : '' %>" <%= (!data.id || data && data.categoryId && data.categoryId.split(',')[0] != 3) && "disabled" %> id="modelCategory">
                 </select>
                 <div class="clearfix"></div>
                 <!-- 工具API分类 -->
@@ -273,7 +273,7 @@
                     <input type="radio" data-select="toolCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 4 && "checked" %> name="apiCategory" value="工具API">
                     工具API
                 </label>
-                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 4 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId && data.categoryId.split(',')[0] != 4 && "disabled" %> id="toolCategory">
+                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 4 ? data.categoryId.split(',')[1] : '' %>" <%= (!data.id || data && data.categoryId && data.categoryId.split(',')[0] != 4) && "disabled" %> id="toolCategory">
                 </select>
             </div>
         </div>

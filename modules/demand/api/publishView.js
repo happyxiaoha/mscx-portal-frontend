@@ -111,6 +111,7 @@ var createDemandView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
+                me.$('#publishBtn').attr('disabled', 'disabled');
                 me.submitForm();
             }
         }
@@ -135,7 +136,8 @@ var createDemandView = Backbone.View.extend({
             }
         })
     },
-    backHistory: function () {
+    backHistory: function (event) {
+        event.preventDefault();
         history.back();
     },
     changeFile: function(event) {

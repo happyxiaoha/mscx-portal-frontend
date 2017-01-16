@@ -184,7 +184,7 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>截止日期：</p>
             <div class="fl R_right">
-                <a><input size="7" type="text" name="endTime" value="<%= data && new Date(data.endTime).format('yyyy-MM-dd') %>" readonly class="end-time"></a>
+                <a><input size="7" type="text" name="endTime" value="<%= data && data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %>" readonly class="end-time"></a>
             </div>
         </div>
         <div class="clearfix ReleaseList">
@@ -215,7 +215,7 @@
             <p class="fl R_left">备用联系人：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" value="" readonly placeholder="自动从系统读取">
+                    <input type="text" value="<%= data && data.userInfo && data.userInfo.name %>" readonly>
                 </p>
             </div>
         </div>
@@ -223,7 +223,7 @@
             <p class="fl R_left">备用联系人电话：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" value="" readonly placeholder="自动从系统读取">
+                    <input type="text" value="<%= data && data.userInfo && data.userInfo.mobile %>" readonly>
                 </p>
             </div>
         </div>
@@ -253,27 +253,27 @@
                     <% if(!data){ %>
                     <input type="radio" checked name="apiCategory" data-select="dataCategory" value="数据API">
                     <% }else { %>
-                    <input type="radio" data-select="dataCategory" <%= data && data.categoryId.split(',')[0] == 2 && "checked" %> name="apiCategory" value="Y">
+                    <input type="radio" data-select="dataCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 2 && "checked" %> name="apiCategory" value="Y">
                     <% } %>
                     数据API
                 </label>
-                <select name="categoryId" data-default="<%= data && data.categoryId.split(',')[0] == 2 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId.split(',')[0] != 2 && "disabled" %> id="dataCategory">
+                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 2 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId && data.categoryId.split(',')[0] != 2 && "disabled" %> id="dataCategory">
                 </select>
                 <div class="clearfix"></div>
                 <!-- 模型API分类 -->
                 <label class="block-radio">
-                    <input type="radio" data-select="modelCategory" <%= data && data.categoryId.split(',')[0] == 3 && "checked" %> name="apiCategory" value="模型API">
+                    <input type="radio" data-select="modelCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 3 && "checked" %> name="apiCategory" value="模型API">
                     模型API
                 </label>
-                <select name="categoryId" data-default="<%= data && data.categoryId.split(',')[0] == 3 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId.split(',')[0] != 3 && "disabled" %> id="modelCategory">
+                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 3 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId && data.categoryId.split(',')[0] != 3 && "disabled" %> id="modelCategory">
                 </select>
                 <div class="clearfix"></div>
                 <!-- 工具API分类 -->
                 <label class="block-radio">
-                    <input type="radio" data-select="toolCategory" <%= data && data.categoryId.split(',')[0] == 4 && "checked" %> name="apiCategory" value="工具API">
+                    <input type="radio" data-select="toolCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 4 && "checked" %> name="apiCategory" value="工具API">
                     工具API
                 </label>
-                <select name="categoryId" data-default="<%= data && data.categoryId.split(',')[0] == 4 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId.split(',')[0] != 4 && "disabled" %> id="toolCategory">
+                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 4 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId && data.categoryId.split(',')[0] != 4 && "disabled" %> id="toolCategory">
                 </select>
             </div>
         </div>

@@ -145,7 +145,11 @@ var createDemandView = Backbone.View.extend({
         this.$("#showFileName").html(fileName);
     },
     renderDetail: function() {
-        var model = this.detailModel && this.detailModel.toJSON();
+        var model = this.detailModel && this.detailModel.toJSON() || {};
+        model.result = model.result || {};
+        _.extend(model.result, {
+            userInfo: mscxPage.userInfo
+        });
 
         this.$el.html(this.template(model.result));
 

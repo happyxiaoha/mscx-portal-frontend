@@ -39,17 +39,17 @@
         <div class="orderList">
             <span class="ml10"style="width: 20px;height: 2px;"></span>
             <%if(scitem.resourceType == '01' || scitem.resourceType == '03'){%>
-            <a class="resources" href="./api.html?detail/<%=scitem.resourceId%>">
+            <a class="resources" href="javascript:;">
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else if(scitem.resourceType == '03'){%>
-            <a class="resources" href="./services.html?detail/<%=scitem.resourceId%>">
+            <a class="resources" href="javascript:;">
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else{%>
-            <a class="resources" style="width: 285px;text-align: center;" href="./sources.html?detail/<%=scitem.resourceId%>">
+            <a class="resources" style="width: 285px;text-align: center;" href="javascript:;">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}%>

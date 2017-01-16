@@ -38,7 +38,7 @@
                 <a href="javascript:;" class="removeCharge">删除</a>
                 <%}else if(!chargeItem.expiryDate && new Date(new Date().format('yyyy-MM-dd')).getTime() >= new Date(chargeItem.effectDate).getTime()){%>
                 <a href="javascript:;" class="editChargeOth">修改</a>
-                <%}else if(new Date(new Date().format('yyyy-MM-dd')).getTime() >= new Date(chargeItem.effectDate).getTime() && new Date(new Date().format('yyyy-MM-dd')).getTime() <= new Date(chargeItem.expiryDate).getTime()){%>
+                <%}else if(new Date(new Date().format('yyyy-MM-dd')).getTime() >= new Date(chargeItem.effectDate).getTime() && new Date(new Date().format('yyyy-MM-dd')).getTime() <= (new Date(chargeItem.expiryDate).getTime()+86400000)){%>
                 <a href="javascript:;" class="editChargeOth">修改</a>
                 <%}%>
             </td>

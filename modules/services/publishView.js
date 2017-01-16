@@ -171,8 +171,10 @@ var createDemandView = Backbone.View.extend({
     },
     checkValidateSelf: function () {
         if(this.chargeType == '02'){
-            if(!this.chargeRule || this.chargeRule.length == 0){
-                $('.package-error').show();
+            if(this.model.idAttribute=='addId'){
+                if(!this.chargeRule || this.chargeRule.length == 0){
+                    $('.package-error').show();
+                }
             }
             if(!this.serverUrlList || this.serverUrlList.length == 0){
                 $('.url-error').show();
@@ -183,9 +185,11 @@ var createDemandView = Backbone.View.extend({
     submitForm: function () {
         var me = this;
         if(this.chargeType == '02'){
-            if(!this.chargeRule || this.chargeRule.length == 0){
-                $('.package-error').show();
-                return;
+            if(this.model.idAttribute=='addId') {
+                if (!this.chargeRule || this.chargeRule.length == 0) {
+                    $('.package-error').show();
+                    return;
+                }
             }
             if(!this.serverUrlList || this.serverUrlList.length == 0){
                 $('.url-error').show();

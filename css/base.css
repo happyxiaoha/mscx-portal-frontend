@@ -71,7 +71,7 @@ body{ font-family:'microsoft yahei'; font-size:12px;color: #444;}
 .wd120{width: 120px;}
 .wd160{width: 160px !important;}
 .wd804{width: 804px;}
-.wd660{width: 660px;}
+.wd660{width: 660px !important;}
 
 .tc{text-align: center;}
 .tl{text-align: left;}

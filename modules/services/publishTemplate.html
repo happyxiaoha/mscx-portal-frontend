@@ -218,7 +218,7 @@
                 </table>
             </div>
 
-            <div class="clearfix ReleaseList mt20 server-url" <% if(!data.detail) { %>style="display: none;"<%}%>>
+            <div class="clearfix ReleaseList mt20 server-url" <% if(!data.detail || data.detail.chargeType=='01') { %>style="display: none;"<%}%>>
                 <label class="url-error">服务URL不能为空</label>
                 <span class="newSelBtn add-server-url fr bgBlue" style="padding: 3px 10px;">新增服务URL</span>
             </div>

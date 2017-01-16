@@ -31,10 +31,10 @@
                         <!-- 通过 -->
                         <% if(item.status == '0'){ %>
                             <a href="services.html#edit/<%= item.id %>">修改</a>
-                            <a class="unshelve" data-id="<%= item.id %>" href="javascript:;">下架</a>
                             <%if(item.chargeType == '02'){%>
                             <a href="javascript:;" data-id="<%= item.id %>" class="changePrice">调价</a>
                             <%}%>
+                            <a class="unshelve" data-id="<%= item.id %>" href="javascript:;">下架</a>
                         <!-- 审核中 -->
                         <% }else if(item.status == '2'){ %>
                             <a href="services.html#show/<%= item.id %>">查看</a>

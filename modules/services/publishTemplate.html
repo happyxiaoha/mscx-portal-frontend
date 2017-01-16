@@ -37,6 +37,15 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>服务标识：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" id="identify" name="identify" placeholder="服务标示" value="<%= data.detail && data.detail.identify %>">
+                    </p>
+                </div>
+                <p class="input-mes fl">服务标识应当以字母或数字开头结尾，允许出现横线及下划线，长度在2-30个字符之间</p>
+            </div>
+            <div class="clearfix ReleaseList">
                 <p class="fl R_left"><em>*</em>服务简介：</p>
                 <div class="fl R_right">
                     <p>
@@ -242,5 +251,6 @@
         </form>
         <% } %>
         <div class="server-package-area"></div>
+        <div class="server-url-area"></div>
     </div>
 </div>

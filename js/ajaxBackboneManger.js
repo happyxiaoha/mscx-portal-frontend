@@ -21,7 +21,7 @@ Backbone.sync = function(method, model, options) {
         if (complete) return complete.apply(this, arguments);
     };
     options.error = function(xhr) {
-        var pageType = $document.find('body').data('type');
+        var pageType = $(document).find('body').data('type');
 
         if(pageType == 'index') return;
         layer.alert('系统错误', {icon: 2});

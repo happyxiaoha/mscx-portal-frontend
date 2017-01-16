@@ -196,7 +196,7 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>联系人：</p>
+            <p class="fl R_left"><em>*</em>主联系人：</p>
             <div class="fl R_right">
                 <p>
                     <input type="text" value="<%= data && data.contactUsername %>" name="contactUsername" maxlength="50" placeholder="请输入联系人信息" id="system-contact-who">
@@ -204,11 +204,77 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>联系人电话：</p>
+            <p class="fl R_left"><em>*</em>主联系人电话：</p>
             <div class="fl R_right">
                 <p>
                     <input type="text" name="contactPhone" value="<%= data && data.contactPhone %>" placeholder="请输入联系人电话" id="system-phoneNumber">
                 </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">备用联系人：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" value="" readonly placeholder="自动从系统读取">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">备用联系人电话：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" value="" readonly placeholder="自动从系统读取">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left wd160"><em>*</em>是否需要平台撮合交易：</p>
+            <div class="radio-list">
+                <label class="radio-inline">
+                    <% if(!data){ %>
+                    <input type="radio" checked name="matchmakeTrade" value="Y">
+                    <% }else { %>
+                    <input type="radio" <%= data && data.matchmakeTrade == 'Y' && "checked" %> name="matchmakeTrade" value="Y">
+                    <% } %>
+                    是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" <%= data && data.matchmakeTrade == 'N' && "checked" %> name="matchmakeTrade" value="N">
+                    否
+                </label>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>分类：</p>
+            <div class="fl R_right wd660 category">
+                <input type="hidden" name="categoryName" id="categoryName" value="" />
+                <!-- 数据API分类 -->
+                <label class="block-radio">
+                    <% if(!data){ %>
+                    <input type="radio" checked name="apiCategory" data-select="dataCategory" value="数据API">
+                    <% }else { %>
+                    <input type="radio" data-select="dataCategory" <%= data && data.categoryId.split(',')[0] == 2 && "checked" %> name="apiCategory" value="Y">
+                    <% } %>
+                    数据API
+                </label>
+                <select name="categoryId" data-default="<%= data && data.categoryId.split(',')[0] == 2 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId.split(',')[0] != 2 && "disabled" %> id="dataCategory">
+                </select>
+                <div class="clearfix"></div>
+                <!-- 模型API分类 -->
+                <label class="block-radio">
+                    <input type="radio" data-select="modelCategory" <%= data && data.categoryId.split(',')[0] == 3 && "checked" %> name="apiCategory" value="模型API">
+                    模型API
+                </label>
+                <select name="categoryId" data-default="<%= data && data.categoryId.split(',')[0] == 3 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId.split(',')[0] != 3 && "disabled" %> id="modelCategory">
+                </select>
+                <div class="clearfix"></div>
+                <!-- 工具API分类 -->
+                <label class="block-radio">
+                    <input type="radio" data-select="toolCategory" <%= data && data.categoryId.split(',')[0] == 4 && "checked" %> name="apiCategory" value="工具API">
+                    工具API
+                </label>
+                <select name="categoryId" data-default="<%= data && data.categoryId.split(',')[0] == 4 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId.split(',')[0] != 4 && "disabled" %> id="toolCategory">
+                </select>
             </div>
         </div>
         <div class="clearfix ReleaseList">

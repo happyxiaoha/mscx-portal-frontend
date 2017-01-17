@@ -309,6 +309,7 @@ var myPublishListView = Backbone.View.extend({
         else {
             var prev = chargeRule[this.updateIndex];
             obj.flag = prev.flag || 'U';
+            obj.appId = this.serviceId;
             chargeRule[this.updateIndex] = obj;
             this.updateIndex = -1;
         }

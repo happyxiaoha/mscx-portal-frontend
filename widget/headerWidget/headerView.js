@@ -44,6 +44,10 @@ var getUserMsg = Backbone.Model.extend({
     url: mscxPage.host+'/briefInfo.do?'
 });
 
+var developCheck = Backbone.Model.extend({
+    url: mscxPage.host+'/developer/portal.do'
+});
+
 var headerView = Backbone.View.extend({
     el: mscxPage.domEl.headerEl,
     template: _.template(template, {variable: 'data'}),
@@ -51,10 +55,12 @@ var headerView = Backbone.View.extend({
         'blur .info-line input': 'changeAttribute',
         'click #exit': 'logout',
         'click .search-img': 'search',
-        'keydown #inputs': 'keyDownSearch'
+        'keydown #inputs': 'keyDownSearch',
+        'click #developLink': 'jumpDevelop'
     },
     initialize: function() {
         this.model = new getUserMsg();
+        this.developCheck = new developCheck();
         this.model.fetch({
             data: {
                 t: new Date().getTime()
@@ -133,6 +139,16 @@ var headerView = Backbone.View.extend({
                 }
             }
         })
+    },
+    jumpDevelop: function() {
+        this.developCheck.fetch({
+            success: function(model) {
+                var res = model.toJSON();
+                if(res.status == 'OK') {
+                    location.href = res.result;
+                }
+            }
+        });
     }
 });
 

@@ -8,7 +8,7 @@
 }
 .C_selectorLine:last-child .sl-wrap{border: 0;}
 .sl-wrap .sl-key{text-align: center;width: 78px;color: #777;height: auto;position: absolute;left: 0;top: 0;}
-.sl-v-list .J_valueList{padding: 0 12px 0 12px;box-sizing: border-box;background: #fff;height: 40px;}
+.sl-v-list .J_valueList{padding: 0 11px 0 11px;box-sizing: border-box;background: #fff;height: 40px;}
 .sl-v-list .J_valueList li{float: left;margin-right: 24px;width: 76px;text-align: center;overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;

@@ -39,7 +39,7 @@ var myPublishListView = Backbone.View.extend({
         'click .unshelve': 'unshelveService',
         'click .delete': 'deleteService',
         'click .reason': 'showReason',
-        'click .changePrice': 'changeChargePrice',
+        'click .changePrice': 'changeServerChargePrice',
         'click .editCharge': 'editCharge',
         'click .removeCharge': 'removeCharge',
         'click .editChargeOth': 'editChargeOth',
@@ -151,7 +151,7 @@ var myPublishListView = Backbone.View.extend({
         var packageTemps = _.template(packageTabletemplate);
         $('.package-area').html(packageTemps({chargeSetJson:res}));
     },
-    changeChargePrice: function (e) {
+    changeServerChargePrice: function (e) {
         var that = this,
             $this = $(e.target).closest('tr'),
             sId = this.$(e.currentTarget).data('id'),

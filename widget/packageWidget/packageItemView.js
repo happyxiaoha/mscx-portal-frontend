@@ -36,7 +36,7 @@ var view = Backbone.View.extend({
                     min: 0
                 },
                 invokeLimit: {
-                    min:0
+                    min:1
                 },
                 effectDate: {
                     required: true,

@@ -234,7 +234,9 @@
 
 .pioneering-content table {
     font-size: 14px;
+    margin: 0 auto;
 }
 .pioneering-content table tr, .pioneering-content table td {
     padding: 10px;
+    border: 1px solid #ccc;
 }

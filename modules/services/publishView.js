@@ -501,12 +501,16 @@ var createDemandView = Backbone.View.extend({
                     maxlength:50
                 },
                 description: {
-                    required: true
+                    required: true,
+                    maxlength:50
                 }
             },
-            message: {
+            messages: {
                 url: {
                     maxlength: '服务URL最大长度50'
+                },
+                description: {
+                    maxlength: '服务描述最大长度50'
                 }
             },
             submitHandler: function () {

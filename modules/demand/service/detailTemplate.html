@@ -45,12 +45,28 @@
                 <span class="cor7"><%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></span>
             </li>
             <li class="mb10">
-                <span>联系人信息：</span>
+                <span>主联系人信息：</span>
                 <span class="cor7"><%= data.contactUsername %></span>
             </li>
             <li class="mb10">
-                <span>联系人电话：</span>
+                <span>主联系人电话：</span>
                 <span class="cor7"><%= data.contactPhone %></span>
+            </li>
+            <li class="mb10">
+                <span>备用联系人信息：</span>
+                <span class="cor7"><%= data.spareContactname %></span>
+            </li>
+            <li class="mb10">
+                <span>备用联系人电话：</span>
+                <span class="cor7"><%= data.spareContactphone %></span>
+            </li>
+            <li class="mb10">
+                <span class="wd160">是否需要平台撮合交易：</span>
+                <span class="cor7 wd660"><%= data.matchmakeTradeName %></span>
+            </li>
+            <li class="mb10">
+                <span>分类：</span>
+                <span class="cor7"><%= data.categoryName %></span>
             </li>
         </ul>
     </div>

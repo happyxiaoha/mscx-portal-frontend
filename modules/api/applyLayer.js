@@ -157,7 +157,7 @@ var view = Backbone.View.extend({
             msg = '';
 
         if($selected.length < 1) {
-            msg += '请至少选择一个资源';
+            msg += '请至少选择一个套餐';
         }
 
         if(msg) {
@@ -191,7 +191,7 @@ var view = Backbone.View.extend({
         }
 
         if(!ruleId) {
-            layer.msg('请至少选择一个资源');
+            layer.msg('请至少选择一个套餐');
             return;
         }
 

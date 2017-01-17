@@ -173,6 +173,11 @@ var view = Backbone.View.extend({
         this.$el.addClass('server-package-manage').html(this.template({'res':res}));
         if(res.price){
             this.displayFeeMes(res.price);
+            if(res.price == 0) {
+                var $limitInput = $('input[name="boughtLimit"]');
+                $($limitInput[0]).attr('disabled',true);
+                $($limitInput[1]).prop("checked",true)
+            }
         }
         $('#serverChargePackage').validate(this.packageValidateConfig());
         this.buildData();

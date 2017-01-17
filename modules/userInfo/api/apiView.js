@@ -412,6 +412,11 @@ var apiView = Backbone.View.extend({
                 that.buildDateEvents();
                 $('#addChargeForm').validate(that.packageValidateConfig());
                 that.displayFeeMes(packageList[index].price);
+                if(packageList[index].price == 0) {
+                    var $limitInput = $('input[name="countLimit"]');
+                    $($limitInput[0]).attr('disabled',true);
+                    $($limitInput[1]).prop("checked",true)
+                }
             },
             cancel: function(index){
                 that.updateIndex = -1;

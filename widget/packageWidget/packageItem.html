@@ -38,7 +38,7 @@
             <label>
                 <span><i class="need">*</i>购买限制：</span>
                 <%if(res.isOth){%>
-                <p class="mes"><%=res.countLimit == '-1'? '不限制': '限制一次'%></p>
+                <p class="mes"><%=res.boughtLimit == '-1'? '不限制': '限制一次'%></p>
                 <%}else{%>
                 <label title="不限制"><input type="radio" value="-1" name="boughtLimit" style="margin: 0;" <%if(res || res.boughtLimit == '-1'){%>checked<%}%>>不限制</label>
                 <label title="限制一次" style="margin-left: 5px;"><input value="1" type="radio" name="boughtLimit" style="margin: 0;" <%if(res.boughtLimit == '1'){%>checked<%}%>>限制一次</label>
@@ -49,7 +49,7 @@
             <%if(res.isOth){%>
             <label class="gl">
                 <span>使用限制：</span>
-                <p class="mes"><%=res.monthLimit%>次</p>
+                <p class="mes"><%=res.invokeLimit%>次</p>
             </label>
             <%}else{%>
             <label class="gl">

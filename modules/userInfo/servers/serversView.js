@@ -39,11 +39,11 @@ var myPublishListView = Backbone.View.extend({
         'click .unshelve': 'unshelveService',
         'click .delete': 'deleteService',
         'click .reason': 'showReason',
-        'click .changePrice': 'changeServerChargePrice',
-        'click .editCharge': 'editCharge',
-        'click .removeCharge': 'removeCharge',
-        'click .editChargeOth': 'editChargeOth',
-        'click .addPrice': 'addCharge'
+        'click .changeServerPrice': 'changeServerChargePrice',
+        'click .editServerCharge': 'editCharge',
+        'click .removeServerCharge': 'removeCharge',
+        'click .editServerChargeOth': 'editChargeOth',
+        'click .addServerPrice': 'addCharge'
     },
     initialize: function() {
         this.$el.html(this.commonTemplate({name:'publish'}));

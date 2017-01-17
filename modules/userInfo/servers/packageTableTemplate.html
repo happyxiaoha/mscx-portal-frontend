@@ -1,6 +1,6 @@
 <div class="D_table M-table" style="padding: 20px;">
     <div class="tab-title">
-        <button class="addPrice">增加</button>
+        <button class="addServerPrice">增加</button>
     </div>
     <table>
         <thead>
@@ -31,15 +31,15 @@
             <td><%=chargeItem.expiryDate ? new Date(chargeItem.expiryDate).format('yyyy-MM-dd') : '-'%></td>
             <td>
                 <%if(new Date(new Date().format('yyyy-MM-dd')).getTime() < new Date(chargeItem.effectDate).getTime()){%>
-                <a href="javascript:;" class="editCharge">修改</a>
-                <a href="javascript:;" class="removeCharge">删除</a>
+                <a href="javascript:;" class="editServerCharge">修改</a>
+                <a href="javascript:;" class="removeServerCharge">删除</a>
                 <%}else if(new Date(new Date().format('yyyy-MM-dd')).getTime() == new Date(chargeItem.effectDate).getTime() && chargeItem.flag == 'C'){%>
-                <a href="javascript:;" class="editCharge">修改</a>
-                <a href="javascript:;" class="removeCharge">删除</a>
+                <a href="javascript:;" class="editServerCharge">修改</a>
+                <a href="javascript:;" class="removeServerCharge">删除</a>
                 <%}else if(!chargeItem.expiryDate && new Date(new Date().format('yyyy-MM-dd')).getTime() >= new Date(chargeItem.effectDate).getTime()){%>
-                <a href="javascript:;" class="editChargeOth">修改</a>
+                <a href="javascript:;" class="editServerChargeOth">修改</a>
                 <%}else if(new Date(new Date().format('yyyy-MM-dd')).getTime() >= new Date(chargeItem.effectDate).getTime() && new Date(new Date().format('yyyy-MM-dd')).getTime() <= (new Date(chargeItem.expiryDate).getTime()+86400000)){%>
-                <a href="javascript:;" class="editChargeOth">修改</a>
+                <a href="javascript:;" class="editServerChargeOth">修改</a>
                 <%}%>
             </td>
         </tr>

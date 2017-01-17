@@ -32,7 +32,7 @@
                         <% if(item.status == '0'){ %>
                             <a href="services.html#edit/<%= item.id %>">修改</a>
                             <%if(item.chargeType == '02'){%>
-                            <a href="javascript:;" data-id="<%= item.id %>" class="changePrice">调价</a>
+                            <a href="javascript:;" data-id="<%= item.id %>" class="changeServerPrice">调价</a>
                             <%}%>
                             <a class="unshelve" data-id="<%= item.id %>" href="javascript:;">下架</a>
                         <!-- 审核中 -->
@@ -42,7 +42,7 @@
                         <% }else if(item.status == '3'){ %>
                             <a href="javascript:;" class="reason" data-comment="<%= item.comments %>">查看原因</a>
                             <%if(item.chargeType == '02'){%>
-                            <a href="javascript:;" data-id="<%= item.id %>" class="changePrice">调价</a>
+                            <a href="javascript:;" data-id="<%= item.id %>" class="changeServerPrice">调价</a>
                             <%}%>
                             <% if(item.isOnline == 'Y'){ %>
                                 <a class="edit" href="services.html#edit/<%= item.id %>">修改</a>

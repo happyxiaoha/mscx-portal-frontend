@@ -21,7 +21,7 @@ var view = Backbone.View.extend({
                 },
                 price: {
                     required: true,
-                    number: true,
+                    price: true,
                     min: 0
                 },
                 chargeCount: {

@@ -30,7 +30,7 @@
     width: 340px;
     float: left;
 }
-.server-package-manage #price-error {display: none!important;}
+.server-package-manage #price-error {position: absolute;top: 24px; left:70px; width: 300px;}
 .server-package-manage .mes {line-height: 30px;max-width: 600px;}
 .server-package-manage .input-mes-server {margin: 0 0 0 70px;font-size: 12px;color: #999;}
 .server-package-manage .input-mes-server-price {color: #f89406;min-width: 200px;margin: 0 0 0 70px;font-size: 12px;}

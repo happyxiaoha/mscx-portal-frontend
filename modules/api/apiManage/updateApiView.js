@@ -589,8 +589,9 @@ var updateApiView = Backbone.View.extend({
             var conf = layer.confirm('将重新审核，请确认！', {
                 btn: ['确定','取消'] //按钮
             }, function(){
+                layer.close(conf);
                 var obj = $('#publishApi').serializeObject();
-                that.model.set('apiServiceId',this.id);
+                that.model.set('apiServiceId',that.id);
                 that.model.set('scope',obj.scope);
                 that.model.set('cname',obj.cname);
                 that.model.set('description',obj.description);

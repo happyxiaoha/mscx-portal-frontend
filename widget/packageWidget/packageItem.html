@@ -22,15 +22,15 @@
             <label>
                 <span><i class="need">*</i>套餐价格：</span>
                 <%if(res.isOth){%>
-                <p class="mes"><%=res.price%>元/<%=res.chargeCount%>月</p>
+                <p class="mes"><%=res.price%>元/<%=res.chargeCount%>天</p>
                 <%}else{%>
                 <label><input type="number" class="small" name="price" id="price" value="<%=res && res.price%>">元/</label>
                 <label><input type="number" class="small" name="chargeCount" id="chargeCount" value="<%=res && res.chargeCount%>">
-                    <span class="prePrice">月</span>
+                    <span class="prePrice">天</span>
                 </label>
-                <p class="input-mes-server fl">价格大于等于0元，月数是大于1的整数</p>
-                <p class="input-mes-server-price fl">收入价格:<span class="earning-count">-</span>元/<span class="charge-count"><%=res && res.chargeCount%></span><span class="price-per">月</span>（套餐价格*<span class="earning-percent">-</span>%）</p>
-                <p class="input-mes-server-price fl">手续费:<span class="fee-count">-</span>元/<span class="charge-count"><%=res && res.chargeCount%></span><span class="price-per">月</span>（套餐价格*<span class="fee-percent">-</span>%）</p>
+                <p class="input-mes-server fl">价格大于等于0元，天数是大于1的整数</p>
+                <p class="input-mes-server-price fl">收入价格:<span class="earning-count">-</span>元/<span class="charge-count"><%=res && res.chargeCount%></span><span class="price-per">天</span>（套餐价格*<span class="earning-percent">-</span>%）</p>
+                <p class="input-mes-server-price fl">手续费:<span class="fee-count">-</span>元/<span class="charge-count"><%=res && res.chargeCount%></span><span class="price-per">天</span>（套餐价格*<span class="fee-percent">-</span>%）</p>
                 <%}%>
             </label>
         </li>
@@ -38,7 +38,7 @@
             <label>
                 <span><i class="need">*</i>购买限制：</span>
                 <%if(res.isOth){%>
-                <p class="mes"><%=res.countLimit == '-1'? '不限制': '限制一次'%></p>
+                <p class="mes"><%=res.boughtLimit == '-1'? '不限制': '限制一次'%></p>
                 <%}else{%>
                 <label title="不限制"><input type="radio" value="-1" name="boughtLimit" style="margin: 0;" <%if(res || res.boughtLimit == '-1'){%>checked<%}%>>不限制</label>
                 <label title="限制一次" style="margin-left: 5px;"><input value="1" type="radio" name="boughtLimit" style="margin: 0;" <%if(res.boughtLimit == '1'){%>checked<%}%>>限制一次</label>
@@ -49,7 +49,7 @@
             <%if(res.isOth){%>
             <label class="gl">
                 <span>使用限制：</span>
-                <p class="mes"><%=res.monthLimit%>次</p>
+                <p class="mes"><%=res.invokeLimit%>次</p>
             </label>
             <%}else{%>
             <label class="gl">

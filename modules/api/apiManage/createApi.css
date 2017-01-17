@@ -107,7 +107,7 @@
 .add-price-list ul li textarea, .add-api-list ul li textarea{width: 320px;height: 80px;resize: none;}
 .add-price-list ul li input.error,.add-api-list ul li input.error, .add-api-list ul li textarea.error{border: 1px solid red;}
 .add-price-list ul li label.error,.add-api-list ul li label.error{color: red;margin-right: 5px;float: right;}
-#price-error {display: none !important;}
+#price-error {position: absolute;  top: 24px;  left: 70px;  width: 300px;}
 .add-price-list .ml20,.add-api-list .ml20 {margin-left: 20px;}
 .img-error,.tag-error,.server-error,.package-error,.api-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
 .btn-primary {color: #FFF !important;}

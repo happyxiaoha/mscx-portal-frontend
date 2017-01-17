@@ -5,7 +5,7 @@
 .package-manage ul li textarea{width: 320px;height: 80px;resize: none;}
 .package-manage ul li input.error{border: 1px solid red;}
 .package-manage ul li label.error{color: red;margin-right: 5px;float: right;}
-#price-error {display: none !important;}
+#price-error {position: absolute; top: 24px;  left: 70px; width: 300px;}
 .package-manage .ml20{margin-left: 20px;}
 .btn-primary {color: #FFF !important;}
 

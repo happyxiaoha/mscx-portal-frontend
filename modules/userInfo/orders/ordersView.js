@@ -22,7 +22,7 @@ var orderView = Backbone.View.extend({
         totalPage: 1
     },
     events: {
-        'click .toPay': 'toPay'
+        'click .toOrderPay': 'toPay'
     },
     initialize: function() {
         var that = this;

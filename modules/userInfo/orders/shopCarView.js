@@ -33,7 +33,7 @@ var shopCarView = Backbone.View.extend({
         'click .is-select-shop': 'toggleSelectCar',
         'blur .apply-times': 'changePrice',
         'click .deleteCar': 'deleteCar',
-        'click .toPay': 'toPay'
+        'click .toShopPay': 'toPay'
     },
     shopObj:{},
     shopArray: [],

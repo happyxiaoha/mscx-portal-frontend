@@ -6,7 +6,7 @@ var template = '<div class="api-env rightMenuWrap grid1190 fl boxShadiow boxSizi
 
 var cmsUrl = Resource.cmsHost + 'static_html/datainfo/apiinfo/index.html';
 
-var cmsTemplate = require('html!./server.html');
+var cmsTemplate = require('html!./api.html');
 
 require('./pioneering.css');
 

@@ -60,6 +60,7 @@ var userAuthenticationView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
+                that.$('input[type="submit"]').attr('disabled', 'disabled');
                 that.doSavePerson()
             },
             invalidHandler:function() {

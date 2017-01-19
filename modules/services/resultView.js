@@ -49,7 +49,7 @@ var view = Backbone.View.extend({
 
         laypage({
             cont: 'page',
-            skip: true,
+            skin: '#22c6c1',
             curr: pageInfo.currentPage || 1,
             pages: pageInfo.totalPage,
             jump: function(obj, first) {

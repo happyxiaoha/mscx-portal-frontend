@@ -16,16 +16,8 @@
                 <p title="<%- item.name %>"><span><%- item.name %></span></p>
             </a>
         </div>
-        <% if(item.sourceType ==='01'){ %>
-        <a title="<%- item.name %>" href="api.html#detail/<%- item.id %>" class="apiname">
-            <% }else if(item.sourceType ==='02'){ %>
-            <a href="sources.html#detail/<%- item.id %>" class="apiname">
-                <% }else{ %>
-                <a href="services.html#detail/<%- item.id %>" class="apiname">
-                    <% };%>
-            <%- item.name %></a>
     </div>
-    <p class="ft14">
+    <!-- <p class="ft14">
         <span class="charge fl">
             <%- item.chargeTypeDesc %>
         </span>
@@ -35,6 +27,6 @@
          <span class="fangwenliang">
             <i><%- item.viewCount %></i>
         </span>
-    </p>
+    </p> -->
 </li>
 <% }); %>

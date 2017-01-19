@@ -1,5 +1,5 @@
 /*数据模型*/
-.rightMenuWrap{width: 916px;margin-left: 2px;padding: 24px 16px;}
+.rightMenuWrap{padding: 24px 16px;}
 .ChoiceList{width: 100%;height: auto;border: 1px solid #ccc;margin: 16px 0 24px;}
 .mainDatas{border: 1px solid #ccc;padding: 26px 26px 0;margin-top: 16px;}
 .mainDatas .DataList li{width: 186px;height: 212px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 26px 26px 0;margin-right: 19px\9;}
@@ -33,7 +33,7 @@
 .commonDataSel .commonData input[readonly] {background-color: #fff;}
 .commonDataSel .sl-search{width: 183px;position: inherit;margin: 0 0 0 10px;}
 .commonDataSel .sl-search input[type="text"]{width: 126px;}
-.mainSelDatas{margin-top: 15px;}
+.mainSelDatas{margin-top: 25px;}
 .DataSelList{border: 1px solid #ccc;margin-bottom: 24px;}
 .DataSelList.padding-side{padding: 0 16px;}
 .mainSelDatas .DataSelList li{padding: 14px 25px;border-bottom: 1px solid #ccc;position: relative}
@@ -154,7 +154,7 @@
 .R-Cons .titTopCons ul li span:last-child{width: 758px;}
 .R-Cons .titTopCons a{padding: 20px 0;display: inline-block;}
 .R-Cons .titTop{height: 54px;line-height: 54px;padding-left: 34px;}
-.R-Cons .titTopCons{padding: 26px 40px;box-sizing: border-box;}
+.R-Cons .titTopCons{padding: 26px 40px;box-sizing: border-box;text-align: left;}
 .R-Cons .titTopCons img{border: 1px solid #ccc;}
 .R-shareStarCons p:first-child span:first-child{margin-right: 5px;}
 .R-shareStarCons p:first-child span{height: 21px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;margin-left: 4px;cursor: pointer;padding: 2px 10px;}

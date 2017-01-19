@@ -8,7 +8,7 @@ var listTemplate = require('html!./listTemplate.html');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'rightMenuWrap fl boxShadiow boxSizing bgWhite common',
+    className: 'rightMenuWrap grid1190 fl boxShadiow boxSizing bgWhite common',
     wrapTemplate: _.template(wrapTemplate),
     listTemplate: _.template(listTemplate, {variable: 'data'}),
     events: {
@@ -59,7 +59,7 @@ var view = Backbone.View.extend({
 
         laypage({
             cont: 'page',
-            skip: true,
+            skin: '#22c6c1',
             curr: pageInfo.currentPage || 1,
             pages: pageInfo.totalPage,
             jump: function(obj, first) {

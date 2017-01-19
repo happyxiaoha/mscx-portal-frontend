@@ -12,13 +12,13 @@ var servicesModel = Backbone.Model.extend({
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'rightMenuWrap fl boxShadiow boxSizing bgWhite common',
+    className: 'rightMenuWrap grid1190 fl boxShadiow boxSizing common',//bgWhite
     initialize: function() {
         // 筛选部分初始化
         this.searchView = new searchView({
             id: this.id,
             model: {
-                title: '微服务',
+                title: '微应用',
                 options: ['objects', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
                 defaults: this.model
             }

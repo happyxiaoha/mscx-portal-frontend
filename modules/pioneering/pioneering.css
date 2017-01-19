@@ -1,5 +1,5 @@
 /*创业+首页*/
-.rightMenuWrap{width: 916px;margin-left: 2px;padding: 24px 20px;}
+.rightMenuWrap{padding: 24px 20px;}
 
 .prCorps{margin-top: 20px;margin-bottom: 12px;}
 .prCorps .DataList li{box-shadow: 1px 1px 3px rgba(0,0,0,.1), -1px -1px 3px rgba(0,0,0,.1);width: 280px;width: 273px\9;height: 154px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 18px 18px 0;background: #f8f8f8;box-sizing: border-box;padding: 18px;}
@@ -90,9 +90,9 @@
 .projectList .DataList li .centers p span:not(:first-child){padding: 0;line-height: 22px;}
 .projectList .DataList li .centers p span:before{display: none;}
 .projectList .DataList li em{display: block;width: 100%;height: 35px;text-align: center;line-height: 35px;color: #444;background: #f0f0f0;}
-.requireHeader{padding: 17px 20px;font-size: 16px;width: 587px;box-sizing: border-box;}
+/*.requireHeader{padding: 17px 20px;font-size: 16px;width: 587px;box-sizing: border-box;}
 .requireHeader p{color: #333;background: url(../../images/img14.png) no-repeat left center;line-height: 46px;padding-left: 50px;}
-.requireHeader button{height: 46px;border: 0;outline: none;color: #fff;font-size: 16px;padding: 0 20px;}
+.requireHeader button{height: 46px;border: 0;outline: none;color: #fff;font-size: 16px;padding: 0 20px;}*/
 .projectRight{width: 270px !important;}
 .DownsLeft{width: 587px;}
 .inputs{right: 0;top: 0;}
@@ -208,9 +208,25 @@
 .Page ul li a#go{margin-left: 6px;}
 
 /*API开发环境*/
-.api-env.rightMenuWrap{padding: 24px 16px;}
-.api-env .top-font{position: relative;padding: 0px;margin: 0px;background: #f8f8f8;}
-.api-env .left-font{width: 694px;height: 405px;padding: 20px 20px; }
+.api-env.rightMenuWrap{
+    padding: 24px 16px;
+    height: 428px;
+    color: #fff;
+    background: url("../../images/bg_pioneer_api.png") no-repeat;
+}
+.api-env a {
+    color: #fff;
+}
+.api-env .top-font{position: relative;padding: 0px;margin: 0px;background: initial;}
+.api-env .left-font{    
+    width: 800px;
+    height: 405px;
+    padding: 20px 60px;
+}
+.api-env .left-font p {
+    padding: 10px 0;
+    line-height: 30px;
+}
 .api-env .left-font p:first-child{line-height: 24px;text-indent: 2em;}
 .api-env .left-font .l-img{margin-right: 15px}
 .api-env .right-img{width: 190px;height: 437px;background: url("../../images/tu15.png") no-repeat center center #1bb0ed}
@@ -218,9 +234,25 @@
 .api-env .right-img a span{display: block;text-align: center;color: #fff;font-size: 14px;margin-top: 18px;}
 
 /*服务开发环境*/
-.server-env .left-font{padding: 44px 0 0 38px;height: 160px;box-sizing: border-box;position: relative;background: #f8f8f8;}
+.server-env {
+    color: #fff;
+    height: 428px;
+    background: url("../../images/bg_pioneer_server.png") no-repeat;
+}
+.server-env .top-font {
+    background: initial;
+}
+.server-env .left-font{width: 800px;padding: 44px 0 0 38px;height: 160px;box-sizing: border-box;position: relative;background: initial;}
 .server-env .left-font p{line-height: 26px;text-indent: 2em;width: 615px;}
 .server-env .left-font a{width: 190px;height: 160px;background: url(../../images/newRequireImg01.png) no-repeat left top;display: block;position: absolute;right: 0;top: 0;color: #fff;font-size: 14px;text-align: center;line-height: 250px;}
+.server-env .right-area {
+    background: #dbf5f9;
+    width: 185px;
+    height: 240px;
+    border-radius: 5px;
+    display: table-cell;
+    vertical-align: middle;
+}
 .AppProcess{padding-left: 26px;}
 .AppProcess em{color: #00aff6;}
 .AppProcess img{margin: 32px auto;}

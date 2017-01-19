@@ -1,28 +1,55 @@
 .my-info-area {overflow: hidden;}
-.right-con-wrap {width: 780px;}
+.right-con-wrap {width: 1000px;}
 .D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
 .D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
 .D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}
-.user-name-area {width: 80px;height: 18px;  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;}
+.user-name-area {min-width: 80px;height: 18px;  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;}
 
-.right-con-wrap .R-topList .R-cons{padding: 22px 24px;box-sizing:border-box;height: 118px;}
-.right-con-wrap .R-topList .R-cons:first-child{width: 220px;}
-.right-con-wrap .R-topList .user-cost{width: 240px;}
-.right-con-wrap .R-topList .user-ser{width: 288px;}
+.right-con-wrap .R-topList .R-cons{padding: 22px 24px;box-sizing:border-box;height: 160px;text-align: center;}
+.right-con-wrap .R-topList .R-cons .user-icon{
+    width: 45px;
+}
+.right-con-wrap .R-topList .R-cons:first-child{width: 175px;background: #ececec;}
+.right-con-wrap .R-topList .user-cost{
+    height: 160px;
+    text-align: center;
+    padding: 0;
+}
+.right-con-wrap .R-topList .user-cost ul {
+    width: 100px;
+    height: 160px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.right-con-wrap .R-topList .user-cost ul li {
+    padding: 15px 0;
+}
+
+.right-con-wrap .R-topList .user-ser{
+    padding-right: 40px;
+}
 
 .right-con-wrap a.message{background: url('../../../images/news.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin: 10px 0;display: none;}
-.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;text-decoration: underline;}
-.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;}
-.right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;color: #f0b742;}
+.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat 20px 3px;line-height: 16px;margin-top: 5px;text-decoration: underline;}
+.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat 30px;line-height: 16px;margin-top: 5px; color:#30b7b7;}
+.right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat 30px;line-height: 16px;margin-top: 5px;color: #f0b742;}
 .right-con-wrap .RCconsList p{border-bottom: 1px dashed #069cd9;line-height: 26px;}
 .right-con-wrap .RCconsList p span{display: inline-block;}
 .right-con-wrap .RCconsList p span:first-child{width: 60px;}
 .right-con-wrap .RCconsListBtn p{line-height: 26px;}
-.right-con-wrap .RCconsListBtn a{    text-align: center;
-    line-height: 25px;display:block;width: 102px;height: 26px;border: 0;outline: none;display: block;}
-
+.right-con-wrap .RCconsListBtn a{
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    width: 102px;
+    margin-top: 25px;
+    height: 30px;
+    border: 0;
+    outline: none;
+    display: block;
+}
 .more{right: 18px;top: 2px;}
 .mainDatas{padding: 20px 15px;margin-top: 16px;background: #fff;}
 .mainDatas ul p ,.R-myServerList >ul >p{padding: 50px;font-size: 18px;}
@@ -50,10 +77,16 @@
 .myServerRight p span{margin-right: 22px;}
 .citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}
 
-.topTab{border-bottom: 3px solid #ccc;height: 40px;margin: 8px 0 15px 0;}
-.topTab span a,.topTab span a:visited,.topTab span a:active {color: #444;display: block;}
-.topTab span{display: block;float: left;padding: 0 8px;font-size: 15px;line-height: 38px;margin-right: 14px;cursor: pointer;position: relative;height: 40px;}
-.topTab span.active{border-bottom: 3px solid #069cd9;color:#069cd9 }
+.topTab{
+    line-height: 50px;
+    height: 50px;
+    margin: 0 0 15px 0;
+    background: #373d41;
+    padding-left: 20px;
+}
+.topTab span a,.topTab span a:visited,.topTab span a:active {color: #79848b;display: block;}
+.topTab span{display: block;float: left;padding: 0 20px;color: #79848b;font-size: 15px;margin-right: 14px;cursor: pointer;position: relative;}
+.topTab span.active a, .topTab span.active{color:#0ca398 }
 
 .layui-layer-content input[readonly]{
     cursor:default;background-color:#FFF;}

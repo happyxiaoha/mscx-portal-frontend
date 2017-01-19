@@ -1,14 +1,17 @@
 
 <a href="services.html?detail/<%- data.id %>"><img src="<%- data.imageUri %>" alt="" class="fl"></a>
-<div class="myServerRight fr">
+<div class="myServerRight fl">
     <a href="services.html?detail/<%- data.id %>" class="block ft16 corOrange"><%- data.name %></a>
     <p class="R-infos"><%- data.description %></p>
     <p>
         <span>服务商：<em class="corBlue"><%- data.providerName %></em></span>
         <span>服务方式：<em class="corBlue"><%- data.serviceType %></em></span>
         <span>服务渠道：<em class="corGreen"><%- data.serviceChannel %></em></span>
-        <span>费用：<em class="corRed"><%- data.chargeTypeDesc %></em></span>
+        <!-- <span>费用：<em class="corRed"><%- data.chargeTypeDesc %></em></span> -->
     </p>
+</div>
+<div class="fl price">
+    <%- data.chargeTypeDesc %>
 </div>
 <!-- 城市 -->
 <p class="posAB citysSel"><%- (data.scope.indexOf('，') > 0 || data.scope.indexOf(',') > 0 ? '全国' : data.scope) %></p>

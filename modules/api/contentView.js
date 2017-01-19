@@ -16,7 +16,7 @@ var modelAPI = Backbone.Model.extend({
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'rightMenuWrap fl boxShadiow boxSizing bgWhite common',
+    className: 'rightMenuWrap fl boxShadiow boxSizing bgWhite common grid1190',
     initialize: function() {
         // 筛选部分初始化
         this.searchView = new searchView({

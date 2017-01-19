@@ -3,7 +3,7 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '': 'dataDemandView',
+        '': 'apiEnvView',
         'data': 'dataDemandView',
         'api': 'apiDemandView',
         'service': 'serviceDemandView',
@@ -18,7 +18,9 @@ var Routes =  Backbone.Router.extend({
         'service/publish': 'servicePublishView',
         'service/des/:id': 'serviceDesView',
         'api/des/:id': 'apiDesView',
-        'data/des/:id': 'dataDesView'
+        'data/des/:id': 'dataDesView',
+        'apiEnv': 'apiEnvView',
+        'serverEnv': 'serverEnvView'
     },
     dataDemandView: function () {
         var demandView = require('demand/demandView.js');
@@ -36,6 +38,18 @@ var Routes =  Backbone.Router.extend({
         var demandView = require('demand/demandView.js');
         mscxPage.views['serviceDemandObj'] = new demandView({
             id: 'service'
+        });
+    },
+    apiEnvView:function () {
+        var view = require('demand/demandView.js');
+        mscxPage.views['apiEnvViewObj'] = new view({
+            id: 'apiEnv'
+        });
+    },
+    serverEnvView:function () {
+        var view = require('demand/demandView.js');
+        mscxPage.views['serverEnvViewObj'] = new view({
+            id: 'serverEnv'
         });
     },
     dataDetailView: function(id) {

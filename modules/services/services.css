@@ -1,15 +1,9 @@
-.myServerList{background: #fff;margin-top: 16px;}
-.myServerRight{width: 676px;}
-.myServerRight a{line-height: 28px;}
-.myServerRight p.R-infos{word-break: break-all;line-height: 20px;margin: 8px 0 11px;height: 44px;overflow: hidden;}
-.myServerRight p span{margin-right: 28px;}
+/*.myServerList{margin-top: 16px;}*/
 .citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}
 /*公共 左边样式*/
 .common .tit{position: relative; height: 24px;line-height: 24px;padding-left: 16px;}
 .common .tit:before{content: '';position: absolute;width: 5px;height: 24px;background: #069cd9;left: 0;top: 0;}
 .rightMenuWrap{
-    width: 916px;
-    margin-left: 2px;
     padding: 24px 16px;
 }
 .ChoiceList {
@@ -18,9 +12,9 @@
     border: 1px solid #ccc;
     margin: 16px 0 24px;
 }
-.data-list {
+/*.data-list {
     border: 1px solid #ccc;
-}
+}*/
 .data-list.data-empty {
     padding: 16px 16px;
     min-height: initial;
@@ -34,13 +28,13 @@
 /*详情页面*/
 .slideBanner{ position: relative;margin-top: 40px;padding-bottom: 50px;}
 .slideBanner .mleftCons .serverInfos{padding: 0 40px;}
-.slideBanner .mleftCons .serverInfos .appImgCons{width: 142px;margin-right: 26px;}
+.slideBanner .mleftCons .serverInfos .appImgCons{width: 142px;margin-right: 40px;}
 .slideBanner .mleftCons .serverInfos .appImg{width: 142px;height: 142px;box-sizing: border-box;background: #fff;border: 1px solid #ddd;padding: 13px;border-radius: 10px;}
 .slideBanner .mleftCons .serverInfos .appImg img{margin: 14px auto 24px;display: block;}
 .slideBanner .mleftCons .serverInfos .viewerNums{padding-top: 20px;}
 .slideBanner .mleftCons .serverInfos .viewerNums p{text-align: center;font-size: 14px;}
 .slideBanner .mleftCons .serverInfos .viewerNums p span{display: inline-block;text-align: center;}
-.slideBanner .mleftCons .serverInfos .appInfoCons{width: 710px;}
+.slideBanner .mleftCons .serverInfos .appInfoCons{width: 900px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .top{line-height: 28px;margin-bottom: 8px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .top h2{max-width: 350px;font-size: 18px;margin-right: 16px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;margin-right: 5px;margin-top: 2px;}

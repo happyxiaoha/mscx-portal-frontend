@@ -31,7 +31,7 @@ var view = Backbone.View.extend({
         'click .tabLeft span': 'selectAPI'
     },
     initialize: function() {
-        this.$el.addClass('grid960 animate-content opacity0');
+        this.$el.addClass('grid1190 animate-content opacity0');
 
         this.detailModel = new detailModel();
         this.followModel = new followModel();

@@ -25,7 +25,7 @@ var view = Backbone.View.extend({
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.$el.addClass('ReleaseMainCons grid960 clearfix bgWhite boxShadiow animate-content opacity0');
+        this.$el.addClass('ReleaseMainCons grid1190 clearfix bgWhite boxShadiow animate-content opacity0');
         
         this.detailModel = new detailModel();
         this.followModel = new followModel({

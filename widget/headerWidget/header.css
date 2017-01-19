@@ -8,10 +8,10 @@ a{
 }
 .navCons{height: 50px;line-height: 50px;margin-left: 60px;}
 
-.navCons .nav li{float:left;font-size: 16px;padding:0 17px;}
-.navCons .nav li.active a{color: #4786f3;}
+.navCons .nav li{float:left;font-size: 16px;padding: 0 47px 0 17px;}
+.navCons .nav li.active a{color: #00c4c3;}
 .navCons .nav li a{color: #484848;display: block;}
-.navCons .nav li a:hover{color: #0095d1;background: transparent;}
+.navCons .nav li a:hover{color: #00c4c3;background: transparent;}
 .navCons .links{font-size: 16px;}
 .navCons .links a{color: #0095d1; display: inline-block;}
 .navCons .links a:first-child{width: 24px;height:24px;vertical-align: -7px;background: url(../../images/newtel.png) no-repeat left center;margin-right: 10px; cursor: pointer;}
@@ -23,10 +23,10 @@ a{
 .header h1 a img{display: block;width: 172px;}
 .header .citys{margin: 35px 0 0 6px;cursor: pointer;}
 .header .citys input{padding: 0;margin: 0;border: 0;box-shadow: none;width: 88px;color: #069cd9;font-size: 14px;background: transparent;cursor: pointer;}
-.header .searchCons{margin: 0 30px 0 0;background: #fff;position: relative}
+.header .searchCons{position: relative}
 .header .searchCons .search-img{position: absolute;top: 0; right: 0;height: 38px;width: 38px;background: url("../../images/img01.png") center center no-repeat;cursor: pointer}
 .header .searchCons input{display: inline-block;margin: 0;}
-.header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 36px;box-shadow: none;padding-left: 10px;padding-right: 16px;}
+.header .searchCons .search{width: 444px;height: 36px;color: #666;background: #e0e0e0;box-sizing: border-box;outline: none;border-radius: 36px;box-shadow: none;padding-left: 10px;padding-right: 16px;}
 .header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
 .header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
 .header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
@@ -44,16 +44,16 @@ a{
 }
 .header .haslogin .yesLogin .active span.down{background: url("../../images/newicon/ic_up.png") right center no-repeat;}
 
-.dropMenu{
+/*.dropMenu{
     position: absolute;
     border: solid 1px #eee;
     background: #fff;
-    top: 38px;
+    top: 50px;
     right: 0;
     display: none;
     z-index: 1001;
     width: 148px;
-}
+}*/
 .dropMenu li{ white-space:nowrap;height:36px;line-height: 36px;}
 
 .dropMenu a { display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center; }
@@ -74,7 +74,7 @@ a{
     height: 100%;
     float: left;
     padding-left: 40px;
-    background: url("../../images/newicon/ic_username.png") 12px center no-repeat;
+    /*background: url("../../images/newicon/ic_username.png") 12px center no-repeat;*/
 }
 
 .yesLogin {
@@ -85,7 +85,7 @@ a{
     margin-top: 2px;
 }
 .noLogin{
-    width: 150px;
+    /*width: 150px;*/
     text-align: center;
 }
 /*个人信息下拉菜单*/
@@ -93,7 +93,7 @@ a{
     position: absolute;
     border: solid 1px #eee;
     background: #fff;
-    top: 38px;
+    top: 50px;
     right: 0;
     display: none;
     z-index: 1001;
@@ -115,4 +115,53 @@ a{
 .navCons.index .nav li a:link{color: #333;}
 
 .navCons.index .nav li a:link{color: #333;}
-.navCons.index .nav li a:hover{color: #0095d1;}
+.navCons.index .nav li a:hover{color: #00c4c3;}
+
+/* 新增头部顶栏 */
+.top-nav {
+    width: 100%;
+    height: 50px;
+    background: #373d41;
+}
+.top-nav .icon-nation {
+    margin: 0 5px 0 0;
+    width: 22px;
+    height: 19px;
+    background: url("../../images/newicon/ic_nation.jpg") center no-repeat;
+}
+.top-nav .top-wrap {
+    height: 50px;
+    line-height: 50px;
+}
+.top-nav .users a {
+    color: #fff;
+    margin-left: 20px;
+}
+
+.top-nav .info a {
+    margin-left: 30px;
+    color: #fff;
+}
+.top-nav .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
+
+.top-nav .noLogin a,.top-nav .noLogin span{display: inline-block;color: #069cd9;}
+.top-nav .noLogin span{margin: 0 4px;}
+.top-nav .yesLogin {
+    background: initial;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+}
+.top-nav .yesLogin span{display: inline-block;position: relative;cursor: pointer;}
+.top-nav .yesLogin span.down{
+    display: block;
+    height: 100%;
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 20px;
+    color: #fff;
+    background: url("../../images/newicon/ic_down.png") right center no-repeat;
+}
+.top-nav .yesLogin .active span.down{background: url("../../images/newicon/ic_up.png") right center no-repeat;}

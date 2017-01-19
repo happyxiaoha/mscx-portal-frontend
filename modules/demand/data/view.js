@@ -10,7 +10,7 @@ require('util');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'rightMenuWrap fl boxShadiow boxSizing bgWhite common',
+    className: 'rightMenuWrap grid1190 fl boxShadiow boxSizing bgWhite common',
     wrapTemplate: _.template(wrapTemplate),
     listTemplate: _.template(listTemplate, {variable: 'data'}),
     events: {

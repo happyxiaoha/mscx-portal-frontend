@@ -104,7 +104,9 @@ var registerView = Backbone.View.extend({
                 },
                 password:{
                     required: true,
-                    password: true
+                    password: true,
+                    minlength: 8,
+                    maxlength: 20
                 },
                 passwordConfirm: {
                     required: true,

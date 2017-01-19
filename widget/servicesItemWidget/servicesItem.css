@@ -6,7 +6,7 @@
     background: #fff;
     position: relative;
 }
-.services-item:last-child{border:0;}
+/*.services-item:last-child{border:0;}*/
 .services-item img{width: 156px;height: 110px;}
 .myServerRight{width: 750px;margin-left: 30px;}
 .myServerRight a{line-height: 28px;}

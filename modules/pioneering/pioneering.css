@@ -15,13 +15,6 @@
 .partner .DataList li a:nth-child(3n){margin-right: 0;}
 .partner .DataList li img{display:block;width: 100%;height: 100%;}
 
-
-/*创业军团列表*/
-.R-myServerList{border: 1px solid #ccc;background: #fff;margin: 20px 0px}
-.R-myServerList ul li{padding: 20px;height: 110px;border-bottom: 1px solid #ccc;}
-.R-myServerList ul li:last-child{border:0;}
-.R-myServerList ul li img{width: 110px;height: 110px;}
-
 .proRight{width: 780px;}
 .proRight a{line-height: 28px;}
 .proRight p.R-infos{line-height: 24px;margin: 8px 0 11px;overflow: hidden;}
@@ -200,7 +193,7 @@
 .api-env a {
     color: #fff;
 }
-.api-env .top-font{position: relative;padding: 0px;margin: 0px;background: initial;}
+.api-env .top-font{position: relative;padding: 0px;margin: 0px;background: none;}
 .api-env .left-font{    
     width: 800px;
     height: 405px;
@@ -223,13 +216,13 @@
     background: url("../../images/bg_pioneer_server.png") no-repeat;
 }
 .server-env .top-font {
-    background: initial;
+    background: none;
 }
-.server-env .left-font{width: 800px;padding: 20px 0 0 60px;height: 160px;box-sizing: border-box;position: relative;background: initial;}
+.server-env .left-font{width: 800px;padding: 20px 0 0 60px;height: 160px;box-sizing: border-box;position: relative;background: none;}
 .server-env .left-font p{line-height: 26px;text-indent: 2em;width: 615px;}
 .server-env .left-font a{width: 190px;height: 160px;background: url(../../images/newRequireImg01.png) no-repeat left top;display: block;position: absolute;right: 0;top: 0;color: #fff;font-size: 14px;text-align: center;line-height: 250px;}
 .server-env .right-area {
-    background: #dbf5f9;
+    background: url("../../images/pioneer_enter.png") center 40px no-repeat #dbf5f9;
     width: 185px;
     height: 240px;
     border-radius: 5px;

@@ -68,8 +68,8 @@
 .mainDatas .DataList li:nth-child(4n){margin: 0;}
 
 .R-myServerList{background: #fff;}
-.R-myServerList ul li{padding: 14px 12px;height: 110px;border-bottom: 1px solid #ccc;}
-.R-myServerList ul li:last-child{border:0;}
+.R-myServerList ul li{padding: 14px 12px;height: 110px;margin-top: 0;}
+/*.R-myServerList ul li:last-child{border:0;}*/
 .R-myServerList ul li img{width: 156px;height: 110px;}
 .myServerRight{width: 580px;}
 .myServerRight a{line-height: 28px;}

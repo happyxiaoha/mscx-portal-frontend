@@ -4,9 +4,7 @@
 var Resource = require('./resource.js');
 var template = '<div class="server-env grid1190 rightMenuWrap fl boxShadiow boxSizing common animate-content opacity0"></div>';
 
-// var cmsUrl = Resource.cmsHost + 'static_html/datainfo/serverdev/index.html';
-
-var cmsTemplate = require('html!./server.html');
+var cmsUrl = Resource.cmsHost + 'static_html/datainfo/quanguo_serverdev/index.html';
 
 require('./pioneering.css');
 
@@ -25,11 +23,9 @@ var view = Backbone.View.extend({
         this.$wrap = this.$('.rightMenuWrap');
         var me = this;
 
-        // this.$wrap.load(cmsUrl + '?time=' + +(new Date()), function() {
-        //     me.$wrap.removeClass('opacity0');
-        // });
-
-        this.$wrap.html(cmsTemplate).removeClass('opacity0');;
+        this.$wrap.load(cmsUrl + '?time=' + +(new Date()), function() {
+            me.$wrap.removeClass('opacity0');
+        });
 
         return this;
     }

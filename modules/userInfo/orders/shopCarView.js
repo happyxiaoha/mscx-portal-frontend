@@ -47,7 +47,8 @@ var shopCarView = Backbone.View.extend({
         this.model.fetch({
             data: {
                 pageSize: this.pagObj.pageSize,
-                page: this.pagObj.pageNum
+                page: this.pagObj.pageNum,
+                t: new Date().getTime()
             }
         });
         this.render();

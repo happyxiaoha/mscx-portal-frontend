@@ -71,7 +71,8 @@ var view = Backbone.View.extend({
         var $target = this.$(event.currentTarget);
         var $tr = $target.parents('tr');
         var $number = $tr.find('.number');
-        var num = $number.val();
+        var num = Math.floor($number.val());
+        $number.val(num);
         var price = $number.data('price');
         // var limit = $number.data('limit');
 

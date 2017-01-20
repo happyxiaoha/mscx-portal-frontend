@@ -114,7 +114,6 @@ var createDemandView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                me.$('#publishBtn').attr('disabled', 'disabled');
                 me.submitForm();
             }
         }
@@ -125,10 +124,12 @@ var createDemandView = Backbone.View.extend({
         var categoryName = this.$category.find('select:not(:disabled)').find('option:selected').text();
         this.$('#categoryName').val(categoryName);
 
+        this.$('#publishBtn').attr('disabled', 'disabled');
         this.$form.ajaxSubmit({
             url: this.formAction,
             success: function(res) {
                 if(res.status == 'ERROR'){
+                    me.$('#publishBtn').removeAttr('disabled');
                     layer.msg(res.message);
                 }else {
                     layer.msg((me.id ? '修改' : '创建') + '成功，请至用户中心我的需求内发布');

@@ -21,7 +21,7 @@ var navigationApiModel = Backbone.Model.extend({
 });
 
 var serListModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'list.do'
+    url: mscxPage.request.app + 'selection/list.do'
 });
 
 var apiListModel = Backbone.Model.extend({

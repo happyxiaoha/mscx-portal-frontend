@@ -129,7 +129,7 @@ var createDemandView = Backbone.View.extend({
                 },
                 uri: {
                     required: true,
-                    maxlength: 50
+                    maxlength: 255
                 },
                 description: {
                     required: true,
@@ -498,7 +498,7 @@ var createDemandView = Backbone.View.extend({
             rules: {
                 url: {
                     required: true,
-                    maxlength:50
+                    maxlength: 255
                 },
                 description: {
                     required: true,
@@ -507,7 +507,7 @@ var createDemandView = Backbone.View.extend({
             },
             messages: {
                 url: {
-                    maxlength: '服务URL最大长度50'
+                    maxlength: '服务URL最大长度255'
                 },
                 description: {
                     maxlength: '服务描述最大长度50'

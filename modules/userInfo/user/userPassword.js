@@ -59,7 +59,8 @@ var userPasswordView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                that.doSave()
+                that.$('input[type="submit"]').attr('disabled', 'disabled');
+                that.doSave();
             }
         }
     },

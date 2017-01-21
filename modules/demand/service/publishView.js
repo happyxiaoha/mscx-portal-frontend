@@ -87,7 +87,6 @@ var createDemandView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                me.$('#publishBtn').attr('disabled', 'disabled');
                 me.submitForm();
             }
         }
@@ -108,6 +107,7 @@ var createDemandView = Backbone.View.extend({
     handleSubmit: function() {
         var model = this.model.toJSON();
         if(model.status == 'OK') {
+            this.$('#publishBtn').attr('disabled', 'disabled');
             layer.msg((this.id ? '修改' : '创建') + '成功，请至用户中心我的需求内发布');
             setTimeout(function() {
                 location.href = 'userInfo.html#serversDemand';

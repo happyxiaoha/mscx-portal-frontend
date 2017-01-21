@@ -4,7 +4,7 @@
 
 var bannerTemplate = require('html!./banner.html');
 var bannerModel = Backbone.Model.extend({
-    url: 'static_html/datainfo/bannerpic/index.html?t='+new Date().getTime()
+    url: 'static_html/datainfo/quanguo_bannerpic/index.html?t='+new Date().getTime()
 });
 
 var bannerView = Backbone.View.extend({

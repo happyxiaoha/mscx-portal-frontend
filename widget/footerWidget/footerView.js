@@ -10,10 +10,10 @@ var menuList = [
         name: '首页',
         url: mscxPage.urlConfig.indexPage
     },
-    {
-        name: '数据',
-        url: mscxPage.urlConfig.sourcesPage
-    },
+    // {
+    //     name: '数据',
+    //     url: mscxPage.urlConfig.sourcesPage
+    // },
     {
         name: 'API',
         url: mscxPage.urlConfig.apiPage

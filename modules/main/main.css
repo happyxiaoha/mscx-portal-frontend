@@ -428,7 +428,7 @@
     /*border: solid 1px #0ab7ef;*/
     color: #fff;
     background: #00b7a9;
-    border: 0;
+    /*border: 0;*/
     /*-moz-box-shadow: 2px 2px 10px #0ab7ef;
     -webkit-box-shadow: 2px 2px 10px #0ab7ef;
     box-shadow: 2px 2px 10px #0ab7ef;*/
@@ -467,14 +467,14 @@
     white-space: nowrap;
     margin-bottom: 12px;
     font-size: 16px;
-    padding-left: 16px;
+    /*padding-left: 16px;*/
 }
 .buyType {
     color: #ff6600;
 }
-.DataList li .downs {
+/*.DataList li .downs {
     padding-left: 16px;
-}
+}*/
 /*.DataList li .downs span{
     padding-left: 22px;
     margin-right: 20px;

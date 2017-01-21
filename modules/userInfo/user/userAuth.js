@@ -344,6 +344,10 @@ var userAuthenticationView = Backbone.View.extend({
                     res = JSON.parse(res)
                 }
                 if(res.status == 'ERROR'){
+                    // 如果上传报错，清空input file，为了下次触发change
+                    var file = $formArea.find(".upload-file");
+                    file.after(file.clone().val(""));
+                    file.remove();
                     layer.alert(res.message,{icon: 2});
                     return;
                 }

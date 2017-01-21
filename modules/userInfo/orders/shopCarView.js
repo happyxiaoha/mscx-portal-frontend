@@ -129,7 +129,7 @@ var shopCarView = Backbone.View.extend({
                     this.checked = true;
                 }
             });
-            $('.toPay').removeClass('disabled');
+            $('.toOrderPay').removeClass('disabled');
         }
         else {
             $('.is-select-shop').each(function () {
@@ -142,7 +142,7 @@ var shopCarView = Backbone.View.extend({
                     this.checked = false;
                 }
             });
-            $('.toPay').addClass('disabled');
+            $('.toOrderPay').addClass('disabled');
         }
         this.renderTotal();
         e.stopPropagation();
@@ -179,10 +179,10 @@ var shopCarView = Backbone.View.extend({
             }
         });
         if(iCount == 0){
-            $('.toPay').addClass('disabled');
+            $('.toOrderPay').addClass('disabled');
         }
         else {
-            $('.toPay').removeClass('disabled');
+            $('.toOrderPay').removeClass('disabled');
         }
         $('.total-number').html(iCount);
         $('.total-price').html('￥'+totalCount);

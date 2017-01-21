@@ -25,10 +25,6 @@ var menuList = [
     {
         name: '需求定制',
         url: mscxPage.urlConfig.demandPage
-    },
-    {
-        name: '创业园地',
-        url: mscxPage.urlConfig.pioneeringPage
     }
 ];
 

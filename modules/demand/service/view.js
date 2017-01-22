@@ -8,7 +8,7 @@ var listTemplate = require('html!./listTemplate.html');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'rightMenuWrap grid1190 fl boxShadiow boxSizing bgWhite common',
+    className: 'grid1190 fl common',
     wrapTemplate: _.template(wrapTemplate),
     listTemplate: _.template(listTemplate, {variable: 'data'}),
     events: {

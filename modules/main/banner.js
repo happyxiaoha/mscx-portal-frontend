@@ -32,26 +32,29 @@ var bannerView = Backbone.View.extend({
         var galleryTop = new Swiper('.swiper-container', {
             /*        nextButton: '.swiper-button-next',
              prevButton: '.swiper-button-prev',*/
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
             spaceBetween: 10,
+            // autoplay:3000,
             loop:true,
-            direction: 'vertical',
+            direction: 'horizontal',
             loopedSlides:8
         });
-        if(size>4){
-            size = 4;
-        }
-        var galleryThumbs = new Swiper('.swiper-right', {
-            spaceBetween: 10,
-            slidesPerView: size,
-            touchRatio: 0.2,
-            loop:true,
-            autoplay:3000,
-            direction: 'vertical',
-            loopedSlides: size *2,
-            slideToClickedSlide: true
-        });
-        galleryTop.params.control = galleryThumbs;
-        galleryThumbs.params.control = galleryTop;
+        // if(size>4){
+        //     size = 4;
+        // }
+        // var galleryThumbs = new Swiper('.swiper-right', {
+        //     spaceBetween: 10,
+        //     slidesPerView: size,
+        //     touchRatio: 0.2,
+        //     loop:true,
+        //     autoplay:3000,
+        //     direction: 'vertical',
+        //     loopedSlides: size *2,
+        //     slideToClickedSlide: true
+        // });
+        // galleryTop.params.control = galleryThumbs;
+        // galleryThumbs.params.control = galleryTop;
     }
 });
 

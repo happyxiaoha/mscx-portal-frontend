@@ -24,9 +24,9 @@
 
 
 /* API开发需求 */
-.requireHeader{padding: 17px 26px;margin-bottom: 24px;font-size: 16px;}
-.requireHeader p{color: #333;background: url(../../images/img14.png) no-repeat left center;line-height: 46px;padding-left: 50px;}
-.requireHeader button{padding:0 40px;height: 46px;border: 0;outline: none;color: #fff;font-size: 16px;}
+.requireHeader{padding: 17px 26px;margin-bottom: 24px;font-size: 16px;color: #fff;background: #474d51;height: 78px;line-height: 78px;}
+.requireHeader p{color: #fff;background: url(../../images/img14.png) no-repeat left center;padding-left: 80px;}
+.requireHeader button{padding:0 40px;height: 46px;border: 0;outline: none;color: #fff;font-size: 16px;margin-top: 16px;}
 
 /*选择日期*/
 .commonDataSel .commonData input{cursor: pointer; outline: none;margin: 0;height:26px;border:1px solid #ccc;box-shadow: none;display: inline-block;padding: 0 10px;vertical-align: 8px;width: 250px;border-radius: 0;vertical-align: -1px;box-sizing:border-box;}

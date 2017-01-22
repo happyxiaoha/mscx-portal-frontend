@@ -150,6 +150,10 @@
     -webkit-align-items: center;
     align-items: center;
 }
+.swiper-pagination-bullet {
+    width: 40px !important;
+    border-radius: 0 !important;
+}
 
 
 .cor0092cd{color: #0092cd !important;}

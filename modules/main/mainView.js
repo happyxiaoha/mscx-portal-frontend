@@ -109,12 +109,12 @@ var mainView = Backbone.View.extend({
             })
             .delegate('.topTit span','mouseenter',function(){
                 var index = $(this).index();
-                if(index == 0){
-                    $('.topTit').css('background','#fff')
-                }
-                else {
-                    $('.topTit').css('background','#eff3f5')
-                }
+                // if(index == 0){
+                //     $('.topTit').css('background','#fff')
+                // }
+                // else {
+                //     $('.topTit').css('background','#eff3f5')
+                // }
                 $(this).addClass('active').siblings('span').removeClass('active');
                 $('.downCons').find('.titCons').eq(index).removeClass('hide').siblings('.titCons').addClass('hide');
             });

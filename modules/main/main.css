@@ -4,24 +4,26 @@
 
 /*侧导航*/
 .container{width: 190px;z-index: 2;}
-.container .topTit{height: 41px;text-align: center;border-bottom: 3px solid #fff;}
+.container .topTit{height: 41px;text-align: center;border-bottom: 3px solid #fff;background: #373d41;}
 .container .topTit span{
     display: block;
     float: left;
     width: 50%;
     font-size: 16px;
     position: relative;
-    color: #6e7782;
+    color: #858585;
     line-height: 41px;
     cursor: default;
 }
-
-.container .topTit .topTitLast.active{
+.container .topTit .active {
+    color: #00c4c3;
+}
+/*.container .topTit .topTitLast.active{
     background: url("../../images/newicon/bg_right.png") no-repeat;
-}
-.container .topTit .topTitLast {
+}*/
+/*.container .topTit .topTitLast {
     background: url("../../images/newicon/bg_left.png") no-repeat;
-}
+}*/
 
 .downCons{
     width: 100%;

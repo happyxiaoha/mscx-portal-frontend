@@ -59,15 +59,16 @@ var userPasswordView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                that.$('input[type="submit"]').attr('disabled', 'disabled');
                 that.doSave();
             }
         }
     },
     doSave: function () {
+        var that = this;
         this.model.save({},{
             type: 'POST',
             success: function () {
+                that.$('input[type="submit"]').attr('disabled', 'disabled');
                 layer.msg('修改密码成功!');
                 setTimeout(function () {
                     location.href = '#info';

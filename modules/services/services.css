@@ -39,15 +39,15 @@
 .slideBanner .mleftCons .serverInfos .appInfoCons .top h2{max-width: 350px;font-size: 18px;margin-right: 16px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;margin-right: 5px;margin-top: 2px;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;max-width: 600px;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .left p span a{
-    color: #069cd9;
-    text-decoration: underline;
+.slideBanner .mleftCons .serverInfos .appInfoCons .left p span .url-text{
+    /*color: #069cd9;*/
+    /*text-decoration: underline;*/
     max-width: 360px;
     word-wrap: normal;
     text-overflow: ellipsis;
-    overflow: hidden;
+    /*overflow: hidden;*/
     white-space: nowrap;
-    display: inline-block;}
+    /*display: inline-block;*/}
 
 .slideBanner .mleftCons .serverInfos .appInfoCons em{color: #444;word-break: break-all;}
 .slideBanner .mleftCons .serverInfos .appInfoCons .left{padding-right: 34px;}

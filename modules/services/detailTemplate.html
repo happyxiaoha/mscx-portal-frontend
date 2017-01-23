@@ -30,12 +30,14 @@
                                 </p>
                                 <p class="mb15">
                                     <span class="mr10">接入URL：
-                                        <% if(data.uri.indexOf('http') < 0){ %>
+                                        <!-- <% if(data.uri.indexOf('http') < 0){ %>
                                         <a href="http://<%- data.uri %>" target="_blank">
                                             <% }else{ %>
                                             <a href="<%- data.uri %>" target="_blank">
                                                 <% }; %>
-                                            <%- data.uri %></a></span>
+                                            <%- data.uri %></a> -->
+                                        <span class="url-text"><%- data.uri %></span>
+                                    </span>
                                     <span class="mr25">更新时间：<em><%- (new Date(data.updatedTime).toISOString()).slice(0,10) %></em></span>
                                 </p>
                             </div>

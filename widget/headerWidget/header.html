@@ -1,8 +1,19 @@
 <nav class="top-nav">
     <div class="grid1190 top-wrap">
-        <div class="fl">
-            <span class="icon-nation"></span>
-            <span class="corMain">全国</span>
+        <span class="fl icon-nation"></span>
+        <div class="fl area-picker pr">
+            <span class="corMain down">
+                <span><%= data && data.currentCity && data.currentCity.name || '全国' %></span>
+            </span>
+            <div id="city-station">
+                <ul>
+                    <% data && data.cityStations.forEach(function(item) { %>
+                    <li class="<%= data.currentCity && data.currentCity.code == item.code ? 'selected' : '' %>">
+                        <a data-code="<%= item.code %>" data-url="<%= item.url %>" href="javascript:;"><%= item.name %></a>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
         </div>
         <div class="fr pr">
             <div class="info fl">

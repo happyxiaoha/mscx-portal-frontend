@@ -2,6 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 var template = require('html!./header.html');
+var cityMap = require('./cityStation.json');
 require('./header.css');
 var menuList = [
     {
@@ -43,6 +44,10 @@ var developCheck = Backbone.Model.extend({
     url: mscxPage.host+'/developer/portal.do'
 });
 
+var switchCity = Backbone.Model.extend({
+    url: mscxPage.host+'/home/switchCity.do?'
+});
+
 var headerView = Backbone.View.extend({
     el: mscxPage.domEl.headerEl,
     template: _.template(template, {variable: 'data'}),
@@ -51,20 +56,28 @@ var headerView = Backbone.View.extend({
         'click #exit': 'logout',
         'click .search-img': 'search',
         'keydown #inputs': 'keyDownSearch',
-        'click #developLink': 'jumpDevelop'
+        'click #developLink': 'jumpDevelop',
+        'click #city-station a': 'switchCity'
     },
     initialize: function() {
         this.model = new getUserMsg();
         this.developCheck = new developCheck();
+        this.switchCity = new switchCity();
         this.model.fetch({
             data: {
                 t: new Date().getTime()
             }
         });
         this.listenTo(this.model, 'sync', this.render);
+        this.listenTo(this.switchCity, 'sync', this.handleSwitchCity);
+        
         this.$el.html(this.template({
             id: this.id,
-            menuList: menuList
+            menuList: menuList,
+            cityStations: cityMap.cities,
+            currentCity: _.find(cityMap.cities, function(item){
+                return item.url.indexOf(location.host) > -1;
+            })
         }));
     },
     addDidRender: function(callback) {
@@ -91,7 +104,11 @@ var headerView = Backbone.View.extend({
             id: this.id,
             menuList: menuList,
             username: nJson.result && (nJson.result.name || nJson.result.account),
-            isRealName: nJson.result && (nJson.result.userType != 'REGISTER')
+            isRealName: nJson.result && (nJson.result.userType != 'REGISTER'),
+            cityStations: cityMap.cities,
+            currentCity: _.find(cityMap.cities, function(item){
+                return item.url.indexOf(location.host) > -1;
+            })
         }));
         var _c;
         $("#personReal").hover(function(){
@@ -109,6 +126,16 @@ var headerView = Backbone.View.extend({
             $(".shareBox").hide();
             $('#personReal').removeClass('active');
         });
+
+        //选择城市
+        this.$('.area-picker').hover(function() {
+            var $this = $(this);
+            $this.addClass('active');
+
+        }, function() {
+            var $this = $(this);
+            $this.removeClass('active');
+        })
     },
     search: function () {
         var $inputs = $('#inputs'),
@@ -144,6 +171,26 @@ var headerView = Backbone.View.extend({
                 }
             }
         });
+    },
+    switchCity: function(event) {
+        var $target = this.$(event.currentTarget);
+        var areaCode = $target.data('code');
+        this.swicthUrl = $target.data('url');
+
+        this.switchCity.fetch({
+            data: {
+                areaCode: areaCode
+            }
+        })
+    },
+    handleSwitchCity: function() {
+        var model = this.switchCity.toJSON();
+
+        if(model.status == 'OK') {
+            location.href = this.swicthUrl;
+        }else {
+            layer.msg('切换城市失败，请稍后再试');
+        }
     }
 });
 

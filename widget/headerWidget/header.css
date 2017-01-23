@@ -126,8 +126,57 @@ a{
 .top-nav .icon-nation {
     margin: 0 5px 0 0;
     width: 22px;
-    height: 19px;
-    background: url("../../images/newicon/ic_nation.jpg") center no-repeat;
+    height: 50px;
+    background: url("../../images/newicon/ic_nation.jpg") center center no-repeat;
+}
+.top-nav .area-picker .down {
+    display: block;
+    height: 100%;
+    width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 20px;
+    padding-left: 15px;
+    text-align: center;
+    background: url("../../images/newicon/ic_down.png") right center no-repeat;
+}
+.top-nav .area-picker.active span.down{background: url("../../images/newicon/ic_up.png") right center no-repeat;}
+.top-nav .area-picker #city-station {
+    position: absolute;
+    border: solid 1px #eee;
+    background: #fff;
+    /*opacity: 0;*/
+    display: none;
+    top: 50px;
+    left: 0;
+    z-index: 1001;
+    width: 300px;
+    padding: 0 10px;
+    /*-webkit-transition: opacity .3s ease-in-out;
+    -moz-transition: opacity .3s ease-in-out;
+    -o-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;*/
+}
+.top-nav .area-picker.active #city-station {
+    /*opacity: 1;*/
+    display: block;
+}
+.top-nav .area-picker #city-station li {
+    width: 50px;
+    text-align: center;
+    float: left;
+    padding: 10px 10px;
+}
+.top-nav .area-picker #city-station li a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+}
+.top-nav .area-picker #city-station li a:hover, .top-nav .area-picker #city-station li.selected a {
+    background: #00b7a9;
+    color: #fff;
+    border-radius: 10px;
 }
 .top-nav .top-wrap {
     height: 50px;

@@ -1,0 +1,41 @@
+{
+    "cities": [
+        {
+            "code": "000000",
+            "name": "全国",
+            "url": "http://www.citysdk.cn/"
+        },{
+            "code": "110000",
+            "name": "北京",
+            "url": "http://bj.citysdk.cn/"
+        },{
+            "code": "440100",
+            "name": "广州",
+            "url": "http://gz.citysdk.cn/"
+        },{
+            "code": "320300",
+            "name": "徐州",
+            "url": "http://xz.citysdk.cn/"
+        },{
+            "code": "320582",
+            "name": "张家港",
+            "url": "http://zjg.citysdk.cn/"
+        },{
+            "code": "320600",
+            "name": "南通",
+            "url": "http://nt.citysdk.cn/"
+        },{
+            "code": "340500",
+            "name": "马鞍山",
+            "url": "http://mas.citysdk.cn/"
+        },{
+            "code": "520100",
+            "name": "贵阳",
+            "url": "http://gy.citysdk.cn/"
+        },{
+            "code": "810000",
+            "name": "香港",
+            "url": "http://hk.citysdk.cn/"
+        }
+    ]
+}

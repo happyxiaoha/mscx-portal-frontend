@@ -34,11 +34,11 @@
 .wpa-container {
     cursor: pointer;
     display: inline-block;
-    width: 68px;
-    height: 68px;
+    width: 63px;
+    height: 63px;
     border-radius: 2px;
     margin-top: 10px;
-    border: 1px solid #dadee7;
+    /*border: 1px solid #dadee7;*/
     position: relative;
     font-family: "microsoft yahei";
     font-size: 12px;
@@ -48,9 +48,9 @@
 .first-icon .wpa-container{
     margin-top: 0;
 }
-.theme-1 {
-    background: #fff;
-}
+/*.theme-1 {
+    background: #00b7a9;
+}*/
 
 .er-code {
     height: 150px;
@@ -90,9 +90,9 @@
 }
 .float-div a span.icon-img {
     display: inline-block;
-    width: 26px;
-    height: 26px;
+    width: 63px;
+    height: 63px;
     position: absolute;
-    top: 13px;
-    left: 22px;
+    top: 0;
+    left: 0;
 }

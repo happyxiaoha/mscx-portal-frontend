@@ -3,9 +3,9 @@
  */
 
 var bannerTemplate = require('html!./banner.html');
-var bannerModel = Backbone.Model.extend({
-    url: 'static_html/datainfo/quanguo_bannerpic/index.html?t='+new Date().getTime()
-});
+// var bannerModel = Backbone.Model.extend({
+//     url: 'static_html/datainfo/' + mscxPage.city.abbr + '_bannerpic/index.html?t='+new Date().getTime()
+// });
 
 var bannerView = Backbone.View.extend({
     template: _.template(bannerTemplate, {variable: 'data'}),
@@ -14,7 +14,9 @@ var bannerView = Backbone.View.extend({
     },
     initialize: function() {
         this.$el.toggleClass('loading');
-        this.model = new bannerModel();
+        this.model = new (Backbone.Model.extend({
+            url: 'static_html/datainfo/' + mscxPage.city.abbr + '_bannerpic/index.html?t='+new Date().getTime()
+        }));
         this.model.fetch({
             dataType: 'json'
         });

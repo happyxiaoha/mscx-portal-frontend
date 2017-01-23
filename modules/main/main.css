@@ -43,7 +43,13 @@
     opacity: 1;
 }
 
-.downCons ul li .leftTit{height: 30px;line-height: 30px;color: #6e7782;font-size: 14px;padding-left: 30px;box-sizing: border-box;position: relative;cursor: pointer;}
+.downCons ul li .leftTit{
+    height: 30px;line-height: 30px;color: #6e7782;font-size: 14px;padding-left: 30px;box-sizing: border-box;position: relative;cursor: pointer;
+    background: url(../../images/newicon/ic_right.png) no-repeat 160px;
+}
+.downCons ul li .leftTit.moreThanTen {
+    background: none;
+}
 
 .swiper-slide img{display: block;height: 100%;width: 100%;}
 .swiper-pagination-switch{
@@ -56,11 +62,13 @@
     background: url(../../images/newdot0.png) no-repeat center center;
 }
 .downCons ul li .leftTit i img{vertical-align: -6px;}
-.downCons ul li .leftTit.activeHover{background: #f4f7f8;}
-.downCons ul li .leftTit.activeHover a{color: #4786f3;}
+.downCons ul li .leftTit.activeHover{
+    background: url(../../images/newicon/ic_right_selected.png) no-repeat 160px #22c6c1;
+}
+.downCons ul li .leftTit.activeHover a{color: #fff;}
 .downCons ul li .rightTips{
     width: 210px;
-    background: #eff3f5;
+    background: #22c6c1;
     position: absolute;
     left: 190px;
     height: 310px;
@@ -70,7 +78,7 @@
     display: none;
 }
 .downCons ul li .rightTips a{
-    color: #6e7782;
+    color: #fff;
     display: block;
     font-size: 12px;
     line-height: 20px;
@@ -81,7 +89,7 @@
     width: 100%;
 }
 .downCons ul li .rightTips a:hover{
-    color: #0092cd;
+    color: #333;
 }
 
 
@@ -172,7 +180,7 @@
 
 .layer .tabChange ul li .iconforapi{
     position: relative;
-    height: 192px;
+    height: 110px;
     width: 380px;
     background: #00b7a9;
     -moz-border-radius: 10px;
@@ -197,7 +205,7 @@
     color: #fff;
     padding: 2px ;
     line-height: 48px;
-    font-size: 30px;
+    font-size: 24px;
     height: 48px;
 }
 .layerCons .tit{
@@ -230,8 +238,8 @@
 }
 .apihref p{
     position: absolute;
-    text-align: center;
-    top: 72px;
+    top: 55px !important;
+    left: 170px !important;
 }
 
 .inlineblock{
@@ -251,7 +259,7 @@
     margin-left: 0;
 }
 .layer .tabChange ul li p{
-    width: 100%;
+    /*width: 100%;*/
     position: absolute;
     bottom: 30px;
     text-align: center;
@@ -549,7 +557,7 @@
     opacity: 1;
 }
 .tabChange ul{
-    height: 203px;
+    height: 160px;
 }
 
 

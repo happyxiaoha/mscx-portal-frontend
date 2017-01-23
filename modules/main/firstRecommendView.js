@@ -22,9 +22,9 @@ var firstRecommendView = Backbone.View.extend({
         this.$el.toggleClass('loading');
         var nJson =  this.model.toJSON();
         this.$el.html(this.template(nJson.result));
-        if(!nJson.result || nJson.result.length == 0){
-            this.$el.closest('.layer').remove();
-        }
+        // if(!nJson.result || nJson.result.length == 0){
+        //     this.$el.closest('.layer').remove();
+        // }
     }
 });
 

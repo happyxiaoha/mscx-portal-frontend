@@ -63,21 +63,35 @@ var headerView = Backbone.View.extend({
         this.model = new getUserMsg();
         this.developCheck = new developCheck();
         this.switchCity = new switchCity();
+        this.currentCity = _.find(cityMap.cities, function(item){
+            return item.url.indexOf(location.host) > -1;
+        }) || cityMap.cities[0];
+
+        _.extend(mscxPage.city, this.currentCity)
+        
+        // 先获取城市areacode
+        this.switchCity.fetch({
+            data: {
+                areaCode: this.currentCity.code,
+                t: new Date().getTime()
+            },
+            async: false
+            // silent: true
+        })
+        this.listenTo(this.model, 'sync', this.render);
+        this.listenTo(this.switchCity, 'sync', this.handleSwitchCity);
+
         this.model.fetch({
             data: {
                 t: new Date().getTime()
             }
         });
-        this.listenTo(this.model, 'sync', this.render);
-        this.listenTo(this.switchCity, 'sync', this.handleSwitchCity);
         
         this.$el.html(this.template({
             id: this.id,
             menuList: menuList,
             cityStations: cityMap.cities,
-            currentCity: _.find(cityMap.cities, function(item){
-                return item.url.indexOf(location.host) > -1;
-            })
+            currentCity: this.currentCity
         }));
     },
     addDidRender: function(callback) {
@@ -185,7 +199,7 @@ var headerView = Backbone.View.extend({
     },
     handleSwitchCity: function() {
         var model = this.switchCity.toJSON();
-
+        debugger;
         if(model.status == 'OK') {
             location.href = this.swicthUrl;
         }else {

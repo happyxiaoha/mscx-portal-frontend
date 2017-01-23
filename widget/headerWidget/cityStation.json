@@ -3,38 +3,47 @@
         {
             "code": "000000",
             "name": "全国",
+            "abbr": "quanguo",
             "url": "http://www.citysdk.cn/"
         },{
             "code": "110000",
             "name": "北京",
+            "abbr": "beijing",
             "url": "http://bj.citysdk.cn/"
         },{
             "code": "440100",
             "name": "广州",
+            "abbr": "guangzhou",
             "url": "http://gz.citysdk.cn/"
         },{
             "code": "320300",
             "name": "徐州",
+            "abbr": "xuzhou",
             "url": "http://xz.citysdk.cn/"
         },{
             "code": "320582",
             "name": "张家港",
+            "abbr": "zhangjiagang",
             "url": "http://zjg.citysdk.cn/"
         },{
             "code": "320600",
             "name": "南通",
+            "abbr": "nantong",
             "url": "http://nt.citysdk.cn/"
         },{
             "code": "340500",
             "name": "马鞍山",
+            "abbr": "maanshan",
             "url": "http://mas.citysdk.cn/"
         },{
             "code": "520100",
             "name": "贵阳",
+            "abbr": "guiyang",
             "url": "http://gy.citysdk.cn/"
         },{
             "code": "810000",
             "name": "香港",
+            "abbr": "xianggang",
             "url": "http://hk.citysdk.cn/"
         }
     ]

@@ -1,620 +1,1042 @@
-<html>
-
-<head>
-<meta http-equiv=Content-Type content="text/html; charset=utf-8">
-<meta name=Generator content="Microsoft Word 15 (filtered)">
-	<link href="/favicon.ico" rel="shortcut icon">
-	<title>Api使用说明</title>
-<style>
-<!--
- /* Font Definitions */
-body{
-	margin: 0;
-	padding: 0;
-	background: #f7f7f7;
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv=Content-Type  content="text/html; charset=utf-8" ><meta name=ProgId  content=Word.Document ><meta name=Generator  content="Microsoft Word 14" ><meta name=Originator  content="Microsoft Word 14" ><title></title><!--[if gte mso 9]><xml><w:WordDocument><w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel><w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery><w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery><w:DocumentKind>DocumentNotSpecified</w:DocumentKind><w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing><w:PunctuationKerning></w:PunctuationKerning><w:View>Web</w:View><w:Compatibility><w:DontGrowAutofit/><w:BalanceSingleByteDoubleByteWidth/><w:DoNotExpandShiftReturn/><w:UseFELayout/></w:Compatibility><w:Zoom>0</w:Zoom></w:WordDocument></xml><![endif]--><!--[if gte mso 9]><xml><w:LatentStyles DefLockedState="false"  DefUnhideWhenUsed="true"  DefSemiHidden="true"  DefQFormat="false"  DefPriority="99"  LatentStyleCount="260" >
+<w:LsdException Locked="false"  Priority="0"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Normal" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="heading 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  QFormat="true"  Name="heading 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  QFormat="true"  Name="heading 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  QFormat="true"  Name="heading 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  QFormat="true"  Name="heading 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  QFormat="true"  Name="heading 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  QFormat="true"  Name="heading 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  QFormat="true"  Name="heading 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="9"  SemiHidden="false"  QFormat="true"  Name="heading 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  Name="toc 9" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Normal Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="footnote text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="annotation text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="header" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="footer" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="index heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="35"  SemiHidden="false"  QFormat="true"  Name="caption" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="table of figures" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="envelope address" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="envelope return" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="footnote reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="annotation reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="line number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="page number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="endnote reference" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="endnote text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="table of authorities" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="macro" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="toa heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Bullet 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Number 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="10"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Title" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Closing" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Signature" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="1"  SemiHidden="false"  Name="Default Paragraph Font" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="List Continue 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Message Header" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="11"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Subtitle" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Salutation" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Date" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text First Indent" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text First Indent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Note Heading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text Indent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Body Text Indent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Block Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  QFormat="true"  Name="Hyperlink" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="FollowedHyperlink" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="22"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Strong" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="20"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Emphasis" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Document Map" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Plain Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="E-mail Signature" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Normal (Web)" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Acronym" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Address" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Cite" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Code" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Definition" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Keyboard" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Preformatted" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Sample" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Typewriter" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="HTML Variable" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Normal Table" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="annotation subject" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="No List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Simple 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Simple 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Simple 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Classic 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Classic 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Classic 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Classic 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Colorful 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Colorful 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Colorful 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Columns 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Grid 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 7" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table List 8" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table 3D effects 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table 3D effects 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table 3D effects 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Contemporary" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Elegant" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Professional" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Subtle 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Subtle 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Web 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Web 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Web 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Balloon Text" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="39"  SemiHidden="false"  UnhideWhenUsed="false"  QFormat="true"  Name="Table Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="99"  SemiHidden="false"  Name="Table Theme" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 1" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 2" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 3" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 4" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 5" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="60"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Shading Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="61"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="62"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Light Grid Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="63"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="64"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Shading 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="65"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="66"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium List 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="67"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 1 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="68"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 2 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="69"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Medium Grid 3 Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="70"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Dark List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="71"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Shading Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="72"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful List Accent 6" ></w:LsdException>
+<w:LsdException Locked="false"  Priority="73"  SemiHidden="false"  UnhideWhenUsed="false"  Name="Colorful Grid Accent 6" ></w:LsdException>
+</w:LatentStyles></xml><![endif]--><style>
+@font-face{
+font-family:"Times New Roman";
 }
- @font-face
-	{font-family:Helvetica;
-	panose-1:2 11 6 4 2 2 2 2 2 4;}
-@font-face
-	{font-family:Wingdings;
-	panose-1:5 0 0 0 0 0 0 0 0 0;}
-@font-face
-	{font-family:微软雅黑;
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:"Calibri Light";
-	panose-1:2 15 3 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:微软雅黑;
-	panose-1:2 11 5 3 2 2 4 2 2 4;}
-@font-face
-	{font-family:"ヒラギノ角ゴ Pro W3";}
-@font-face
-	{font-family:"\@微软雅黑";
-	panose-1:2 1 6 0 3 1 1 1 1 1;}
-@font-face
-	{font-family:"\@ヒラギノ角ゴ Pro W3";}
-@font-face
-	{font-family:"\@微软雅黑";
-	panose-1:2 11 5 3 2 2 4 2 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	font-size:10.5pt;
-	font-family:"Calibri",sans-serif;}
-h2
-	{mso-style-link:"标题 2 Char";
-	margin-top:13.0pt;
-	margin-right:0cm;
-	margin-bottom:13.0pt;
-	margin-left:0cm;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	line-height:173%;
-	page-break-after:avoid;
-	font-size:16.0pt;
-	font-family:"Calibri Light",sans-serif;}
-h3
-	{mso-style-link:"标题 3 Char";
-	margin-top:13.0pt;
-	margin-right:0cm;
-	margin-bottom:13.0pt;
-	margin-left:0cm;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	line-height:173%;
-	page-break-after:avoid;
-	font-size:16.0pt;
-	font-family:"Calibri",sans-serif;}
-p.MsoHeader, li.MsoHeader, div.MsoHeader
-	{mso-style-link:"页眉 Char";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	text-align:center;
-	layout-grid-mode:char;
-	border:none;
-	padding:0cm;
-	font-size:9.0pt;
-	font-family:"Calibri",sans-serif;}
-p.MsoFooter, li.MsoFooter, div.MsoFooter
-	{mso-style-link:"页脚 Char";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	layout-grid-mode:char;
-	font-size:9.0pt;
-	font-family:"Calibri",sans-serif;}
-p.MsoTitle, li.MsoTitle, div.MsoTitle
-	{mso-style-link:"标题 Char";
-	margin-top:12.0pt;
-	margin-right:0cm;
-	margin-bottom:3.0pt;
-	margin-left:0cm;
-	text-align:center;
-	font-size:16.0pt;
-	font-family:"Calibri Light",sans-serif;
-	font-weight:bold;}
-a:link, span.MsoHyperlink
-	{color:#0563C1;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{color:#954F72;
-	text-decoration:underline;}
-p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	text-align:justify;
-	text-justify:inter-ideograph;
-	text-indent:21.0pt;
-	font-size:10.5pt;
-	font-family:"Calibri",sans-serif;}
-span.Char
-	{mso-style-name:"页眉 Char";
-	mso-style-link:页眉;}
-span.Char0
-	{mso-style-name:"页脚 Char";
-	mso-style-link:页脚;}
-span.Char1
-	{mso-style-name:"标题 Char";
-	mso-style-link:标题;
-	font-family:"Calibri Light",sans-serif;
-	font-weight:bold;}
-span.2Char
-	{mso-style-name:"标题 2 Char";
-	mso-style-link:"标题 2";
-	font-family:"Calibri Light",sans-serif;
-	font-weight:bold;}
-span.3Char
-	{mso-style-name:"标题 3 Char";
-	mso-style-link:"标题 3";
-	font-weight:bold;}
-p.1, li.1, div.1
-	{mso-style-name:正文1;
-	margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:12.0pt;
-	font-family:"Helvetica",sans-serif;
-	color:black;}
-.MsoChpDefault
-	{font-family:"Calibri",sans-serif;}
- /* Page Definitions */
- @page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:72.0pt 90.0pt 72.0pt 90.0pt;
-	layout-grid:15.6pt;}
-div.WordSection1
-	{page:WordSection1;}
- /* List Definitions */
- ol
-	{margin-bottom:0cm;}
-ul
-	{margin-bottom:0cm;}
--->
-</style>
 
-</head>
+@font-face{
+font-family:"宋体";
+}
 
-<body lang=ZH-CN link="#0563C1" vlink="#954F72" style='text-justify-trim:punctuation'>
+@font-face{
+font-family:"Calibri";
+}
 
-<div style="width: 1000px;padding: 20px;margin: 0 auto;box-shadow: #eee;background: #fff;">
+@font-face{
+font-family:"微软雅黑";
+}
 
-<div class=WordSection1 style='layout-grid:15.6pt'>
+@font-face{
+font-family:"Wingdings";
+}
 
-<p class=MsoTitle style='text-align:center;line-height:150%'><span
-lang=EN-US>Api使用帮助</span></p>
+@font-face{
+font-family:"Calibri Light";
+}
 
-<p class=MsoTitle align=left style='margin-left:21.0pt;text-align:left;
-text-indent:-21.0pt;line-height:150%'><span lang=EN-US>一、<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
-lang=EN-US>API</span><span style='font-family:微软雅黑'>申请</span></p>
+@font-face{
+font-family:"Helvetica";
+}
 
-<p class=MsoNormal style='line-height:150%'><span lang=EN-US>&nbsp;</span></p>
+@font-face{
+font-family:"ヒラギノ角ゴ Pro W3";
+}
 
-<p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
-line-height:150%;font-family:微软雅黑'>简介：<span lang=EN-US>API</span>申请指的是平台<span
-lang=EN-US>API</span>资源的申请及支付过程</span></p>
+@font-face{
+font-family:"Courier New";
+}
 
-<p class=MsoNormal style='line-height:150%'><span lang=EN-US style='font-size:
-12.0pt;line-height:150%;font-family:微软雅黑'>&nbsp;</span></p>
+@list l0:level1{
+mso-level-number-format:chinese-counting-thousand;
+mso-level-suffix:space;
+mso-level-text:"第%1章";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:70.9000pt;text-indent:0.0000pt;text-indent:0.0000pt;
+font-family:宋体;}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>(一)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span><span style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>有固定申请次数的情况</span></p>
+@list l0:level2{
+mso-level-number-format:decimal;
+mso-level-legal-format:yes;
+mso-level-suffix:space;
+mso-level-text:"%1.%2";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:0.0000pt;text-indent:0.0000pt;margin-left:0.0000pt;
+text-indent:0.0000pt;
+font-family:宋体;}
 
-<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>点击详细页面申请功能</span></p>
+@list l0:level3{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%3.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:18.0000pt;text-indent:-18.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:0cm;line-height:
-150%'><span lang=EN-US><img width=554 height=258 id="图片 1"
-src="images/apihelp/image001.jpg"></span></p>
+@list l0:level4{
+mso-level-number-format:decimal;
+mso-level-legal-format:yes;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2.%3.%4";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:56.7500pt;text-indent:0.0000pt;text-indent:0.0000pt;
+font-family:宋体;mso-ascii-font-family:'Times New Roman';mso-hansi-font-family:'Times New Roman';mso-bidi-font-family:'Times New Roman';letter-spacing:0.0000pt;font-weight:normal;text-transform:none;font-style:normal;font-variant:normal;}
 
-<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>收费套餐：选择套餐、输入申请套餐数，接受服务协议</span></p>
+@list l0:level5{
+mso-level-number-format:decimal;
+mso-level-legal-format:yes;
+mso-level-suffix:space;
+mso-level-text:"%1.%2.%3.%4.%5";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:0.0000pt;text-indent:0.0000pt;margin-left:0.0000pt;
+text-indent:0.0000pt;
+font-family:宋体;mso-ascii-font-family:'Times New Roman';mso-hansi-font-family:'Times New Roman';mso-bidi-font-family:'Times New Roman';letter-spacing:0.0000pt;font-weight:normal;text-transform:none;font-style:normal;font-variant:normal;}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:0cm;line-height:
-150%'><span lang=EN-US><img width=553 height=285 id="图片 2"
-src="images/apihelp/image002.jpg"></span></p>
+@list l0:level6{
+mso-level-number-format:decimal;
+mso-level-legal-format:yes;
+mso-level-suffix:space;
+mso-level-text:"%1.%2.%3.%4.%5.%6";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:0.0000pt;text-indent:0.0000pt;margin-left:0.0000pt;
+text-indent:0.0000pt;
+font-family:宋体;}
 
-<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>免费套餐：接受服务协议</span></p>
+@list l0:level7{
+mso-level-number-format:decimal;
+mso-level-legal-format:yes;
+mso-level-suffix:space;
+mso-level-text:"%1.%2.%3.%4.%5.%6.%7";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:0.0000pt;text-indent:0.0000pt;margin-left:0.0000pt;
+text-indent:0.0000pt;
+font-family:宋体;}
 
-<p class=MsoNormal style='margin-left:21.0pt;line-height:150%'><span
-lang=EN-US><img width=554 height=288 id="图片 3" src="images/apihelp/image003.jpg"></span></p>
+@list l0:level8{
+mso-level-number-format:decimal;
+mso-level-legal-format:yes;
+mso-level-suffix:space;
+mso-level-text:"%1.%2.%3.%4.%5.%6.%7.%8";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:0.0000pt;text-indent:0.0000pt;margin-left:0.0000pt;
+text-indent:0.0000pt;
+font-family:宋体;}
 
-<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>收费套餐：如果只有一项资源可以点击立即支付完成申请</span></p>
+@list l0:level9{
+mso-level-number-format:none;
+mso-level-suffix:none;
+}
 
-<p class=MsoNormal style='margin-left:21.0pt;line-height:150%'><span
-lang=EN-US><img width=554 height=266 id="图片 4" src="images/apihelp/image004.jpg"></span></p>
+@list l1:level1{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:42.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>收费套餐：如果支付过程中出现异常或者报错，用户可以在用户中心订单管理<span
-lang=EN-US>-</span>购物车中继续完成支付</span></p>
+@list l1:level2{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%2)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:63.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='margin-left:21.0pt;line-height:150%'><span
-lang=EN-US><img width=551 height=297 id="图片 7" src="images/apihelp/image005.jpg"></span></p>
+@list l1:level3{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%3.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:84.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:42.0pt;text-indent:-21.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>收费套餐：如果要选择多项资源可以加入购物车后统一支付完成申请</span></p>
+@list l1:level4{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%4.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:105.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:0cm;line-height:
-150%'><span lang=EN-US><img width=551 height=297 id="图片 5"
-src="images/apihelp/image006.jpg"></span></p>
+@list l1:level5{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%5)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:126.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>(二)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span><span style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>没有固定申请次数的情况</span></p>
+@list l1:level6{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%6.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:147.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='text-indent:24.0pt;line-height:150%'><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>如果想对某项资源进行深度合作，可以点击线下洽谈申请，会有工作人员第一时间和您取得联系</span></p>
+@list l1:level7{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%7.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:168.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:0cm;line-height:
-150%'><span lang=EN-US><img width=554 height=306 id="图片 6"
-src="images/apihelp/image007.jpg"></span></p>
+@list l1:level8{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%8)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:189.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='line-height:150%'><span lang=EN-US style='font-size:
-12.0pt;line-height:150%;font-family:微软雅黑'>&nbsp; </span></p>
+@list l1:level9{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%9.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:210.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='text-indent:12.0pt;line-height:150%'><span
-lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>&nbsp;</span></p>
+@list l2:level1{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:18.0000pt;text-indent:-18.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoTitle align=left style='margin-left:21.0pt;text-align:left;
-text-indent:-21.0pt;line-height:150%'><span lang=EN-US>二、<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
-lang=EN-US>API</span><span style='font-family:微软雅黑'>调用</span></p>
+@list l2:level2{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%2)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:42.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
-line-height:150%'><a name="_Toc466476857"><span lang=EN-US style='font-size:
-12.0pt;line-height:150%;font-family:微软雅黑'>(一)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span><span style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>协议</span></a></p>
+@list l2:level3{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%3.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:63.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:18.0pt;
-line-height:150%'><span style='font-size:12.0pt;line-height:150%;font-family:
-微软雅黑'>所有接口调用均采用<span lang=EN-US>HTTP</span>远程调用方式，客户端调用并同步返回响应。</span></p>
+@list l2:level4{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%4.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:84.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:18.0pt;
-line-height:150%'><span style='font-size:12.0pt;line-height:150%;font-family:
-微软雅黑'>数据格式：<span lang=EN-US> json</span></span></p>
+@list l2:level5{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%5)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:105.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
-line-height:150%'><a name="_Toc466476858"><span lang=EN-US style='font-size:
-12.0pt;line-height:150%;font-family:微软雅黑'>(二)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span><span style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>请求</span></a></p>
+@list l2:level6{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%6.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:126.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:39.0pt;text-indent:-18.0pt;
-line-height:150%'><span lang=EN-US style='line-height:150%;font-family:"微软雅黑",sans-serif'>1.<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>请求方式：<span lang=EN-US>get/post</span>，
-服务地址<span lang=EN-US>url</span>格式为</span></p>
+@list l2:level7{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%7.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:147.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:10.5pt;text-indent:15.75pt;
-line-height:150%'><span lang=EN-US><a
-href="http://domain/%5bdatasource%5d/%5bservice%5d/%5bservicename"><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:windowtext;
-text-decoration:none'>http://domain/[datasource]/[service]/[servicename</span></a></span><span
-lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>]</span></p>
+@list l2:level8{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%8)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:168.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:10.5pt;text-indent:18.0pt;
-line-height:150%'><span style='font-size:12.0pt;line-height:150%;font-family:
-微软雅黑'>其中<span lang=EN-US>:</span></span></p>
+@list l2:level9{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%9.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:189.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:10.5pt;text-indent:18.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>domain</span><span style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>为服务域名<span lang=EN-US>.</span></span></p>
+@list l3:level1{
+mso-level-number-format:chinese-counting-thousand;
+mso-level-suffix:tab;
+mso-level-text:"(%1)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:21.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:10.5pt;text-indent:18.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>datasource</span><span style='font-size:12.0pt;line-height:
-150%;font-family:微软雅黑'>为数据来源<span lang=EN-US>.</span></span></p>
+@list l3:level2{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%2.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:39.0000pt;text-indent:-18.0000pt;font-family:微软雅黑;font-size:10.5000pt;}
 
-<p class=MsoListParagraph style='margin-left:10.5pt;text-indent:18.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>service</span><span style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>为服务名称<span lang=EN-US>.</span></span></p>
+@list l3:level3{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%3.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:63.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:10.5pt;text-indent:18.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>servicename </span><span style='font-size:12.0pt;line-height:
-150%;font-family:微软雅黑'>为<span lang=EN-US>API</span>名称<span lang=EN-US>.</span></span></p>
+@list l3:level4{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%4.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:84.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:39.0pt;text-indent:-18.0pt;
-line-height:150%'><span lang=EN-US style='line-height:150%;font-family:"微软雅黑",sans-serif'>2.<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>协议消息头包含以下属性<span
-lang=EN-US>:</span></span></p>
+@list l3:level5{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%5)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:105.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:10.5pt;text-indent:18.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>Content-Type</span><span style='font-size:12.0pt;line-height:
-150%;font-family:微软雅黑'>：<span lang=EN-US>application/json;charset=utf-8;</span></span></p>
+@list l3:level6{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%6.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:126.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:39.0pt;text-indent:-18.0pt;
-line-height:150%'><span lang=EN-US style='line-height:150%;font-family:"微软雅黑",sans-serif'>3.<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>请求<span lang=EN-US>header</span>包含以下参数<span
-lang=EN-US>:</span></span></p>
+@list l3:level7{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%7.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:147.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='text-indent:27.0pt;line-height:150%'><span
-lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>apikey: </span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>用户申请的<span lang=EN-US>apikey.</span></span></p>
+@list l3:level8{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%8)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:168.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:6.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>sign: </span><span style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>数据签名，由<span lang=EN-US>apikey</span>、<span lang=EN-US>secretkey</span>及请求参数经过特定算法生成<span
-lang=EN-US>.(</span>参考<span lang=EN-US>2.2)</span></span></p>
+@list l3:level9{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%9.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:189.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:18.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>&nbsp;</span></p>
+@list l4:level1{
+mso-level-number-format:chinese-counting-thousand;
+mso-level-suffix:tab;
+mso-level-text:"(%1)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:21.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:-21.0pt;
-line-height:150%'><a name="_Toc466476859"><span lang=EN-US style='font-size:
-12.0pt;line-height:150%;font-family:微软雅黑'>(三)<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span><span style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>响应</span></a></p>
+@list l4:level2{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%2)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:42.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
-style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>响应报文媒体类型为<span
-lang=EN-US>application/json;charset=utf-8. </span></span></p>
+@list l4:level3{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%3.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:63.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<h2 style='margin-left:49.6pt;text-indent:-1.0cm;line-height:150%'><a
-name="_Toc466476860"><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑;font-weight:normal'>1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
-</span></span><span style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-font-weight:normal'>鉴权信息</span></a></h2>
+@list l4:level4{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%4.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:84.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0 width=660
- style='width:495.0pt;border-collapse:collapse;border:none'>
- <tr>
-  <td width=92 valign=top style='width:69.2pt;border:solid windowtext 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal style='line-height:150%'><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>apikey</span></p>
-  </td>
-  <td width=568 valign=top style='width:425.8pt;border:solid windowtext 1.0pt;
-  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑'>用户登录平台，申请使用<span lang=EN-US>API</span>生成，可在用户个人中心查看，或者直接由平台管理员提供</span></p>
-  </td>
- </tr>
- <tr>
-  <td width=92 valign=top style='width:69.2pt;border:solid windowtext 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal style='line-height:150%'><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>secretkey</span></p>
-  </td>
-  <td width=568 valign=top style='width:425.8pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑'>用户登录平台，申请使用<span lang=EN-US>API</span>生成，可在用户个人中心查看，或者直接由平台管理员提供</span></p>
-  </td>
- </tr>
- <tr>
-  <td width=92 valign=top style='width:69.2pt;border:solid windowtext 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal style='line-height:150%'><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>sign</span></p>
-  </td>
-  <td width=568 valign=top style='width:425.8pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑'>使用<span lang=EN-US>apikey,secretkey</span>以及请求参数生成的数字签名</span></p>
-  </td>
- </tr>
- <tr>
-  <td width=92 valign=top style='width:69.2pt;border:solid windowtext 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑'>生成签名算法</span></p>
-  </td>
-  <td width=568 valign=top style='width:425.8pt;border-top:none;border-left:
-  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal style='line-height:150%'><b><i><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>GET</span></i></b><b><i><span
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>请求</span></i></b></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>将请求参数按照参数名进行排序</span></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>构造拼接被签名参数串，参数和参数之间用“<span
-  lang=EN-US>&amp;</span>”号连接</span></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>计算签名</span></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:0cm;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>3.1 </span><span style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>将<span lang=EN-US>appkey</span>和参数串拼接并进行<span lang=EN-US>base64</span>编码</span></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:0cm;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>3.2 </span><span style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>生成<span lang=EN-US>MD5</span>摘要</span></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:0cm;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>3.3 </span><span style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>用<span lang=EN-US>secretKey</span>将<span lang=EN-US>MD5</span>摘要进行<span
-  lang=EN-US>3DES</span>加密</span></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:0cm;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>&nbsp;</span></p>
-  <p class=MsoNormal style='line-height:150%'><b><i><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>POST</span></i></b><b><i><span
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>请求</span></i></b></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>将请求参数构造成<span
-  lang=EN-US>json</span>字符串</span></p>
-  <p class=MsoListParagraph style='margin-left:18.0pt;text-indent:-18.0pt;
-  line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span><span
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑'>计算签名（同上）</span></p>
-  <p class=MsoNormal style='line-height:150%'><span style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑'>计算签名示例代码：</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><b><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:#7F0055'>public</span></b><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:black'> </span><b><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#7F0055'>static</span></b><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'> String signRequest(String </span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#6A3E3E'>apikey</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'>,String </span><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:#6A3E3E'>srcText</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:black'>,String </span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:#6A3E3E'>secretkey</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:black'>)</span><b><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:#7F0055'>throws</span></b><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:black'>
-  Exception{</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑'>&nbsp;</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#3F7F5F'>// </span><span style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑;color:#3F7F5F'>对报文进行<span lang=EN-US>BASE64</span>编码，避免中文处理问题</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String </span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#6A3E3E'>base64Text</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'> = </span><b><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:#7F0055'>new</span></b><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:black'> String(Base64.<i>encodeBase64</i>((</span><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:#6A3E3E'>apikey</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:black'> + </span><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:#6A3E3E'>srcText</span><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:black'>)</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .getBytes(</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#2A00FF'>&quot;utf-8&quot;</span><span lang=EN-US style='font-size:
-  12.0pt;line-height:150%;font-family:微软雅黑;color:black'>), </span><b><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#7F0055'>false</span></b><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'>));</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#3F7F5F'>// MD5</span><span style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑;color:#3F7F5F'>摘要，生成固定长度字符串用于加密</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String </span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#6A3E3E'>destText</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'> = MD5Util.<i>md5Digest</i>(</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#6A3E3E'>base64Text</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'>);</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AlgorithmData
-  </span><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:
-  微软雅黑;color:#6A3E3E'>data</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'> = </span><b><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:#7F0055'>new</span></b><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:black'> AlgorithmData();</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#6A3E3E'>data</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'>.setDataMing(</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#6A3E3E'>destText</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'>);</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#6A3E3E'>data</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'>.setKey(</span><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:#6A3E3E'>secretkey</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:black'>);</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#3F7F5F'>// 3DES</span><span style='font-size:12.0pt;line-height:150%;
-  font-family:微软雅黑;color:#3F7F5F'>加密</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Algorithm3DES.<i>encryptMode</i>(</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#6A3E3E'>data</span><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'>);</span></p>
-  <p class=MsoNormal align=left style='text-align:left;line-height:150%;
-  text-autospace:none'><span lang=EN-US style='font-size:12.0pt;line-height:
-  150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><b><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:#7F0055'>return</span></b><span lang=EN-US style='font-size:12.0pt;
-  line-height:150%;font-family:微软雅黑;color:black'> </span><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:#6A3E3E'>data</span><span
-  lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;
-  color:black'>.getDataMi();</span></p>
-  <p class=MsoNormal style='line-height:150%'><span lang=EN-US
-  style='font-size:12.0pt;line-height:150%;font-family:微软雅黑;color:black'>&nbsp;&nbsp;&nbsp; }</span></p>
-  </td>
- </tr>
-</table>
+@list l4:level5{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%5)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:105.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='line-height:150%'><span lang=EN-US>&nbsp;</span></p>
+@list l4:level6{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%6.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:126.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='line-height:150%'><span lang=EN-US>&nbsp;</span></p>
+@list l4:level7{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%7.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:147.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoTitle align=left style='margin-left:21.0pt;text-align:left;
-text-indent:-21.0pt;line-height:150%'><span lang=EN-US>三、<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span><span
-lang=EN-US>API</span><span style='font-family:微软雅黑'>使用次数查看</span></p>
+@list l4:level8{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%8)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:168.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:0cm;line-height:
-150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;font-family:
-微软雅黑'>&nbsp;</span></p>
+@list l4:level9{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%9.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:189.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:18.0pt;
-line-height:150%'><span style='font-size:12.0pt;line-height:150%;font-family:
-微软雅黑'>用户可以通过用户中心<span lang=EN-US>-</span>我的<span lang=EN-US>API-</span>申请<span
-lang=EN-US>(</span>购买<span lang=EN-US>)</span>的<span lang=EN-US>API</span>查看<span
-lang=EN-US>API</span>使用次数与<span lang=EN-US>API</span>剩余次数。</span></p>
+@list l5:level1{
+mso-level-number-format:chinese-counting-thousand;
+mso-level-suffix:tab;
+mso-level-text:"%1、";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:21.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='text-indent:10.5pt;line-height:150%'><span
-lang=EN-US><img border=0 width=554 height=118 id="图片 8"
-src="images/apihelp/image008.jpg"></span></p>
+@list l5:level2{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%2)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:42.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoListParagraph style='margin-left:21.0pt;text-indent:18.0pt;
-line-height:150%'><span lang=EN-US style='font-size:12.0pt;line-height:150%;
-font-family:微软雅黑'>&nbsp;</span></p>
+@list l5:level3{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%3.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:63.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-<p class=MsoNormal style='line-height:150%'><span lang=EN-US>&nbsp;</span></p>
+@list l5:level4{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%4.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:84.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-</div>
-</div>
-</body>
+@list l5:level5{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%5)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:105.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
 
-</html>
+@list l5:level6{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%6.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:126.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
+
+@list l5:level7{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%7.";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:147.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
+
+@list l5:level8{
+mso-level-number-format:alpha-lower;
+mso-level-suffix:tab;
+mso-level-text:"%8)";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:168.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
+
+@list l5:level9{
+mso-level-number-format:lower-roman;
+mso-level-suffix:tab;
+mso-level-text:"%9.";
+mso-level-tab-stop:none;
+mso-level-number-position:right;
+margin-left:189.0000pt;text-indent:-21.0000pt;font-family:'Times New Roman';}
+
+@list l6:level1{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:21.2500pt;text-indent:-21.2500pt;font-family:'Times New Roman';}
+
+@list l6:level2{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:49.6000pt;text-indent:-28.3500pt;font-family:'Times New Roman';}
+
+@list l6:level3{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2.%3";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:70.9000pt;text-indent:-28.3500pt;font-family:'Times New Roman';}
+
+@list l6:level4{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2.%3.%4";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:99.2000pt;text-indent:-35.4000pt;font-family:'Times New Roman';}
+
+@list l6:level5{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2.%3.%4.%5";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:127.5500pt;text-indent:-42.5000pt;font-family:'Times New Roman';}
+
+@list l6:level6{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2.%3.%4.%5.%6";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:163.0000pt;text-indent:-56.7000pt;font-family:'Times New Roman';}
+
+@list l6:level7{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2.%3.%4.%5.%6.%7";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:191.3500pt;text-indent:-63.8000pt;font-family:'Times New Roman';}
+
+@list l6:level8{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2.%3.%4.%5.%6.%7.%8";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:219.7000pt;text-indent:-70.9000pt;font-family:'Times New Roman';}
+
+@list l6:level9{
+mso-level-number-format:decimal;
+mso-level-suffix:tab;
+mso-level-text:"%1.%2.%3.%4.%5.%6.%7.%8.%9";
+mso-level-tab-stop:none;
+mso-level-number-position:left;
+margin-left:255.1000pt;text-indent:-85.0000pt;font-family:'Times New Roman';}
+
+p.MsoNormal{
+mso-style-name:正文;
+mso-style-parent:"";
+margin:0pt;
+margin-bottom:.0001pt;
+mso-pagination:none;
+text-align:justify;
+text-justify:inter-ideograph;
+font-family:Calibri;
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-size:10.5000pt;
+mso-font-kerning:1.0000pt;
+}
+
+h2{
+mso-style-name:"标题 2";
+mso-style-noshow:yes;
+mso-style-next:正文;
+margin-top:13.0000pt;
+margin-bottom:13.0000pt;
+page-break-after:avoid;
+mso-pagination:lines-together;
+text-align:justify;
+text-justify:inter-ideograph;
+mso-outline-level:2;
+line-height:173%;
+font-family:'Calibri Light';
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-weight:bold;
+font-size:16.0000pt;
+mso-font-kerning:1.0000pt;
+}
+
+h3{
+mso-style-name:"标题 3";
+mso-style-noshow:yes;
+mso-style-next:正文;
+margin-top:13.0000pt;
+margin-bottom:13.0000pt;
+page-break-after:avoid;
+mso-pagination:lines-together;
+text-align:justify;
+text-justify:inter-ideograph;
+mso-outline-level:3;
+line-height:173%;
+font-family:Calibri;
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-weight:bold;
+font-size:16.0000pt;
+mso-font-kerning:1.0000pt;
+}
+
+span.10{
+font-family:Calibri;
+}
+
+span.15{
+font-family:Calibri;
+color:rgb(5,99,193);
+text-decoration:underline;
+text-underline:single;
+}
+
+span.16{
+font-family:'Calibri Light';
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-weight:bold;
+font-size:16.0000pt;
+}
+
+span.17{
+font-family:Calibri;
+font-size:9.0000pt;
+}
+
+span.18{
+font-family:Calibri;
+font-size:9.0000pt;
+}
+
+span.19{
+font-family:'Calibri Light';
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-weight:bold;
+font-size:16.0000pt;
+}
+
+span.20{
+font-family:Calibri;
+font-weight:bold;
+font-size:16.0000pt;
+}
+
+p.MsoFooter{
+mso-style-name:页脚;
+mso-style-noshow:yes;
+margin:0pt;
+margin-bottom:.0001pt;
+layout-grid-mode:char;
+mso-pagination:none;
+text-align:left;
+font-family:Calibri;
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-size:9.0000pt;
+mso-font-kerning:1.0000pt;
+}
+
+p.MsoTitle{
+mso-style-name:标题;
+mso-style-next:正文;
+margin-top:12.0000pt;
+margin-bottom:3.0000pt;
+mso-pagination:none;
+text-align:center;
+mso-outline-level:1;
+font-family:'Calibri Light';
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-weight:bold;
+font-size:16.0000pt;
+mso-font-kerning:1.0000pt;
+}
+
+p.MsoHeader{
+mso-style-name:页眉;
+mso-style-noshow:yes;
+margin:0pt;
+margin-bottom:.0001pt;
+border-bottom:1.0000pt solid windowtext;
+mso-border-bottom-alt:0.7500pt solid windowtext;
+padding:0pt 0pt 1pt 0pt ;
+layout-grid-mode:char;
+mso-pagination:none;
+text-align:center;
+font-family:Calibri;
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-size:9.0000pt;
+mso-font-kerning:1.0000pt;
+}
+
+p.24{
+mso-style-name:"List Paragraph";
+margin:0pt;
+margin-bottom:.0001pt;
+text-indent:21.0000pt;
+mso-char-indent-count:2.0000;
+mso-pagination:none;
+text-align:justify;
+text-justify:inter-ideograph;
+font-family:Calibri;
+mso-fareast-font-family:宋体;
+mso-bidi-font-family:'Times New Roman';
+font-size:10.5000pt;
+mso-font-kerning:1.0000pt;
+}
+
+p.25{
+mso-style-name:正文1;
+margin:0pt;
+margin-bottom:.0001pt;
+font-family:Helvetica;
+mso-fareast-font-family:'ヒラギノ角ゴ Pro W3';
+mso-bidi-font-family:'Times New Roman';
+color:rgb(0,0,0);
+font-size:12.0000pt;
+}
+
+span.msoIns{
+mso-style-type:export-only;
+mso-style-name:"";
+text-decoration:underline;
+text-underline:single;
+color:blue;
+}
+
+span.msoDel{
+mso-style-type:export-only;
+mso-style-name:"";
+text-decoration:line-through;
+color:red;
+}
+
+table.MsoNormalTable{
+mso-style-name:普通表格;
+mso-style-parent:"";
+mso-style-noshow:yes;
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:'Times New Roman';
+font-size:10.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+
+table.MsoTableGrid{
+mso-style-name:网格型;
+mso-tstyle-rowband-size:0;
+mso-tstyle-colband-size:0;
+mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt;
+mso-border-top-alt:0.5000pt solid windowtext;
+mso-border-left-alt:0.5000pt solid windowtext;
+mso-border-bottom-alt:0.5000pt solid windowtext;
+mso-border-right-alt:0.5000pt solid windowtext;
+mso-border-insideh:0.5000pt solid windowtext;
+mso-border-insidev:0.5000pt solid windowtext;
+mso-para-margin:0pt;
+mso-para-margin-bottom:.0001pt;
+mso-pagination:widow-orphan;
+font-family:'Times New Roman';
+font-size:10.0000pt;
+mso-ansi-language:#0400;
+mso-fareast-language:#0400;
+mso-bidi-language:#0400;
+}
+@page{mso-page-border-surround-header:no;
+    mso-page-border-surround-footer:no;}@page Section0{
+margin-top:72.0000pt;
+margin-bottom:72.0000pt;
+margin-left:90.0000pt;
+margin-right:90.0000pt;
+size:595.3000pt 841.9000pt;
+layout-grid:15.6000pt;
+}
+div.Section0{page:Section0;}</style></head><body style="tab-interval:21pt;text-justify-trim:punctuation;" ><!--StartFragment--><div class="Section0"  style="layout-grid:15.6000pt;" ><p class=MsoTitle  style="text-align:left;line-height:150%;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:'Calibri Light';mso-hansi-font-family:'Calibri Light';mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></b></p><p class=MsoTitle  style="margin-left:21.0000pt;text-indent:-21.0000pt;text-align:left;line-height:150%;mso-list:l5 level1 lfo1;" ><![if !supportLists]><span style="font-family:宋体;mso-ascii-font-family:'Calibri Light';mso-hansi-font-family:'Calibri Light';mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >一、<span>&nbsp;</span></span></span><![endif]><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:'Calibri Light';mso-hansi-font-family:'Calibri Light';mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" >API<font face="宋体" >申请</font></span></b><b><span style="mso-spacerun:'yes';font-family:'Calibri Light';mso-fareast-font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></b></p><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:Calibri;mso-fareast-font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >简介</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >：</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >API申请</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >指的是平台</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >API资源</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >的</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >申请</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >及支付过程</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l4 level1 lfo2;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >(一)<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >有</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >固定</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >申请</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >次数的</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >情况</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:42.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l1 level1 lfo3;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >1.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >点击详细页面</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >申请功能</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><img width="556"  height="175"  src="images/apihelp/API使用58.png" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:42.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l1 level1 lfo3;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >2.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >收费</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >套餐</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >：选择套餐、</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >输入</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >申请</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >套餐数，接受</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >服务</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >协议</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><img width="556"  height="218"  src="images/apihelp/API使用85.png" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:42.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l1 level1 lfo3;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >3.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >免费</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >套餐：</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >接受</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >服务协议</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="margin-left:21.0000pt;line-height:150%;" ><img width="556"  height="229"  src="images/apihelp/API使用99.png" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:42.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l1 level1 lfo3;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >4.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >收费</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >套餐：</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >如果</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >只有一项资源可以点击</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >立即支付</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >完成申请</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="margin-left:21.0000pt;line-height:150%;" ><img width="556"  height="185"  src="images/apihelp/API使用127.png" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:42.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l1 level1 lfo3;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >5.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >收费套餐</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >：</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >如果</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >支付过程中出现异常或者</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >报错</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >，用户可以在用户中心订单管理</font>-</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >购物</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >车中继续完成支付</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="margin-left:21.0000pt;line-height:150%;" ><img width="556"  height="212"  src="images/apihelp/API使用175.png" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:42.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l1 level1 lfo3;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >6.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >收费</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >套餐：</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >如果</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >要选择多项资源可以</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >加入</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >购物车后</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >统一支付</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >完成申请</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><img width="556"  height="272"  src="images/apihelp/API使用208.png" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l4 level1 lfo2;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >(二)<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >没有</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >固定</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >申请</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >次数的</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >情况</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="text-indent:24.0000pt;mso-char-indent-count:2.0000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >如果</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >想对某项资源进行深度合作，可以点击</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >线下</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >洽谈申请，会有工作人员第一时间和您取得联系</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><img width="556"  height="245"  src="images/apihelp/API使用265.png" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >&nbsp;&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoTitle  style="margin-left:21.0000pt;text-indent:-21.0000pt;text-align:left;line-height:150%;mso-list:l5 level1 lfo1;" ><![if !supportLists]><span style="font-family:宋体;mso-ascii-font-family:'Calibri Light';mso-hansi-font-family:'Calibri Light';mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >二、<span>&nbsp;</span></span></span><![endif]><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:'Calibri Light';mso-hansi-font-family:'Calibri Light';mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" >API<font face="宋体" >调用</font></span></b><b><span style="mso-spacerun:'yes';font-family:'Calibri Light';mso-fareast-font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></b></p><p class=24  style="margin-left:21.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l3 level1 lfo4;" ><a name="_Toc466476857" ></a><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >(一)<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >协议</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >所有接口调用均采用</font>HTTP远程调用方式，客户端调用并同步返回响应。</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >数据格式：</font>&nbsp;json</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l3 level1 lfo4;" ><a name="_Toc466476858" ></a><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >(二)<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >请求</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:39.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l3 level2 lfo4;" ><![if !supportLists]><span style="font-family:微软雅黑;mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >1.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >请求方式：</font>get/post，&nbsp;服务地址url格式为</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:10.5000pt;mso-para-margin-left:1.0000gd;text-indent:15.7500pt;mso-char-indent-count:1.5000;line-height:150%;" ><span><a href="http://domain/%5bdatasource%5d/%5bservice%5d/%5bservicename" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >http://</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >domain</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >/[</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >datasource</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >]/</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >[</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >service</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >]</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >/[servicename</span></a></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >]</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:10.5000pt;mso-para-margin-left:1.0000gd;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >其中</font>:</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:10.5000pt;mso-para-margin-left:1.0000gd;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >domain</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >为服务域名</font>.</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:10.5000pt;mso-para-margin-left:1.0000gd;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >datasource</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >为</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >数据来源</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >.</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:10.5000pt;mso-para-margin-left:1.0000gd;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >service为</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >服务名称</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >.</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:10.5000pt;mso-para-margin-left:1.0000gd;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >servicename</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >&nbsp;<font face="宋体" >为</font>API名称.</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:39.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l3 level2 lfo4;" ><![if !supportLists]><span style="font-family:微软雅黑;mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >2.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >协议</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >消息头包含以下属性</font>:</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:10.5000pt;mso-para-margin-left:1.0000gd;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >Content-Type</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >：</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >application/json;charset=utf-8;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:39.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l3 level2 lfo4;" ><![if !supportLists]><span style="font-family:微软雅黑;mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >3.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >请求</font>header包含以下参数:</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="text-indent:27.0000pt;mso-char-indent-count:2.2500;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >apikey</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >:&nbsp;用户申请的apikey.</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;mso-para-margin-left:2.0000gd;text-indent:6.0000pt;mso-char-indent-count:0.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >sign:&nbsp;数据签名，由apikey、secretkey及请求参数经过特定算法生成.(参考2.2)</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:-21.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l3 level1 lfo4;" ><a name="_Toc466476859" ></a><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >(三)<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >响应</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:18.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l0 level3 lfo5;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >1.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >响应报文</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >媒体</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >类型为</font>application/json;charset=utf-8.&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><h2 style="margin-left:49.6000pt;text-indent:-28.3500pt;line-height:150%;mso-list:l6 level2 lfo6;" ><a name="_Toc466476860" ></a><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:normal;font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >1.1<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:normal;font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >鉴权信息</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:normal;font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></h2><table class=MsoTableGrid  style="border-collapse:collapse;width:495.0000pt;mso-table-layout-alt:fixed;mso-padding-alt:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;" ><tr><td width=92  valign=top  style="width:69.2000pt;padding:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;border-left:1.0000pt solid windowtext;mso-border-left-alt:0.5000pt solid windowtext;border-right:1.0000pt solid windowtext;mso-border-right-alt:0.5000pt solid windowtext;border-top:1.0000pt solid windowtext;mso-border-top-alt:0.5000pt solid windowtext;border-bottom:1.0000pt solid windowtext;mso-border-bottom-alt:0.5000pt solid windowtext;" ><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >apikey</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=567  valign=top  style="width:425.8000pt;padding:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;border-left:none;;mso-border-left-alt:none;;border-right:1.0000pt solid windowtext;mso-border-right-alt:0.5000pt solid windowtext;border-top:1.0000pt solid windowtext;mso-border-top-alt:0.5000pt solid windowtext;border-bottom:1.0000pt solid windowtext;mso-border-bottom-alt:0.5000pt solid windowtext;" ><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >用户登录平台</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >，</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >申请使用</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >API生成，可在用户个人中心查看，或者直接由平台管理员提供</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=92  valign=top  style="width:69.2000pt;padding:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;border-left:1.0000pt solid windowtext;mso-border-left-alt:0.5000pt solid windowtext;border-right:1.0000pt solid windowtext;mso-border-right-alt:0.5000pt solid windowtext;border-top:none;;mso-border-top-alt:0.5000pt solid windowtext;border-bottom:1.0000pt solid windowtext;mso-border-bottom-alt:0.5000pt solid windowtext;" ><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >secretkey</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=567  valign=top  style="width:425.8000pt;padding:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;border-left:none;;mso-border-left-alt:none;;border-right:1.0000pt solid windowtext;mso-border-right-alt:0.5000pt solid windowtext;border-top:none;;mso-border-top-alt:0.5000pt solid windowtext;border-bottom:1.0000pt solid windowtext;mso-border-bottom-alt:0.5000pt solid windowtext;" ><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >用户登录平台</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >，</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >申请使用</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >API生成，可在用户个人中心查看，或者直接由平台管理员提供</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=92  valign=top  style="width:69.2000pt;padding:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;border-left:1.0000pt solid windowtext;mso-border-left-alt:0.5000pt solid windowtext;border-right:1.0000pt solid windowtext;mso-border-right-alt:0.5000pt solid windowtext;border-top:none;;mso-border-top-alt:0.5000pt solid windowtext;border-bottom:1.0000pt solid windowtext;mso-border-bottom-alt:0.5000pt solid windowtext;" ><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >sign</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=567  valign=top  style="width:425.8000pt;padding:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;border-left:none;;mso-border-left-alt:none;;border-right:1.0000pt solid windowtext;mso-border-right-alt:0.5000pt solid windowtext;border-top:none;;mso-border-top-alt:0.5000pt solid windowtext;border-bottom:1.0000pt solid windowtext;mso-border-bottom-alt:0.5000pt solid windowtext;" ><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >使用apikey,secretkey以及请求参数生成的数字签名</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr><tr><td width=92  valign=top  style="width:69.2000pt;padding:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;border-left:1.0000pt solid windowtext;mso-border-left-alt:0.5000pt solid windowtext;border-right:1.0000pt solid windowtext;mso-border-right-alt:0.5000pt solid windowtext;border-top:none;;mso-border-top-alt:0.5000pt solid windowtext;border-bottom:1.0000pt solid windowtext;mso-border-bottom-alt:0.5000pt solid windowtext;" ><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >生成签名算法</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td><td width=567  valign=top  style="width:425.8000pt;padding:0.0000pt 5.4000pt 0.0000pt 5.4000pt ;border-left:none;;mso-border-left-alt:none;;border-right:1.0000pt solid windowtext;mso-border-right-alt:0.5000pt solid windowtext;border-top:none;;mso-border-top-alt:0.5000pt solid windowtext;border-bottom:1.0000pt solid windowtext;mso-border-bottom-alt:0.5000pt solid windowtext;" ><p class=MsoNormal  style="line-height:150%;" ><b><i><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:bold;font-style:italic;font-size:12.0000pt;mso-font-kerning:1.0000pt;" >GET请求</span></i></b><b><i><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:bold;font-style:italic;font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></i></b></p><p class=24  style="margin-left:18.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l0 level3 lfo5;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >2.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >将请求参数按照参数名进行排序</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:18.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l0 level3 lfo5;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >3.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >构造拼接被签名参数串，</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >参数和参数之间用</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >&#8220;&&#8221;号连接</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:18.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l0 level3 lfo5;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >4.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >计算签名</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:18.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >3.1&nbsp;将appkey和参数串拼接并进行base64编码</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:18.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >3.2&nbsp;生成MD5摘要</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:18.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >3.3&nbsp;用secretKey将MD5摘要进行3DES加密</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:18.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=MsoNormal  style="line-height:150%;" ><b><i><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:bold;font-style:italic;font-size:12.0000pt;mso-font-kerning:1.0000pt;" >POST请求</span></i></b><b><i><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:bold;font-style:italic;font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></i></b></p><p class=24  style="margin-left:18.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l2 level1 lfo7;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >1.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >将请求参数构造成json字符串</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=24  style="margin-left:18.0000pt;text-indent:-18.0000pt;mso-char-indent-count:0.0000;line-height:150%;mso-list:l2 level1 lfo7;" ><![if !supportLists]><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >2.<span>&nbsp;</span></span></span><![endif]><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >计算签名（同上）</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >计算签名示例代码：</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(127,0,85);font-weight:bold;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >public</span></b><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(127,0,85);font-weight:bold;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >static</span></b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;String&nbsp;signRequest(String&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >apikey</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >,String&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >srcText</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >,String&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >secretkey</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >)</span><b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(127,0,85);font-weight:bold;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >throws</span></b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;Exception{</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(63,127,95);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >//&nbsp;对报文进行BASE64编码，避免中文处理问题</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >String&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >base64Text</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;=&nbsp;</span><b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(127,0,85);font-weight:bold;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >new</span></b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;String(Base64.</span><i><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-style:italic;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >encodeBase64</span></i><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >((</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >apikey</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;+&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >srcText</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >)</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >.getBytes(</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(42,0,255);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >"utf-8"</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >),&nbsp;</span><b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(127,0,85);font-weight:bold;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >false</span></b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >));</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(63,127,95);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >//&nbsp;MD5摘要，生成固定长度字符串用于加密</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >String&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >destText</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;=&nbsp;MD5Util.</span><i><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-style:italic;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >md5Digest</span></i><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >(</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >base64Text</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >);</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >AlgorithmData&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >data</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;=&nbsp;</span><b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(127,0,85);font-weight:bold;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >new</span></b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;AlgorithmData();</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >data</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >.setDataMing(</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >destText</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >);</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >data</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >.setKey(</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >secretkey</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >);</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(63,127,95);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >//&nbsp;3DES加密</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >Algorithm3DES.</span><i><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-style:italic;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >encryptMode</span></i><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >(</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >data</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >);</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="mso-layout-grid-align:none;text-autospace:none;text-align:left;line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><b><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(127,0,85);font-weight:bold;font-size:12.0000pt;mso-font-kerning:0.0000pt;" >return</span></b><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&nbsp;</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(106,62,62);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >data</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >.getDataMi();</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';font-size:12.0000pt;mso-font-kerning:0.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="line-height:150%;" ><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >&#9;</span><span style="font-family:宋体;mso-bidi-font-family:'Courier New';color:rgb(0,0,0);font-size:12.0000pt;mso-font-kerning:0.0000pt;" >}</span><span style="font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p></td></tr></table><p class=MsoNormal  style="line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:Calibri;mso-hansi-font-family:Calibri;mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=MsoTitle  style="margin-left:21.0000pt;text-indent:-21.0000pt;text-align:left;line-height:150%;mso-list:l5 level1 lfo1;" ><![if !supportLists]><span style="font-family:宋体;mso-ascii-font-family:'Calibri Light';mso-hansi-font-family:'Calibri Light';mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" ><span style='mso-list:Ignore;' >三、<span>&nbsp;</span></span></span><![endif]><b><span style="mso-spacerun:'yes';font-family:宋体;mso-ascii-font-family:'Calibri Light';mso-hansi-font-family:'Calibri Light';mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" >API<font face="宋体" >使用</font></span></b><b><span style="mso-spacerun:'yes';font-family:'Calibri Light';mso-fareast-font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >次数查看</font></span></b><b><span style="mso-spacerun:'yes';font-family:'Calibri Light';mso-fareast-font-family:宋体;mso-bidi-font-family:'Times New Roman';font-weight:bold;font-size:16.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></b></p><p class=24  style="margin-left:21.0000pt;text-indent:0.0000pt;mso-char-indent-count:0.0000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p><p class=24  style="margin-left:21.0000pt;text-indent:18.0000pt;mso-char-indent-count:1.5000;line-height:150%;" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >用户</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >可以通过用户中心</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >-</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >我的</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >API</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >-</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >申请</font>(购买)的API查看API使用</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >次数与</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" >API剩余次数</span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><font face="宋体" >。</font></span><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p></o:p></span></p><p class=MsoNormal  style="text-indent:10.5000pt;mso-char-indent-count:1.0000;line-height:150%;" ><img width="556"  height="154"  src="images/apihelp/API使用1598.png" ><span style="mso-spacerun:'yes';font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:12.0000pt;mso-font-kerning:1.0000pt;" ><o:p>&nbsp;</o:p></span></p></div><!--EndFragment--></body></html>

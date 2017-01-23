@@ -59,7 +59,7 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 /*input[type="checkbox"]:checked + label:before{background: url('../../images/login/right.png') no-repeat center center;}*/
 .loginCons .rightTable ul li .forgetPassword{position: absolute;right: 4px;display: block;top: 0;font-size: 14px;color: #3f89ec;}
 .loginCons .rightTable ul li .forgetPassword:hover{color: #3f89ec;}
-.loginCons .rightTable ul li button{width: 100%;background: #3f89ec;text-align: center;height: 36px;border: none;font-size: 14px;color: #fff;border-radius: 5px;margin-top: 4px;}
+.loginCons .rightTable ul li button{width: 100%;background: #39b7b6;text-align: center;height: 36px;border: none;font-size: 14px;color: #fff;border-radius: 5px;margin-top: 4px;}
 .loginCons .rightTable ul li .goRegister{font-size: 14px;color: #3f89ec;display: block;padding-top: 4px;width: 100px;margin: 0 auto;}
 
 .loginCons .rightTable ul li label.error{
@@ -136,7 +136,7 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .register-form ul li .golink{font-size: 14px;color: #3f89ec;}
 .register-form ul li .golink:hover{color: #3f89ec !important;}
 .register-form ul li button[type='submit']{
-    background: #3f89ec;
+    background: #39b7b6;
     text-align: center;
     width: 150px;
     height: 42px;

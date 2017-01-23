@@ -199,7 +199,6 @@ var headerView = Backbone.View.extend({
     },
     handleSwitchCity: function() {
         var model = this.switchCity.toJSON();
-        debugger;
         if(model.status == 'OK') {
             location.href = this.swicthUrl;
         }else {

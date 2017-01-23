@@ -205,10 +205,16 @@
 .layer .tabChange ul li .iconforapi span{
     margin-right: 0;
     color: #fff;
-    padding: 2px ;
+    /*padding: 2px ;*/
     line-height: 48px;
-    font-size: 24px;
+    font-size: 22px;
     height: 48px;
+    word-wrap: normal;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 220px;
 }
 .layerCons .tit{
     font-size: 24px;
@@ -241,7 +247,7 @@
 .apihref p{
     position: absolute;
     top: 55px !important;
-    left: 170px !important;
+    left: 150px !important;
 }
 
 .inlineblock{

@@ -334,7 +334,7 @@ table tr td{
 	word-break: break-all;
 }
 
-@media screen and (max-width: 1300px){
+/*@media screen and (max-width: 1300px){
 	.grid1190{
 		width: 1000px;
 	}
@@ -405,4 +405,4 @@ table tr td{
 		margin-left:50px;
 		padding: 10px 0 10px 50px;
 	}
-}
+}*/

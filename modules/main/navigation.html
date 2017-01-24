@@ -4,10 +4,10 @@
     <% _.each(dataList,function(item,index){ %>
     <% if(index < 9 ){ %>
         <li>
+            <% if(item.appList && item.appList.length > 0){ %>
             <p class="leftTit">
                 <a class="<%= item.name.length == 2 ? 'w2' : '' %>" attrid="<%= item.id %>" ><%= item.name %></a>
             </p>
-            <% if(item.appList && item.appList.length > 0){ %>
             <div class="rightTips" style="display: none;">
                 <% _.each(item.appList, function(json){ %>
                 <a href="services.html#detail/<%= json.id %>" title="<%= json.name %>"><%= json.name %></a>

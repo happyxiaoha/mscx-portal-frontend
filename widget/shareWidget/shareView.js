@@ -18,8 +18,8 @@ var view = Backbone.View.extend({
         
         this.url = location.href;
         this.title = document.title;
-        this.desc = '欢迎使用广州数聚平台！';
-        this.pic = mscxPage.shareHost + 'images/newicon/ic_newlogo.png';
+        this.desc = '欢迎使用神州数据平台！';
+        this.pic = mscxPage.shareHost + 'images/logo/ic_nationlogo.png';
 
         this.$qrcode = this.$('#qrcode');
 

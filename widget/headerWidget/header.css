@@ -194,7 +194,7 @@ a{
 .top-nav .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
 
 .top-nav .noLogin a,.top-nav .noLogin span{display: inline-block;color: #069cd9;}
-.top-nav .noLogin span{margin: 0 4px;}
+.top-nav .noLogin span{margin: 0 10px 0 30px;}
 .top-nav .yesLogin {
     background: none;
     height: 50px;

@@ -37,7 +37,7 @@ var bannerView = Backbone.View.extend({
             pagination: '.swiper-pagination',
             paginationClickable: true,
             spaceBetween: 10,
-            // autoplay:3000,
+            autoplay:3000,
             loop:true,
             direction: 'horizontal',
             loopedSlides:8

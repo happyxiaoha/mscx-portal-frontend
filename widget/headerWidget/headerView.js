@@ -120,9 +120,7 @@ var headerView = Backbone.View.extend({
             username: nJson.result && (nJson.result.name || nJson.result.account),
             isRealName: nJson.result && (nJson.result.userType != 'REGISTER'),
             cityStations: cityMap.cities,
-            currentCity: _.find(cityMap.cities, function(item){
-                return item.url.indexOf(location.host) > -1;
-            })
+            currentCity: this.currentCity
         }));
         var _c;
         $("#personReal").hover(function(){

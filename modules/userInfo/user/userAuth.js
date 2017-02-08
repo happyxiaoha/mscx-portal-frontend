@@ -128,11 +128,17 @@ var userAuthenticationView = Backbone.View.extend({
         if(agreement) {
             this.model.save({}, {
                 success: function () {
-                    layer.msg('提交成功!');
-                    that.$('input[type="submit"]').attr('disabled', 'disabled');
-                    setTimeout(function () {
+                    //layer.msg('提交成功!');
+                    var layerTag = layer.alert('认证成功!',{icon:1,yes: function () {
+                        layer.close(layerTag);
                         location.href = '#info';
+                    }});
+                    that.$('input[type="submit"]').attr('disabled', 'disabled');
+                    /*
+                    setTimeout(function () {
+
                     }, 2000);
+                    */
                 }
             })
         }

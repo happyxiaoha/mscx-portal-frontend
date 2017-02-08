@@ -178,7 +178,11 @@
     <% }); %>
 </script>
 <script id="tagList" type="template">
-    <div class="layerApi"><ul class="provider-list">
+    <div class="layerApi">
+        <div class="filter-area">
+            <input type="text" id='tagFilter'/>
+        </div>
+        <ul class="provider-list">
         <% _.each(tagList, function (tagitem) { %>
         <li>
             <label style="width: 100%;line-height: 16px;">
@@ -194,7 +198,7 @@
 </script>
 <script id="tagListInner" type="template">
     <% _.each(tagList, function (tagitem) { %>
-    <%if(!filterVal || tagitem.name.indexOf(filterVal) >= 0){%>
+    <%if(!filterVal || tagitem.name.toLocaleUpperCase().indexOf(filterVal.toLocaleUpperCase()) >= 0){%>
     <li>
         <label style="width: 100%;line-height: 16px;">
             <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>

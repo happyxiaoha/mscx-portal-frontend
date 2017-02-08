@@ -214,7 +214,7 @@
 </script>
 <script id="tagListInner" type="template">
     <% _.each(tagList, function (tagitem) { %>
-    <%if(!filterVal || tagitem.name.indexOf(filterVal) >= 0){%>
+    <%if(!filterVal || tagitem.name.toLocaleUpperCase().indexOf(filterVal.toLocaleUpperCase()) >= 0){%>
     <li>
         <label style="width: 100%;line-height: 16px;">
             <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>

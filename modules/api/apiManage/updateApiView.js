@@ -701,7 +701,7 @@ var updateApiView = Backbone.View.extend({
             $('.api-name-error').hide();
         }
     },
-    filterTagRes: function () {
+    filterTagRes: function (e) {
         var $this = $(e.target),
             sVal = $.trim($this.val());
         var tagTemplate = _.template($('#tagListInner').html());
@@ -710,7 +710,7 @@ var updateApiView = Backbone.View.extend({
         if(this.model.get('tags')){
             sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
         }
-        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags,filterVal: sVal}));
+        this.$el.find('.provider-list').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags,filterVal: sVal}));
     }
 });
 

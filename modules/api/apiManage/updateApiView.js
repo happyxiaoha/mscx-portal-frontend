@@ -47,6 +47,7 @@ var updateApiView = Backbone.View.extend({
         'click .addApi': 'addApiLay',
         'click .editApi': 'updateApi',
         'click .deleteApi': 'removeApi',
+        'keyup #tagFilter': 'filterTagRes',
         'change .upload-file': 'doUploadImg',
         'blur #apiServerId': 'checkServerId',
         'blur #apiName': 'checkApiName'
@@ -377,7 +378,7 @@ var updateApiView = Backbone.View.extend({
         if(this.model.get('tags')){
             sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
         }
-        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags}))
+        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags}));
     },
     renderServiceType: function (serviceObject) {
         var categoryTemplate = _.template($('#serverTypeList').html());
@@ -699,6 +700,17 @@ var updateApiView = Backbone.View.extend({
             $('#apiName').removeClass('error');
             $('.api-name-error').hide();
         }
+    },
+    filterTagRes: function () {
+        var $this = $(e.target),
+            sVal = $.trim($this.val());
+        var tagTemplate = _.template($('#tagListInner').html());
+        var tagList = this.getCategoryTagModel.get('result');
+        var sChooseTags = '';
+        if(this.model.get('tags')){
+            sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
+        }
+        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags,filterVal: sVal}));
     }
 });
 

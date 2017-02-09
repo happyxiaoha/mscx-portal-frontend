@@ -184,16 +184,13 @@
     position: relative;
     height: 110px;
     width: 380px;
-    background: #00b7a9;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
 }
+/*
 .layer .tabChange ul li:nth-child(2) .iconforapi {
     background: #717dc5;
 }
 
-/*.layer .tabChange ul li .iconforapi:after{
+.layer .tabChange ul li .iconforapi:after{
     content: '';
     position: absolute;
     left: -5px;

@@ -96,7 +96,6 @@ var mainView = Backbone.View.extend({
                 if($(this).hasClass('moreThanTen')){
                     $(this).addClass('activeHover').parent('li').siblings('li').find('.leftTit').removeClass('activeHover');
                     $(this).parent('li').siblings('li').find('.rightTips').hide();
-
                     return
                 }
                 $(this).addClass('activeHover').siblings('.rightTips').show();

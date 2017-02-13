@@ -162,7 +162,6 @@
             <input type="submit" id="btnAjax">
         </form>
     </div>
-    <div class="tag-list-area"></div>
     <div class="add-price-list layerApi">
     </div>
     <div class="add-api-list layerApi">
@@ -194,38 +193,14 @@
 </script>
 <script id="tagList" type="template">
     <div class="layerApi">
-        <div class="filter-area">
-            <div>
-                <a href="javascript:;">a</a>
-                <a href="javascript:;">b</a>
-                <a href="javascript:;">c</a>
-                <a href="javascript:;">d</a>
-                <a href="javascript:;">e</a>
-                <a href="javascript:;">f</a>
-                <a href="javascript:;">g</a>
-                <a href="javascript:;">h</a>
-            </div>
-            <input type="text" id='tagFilter'/>
-        </div>
-        <ul class="provider-list">
-            <% _.each(tagList, function (tagitem) { %>
-            <li>
-                <label style="width: 100%;line-height: 16px;">
-                <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
-                <%=tagitem.name%>
-                </label>
-            </li>
-            <% })%>
-            <%if(tagList.length == 0){%>
-            <li>此分类无标签</li>
-            <%}%>
-        </ul>
+
     </div>
 </script>
 <script id="tagListInner" type="template">
     <% _.each(tagList, function (tagitem) { %>
     <%if(!filterVal || tagitem.name.toLocaleUpperCase().indexOf(filterVal.toLocaleUpperCase()) >= 0){%>
     <li>
+        <input type="hidden" class="tagPinyin<%=tagitem.tagPinyin%>">
         <label style="width: 100%;line-height: 16px;">
             <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
             <%=tagitem.name%>

@@ -77,18 +77,6 @@
     width: 154px;
     float: left;
 }
-.tag-list-area .provider-list {
-    margin-top: 47px;width: 84%;
-}
-.tag-list-area .provider-list li {
-    width: 100%;
-    padding: 5px 0;
-    font-size: 14px;
-    cursor: pointer;
-}
-.tag-list-area .provider-list li:hover{
-    background: #eee;
-}
 .tag-area {margin-right: 20px;max-width: 625px;}
 .tag-area span{padding: 5px 10px;
     line-height: 15px;
@@ -137,5 +125,3 @@
 .category-block-area {overflow: hidden;font-size: 12px;}
 .category-block-area >p {  height: 30px; line-height: 30px; margin-right: 10px;  float: left;  overflow: hidden;    font-weight: bold;}
 .category-block-area >div {width: 80%;float: left;}
-.filter-area {position: fixed;top:43px;left: 0;width: 94%;background: #FFF;padding: 10px 0;}
-.filter-area input[type="text"]{margin-left: 30px;}

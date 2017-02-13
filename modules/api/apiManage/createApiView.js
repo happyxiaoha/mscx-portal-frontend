@@ -1,7 +1,7 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-
+var tagView = require('tagWidget/tagItemView.js');
 var template = require('html!./createApi.html');
 require('./createApi.css');
 require('validate');
@@ -337,6 +337,7 @@ var createApiView = Backbone.View.extend({
             btn1: function () {
                 that.saveTag();
                 layer.close(dialog);
+                $('.tag-list-area').remove();
             },
             btn2: function () {
                 layer.close(dialog);
@@ -390,7 +391,11 @@ var createApiView = Backbone.View.extend({
         if(this.model.get('tags')){
             sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
         }
-        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags}));
+        $('.tag-list-area').remove();
+        var tagsView = new tagView({
+            model: {tagList: tagList,sChooseTags:sChooseTags}
+        });
+        this.$el.append(tagsView.$el);
     },
     renderServiceType: function () {
         var categoryTemplate = _.template($('#serverTypeList').html());

@@ -80,5 +80,5 @@ gulp.task('build',['webpack'], function() {
 });
 
 gulp.task('default',['clean'], function() {
-    gulp.start(['backboneBuild','webpack','watch']);
+    gulp.start(['backboneBuild','webpack']);
 });

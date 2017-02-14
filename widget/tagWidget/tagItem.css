@@ -1,10 +1,10 @@
 .filter-area {position: fixed;top:43px;left: 0;width: 94%;background: #FFF;padding: 10px 0 0;z-index: 999;}
-.filter-area input[type="text"]{margin-left: 30px;}
-.filter-a {padding: 0 30px 5px 30px;}
-.filter-a a {color: #0ab7ef;margin: 0 8px 6px 0;display: block;float: left;width: 10px;text-align: center;}
+.filter-area input[type="text"]{position: absolute;top: -35px;right: 30px;width: 180px;z-index: 99999;}
+.filter-a {padding: 0 10px 5px 30px;}
+.filter-a a {color: #0ab7ef;display: block;float: left;margin-right: 4px;}
 .filter-a a:hover {color: #0681a9;text-decoration: underline;}
 .provider-list {
-    margin-top: 75px;
+    margin-top: 15px;
     width: 84%;
     padding: 10px 20px;
     position: relative;

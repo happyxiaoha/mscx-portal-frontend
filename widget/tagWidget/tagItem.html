@@ -32,9 +32,9 @@
 <ul class="provider-list" style="position: relative;">
     <% _.each(tagList, function (tagitem) { %>
     <li>
-        <input type="hidden" class="tagPinyin<%=tagitem.tagPinyin%>">
+        <input type="hidden" class="tagPinyin<%=tagitem.tagPinyin.toLocaleLowerCase()%>">
         <label style="width: 100%;line-height: 16px;">
-            <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
+            <input id="tag<%=tagitem.tagId%>" data-name="<%= tagitem.name %>" value="<%= tagitem.tagId %>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
             <%=tagitem.name%>
         </label>
     </li>

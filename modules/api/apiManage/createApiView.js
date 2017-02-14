@@ -298,7 +298,7 @@ var createApiView = Backbone.View.extend({
         $('input[name="tagGroup"]:checked').each(function() {
             var $this = $(this),
                 sId = this.id.replace('tag',''),
-                sName = $this.attr('attrName');
+                sName = $this.data('name');
             cTags.push({id:sId,name: sName});
             aTags.push(sId);
         });

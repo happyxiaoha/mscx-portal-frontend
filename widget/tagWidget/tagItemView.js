@@ -45,7 +45,6 @@ var view = Backbone.View.extend({
     toTag: function (e) {
         var $this = $(e.target),
             sVal = $.trim($this.html());
-        console.log(sVal,$('.tagPinyin'+sVal));
         if($('.tagPinyin'+sVal)[0]){
             var iTop = $('.tagPinyin'+sVal).first().parent().position().top;
             $('.layui-layer-content').stop().animate({'scrollTop':(iTop-10)});

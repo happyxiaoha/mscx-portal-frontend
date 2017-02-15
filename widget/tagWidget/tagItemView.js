@@ -1,7 +1,7 @@
 'use strict';
 require('./tagItem.css');
 var template = require('html!./tagItem.html');
-
+var innerTemplate = require('html!./tagItemInner.html');
 var view = Backbone.View.extend({
     events: {
         'keyup #tagFilter': 'filterTagRes',
@@ -39,8 +39,9 @@ var view = Backbone.View.extend({
     filterTagRes: function (e) {
         var $this = $(e.target),
             sVal = $.trim($this.val());
+        var tagTemplate = _.template(innerTemplate);
         this.model['filterVal'] = sVal;
-        this.$el.find('.provider-list').html(this.template(this.model));
+        this.$el.find('.provider-list').html(tagTemplate(this.model));
     },
     toTag: function (e) {
         var $this = $(e.target),

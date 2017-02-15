@@ -191,24 +191,6 @@
         </div>
     <% }); %>
 </script>
-<script id="tagList" type="template">
-    <div class="layerApi">
-
-    </div>
-</script>
-<script id="tagListInner" type="template">
-    <% _.each(tagList, function (tagitem) { %>
-    <%if(!filterVal || tagitem.name.toLocaleUpperCase().indexOf(filterVal.toLocaleUpperCase()) >= 0){%>
-    <li>
-        <input type="hidden" class="tagPinyin<%=tagitem.tagPinyin%>">
-        <label style="width: 100%;line-height: 16px;">
-            <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
-            <%=tagitem.name%>
-        </label>
-    </li>
-    <%}%>
-    <% })%>
-</script>
 <script id="serverTypeList" type="template">
         <% _.each(serverTypeList, function (titem) { %>
         <label class="fl"><input type="checkbox" id="t<%=titem.dictCode%>" name="serverTypes"><%=titem.dictName%></label>

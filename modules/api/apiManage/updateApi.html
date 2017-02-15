@@ -9,7 +9,6 @@
             <input type="submit" id="btnAjax">
         </form>
     </div>
-    <div class="tag-list-area"></div>
     <div class="add-price-list layerApi">
     </div>
     <div class="add-api-list layerApi">
@@ -166,47 +165,16 @@
     <%}%>
 </script>
 <script id="categoryList" type="template">
-    <% _.each(categoryList, function (fcitem) { %>
+    <% _.each(categoryList, function (fcitem) {%>
     <div class="category-block-area">
         <p data-typeId = "<%=fcitem.typeId%>"><%=fcitem.typeName%>:</p>
         <div>
             <% _.each(fcitem.categoryList, function (citem) { %>
-            <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == categoryList[0].categoryList[0].categoryId){%>checked<%}%> ><%=citem.categoryName%></label>
+            <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == defCid){%>checked<%}%> ><%=citem.categoryName%></label>
             <% })%>
         </div>
     </div>
     <% }); %>
-</script>
-<script id="tagList" type="template">
-    <div class="layerApi">
-        <div class="filter-area">
-            <input type="text" id='tagFilter'/>
-        </div>
-        <ul class="provider-list">
-        <% _.each(tagList, function (tagitem) { %>
-        <li>
-            <label style="width: 100%;line-height: 16px;">
-                <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
-                <%=tagitem.name%>
-            </label>
-        </li>
-        <% }); %>
-        <%if(tagList.length == 0){%>
-        <li>此分类无标签</li>
-        <%}%>
-    </ul></div>
-</script>
-<script id="tagListInner" type="template">
-    <% _.each(tagList, function (tagitem) { %>
-    <%if(!filterVal || tagitem.name.toLocaleUpperCase().indexOf(filterVal.toLocaleUpperCase()) >= 0){%>
-    <li>
-        <label style="width: 100%;line-height: 16px;">
-            <input id="tag<%=tagitem.tagId%>" attrName="<%=tagitem.name%>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
-            <%=tagitem.name%>
-        </label>
-    </li>
-    <%}%>
-    <% })%>
 </script>
 <script id="serverTypeList" type="template">
     <% _.each(serverTypeList, function (titem) { %>

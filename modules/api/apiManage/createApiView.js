@@ -51,7 +51,6 @@ var createApiView = Backbone.View.extend({
         'change .upload-file': 'doUploadImg',
         'blur #apiServerId': 'checkServerId',
         'blur #apiName': 'checkApiName',
-        'keyup #tagFilter': 'filterTagRes',
         'change .charge-type': 'doChargeType',
         'change input:radio[name="countLimit"]': 'changeLimit',
         'blur #price': 'limitPriceFun',
@@ -385,7 +384,7 @@ var createApiView = Backbone.View.extend({
         });
     },
     renderCategoryTag: function () {
-        var tagTemplate = _.template($('#tagList').html());
+        //var tagTemplate = _.template($('#tagList').html());
         var tagList = this.getCategoryTagModel.get('result');
         var sChooseTags = '';
         if(this.model.get('tags')){
@@ -897,17 +896,6 @@ var createApiView = Backbone.View.extend({
             $('#apiName').removeClass('error');
             $('.api-name-error').hide();
         }
-    },
-    filterTagRes: function (e) {
-        var $this = $(e.target),
-            sVal = $.trim($this.val());
-        var tagTemplate = _.template($('#tagListInner').html());
-        var tagList = this.getCategoryTagModel.get('result');
-        var sChooseTags = '';
-        if(this.model.get('tags')){
-            sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
-        }
-        this.$el.find('.provider-list').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags,filterVal: sVal}));
     },
     doChargeType: function () {
         var sVal = $('.charge-type').val();

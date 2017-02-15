@@ -6,7 +6,7 @@ var template = require('html!./publishTemplate.html');
 var packageTabletemplate = require('html!./packageTableTemplate.html');
 var serverUrlTemplate = require('html!./serverUrlTemplate.html');
 var serverUrlTableTemplate = require('html!./serverUrlTableTemplate.html');
-var tagView = require('./tagsLayer.js');
+var tagView = require('tagWidget/tagItemView.js');
 require('./services.css');
 require('validate');
 require('formAjax');
@@ -28,7 +28,7 @@ var categoryModel = Backbone.Model.extend({
 });
 // 微服务标签
 var tagModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'tags/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
 });
 // 上传图片
 var uploadImgUrl = mscxPage.request.app + 'pic/upload.do';
@@ -331,12 +331,17 @@ var createDemandView = Backbone.View.extend({
         var detail = this.detailModel.toJSON();
         var me = this;
         var param = {};
-
+        var sChooseTags = '';
+        if(this.tags.get('tagId')){
+            sChooseTags =  '*&'+this.tags.get('tagId').split(',').join('*&')+'*&';
+        }
+        else if(detail.result && detail.result.tags) {
+            sChooseTags =  '*&'+detail.result.tags.split(',').join('*&')+'*&';
+        }
         _.extend(param, {
-            tags: tags,
-            detailTag: detail.result && detail.result.tags || []
-        })
-
+            tagList: tags.result || [],
+            sChooseTags: sChooseTags
+        });
         this.tagView = new tagView({
             model: param
         });
@@ -350,7 +355,7 @@ var createDemandView = Backbone.View.extend({
             title: '服务标签',
             shade: 0.6,
             shadeClose: true,
-            area: ['500px'],
+            area: ['350px', '450px'],
             content: this.tagView.$el,
             btn1: function (index) {
                 me.tagView.submit(index);

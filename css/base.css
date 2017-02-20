@@ -236,7 +236,7 @@ select::-ms-expand {
     opacity:0;
 }
 .smallSelCons{width: 403px;}
-.smallSel{height: 40px;margin: 0 8px;width: 90px;overflow: hidden;}
+.smallSel{height: 40px;margin: 0 0 0 18px;width: 90px;overflow: hidden;}
 .smallSel .smallSelList{
 	width: 120px;
 	background: #fff;
@@ -273,12 +273,16 @@ select::-ms-expand {
 .smallSel .downSmalllBtn{
     display: block;
     position: absolute;
-    border-top: 6px solid #aaa;
+/*    border-top: 6px solid #aaa;
     border-right: 6px solid transparent;
     border-left: 6px solid transparent;
     right: 7px;
     top: 11px;
-    background: #fff;
+    background: #fff;*/
+    top: 10px;
+    height: 12px;
+    width: 12px;
+    background: url("../images/newicon/ic_down.png") center no-repeat;
 }
 
 /*.common .tit{position: relative; height: 24px;line-height: 24px;padding-left: 16px;}*/

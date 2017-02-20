@@ -11,7 +11,8 @@ var view = Backbone.View.extend({
     tagName: 'div',
     className: 'animate-content posRE opacity0',
     events: {
-        'click .sort a': 'sort'
+        'click .sort a': 'sort',
+        'click .fee-type a': 'feeFilter'
     },
     template: _.template(resultTemplate, {variable: 'data'}),
     initialize: function() {
@@ -83,6 +84,19 @@ var view = Backbone.View.extend({
 
         this.trigger('sort', {
             orderBy: type
+        })
+    },
+    feeFilter: function(event) {
+        // 排序方式
+        var $target = this.$(event.currentTarget);
+        var type = $target.data('type') || '';
+
+        $target.parent().find('.active').removeClass('active');
+        $target.addClass('active');
+
+
+        this.trigger('fee', {
+            chargeType: type
         })
     }
 });

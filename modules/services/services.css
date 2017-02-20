@@ -19,7 +19,7 @@
     padding: 16px 16px;
     min-height: initial;
 }
-.ConditionList{right: 0;top: 0;margin-top: 8px;}
+/*.ConditionList{right: 0;top: 0;margin-top: 8px;}*/
 .ConditionList a{display: inline-block;margin-right: 10px;}
 .ConditionList a:hover,.ConditionList a:link{color: #444;}
 .ConditionList a.active{color: #069cd9 !important;}

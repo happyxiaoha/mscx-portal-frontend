@@ -1,61 +1,61 @@
-<% if(data && data.title) { %>
+<!-- <% if(data && data.title) { %>
 <div class="tit">
     <h2 class="ft16 cor5"><%= data && data.title %>筛选</h2>
 </div>
-<% } %>
-<div class="ChoiceList boxSizing">
-    <!-- 范围 -->
-    <div class="clearfix">
-        <!-- 对象 -->
-        <div class="C_selectorLine clearfix fl">
-            <div class="sl-wrap clearfix">
-                <div class="sl-key fl">
-                    <span>对象</span>
-                </div>
-                <div class="sl-value fl" style="width: 595px;">
-                    <div class="sl-v-list">
-                        <ul class="J_valueList clearfix">
-                            <% data && data.objects && data.objects.result.forEach(function(item) { %>
-                                <li>
-                                    <input type="checkbox" data-type="objects" value="<%= item.dictCode %>" id="object<%= item.dictCode %>">
-                                    <label for="object<%= item.dictCode %>"><%= item.dictName %></label>
-                                </li>
-                            <% }) %>
-                        </ul>
-                    </div>
+<% } %> -->
+<div class="ChoiceList boxSizing bgWhite">
+    
+    <!-- 对象 -->
+    <div class="C_selectorLine clearfix">
+        <div class="sl-wrap clearfix">
+            <div class="sl-key fl">
+                <span>对象：</span>
+            </div>
+            <div class="sl-value fl">
+                <div class="sl-v-list">
+                    <ul class="J_valueList clearfix">
+                        <% data && data.objects && data.objects.result.forEach(function(item) { %>
+                            <li>
+                                <input type="checkbox" data-type="objects" value="<%= item.dictCode %>" id="object<%= item.dictCode %>">
+                                <label for="object<%= item.dictCode %>"><%= item.dictName %></label>
+                                <em class="checkbox"></em>
+                            </li>
+                        <% }) %>
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="C_selectorLine clearfix fr">
-            <div class="sl-wrap clearfix borc1">
-                <div class="sl-key fl">
-                    <span>范围</span>
-                </div>
-                <div class="sl-value fl">
-                    <div class="sl-v-list">
-                        <div class="smallSelCons clearfix">
-                            <div class="smallSel fl posRE">
-                                <select data-default="<%= data.defaults && data.defaults.defaultCity ? data.defaults.defaultCity.province.code : '' %>" class="smallSelList" id="provinceSel">
-                                </select>
-                                <p class="select-wrapper"><em class="downSmalllBtn"></em></p>
-                            </div>
-                            <span class="fl">省</span>
-                            <div class="smallSel fl posRE">
-                                <select data-default="<%= data.defaults && data.defaults.defaultCity ? data.defaults.defaultCity.city.code : '' %>" class="smallSelList" id="citySel">
-                                    <option value="0">不限</option>
-                                </select>
-                                <p class="select-wrapper"><em class="downSmalllBtn"></em></p>
-                            </div>
-                            <span class="fl">市</span>
-                            <div class="smallSel fl posRE">
-                                <select class="smallSelList" id="areaSel">
-                                    <option value="0">不限</option>
-                                </select>
-                                <p class="select-wrapper"><em class="downSmalllBtn"></em></p>
-                            </div>
-                            <span class="fl">区县</span>
+    <!-- 范围 -->
+    <div class="C_selectorLine clearfix">
+        <div class="sl-wrap clearfix">
+            <div class="sl-key fl">
+                <span>范围：</span>
+            </div>
+            <div class="sl-value fl">
+                <div class="sl-v-list">
+                    <div class="clearfix">
+                        <div class="smallSel fl posRE">
+                            <select data-default="<%= data.defaults && data.defaults.defaultCity ? data.defaults.defaultCity.province.code : '' %>" class="smallSelList" id="provinceSel">
+                            </select>
+                            <p class="select-wrapper"><em class="downSmalllBtn"></em></p>
                         </div>
+                        <span class="fl">省</span>
+                        <div class="smallSel fl posRE">
+                            <select data-default="<%= data.defaults && data.defaults.defaultCity ? data.defaults.defaultCity.city.code : '' %>" class="smallSelList" id="citySel">
+                                <option value="0">不限</option>
+                            </select>
+                            <p class="select-wrapper"><em class="downSmalllBtn"></em></p>
+                        </div>
+                        <span class="fl">市</span>
+                        <div class="smallSel fl posRE">
+                            <select class="smallSelList" id="areaSel">
+                                <option value="0">不限</option>
+                            </select>
+                            <p class="select-wrapper"><em class="downSmalllBtn"></em></p>
+                        </div>
+                        <span class="fl">区县</span>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
             <div class="sl-key fl">
-                <span>机构</span>
+                <span>机构：</span>
             </div>
             <div class="sl-value fl widthfull">
                 <div class="sl-v-list">
@@ -97,7 +97,7 @@
     <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
             <div class="sl-key fl">
-                <span>分类</span>
+                <span>分类：</span>
             </div>
             <div class="sl-value fl widthfull">
                 <div class="sl-v-list">
@@ -128,7 +128,7 @@
     <div class="C_selectorLine clearfix">
         <div class="tag-wrap sl-wrap clearfix">
             <div class="sl-key fl">
-                <span>标签</span>
+                <span>标签：</span>
             </div>
             <div class="sl-value widthfull fl">
                 <div class="sl-v-list">
@@ -156,7 +156,7 @@
     <% } %>
 
     <!-- 收费类型 -->
-    <div class="C_selectorLine clearfix">
+    <!-- <div class="C_selectorLine clearfix">
         <div class="sl-wrap clearfix">
             <div class="sl-key fl">
                 <% if(data.chargeWay && data.chargeWay.result && data.chargeWay.result.length > 0) { %>
@@ -179,12 +179,12 @@
                 </div>
             </div>
 
-            <!-- 搜索 -->
+            
             <div class="sl-search">
                 <input type="text" class="search-input" value="<%= data.defaults && data.defaults.keyword %>" maxlength="30">
                 <span class="search-btn"></span>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>

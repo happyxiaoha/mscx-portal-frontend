@@ -12,7 +12,7 @@ var servicesModel = Backbone.Model.extend({
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'rightMenuWrap grid1190 fl boxShadiow boxSizing common',//bgWhite
+    className: 'grid1190 fl boxSizing common',//bgWhite
     initialize: function() {
         // 筛选部分初始化
         this.searchView = new searchView({
@@ -34,6 +34,7 @@ var view = Backbone.View.extend({
 
         this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
         this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleSort.bind(this.searchView));
+        this.searchView.listenTo(this.resultView, 'fee', this.searchView.handleFee.bind(this.searchView));
 
         this.serviceAPI = new servicesModel();
 

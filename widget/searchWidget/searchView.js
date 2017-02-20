@@ -77,6 +77,7 @@ var view = Backbone.View.extend({
         'click .sl-e-more': 'toggleMore',
         'click li a': 'selectOption',
         'click input[type="checkbox"]': 'handleCheckbox',
+        'click em.checkbox': 'iconCheckbox',
         'click .search-btn': 'handleQueryStr',
         'keydown .search-input': 'pressEnterSearch',
         'change #provinceSel': 'changeProvinces',
@@ -237,12 +238,18 @@ var view = Backbone.View.extend({
             $moreWrap.hide();
         }
     },
+    iconCheckbox: function(event) {
+        var $target = this.$(event.currentTarget);
+        $target.parent().find('input').click();
+    },
     handleCheckbox: function(event) {
         var $target = this.$(event.currentTarget);
         var type = $target.data('type');
         var value = $target.val();
 
         var params = [];
+
+        $target.parent().find('.checkbox').toggleClass('checked');
 
         $target.parents('ul').find('input[type="checkbox"]:checked').each(function(index, item) {
             params.push(item.value);
@@ -278,6 +285,9 @@ var view = Backbone.View.extend({
         _.extend(params, {
             page: 1
         })
+        this.searchParams.set(params);
+    },
+    handleFee: function(params) {
         this.searchParams.set(params);
     },
     pressEnterSearch: function(event) {

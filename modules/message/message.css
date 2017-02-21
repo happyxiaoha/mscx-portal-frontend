@@ -1,0 +1,8 @@
+.smallNav {margin: 15px 0;}
+.noticeListCons{border: 1px solid #ccc;padding: 15px 28px 25px;}
+.noticeListCons .noticeListConsUl li{border-bottom: 1px dashed #CCC;font-size: 14px;padding: 14px 0;line-height: 16px;}
+.noticeListCons .noticeListConsUl li a{ display: block;width: 700px;white-space:nowrap; text-overflow:ellipsis; overflow: hidden;position: relative; padding-left: 16px;}
+.noticeListCons .noticeListConsUl li a:before{content: '';width: 5px;height: 5px;background: #069cd9;position: absolute;left: 0;top: 5px;}
+.noticeListCons .noticeListConsUl li a:hover{color: #069cd9;}
+.dig-con { font-size: 15px; margin: 15px;}
+.dig-time {font-size: 14px;  text-align: right;  margin-right: 15px;}

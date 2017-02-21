@@ -12,7 +12,7 @@
 .right-con-wrap .R-topList .user-cost{width: 240px;}
 .right-con-wrap .R-topList .user-ser{width: 288px;}
 
-.right-con-wrap a.message{background: url('../../../images/news.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin: 10px 0;display: none;}
+.right-con-wrap a.message{background: url('../../../images/news.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin: 10px 0;}
 .right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;text-decoration: underline;}
 .right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;}
 .right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;color: #f0b742;}

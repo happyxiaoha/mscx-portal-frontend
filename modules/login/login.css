@@ -59,8 +59,8 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 /*input[type="checkbox"]:checked + label:before{background: url('../../images/login/right.png') no-repeat center center;}*/
 .loginCons .rightTable ul li .forgetPassword{position: absolute;right: 4px;display: block;top: 0;font-size: 14px;color: #3f89ec;}
 .loginCons .rightTable ul li .forgetPassword:hover{color: #3f89ec;}
-.loginCons .rightTable ul li button{width: 100%;background: #3f89ec;text-align: center;height: 36px;border: none;font-size: 14px;color: #fff;border-radius: 5px;margin-top: 4px;}
-.loginCons .rightTable ul li .goRegister{font-size: 14px;color: #3f89ec;display: block;padding-top: 4px;width: 100px;margin: 0 auto;}
+.loginCons .rightTable ul li button{width: 100%;background: #ff9900;text-align: center;height: 36px;border: none;font-size: 14px;color: #fff;border-radius: 5px;margin-top: 4px;}
+.loginCons .rightTable ul li .goRegister{font-size: 14px;color: #5cb981;display: block;padding-top: 4px;width: 100px;margin: 0 auto;}
 
 .loginCons .rightTable ul li label.error{
     position: absolute;
@@ -79,8 +79,8 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .header h1 a{color: #333;font-size: 22px;}
 .header h1 span{line-height: 34px;padding-left: 12px;margin-left: 6px;vertical-align: 22px;font-size: 20px;font-weight: bold;}
 
-.header .goHome{float: right;font-size: 18px;margin-top: 36px;}
-.header .goHome a{display: block;color: #333;background: url(../../images/login/home.png) no-repeat left center;padding-left: 35px;line-height: 26px;}
+.header .goHome{float: right;font-size: 14px;margin-top: 36px;}
+.header .goHome a{display: block;color: #333;background: url(../../images/login/home.png) no-repeat left center;width: 80px; line-height: 26px; text-align: center;}
 .login-image-code input{
     float: left;
     width: 100px;
@@ -92,7 +92,7 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
     float: left;
 }
 
-.copyright{background: #f2f2f2;}
+.copyright{background: #454647;}
 .copyright .center{border-bottom: 1px solid #e3e3e3;}
 .copyright .center ul{padding: 34px 108px;}
 .copyright .center ul li{float: left;width: 100px;}
@@ -136,7 +136,7 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .register-form ul li .golink{font-size: 14px;color: #3f89ec;}
 .register-form ul li .golink:hover{color: #3f89ec !important;}
 .register-form ul li button[type='submit']{
-    background: #3f89ec;
+    background: #ff9900;
     text-align: center;
     width: 150px;
     height: 42px;

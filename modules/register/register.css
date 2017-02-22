@@ -86,8 +86,8 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .header .nav li a{color: #888;}
 .header .nav li a:hover,.header .nav li a:link{background: transparent;}
 
-.header .goHome{float: right;font-size: 18px;margin-top: 36px;}
-.header .goHome a{display: block;color: #333;background: url(../../images/login/home.png) no-repeat left center;padding-left: 35px;line-height: 26px;}
+.header .goHome{float: right;font-size: 14px;margin-top: 36px;}
+.header .goHome a{display: block;color: #333;background: url(../../images/login/home.png) no-repeat left center;width: 80px; line-height: 26px; text-align: center;}
 .login-image-code input{
     float: left;
     width: 100px;
@@ -99,7 +99,7 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
     float: left;
 }
 
-.copyright{background: #f2f2f2;}
+.copyright{background: #454647;}
 .copyright .center{border-bottom: 1px solid #e3e3e3;}
 .copyright .center ul{padding: 34px 108px;}
 .copyright .center ul li{float: left;width: 100px;}
@@ -145,7 +145,7 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 input[type="checkbox"]:checked + label:before{background: url('../../images/login/right.png') no-repeat center center;}
 .register-form ul li .golink{font-size: 14px;color: #3f89ec;}
 .register-form ul li .golink:hover{color: #3f89ec !important;}
-.register-form ul li button{width: 100%;background: #3f89ec;text-align: center;height: 52px;border: none;font-size: 18px;color: #fff;border-radius: 5px;}
+.register-form ul li button{width: 100%;background: #ff9900;text-align: center;height: 45px;border: none;font-size: 18px;color: #fff;border-radius: 5px;}
 .register-form ul li:nth-child(5){margin-bottom: 26px;height: 14px;}
 .register-form ul li input.error{ border: 1px solid #d82e3a;}
 .register-form ul li label.error{
@@ -176,5 +176,5 @@ input[type="checkbox"]:checked + label:before{background: url('../../images/logi
 }
 .goto-login a{
     text-decoration: underline;
-    color: #0ab7ef;
+    color: #5cb981;
 }

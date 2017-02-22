@@ -72,7 +72,7 @@ require('./search.css');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'animate-content search-loading',
+    className: 'ns-sideBarComponent',
     events: {
         'click .sl-e-more': 'toggleMore',
         'click li a': 'selectOption',

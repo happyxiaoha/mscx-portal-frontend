@@ -77,8 +77,6 @@ var view = Backbone.View.extend({
         'click .toggle-more': 'toggleMore',
         'click dd a': 'selectOption',
         'click input[type="checkbox"]': 'handleCheckbox',
-        'click .search-btn': 'handleQueryStr',
-        'keydown .search-input': 'pressEnterSearch',
         'change #provinceSel': 'changeProvinces',
         'change #citySel': 'changeCities',
         'change #areaSel': 'changeAreas'
@@ -249,7 +247,7 @@ var view = Backbone.View.extend({
 
         var params = [];
 
-        $target.parents('ul').find('input[type="checkbox"]:checked').each(function(index, item) {
+        $target.parents('dl').find('input[type="checkbox"]:checked').each(function(index, item) {
             params.push(item.value);
         })
 
@@ -265,30 +263,17 @@ var view = Backbone.View.extend({
             });
         }
     },
-    handleQueryStr: function() {
-        var searchText = $.trim(this.$('.search-input').val());
-
-        this.searchParams.set({
-            page: 1,
-            keyword: searchText
-        });
-    },
     handlePageJump: function(params) {
         this.searchParams.set({
             page: params.page || 0,
             pageSize: params.pageSize || 20
         })
     },
-    handleSort: function(params) {
+    handleParams: function(params) {
         _.extend(params, {
             page: 1
         })
         this.searchParams.set(params);
-    },
-    pressEnterSearch: function(event) {
-        if(event.keyCode == 13) {
-            this.handleQueryStr();
-        }
     },
     changeProvinces: function(event) {
         var code = this.$provinceSel.val();

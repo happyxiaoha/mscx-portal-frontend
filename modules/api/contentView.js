@@ -36,7 +36,8 @@ var view = Backbone.View.extend({
         this.resultView.delegate = this;
 
         this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
-        this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleSort.bind(this.searchView));
+        this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleParams.bind(this.searchView));
+        this.searchView.listenTo(this.resultView, 'search', this.searchView.handleParams.bind(this.searchView));
 
         this.dataAPI = new dataAPI();
         this.toolAPI = new toolAPI();

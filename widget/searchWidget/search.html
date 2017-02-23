@@ -14,7 +14,7 @@
 </div>
 <% } %>
 <!-- 范围 -->
-<% if(data.scopes) { %>
+<% if(_.indexOf(data.options, 'scopes') > -1) { %>
 <div class="ns-sideBarItem">
     <dl class="nofloat">
         <dt>范围</dt>
@@ -64,15 +64,14 @@
         <dd class="<%= data.defaults && data.defaults.categoryId ? '' : 'active' %>">
             <a href="javascript:;" data-type="categoryId">不限</a>
         </dd>
-        <% data.category.result.forEach(function(item) { %>
+        <% data.category.result.forEach(function(item, index) { %>
+            <% if(index == 10){ %>
+            <dd><a href="javascript:;" class="toggle-more">更多&gt;&gt;</a></dd>
+            <% }%>
             <dd class="<%= data.defaults && (data.defaults.categoryId == item.categoryId) ? 'active' : '' %>">
                 <a rel="nofollow" href="javascript:;" data-type="categoryId" data-categoryid="<%= item.categoryId %>"><%= item.categoryName %></a>
             </dd>
         <% }) %>
-        
-        <% if(data.category.result.length > 5) { %>
-            <dd><a href="javascript:;" class="down">更多&gt;&gt;</a></dd>
-        <% } %>
     </dl>
 </div>
 <% } %>
@@ -80,18 +79,17 @@
 <!-- 标签 -->
 <% if(data.tags && data.tags.result) { %>
 <div class="ns-sideBarItem">
-    <dl>
+    <dl class="tags-dl">
         <dt>标签</dt>
-        <li class="active">
+        <dd class="active">
             <a href="javascript:;" data-type="tagId">不限</a>
-        </li>
-        <% data.tags.result.forEach(function(item) { %>
+        </dd>
+        <% data.tags.result.forEach(function(item, index) { %>
+            <% if(index == 10){ %>
+            <dd><a href="javascript:;" class="toggle-more">更多&gt;&gt;</a></dd>
+            <% }%>
             <dd><a href="javascript:;" data-type="tagId" data-tagid="<%= item.tagId %>" rel="nofollow"><%= item.tagName %></a></dd>
         <% }) %>
-        
-        <% if(data.tags.result.length > 5) { %>
-            <dd><a href="javascript:;" class="agencyDown">更多&gt;&gt;</a></dd>
-        <% } %>
         
     </dl>
 </div>

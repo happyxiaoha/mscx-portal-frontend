@@ -9,7 +9,7 @@ var followModel = Backbone.Model.extend({
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'animate-content posRE opacity0',
+    className: 'ns-contentComponent',
     events: {
         'click .sort a': 'sort'
     },
@@ -31,8 +31,8 @@ var view = Backbone.View.extend({
         return this;
     },
     render: function(model) {
-        this.$el.removeClass('opacity0');
-        this.$dataList.empty().addClass('opacity0');
+        this.$el.removeClass('fade');
+        this.$dataList.empty().addClass('fade');
 
         var result = model.toJSON().result || {};
         var apiServiceList = result.list || [];
@@ -41,9 +41,8 @@ var view = Backbone.View.extend({
 
         if(apiServiceList.length < 1) {
             this.$sort.hide();
-            this.$dataList.addClass('data-empty').html('没有符合查询条件的数据');
+            this.$dataList.html('没有符合查询条件的数据');
         }else {
-            this.$dataList.removeClass('data-empty');
             this.$sort.show();
         }
         this.$count.html(pageInfo.totalSize || 0);
@@ -55,7 +54,7 @@ var view = Backbone.View.extend({
             this.$dataList.append(view.$el);
         }.bind(this));
 
-        this.$dataList.removeClass('opacity0');
+        this.$dataList.removeClass('fade');
 
         laypage({
             cont: 'page',

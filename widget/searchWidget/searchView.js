@@ -74,8 +74,8 @@ var view = Backbone.View.extend({
     tagName: 'div',
     className: 'ns-sideBarComponent',
     events: {
-        'click .sl-e-more': 'toggleMore',
-        'click li a': 'selectOption',
+        'click .toggle-more': 'toggleMore',
+        'click dd a': 'selectOption',
         'click input[type="checkbox"]': 'handleCheckbox',
         'click .search-btn': 'handleQueryStr',
         'keydown .search-input': 'pressEnterSearch',
@@ -150,17 +150,22 @@ var view = Backbone.View.extend({
         _.extend(params.defaults, model.defaults);
 
         this.$el.html(this.template(params));
-        // 省市区联动
-        this.$provinceSel = this.$('#provinceSel');
-        this.$citySel = this.$('#citySel');
-        this.$areaSel = this.$('#areaSel');
 
-        this.$provinceSel.append(this.scopeTemplate(Resource.provinces));
+        // 有范围查询标识时
+        if(_.indexOf(model.options, 'scopes') > -1) {
 
-        var defaultProvince = this.$provinceSel.data('default');
+            // 省市区联动
+            this.$provinceSel = this.$('#provinceSel');
+            this.$citySel = this.$('#citySel');
+            this.$areaSel = this.$('#areaSel');
 
-        if(defaultProvince) {
-            this.$provinceSel.val(defaultProvince).trigger('change');
+            this.$provinceSel.append(this.scopeTemplate(Resource.provinces));
+
+            var defaultProvince = this.$provinceSel.data('default');
+
+            if(defaultProvince) {
+                this.$provinceSel.val(defaultProvince).trigger('change');
+            }
         }
 
         // 如果自带默认查询条件
@@ -179,9 +184,9 @@ var view = Backbone.View.extend({
     toggleMore: function(event) {
         var $target = this.$(event.currentTarget);
         if($target.hasClass('down')){
-            $target.html('收起>>').removeClass('down').parent().siblings('.sl-value').find('.J_List').scrollTop(0).toggleClass('expand');
+            $target.html('收起>>').removeClass('down').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
         }else{
-            $target.html('更多>>').addClass('down').parent().siblings('.sl-value').find('.J_List').scrollTop(0).toggleClass('expand');
+            $target.html('更多>>').addClass('down').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
         }            
     },
     selectOption: function(event) {
@@ -189,7 +194,7 @@ var view = Backbone.View.extend({
         var type = $target.data('type');
         var param = {};
 
-        $target.parents('ul').find('.active').removeClass('active');
+        $target.parents('dl').find('.active').removeClass('active');
         $target.parent().toggleClass('active');
 
         // 如果选中的是分类，则获取该分类下的标签明细, 然后做查询操作
@@ -227,15 +232,15 @@ var view = Backbone.View.extend({
         }
     },
     renderDetailTags: function(model) {
-        this.$('.tag-ul').html(this.tagTemplate(model.toJSON()));
+        this.$('.tags-dl').html(this.tagTemplate(model.toJSON()));
 
-        var $moreWrap = this.$('.tag-wrap .sl-ext');
-        // 处理 更多 按钮是否出现
-        if(model.toJSON().result.length > 5) {
-            $moreWrap.show();
-        }else {
-            $moreWrap.hide();
-        }
+        // var $moreWrap = this.$('.tag-wrap .sl-ext');
+        // // 处理 更多 按钮是否出现
+        // if(model.toJSON().result.length > 5) {
+        //     $moreWrap.show();
+        // }else {
+        //     $moreWrap.hide();
+        // }
     },
     handleCheckbox: function(event) {
         var $target = this.$(event.currentTarget);

@@ -2,11 +2,9 @@
 
 var template = require('html!./apiItem.html');
 
-require('./apiItem.css');
-
 var view = Backbone.View.extend({
-    tagName: 'li',
-    className: 'api-item',
+    tagName: 'div',
+    className: 'ns-gridPanelComponent',
     events: {
         'click .sl-e-more': 'toggleMore'
     },

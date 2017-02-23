@@ -1,143 +1,349 @@
-<div class="tabbable bgWhite boxShadiow">
-    <div class="slideBanner clearfix">
-        <div class="mleftCons">
-            <div class="serverInfos mb25 clearfix">
-                <div class="fl appImgCons">
-                    <div class="appImg">
-                        <div class="Img tc">
-                            <img src="<%= data.result && data.result.iconUrl %>" alt="">
-                        </div>
-                    </div>
-                    <div class="viewerNums clearfix">
-                        <p class="fl">
-                            <span>服务接入量</span>
-                            <span class="mt10"><em class="red ft16"><%= data.result && data.result.applyCnt %></em></span>
-                        </p>
-                        <p class="fl">
-                            <span>访问量</span>
-                            <span class="mt10"><em class="red ft16"><%= data.result && data.result.viewCnt %></em></span>
-                        </p>
-                    </div>
+<div class="ns-contentComponent">
+    <div class="ns-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="sjbg.html">交易广场</a></li>
+                        <li><a href="fwjk.html">服务接口</a></li>
+                        <li class="active"><%= data.result && data.result.apiServiceCName %></li>
+                    </ol>
                 </div>
-                <div class="appInfoCons fl posRE">
-                    <div class="top clearfix">
-                        <h2 class="fl"><%= data.result && data.result.apiServiceCName %></h2>
-                        <div class="fl">
-                            <span title="<%= data.result && data.result.tagsName %>"><%= data.result && data.result.tagsName %></span>
-                        </div>
-                    </div>
-                    <div class="down">
-                        <p class="mb15"></p>
-                        <!-- <p class="fenlei mb15">
-                            <span>
-                                <em></em>
-                                <em></em>
-                                <em></em>
-                                <em></em>
-                                <em></em>
-                            </span>
-                            <span>评分</span>
-                            <span>4.2分</span>
-                        </p> -->
-                        <div>
-                            <div class="left">
-                                <p class="mb15">
-                                    <span class="mr10">API状态：<em><%= data.result && data.result.statusDesc %></em></span>
-                                   <!-- <span  class="mr25">连接服务：<em>100万</em></span>-->
-                                    <span>服务区域：<em title="<%= data.result && data.result.scope %>"><%= data.result && data.result.scope %></em></span>
-                                </p>
-                                <p class="mb15">
-                                    <span class="mr10" title="<%= data.result && data.result.providerName %>">服务商：<em><%= data.result && data.result.providerName %></em></span>
-                                    <span class="mr25">更新时间：<em><%= data.result && data.result.updatedTime && (new Date(data.result.updatedTime).toISOString()).slice(0,10)%></em></span>
-                                    <span>所属分类：<em><%= data.result && data.result.categoryName %></em></span>
-                                </p>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-md-9">
+                <div class="ns-apiDetailComponent">
+                    <div class="ns-apiDetailTop">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="media-object">
+                                    <img src="<%= data.result && data.result.iconUrl %>" alt="">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <!-- JiaThis Button END -->
+                                <h4 class="media-heading"><%= data.result && data.result.apiServiceCName %>
+                                    <div class="tags">
+                                        <% data.result && data.result.tagsName.split(',').forEach(function(item){ %>
+                                        <span class="tagItem"><%= item %></span>
+                                        <% }) %>
+                                    </div>
+                                </h4>
+                                <div class="subInfo">
+                                    <%= data.result && data.result.description %>
+                                </div>
+                                <div class="baseInfo">
+                                    <div class="top">
+                                        <div class="media">
+                                            <div class="media-body">
+                                                <div class="info">
+                                                    <div class="cell">
+                                                        数创价：<span class="text-large text-orange"><%= data.result && data.result.chargeTypeDesc %></span>
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <div class="cell">API状态：<span><%= data.result && data.result.statusDesc %></span></div>
+                                                    <div class="cell">服务区域：<span><%= data.result && data.result.scope %></span></div>
+                                                </div>
+                                                <div class="info">
+                                                    <div class="cell">
+                                                        服务商：<span><%= data.result && data.result.providerName %></span>
+                                                    </div>
+                                                    <div class="cell">
+                                                        更新时间：<span><%= data.result && data.result.updatedTime && (new Date(data.result.updatedTime).toISOString()).slice(0,10)%></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="media-right">
+                                                <div class="rightInfo">
+                                                    <!-- <p>综合分：<span>4.2</span></p> -->
+                                                    <p>接入量：<span><%= data.result && data.result.applyCnt %></span></p>
+                                                    <p>浏览量：<span><%= data.result && data.result.viewCnt %></span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bottom">
+                                        <div class="attention active">
+                                            已关注
+                                        </div>
+                                        <div class="share">
+                                            <dl>
+                                                <dt>分享：</dt>
+                                                <dd class="weibo"><a href="#" id="sahreWeibo"></a></dd>
+                                                <dd class="weixin"><a href="#" id="sahreWeixin"></a></dd>
+                                                <dd class="qq"><a href="#" id="sahreQQ"></a></dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%if(data.result.status == '0'){%>
+                                <div class="submitBtns">
+                                    <button type="button" id="applyBtn" class="btn" data-toggle="modal" data-target="#myModal">申请</button>
+                                    <% if(data.result && !data.result.attentionFlag){ %>
+                                    <button type="button" id="followBtn" class="btn" data-toggle="modal" data-target="#myModal">关注</button>
+                                    <% }else{ %>
+                                    <button type="button" id="followBtn" class="btn" data-toggle="modal" data-target="#myModal">取消关注</button>
+                                    <% } %>
+                                </div>
+                                <%}%>
                             </div>
                         </div>
-                        <p class="mb20 line20">
-                            <span>服务简介：<em><%= data.result && data.result.description %></em></span>
-                        </p>
+
                     </div>
-                    <%if(data.result.status == '0'){%>
-                    <div>
-                        <button id="applyBtn">申请</button>
-                        <!-- <button><a class="corff" href="./serverAplication.html">API测试</a></button> -->
-                        <% if(data.result && !data.result.attentionFlag){ %>
-                            <button id="followBtn" class="bgOrange">关注</button>
-                        <% }else{ %>
-                            <button id="followBtn" class="bgOrange">取消关注</button>
-                        <% } %>
-                        <button id="offlineBtn" class="fr" style="margin-right: 0;">线下洽谈申请</button>
-                    </div>
-                    <%}%>
-                    <!-- 分享 -->
-                    <div class="share posAB">
-                        <a href="#" id="sahreWeixin"></a>
-                        <a href="#" id="sahreQQ"></a>
-                        <a href="#" id="sahreWeibo"></a>
-                    </div>
-                    <!-- 费用 -->
-                    <div class="useMoney posAB">
-                        <span class="red"><%= data.result && data.result.chargeTypeDesc %><em></em></span>
+                    <div class="ns-apiDetailBottom">
+                        <div class="tabs">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="javascript:;" role="tab" data-toggle="tab" data-index="0">API调用</a>
+                                </li>
+                                <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="1">返回码</a></li>
+                                <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="2">示例代码</a>
+                                </li>
+                                <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="3">套餐</a>
+                                </li>
+                                <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="4">其他相关</a>
+                                </li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="home">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                        <div class="col-md-2 side">
+                                            <ul>
+                                            <% data.result && data.result.apiList.forEach(function(item, index){ %>
+                                            <li data-index="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"><%= item.apiCName %></li>
+                                            <% }) %>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-10 content api markdown-body">
+                                            <% data.result && data.result.apiList.forEach(function(item, index){ %>
+                                            <div class="rightCons<%= index == 0 ? '' : ' hide' %>">
+                                                <p>接口地址：<span><%= item.encodeUri %></span></p>
+                                                <p>支持格式：<span><%= item.requestType %></span></p>
+                                                <p>请求方式：<span><%= item.requestMethod %></span></p>
+                                                <p>参数和示例：<span><%= item.testPacket %></span></p>
+                                                <p>备注信息：</p>
+                                                <div class="markdown-body">
+                                                    <%= item.directions %>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="profile">
+                                    <div class="container-fluid">
+                                        <div class="col-md-8 col-md-offset-1 content markdown-body">
+                                            <%= data.result.rtnCode %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="messages">
+                                    <div class="container-fluid">
+                                        <div class="col-md-12 content">
+                                            <table class="table table-bordered table-condensed">
+                                                <caption>完整教学示例代码</caption>
+                                                <tbody><tr>
+                                                    <th>语言</th>
+                                                    <th>标题</th>
+                                                    <th>提供者</th>
+                                                    <th>时间</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>JAVA</td>
+                                                    <td>全国交通违章查询调用示例</td>
+                                                    <td>智慧神州</td>
+                                                    <td>2016-03-25 23：23：23</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>PHP</td>
+                                                    <td>全国交通违章查询调用示例</td>
+                                                    <td>智慧神州</td>
+                                                    <td>2016-03-25 23：23：23</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Python</td>
+                                                    <td>全国交通违章查询调用示例</td>
+                                                    <td>智慧神州</td>
+                                                    <td>2016-03-25 23：23：23</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>C#</td>
+                                                    <td>全国交通违章查询调用示例</td>
+                                                    <td>智慧神州</td>
+                                                    <td>2016-03-25 23：23：23</td>
+                                                </tr>
+                                            </tbody></table>
+                                            <table class="table table-bordered table-condensed">
+                                                <caption>常见问题</caption>
+                                                <tbody><tr>
+                                                    <th>内容</th>
+                                                    <th>详情</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>常见问题</td>
+                                                    <td>http://www.api.sctiy.cn/qa/water1</td>
+                                                </tr>
+                                            </tbody></table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="messages1">
+                                    <div class="container-fluid">
+                                        <div class="col-md-12 content">
+                                            <table class="table table-bordered table-condensed">
+                                                <caption>常规套餐包：【更多次数、更多优惠，请与商务联系】</caption>
+                                                <tbody><tr>
+                                                    <th>名称</th>
+                                                    <th>价格</th>
+                                                    <th>次数/月数</th>
+                                                    <th>说明</th>
+                                                </tr>
+                                                <% data && data.result && data.result.chargeRuleList.forEach(function(item){ %>
+                                                    <tr>
+                                                        <td><%= item.name %></td>
+                                                        <td><%= item.price %></td>
+                                                        <td><%= item.chargeCount %></td>
+                                                        <td><%= item.description %></td>
+                                                    </tr>
+                                                <% }) %>
+                                            </tbody></table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="messages2">
+                                    <div class="container-fluid" id="targets">
+                                        <div class="row">
+                                        <div class="col-md-2 side">
+                                            <ul>
+                                                <li data-target="tg1" class="active">特色功能</li>
+                                                <li data-target="tg2">平台保障</li>
+                                                <li data-target="tg3">质量趋势</li>
+                                                <li data-target="tg4">其他相关</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-10 targetContent content">
+                                            <div data-tar="tg1" class="targetItem " style="display: block">
+                                                <dl>
+                                                    <dt>特色功能：</dt>
+                                                    <dd>包含全国各城市水账单查询服务</dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>使用场景：</dt>
+                                                    <dd>暂无</dd>
+                                                </dl>
+                                            </div>
+                                            <div data-tar="tg2" class="targetItem " style="display: none">
+                                                <dl>
+                                                    <dt>质量问题</dt>
+                                                    <dd>服务遇到质量问题享受退款保障</dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>技术支持</dt>
+                                                    <dd>如果当前服务无法满足您的需求，可以联系我们。平台评估需求通过后，提供定制化解决方案 联系我们</dd>
+                                                </dl>
+                                            </div>
+                                            <div data-tar="tg3" class="targetItem " style="display: none">
+                                                <div class="imgWrap">
+                                                    <img src="" alt="">
+                                                </div>
+                                            </div>
+                                            <div data-tar="tg4" class="targetItem " style="display: none">
+                                                <table class="table table-bordered table-condensed">
+                                                    <caption>常见问题</caption>
+                                                    <tbody><tr>
+                                                        <th>内容</th>
+                                                        <th>详细</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>接口测试</td>
+                                                        <td>API测试工具</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>技术支持</td>
+                                                        <td>info@sctiy.cn</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>联系我们</td>
+                                                        <td>010-82707827</td>
+                                                    </tr>
+                                                </tbody></table>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="tabList">
-                <div class="tab clearfix bggray">
-                    <span data-index="0">API调用</span>
-                    <span data-index="1">返回码</span>
-                    <!-- <span data-index="1">示例代码</span> -->
-                    <span data-index="2">套餐介绍</span>
-                </div>
-                <div class="tabCons animate-content opacity0">
-                    <div class="tabConsInfo mt15 clearfix hide">
-                        <div class="tabLeft fl">
-                            <% data.result && data.result.apiList.forEach(function(item, index){ %>
-                            <span data-index="<%= index %>" class="<%= index == 0 ? 'active' : '' %>"><%= item.apiCName %></span>
-                            <% }) %>
-                        </div>
-                        <div class="fl tabRight api markdown-body">
-                            <% data.result && data.result.apiList.forEach(function(item, index){ %>
-                            <div class="rightCons<%= index == 0 ? '' : ' hide' %>">
-                                <p>接口地址：<%= item.encodeUri %></p>
-                                <p>支持格式：<%= item.requestType %></p>
-                                <p>请求方式：<%= item.requestMethod %></p>
-                                <p>参数和示例：<%= item.testPacket %></p>
-                                <p>备注信息：</p>
-                                <div class="markdown-body">
-                                    <%= item.directions %>
-                                </div>
+            <!-- 热门API -->
+            <div class="col-md-3">
+                <div class="hotTz">
+                    <div class="hotTzcaption">热门API</div>
+                    <div class="hotTzItem">
+                        <div class="media">
+                            <div class="media-left">
+                                <img src="" alt="" class="media-object">
                             </div>
-                            <% }) %>
+                            <div class="media-body">
+                                <h4 class="media-heading">上市公司业绩报告查询</h4>
+                                <p>全国上市公司业绩报告</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14 markdown-body">
-                        <%= data.result.rtnCode %>
+                    <div class="hotTzItem">
+                        <div class="media">
+                            <div class="media-left">
+                                <img src="" alt="" class="media-object">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">身份信息验证</h4>
+                                <p>免费身份信息验证查询</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tabConsInfo mt15 clearfix hide pl60 pr60 pt14">
-                        <div class="tableCons mb30 D_table">
-                            <h2>常规套餐包<b class="corOrange">【更多次数、更多优惠请线下洽谈】</b></h2>
-
-                            <table class="D_table">
-                                <tbody>
-                                <tr>
-                                    <th>名称</th>
-                                    <th>价格</th>
-                                    <th>次数/月数</th>
-                                    <th>说明</th>
-                                </tr>
-                                <% data && data.result && data.result.chargeRuleList.forEach(function(item){ %>
-                                <tr>
-                                    <td><%= item.name %></td>
-                                    <td><%= item.price %></td>
-                                    <td><%= item.chargeCount %></td>
-                                    <td><%= item.description %></td>
-                                </tr>
-                                <% }) %>
-                                </tbody>
-                            </table>
+                    <div class="hotTzItem">
+                        <div class="media">
+                            <div class="media-left">
+                                <img src="" alt="" class="media-object">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">商标信息查询</h4>
+                                <p>商标注册、使用等信息查询</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hotTzItem">
+                        <div class="media">
+                            <div class="media-left">
+                                <img src="" alt="" class="media-object">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">工商企业信用公示</h4>
+                                <p>工商公示信息查询</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hotTzItem">
+                        <div class="media">
+                            <div class="media-left">
+                                <img src="" alt="" class="media-object">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">健康问答</h4>
+                                <p>专家面对面答疑解惑</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

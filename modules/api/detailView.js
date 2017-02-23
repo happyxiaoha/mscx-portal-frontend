@@ -3,7 +3,7 @@
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
 var offlineView = require('offlineWidget/offlineLayer.js');
-var shareView = require('shareWidget/shareView.js');
+// var shareView = require('shareWidget/shareView.js');
 
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getApiServiceDetailById.do?t=' + new Date().getTime()
@@ -22,7 +22,7 @@ var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     template: _.template(template, {variable: 'data'}),
     events: {
-        'click .tab span': 'selectTab',
+        'click .nav-tabs a': 'selectTab',
         'click #applyBtn': 'apply',
         'click #followBtn': 'follow',
         'click #offlineBtn': 'offlineChat',
@@ -44,9 +44,9 @@ var view = Backbone.View.extend({
                 apiServiceId: this.id
             }
         });
-        this.shareView = new shareView({
-            className: 'share posAB'
-        });
+        // this.shareView = new shareView({
+        //     className: 'share posAB'
+        // });
 
         return this;
     },
@@ -82,27 +82,28 @@ var view = Backbone.View.extend({
         this.resourceType = model.result.resourceType;
         this.$el.html(this.template(model)).removeClass('opacity0');
 
-        this.$tabContent = this.$('.tabConsInfo');
-        this.$tabWrap = this.$('.tabCons');
+        this.$tabContent = this.$('.tab-pane');
+        this.$tabWrap = this.$('.tab-content');
         this.$appInfoCons = this.$('.appInfoCons');
 
         // 添加分享组件
-        this.$appInfoCons.append(this.shareView.$el);
+        // this.$appInfoCons.append(this.shareView.$el);
 
         // 默认选中第一个
         this.$('.tab span').eq(0).click();
     },
     selectTab: function(event) {
-        this.$tabWrap.addClass('opacity0');
+        event.preventDefault();
+        this.$tabWrap.addClass('fade');
         var $target = this.$(event.currentTarget);
         var index = $target.data('index');
 
-        $target.parent().find('.active').removeClass('active');
-        $target.addClass('active');
+        $target.parents('.nav-tabs').find('.active').removeClass('active');
+        $target.parent().addClass('active');
 
         this.$tabContent.hide().eq(index).show();
 
-        this.$tabWrap.removeClass('opacity0');
+        this.$tabWrap.removeClass('fade');
     },
     selectAPI: function(event) {
         var $target = this.$(event.currentTarget);

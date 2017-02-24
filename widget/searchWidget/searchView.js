@@ -91,7 +91,7 @@ var view = Backbone.View.extend({
         this.filterMaps = _.pick(Models, this.model.options);
 
         // 默认设置为数据API
-        this.id = 'data';
+        this.id = this.id || 'data';
 
         // 标签详情 根据categoryId获取
         this.detailTags = Models.detailTags;

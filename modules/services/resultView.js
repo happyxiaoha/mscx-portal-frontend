@@ -1,11 +1,11 @@
 'use strict';
 
 var resultTemplate = require('html!./resultTemplate.html');
-var apiItemView = require('servicesItemWidget/servicesItemView.js');
+var serviceItemView = require('servicesItemWidget/servicesItemView.js');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'animate-content posRE opacity0',
+    className: 'ns-contentComponent',
     events: {
         'click .sort a': 'sort'
     },
@@ -25,11 +25,11 @@ var view = Backbone.View.extend({
         this.$dataList.empty().addClass('opacity0');
 
         var result = model.toJSON().result || {};
-        var apiServiceList = result.list || [];
+        var serviceList = result.list || [];
         var pageInfo = result.page || {};
         var me = this; 
 
-        if(apiServiceList.length < 1) {
+        if(serviceList.length < 1) {
             this.$sort.hide();
             this.$dataList.addClass('data-empty').html('没有符合查询条件的数据');
         }else {
@@ -38,8 +38,8 @@ var view = Backbone.View.extend({
         }
         this.$count.html(pageInfo.totalSize || 0);
 
-        _.each(apiServiceList, function(item) {
-            var view = new apiItemView({
+        _.each(serviceList, function(item) {
+            var view = new serviceItemView({
                 model: item
             });
             this.$dataList.append(view.$el);

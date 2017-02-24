@@ -1,14 +1,15 @@
-
-<a href="services.html?detail/<%- data.id %>"><img src="<%- data.imageUri %>" alt="" class="fl"></a>
-<div class="myServerRight fr">
-    <a href="services.html?detail/<%- data.id %>" class="block ft16 corOrange"><%- data.name %></a>
-    <p class="R-infos"><%- data.description %></p>
-    <p>
-        <span>服务商：<em class="corBlue"><%- data.providerName %></em></span>
-        <span>服务方式：<em class="corBlue"><%- data.serviceType %></em></span>
-        <span>服务渠道：<em class="corGreen"><%- data.serviceChannel %></em></span>
-        <span>费用：<em class="corRed"><%- data.chargeTypeDesc %></em></span>
-    </p>
+<div class="media">
+    <div class="media-left">
+        <img src="<%- data.imageUri %>" class="media-object">
+    </div>
+    <div class="media-body">
+        <a href="apiDetail2.html" class="h1"><%- data.name %></a>
+        <p class="offset"><%- data.updatedTimeFormat %></p>
+        <p class="sub">提供方：<span><%- data.providerName %></span> 提供方式：<span><%- data.serviceType %></span></p>
+        <p class="info"><%- data.description %></p>
+        <div class="media-body-footer">
+            <div class="footerItem"> 费用：<span class="keywordType2"><%- data.chargeTypeDesc %></span></div>
+            <div class="footerItem"> 申请量：<span class="keywordType2"><%- data.applyCount %></span></div>
+        </div>
+    </div>
 </div>
-<!-- 城市 -->
-<p class="posAB citysSel"><%- (data.scope.indexOf('，') > 0 || data.scope.indexOf(',') > 0 ? '全国' : data.scope) %></p>

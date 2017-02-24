@@ -11,14 +11,12 @@ var servicesModel = Backbone.Model.extend({
 });
 
 var view = Backbone.View.extend({
-    tagName: 'div',
-    className: 'rightMenuWrap fl boxShadiow boxSizing bgWhite common',
+    el: mscxPage.domEl.apiEl,
     initialize: function() {
         // 筛选部分初始化
         this.searchView = new searchView({
             id: this.id,
             model: {
-                title: '微服务',
                 options: ['objects', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
                 defaults: this.model
             }
@@ -33,7 +31,7 @@ var view = Backbone.View.extend({
         this.resultView.delegate = this;
 
         this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
-        this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleSort.bind(this.searchView));
+        this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleParams.bind(this.searchView));
 
         this.serviceAPI = new servicesModel();
 

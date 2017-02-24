@@ -3,7 +3,8 @@
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
 var offlineView = require('offlineWidget/offlineLayer.js');
-// var shareView = require('shareWidget/shareView.js');
+var shareView = require('shareWidget/shareView.js');
+var selectedView = require('./selectedAPIView.js');
 
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getApiServiceDetailById.do?t=' + new Date().getTime()
@@ -26,11 +27,9 @@ var view = Backbone.View.extend({
         'click #applyBtn': 'apply',
         'click #followBtn': 'follow',
         'click #offlineBtn': 'offlineChat',
-        'click .tabLeft span': 'selectAPI'
+        'click .side li': 'selectAPI'
     },
     initialize: function() {
-        this.$el.addClass('grid960 animate-content opacity0');
-
         this.detailModel = new detailModel();
         this.followModel = new followModel();
         this.unFollowModel = new unFollowModel();
@@ -44,9 +43,8 @@ var view = Backbone.View.extend({
                 apiServiceId: this.id
             }
         });
-        // this.shareView = new shareView({
-        //     className: 'share posAB'
-        // });
+        this.shareView = new shareView();
+        this.selectedView = new selectedView();
 
         return this;
     },
@@ -84,10 +82,14 @@ var view = Backbone.View.extend({
 
         this.$tabContent = this.$('.tab-pane');
         this.$tabWrap = this.$('.tab-content');
-        this.$appInfoCons = this.$('.appInfoCons');
+        this.$appInfoCons = this.$('.share');
+        // 热门API区域
+        this.$selectedAPI = this.$('#selectedAPI');
 
         // 添加分享组件
-        // this.$appInfoCons.append(this.shareView.$el);
+        this.$appInfoCons.append(this.shareView.$el);
+
+        this.$selectedAPI.append(this.selectedView.$el).addClass('in');
 
         // 默认选中第一个
         this.$('.tab span').eq(0).click();
@@ -112,7 +114,7 @@ var view = Backbone.View.extend({
         $target.parent().find('.active').removeClass('active');
         $target.addClass('active');
 
-        this.$('.rightCons').hide().eq(index).show();
+        this.$('.rightCons').addClass('hide').eq(index).removeClass('hide');
     },
     // 申请
     apply: function() {

@@ -2,6 +2,7 @@
 
 var template = require('html!./search.html');
 var tagTemplate = require('html!./tagTemplate.html');
+var categoryTemplate = require('html!./categoryTemplate.html');
 var scopeTemplate = require('html!./scopeTemplate.html');
 var Resource = require('./city.json');
 
@@ -77,15 +78,20 @@ var view = Backbone.View.extend({
         'click .toggle-more': 'toggleMore',
         'click dd a': 'selectOption',
         'click input[type="checkbox"]': 'handleCheckbox',
+        'click input[name="type"]': 'handleTypeChange',
         'change #provinceSel': 'changeProvinces',
         'change #citySel': 'changeCities',
         'change #areaSel': 'changeAreas'
     },
     template: _.template(template, {variable: 'data'}),
     tagTemplate: _.template(tagTemplate, {variable: 'data'}),
+    categoryTemplate: _.template(categoryTemplate, {variable: 'data'}),
     scopeTemplate: _.template(scopeTemplate, {variable: 'data'}),
     initialize: function() {
         this.filterMaps = _.pick(Models, this.model.options);
+
+        // 默认设置为数据API
+        this.id = 'data';
 
         // 标签详情 根据categoryId获取
         this.detailTags = Models.detailTags;
@@ -96,6 +102,10 @@ var view = Backbone.View.extend({
         this.listenTo(Models.modelTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.openDataTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.serviceTags, 'sync', this.renderDetailTags);
+
+        this.listenTo(Models.dataCategory, 'sync', this.renderCategory);
+        this.listenTo(Models.modelCategory, 'sync', this.renderCategory);
+        this.listenTo(Models.toolCategory, 'sync', this.renderCategory);
 
         this.searchParams = new Backbone.Model();
 
@@ -229,6 +239,9 @@ var view = Backbone.View.extend({
             Models[this.id + 'Tags'].fetch({data: {}});
         }
     },
+    fetchCategory: function() {
+        Models[this.id + 'Category'].fetch();
+    },
     renderDetailTags: function(model) {
         this.$('.tags-dl').html(this.tagTemplate(model.toJSON()));
 
@@ -239,6 +252,10 @@ var view = Backbone.View.extend({
         // }else {
         //     $moreWrap.hide();
         // }
+    },
+    renderCategory: function(model) {
+        this.$('.category-dl').html(this.categoryTemplate(model.toJSON()));
+        Models[this.id + 'Tags'].fetch();
     },
     handleCheckbox: function(event) {
         var $target = this.$(event.currentTarget);
@@ -262,6 +279,19 @@ var view = Backbone.View.extend({
                 chargeType: params.length > 1 ? '' : params[0]
             });
         }
+    },
+    handleTypeChange: function(event) {
+        var $target = this.$(event.currentTarget);
+        var value = $target.val();
+
+        this.id = value;
+
+        this.fetchCategory();
+
+        this.searchParams.set({
+            categoryId: '',
+            tagId: ''
+        })
     },
     handlePageJump: function(params) {
         this.searchParams.set({

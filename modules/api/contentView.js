@@ -17,20 +17,16 @@ var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     initialize: function() {
         // 筛选部分初始化
-        // TODO 暂时把id写死成data
-        this.id = 'data';
         this.searchView = new searchView({
             id: this.id,
             model: {
-                options: ['objects', 'scopes', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
+                options: ['objects', 'scopes', 'range', 'dataCategory', 'dataTags', 'type', 'chargeWay'],
                 defaults: this.model || {}
             }
         });
 
         // 结果部分初始化
-        this.resultView = new resultView({
-            id: this.id
-        });
+        this.resultView = new resultView();
 
         this.searchView.delegate = this;
         this.resultView.delegate = this;

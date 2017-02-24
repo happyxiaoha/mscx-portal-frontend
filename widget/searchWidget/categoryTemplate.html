@@ -1,0 +1,12 @@
+<dt>分类</dt>
+<dd class="active">
+    <a href="javascript:;" data-type="tagId">不限</a>
+</dd>
+<% data && data.result.forEach(function(item, index) { %>
+    <% if(index == 10){ %>
+    <dd><a href="javascript:;" class="toggle-more">更多&gt;&gt;</a></dd>
+    <% }%>
+    <dd>
+        <a rel="nofollow" href="javascript:;" data-type="categoryId" data-categoryid="<%= item.categoryId %>"><%= item.categoryName %></a>
+    </dd>
+<% }) %>

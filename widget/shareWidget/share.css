@@ -1,0 +1,14 @@
+.share {
+    position: relative;
+}
+.share dd a {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+.share img {
+    position: absolute;
+    z-index: 100;
+    top: 22px;
+    left: 70px;
+}

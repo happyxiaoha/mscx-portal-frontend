@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <ol class="breadcrumb">
-                        <li><a href="sjbg.html">交易广场</a></li>
-                        <li><a href="fwjk.html">服务接口</a></li>
+                        <li><a href="api.html">交易广场</a></li>
+                        <li><a href="api.html">服务接口</a></li>
                         <li class="active"><%= data.result && data.result.apiServiceCName %></li>
                     </ol>
                 </div>
@@ -71,12 +71,7 @@
                                             已关注
                                         </div>
                                         <div class="share">
-                                            <dl>
-                                                <dt>分享：</dt>
-                                                <dd class="weibo"><a href="#" id="sahreWeibo"></a></dd>
-                                                <dd class="weixin"><a href="#" id="sahreWeixin"></a></dd>
-                                                <dd class="qq"><a href="#" id="sahreQQ"></a></dd>
-                                            </dl>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -100,11 +95,7 @@
                                 <li role="presentation" class="active"><a href="javascript:;" role="tab" data-toggle="tab" data-index="0">API调用</a>
                                 </li>
                                 <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="1">返回码</a></li>
-                                <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="2">示例代码</a>
-                                </li>
-                                <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="3">套餐</a>
-                                </li>
-                                <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="4">其他相关</a>
+                                <li role="presentation"><a href="javascript:;" role="tab" data-toggle="tab" data-index="2">套餐</a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
@@ -143,56 +134,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="messages">
-                                    <div class="container-fluid">
-                                        <div class="col-md-12 content">
-                                            <table class="table table-bordered table-condensed">
-                                                <caption>完整教学示例代码</caption>
-                                                <tbody><tr>
-                                                    <th>语言</th>
-                                                    <th>标题</th>
-                                                    <th>提供者</th>
-                                                    <th>时间</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>JAVA</td>
-                                                    <td>全国交通违章查询调用示例</td>
-                                                    <td>智慧神州</td>
-                                                    <td>2016-03-25 23：23：23</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>PHP</td>
-                                                    <td>全国交通违章查询调用示例</td>
-                                                    <td>智慧神州</td>
-                                                    <td>2016-03-25 23：23：23</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Python</td>
-                                                    <td>全国交通违章查询调用示例</td>
-                                                    <td>智慧神州</td>
-                                                    <td>2016-03-25 23：23：23</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>C#</td>
-                                                    <td>全国交通违章查询调用示例</td>
-                                                    <td>智慧神州</td>
-                                                    <td>2016-03-25 23：23：23</td>
-                                                </tr>
-                                            </tbody></table>
-                                            <table class="table table-bordered table-condensed">
-                                                <caption>常见问题</caption>
-                                                <tbody><tr>
-                                                    <th>内容</th>
-                                                    <th>详情</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>常见问题</td>
-                                                    <td>http://www.api.sctiy.cn/qa/water1</td>
-                                                </tr>
-                                            </tbody></table>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div role="tabpanel" class="tab-pane" id="messages1">
                                     <div class="container-fluid">
                                         <div class="col-md-12 content">
@@ -216,133 +157,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane" id="messages2">
-                                    <div class="container-fluid" id="targets">
-                                        <div class="row">
-                                        <div class="col-md-2 side">
-                                            <ul>
-                                                <li data-target="tg1" class="active">特色功能</li>
-                                                <li data-target="tg2">平台保障</li>
-                                                <li data-target="tg3">质量趋势</li>
-                                                <li data-target="tg4">其他相关</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-10 targetContent content">
-                                            <div data-tar="tg1" class="targetItem " style="display: block">
-                                                <dl>
-                                                    <dt>特色功能：</dt>
-                                                    <dd>包含全国各城市水账单查询服务</dd>
-                                                </dl>
-                                                <dl>
-                                                    <dt>使用场景：</dt>
-                                                    <dd>暂无</dd>
-                                                </dl>
-                                            </div>
-                                            <div data-tar="tg2" class="targetItem " style="display: none">
-                                                <dl>
-                                                    <dt>质量问题</dt>
-                                                    <dd>服务遇到质量问题享受退款保障</dd>
-                                                </dl>
-                                                <dl>
-                                                    <dt>技术支持</dt>
-                                                    <dd>如果当前服务无法满足您的需求，可以联系我们。平台评估需求通过后，提供定制化解决方案 联系我们</dd>
-                                                </dl>
-                                            </div>
-                                            <div data-tar="tg3" class="targetItem " style="display: none">
-                                                <div class="imgWrap">
-                                                    <img src="" alt="">
-                                                </div>
-                                            </div>
-                                            <div data-tar="tg4" class="targetItem " style="display: none">
-                                                <table class="table table-bordered table-condensed">
-                                                    <caption>常见问题</caption>
-                                                    <tbody><tr>
-                                                        <th>内容</th>
-                                                        <th>详细</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>接口测试</td>
-                                                        <td>API测试工具</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>技术支持</td>
-                                                        <td>info@sctiy.cn</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>联系我们</td>
-                                                        <td>010-82707827</td>
-                                                    </tr>
-                                                </tbody></table>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- 热门API -->
-            <div class="col-md-3">
-                <div class="hotTz">
-                    <div class="hotTzcaption">热门API</div>
-                    <div class="hotTzItem">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="" alt="" class="media-object">
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">上市公司业绩报告查询</h4>
-                                <p>全国上市公司业绩报告</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hotTzItem">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="" alt="" class="media-object">
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">身份信息验证</h4>
-                                <p>免费身份信息验证查询</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hotTzItem">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="" alt="" class="media-object">
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">商标信息查询</h4>
-                                <p>商标注册、使用等信息查询</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hotTzItem">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="" alt="" class="media-object">
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">工商企业信用公示</h4>
-                                <p>工商公示信息查询</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hotTzItem">
-                        <div class="media">
-                            <div class="media-left">
-                                <img src="" alt="" class="media-object">
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">健康问答</h4>
-                                <p>专家面对面答疑解惑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-3 fade" id="selectedAPI">
+                
             </div>
             </div>
         </div>

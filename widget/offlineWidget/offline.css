@@ -1,9 +1,7 @@
 /* 线下洽谈弹层 */
 #offlineBtn {
-    border-radius: 5px;
-    border: solid 1px #8b8b8b;
-    background: #fff;
-    color: #8a8a8a;
+    width: 120px;
+    float: right;
 }
 .offline-box,.orderDiv {padding: 20px 30px;font-size: 14px;}
 .offline-box label,.orderDiv label{
@@ -28,15 +26,12 @@
 .orderDiv label input{
     width: 270px;
 }
-/*button .offline-btn {
-    border-radius: 5px;
-    border: solid 1px #8b8b8b;
-    background: #fff;
-    color: #8a8a8a;
-}*/
 
 .offline-box form label.error {
     color: #e66c6b;
     padding: 0;
     margin-left: 110px;
+}
+.offline-box em {
+    color: #cc0000;
 }

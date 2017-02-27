@@ -1,131 +1,125 @@
-<div class="containerWrap grid960">
-    <div class="tabbable bgWhite boxShadiow">
-        <% if(data) { %>
-        <div class="slideBanner clearfix">
-            <div class="mleftCons">
-                <div class="serverInfos mb35 clearfix">
-                    <div class="fl appImgCons">
-                            <img class="appImg" src="<%- data.imageUri %>" alt="">
-                        <div class="viewerNums clearfix">
-                            <p>访问量：<span><%- data.viewCount %></span></p>
-                        </div>
-                    </div>
-                    <div class="appInfoCons fl posRE">
-                        <div class="top mb10 clearfix">
-                            <h2 class="fl mr20"><%- data.name %></h2>
-                            <div class="fl mr20">
-                                <span><%- (data.tagNames).replace(',/g',' ') %></span>
-                            </div>
-                            <div class="fl">
-                                <span>服务分类：<em><%- data.categoryName %></em></span>
-                            </div>
-                        </div>
-                        <div class="down">
-                            <div class="left">
-                                <p class="mb15 line22">
-                                    <span class="mr10">服务状态：<em><%- data.statusDesc %></em></span>
-                                    <span class="mr10">服务商：<em><%- data.providerName %></em></span>
-                                    <span>服务方式：<em><%- data.serviceType %></em></span>
-                                    <!--<span class="mr25">版本号：<em>7.0.1</em></span>-->
-                                </p>
-                                <p class="mb15">
-                                    <span class="mr10">访问URL：
-                                        <% if(data.uri.indexOf('http') < 0){ %>
-                                        <a href="http://<%- data.uri %>" target="_blank">
-                                            <% }else{ %>
-                                            <a href="<%- data.uri %>" target="_blank">
-                                                <% }; %>
-                                            <%- data.uri %></a></span>
-                                    <span class="mr25">更新时间：<em><%- (new Date(data.updatedTime).toISOString()).slice(0,10) %></em></span>
-                                </p>
-                            </div>
-                            <p class="mb20 line20">
-                                <span>服务简介：<em><%- data.description %></em></span>
-                            </p>
-                        </div>
-                        <%if(data.status == '0'){%>
-                        <div>
-                            <button id="applyBtn">申请</button>
-                            <button id="example">查看演示</button>
-                            <button id="attention" class="bgOrange"><%- data.attentionFlag ? '取消关注' : '关注'%></button>
-                            <button id="offlineBtn" class="fr" style="margin-right: 0;">线下洽谈申请</button>
-                        </div>
-                        <%}%>
-                        <!-- 分享 -->
-                        <div class="share posAB">
-                            <a href="#" id="sahreWeixin"></a>
-                            <a href="#" id="sahreQQ"></a>
-                            <a href="#" id="sahreWeibo"></a>
-                        </div>
-                        <!-- 费用 -->
-                        <div class="useMoney posAB">
-                            <span class="red"><%- data.chargeTypeDesc %><em></em></span>
-                        </div>
-                    </div>
+<div class="ns-contentComponent">
+    <div class="ns-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="services.html">交易广场</a></li>
+                        <li><a href="services.html">微应用</a></li>
+                        <li class="active"><%= data.name %></li>
+                    </ol>
                 </div>
             </div>
-            <% if(data.demoImage1 || data.demoImage2 || data.demoImage3){ %>
-            <div class="R-Cons">
-                <p class="titTop bggray ft14 corBlue">详情信息</p>
-                <div class="titTopCons picScroll-left">
-                    <a class="next" style="display: none;"></a>
-                    <a class="prev" style="display: none;"></a>
-                    <div class="bd">
-                        <ul class="picList">
-                            <% if( data.demoImage1){ %>
-                            <li>
-                                <div class="pic"><img src="<%- data.demoImage1 %>" /></div>
-                            </li>
-                            <% }; %>
-                            <% if( data.demoImage2){ %>
-                            <li>
-                                <div class="pic"><img src="<%- data.demoImage2 %>" /></div>
-                            </li>
-                            <% }; %>
-                            <% if( data.demoImage3){ %>
-                            <li>
-                                <div class="pic"><img src="<%- data.demoImage3 %>" /></div>
-                            </li>
-                            <% }; %>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <% }; %>
-            <!--<div class="R-Cons">
-                <p class="titTop bggray ft14 corBlue">套餐介绍</p>
-                <div class="titTopCons serverinfoList">
-                    <div class="tableCons mb30 D_table">
-                        <h2>常规套餐包<b class="corOrange">【更多次数、更多优惠请线下洽谈】</b></h2>
+        </div>
+        <div class="ns-sideBarComponent pull-right fade" id="selectedService">
 
-                        <table class="D_table mt20">
-                            <tr>
-                                <th>名称</th>
-                                <th>价格</th>
-                                <th>次数</th>
-                                <th>说明</th>
-                            </tr>
-                            <tr>
-                                <td>高级套餐</td>
-                                <td>1000</td>
-                                <td>1150</td>
-                                <td>高级点的套餐</td>
-                            </tr>
-                            <tr>
-                                <td>基本套餐</td>
-                                <td>100</td>
-                                <td>110</td>
-                                <td>最基本的套餐</td>
-                            </tr>
-                        </table>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="ns-apiDetailComponent">
+                        <div class="ns-apiDetailTop">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="media-object">
+                                        <img src="<%= data.imageUri %>" alt="" class="">
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><%= data.name %>
+                                        <div class="tags">
+                                            <% data.tagNames.split(',').forEach(function(item){ %>
+                                            <span class="tagItem"><%= item %></span>
+                                            <% }) %>
+                                        </div>
+                                    </h4>
+                                    <div class="subInfo">
+                                        <%= data.description %>
+                                    </div>
+                                    <div class="baseInfo">
+                                        <div class="top">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <div class="info">
+                                                        <div class="cell">
+                                                            数创价：<span class="text-large text-orange">
+                                                            <%= data.chargeTypeDesc %></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="cell">服务状态：
+                                                            <span>
+                                                            <%= data.statusDesc %>
+                                                            </span>
+                                                        </div>
+                                                        <div class="cell">服务方式：
+                                                            <span>
+                                                            <%= data.serviceType %>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="cell">服务商：
+                                                            <span>
+                                                            <%= data.providerName %>
+                                                            </span>
+                                                        </div>
+                                                        <div class="cell">更新时间：
+                                                            <span>
+                                                            <%= (new Date(data.updatedTime).toISOString()).slice(0,10) %>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="cell">访问地址：
+                                                        <% if(data.uri.indexOf('http') < 0){ %>
+                                                            <a href="http://<%- data.uri %>" target="_blank">
+                                                        <% }else{ %>
+                                                            <a href="<%- data.uri %>" target="_blank">
+                                                        <% }; %>
+                                                        <%= data.uri %>
+                                                        </a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="media-right">
+                                                    <div class="rightInfo">
+                                                        <p>访问量：<span>
+                                                            <%= data.viewCount %>
+                                                        </span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <div class="share">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%if(data.status == '0'){%>
+                                    <div class="submitBtns">
+                                        <button class="btn" id="applyBtn">申请</button>
+                                        <button class="btn" id="example">查看演示</button>
+                                        <button id="attention" class="btn"><%- data.attentionFlag ? '取消关注' : '关注'%></button>
+                                        <button id="offlineBtn" class="btn btn-active">线下洽谈申请</button>
+                                    </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                        <% if(data.demoImage1 || data.demoImage2 || data.demoImage3){ %>
+                        <div class="ns-apiDetailBottom">
+                            <div class="tabs">
+                                
+                                
+                            </div>
+                        </div>
+                        <% } %>
                     </div>
                 </div>
-            </div>-->
+            </div>
         </div>
-        <% }else{ %>
-        <div class="slideBanner clearfix">
-        <p class="ft22 pl60">此服务未上线</p>
-        </div>
-        <% } %>
     </div>
 </div>

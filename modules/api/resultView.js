@@ -11,9 +11,7 @@ var view = Backbone.View.extend({
     tagName: 'div',
     className: 'ns-contentComponent',
     events: {
-        'click .sort a': 'sort',
-        'click .search-btn': 'handleQueryStr',
-        'keydown .search-input': 'pressEnterSearch'
+        'click .sort a': 'sort'
     },
     template: _.template(resultTemplate, {variable: 'data'}),
     initialize: function() {
@@ -83,18 +81,6 @@ var view = Backbone.View.extend({
         this.trigger('sort', {
             orderBy: type
         })
-    },
-    handleQueryStr: function() {
-        var searchText = $.trim(this.$('.search-input').val());
-
-        this.trigger('search', {
-            keyword: searchText
-        })
-    },
-    pressEnterSearch: function(event) {
-        if(event.keyCode == 13) {
-            this.handleQueryStr();
-        }
     }
 });
 

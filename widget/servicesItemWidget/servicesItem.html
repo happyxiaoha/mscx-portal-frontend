@@ -3,7 +3,7 @@
         <img src="<%- data.imageUri %>" class="media-object">
     </div>
     <div class="media-body">
-        <a href="apiDetail2.html" class="h1"><%- data.name %></a>
+        <a href="services.html?detail/<%= data.id %>" class="h1"><%- data.name %></a>
         <p class="offset"><%- data.updatedTimeFormat %></p>
         <p class="sub">提供方：<span><%- data.providerName %></span> 提供方式：<span><%- data.serviceType %></span></p>
         <p class="info"><%- data.description %></p>

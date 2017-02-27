@@ -288,10 +288,8 @@ var view = Backbone.View.extend({
 
         this.fetchCategory();
 
-        this.searchParams.set({
-            categoryId: '',
-            tagId: ''
-        })
+        this.searchParams.clear({silent: true});
+        this.searchData();
     },
     handlePageJump: function(params) {
         this.searchParams.set({

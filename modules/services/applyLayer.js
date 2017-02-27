@@ -25,7 +25,7 @@ var addCartModel = Backbone.Model.extend({
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'apply-box hide',
+    className: 'apply-box',
     template: _.template(template, {variable: 'data'}),
     events: {
         'change .number': 'changeTdTotal',

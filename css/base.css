@@ -28,7 +28,7 @@ body {
 	line-height: 1;
 }
 .wrapper{
-	background: #f8f8f8;
+	background: #f9f7f7;
 }
 ol, ul {
 	list-style: none;
@@ -62,7 +62,7 @@ img{ border:0; }
 /* reset end*/
 
 /* global begin */
-body{ font-family:'microsoft yahei'; font-size:12px;color: #444;}
+body{ font-family:'microsoft yahei'; font-size:12px;color: #444;min-width: 960px;}
 .grid960{ width:960px; margin:0 auto; }
 .grid1000{ width:1000px; margin:0 auto; }
 .grid1190{ width:1190px; margin:0 auto; }

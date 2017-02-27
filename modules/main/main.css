@@ -4,23 +4,20 @@
 
 /*侧导航*/
 .container{width: 190px;z-index: 2;}
-.container .topTit{height: 41px;background: #fff;text-align: center;border-bottom: 3px solid #fff;}
+.container .topTit{height: 41px;background: #4dcf81;text-align: center;border-bottom: 3px solid #fff;}
 .container .topTit span{
     display: block;
     float: left;
     width: 50%;
-    font-size: 16px;
+    font-size: 14px;
     position: relative;
-    color: #6e7782;
+    color: #282828;
     line-height: 41px;
     cursor: default;
 }
 
-.container .topTit .topTitLast.active{
-    background: url("../../images/newicon/bg_right.png") no-repeat;
-}
-.container .topTit .topTitLast {
-    background: url("../../images/newicon/bg_left.png") no-repeat;
+.container .topTit span.active{
+    color: #FFF;
 }
 
 .downCons{
@@ -29,7 +26,7 @@
     position: relative;
 }
 .titCons {
-    height: 310px;
+    height: 350px;
 }
 .rightBannner .swiper-slide {
     opacity: 0.7;
@@ -41,7 +38,7 @@
     opacity: 1;
 }
 
-.downCons ul li .leftTit{height: 30px;line-height: 30px;color: #6e7782;font-size: 14px;padding-left: 30px;box-sizing: border-box;position: relative;cursor: pointer;}
+.downCons ul li .leftTit{height: 35px;line-height: 35px;color: #6e7782;font-size: 14px;padding-left: 30px;box-sizing: border-box;position: relative;cursor: pointer;}
 
 .swiper-slide img{display: block;height: 100%;width: 100%;}
 .swiper-pagination-switch{
@@ -53,25 +50,28 @@
 .swiper-visible-switch.swiper-active-switch{
     background: url(../../images/newdot0.png) no-repeat center center;
 }
-.downCons ul li .leftTit i img{vertical-align: -6px;}
-.downCons ul li .leftTit.activeHover{background: #f4f7f8;}
-.downCons ul li .leftTit.activeHover a{color: #4786f3;}
+.downCons ul li .leftTit a{display: block;}
+.downCons ul li .leftTit:hover{background: #ff9900;}
+.downCons ul li .leftTit:hover a {color: #FFF;}
+
+.downCons ul li .leftTit span {font-size: 12px;position: absolute;right: 10px;top: 0;}
+.downCons ul li .leftTit:hover span {color: #FFF;}
 .downCons ul li .rightTips{
     width: 210px;
-    background: #eff3f5;
+    background: #ff9900;
     position: absolute;
     left: 190px;
-    height: 310px;
+    height: 350px;
     top: 0;
     padding: 8px 20px 0;
     box-sizing:border-box;
     display: none;
 }
 .downCons ul li .rightTips a{
-    color: #6e7782;
+    color: #FFF;
     display: block;
     font-size: 12px;
-    line-height: 20px;
+    line-height: 28px;
     padding: 5px 0;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -79,7 +79,7 @@
     width: 100%;
 }
 .downCons ul li .rightTips a:hover{
-    color: #0092cd;
+    color: #9b4200;
 }
 
 
@@ -92,23 +92,22 @@
 .bg1b97c8{background: #1b97c8 !important;}
 
 .bannerbg {
-    height: 354px;
-    padding: 10px 0;
+    height: 400px;
     width: 100%;
-    background: #4c2db7;
+    margin-top: 20px;
 }
 .left-banner {
     width: 190px;
-    height: 354px;
+    height: 400px;
+    background: #FFF;
 }
 .ml10 {
     margin-left: 10px;
 }
-.bannger {width: 790px;
-    height:354px;}
+.bannger {width:980px;height:400px;}
 .swiper-container {
     width: 100%;
-    height: 354px;
+    height: 400px;
     color: #fff;
     margin-right: 10px;
     text-align: center;
@@ -328,7 +327,7 @@
 }
 
 .layerCons .tit a{color: #00aff6;display: inline-block;padding: 0 14px 26px;cursor: pointer;position: relative;z-index: 2;background: #f8f8f8;}
-.mainDatas{height: 480px;}
+.mainDatas{height: 680px;}
 .mainDatas-left{
     height: 100%;
     width: 238px;
@@ -373,17 +372,17 @@
     display: block;
 }
 .dataListDiv{
-    width: 952px;
-    height: 481px;
+    width: 100%;
+    height: 100%;
 }
 .ser-img-box{
     height: 108px;
 }
 .DataList {
-    border-top: solid 2px #0ab7ef;
     height: 100%;
     width: 100%;
-    /*border-right: solid 1px #b6c0c6;*/
+    border-bottom: solid 1px #e6e6e6;
+    border-left: solid 1px #e6e6e6;
     float: left;
 
 }
@@ -405,28 +404,24 @@
     border-top: none;
 }
 .serlist .DataList {
-    border-top: solid 2px #b461d6;
 
 }
+.DataList .api-icon {width: 100%;height: 100%;}
 .DataList li {
-    width: 25%;
+    width: 20%;
     box-sizing: border-box;
-    height: 240px;
+    height: 340px;
     float: left;
     background: #fff;
-    border: solid 1px #dae0e5;
+    border: 1px solid #FFF;
+    border-top: solid 1px #e6e6e6;
+    border-right:solid 1px #e6e6e6;
 }
-.DataList li:hover{
-    border: solid 1px #0ab7ef;
-    -moz-box-shadow: 2px 2px 10px #0ab7ef;
-    -webkit-box-shadow: 2px 2px 10px #0ab7ef;
-    box-shadow: 2px 2px 10px #0ab7ef;
+.DataList li.api-index-item:hover{
+    border: solid 1px #ff9900;
 }
-.serlist .DataList li:hover{
-    border: solid 1px #b461d6;
-    -moz-box-shadow: 2px 2px 10px #b461d6;
-    -webkit-box-shadow: 2px 2px 10px #b461d6;
-    box-shadow: 2px 2px 10px #b461d6;
+.serlist .DataList li.ser-index-item:hover{
+    border: solid 1px #ff9900;
 }
 .datalist-img {
     height:148px;
@@ -443,30 +438,26 @@
     height: 100px;
 }
 .centers p{
-    text-align: left;
+    text-align: center;
     overflow: hidden;
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 12px;
+    margin: 15px 0;
     font-size: 16px;
-    padding-left: 16px;
 }
 .buyType {
     color: #ff6600;
 }
 .DataList li .downs {
-    padding-left: 16px;
+    padding-left: 10%;
 }
 .DataList li .downs span{
-    padding-left: 22px;
+    color: #ff9900;
+    font-size: 13px;
     margin-right: 20px;
-    height: 14px;
-    background: url("../../images/newicon/ic_lianjieshu.png") no-repeat;
 }
-.DataList li .downs span.diaoyongshu{
-    background: url("../../images/newicon/ic_diaoyongshu.png") no-repeat;
-}
+.item-des { width: 80%; border-top: 1px solid #DDD; margin: 0 auto 20px;padding-top: 10px;color: #777;line-height: 18px;}
 
 .bg535353{background: #fff;}
 .footer{padding: 20px 0;margin-top: 50px;}
@@ -482,7 +473,6 @@
 }
 .footer ul li a:first-child{
     font-size: 16px;
-    color: #333;
     margin-bottom: 20px;
 }
 .forhelp{
@@ -562,12 +552,23 @@
     height: 203px;
 }
 
-
-
+/*创客工厂*/
+.entrepreneur {  width: 1188px;  overflow: hidden;clear:both;}
+.entrepreneur ul li:first-child {margin-left: 0;}
+.entrepreneur ul li{-webkit-border-radius:2px;border-radius:2px; width: 24.2%;background: url("../../images/ent_1.png"); box-sizing: border-box; border: solid 1px #e6e6e6;text-align: center;margin-left: 1%; height:300px;cursor: pointer;}
+.entrepreneur ul li:hover {border: 1px solid #ff9900;}
+.entrepreneur .ent-ser {background: url("../../images/ent_2.png");}
+.entrepreneur .ent-soc {background: url("../../images/ent_3.png");}
+.entrepreneur .ent-mod {background: url("../../images/ent_4.png");}
+.entrepreneur ul li .icon {height:80px;}
+.entrepreneur ul li .icon img {margin-top: 7px;}
+.entrepreneur ul li:first-child .icon img {margin-top: 0;}
+.entrepreneur ul li p {color: #999;font-size: 12px;line-height:20px;height:50px;margin-top:20px;}
+.entrepreneur ul li h3 {color: #5cb981;font-size: 16px;margin: 30px 0;}
+.entrepreneur ul li a {color: #666;font-size: 14px;line-height:38px;border:1px solid #DDD;width:80%;display:block;margin:10px auto;background:#FFF;-webkit-border-radius:2px;border-radius:2px;}
+.entrepreneur ul li a:hover {background: #f90;color: #FFF;}
 /* 合作伙伴 */
-.partner{ width: 1188px;
-    float: left;
-    border: solid 1px #b6c0c6; height:120px; background:#fff; overflow:hidden; clear:both;   }
+.partner{ width: 1188px;  float: left;  border: solid 1px #b6c0c6; height:120px; background:#fff; overflow:hidden; clear:both; }
 .partner ul{ overflow:hidden; zoom:1; }
 .partner ul li{ width: 234px;background: #fafafa; float:left; padding: 30px 5px;  display:inline; border-right: solid 1px #eee;text-align: center }
 .partner ul li img{height:60px;width: 160px; }
@@ -616,7 +617,7 @@
         margin: 0 20px 0 0;
     }
     .bannger{
-        width: 660px;
+        width: 820px;
     }
     .layer .tabChange ul li{
         width: 320px;
@@ -642,8 +643,13 @@
     .apitypelist li{
         width: 148px;
     }
+    /*
     .dataListDiv{
         width: 788px;
+    }
+    */
+    .entrepreneur{
+        width: 998px;
     }
     .partner{
         width: 998px;
@@ -659,3 +665,36 @@
         padding: 10px 0 10px 50px;
     }
 }
+.swiper-button-next, .swiper-button-prev {
+    background: url("../../images/arrow-index.png") no-repeat 0 0;
+    height: 70px;
+    margin-top: -35px;
+}
+.swiper-button-next{
+    background-position: 0 -129px;
+}
+
+.swiper-pagination-bullet {
+    background: #444;
+    opacity: 0.6;
+}
+.swiper-pagination-bullet-active{
+    background: #FFF;
+}
+
+.index-res-title {margin: 30px 0;}
+.index-res-title h3 {background: url("../../images/index-chengguo.png") no-repeat center;height: 65px;}
+.index-res-list {margin-bottom: 35px;}
+.index-res-list ul li {float: left;width: 23.5%;margin-left: 2%;}
+.index-res-list ul li:first-child {margin-left: 0;}
+.index-res-list li a {display: block;}
+.index-res-list li .res-line2 {margin: 10px 0;overflow: hidden;}
+.index-res-list li .res-line2 p {font-size: 16px;}
+.index-res-list li .res-line2 span {color: #a8a7a7;}
+.index-res-list .res-tags span {border: 1px solid #5cb981; color: #5cb981; border-radius: 4px;-webkit-border-radius: 4px;padding: 2px 5px;}
+.clear{clear: both;}
+.common .tis {font-size: 20px;overflow: hidden;}
+.common .tis:before {background: url("../../images/title-index.png") no-repeat 0 0; width: 20px;height: 32px;display: block;content: '';float: left;margin-right: 8px;}
+.common .tis span.titbg {font-size: 14px;color: #868383;line-height: 24px;margin-left: 8px;}
+.ser-title.tis:before { background-position: 0 -42px;}
+.ckfactory.tis:before { background-position: 0 -87px;}

@@ -8,7 +8,6 @@ var template = require('html!./main.html'),
     bannerView = require('./banner.js'),
     firstRecommendView = require('./firstRecommendView.js');
 require('./main.css');
-require('./../../css/swiper.css');
 require('../../lib/swiper.jquery.js');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
 
@@ -23,11 +22,11 @@ var navigationApiModel = Backbone.Model.extend({
 var serListModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'selection/list.do'
 });
-
+/*
 var apiListModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getSelectedNavigation.do'
 });
-
+*/
 var recommendApiModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getSelectedApi.do'
 });
@@ -56,7 +55,7 @@ var mainView = Backbone.View.extend({
             el: '#daohangAPI',
             model: new navigationApiModel()
         });
-
+        /*
         new recommendBarView({
             id: 'ser',
             el: '#serList',
@@ -69,7 +68,7 @@ var mainView = Backbone.View.extend({
             el: '#apiList',
             model: new apiListModel()
         });
-
+         */
         new recommendView({
             id: 'api',
             el: '.recommendApiList',
@@ -85,40 +84,7 @@ var mainView = Backbone.View.extend({
         this.render();
     },
     render: function(){
-        $(".partner").slide({
-            mainCell:"ul",
-            autoPlay:true,
-            effect:"leftMarquee",
-            interTime: 20,
-            vis:5
-        });
-        $('.container').delegate('.leftTit','mouseenter',function(){
-                if($(this).hasClass('moreThanTen')){
-                    $(this).addClass('activeHover').parent('li').siblings('li').find('.leftTit').removeClass('activeHover');
-                    $(this).parent('li').siblings('li').find('.rightTips').hide();
-
-                    return
-                }
-                $(this).addClass('activeHover').siblings('.rightTips').show();
-                $(this).parent('li').siblings('li').find('.leftTit').removeClass('activeHover');
-                $(this).parent('li').siblings('li').find('.rightTips').hide();
-            })
-            .delegate('.titCons,.rightTips','mouseleave',function() {
-                $(this).find('.leftTit').removeClass('activeHover');
-                $(this).find('.rightTips').hide();
-            })
-            .delegate('.topTit span','mouseenter',function(){
-                var index = $(this).index();
-                if(index == 0){
-                    $('.topTit').css('background','#fff')
-                }
-                else {
-                    $('.topTit').css('background','#eff3f5')
-                }
-                $(this).addClass('active').siblings('span').removeClass('active');
-                $('.downCons').find('.titCons').eq(index).removeClass('hide').siblings('.titCons').addClass('hide');
-            });
-
+        
     }
 });
 

@@ -29,14 +29,17 @@ var bannerView = Backbone.View.extend({
 
     },
     banner: function (size) {
-        var galleryTop = new Swiper('.swiper-container', {
-            /*        nextButton: '.swiper-button-next',
-             prevButton: '.swiper-button-prev',*/
+        new Swiper('.swiper-container', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
             spaceBetween: 10,
-            loop:true,
-            direction: 'vertical',
+            loop: true,
+            pagination : '.swiper-pagination',
+            paginationElement : 'li',
+            direction: 'horizontal',
             loopedSlides:8
         });
+        /*
         if(size>4){
             size = 4;
         }
@@ -45,13 +48,14 @@ var bannerView = Backbone.View.extend({
             slidesPerView: size,
             touchRatio: 0.2,
             loop:true,
-            autoplay:3000,
+            autoplay: 3000,
             direction: 'vertical',
             loopedSlides: size *2,
             slideToClickedSlide: true
         });
         galleryTop.params.control = galleryThumbs;
         galleryThumbs.params.control = galleryTop;
+        */
     }
 });
 

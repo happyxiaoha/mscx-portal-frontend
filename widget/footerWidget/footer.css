@@ -1,5 +1,5 @@
 
-.footer{padding: 20px 0;margin-top: 50px;background: #fff;}
+.footer{padding: 20px 0;margin-top: 50px;background: #454545;}
 .footer ul{
     margin-left: 130px;
 }
@@ -12,7 +12,7 @@
 }
 .footer ul li a:first-child{
     font-size: 16px;
-    color: #333;
+    color: #FFF;
     margin-bottom: 20px;
 }
 .forhelp{

@@ -10,8 +10,6 @@ var recommendView = Backbone.View.extend({
     initialize: function(obj) {
         this.$el.toggleClass('loading');
         this.model.fetch();
-
-
         this.listenTo(this.model,'sync',this.render);
 
     },

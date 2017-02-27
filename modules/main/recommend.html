@@ -1,23 +1,33 @@
 
 <% if(type == 'api'){ %>
-<% _.each(dataList,function(item,index){ %>
-<% if(index < 8 ){%>
 <li>
+    <a href="#">
+        <img class="api-icon" src="../../images/api-title.png">
+    </a>
+</li>
+<% _.each(dataList,function(item,index){ %>
+<% if(index < 9 ){%>
+<li class="api-index-item">
     <div class="centers">
-        <a  href="api.html#detail/<%= item.apiServiceId %>">
-            <div class="datalist-img">
+        <p><a href="api.html#detail/<%= item.apiServiceId %>" title="<%= item.apiServiceCName %>"><%= item.apiServiceCName %></a></p>
+        <p class="buyType"><%= item.chargeTypeDesc || '免费' %></p>
+        <div class="datalist-img">
+            <a  href="api.html#detail/<%= item.apiServiceId %>">
                 <img src="<%= item.iconUrl %>">
-            </div>
-            <p><a href="api.html#detail/<%= item.apiServiceId %>" title="<%= item.apiServiceCName %>"><%= item.apiServiceCName %></a></p>
-            <p class="buyType"><%= item.chargeTypeDesc || '免费' %></p>
-        </a>
+            </a>
+        </div>
+    </div>
+    <div class="item-des">
+        电费查询服务为个人家庭及政府企业用户提供用电查询、定制电
     </div>
     <div class="downs clearfix">
-        <span class="lianjiehsu fl">
-           <%= item.accessCnt %>
-        </span>
-        <span class="fl diaoyongshu">
+        浏览：
+        <span class="diaoyongshu">
            <%= item.viewCnt %>
+        </span>
+        调用：
+        <span class="lianjiehsu">
+           <%= item.accessCnt %>
         </span>
     </div>
 </li>
@@ -26,23 +36,33 @@
 <% }; %>
 
 <% if(type == 'ser'){ %>
-<% _.each(dataList,function(item,index){ %>
-<% if(index < 8 ){%>
 <li>
+    <a href="#">
+        <img src="../../images/ser-title.png">
+    </a>
+</li>
+<% _.each(dataList,function(item,index){ %>
+<% if(index < 9 ){%>
+<li class="ser-index-item">
     <div class="centers">
-        <a href="services.html#detail/<%= item.id %>">
-            <div class="datalist-img">
+        <p><a href="services.html#detail/<%= item.id %>" title="<%= item.name %>"><%= item.name %></a></p>
+        <p class="buyType"><%= item.chargeType %></p>
+        <div class="datalist-img">
+            <a href="services.html#detail/<%= item.id %>">
                 <img src="<%= item.imageUri %>">
-            </div>
-            <p><a href="services.html#detail/<%= item.id %>" title="<%= item.name %>"><%= item.name %></a></p>
-            <p class="buyType"><%= item.chargeType %></p>
-        </a>
+            </a>
+        </div>
+    </div>
+    <div class="item-des">
+        电费查询服务为个人家庭及政府企业用户提供用电查询、定制电
     </div>
     <div class="downs clearfix">
-        <span class="lianjiehsu fl">
+        浏览：
+        <span class="lianjiehsu">
            <%= item.applyCount %>
         </span>
-        <span class="diaoyongshu fl">
+        调用：
+        <span class="diaoyongshu">
             <%= item.viewCount %>
         </span>
     </div>

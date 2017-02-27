@@ -1,0 +1,18 @@
+<div class="hotTzcaption">热门推荐</div>
+<% data && data.forEach(function(item, index) { %>
+<% if(index < 6){ %>
+<div class="hotTzItem">
+    <a href="services.html?detail/<%= item.id %>">
+        <div class="media">
+            <div class="media-left">
+                <img src="<%= item.imageUri %>" alt="" class="media-object">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><%= item.name %></h4>
+                <p><%= item.name %></p>
+            </div>
+        </div>
+    </a>
+</div>
+<% } %>
+<% }) %>

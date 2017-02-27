@@ -2,6 +2,7 @@
 
 var template = require('html!./search.html');
 var tagTemplate = require('html!./tagTemplate.html');
+var categoryTemplate = require('html!./categoryTemplate.html');
 var scopeTemplate = require('html!./scopeTemplate.html');
 var Resource = require('./city.json');
 
@@ -72,22 +73,25 @@ require('./search.css');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'animate-content search-loading',
+    className: 'ns-sideBarComponent',
     events: {
-        'click .sl-e-more': 'toggleMore',
-        'click li a': 'selectOption',
+        'click .toggle-more': 'toggleMore',
+        'click dd a': 'selectOption',
         'click input[type="checkbox"]': 'handleCheckbox',
-        'click .search-btn': 'handleQueryStr',
-        'keydown .search-input': 'pressEnterSearch',
+        'click input[name="type"]': 'handleTypeChange',
         'change #provinceSel': 'changeProvinces',
         'change #citySel': 'changeCities',
         'change #areaSel': 'changeAreas'
     },
     template: _.template(template, {variable: 'data'}),
     tagTemplate: _.template(tagTemplate, {variable: 'data'}),
+    categoryTemplate: _.template(categoryTemplate, {variable: 'data'}),
     scopeTemplate: _.template(scopeTemplate, {variable: 'data'}),
     initialize: function() {
         this.filterMaps = _.pick(Models, this.model.options);
+
+        // 默认设置为数据API
+        this.id = this.id || 'data';
 
         // 标签详情 根据categoryId获取
         this.detailTags = Models.detailTags;
@@ -98,6 +102,10 @@ var view = Backbone.View.extend({
         this.listenTo(Models.modelTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.openDataTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.serviceTags, 'sync', this.renderDetailTags);
+
+        this.listenTo(Models.dataCategory, 'sync', this.renderCategory);
+        this.listenTo(Models.modelCategory, 'sync', this.renderCategory);
+        this.listenTo(Models.toolCategory, 'sync', this.renderCategory);
 
         this.searchParams = new Backbone.Model();
 
@@ -150,17 +158,22 @@ var view = Backbone.View.extend({
         _.extend(params.defaults, model.defaults);
 
         this.$el.html(this.template(params));
-        // 省市区联动
-        this.$provinceSel = this.$('#provinceSel');
-        this.$citySel = this.$('#citySel');
-        this.$areaSel = this.$('#areaSel');
 
-        this.$provinceSel.append(this.scopeTemplate(Resource.provinces));
+        // 有范围查询标识时
+        if(_.indexOf(model.options, 'scopes') > -1) {
 
-        var defaultProvince = this.$provinceSel.data('default');
+            // 省市区联动
+            this.$provinceSel = this.$('#provinceSel');
+            this.$citySel = this.$('#citySel');
+            this.$areaSel = this.$('#areaSel');
 
-        if(defaultProvince) {
-            this.$provinceSel.val(defaultProvince).trigger('change');
+            this.$provinceSel.append(this.scopeTemplate(Resource.provinces));
+
+            var defaultProvince = this.$provinceSel.data('default');
+
+            if(defaultProvince) {
+                this.$provinceSel.val(defaultProvince).trigger('change');
+            }
         }
 
         // 如果自带默认查询条件
@@ -179,9 +192,9 @@ var view = Backbone.View.extend({
     toggleMore: function(event) {
         var $target = this.$(event.currentTarget);
         if($target.hasClass('down')){
-            $target.html('收起>>').removeClass('down').parent().siblings('.sl-value').find('.J_List').scrollTop(0).toggleClass('expand');
+            $target.html('收起>>').removeClass('down').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
         }else{
-            $target.html('更多>>').addClass('down').parent().siblings('.sl-value').find('.J_List').scrollTop(0).toggleClass('expand');
+            $target.html('更多>>').addClass('down').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
         }            
     },
     selectOption: function(event) {
@@ -189,7 +202,7 @@ var view = Backbone.View.extend({
         var type = $target.data('type');
         var param = {};
 
-        $target.parents('ul').find('.active').removeClass('active');
+        $target.parents('dl').find('.active').removeClass('active');
         $target.parent().toggleClass('active');
 
         // 如果选中的是分类，则获取该分类下的标签明细, 然后做查询操作
@@ -226,16 +239,23 @@ var view = Backbone.View.extend({
             Models[this.id + 'Tags'].fetch({data: {}});
         }
     },
+    fetchCategory: function() {
+        Models[this.id + 'Category'].fetch();
+    },
     renderDetailTags: function(model) {
-        this.$('.tag-ul').html(this.tagTemplate(model.toJSON()));
+        this.$('.tags-dl').html(this.tagTemplate(model.toJSON()));
 
-        var $moreWrap = this.$('.tag-wrap .sl-ext');
-        // 处理 更多 按钮是否出现
-        if(model.toJSON().result.length > 5) {
-            $moreWrap.show();
-        }else {
-            $moreWrap.hide();
-        }
+        // var $moreWrap = this.$('.tag-wrap .sl-ext');
+        // // 处理 更多 按钮是否出现
+        // if(model.toJSON().result.length > 5) {
+        //     $moreWrap.show();
+        // }else {
+        //     $moreWrap.hide();
+        // }
+    },
+    renderCategory: function(model) {
+        this.$('.category-dl').html(this.categoryTemplate(model.toJSON()));
+        Models[this.id + 'Tags'].fetch();
     },
     handleCheckbox: function(event) {
         var $target = this.$(event.currentTarget);
@@ -244,7 +264,7 @@ var view = Backbone.View.extend({
 
         var params = [];
 
-        $target.parents('ul').find('input[type="checkbox"]:checked').each(function(index, item) {
+        $target.parents('dl').find('input[type="checkbox"]:checked').each(function(index, item) {
             params.push(item.value);
         })
 
@@ -260,13 +280,16 @@ var view = Backbone.View.extend({
             });
         }
     },
-    handleQueryStr: function() {
-        var searchText = $.trim(this.$('.search-input').val());
+    handleTypeChange: function(event) {
+        var $target = this.$(event.currentTarget);
+        var value = $target.val();
 
-        this.searchParams.set({
-            page: 1,
-            keyword: searchText
-        });
+        this.id = value;
+
+        this.fetchCategory();
+
+        this.searchParams.clear({silent: true});
+        this.searchData();
     },
     handlePageJump: function(params) {
         this.searchParams.set({
@@ -274,16 +297,11 @@ var view = Backbone.View.extend({
             pageSize: params.pageSize || 20
         })
     },
-    handleSort: function(params) {
+    handleParams: function(params) {
         _.extend(params, {
             page: 1
         })
         this.searchParams.set(params);
-    },
-    pressEnterSearch: function(event) {
-        if(event.keyCode == 13) {
-            this.handleQueryStr();
-        }
     },
     changeProvinces: function(event) {
         var code = this.$provinceSel.val();

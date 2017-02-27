@@ -12,7 +12,7 @@ require('customValidate');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'offline-box hide',
+    className: 'offline-box',
     template: _.template(template, {variable: 'data'}),
     validateConfig: function () {
         var me = this;

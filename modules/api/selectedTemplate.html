@@ -1,0 +1,18 @@
+<div class="hotTzcaption">推荐接口</div>
+<% data && data.forEach(function(item, index) { %>
+<% if(index < 6){ %>
+<div class="hotTzItem">
+    <a href="api.html?detail/<%= item.apiServiceId %>">
+        <div class="media">
+            <div class="media-left">
+                <img src="<%= item.iconUrl %>" alt="" class="media-object">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><%= item.apiServiceCName %></h4>
+                <p><%= item.apiServiceCName %></p>
+            </div>
+        </div>
+    </a>
+</div>
+<% } %>
+<% }) %>

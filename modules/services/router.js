@@ -15,7 +15,7 @@ var Routes =  Backbone.Router.extend({
     serviceView: function (keyword, scope, chargeType, orderBy) {
         if(location.search) return;
         
-        var serviceView = require('services/servicesView.js');
+        var serviceView = require('services/contentView.js');
         mscxPage.views['servicesObj'] = new serviceView({
             id: 'service',
             model: {

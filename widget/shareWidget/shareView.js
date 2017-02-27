@@ -6,7 +6,7 @@ var QrCode = require('lib/qrCode.js');
 require('./share.css');
 
 var view = Backbone.View.extend({
-    tagName: 'div',
+    tagName: 'dl',
     events: {
         'click #shareWeixin': 'shareWeixin',
         'click #shareQzone': 'shareQzone',
@@ -18,7 +18,7 @@ var view = Backbone.View.extend({
         
         this.url = location.href;
         this.title = document.title;
-        this.desc = '欢迎使用广州数聚平台！';
+        this.desc = '数创平台';
         this.pic = mscxPage.shareHost + 'images/newicon/ic_newlogo.png';
 
         this.$qrcode = this.$('#qrcode');
@@ -48,8 +48,8 @@ var view = Backbone.View.extend({
         }
 
         var qrcode = new QrCode(this.$qrcode[0], {
-            width : 90,
-            height : 90
+            width : 60,
+            height : 60
         });
         qrcode.makeCode(this.url);
         this.$qrcode.data('loaded', 'loaded');

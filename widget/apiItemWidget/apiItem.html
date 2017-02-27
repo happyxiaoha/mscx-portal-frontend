@@ -1,30 +1,25 @@
-<p class="top clearfix boxSizing">
-    <span class="fr block corGreen"></span>
-</p>
-<div class="tc">
-    <a href="api.html?detail/<%= data && data.apiServiceId %>">
-        <img src="<%= data && data.iconUrl %>" alt="">
-        <span title="<%= data && data.apiServiceName %>"><%= data && data.apiServiceName %></span>
-    </a>
-</div>
-<div class="downs clearfix">
-    <span class="fl">
-        <img src="../../images/small01.png" alt="">
-        <em><%= data && data.applyCnt %></em>
-    </span>
-    <span class="fl">
-        <img src="../../images/small02.png" alt="" class="mt3">
-        <em><%= data && data.viewCnt %></em>
-    </span>
-    <span class="fl">
-        <% if(data && data.chargeType == '04'){ %>
-            <em class="red mt3"><%= '¥' + data.price %></em>
-            <em><%= data && data.chargeCount %>月起</em>
-        <% }else if(data.chargeType == '05'){ %>
-            <em class="red mt3"><%= '¥' + data.price %></em>
-            <em><%= data && data.chargeCount %>次起</em>
-        <% }else if(data.chargeType == '01' || data.chargeType == '02'){ %>
-            <i class="red ft14"><%= data && data.chargeTypeDesc %></i>
-        <% } %>
-    </span>
+<div class="ns-gridPanelItem">
+    <div class="ns-gridPanelItemBody">
+        <a href="api.html?detail/<%= data && data.apiServiceId %>" class="imgLink">
+            <img src="<%= data && data.iconUrl %>" alt="">
+        </a>
+    </div>
+    <div class="ns-gridPanelItemBottom">
+        <a href="api.html?detail/<%= data && data.apiServiceId %>" class="h1"><%= data && data.apiServiceName %></a>
+        <p class="info text-orange">
+            <% if(data && data.chargeType == '04'){ %>
+                <%= '¥' + data.price %>
+                <%= data && data.chargeCount %>月起
+            <% }else if(data.chargeType == '05'){ %>
+                <%= '¥' + data.price %>
+                <%= data && data.chargeCount %>次起
+            <% }else if(data.chargeType == '01' || data.chargeType == '02'){ %>
+                <%= data && data.chargeTypeDesc %>
+            <% } %>
+        </p>
+        <div class="info">
+          <div class="cell"> 应用数 <span><%= data && data.applyCnt %></span></div>
+            <div class="cell">浏览量<span><%= data && data.viewCnt %></span></div>
+        </div>
+    </div>
 </div>

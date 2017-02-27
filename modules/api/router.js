@@ -3,54 +3,46 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '': 'dataAPI',
-        'data': 'dataAPI',
-        'data(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'dataAPI',
-        'tool(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'toolAPI',
-        'model(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'modelAPI',
+        '': 'indexAPI',
+        // 'data': 'dataAPI',
+        // 'data(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'dataAPI',
+        // 'tool(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'toolAPI',
+        // 'model(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'modelAPI',
         'detail/:id': 'detail',
         'createApi': 'createApiView',
         'updateApi/:id': 'updateApiView',
         'apiDes/:id': 'apiDesView'
     },
-    dataAPI:function (keyword, scope, chargeType, orderBy) {
+    indexAPI: function () {
         if(location.search) return;
         
-        var APIView = require('api/APIView.js');
-        mscxPage.views['dataAPIObj'] = new APIView({
-            id: 'data',
-            model: {
-                keyword: keyword,
-                scope: scope,
-                chargeType: chargeType,
-                orderBy: orderBy
-            }
-        });
+        var APIView = require('api/contentView.js');
+        mscxPage.views['indexAPIObj'] = new APIView();
     },
-    toolAPI:function (keyword, scope, chargeType, orderBy) {
-        var APIView = require('api/APIView.js');
-        mscxPage.views['toolAPIObj'] = new APIView({
-            id: 'tool',
-            model: {
-                keyword: keyword,
-                scope: scope,
-                chargeType: chargeType,
-                orderBy: orderBy
-            }
-        });
-    },
-    modelAPI:function (keyword, scope, chargeType, orderBy) {
-        var APIView = require('api/APIView.js');
-        mscxPage.views['modelAPIObj'] = new APIView({
-            id: 'model',
-            model: {
-                keyword: keyword,
-                scope: scope,
-                chargeType: chargeType,
-                orderBy: orderBy
-            }
-        });
-    },
+    // toolAPI:function (keyword, scope, chargeType, orderBy) {
+    //     var APIView = require('api/APIView.js');
+    //     mscxPage.views['toolAPIObj'] = new APIView({
+    //         id: 'tool',
+    //         model: {
+    //             keyword: keyword,
+    //             scope: scope,
+    //             chargeType: chargeType,
+    //             orderBy: orderBy
+    //         }
+    //     });
+    // },
+    // modelAPI:function (keyword, scope, chargeType, orderBy) {
+    //     var APIView = require('api/APIView.js');
+    //     mscxPage.views['modelAPIObj'] = new APIView({
+    //         id: 'model',
+    //         model: {
+    //             keyword: keyword,
+    //             scope: scope,
+    //             chargeType: chargeType,
+    //             orderBy: orderBy
+    //         }
+    //     });
+    // },
     detail: function(id) {
         var view = require('api/detailView.js');
 

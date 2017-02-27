@@ -4,6 +4,7 @@ var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
 var offlineView = require('offlineWidget/offlineLayer.js');
 var shareView = require('shareWidget/shareView.js');
+var selectedView = require('./selectedAPIView.js');
 
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getApiServiceDetailById.do?t=' + new Date().getTime()
@@ -18,21 +19,17 @@ var unFollowModel = Backbone.Model.extend({
 
 var showdown = require('showdown');
 
-require('./api.css');
-
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     template: _.template(template, {variable: 'data'}),
     events: {
-        'click .tab span': 'selectTab',
+        'click .nav-tabs a': 'selectTab',
         'click #applyBtn': 'apply',
         'click #followBtn': 'follow',
         'click #offlineBtn': 'offlineChat',
-        'click .tabLeft span': 'selectAPI'
+        'click .side li': 'selectAPI'
     },
     initialize: function() {
-        this.$el.addClass('grid960 animate-content opacity0');
-
         this.detailModel = new detailModel();
         this.followModel = new followModel();
         this.unFollowModel = new unFollowModel();
@@ -46,9 +43,8 @@ var view = Backbone.View.extend({
                 apiServiceId: this.id
             }
         });
-        this.shareView = new shareView({
-            className: 'share posAB'
-        });
+        this.shareView = new shareView();
+        this.selectedView = new selectedView();
 
         return this;
     },
@@ -84,27 +80,32 @@ var view = Backbone.View.extend({
         this.resourceType = model.result.resourceType;
         this.$el.html(this.template(model)).removeClass('opacity0');
 
-        this.$tabContent = this.$('.tabConsInfo');
-        this.$tabWrap = this.$('.tabCons');
-        this.$appInfoCons = this.$('.appInfoCons');
+        this.$tabContent = this.$('.tab-pane');
+        this.$tabWrap = this.$('.tab-content');
+        this.$appInfoCons = this.$('.share');
+        // 热门API区域
+        this.$selectedAPI = this.$('#selectedAPI');
 
         // 添加分享组件
         this.$appInfoCons.append(this.shareView.$el);
+
+        this.$selectedAPI.append(this.selectedView.$el).addClass('in');
 
         // 默认选中第一个
         this.$('.tab span').eq(0).click();
     },
     selectTab: function(event) {
-        this.$tabWrap.addClass('opacity0');
+        event.preventDefault();
+        this.$tabWrap.addClass('fade');
         var $target = this.$(event.currentTarget);
         var index = $target.data('index');
 
-        $target.parent().find('.active').removeClass('active');
-        $target.addClass('active');
+        $target.parents('.nav-tabs').find('.active').removeClass('active');
+        $target.parent().addClass('active');
 
         this.$tabContent.hide().eq(index).show();
 
-        this.$tabWrap.removeClass('opacity0');
+        this.$tabWrap.removeClass('fade');
     },
     selectAPI: function(event) {
         var $target = this.$(event.currentTarget);
@@ -113,7 +114,7 @@ var view = Backbone.View.extend({
         $target.parent().find('.active').removeClass('active');
         $target.addClass('active');
 
-        this.$('.rightCons').hide().eq(index).show();
+        this.$('.rightCons').addClass('hide').eq(index).removeClass('hide');
     },
     // 申请
     apply: function() {

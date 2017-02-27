@@ -8,6 +8,7 @@ var serviceDetailModelTemplate = require('html!./detailTemplate.html');
 var shareView = require('shareWidget/shareView.js');
 var offlineView = require('offlineWidget/offlineLayer.js');
 var applyView = require('./applyLayer.js');
+var selectedView = require('./selectedServiceView.js');
 
 var serviceDetailModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'get.do'
@@ -43,6 +44,8 @@ var openDataDetailView = Backbone.View.extend({
             }
         });
         this.shareView = new shareView();
+        this.selectedView = new selectedView();
+
         this.attentionDataModel = new attentionModel();
         this.removeAttentionModel = new reAttentionModel();
         this.listenTo(this.attentionDataModel, 'sync', this.handleAttention);
@@ -55,7 +58,12 @@ var openDataDetailView = Backbone.View.extend({
         this.$el.toggleClass('loading');
         this.$el.html(this.template( this.nJson ));
         this.$appInfoCons = this.$('.share');
+        // 热门微服务区域
+        this.$selectedService = this.$('#selectedService');
+
         this.$appInfoCons.html(this.shareView.$el);
+
+        this.$selectedService.append(this.selectedView.$el).addClass('in');
 
         this.resourceType = this.nJson.resourceType;
         this.chargeType = this.nJson.chargeType;

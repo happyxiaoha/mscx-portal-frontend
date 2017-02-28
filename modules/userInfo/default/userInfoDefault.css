@@ -1,5 +1,5 @@
 .my-info-area {overflow: hidden;}
-.right-con-wrap {width: 780px;}
+.right-con-wrap {width: 790px;border: 1px solid #CCC;border-top: 2px solid #ff9900;background: #FFF;opacity: 0;}
 .D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
 .D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
 .D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
@@ -50,13 +50,16 @@
 .myServerRight p span{margin-right: 22px;}
 .citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}
 
-.topTab{border-bottom: 3px solid #ccc;height: 40px;margin: 8px 0 15px 0;}
+.topTab{border-bottom: 1px solid #ccc;height: 68px;margin: 0 auto;width: 95%;}
 .topTab span a,.topTab span a:visited,.topTab span a:active {color: #444;display: block;}
-.topTab span{display: block;float: left;padding: 0 8px;font-size: 15px;line-height: 38px;margin-right: 14px;cursor: pointer;position: relative;height: 40px;}
-.topTab span.active{border-bottom: 3px solid #069cd9;color:#069cd9 }
-
+.topTab span{display: block;float: left;padding: 0 8px;font-size: 15px;line-height: 75px;margin-right: 14px;cursor: pointer;position: relative;height: 68px;}
+.topTab span.active{border-bottom: 2px solid #ff9900;}
+.topTab span.active a {color: #494949;font-weight: bold;}
 .layui-layer-content input[readonly]{
     cursor:default;background-color:#FFF;}
 .user-center-api-list {padding: 20px 0 20px 10px;}
 .user-center-api-list .api-item .downs span { width: 58px;}
 .user-center-api-list .api-item {width: 180px;margin: 0 10px 10px 0;margin-right: 10px\9;}
+@media screen and (min-width: 1300px){
+    .right-con-wrap { width: 985px;}
+}

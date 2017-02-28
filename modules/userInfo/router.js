@@ -22,7 +22,8 @@ var Routes =  Backbone.Router.extend({
         'serverFollow': 'serverFollowView',
         'serverApply': 'serverApplyView',
         'order': 'orderView',
-        'shop': 'shopView'
+        'shop': 'shopView',
+        'recharge': 'rechargeView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -102,6 +103,10 @@ var Routes =  Backbone.Router.extend({
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});
+    },
+    rechargeView: function () {
+        var rechargeView = require('userInfo/recharge/rechargeView.js');
+        mscxPage.views['rechargeViewObj'] = new rechargeView();
     },
     execute: function(callback,args,name) {
         if(mscxPage.userCenter){

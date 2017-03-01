@@ -3,7 +3,7 @@
 
 
 /*侧导航*/
-.container{width: 190px;z-index: 2;}
+.container{width: 190px;z-index: 2;margin: 0;padding: 0;}
 .container .topTit{height: 41px;background: #4dcf81;text-align: center;border-bottom: 3px solid #fff;}
 .container .topTit span{
     display: block;
@@ -384,7 +384,7 @@
     border-bottom: solid 1px #e6e6e6;
     border-left: solid 1px #e6e6e6;
     float: left;
-
+    overflow: hidden;
 }
 .serlist .apitypelist{
     border: solid 3px #b461d6;
@@ -483,12 +483,17 @@
 }
 .forhelp .swhz{
     padding-left: 60px;
+    color: #FFF;
     background: url("../../images/newicon/ic_shangwuhez.png") left center no-repeat;
 }
 .forhelp .jisuzhichi{
     padding-left: 60px;
+    color: #FFF;
     margin-top: 40px;
     background: url("../../images/newicon/ic_jshuzhic.png") left center no-repeat;
+}
+.forhelp .swhz p:first-child,.forhelp .jisuzhichi p:first-child {
+    color: #888;
 }
 .righttext img{
     margin-top: 26px;
@@ -607,8 +612,8 @@
     .navCons{
         margin-left: 30px;
     }
-    .navCons .nav li{
-        padding: 0 14px;
+    .nav>li>a{
+        padding: 10px;
     }
     .header .searchCons .search{
         width: 170px;

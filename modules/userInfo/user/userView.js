@@ -18,6 +18,7 @@ var userView = Backbone.View.extend({
 
     },
     renderUserCommon: function (isDisplay) {
+        this.$el.css('opacity',1);
         this.$el.html(_.template(commonTemplate)({name:'user',isDisplay:isDisplay}));
     },
     initialize: function() {

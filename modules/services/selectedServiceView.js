@@ -8,7 +8,7 @@ var selectedServiceModel = Backbone.Model.extend({
 
 var recommendView = Backbone.View.extend({
     tagName: 'div',
-    className: 'hotTz',
+    className: 'hotTz bgWhite',
     template: _.template(selectedTemplate, {variable: 'data'}),
     initialize: function(obj) {
         this.selectedServiceModel = new selectedServiceModel();

@@ -1,34 +1,30 @@
 <% if(data && data.length > 0){ %>
     <% data && data.forEach(function(item) { %>
-    <li>
-        <div class="wd660">
-            <p class="posRE mb20 clearfix">
-                <a class="corOrange ft16 mr72 fl block" href="#service/detail/<%= item.id %>"><%= item.name %></a>
-                <span class="fr block">任务金额：<em class="corOrange"><%= item.money %></em></span>
-            </p>
-            <p class="cor4 mb20 line22">任务描述：<span><%= item.description %></span></p>
-            <p class="posRE">
-                <span>需求用户：</span>
-                <span class="corBlue mr72"><%= item.reqUser %></span>
-                <span>发布日期：</span>
-                <span class="corBlue mr72"><%= item.publishTime %></span>
-                <span>截止日期：</span>
-                <span class="corBlue"><%= item.endTime %></span>
-            </p>
-        </div>
-        <div class="posAB downLoadCons">
-            <p class="ft12 corOrange">
-                <% if(item.status == 2) { %>
-                    新任务
-                <% }else if(item.status == 5){ %>
-                    已结束
+    <div class="ns-list-item">
+        <div class="media">
+            <div class="media-body">
+                <a href="#service/detail/<%= item.id %>" class="h1"><%= item.name %></a>
+                <p class="info">任务金额：<%= item.money %></p>
+                <p class="info">任务描述：<%= item.description %></p>
+                <div class="media-body-footer">
+                    <div class="footerItem">需求用户：<span class="keywordType2"><%= item.reqUser %></span></div>
+                    <div class="footerItem">发布日期：<span class="keywordType2"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span></div>
+                    <div class="footerItem">截止日期：<span class="keywordType2"><%= new Date(item.endTime).format('yyyy-MM-dd') %></span></div>
+                    <div class="footerItem">已浏览：<span class="keywordType2"><%= item.pageviewAmount %></span></div>
+                </div>
+                <% if(item.statusCode == 2) { %>
+                    <p class="demand-status">
+                        新任务
+                    </p>
+                <% }else if(item.statusCode == 5){ %>
+                    <p class="demand-status disabled">
+                        已结束
+                    </p>
                 <% } %>
-            </p>
-            <a href="#service/detail/<%= item.id %>">查看</a>
-            <p class="ft12">已浏览<em class="corOrange ft16"><%= item.pageviewAmount %></em>次</p>
+            </div>
         </div>
-    </li>
+    </div>
     <% }) %>
 <% }else { %>
-    <li>没有符合查询条件的数据</li>
+    <div class="ns-list-item">没有符合查询条件的数据</div>
 <% } %>

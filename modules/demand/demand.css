@@ -173,3 +173,24 @@
 .des p a{
    color: #0ab7ef;
 }
+
+.data-list .media-body {
+    background: #fff;
+}
+.data-list .demand-status {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    height: 30px;
+    padding: 10px;
+    color: #fff;
+    background: #ea2c2c;
+}
+.data-list .demand-status.disabled {
+    background: #aaa;
+}
+.demand-content .btn-follow {
+    position: absolute;
+    right: 30px;
+    top: 45px;
+}

@@ -4,8 +4,24 @@
 
 var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
+var subHeader = require('subHeaderWidget/headerView.js');
 
 var router = require('demand/router.js');
+
+var menuList = [
+    {
+        name: '数据供给需求',
+        key: 'data'
+    },
+    {
+        name: 'API开发需求',
+        key: 'api'
+    },
+    {
+        name: '服务开发需求',
+        key: 'service'
+    }
+];
 
 $(function() {
     var headerView = new header({
@@ -17,6 +33,36 @@ $(function() {
         mscxPage.appRouter = new router();
 
         mscxPage.appRouter.on('route', function(res) {
+            var id;
+            switch (res) {
+                case 'dataDemandView':
+                    id = 'data';
+                    break;
+                case 'apiDemandView':
+                    id = 'api';
+                    break;
+                case 'serviceDemandView':
+                    id = 'service';
+                    break;
+                default:
+                    break;
+            }
+
+            if(id) {
+                var subHeaderView = mscxPage.views['subHeaderView'];
+                subHeaderView && subHeaderView.remove();
+
+                subHeaderView = new subHeader({
+                    id: id,
+                    model: {
+                        menuList: menuList
+                    }
+                });
+                mscxPage.views['subHeaderView'] = subHeaderView;
+                
+                headerView.$el.after(subHeaderView.$el);
+            }
+            
             $('html,body').animate({ scrollTop: '0' }, 100);
         })
         Backbone.history.stop();

@@ -1,0 +1,7 @@
+<div class="ns-navComponent">
+    <ul>
+        <% data && data.menuList.forEach(function(item) {  %>
+            <li class="<%= item.key == data.id ? 'active' : '' %>"><a href="#<%= item.key %>"><%= item.name %></a></li>
+        <% }) %>
+    </ul>
+</div>

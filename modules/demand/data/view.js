@@ -10,7 +10,7 @@ require('util');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'rightMenuWrap fl boxShadiow boxSizing bgWhite common',
+    className: 'ns-contentComponent',
     wrapTemplate: _.template(wrapTemplate),
     listTemplate: _.template(listTemplate, {variable: 'data'}),
     events: {
@@ -31,12 +31,6 @@ var view = Backbone.View.extend({
         this.dataModel = new dataModel();
         this.listenTo(this.dataModel, 'sync', this.renderList);
         this.listenTo(this.searchParam, 'change', this.fetch);
-
-        this.$publishDate = this.$('#publishDate');
-
-        // 选择日期
-        this.$publishDate.on('apply.daterangepicker', this.changeDate.bind(this));
-        this.$publishDate.daterangepicker().data('loaded', 1);
 
         this.$dataList = this.$('.data-list');
         this.$page = this.$('.page');

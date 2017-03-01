@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="ns-apiDetailComponent">
-                        <div class="ns-apiDetailTop">
+                        <div class="ns-apiDetailTop bgWhite">
                             <div class="media">
                                 <div class="media-left">
                                     <div class="media-object">
@@ -112,8 +112,38 @@
                         <% if(data.demoImage1 || data.demoImage2 || data.demoImage3){ %>
                         <div class="ns-apiDetailBottom">
                             <div class="tabs">
-                                
-                                
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="javascript:;">详细信息</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active bgWhite">
+                                        <div class="container-fluid picScroll-left">
+                                            <a class="next" style="display: none;"></a>
+                                            <a class="prev" style="display: none;"></a>
+                                            <div class="bd">
+                                                <ul class="picList">
+                                                    <% if( data.demoImage1){ %>
+                                                    <li>
+                                                        <div class="pic"><img src="<%- data.demoImage1 %>" /></div>
+                                                    </li>
+                                                    <% }; %>
+                                                    <% if( data.demoImage2){ %>
+                                                    <li>
+                                                        <div class="pic"><img src="<%- data.demoImage2 %>" /></div>
+                                                    </li>
+                                                    <% }; %>
+                                                    <% if( data.demoImage3){ %>
+                                                    <li>
+                                                        <div class="pic"><img src="<%- data.demoImage3 %>" /></div>
+                                                    </li>
+                                                    <% }; %>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <% } %>

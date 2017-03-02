@@ -27,7 +27,7 @@ var menuList = [
 
 $(function() {
     var headerView = new header({
-        id: 'api'
+        id: 'sources'
     });
     new footer();
 

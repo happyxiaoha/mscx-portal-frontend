@@ -1983,7 +1983,8 @@ ul.pagination>li.active>a {
 }
 
 .ns-apiDetailComponent {
-    border: 1px solid #e6e6e6
+    border: 1px solid #e6e6e6;
+    background: #fff;
 }
 
 .ns-apiDetailComponent .ns-apiDetailTop {
@@ -2934,7 +2935,8 @@ ul.pagination>li.active>a {
 
 .hotTz {
     border: 1px solid #e6e6e6;
-    padding: 25px
+    padding: 25px;
+    background: #fff;
 }
 
 .hotTz .hotTzcaption {

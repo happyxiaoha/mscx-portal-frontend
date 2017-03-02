@@ -1,96 +1,97 @@
-<div class="R-top clearfix">
-    <div class="fl R-nameCons">
-        <h3 class="ft24 mb25"><%= data.name %></h3>
-        <p>
-            <span class="cor7 mr25 ft14">访问量：<em class="cor7"><%= data.pageviewAmount %></em></span>
-            <span class="cor7 mr25 ft14">关注量：<em class="cor7"><%= data.focusAmount %></em></span>
-            <span class="cor7 mr25 ft14">
-                <em class="red">
-                <% if(data.status == 2) { %>
-                    新任务
-                <% }else if(data.status == 5){ %>
-                    已结束
-                <% } %>
-                </em>
-            </span>
-        </p>
-    </div>
-    <div class="fr R-shareStarCons">
-        <p>
-            <% if(data.myself == 0 && data.status != 5){ %>
-                <% if(!data.billFlag){ %>
-                <span id="applyService">接单</span>
-                <% }else { %>
-                <span class="disable">不可接单</span>
-                <% } %>
-            <% } %>
-            <% if(!data.attentionFlag){ %>
-            <span id="follow">关注</span>
-            <% }else{ %>
-            <span id="follow">取消关注</span>
-            <% } %>
-        </p>
-    </div>
-</div>
-<div class="R-Cons">
-    <p class="titTop bggray ft14 corBlue">详情</p>
-    <div class="titTopCons">
-        <ul>
-            <li class="mb10">
-                <span>预算金额：</span>
-                <span class="cor7"><%= data.money %></span>
-            </li>
-            <li class="mb10">
-                <span>联系截至日期：</span>
-                <span class="cor7"><%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></span>
-            </li>
-            <li class="mb10">
-                <span>主联系人信息：</span>
-                <span class="cor7"><%= data.contactUsername %></span>
-            </li>
-            <li class="mb10">
-                <span>主联系人电话：</span>
-                <span class="cor7"><%= data.contactPhone %></span>
-            </li>
-            <li class="mb10">
-                <span>备用联系人信息：</span>
-                <span class="cor7"><%= data.spareContactname %></span>
-            </li>
-            <li class="mb10">
-                <span>备用联系人电话：</span>
-                <span class="cor7"><%= data.spareContactphone %></span>
-            </li>
-            <li class="mb10">
-                <span>邮箱：</span>
-                <span class="cor7"><%= data.contactEmail %></span>
-            </li>
-            <li class="mb10">
-                <span>地址：</span>
-                <span class="cor7"><%= data.contactAddress %></span>
-            </li>
-            <li class="mb10">
-                <span class="wd160">是否需要平台撮合交易：</span>
-                <span class="cor7 wd660"><%= data.matchmakeTradeName %></span>
-            </li>
-            <li class="mb10">
-                <span>分类：</span>
-                <span class="cor7"><%= data.categoryName %></span>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="R-Cons">
-    <p class="titTop bggray ft14 corBlue">任务描述</p>
-    <div class="titTopCons">
-        <ul>
-            <li class="mb10">
-                <span>任务内容：</span>
-                <span class="cor7"><%= data.description %></span>
-            </li>
-            <li class="mb10">
-                <span>任务要求：</span>
-                <span class="cor7"><%= data.required %></span>
-            </li>
-        </ul>
+<div class="ns-contentComponent">
+    <div class="ns-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="demand.html">需求大厅</a></li>
+                        <li><a href="#service">服务开发需求</a></li>
+                        <li class="active"><%= data.name %></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9 ns-wd2 bgWhite">
+                    <div class="wdHead">
+                        <h1><%= data.name %></h1>
+                        <h3>访问量：<%= data.pageviewAmount %> &nbsp;&nbsp;&nbsp;&nbsp;关注量：<%= data.focusAmount %></h3>
+
+                        <% if(data.myself == 0 && data.status != 5){ %>
+                            <% if(!data.billFlag){ %>
+                            <button class="btn" id="applyService">接单</button>
+                            <% }else { %>
+                            <button class="disable btn">不可接单</button>
+                            <% } %>
+                        <% } %>
+                        <% if(!data.attentionFlag){ %>
+                        <button type="button" id="follow" class="btn btn-active btn-follow">
+                        关注
+                        </button>
+                        <% }else{ %>
+                        <button type="button" id="follow" class="btn btn-active btn-follow">
+                        取消关注
+                        </button>
+                        <% } %>
+                    </div>
+                    <hr>
+                    <div class="wdBody">
+                        <div class="text-left">
+                            <div class="wdHead" style="position: relative;">
+                                <h1>需求详情</h1>
+                            </div>
+                            <p>预算金额：<%= data.money %></p>
+                            <p>联系截至日期：<%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></p>
+                            <p>主联系人信息：<%= data.contactUsername %></p>
+                            <p>主联系人电话：<%= data.contactPhone %></p>
+                            <p>备用联系人信息：<%= data.spareContactname %></p>
+                            <p>备用联系人电话：<%= data.spareContactphone %></p>
+                            <p>邮箱：<%= data.contactEmail %></p>
+                            <p>地址：<%= data.contactAddress %></p>
+                            <p>是否需要平台撮合交易：<%= data.matchmakeTradeName %></p>
+                            <p>分类：<%= data.categoryName %></p>
+                            <hr />
+                            <div class="wdHead" style="position: relative;">
+                                <h1>需求反馈</h1>
+                            </div>
+                            <p>任务描述：<%= data.description %></p>
+                            <p>任务要求：<%= data.required %></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hotTz bgWhite">
+                        <div class="hotTzcaption">热门报告</div>
+                        <div class="hotTzItem">
+                            <a href="api.html?detail/536">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="http://sdk.scity.cn/image/get/system/default/f0b91ac73fbf06703b2a51ad5a0b2d5c.jpg" alt="" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">广州市社会信用信息查询</h4>
+                                        <p>广州市社会信用信息查询</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="hotTzItem">
+                            <a href="api.html?detail/87">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="http://sdk.scity.cn/image/get/system/default/c4aa77bb4ac4fff138c1e95807190575.jpg" alt="" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">中国及全球天气预报</h4>
+                                        <p>中国及全球天气预报</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

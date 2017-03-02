@@ -1,133 +1,107 @@
 <% if (data) { %>
-<div class="R-top clearfix">
-    <div class="fl R-nameCons">
-        <h3 class="ft24 mb25"><%= data.sysName %></h3>
-        <p>
-            <span class="cor7 mr25 ft14">访问量：<em class="cor7"><%= data.pageviewAmount %></em></span>
-            <span class="cor7 mr25 ft14">关注量：<em class="cor7"><%= data.focusAmount %></em></span>
-            <span class="cor7 mr25 ft14">
-                <em class="red">
-                <% if(data.statusCode == 2) { %>
-                    新任务
-                <% }else if(data.statusCode == 5){ %>
-                    已结束
-                <% } %>
-                </em>
-            </span>
-        </p>
-    </div>
-    <div class="fr R-shareStarCons">
-        <p>
-            <% if(data.myself == 0 && data.statusCode != 5){ %>
-                <% if(data.flag1 == 0){ %>
-                <span id="applyAPI">接单</span>
-                <% }else { %>
-                <span class="disable">不可接单</span>
-                <% } %>
-            <% } %>
+<div class="ns-contentComponent">
+    <div class="ns-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="demand.html">需求大厅</a></li>
+                        <li><a href="#api">api开发需求</a></li>
+                        <li class="active"><%= data.name %></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9 ns-wd2 bgWhite">
+                    <div class="wdHead">
+                        <h1><%= data.name %></h1>
+                        <h3>访问量：<%= data.pageviewAmount %> &nbsp;&nbsp;&nbsp;&nbsp;关注量：<%= data.focusAmount %></h3>
 
-            <% if(data.flag == 0){ %>
-            <span id="follow">关注</span>
-            <% }else{ %>
-            <span id="follow">取消关注</span>
-            <% } %>
-        </p>
-    </div>
-</div>
-<div class="R-Cons">
-    <p class="titTop bggray ft14 corBlue">需求详情</p>
-    <div class="titTopCons">
-        <ul>
-            <li class="mb10">
-                <span>主联系人：</span>
-                <span class="cor7"><%= data.contactUsername %></span>
-            </li>
-            <li class="mb10">
-                <span>主联系人电话：</span>
-                <span class="cor7"><%= data.contactPhone %></span>
-            </li>
-            <li class="mb10">
-                <span>备用联系人：</span>
-                <span class="cor7"><%= data.spareContactUsername %></span>
-            </li>
-            <li class="mb10">
-                <span>备用联系人电话：</span>
-                <span class="cor7"><%= data.spareContactPhone %></span>
-            </li>
-            <li class="mb10">
-                <span class="wd160">是否需要平台撮合交易：</span>
-                <span class="cor7 wd660"><%= data.matchmakeTrade %></span>
-            </li>
-            <li class="mb10">
-                <span>分类：</span>
-                <span class="cor7"><%= data.categoryName %></span>
-            </li>
-            <li class="mb10">
-                <span>预期报价：</span>
-                <span class="cor7"><%= data.preOffer %></span>
-            </li>
-            <li class="mb10">
-                <span>接口个数：</span>
-                <span class="cor7"><%= data.interfaceNum %></span>
-            </li>
-            <li class="mb10">
-                <span>截止日期：</span>
-                <span class="cor7"><%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></span>
-            </li>
-            <li class="mb10">
-                <span>需求描述：</span>
-                <span class="cor7"><%= data.name %></span>
-            </li>
-            <li class="mb10">
-                <span>需求用户：</span>
-                <span class="cor7"><%= data.reqUser %></span>
-            </li>
-            <li class="mb10">
-                <span>附件 ：</span>
-                <span class="cor7">
-                    <a class="pt0 corBlue" href="<%= data.fileUrl %>" id="documentUrl"><%= data.fileName %></a>
-                </span>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="R-Cons">
-    <p class="titTop bggray ft14 corBlue">系统描述</p>
-    <div class="titTopCons">
-        <ul>
-            <li class="mb10">
-                <span>系统描述：</span>
-                <span class="cor7"><%= data.sysDescription %></span>
-            </li>
-            <li class="mb10">
-                <span>系统类型：</span>
-                <span class="cor7"><%= data.sysType %></span>
-            </li>
-            <li class="mb10">
-                <span>开发语言：</span>
-                <span class="cor7"><%= data.developLanguage %></span>
-            </li>
-            <li class="mb10">
-                <span>所属单位 ：</span>
-                <span class="cor7"><%= data.department %></span>
-            </li>
-            <li class="mb10">
-                <span>所有权 ：</span>
-                <span class="cor7"><%= data.ownership == 'Y' ? '是' : '否' %></span>
-            </li>
-            <li class="mb10">
-                <span>访问地址 ：</span>
-                <span class="cor7"><a style="padding: 0px;" href="<%= data.site %>"><%= data.site %></a></span>
-            </li>
-            <li class="mb10">
-                <span>网络类型 ：</span>
-                <span class="cor7"><%= data.netType %></span>
-            </li>
-            <li class="mb10">
-                <span>其它说明 ：</span>
-                <span class="cor7"><%= data.description %></span>
-            </li>
-        </ul>
+                        <% if(data.myself == 0 && data.statusCode != 5){ %>
+                            <% if(data.flag1 == 0){ %>
+                            <button class="btn" id="applyAPI">接单</button>
+                            <% }else { %>
+                            <button class="disable btn">不可接单</button>
+                            <% } %>
+                        <% } %>
+                        <% if(data.flag == 0){ %>
+                        <button type="button" id="follow" class="btn btn-active btn-follow">
+                        关注
+                        </button>
+                        <% }else{ %>
+                        <button type="button" id="follow" class="btn btn-active btn-follow">
+                        取消关注
+                        </button>
+                        <% } %>
+                    </div>
+                    <hr>
+                    <div class="wdBody">
+                        <div class="text-left">
+                            <div class="wdHead" style="position: relative;">
+                                <h1>需求详情</h1>
+                            </div>
+                            <p>主联系人：<%= data.contactUsername %></p>
+                            <p>主联系人电话：<%= data.contactPhone %></p>
+                            <p>备用联系人：<%= data.spareContactUsername %></p>
+                            <p>备用联系人电话：<%= data.spareContactPhone %></p>
+                            <p>是否需要平台撮合交易：<%= data.matchmakeTrade %></p>
+                            <p>分类：<%= data.categoryName %></p>
+                            <p>预期报价：<%= data.preOffer %></p>
+                            <p>接口个数：<%= data.interfaceNum %></p>
+                            <p>截止日期：<%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></p>
+                            <p>需求描述：<%= data.name %></p>
+                            <p>需求用户：<%= data.reqUser %></p>
+                            <p>附件 ：<a href="<%= data.fileUrl %>" id="documentUrl"><%= data.fileName %></a></p>
+                            <hr>
+                            <div class="wdHead" style="position: relative;">
+                                <h1>系统描述</h1>
+                            </div>
+                            <p>系统描述：<%= data.sysDescription %></p>
+                            <p>系统类型：<%= data.sysType %></p>
+                            <p>开发语言：<%= data.developLanguage %></p>
+                            <p>所属单位：<%= data.department %></p>
+                            <p>所有权：<%= data.ownership == 'Y' ? '是' : '否' %></p>
+                            <p>访问地址：<a href="<%= data.site %>"><%= data.site %></a></p>
+                            <p>网络类型：<%= data.netType %></p>
+                            <p>其它说明：<%= data.description %></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hotTz bgWhite">
+                        <div class="hotTzcaption">热门报告</div>
+                        <div class="hotTzItem">
+                            <a href="api.html?detail/536">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="http://sdk.scity.cn/image/get/system/default/f0b91ac73fbf06703b2a51ad5a0b2d5c.jpg" alt="" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">广州市社会信用信息查询</h4>
+                                        <p>广州市社会信用信息查询</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="hotTzItem">
+                            <a href="api.html?detail/87">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="http://sdk.scity.cn/image/get/system/default/c4aa77bb4ac4fff138c1e95807190575.jpg" alt="" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">中国及全球天气预报</h4>
+                                        <p>中国及全球天气预报</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <% } %>

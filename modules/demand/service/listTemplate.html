@@ -12,11 +12,11 @@
                     <div class="footerItem">截止日期：<span class="keywordType2"><%= new Date(item.endTime).format('yyyy-MM-dd') %></span></div>
                     <div class="footerItem">已浏览：<span class="keywordType2"><%= item.pageviewAmount %></span></div>
                 </div>
-                <% if(item.statusCode == 2) { %>
+                <% if(item.status == 2) { %>
                     <p class="demand-status">
                         新任务
                     </p>
-                <% }else if(item.statusCode == 5){ %>
+                <% }else if(item.status == 5){ %>
                     <p class="demand-status disabled">
                         已结束
                     </p>

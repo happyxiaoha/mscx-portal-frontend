@@ -11,15 +11,18 @@ var router = require('demand/router.js');
 var menuList = [
     {
         name: '数据供给需求',
-        key: 'data'
+        key: 'data',
+        url: '#data'
     },
     {
         name: 'API开发需求',
-        key: 'api'
+        key: 'api',
+        url: '#api'
     },
     {
         name: '服务开发需求',
-        key: 'service'
+        key: 'service',
+        url: '#service'
     }
 ];
 
@@ -33,7 +36,9 @@ $(function() {
         mscxPage.appRouter = new router();
 
         mscxPage.appRouter.on('route', function(res) {
+            var subHeaderView = mscxPage.views['subHeaderView'];
             var id;
+            subHeaderView && subHeaderView.remove();
             switch (res) {
                 case 'dataDemandView':
                     id = 'data';
@@ -49,9 +54,6 @@ $(function() {
             }
 
             if(id) {
-                var subHeaderView = mscxPage.views['subHeaderView'];
-                subHeaderView && subHeaderView.remove();
-
                 subHeaderView = new subHeader({
                     id: id,
                     model: {

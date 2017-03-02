@@ -1004,11 +1004,11 @@ input[type=search] {
 .ns-body .ns-sideBarComponent+.ns-contentComponent {
     float: right;
     width: 920px;
-    background: #fff
 }
 
 .ns-sideBarComponent {
-    width: 250px
+    width: 250px;
+    background: #fff;
 }
 
 .ns-sideBarComponent .ns-sideBarItem {
@@ -1087,7 +1087,8 @@ input[type=search] {
     font-size: 16px;
     color: #666;
     margin-bottom: 16px;
-    padding: 10px 20px
+    padding: 10px 20px;
+    background: #fff;
 }
 
 .ns-content .ns-content-head span {
@@ -1144,7 +1145,8 @@ input[type=search] {
 }
 
 .ns-list .ns-list-item {
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    background: #fff;
 }
 
 .ns-list .ns-list-item .media .media-object {
@@ -1800,7 +1802,8 @@ ul.pagination>li.active>a {
 .ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBody {
     position: relative;
     border: 1px solid #e6e6e6;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    background: #fff;
 }
 
 .ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBody:before {

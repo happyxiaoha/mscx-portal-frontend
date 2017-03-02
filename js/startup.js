@@ -36,11 +36,25 @@ $(function() {
         $('html,body').animate({ scrollTop: '0' }, 100);
 
         var subHeaderView = mscxPage.views['subHeaderView'];
+        var id;
         subHeaderView && subHeaderView.remove();
+        switch (res) {
+            case 'coachView':
+                id = 'coach';
+                break;
+            case 'bornView':
+                id = 'born';
+                break;
+            case 'activityView':
+                id = 'activity';
+                break;
+            default:
+                break;
+        }
 
-        if(res == 'coachView') {
+        if(id) {
             subHeaderView = new subHeader({
-                id: 'coach',
+                id: id,
                 model: {
                     menuList: menuList
                 }

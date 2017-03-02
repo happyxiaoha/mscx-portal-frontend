@@ -3,29 +3,11 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '': 'newsView',
-        'news': 'newsView',
-        'news/detail/:url': 'newsDetailView',
-        'news/list': 'newsListView',
+        '': 'apiEnvView',
         'apiEnv': 'apiEnvView',
         'serverEnv': 'serverEnvView',
-        'coach': 'coachView'
-    },
-    newsView:function () {
-        var view = require('pioneering/newsView.js');
-        mscxPage.views['newsViewObj'] = new view();
-    },
-    newsDetailView:function (url) {
-        var view = require('pioneering/newsDetailView.js');
-        mscxPage.views['newsDetailView'] = new view({
-            model: {
-                url: url
-            }
-        });
-    },
-    newsListView:function () {
-        var view = require('pioneering/newsListView.js');
-        mscxPage.views['newsListViewObj'] = new view();
+        'dataVisiual': 'dataVisiualView',
+        'bigData': 'bigDataView'
     },
     apiEnvView:function () {
         var view = require('pioneering/apiEnvView.js');
@@ -35,9 +17,13 @@ var Routes =  Backbone.Router.extend({
         var view = require('pioneering/serverEnvView.js');
         mscxPage.views['serverEnvViewObj'] = new view();
     },
-    coachView: function(id) {
-        var view = require('pioneering/coachView.js');
-        mscxPage.views['coachViewObj'] = new view();
+    dataVisiualView: function(id) {
+        var view = require('pioneering/dataVisiualView.js');
+        mscxPage.views['dataVisiualViewObj'] = new view();
+    },
+    bigDataView: function(id) {
+        var view = require('pioneering/bigDataView.js');
+        mscxPage.views['bigDataViewObj'] = new view();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

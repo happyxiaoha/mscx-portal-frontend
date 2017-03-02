@@ -1220,7 +1220,8 @@ input[type=search] {
 }
 
 .ns-list .ns-list-item .media-body p.sub {
-    font-size: 12px
+    font-size: 12px;
+    margin-bottom: 1rem;
 }
 
 .ns-list .ns-list-item .media-body p.sub span {
@@ -1690,7 +1691,8 @@ ul.pagination>li.active>a {
 .ns-article {
     position: relative;
     border: 1px solid #e6e6e6;
-    padding: 20px 0 45px
+    padding: 20px 0 45px;
+    background: #fff;
 }
 
 .ns-article .ns-articleFoot {

@@ -1,32 +1,21 @@
 'use strict';
 
-var leftMenuView = require('leftMenuWidget/leftMenuView.js');
-var Resource = require('./resource.js');
-var template = '<div class="api-env rightMenuWrap fl boxShadiow boxSizing bgWhite common animate-content opacity0"></div>';
+var template = require('html!./apiEnvTemplate.html');
+// var template = '<div class="api-env rightMenuWrap fl boxShadiow boxSizing bgWhite common animate-content opacity0"></div>';
 
-var cmsUrl = Resource.cmsHost + 'static_html/datainfo/apiinfo/index.html'
-
-require('./pioneering.css');
+// var cmsUrl = Resource.cmsHost + 'static_html/datainfo/apiinfo/index.html'
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,
     initialize: function() {
-        this.leftMenuView = new leftMenuView({
-            model: {
-                className: 'pioneer',
-                id: 'apiEnv',
-                sideBars: Resource.maps
-            }
-        });
+        this.$el.html(template);
 
-        this.$el.empty().append(this.leftMenuView.$el).append(template);
-
-        this.$wrap = this.$('.rightMenuWrap');
-        var me = this;
+        // this.$wrap = this.$('.rightMenuWrap');
+        // var me = this;
         
-        this.$wrap.load(cmsUrl + '?time=' + +(new Date()), function() {
-            me.$wrap.removeClass('opacity0');
-        });
+        // this.$wrap.load(cmsUrl + '?time=' + +(new Date()), function() {
+        //     me.$wrap.removeClass('opacity0');
+        // });
 
         return this;
     }

@@ -994,6 +994,7 @@ input[type=search] {
 .ns-body {
     width: 1200px;
     margin: 0 auto;
+    margin-top: 20px;
     padding-bottom: 50px
 }
 
@@ -2577,7 +2578,7 @@ ul.pagination>li.active>a {
     width: 50%;
     padding-left: 20px;
     margin-bottom: 15px;
-    height: 160px
+    height: 160px;
 }
 
 .ns-cyzc .ns-cyzcListItem a {
@@ -2586,7 +2587,7 @@ ul.pagination>li.active>a {
     color: #333;
     height: 100%;
     padding: 20px;
-    background: #F8F8F8
+    background: #fff
 }
 
 .ns-cyzc .ns-cyzcListItem a:hover {
@@ -2596,7 +2597,8 @@ ul.pagination>li.active>a {
 
 .ns-cyzc .ns-cyzcListItem a h1 {
     font-size: 16px;
-    color: #333
+    color: #333;
+    margin-bottom: .5rem;
 }
 
 .ns-cyzc .ns-cyzcListItem a h1:hover {
@@ -2606,7 +2608,8 @@ ul.pagination>li.active>a {
 .ns-cyzc .ns-cyzcListItem a h2 {
     font-size: 12px;
     font-weight: 400;
-    color: #999
+    color: #999;
+    margin-bottom: .5rem;
 }
 
 .ns-cyzc .ns-cyzcListItem a p {
@@ -2637,14 +2640,15 @@ ul.pagination>li.active>a {
     width: 50%;
     padding-left: 20px;
     margin-bottom: 15px;
-    list-style: none
+    list-style: none;
 }
 
 .ns-cyzc2 .ns-cyzcListItem a {
     display: block;
     border: 1px solid #e6e6e6;
     color: #333;
-    height: 100%
+    height: 100%;
+    background: #fff;
 }
 
 .ns-cyzc2 .ns-cyzcListItem a:hover {

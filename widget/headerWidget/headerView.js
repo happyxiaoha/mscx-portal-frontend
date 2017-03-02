@@ -26,8 +26,8 @@ var menuList = [
     },
     {
         name: '孵化器',
-        url: mscxPage.urlConfig.demandPage,
-        key: ''
+        url: mscxPage.urlConfig.startupPage,
+        key: 'startup'
     }
 ];
 

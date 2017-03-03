@@ -1,64 +1,26 @@
 /**
  * Created by Administrator on 2016/12/12.
  */
-
-require('./openData.css');
 var Routes =  Backbone.Router.extend({
     routes: {
-        '': 'dataThemeView',
-        'view': 'dataThemeView',
-        // 'catalog':'openDataReleaseView',
-        'catalog(/org-:orgId)(/category-:categoryId)(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'openDataReleaseView',
-        'catalog/category/:categoryId':'openDataReleaseCategoryView',
-        'catalog/org/:orgId':'openDataReleaseOrgView',
-        'detail/:id':'openDataDetailView'
+        '': 'dataView',
+        'view': 'dataView',
+        'detail/:id':'detailView'
     },
-    dataThemeView:function () {
+    dataView:function () {
         if(location.search) return;
         
-        var openDataView = require('./opendata/openDataView.js');
+        var openDataView = require('./contentView.js');
 
-        var dataThemeView = mscxPage.views['openDataViewObj'];
-        dataThemeView && dataThemeView.undelegateEvents() && dataThemeView.stopListening();
+        var dataView = mscxPage.views['openDataViewObj'];
+        dataView && dataView.undelegateEvents() && dataView.stopListening();
 
         mscxPage.views['openDataViewObj'] = new openDataView({
-            id: 'view'
+            id: 'service'
         });
     },
-    openDataReleaseView:function (orgId, categoryId, keyword, scope, chargeType, orderBy) {
-        var openDataReleaseView = require('./opendataRelease/openDataReleaseView.js');
-        mscxPage.views['openDataReleaseViewObj'] = new openDataReleaseView({
-            id: 'catalog',
-            model: {
-                keyword: keyword,
-                scope: scope,
-                chargeType: chargeType,
-                orderBy: orderBy,
-                orgId: orgId,
-                categoryId: categoryId
-            }
-        });
-    },
-    openDataReleaseCategoryView: function(categoryId) {
-        var openDataReleaseView = require('./opendataRelease/openDataReleaseView.js');
-        new openDataReleaseView({
-            id: 'catalog',
-            model: {
-                categoryId: categoryId
-            }
-        });
-    },
-    openDataReleaseOrgView: function(orgId) {
-        var openDataReleaseView = require('./opendataRelease/openDataReleaseView.js');
-        new openDataReleaseView({
-            id: 'catalog',
-            model: {
-                orgId: orgId
-            }
-        });
-    },
-    openDataDetailView: function (id) {
-        var openDataDetailView = require('./openDataDetail/openDataDetailView.js');
+    detailView: function (id) {
+        var openDataDetailView = require('./detailView.js');
 
         var detailView = mscxPage.views['dataDetailView'];
         detailView && detailView.undelegateEvents() && detailView.stopListening();

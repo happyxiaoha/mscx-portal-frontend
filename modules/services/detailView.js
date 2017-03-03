@@ -55,6 +55,7 @@ var openDataDetailView = Backbone.View.extend({
     },
     render: function () {
         this.nJson = this.model.toJSON().result;
+
         this.$el.toggleClass('loading');
         this.$el.html(this.template( this.nJson ));
         this.$appInfoCons = this.$('.share');
@@ -69,17 +70,17 @@ var openDataDetailView = Backbone.View.extend({
         this.chargeType = this.nJson.chargeType;
 
         if(this.nJson){
-         if(this.nJson.demoImage1 && this.nJson.demoImage2 && this.nJson.demoImage3) {
+         if(this.nJson.demoImage1 && this.nJson.demoImage2) {
             this.$el.find('.next').show();
             this.$el.find('.prev').show();
 
             $(".picScroll-left").slide({
-                titCell: ".hd ul",
+                // titCell: ".hd ul",
                 mainCell: ".bd ul",
                 autoPage: true,
                 effect: "left",
                 autoPlay: false,
-                vis: 2,
+                vis: 1,
                 trigger: "click"
             });
         }

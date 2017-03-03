@@ -1,0 +1,73 @@
+.picScroll-left {
+    width: 100%;
+    border-radius: 3px;
+    position: relative;
+}
+.picScroll-left .prev,
+.picScroll-left .next {
+    position: absolute;
+    top: 150px;
+    display: block;
+    width: 42px;
+    height: 42px;
+    background: url(../../images/arrows.png) no-repeat;
+    cursor: pointer;
+    padding: 0 !important;
+}
+
+.picScroll-left .prev {
+    left: 20px;
+    right: auto;
+    background-position: 0 0;
+}
+
+.picScroll-left .prev:hover {
+    background-position: -82px 0;
+}
+
+.picScroll-left .next {
+    left: auto;
+    right: 20px;
+    background-position: -41px 0;
+}
+
+.picScroll-left .next:hover {
+    background-position: -123px 0;
+}
+
+.picScroll-left .bd {
+    width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.picScroll-left .bd ul {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.picScroll-left .bd ul li {
+    margin: 0 20px 0 0;
+    float: left;
+    _display: inline;
+    overflow: hidden;
+    text-align: center;
+}
+
+.picScroll-left .bd ul li .pic {
+    text-align: center;
+}
+
+.picScroll-left .bd ul li .pic img {
+    width: 600px;
+    display: block;
+}
+
+.picScroll-left .bd ul li .pic a:hover img {
+    border-color: #999;
+}
+
+.picScroll-left .bd ul li .title {
+    line-height: 24px;
+}

@@ -994,6 +994,7 @@ input[type=search] {
 .ns-body {
     width: 1200px;
     margin: 0 auto;
+    margin-top: 20px;
     padding-bottom: 50px
 }
 
@@ -1004,11 +1005,11 @@ input[type=search] {
 .ns-body .ns-sideBarComponent+.ns-contentComponent {
     float: right;
     width: 920px;
-    background: #fff
 }
 
 .ns-sideBarComponent {
-    width: 250px
+    width: 250px;
+    background: #fff;
 }
 
 .ns-sideBarComponent .ns-sideBarItem {
@@ -1026,8 +1027,9 @@ input[type=search] {
 }
 
 .ns-sideBarComponent dl dt {
-    font-weight: 400;
+    font-weight: 600;
     color: #333;
+    font-size: 14px;
     margin-bottom: 12px
 }
 
@@ -1040,7 +1042,8 @@ input[type=search] {
 }
 
 .ns-sideBarComponent dl dd a {
-    display: block
+    display: block;
+    line-height: 17px;
 }
 
 .ns-content .ns-content-bannerLink:after,.ns-content .ns-content-bannerLink:before,.ns-content .ns-content-head:after,.ns-content .ns-content-head:before {
@@ -1052,7 +1055,8 @@ input[type=search] {
     color: #f90
 }
 
-.ns-sideBarComponent dl dd input[type=checkbox] {
+.ns-sideBarComponent dl dd input[type=checkbox],
+.ns-sideBarComponent dl dd input[type=radio] {
     margin-top: 2px
 }
 
@@ -1084,7 +1088,8 @@ input[type=search] {
     font-size: 16px;
     color: #666;
     margin-bottom: 16px;
-    padding: 10px 20px
+    padding: 10px 20px;
+    background: #fff;
 }
 
 .ns-content .ns-content-head span {
@@ -1141,7 +1146,8 @@ input[type=search] {
 }
 
 .ns-list .ns-list-item {
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    background: #fff;
 }
 
 .ns-list .ns-list-item .media .media-object {
@@ -1214,7 +1220,8 @@ input[type=search] {
 }
 
 .ns-list .ns-list-item .media-body p.sub {
-    font-size: 12px
+    font-size: 12px;
+    margin-bottom: 1rem;
 }
 
 .ns-list .ns-list-item .media-body p.sub span {
@@ -1246,7 +1253,7 @@ input[type=search] {
 
 .ns-list .ns-list-item .media-body .media-body-footer .footerItem {
     float: left;
-    width: 33.33333%;
+    width: 25%;
     font-size: 12px;
     color: #999
 }
@@ -1684,7 +1691,8 @@ ul.pagination>li.active>a {
 .ns-article {
     position: relative;
     border: 1px solid #e6e6e6;
-    padding: 20px 0 45px
+    padding: 20px 0 45px;
+    background: #fff;
 }
 
 .ns-article .ns-articleFoot {
@@ -1797,7 +1805,8 @@ ul.pagination>li.active>a {
 .ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBody {
     position: relative;
     border: 1px solid #e6e6e6;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    background: #fff;
 }
 
 .ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBody:before {
@@ -1974,7 +1983,8 @@ ul.pagination>li.active>a {
 }
 
 .ns-apiDetailComponent {
-    border: 1px solid #e6e6e6
+    border: 1px solid #e6e6e6;
+    background: #fff;
 }
 
 .ns-apiDetailComponent .ns-apiDetailTop {
@@ -2047,7 +2057,8 @@ ul.pagination>li.active>a {
 
 .ns-apiDetailComponent .media-body .baseInfo .top .info .cell {
     color: #aaa;
-    font-size: 12px
+    font-size: 12px;
+    line-height: 17px;
 }
 
 .ns-apiDetailComponent .media-body .baseInfo .top .info .cell span {
@@ -2175,7 +2186,7 @@ ul.pagination>li.active>a {
     margin-top: 20px
 }
 
-.ns-apiDetailComponent .submitBtns .btn {
+.ns-apiDetailComponent .submitBtns .btn, .demand-content .btn {
     border-color: #f90;
     border-radius: 2px;
     color: #fff;
@@ -2183,7 +2194,7 @@ ul.pagination>li.active>a {
     width: 100px
 }
 
-.ns-apiDetailComponent .submitBtns .btn.btn-active {
+.ns-apiDetailComponent .submitBtns .btn.btn-active, .demand-content .btn.btn-active {
     background: #fff;
     color: #f90;
 }
@@ -2329,6 +2340,11 @@ ul.pagination>li.active>a {
     cursor: pointer
 }
 
+.ns-searchCom {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .ns-searchCom .ns-searchBody {
     float: left;
     width: 100%
@@ -2342,7 +2358,8 @@ ul.pagination>li.active>a {
     width: 100%;
     height: 34px;
     padding: 10px 12px;
-    outline: 0!important
+    outline: 0!important;
+    border: 1px solid #ccc;
 }
 
 .ns-searchCom .btn {
@@ -2358,7 +2375,8 @@ ul.pagination>li.active>a {
 }
 
 .ns-searchCom .hotKey dl {
-    color: #666
+    color: #666;
+    margin-bottom: 1rem;
 }
 
 .ns-searchCom .hotKey dl dd,.ns-searchCom .hotKey dl dt {
@@ -2563,7 +2581,7 @@ ul.pagination>li.active>a {
     width: 50%;
     padding-left: 20px;
     margin-bottom: 15px;
-    height: 160px
+    height: 160px;
 }
 
 .ns-cyzc .ns-cyzcListItem a {
@@ -2572,7 +2590,7 @@ ul.pagination>li.active>a {
     color: #333;
     height: 100%;
     padding: 20px;
-    background: #F8F8F8
+    background: #fff
 }
 
 .ns-cyzc .ns-cyzcListItem a:hover {
@@ -2582,7 +2600,8 @@ ul.pagination>li.active>a {
 
 .ns-cyzc .ns-cyzcListItem a h1 {
     font-size: 16px;
-    color: #333
+    color: #333;
+    margin-bottom: .5rem;
 }
 
 .ns-cyzc .ns-cyzcListItem a h1:hover {
@@ -2592,7 +2611,8 @@ ul.pagination>li.active>a {
 .ns-cyzc .ns-cyzcListItem a h2 {
     font-size: 12px;
     font-weight: 400;
-    color: #999
+    color: #999;
+    margin-bottom: .5rem;
 }
 
 .ns-cyzc .ns-cyzcListItem a p {
@@ -2623,14 +2643,15 @@ ul.pagination>li.active>a {
     width: 50%;
     padding-left: 20px;
     margin-bottom: 15px;
-    list-style: none
+    list-style: none;
 }
 
 .ns-cyzc2 .ns-cyzcListItem a {
     display: block;
     border: 1px solid #e6e6e6;
     color: #333;
-    height: 100%
+    height: 100%;
+    background: #fff;
 }
 
 .ns-cyzc2 .ns-cyzcListItem a:hover {
@@ -2719,7 +2740,6 @@ ul.pagination>li.active>a {
 .ns-wd2 .wdHead h1 {
     font-size: 24px;
     font-weight: 400;
-    color: #f90;
     margin-bottom: 20px
 }
 
@@ -2915,7 +2935,8 @@ ul.pagination>li.active>a {
 
 .hotTz {
     border: 1px solid #e6e6e6;
-    padding: 25px
+    padding: 25px;
+    background: #fff;
 }
 
 .hotTz .hotTzcaption {
@@ -2957,7 +2978,8 @@ ul.pagination>li.active>a {
     border-radius: 0;
     font-size: 12px;
     background: 0 0;
-    margin: 0
+    margin: 0;
+    padding-left: 0;
 }
 
 .apply-box {

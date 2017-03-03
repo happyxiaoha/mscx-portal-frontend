@@ -1,76 +1,91 @@
-<div class="R-top clearfix">
-    <div class="fl R-nameCons">
-        <h3 class="ft24 mb25"><%= data.name %></h3>
-        <p>
-            <span class="cor7 mr25 ft14">访问量：<em class="cor7"><%= data.pageviewAmount %></em></span>
-            <span class="cor7 mr25 ft14">关注量：<em class="cor7"><%= data.focusAmount %></em></span>
-        </p>
-    </div>
-    <div class="fr R-shareStarCons">
-        <p>
-            <% if(data.flag == 0){ %>
-            <span id="follow">关注</span>
-            <% }else { %>
-            <span id="follow">取消关注</span>
-            <% } %>
-        </p>
-    </div>
-</div>
-<div class="R-Cons">
-    <p class="titTop bggray ft14 corBlue">详情</p>
-    <div class="titTopCons">
-        <ul>
-            <li class="mb10">
-                <span>数据项：</span>
-                <span class="cor7"><%= data.dataItem %></span>
-            </li>
-            <li class="mb10">
-                <span>数据用途：</span>
-                <span class="cor7"><%= data.dataUsage %></span>
-            </li>
-            <li class="mb10">
-                <span>数据描述：</span>
-                <span class="cor7"><%= data.dataDescription %></span>
-            </li>
-            <li class="mb10">
-                <span>归属部门：</span>
-                <span class="cor7"><%= data.department %></span>
-            </li>
-            <li class="mb10">
-                <span>数据格式：</span>
-                <span class="cor7"><%= data.dataFormat %></span>
-            </li>
-            <li class="mb10">
-                <span>发布用户：</span>
-                <span class="cor7"><%= data.reqUser %></span>
-            </li>
-            <li class="mb10">
-                <span>发布日期：</span>
-                <span class="cor7"><%= data.publishTime && new Date(data.publishTime).format('yyyy-MM-dd') %></span>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="R-Cons">
-    <p class="titTop bggray ft14 corBlue">需求反馈</p>
-    <div class="titTopCons">
-        <ul>
-            <li class="mb10">
-                <span>反馈时间：</span>
-                <% if(data.feedbackTime){ %>
-                <span class="cor7"><%= data.feedbackTime && new Date(data.feedbackTime).format('yyyy-MM-dd') %></span>
-                <% }else{ %>
-                <span class="cor7">暂无</span>
-                <% } %>
-            </li>
-            <li class="mb10">
-                <span>反馈意见：</span>
-                <span class="cor7"><%= data.feedbackSuggestion ? data.feedbackSuggestion : '暂无' %></span>
-            </li>
-            <li class="mb10">
-                <span>数据展现链接：</span>
-                <span class="cor7"><%= data.datalink ? data.datalink : '暂无' %></span>
-            </li>
-        </ul>
+<div class="ns-contentComponent">
+    <div class="ns-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="demand.html">需求大厅</a></li>
+                        <li><a href="#data">数据报告需求</a></li>
+                        <li class="active"><%= data.name %></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9 ns-wd2 bgWhite">
+                    <div class="wdHead">
+                        <h1><%= data.name %></h1>
+                        <h3>访问量：<%= data.pageviewAmount %> &nbsp;&nbsp;&nbsp;&nbsp;关注量：<%= data.focusAmount %></h3>
+                        <button type="button" id="follow" class="btn btn-active btn-follow">
+                        <% if(data.flag == 0){ %>
+                        关注
+                        <% }else { %>
+                        取消关注
+                        <% } %>
+                        </button>                        
+                    </div>
+                    <hr>
+                    <div class="wdBody">
+                        <div class="text-left">
+                            <div class="wdHead" style="position: relative;">
+                                <h1>需求详情</h1>
+                            </div>
+                            <p>需求描述：<%= data.dataDescription %></p>
+                            <p>需求用途：<%= data.dataUsage %></p>
+                            <p>数据项：<%= data.dataItem %></p>
+                            <p>数据格式：<%= data.dataFormat %></p>
+                            <p>发布用户：<%= data.reqUser %></p>
+                            <p>发布日期：<%= data.publishTime && new Date(data.publishTime).format('yyyy-MM-dd') %></p>
+                            <hr />
+                            <div class="wdHead" style="position: relative;">
+                                     <h1>需求反馈</h1>
+                                        </div>
+                                        <p>归属部门：<%= data.department %></p>
+                                        <p>反馈日期：
+                                            <% if(data.feedbackTime){ %>
+                                            <%= data.feedbackTime && new Date(data.feedbackTime).format('yyyy-MM-dd') %>
+                                            <% }else{ %>
+                                            暂无
+                                            <% } %>
+                                        </p>
+                            <p>部门反馈：<%= data.feedbackSuggestion ? data.feedbackSuggestion : '暂无' %></p>
+                           <!-- <img src="dist/images/111.png" alt="">-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="hotTz bgWhite">
+                        <div class="hotTzcaption">热门报告</div>
+                        <div class="hotTzItem">
+                            <a href="api.html?detail/536">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="http://sdk.scity.cn/image/get/system/default/f0b91ac73fbf06703b2a51ad5a0b2d5c.jpg" alt="" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">广州市社会信用信息查询</h4>
+                                        <p>广州市社会信用信息查询</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="hotTzItem">
+                            <a href="api.html?detail/87">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="http://sdk.scity.cn/image/get/system/default/c4aa77bb4ac4fff138c1e95807190575.jpg" alt="" class="media-object">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">中国及全球天气预报</h4>
+                                        <p>中国及全球天气预报</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

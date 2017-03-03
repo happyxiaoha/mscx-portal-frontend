@@ -11,23 +11,23 @@ var menuList = [
     },
     {
         name: '交易广场',
-        url: mscxPage.urlConfig.sourcesPage,
+        url: mscxPage.urlConfig.apiPage,
         key: 'sources'
     },
     {
         name: '需求大厅',
-        url: mscxPage.urlConfig.apiPage,
-        key: 'api'
+        url: mscxPage.urlConfig.demandPage,
+        key: 'demand'
     },
     {
         name: '创客工场',
-        url: mscxPage.urlConfig.servicesPage,
-        key: 'service'
+        url: mscxPage.urlConfig.pioneeringPage,
+        key: 'pioneering'
     },
     {
         name: '孵化器',
-        url: mscxPage.urlConfig.demandPage,
-        key: 'demand'
+        url: mscxPage.urlConfig.startupPage,
+        key: 'startup'
     }
 ];
 

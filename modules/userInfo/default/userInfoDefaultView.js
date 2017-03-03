@@ -25,6 +25,7 @@ var defaultView = Backbone.View.extend({
     },
     initialize: function() {
         var that = this;
+        this.$el.css('opacity',1);
         this.$el.html(template);
         this.$sdataList = this.$('.server-data-list');
         this.$adataList = this.$('.api-data-list');

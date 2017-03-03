@@ -1,5 +1,5 @@
 <div id="dashboardAll" class="R-topList clearfix mb20">
-    <div class="fl bgWhite R-cons mr16 clearfix">
+    <div class="fl bgWhite R-cons clearfix">
         <img src="../../../images/img15.png" alt="" class="fl block mr16">
         <p class="fl">
             <span class="block ft16 corOrange">--</span>
@@ -7,14 +7,14 @@
             <a href="#userAuth" class="block corBlue unrealName">未认证</a>
         </p>
     </div>
-    <div class="fl bgWhite R-cons mr16 clearfix user-cost">
+    <div class="fl bgWhite R-cons clearfix user-cost">
         <img src="../../../images/icon02.png" alt="" class="fl block mr16">
         <p class="fl tc">
             <span class="block mt16">累计消费金额</span>
-            <span class="block corBlue ft18 mt14">0.0<em class="ft12 corBlue">元</em></span>
+            <span class="block bgOrange ft18 mt14">0.0<em class="ft12 bgOrange">元</em></span>
         </p>
     </div>
-    <div class="fr bgWhite R-cons clearfix pt12 user-ser">
+    <div class="fl bgWhite R-cons clearfix pt12 user-ser">
         <div class="fl RCconsList">
             <p>
                 <span>关注数据：</span>
@@ -31,15 +31,15 @@
         </div>
         <div class="fr RCconsListBtn">
             <p>申请API：<em class="corOrange ft18">-</em>个</p>
-            <a class="corff bgBlue mb8 mt5" href="#">申请服务</a>
-            <a class="corff bgBlue" target="_blank" href="./services.html#publish">发布服务</a>
+            <a class="corff bgOrange mb8 mt5" href="#">申请服务</a>
+            <a class="corff bgOrange" target="_blank" href="./services.html#publish">发布服务</a>
         </div>
     </div>
 </div>
-<div class="R-myServer common mb25">
-    <div class="tit posRE">
-        <h2 class="ft16 cor5">我申请的API</h2>
-        <a href="#myApi" class="posAB more ft14 block">更多&gt;&gt;</a>
+<div class="R-myServer common mb25 user-center-tap">
+    <div class="tits posRE">
+        <h2 class="ft16 cor5 fl">我申请的API</h2>
+        <a href="#myApi" class="ft14 block fr">更多&gt;&gt;</a>
     </div>
     <div class="mainDatas user-center-api-list">
         <ul class="clearfix api-data-list">
@@ -47,10 +47,10 @@
         </ul>
     </div>
 </div>
-<div class="R-myAddServer common">
-    <div class="tit posRE">
-        <h2 class="ft16 cor5">我关注的服务</h2>
-        <a href="#serverFollow" class="posAB more ft14 block">更多&gt;&gt;</a>
+<div class="R-myAddServer common user-center-tap">
+    <div class="tits posRE">
+        <h2 class="ft16 cor5 fl">我关注的服务</h2>
+        <a href="#serverFollow" class="ft14 block fr">更多&gt;&gt;</a>
     </div>
     <div class="R-myServerList mt16">
         <ul class="clearfix server-data-list">
@@ -59,7 +59,7 @@
     </div>
 </div>
 <script id="userDefault" type="template">
-    <div class="fl bgWhite R-cons mr16 clearfix">
+    <div class="fl bgWhite R-cons clearfix">
         <img src="../../../images/img15.png" alt="" class="fl block mr16">
         <p class="fl">
             <span class="block ft16 corOrange user-name-area" title="<%=res.user.account%>"><%=res.user.account%></span>
@@ -73,14 +73,14 @@
             <%}%>
         </p>
     </div>
-    <div class="fl bgWhite R-cons mr16 clearfix user-cost">
+    <div class="fl bgWhite R-cons clearfix user-cost">
         <img src="../../../images/icon02.png" alt="" class="fl block mr16">
         <p class="fl tc">
             <span class="block mt16">累计消费金额</span>
-            <span class="block corBlue ft18 mt14"><%=res.cash%><em class="ft12 corBlue">元</em></span>
+            <span class="block corOrange ft18 mt14"><%=res.cash%><em class="ft12 corOrange">元</em></span>
         </p>
     </div>
-    <div class="fr bgWhite R-cons clearfix pt12 user-ser">
+    <div class="fl bgWhite R-cons clearfix pt12 user-ser">
         <div class="fl RCconsList">
             <p>
                 <span>关注数据：</span>
@@ -97,9 +97,9 @@
         </div>
         <div class="fr RCconsListBtn">
             <p>申请API：<em class="corOrange ft18"><%=res.applyApi%></em>个</p>
-            <a class="corff bgBlue mb8 mt5" href="./services.html">申请服务</a>
+            <a class="corff bgOrange mb8 mt5" href="./services.html">申请服务</a>
             <%if(res.user.userType != 'REGISTER'){%>
-            <a class="corff bgBlue" target="_blank" href="./services.html#publish">发布服务</a>
+            <a class="corff bgOrange" target="_blank" href="./services.html#publish">发布服务</a>
             <%}%>
         </div>
     </div>

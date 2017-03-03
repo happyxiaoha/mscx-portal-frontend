@@ -29,6 +29,7 @@ var demandView = Backbone.View.extend({
         'click .dataPublish': 'publishDemand'
     },
     initialize: function() {
+        this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'demand'}));
 
         var that = this;

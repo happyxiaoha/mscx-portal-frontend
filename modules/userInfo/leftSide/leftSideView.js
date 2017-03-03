@@ -10,7 +10,11 @@ var mainView = Backbone.View.extend({
     events: {
     },
     initialize: function(name) {
+        console.log(name);
         var sName = name || '';
+        console.log(_.template(template)({
+            name: sName
+        }));
         this.$el.addClass('bod').html(_.template(template)({
             name: sName
         }));

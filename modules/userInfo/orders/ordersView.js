@@ -26,6 +26,7 @@ var orderView = Backbone.View.extend({
     },
     initialize: function() {
         var that = this;
+        this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'order'}));
         this.model = new orderListModel();
         this.model.on('change',function () {

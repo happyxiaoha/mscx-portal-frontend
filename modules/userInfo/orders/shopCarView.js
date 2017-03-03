@@ -39,6 +39,7 @@ var shopCarView = Backbone.View.extend({
     shopArray: [],
     initialize: function() {
         var that = this;
+        this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'shop'}));
         this.model = new shopCarListModel();
         this.model.on('change',function () {

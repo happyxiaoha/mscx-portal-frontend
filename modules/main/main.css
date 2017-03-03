@@ -327,7 +327,7 @@
 }
 
 .layerCons .tit a{color: #00aff6;display: inline-block;padding: 0 14px 26px;cursor: pointer;position: relative;z-index: 2;background: #f8f8f8;}
-.mainDatas{height: 680px;}
+.mainDatas{height: 681px;}
 .mainDatas-left{
     height: 100%;
     width: 238px;
@@ -381,7 +381,7 @@
 .DataList {
     height: 100%;
     width: 100%;
-    border-bottom: solid 1px #e6e6e6;
+    border-top: solid 1px #e6e6e6;
     border-left: solid 1px #e6e6e6;
     float: left;
     overflow: hidden;
@@ -414,7 +414,7 @@
     float: left;
     background: #fff;
     border: 1px solid #FFF;
-    border-top: solid 1px #e6e6e6;
+    border-bottom: solid 1px #e6e6e6;
     border-right:solid 1px #e6e6e6;
 }
 .DataList li.api-index-item:hover{

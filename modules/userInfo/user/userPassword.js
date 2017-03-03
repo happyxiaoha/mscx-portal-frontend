@@ -101,7 +101,7 @@ var userPasswordView = Backbone.View.extend({
             callback();
         }
         function callback() {
-            that.$el.css('opacity',1);
+            this.$el.addClass('user-center-tap');
             that.$el.find('#userInfoArea').html(template);
             that.model = new userPasswordManagerModel();
             $('#userPasswordForm').validate(that.validateConfig());

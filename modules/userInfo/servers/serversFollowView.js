@@ -26,6 +26,7 @@ var myFollowListView = Backbone.View.extend({
         'click .unfollow': 'unFollowService'
     },
     initialize: function() {
+        this.$el.addClass('user-center-tap');
         this.$el.html(this.commonTemplate({name:'follow'}));
 
         this.$content = this.$('#serverInfo');

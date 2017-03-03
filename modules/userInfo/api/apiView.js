@@ -100,6 +100,7 @@ var apiView = Backbone.View.extend({
     },
     initialize: function() {
         var that = this;
+        this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'api'}));
 
         this.model = new myPublicModel();

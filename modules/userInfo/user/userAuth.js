@@ -216,6 +216,7 @@ var userAuthenticationView = Backbone.View.extend({
                 }
             });
         }
+        this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'userAuth',isDisplay:false}));
 
         this.render();

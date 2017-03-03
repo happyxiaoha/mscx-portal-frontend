@@ -2,6 +2,8 @@
 
 var template = require('html!./apiItem.html');
 
+require('./apiItem.css');
+
 var view = Backbone.View.extend({
     tagName: 'div',
     className: 'ns-gridPanelComponent',

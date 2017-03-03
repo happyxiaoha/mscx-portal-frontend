@@ -65,13 +65,12 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .loginCons .rightTable ul li label.error{
     position: absolute;
     bottom: -20px;
-    float: left;
     padding-left: 20px;
-    box-sizing: border-box;
     line-height: 20px;
     background: url(../../images/login/tip.png) no-repeat left center;
     background-size: 14px 14px;
     color: #e66c6b;
+    left:0;
 }
 
 .header{height: 80px;border-bottom: solid 1px #bbb;}

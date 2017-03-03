@@ -18,13 +18,13 @@
 .R_inputs .other{display: inline-block;}
 .R_inputs .other input[type="text"]{width: 230px !important;height: 32px !important;}
 .R_Btns{text-align: center;padding: 15px 0 10px;}
-.R_Btns input[type="submit"]{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;}
+.R_Btns input[type="submit"]{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;background: #f90;}
 .R_Btns input[type="submit"]:first-child{margin-right: 40px;}
 .checkboxlist,.chargeTypeRadio{  width: 690px;  }
 .checkboxlist label,.chargeTypeRadio label{  height: 30px;  line-height: 30px;  width: 120px;  float: left;overflow: hidden; text-overflow: ellipsis;display: inline-block;white-space: nowrap;}
 .checkboxlist label input[type="radio"]{margin: 0 5px 0;vertical-align: -2px;}
 .chargeTypeRadio label {width: 80px; }
-.newSelBtn{right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;}
+.newSelBtn{right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;background: #f90;}
 .newAddDate{width: 130px !important; text-align: center;cursor: default !important;}
 .api-content .allInfoImg {border: 1px solid #DDD;  padding: 2px;}
 .api-content .allInfoImg img {width: 60px;height: 60px;}
@@ -125,3 +125,11 @@
 .category-block-area {overflow: hidden;font-size: 12px;}
 .category-block-area >p {  height: 30px; line-height: 30px; margin-right: 10px;  float: left;  overflow: hidden;    font-weight: bold;}
 .category-block-area >div {width: 80%;float: left;}
+/*table*/
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table tr th{background: #f90;text-align: center;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}
+.D_table table tr {cursor: pointer;}

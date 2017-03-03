@@ -31,9 +31,9 @@
                     <li class="clearfix">
                         <div class="fl clearfix posRE w100">
                             <span><em>*</em>认证方式：</span>
-                            <label class="identifide <%if(certificationType == '01'){%>active<%}%> <%if(name){%>disabled<%}%>"><i></i>照片认证</label>
-                            <label class="identifide <%if(certificationType == '02'){%>active<%}%> <%if(name){%>disabled<%}%>"><i></i>手机认证</label>
-                            <label class="identifide <%if(certificationType == '03'){%>active<%}%> <%if(name){%>disabled<%}%>"><i></i>银行卡号认证</label>
+                            <label class="identifide <%if(certificationType == '01'){%>active<%}%> <%if(name){%>disabled<%}%>" data-val="photo"><i></i>照片认证</label>
+                            <label class="identifide <%if(certificationType == '02'){%>active<%}%> <%if(name){%>disabled<%}%>" data-val="phone"><i></i>手机认证</label>
+                            <label class="identifide <%if(certificationType == '03'){%>active<%}%> <%if(name){%>disabled<%}%>" data-val="creditCard"><i></i>银行卡号认证</label>
                             <select style="display: none;" class="identifide" <%if(name){%>disabled<%}%>>
                                 <option value="photo" >照片认证</option>
                                 <option value="phone" >手机认证</option>
@@ -83,8 +83,7 @@
             <div class="clearfix">
                 <span><em>*</em>银行卡号：</span>
                 <input type="text" id="bankCardNo" name="bankCardNo" placeholder="请输入银行卡号" value="<%=bankCardNo%>" <%if(bankCardNo){%>disabled<%}%>>
-                <br>
-                <label style="margin: 40px 20px 0;">注意：只支持银联卡认证</label>
+                <label style="margin: 10px 0 0 20px;">注意：只支持银联卡认证</label>
             </div>
         </div>
     </div>

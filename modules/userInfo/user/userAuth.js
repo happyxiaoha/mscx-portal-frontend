@@ -33,7 +33,7 @@ var userAuthenticationView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
         'click #authTab':'changeTab',
-        'change .identifide': 'changeAuthType',
+        'click .identifide': 'changeAuthType',
         'change .upload-file': 'uploadFile',
         'input #enterpriseForm input[type="text"]' : 'changeEnterpriseAttribute',
         'input #personForm input[type="text"]' : 'changePersonAttribute'
@@ -108,7 +108,7 @@ var userAuthenticationView = Backbone.View.extend({
         }
     },
     savePersonSelf: function () {
-        if($('.identifide ').val() == 'photo' && !$('.upload-file').val()){
+        if($('.identifide.active ').data('val') == 'photo' && !$('.upload-file').val()){
             $('.identifyType').find('.phone-error').removeClass('hide');
         }
     },
@@ -120,7 +120,7 @@ var userAuthenticationView = Backbone.View.extend({
     doSavePerson: function () {
         var that = this,
             agreement = $('#agreementPer').is(':checked');
-        if($('.identifide ').val() == 'photo' && !$('.upload-file').val()){
+        if($('.identifide.active ').data('val') == 'photo' && !$('.upload-file').val()){
             $('.identifyType').find('.phone-error').removeClass('hide');
             return;
         }
@@ -221,22 +221,27 @@ var userAuthenticationView = Backbone.View.extend({
         this.render();
     },
     changeAuthType: function (e) {
-        var sVal = $(e.target).val();
-        if(sVal == 'phone'){
-            $('#ajaxUpload').hide();
-            this.model.set('certificationType','02');
-        }
-        else if(sVal == 'photo'){
-            $('#ajaxUpload').show();
-            this.model.set('certificationType','01');
-        }
-        else {
-            $('#ajaxUpload').hide();
-            this.model.set('certificationType','03');
+        var $this = $(e.target);
+        if($this.is('label') && !$this.hasClass('active')) {
+            $('.identifide.active ').removeClass('active');
+            $this.addClass('active');
+            var sVal = $this.data('val');
+            switch (sVal) {
+                case 'phone':
+                    $('#ajaxUpload').hide();
+                    this.model.set('certificationType','02');
+                    break;
+                case 'photo':
+                    $('#ajaxUpload').show();
+                    this.model.set('certificationType','01');
+                    break;
+                case 'creditCard':
+                    $('#ajaxUpload').hide();
+                    this.model.set('certificationType','03');
+                    break;
+            }
         }
         $('.identifyType').html($('#'+sVal).html());
-        e.stopPropagation();
-        e.preventDefault();
     },
     changeTab: function (e) {
         var $this = $(e.target),

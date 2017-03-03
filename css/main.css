@@ -2696,7 +2696,8 @@ ul.pagination>li.active>a {
 
 .ns-wd {
     border: 1px solid #e8e8e8;
-    padding: 20px 40px
+    padding: 20px 40px;
+    background: #fff;
 }
 
 .ns-wd .wdHead {
@@ -2972,6 +2973,10 @@ ul.pagination>li.active>a {
 
 .hotTz p {
     font-size: 12px
+}
+
+.tab-content {
+    background: #fff;
 }
 
 .breadcrumb {

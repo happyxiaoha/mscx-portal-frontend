@@ -55,7 +55,29 @@
     </dl>
 </div>
 <% } %>
-
+<!-- API分类 -->
+<% if(_.indexOf(data.options, 'type') > -1) { %>
+<div class="ns-sideBarItem">
+    <dl>
+        <dt>API分类</dt>
+        <dd>
+            <label class="radio-inline">
+                <input type="radio" checked="checked" name="type" value="data">数据
+            </label>
+        </dd>
+        <dd>
+            <label class="radio-inline">
+                <input type="radio" name="type" value="tool">工具
+            </label>
+        </dd>
+        <dd>
+            <label class="radio-inline">
+                <input type="radio" name="type" value="model">模型
+            </label>
+        </dd>
+    </dl>
+</div>
+<% } %>
 <!-- 分类 -->
 <% if(data.category && data.category.result) { %>
 <div class="ns-sideBarItem">
@@ -94,29 +116,7 @@
     </dl>
 </div>
 <% } %>
-<!-- API分类 -->
-<% if(_.indexOf(data.options, 'type') > -1) { %>
-<div class="ns-sideBarItem">
-    <dl>
-        <dt>API分类</dt>
-        <dd>
-            <label class="radio-inline">
-                <input type="radio" checked="checked" name="type" value="data">数据
-            </label>
-        </dd>
-        <dd>
-            <label class="radio-inline">
-                <input type="radio" name="type" value="tool">工具
-            </label>
-        </dd>
-        <dd>
-            <label class="radio-inline">
-                <input type="radio" name="type" value="model">模型
-            </label>
-        </dd>
-    </dl>
-</div>
-<% } %>
+
 <!-- 收费类型 -->
 <% if(data.chargeWay && data.chargeWay.result && data.chargeWay.result.length > 0) { %>
 <div class="ns-sideBarItem">

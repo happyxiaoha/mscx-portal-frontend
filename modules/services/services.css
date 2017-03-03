@@ -71,3 +71,98 @@
 .picScroll-left .bd ul li .title {
     line-height: 24px;
 }
+
+/* 发布新服务 */
+.ReleaseMainCons .ReleaseTit{font-size: 24px;color: #333;padding: 36px 28px 26px;border-bottom: 5px solid #e7e7e7;max-width: 100%;}
+.ReleaseInputs{padding: 24px 36px;font-size: 14px;}
+.ReleaseInputs .ReleaseList{margin-bottom: 15px;}
+.ReleaseInputs .ReleaseList .R_left{color:#8b8b8b;line-height: 32px;width: 120px;margin-right: 6px;text-align: right; }
+.ReleaseInputs .ReleaseList .R_right input[type="text"]{padding:4px 6px;border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;}
+.ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 630px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;font-size: 14px;}
+.R_Btns{text-align: center;padding: 15px 0 10px;}
+.R_Btns input[type="submit"]{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;background: #f90;}
+.R_Btns input[type="submit"]:first-child{margin-right: 40px;}
+.ReleaseInputs .ReleaseList .R_left em {margin-left: -10px;}
+.ReleaseDownCons label.error {float: left;color: red;margin-left: 20px;line-height: 30px;}
+.ReleaseDownCons input[type="text"].error {border: 1px solid red !important;float: left;}
+.ReleaseDownCons textarea.error {border: 1px solid red !important;float: left;}
+.allInfoImg {position: relative;border: 1px solid #DDD;padding: 2px;overflow: hidden;}
+.allInfoImg img{width: 60px;height: 60px;}
+.allInfoImg input{
+    position: absolute;
+    opacity: 0;
+    height: 74px;
+    width: 74px;
+    top:0;
+    cursor: pointer;
+}
+.icon-form {
+    position: absolute;
+    top: 268px;
+    left: 163px;
+    width: 66px;
+    height: 66px;
+    overflow: hidden;
+}
+#uploadDemoIcon1.icon-form {
+    top: 591px;
+}
+#uploadDemoIcon2.icon-form {
+    top: 591px;
+    left: 238px;
+}
+#uploadDemoIcon3.icon-form {
+    top: 591px;
+    left: 315px;
+}
+.icon-form input {opacity: 0;}
+.icon-form input[type="file"]{z-index: 9999;font-size: 999px;position: absolute;top:0;left: 0;width: 100%;height: 100%;}
+.input-mes {margin: 10px 0 0 126px;font-size: 12px;color: #999;}
+.ml50 {
+    margin-left: 50px;
+}
+/*套餐部分*/
+.charge-type-radio {width: 690px;}
+.charge-type-radio label{height: 30px;line-height: 30px;width: 80px;float: left;}
+.charge-type-radio label input[type="radio"] {margin: 0 5px 0 0;}
+.server-package .addPrice{right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;background: #f90;}
+.server-package .package-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
+.server-package-area {display: none;}
+/*end 套餐部分*/
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table tr th{text-align:center; background: #f2f2f2;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #666;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}
+.D_table table tr {cursor: pointer;}
+/*服务新增*/
+.server-url .add-server-url {right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;background: #f90;}
+.server-url .url-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
+.server-url-area {display: none;}
+.server-url-area ul{
+    padding: 10px 20px;
+}
+.server-url-area  ul li{
+    padding: 5px ;
+    float: left;
+    width: 100%;
+}
+.server-url-area  ul li p.mes {float: left;max-width: 200px;margin-left: 10px;line-height: 30px;}
+.server-url-area ul li label{
+    float: left;
+    line-height: 27px;
+}
+.server-url-area ul li span{
+    width: 70px;
+    line-height: 30px;
+    display: block;
+    float: left;
+    text-align: right;
+}
+.server-url-area ul li label.error{color: red;margin-right: 5px;float: right;}
+.server-url-area ul li input[type="text"]{ width: 340px;float: left;}
+.server-url-area ul li textarea{width: 320px;height: 80px;resize: none;}
+.input-mes {margin: 10px 0 0 126px;font-size: 12px;color: #999;}
+.server-identify-error {float: right; color: red; margin-left: 20px; line-height: 30px;}
+/*end*/

@@ -1,0 +1,365 @@
+body{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	}
+
+.admin_product{
+	width:100%;
+
+	/* overflow-y:auto; */
+	margin:0 auto;
+	padding:0 auto;
+	
+	padding:10px;
+	margin-bottom:60px;
+}
+.admin_product_left{
+	width:20%;
+}
+.admin_product_left ul{
+	width:100%;
+	margin:0 auto;
+	padding:0 auto;
+}
+.admin_product_left ul li{
+	background:#fff;
+	padding:0px 20px;
+	border-bottom:1px solid #ddd;
+}
+.admin_product_left ul li a{
+	padding:0 auto;
+	margin:0 auto;
+	color:#a2a2a2;
+	display:block;
+	background:url(../images/icon.png) no-repeat center right;
+	line-height:40px;
+	height:40px;
+}
+.admin_product_left ul li a:hover ,.admin_product_left ul li a.pro{
+	color:#417cdc;
+	background:url(../images/icon_blue.png) no-repeat center right;
+}
+.admin_product_right{
+	width:100%;
+	margin:0 auto;
+	padding:0 auto;
+	background:#fff;
+	margin:0% 1%;
+	border:1px solid #ddd;
+	padding-bottom:10px;
+}
+.admin_product_title{
+	font-size:16px;
+	color:#0d2137;
+	text-align:left;
+	width:100%;
+	display:block;
+	background:#f9f9f9;
+	height:40px;
+	line-height:40px;
+	border-bottom:1px solid #ddd;
+	padding-left:2em;
+}
+.order_inf_main{
+	width:100%;
+	margin:0 auto;
+	padding:0 auto;
+	overflow:hidden;
+	/*padding:10px 20px;*/
+	margin-bottom:10px;
+	border-bottom:1px solid #b8bfc4;
+	
+	overflow-y:auto;
+}
+.order_inf_table{
+	width:100%;
+	table-layout:fixed;
+	color:#0d2137;
+}
+.order_inf_table_left{
+	width:12%;
+	text-align:right;
+}
+.order_inf_table_right{
+	
+	padding:10px 20px;
+}
+.order_inf_sale{
+	color:#e9351e;
+}
+.order_inf_color{
+	color:#697785;
+}
+.order_inf_select{
+	width:75%;
+	line-height:40px;
+	height:40px;
+	padding:0px 5px;
+	color:#697785;
+	border:1px solid #b8bfc4;
+}
+.order_inf_but{
+	height:40px;
+	line-height:40px;
+	background:#2d97de;
+	color:#fff;
+	border:none;
+	outline:none;
+	padding:0px 20px;
+	margin-left:20px;
+}
+.order_inf_table_right_one{
+	float: left;
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: 11px; 
+}
+.order_inf_radio{
+	position:relative;
+	display:inline-block;
+	margin-right:20px;
+	overflow:hidden;
+	float:left;
+}
+.order_inf_radio_check{
+	opacity:0;
+	-moz-opacity:0;
+	-webkit-opacity:0;
+	filter:alpha(opacity=0);
+}
+.order_inf_radio_label{
+	position:absolute;
+	width:18px;
+	height:18px;
+	background:url(../images/radio.png) no-repeat top center;
+	background-size:100% 100%;
+	top:6%;
+	left:0.3%;
+	
+}
+.order_inf_radio_check:checked + .order_inf_radio_label{
+	position:absolute;
+	width:18px;
+	height:18px;
+	background:url(../images/radiocheck.png) no-repeat top center;
+	background-size:100% 100%;
+	top:6%;
+	left:0.3%;
+}
+.order_inf_pay{
+	width:100%;
+	margin:0 auto;
+	padding:10px 0px;
+}
+.order_inf_pay_table{
+	table-layout:fixed;
+	width:100%;
+	margin:0 auto;
+	padding:0 auto;
+	border:solid #828b99;
+	border-width:1px 1px 0px 0px;
+	background:#fff;
+}
+.order_inf_pay_table tr  th{
+	background:#666;
+	color:#fff;
+	line-height:40px;
+	height:40px;
+	padding:0px 15px;
+}
+.order_inf_pay_table tr td{
+	line-height:40px;
+	height:40px;
+	border:solid #828b99;
+	border-width:0px 0px 1px 1px;
+	padding:0px 15px;
+	color:#666666;
+}
+.margin-top{
+	padding-top:10px;
+}
+.order_pay_sub{
+	display:inline;
+	background:#2d97de;
+	padding:10px 20px;
+	color:#fff;
+	border:none;
+	outline:none;
+	margin:20px 20px 20px 40px;
+}
+.order_mess{
+	width:50%;
+	
+}
+.order_mess_font{
+	width:100%;
+	text-align:left;
+	line-height:28px;
+}
+.order_mess_color{
+	color:#666666;
+}
+
+.admin_add{
+	background:#417cdc;
+	color:#fff;
+	line-height:29px;
+	height:29px;
+	margin:5px 10px;
+	padding:0px 10px;
+}
+.admin_add:hover{
+	color:#fff;
+}
+.prod,.prod:hover{
+	background:#e8e8e8;
+	padding:0px 10px;
+	height:25px;
+	line-height:25px;
+	margin:7px 10px;
+	color:#777777;
+}
+.order_a,.order_a:hover{
+	color:#2d97de;
+	display:inline-block;
+}
+.order_a:after{
+	content:'|';
+	color:#ddd;
+	padding:0px 5px;
+}
+.orderdata{
+	border-bottom:none;
+}
+/*table.orderdata thead th, table.orderdata thead td{
+	border-color:#ddd;
+	border-width:1px 1px 0px 0px;
+}*/
+table.orderdata thead th, table.orderdata thead td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 18px;
+}
+table.orderdata.no-footer {
+  border-bottom: 1px solid #ddd;
+}
+.orderwidth{
+	width:30%;
+}
+.admin_edit,.admin_edit:hover{
+	color:#5a8de1;
+	padding:0px 5px;
+}
+
+.pic{
+	width:60%;
+	position:absolute;
+	top:20%;
+	left:20%;
+	height:65%;
+	background:#fff;
+	box-shadow:0px 0px 3px #ddd;
+	-webkit-box-shadow:0px 0px 3px #ddd;
+	-moz-box-shadow:0px 0px 3px #ddd;
+	z-index:100000;
+	display:none;
+}
+.pic_title{
+	background:#417cdc;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	color:#fff;
+	display:block;
+	padding-left:2em;
+}
+.shut{
+	float:right;
+	margin-top:8px;
+	margin-right:8px;
+	cursor:pointer;
+}
+.pic_con{
+	width:96%;
+	margin:0 auto;
+	padding:0 auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	
+	
+}
+.pic_con_table{
+	width:100%;
+	margin:0 auto;
+	padding:0 auto;
+	border:#ddd solid ;
+	border-width:1px 1px 0px 0px;
+	
+}
+.pic_con_table tr th{
+	color:#a7a7a8;
+}
+.pic_con_table tr td,.pic_con_table tr th{
+	border:#ddd solid ;
+	border-width:0px 0px 1px 1px;
+	text-align:center;
+	padding:5px 10px;
+}
+.pic_con_table tr:nth-child(even){
+	background:#fff;
+}
+.pic_con_table tr:nth-child(odd){
+	background:#f5f6fa;
+}
+.thum{
+	background:#417cdc;
+	color:#fff;
+	padding:3px 9px;
+	margin-left:10PX;
+}
+.order_aa,.order_aa:hover{
+	color:#2d97de;
+	display:inline-block;
+}
+.pic_form{
+	width:100%;
+	height:40%;
+	margin:0 auto;
+	padding:10px 0px;
+	
+	overflow:hidden;
+	overflow-y:auto;
+}
+.line{
+	width:100%;
+	border:1px solid #ddd;
+	margin-top:20px;
+}
+.pic_en{
+	display:block;
+}
+.form_left p{
+	display:inline;
+	margin:0px 5px;
+	color:#ff8000;
+}
+.pic_input{
+	border:none 0;
+	outline:none;
+	line-height:30px;
+	height:30px;
+}
+.pic_inputa{
+	float:left;
+	border:1px solid #ddd;
+	padding:5px 3px;
+	margin-left:8px;
+}
+.pic_inputb{
+	background:#f4f5f8;
+	border:1px solid #ddd;
+	padding:10px 5px;
+	margin-left:8px;
+	line-height:44px;
+	
+}

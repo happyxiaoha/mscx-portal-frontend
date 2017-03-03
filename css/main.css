@@ -1837,7 +1837,10 @@ ul.pagination>li.active>a {
     font-size: 14px;
     font-weight: 400;
     color: #333;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .ns-extend-footer .container-body:after,.ns-extend-footer .container-body:before,.ns-extend-footer .ns-extend-footer-links:after,.ns-extend-footer .ns-extend-footer-links:before,.ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info:after,.ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info:before {
@@ -3009,6 +3012,21 @@ ul.pagination>li.active>a {
 .apply-box p span, .layer-table p span{
     font-size: 14px;
     float: right;
+}
+
+@media screen and (max-width: 1300px){
+    .ns-body {
+        width: 1000px;
+    }
+    .ns-body .ns-sideBarComponent+.ns-contentComponent {
+        width: 750px;
+    }
+    .ns-sideBarComponent {
+        width: 230px;
+    }
+    .ns-apiDetailComponent .info {
+        width: 300px;
+    }
 }
 
 /*# sourceMappingURL=main.css.map */

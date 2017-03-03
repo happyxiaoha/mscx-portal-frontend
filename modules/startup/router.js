@@ -3,7 +3,9 @@ var Routes =  Backbone.Router.extend({
         '': 'coachView',
         'coach': 'coachView',
         'born': 'bornView',
-        'activity': 'activityView'
+        'activity': 'activityView',
+        'born/detail/:id': 'bornDetailView',
+        'activity/detail/:id': 'activityDetailView'
     },
     coachView: function () {
         // if(location.search) return;
@@ -14,6 +16,26 @@ var Routes =  Backbone.Router.extend({
     bornView: function() {
         var bornView = require('startup/bornView.js');
         mscxPage.views['bornViewObj'] = new bornView();
+    },
+    bornDetailView: function(id) {
+        var view = require('startup/bornDetailView.js');
+
+        var detailView = mscxPage.views['bornDetailViewObj'];
+        detailView && detailView.undelegateEvents() && detailView.stopListening();
+
+        mscxPage.views['bornDetailViewObj'] = new view({
+            id: id
+        });
+    },
+    activityDetailView: function(id) {
+        var view = require('startup/activityDetailView.js');
+
+        var detailView = mscxPage.views['activityDetailViewObj'];
+        detailView && detailView.undelegateEvents() && detailView.stopListening();
+
+        mscxPage.views['activityDetailViewObj'] = new view({
+            id: id
+        });
     },
     activityView: function() {
         var activityView = require('startup/activityView.js');

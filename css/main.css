@@ -292,7 +292,6 @@ input[type=search] {
     height: 34px;
     width: 34px;
     line-height: 34px;
-    padding-left: 40px;
     padding-right: 10px;
     background: url(../../new-protal/static/img/newicon/ic_username.png) 12px center no-repeat #f9f9f9
 }
@@ -1837,7 +1836,10 @@ ul.pagination>li.active>a {
     font-size: 14px;
     font-weight: 400;
     color: #333;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .ns-extend-footer .container-body:after,.ns-extend-footer .container-body:before,.ns-extend-footer .ns-extend-footer-links:after,.ns-extend-footer .ns-extend-footer-links:before,.ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info:after,.ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info:before {
@@ -2696,7 +2698,8 @@ ul.pagination>li.active>a {
 
 .ns-wd {
     border: 1px solid #e8e8e8;
-    padding: 20px 40px
+    padding: 20px 40px;
+    background: #fff;
 }
 
 .ns-wd .wdHead {
@@ -2974,6 +2977,10 @@ ul.pagination>li.active>a {
     font-size: 12px
 }
 
+.tab-content {
+    background: #fff;
+}
+
 .breadcrumb {
     border-radius: 0;
     font-size: 12px;
@@ -3004,6 +3011,21 @@ ul.pagination>li.active>a {
 .apply-box p span, .layer-table p span{
     font-size: 14px;
     float: right;
+}
+
+@media screen and (max-width: 1300px){
+    .ns-body {
+        width: 1000px;
+    }
+    .ns-body .ns-sideBarComponent+.ns-contentComponent {
+        width: 750px;
+    }
+    .ns-sideBarComponent {
+        width: 230px;
+    }
+    .ns-apiDetailComponent .info {
+        width: 300px;
+    }
 }
 
 /*# sourceMappingURL=main.css.map */

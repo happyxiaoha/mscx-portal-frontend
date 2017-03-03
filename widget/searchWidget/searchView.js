@@ -191,10 +191,10 @@ var view = Backbone.View.extend({
     },
     toggleMore: function(event) {
         var $target = this.$(event.currentTarget);
-        if($target.hasClass('down')){
-            $target.html('收起>>').removeClass('down').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
+        if($target.hasClass('area-expand')){
+            $target.html('收起>>').removeClass('area-expand').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
         }else{
-            $target.html('更多>>').addClass('down').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
+            $target.html('更多>>').addClass('area-expand').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
         }            
     },
     selectOption: function(event) {

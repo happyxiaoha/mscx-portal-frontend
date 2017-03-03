@@ -4,7 +4,7 @@
 </dd>
 <% data && data.result.forEach(function(item, index) { %>
     <% if(index == 10){ %>
-    <dd><a href="javascript:;" class="toggle-more">更多&gt;&gt;</a></dd>
+    <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
     <% }%>
     <dd><a href="javascript:;" data-type="tagId" data-tagid="<%= item.tagId %>" rel="nofollow"><%= item.name || item.tagName %></a></dd>
 <% }) %>

@@ -66,7 +66,7 @@
         </dd>
         <% data.category.result.forEach(function(item, index) { %>
             <% if(index == 10){ %>
-            <dd><a href="javascript:;" class="toggle-more">更多&gt;&gt;</a></dd>
+            <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
             <% }%>
             <dd class="<%= data.defaults && (data.defaults.categoryId == item.categoryId) ? 'active' : '' %>">
                 <a rel="nofollow" href="javascript:;" data-type="categoryId" data-categoryid="<%= item.categoryId %>"><%= item.categoryName %></a>
@@ -86,7 +86,7 @@
         </dd>
         <% data.tags.result.forEach(function(item, index) { %>
             <% if(index == 10){ %>
-            <dd><a href="javascript:;" class="toggle-more">更多&gt;&gt;</a></dd>
+            <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
             <% }%>
             <dd><a href="javascript:;" data-type="tagId" data-tagid="<%= item.tagId %>" rel="nofollow"><%= item.tagName %></a></dd>
         <% }) %>

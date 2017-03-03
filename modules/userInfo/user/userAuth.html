@@ -31,9 +31,12 @@
                     <li class="clearfix">
                         <div class="fl clearfix posRE w100">
                             <span><em>*</em>认证方式：</span>
-                            <select class="identifide" <%if(name){%>disabled<%}%>>
-                                <option value="photo" <%if(certificationType == '01'){%>selected<%}%>>照片认证</option>
-                                <option value="phone" <%if(certificationType == '02'){%>selected<%}%>>手机认证</option>
+                            <label class="identifide <%if(certificationType == '01'){%>active<%}%> <%if(name){%>disabled<%}%>"><i></i>照片认证</label>
+                            <label class="identifide <%if(certificationType == '02'){%>active<%}%> <%if(name){%>disabled<%}%>"><i></i>手机认证</label>
+                            <label class="identifide <%if(certificationType == '03'){%>active<%}%> <%if(name){%>disabled<%}%>"><i></i>银行卡号认证</label>
+                            <select style="display: none;" class="identifide" <%if(name){%>disabled<%}%>>
+                                <option value="photo" >照片认证</option>
+                                <option value="phone" >手机认证</option>
                                 <option value="creditCard" <%if(certificationType == '03'){%>selected<%}%>>银行卡号认证</option>
                             </select>
                         </div>

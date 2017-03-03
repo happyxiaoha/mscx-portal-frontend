@@ -1,18 +1,18 @@
 /*用户基本信息*/
 .M-mainInfo{padding: 29px 25px;}
-.M-rightMyTxt{width: 620px;font-size: 15px;}
+.M-rightMyTxt{width: 80%;font-size: 15px;}
 .M-rightMyTxt p{margin-bottom: 20px;}
 .M-rightMyTxt p span{display: inline-block;line-height: 20px}
 .M-rightMyTxt p span:first-child{width: 86px;text-align: right;vertical-align: top;}
 .M-rightMyTxt p span:last-child{width: 510px;word-wrap:break-word;}
 /*个人、企业认证*/
-.R-titTab{height: 36px;border-bottom: 1px solid #ccc;}
-.R-titTab span{height: 36px;border: 1px solid transparent;font-size: 14px;padding: 0 20px;display: inline-block;line-height: 36px;text-align: center;cursor: pointer;}
-.R-titTab span.active{background: #fff;border: 1px solid #ccc;border-bottom: 0;color: #069cd9;}
+.R-titTab{height: 36px;margin: 10px 0 0 21px;}
+.R-titTab span{font-weight: bold;height: 36px;border: 1px solid transparent;font-size: 14px;padding: 0 20px;display: inline-block;line-height: 36px;text-align: center;cursor: pointer;}
+.R-titTab span.active{background: #fff;color: #ff9900;}
 
 .inputConsList {position: relative;}
 .user-password-area {min-height: 298px;border: 1px solid #ccc;}
-.loginTable{padding: 30px 36px;border: 1px solid #ccc;border-top: 0;}
+.loginTable{padding: 30px 36px;border-top: 0;}
 .loginTable ul li{margin-bottom: 20px;position: relative;clear: both;display: block;}
 .loginTable ul li span{float: left;width: 96px;font-size: 14px;color: #9a9a9a;margin-right: 8px;line-height: 30px;box-sizing: border-box;text-align: right;}
 .loginTable ul li span em{display: inline-block;vertical-align: -2px;margin-right: 5px;}
@@ -40,3 +40,7 @@
 .remember a{
     color: #0ab7ef;
 }
+.identifide {overflow: hidden; line-height: 30px; cursor: pointer;}
+.identifide i {width: 20px;  height: 30px;  display: block;  float: left;background: url("../../../images/user-radio-check-icon.png") no-repeat 0 -69px;}
+.identifide.active i {background-position: 0 -28px;}
+.disabled.identifide {opacity: 0.5; cursor: default;}

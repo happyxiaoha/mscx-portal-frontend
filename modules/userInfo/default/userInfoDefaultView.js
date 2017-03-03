@@ -59,7 +59,7 @@ var defaultView = Backbone.View.extend({
         var apiList = this.myApiListModel.get('result').list;
         if(apiList.length > 0){
             this.$adataList.html('');
-            $('.R-myServerList').css('border','1px solid #CCC');
+            // $('.R-myServerList').css('border','1px solid #CCC');
             _.each(apiList, function(item) {
                 var chargeType = item.typeStatus;
                 var newItem = {
@@ -89,7 +89,7 @@ var defaultView = Backbone.View.extend({
         var apiServiceList = this.myServerListModel.get('result').list;
         if(apiServiceList.length > 0){
             this.$sdataList.html('');
-            $('.R-myServerList').css('border','1px solid #CCC');
+            // $('.R-myServerList').css('border','1px solid #CCC');
             _.each(apiServiceList, function(item) {
                 var view = new serverItemView({
                     model: item

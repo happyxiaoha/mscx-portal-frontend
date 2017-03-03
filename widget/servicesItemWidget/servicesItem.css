@@ -1,0 +1,132 @@
+.ns-list-item {
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    position: relative;
+}
+
+.ns-list-item .media .media-object {
+    width: 266px;
+    height: 200px
+}
+
+.ns-list-item .media .media-object.large {
+    width: 300px;
+    height: 220px
+}
+
+.ns-list-item .media-left {
+    padding-right: 0
+}
+
+.ns-list-item .media-body {
+    position: relative;
+    padding: 20px 18px 46px 30px
+}
+
+.ns-list-item .media-body .h1,.ns-list-item .media-body h1 {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #333;
+    cursor: pointer;
+    margin: 0 0 10px
+}
+
+.ns-list-item .media-body .h1:after,.ns-list-item .media-body .h1:before,.ns-list .ns-list-item .media-body .media-body-footer:after,.ns-list .ns-list-item .media-body .media-body-footer:before,.ns-list .ns-list-item .media-body .tags:after,.ns-list .ns-list-item .media-body .tags:before,.ns-list .ns-list-item .media-body h1:after,.ns-list .ns-list-item .media-body h1:before {
+    display: table;
+    content: " "
+}
+
+.ns-list-item .media-body .h1:hover,.ns-list-item .media-body h1:hover {
+    color: #f90
+}
+
+.ns-list-item .media-body .tags {
+    float: left;
+    margin-left: 1em;
+    margin-top: 4px
+}
+
+.ns-list-item .media-body .tags span {
+    float: left;
+    margin-right: 4px;
+    padding: 1px 4px;
+    border: 1px solid #5cb981;
+    font-size: 12px;
+    color: #5cb981;
+    line-height: 16px;
+    border-radius: 2px
+}
+
+.ns-list-item .media-body p.offset {
+    position: absolute;
+    top: 28px;
+    right: 18px;
+    font-size: 12px;
+    color: #999
+}
+
+.ns-list-item .media-body p.info {
+    font-size: 14px;
+    color: #999;
+    line-height: 20px
+}
+
+.ns-list-item .media-body p.sub {
+    font-size: 12px;
+    margin-bottom: 1rem;
+}
+
+.ns-list-item .media-body p.sub span {
+    margin-left: .5em;
+    color: #5cb981
+}
+
+.ns-list-item .media-body .media-body-footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 30px;
+    background: #fbfbfb
+}
+
+.ns-list-item .media-body .media-body-footer:after {
+    clear: both
+}
+
+.ns-list-item .media-body .media-body-footer .footerItem {
+    float: left;
+    width: 25%;
+    font-size: 12px;
+    color: #999
+}
+
+.ns-list-item .media-body .media-body-footer .footerItem .keyword,.ns-list-item .media-body .media-body-footer .footerItem a {
+    color: #f90
+}
+
+.ns-list-item .media-body .media-body-footer .footerItem .keywordType2 {
+    font-size: 16px;
+    font-style: italic;
+    color: #f90
+}
+
+.ns-list-item .media-body .media-body-footer .footerItem .keywordType3 {
+    color: #c00
+}
+
+.ns-list-item .posRT {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #fff;
+    text-decoration: none;
+    background: #f90
+}

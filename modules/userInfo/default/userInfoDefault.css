@@ -40,7 +40,7 @@
 .mainDatas .DataList li .downs span i{display: block;line-height: 36px;}
 .mainDatas .DataList li:nth-child(4n){margin: 0;}
 
-.R-myServerList{background: #fff;}
+.R-myServerList{background: #fff;padding: 0 10px;}
 .R-myServerList ul li{padding: 14px 12px;height: 110px;border-bottom: 1px solid #ccc;}
 .R-myServerList ul li:last-child{border:0;}
 .R-myServerList ul li img{width: 156px;height: 110px;}
@@ -57,7 +57,7 @@
 .topTab span.active a {color: #494949;font-weight: bold;}
 .layui-layer-content input[readonly]{
     cursor:default;background-color:#FFF;}
-.user-center-api-list {padding: 20px 0 20px 10px;}
+.user-center-api-list {padding: 20px 0 20px 20px;}
 .user-center-api-list .api-item .downs span { width: 58px;}
 .user-center-api-list .api-item {width: 180px;margin: 0 10px 10px 0;margin-right: 10px\9;}
 @media screen and (min-width: 1300px){

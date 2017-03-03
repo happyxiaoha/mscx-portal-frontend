@@ -21,6 +21,7 @@ var myApiView = Backbone.View.extend({
     events: {},
     initialize: function() {
         var that = this;
+        this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'myApi'}));
 
         this.model = new applyApiListModel();

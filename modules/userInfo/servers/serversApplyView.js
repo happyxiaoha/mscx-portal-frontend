@@ -26,6 +26,7 @@ var myApplyListView = Backbone.View.extend({
         'click .reason': 'showReason'
     },
     initialize: function() {
+        this.$el.addClass('user-center-tap');
         this.$el.html(this.commonTemplate({name:'apply'}));
 
         this.$content = this.$('#serverInfo');

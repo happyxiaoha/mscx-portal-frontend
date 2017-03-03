@@ -50,6 +50,7 @@ var followListView = Backbone.View.extend({
         this.initRender();
     },
     initRender: function () {
+        this.$el.addClass('user-center-tap');
         this.$el.find('#apiInfo').html(template);
     },
     render: function () {

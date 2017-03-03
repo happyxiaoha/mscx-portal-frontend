@@ -40,6 +40,7 @@ var sourcesView = Backbone.View.extend({
     },
     initialize: function() {
         this.childView = [focusResourcesView,downloadSourcesListView];
+        this.$el.addClass('user-center-tap');
         this.$el.html(template);
         new focusResourcesView({el: '#sourcesInfo'});
     }

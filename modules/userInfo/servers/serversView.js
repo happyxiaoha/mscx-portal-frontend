@@ -46,6 +46,7 @@ var myPublishListView = Backbone.View.extend({
         'click .addServerPrice': 'addCharge'
     },
     initialize: function() {
+        this.$el.addClass('user-center-tap');
         this.$el.html(this.commonTemplate({name:'publish'}));
 
         this.$content = this.$('#serverInfo');

@@ -2,10 +2,10 @@
 .right-con-wrap {width: 790px;}
 .user-center-tap {border: 1px solid #CCC;border-top: 2px solid #ff9900;background: #FFF;}
 .D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
-.D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tr th{background: #f2f2f2;font-size: 14px;height: 36px;border-bottom: 1px solid #DDD;line-height: 37px;font-weight: 600;color: #666;text-align: center;}
 .D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
 .D_table table tbody tr:last-child td{border: 0;}
-.D_table table tbody tr td a{color: #113c6a;}
+.D_table table tbody tr td a{color: #ff9900;}
 .user-name-area {width: 80px;height: 18px;  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;}
 .user-center-tap .tits {height: 65px; width: 96%;margin: 0 auto;line-height: 65px;border-bottom: 1px solid #DDD;overflow: hidden;}
 

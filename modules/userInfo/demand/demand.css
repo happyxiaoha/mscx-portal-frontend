@@ -4,17 +4,17 @@
 .tab-title a {
     border: none;
     display: block;
-    background: #069cd9;
+    background: #FFF;
     border-radius: 5px;
-    color: #fff;
+    color: #ff9900;
     padding: 8px;
     width: 120px;
     font-size: 16px;
     text-align: center;
+    border: 1px solid #ff9900;
 }
-.tab-title a {}
 .D_table table tbody tr td a {
-    color: #3f89ec;
+    color: #ff9900;
 }
 a{cursor: pointer;}
 

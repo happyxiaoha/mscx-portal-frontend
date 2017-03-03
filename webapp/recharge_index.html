@@ -84,6 +84,7 @@ a:link, a:visited, a:hover, a:active {
 	var name = "companyName";
 	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 	var r = window.location.search.substr(1).match(reg);
+	var companyName;
 	if (r != null) {
 		companyName = r[2];
 	}
@@ -106,7 +107,7 @@ a:link, a:visited, a:hover, a:active {
 </body>
 <script type="text/javascript">
 if (companyName == null){
-	alertifyjs.alert("提示","公司名称必填");
+	alertify.alert("提示","公司名称必填");
 }else{
 	webLink('./transRule/transRuleQueryIndex.html?companyName=' + companyName);
 }

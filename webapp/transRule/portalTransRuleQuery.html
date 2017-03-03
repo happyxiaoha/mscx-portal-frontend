@@ -38,16 +38,56 @@
 		<div class="centre_right left" id="admin_right">
 			<div class="admin_product">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-sm-12">
 						<div class="widget-box transparent">
 							<!-- /widget-header -->
 							<div class="widget-body">
 								<div class="widget-main padding-6 no-padding-left no-padding-right">
 									<form class="form-horizontal" role="form" id="basicForm">
-										<div class="col-xs-12">
-											<div class="row" id="queryTimeRow" style="display:none;">
-												<div class="col-xs-3">
+										<div class="col-sm-12">
+											<div class="row">
+												<div class="col-sm-4">
 													<div class="form-group">
+														<label
+															class="col-sm-4 control-label no-padding-right aols">运营商：
+														</label>
+														<div class="col-sm-8">
+															<select class="form-control input-sm validate[required]" id="operator"
+																class="col-sm-12 col-sm-12 validate[required]">
+																<option value="">请选择</option>
+																<option value="移动">移动</option>	
+																<option value="联通">联通</option>
+																<option value="电信">电信</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label
+															class="col-sm-4 control-label no-padding-right aols">省份：
+														</label>
+														<div class="col-sm-8">
+															<input type="text" class="form-control input-sm validate[required]" id="province"
+																class="col-sm-12 col-sm-12"/>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label
+															class="col-sm-4 control-label no-padding-right aols">面值：
+														</label>
+
+														<div class="col-sm-8">
+															<input type="text" id="denomination" class="col-sm-12 validate[required,custom[number]]" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group" id="queryTimeStart" style="display:none;">
 														<label class="col-sm-4 control-label no-padding-right aols">开始时间： </label>
 														<div class="col-sm-8">
 															<div class="input-group input-group-sm">
@@ -58,8 +98,8 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-xs-3">
-													<div class="form-group">
+												<div class="col-sm-4">
+													<div class="form-group" id="queryTimeEnd" style="display:none;">
 														<label class="col-sm-4 control-label no-padding-right aols">结束时间： </label>
 														<div class="col-sm-8">
 															<div class="input-group input-group-sm">
@@ -69,65 +109,27 @@
 														</div>
 													</div>
 												</div>
-											</div>	
-											<div class="row">
-												<div class="col-xs-3">
-													<div class="form-group">
-														<label
-															class="col-sm-4 control-label no-padding-right aols">运营商：
-														</label>
-														<div class="col-sm-8">
-															<select class="form-control input-sm validate[required]" id="operator"
-																class="col-xs-12 col-sm-12 validate[required]">
-																<option value="">请选择</option>
-																<option value="移动">移动</option>	
-																<option value="联通">联通</option>
-																<option value="电信">电信</option>
-															</select>
-														</div>
-													</div>
-												</div>
-												<div class="col-xs-3">
-													<div class="form-group">
-														<label
-															class="col-sm-4 control-label no-padding-right aols">省份：
-														</label>
-														<div class="col-sm-8">
-															<input type="text" class="form-control input-sm validate[required]" id="province"
-																class="col-xs-12 col-sm-12"/>
-														</div>
-													</div>
-												</div>
-												<div class="col-xs-3">
-													<div class="form-group">
-														<label
-															class="col-sm-4 control-label no-padding-right aols">面值：
-														</label>
-
-														<div class="col-sm-8">
-															<input type="text" id="denomination" class="col-xs-12 col-sm-12 validate[required,custom[number]]" />
-														</div>
-													</div>
-												</div>
-												<div class="col-xs-3">
+												<div class="col-sm-4">
 													<div class="form-group">
 														<div class="col-xs-4"></div>
 														<div class="col-xs-8">
-															<button class="btn btn-grey" type="button" onclick="query()">
-																 查询
-															</button>
-															&nbsp;
-															<button class="btn btn-grey" type="button" onclick="resetVal()">
-																 重置
-															</button>
-															&nbsp;
-															<button class="btn btn-grey" type="button" onclick="exportTransRule()">
-																 导出
-															</button>
+															<div class="col-sm-12" style="text-align: right;">
+																<button class="btn btn-grey" type="button" onclick="query()">
+																	 查询
+																</button>
+																&nbsp;
+																<button class="btn btn-grey" type="button" onclick="resetVal()">
+																	 重置
+																</button>
+																&nbsp;
+																<button class="btn btn-grey" type="button" onclick="exportTransRule()">
+																	 导出
+																</button>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
+											</div>	
 										</div>
 									</form>
 									<!-- /form -->

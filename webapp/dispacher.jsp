@@ -59,15 +59,16 @@ try{
 	            sbParams.append(entry.getValue());  
 	            sbParams.append("&");  
 	        }  
-	    }  
+	    }
+	    String paramsData = sbParams.toString().replaceAll(" ", "%20");
 	    // 发送请求  
     	URL url = null;  
         if (sbParams != null && sbParams.length() > 0) {  
-            url = new URL(properties.getProperty("url") + urlParam + "?" + sbParams.substring(0, sbParams.length() - 1));  
+            url = new URL(properties.getProperty("url") + urlParam + "?" + paramsData.substring(0, paramsData.length() - 1));  
         } else {  
             url = new URL(properties.getProperty("url") + urlParam);  
-        }  
-        con = (HttpURLConnection) url.openConnection();  
+        }
+        con = (HttpURLConnection)url.openConnection();  
         con.setRequestMethod("POST");  
         con.setDoOutput(true);  
         con.setDoInput(true);  

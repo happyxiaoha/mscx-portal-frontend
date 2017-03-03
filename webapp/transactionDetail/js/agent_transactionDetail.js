@@ -6,6 +6,7 @@ $(function() {
 	dateWidget('queryDate');
 	//初始化select2控件
 	if (companyName == null){
+		$("#btn").removeClass("col-sm-offset-8").addClass("col-sm-offset-4");
 		$("#merchantNameDiv").show();
 		initSelect2();
 	}
@@ -161,10 +162,18 @@ function resetVal(){
  * 导出
  */
 function exportExcel(){
-	var url='/dispacher.jsp?url=/order/exportAtdExcel&fileName=商户交易明细查询.xls&visitType=down'
+	var visitType=null;
+	var cn='';
+	if(companyName==null){
+		visitType="/dispacherDown";
+	}else{
+		visitType="/dispacher.jsp";
+		cn=encodeURI(encodeURI(companyName));
+	}
+	var url=visitType+'?url=/order/exportAtdExcel&fileName=商户交易明细查询.xls&visitType=down'
 		+'&beginTime='+($.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+' 00:00:00')+'&endTime='
 		+($.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+' 23:59:59')+'&transactionType='+$.trim($('#type').val())
-		+'&id='+$.trim($('#orderId').val())+'&companyName='+encodeURI(encodeURI(companyName))+'&accountId='+$.trim($('#merchantName').val());
-	$.download(getRootPath() + url,null,'post');
+		+'&id='+$.trim($('#orderId').val())+'&companyName='+cn+'&accountId='+$.trim($('#merchantName').val());
+	$.download(getRootPath() + encodeURIComponent(url),null,'post');
 }
 

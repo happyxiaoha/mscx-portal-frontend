@@ -7,11 +7,13 @@ $(function() {
 	type = GetQueryString("type");
 	companyName = GetQueryString("companyName");
 	if (type == "history"){
-		$("#queryTimeRow").show();
+		$("#queryTimeStart").show();
+		$("#queryTimeEnd").show();
 		dateWidget('startTime');
 		dateWidget('endTime');
 	}else{
-		$("#queryTimeRow").hide();
+		$("#queryTimeStart").hide();
+		$("#queryTimeEnd").hide();
 	}
 	
 	height = window.screen.availHeight - 140;

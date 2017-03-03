@@ -5,7 +5,7 @@ function getRootPath() {
 	// var localhostPaht=curWwwPath.substring(0,pos);
 	var projectName = pathName
 			.substring(0, pathName.substr(1).indexOf('/') + 1);
-	return projectName;
+	return "";
 }
 
 function getNginxUrl(){

@@ -7,6 +7,7 @@ $(function() {
 	height = window.screen.availHeight - 140;
 	//初始化select2控件
 	if (companyName == null){
+		$("#btn").removeClass("col-sm-offset-8").addClass("col-sm-offset-4");
 		$("#merchantNameDiv").show();
 		initSelect2();
 	}
@@ -155,11 +156,19 @@ function resetVal(){
  * 导出
  */
 function exportExcel(){
+	var visitType=null;
+	var cn='';
+	if(companyName==null){
+		visitType="/dispacherDown";
+	}else{
+		visitType="/dispacher.jsp";
+		cn=encodeURI(encodeURI(companyName));
+	}
 	var startTime=$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 00:00:00";
 	var stopTime=$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 23:59:59";
-	var url="/dispacher.jsp?url=/order/exportAtdDayTradeExcel&fileName=商户日账单交易查询.xls&visitType=down&startTime="
+	var url=visitType+"?url=/order/exportAtdDayTradeExcel&fileName=商户日账单交易查询.xls&visitType=down&startTime="
 	+startTime+"&stopTime="+stopTime+"&operator="+encodeURI(encodeURI(encodeURI($.trim($('#operator').val()))))+'&accountId='+$.trim($('#merchantName').val())
-	+"&province="+encodeURI(encodeURI(encodeURI($.trim($('#province').val()))))+"&companyName="+encodeURI(encodeURI(companyName));
+	+"&province="+encodeURI(encodeURI(encodeURI($.trim($('#province').val()))))+"&companyName="+cn;
 	$.download(getRootPath() + url,null,'post');
 }
 

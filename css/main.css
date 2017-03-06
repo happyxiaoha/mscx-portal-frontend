@@ -1121,6 +1121,7 @@ input[type=search] {
     margin-bottom: 16px;
     padding: 10px 20px;
     background: #fff;
+    line-height: 26px;
 }
 
 .ns-content .ns-content-head span {

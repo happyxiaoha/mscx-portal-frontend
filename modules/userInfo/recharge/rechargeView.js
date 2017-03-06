@@ -1,7 +1,7 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var template = require('html!./recharge.html');
+var stemplate = require('html!./recharge.html');
 
 var userView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -9,7 +9,8 @@ var userView = Backbone.View.extend({
 
     },
     initialize: function() {
-        this.$el.html(template);
+        var url = 'webapp/recharge_index.html';
+        this.$el.html(_.template(stemplate)({sUrl:url}));
     }
 });
 module.exports = userView;

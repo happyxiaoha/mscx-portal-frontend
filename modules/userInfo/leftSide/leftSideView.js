@@ -5,20 +5,16 @@
 var template = require('html!./leftSide.html');
 require('./leftSide.css');
 
-var mainView = Backbone.View.extend({
+var leftSideView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterLeft,
     events: {
     },
     initialize: function(name) {
-        console.log(name);
         var sName = name || '';
-        console.log(_.template(template)({
-            name: sName
-        }));
         this.$el.addClass('bod').html(_.template(template)({
             name: sName
         }));
     }
 });
 
-module.exports = mainView;
+module.exports = leftSideView;

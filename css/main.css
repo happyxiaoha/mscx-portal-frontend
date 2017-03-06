@@ -160,6 +160,10 @@ input[type=search] {
     -webkit-appearance: none
 }
 
+.checkbox input[type=checkbox],.checkbox-inline input[type=checkbox],.radio input[type=radio],.radio-inline input[type=radio] {
+    margin-top: 0;
+}
+
 [hidden] {
     display: none!important
 }
@@ -1082,10 +1086,10 @@ input[type=search] {
     color: #f90
 }
 
-.ns-sideBarComponent dl dd input[type=checkbox],
+/*.ns-sideBarComponent dl dd input[type=checkbox],
 .ns-sideBarComponent dl dd input[type=radio] {
     margin-top: 2px
-}
+}*/
 
 .ns-sideBarComponent dl.nofloat dd {
     float: none;

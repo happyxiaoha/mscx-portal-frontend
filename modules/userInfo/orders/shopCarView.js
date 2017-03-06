@@ -33,7 +33,9 @@ var shopCarView = Backbone.View.extend({
         'click .is-select-shop': 'toggleSelectCar',
         'blur .apply-times': 'changePrice',
         'click .deleteCar': 'deleteCar',
-        'click .toShopPay': 'toPay'
+        'click .toShopPay': 'toPay',
+        'click .remove-btn': 'removeCarNum',
+        'click .add-btn': 'addCarNum'
     },
     shopObj:{},
     shopArray: [],
@@ -121,14 +123,18 @@ var shopCarView = Backbone.View.extend({
             isCheck = $this.is(":checked");
         if(isCheck){
             $('.is-select-shop').each(function () {
-                
                 if (this.checked == false) {
                     this.checked = true;
+                    $(this).parent().find('.radio-dis').addClass('active');
                 }
             });
             $('.select-all').each(function () {
                 if (this.checked == false) {
                     this.checked = true;
+                    $(this).parent().find('.radio-dis').addClass('active');
+                }
+                else {
+                    $(this).parent().find('.radio-dis').addClass('active');
                 }
             });
             $('.toShopPay').removeClass('disabled');
@@ -137,11 +143,16 @@ var shopCarView = Backbone.View.extend({
             $('.is-select-shop').each(function () {
                 if (this.checked == true) {
                     this.checked = false;
+                    $(this).parent().find('.radio-dis').removeClass('active');
                 }
             });
             $('.select-all').each(function () {
                 if (this.checked == true) {
                     this.checked = false;
+                    $(this).parent().find('.radio-dis').removeClass('active');
+                }
+                else {
+                    $(this).parent().find('.radio-dis').removeClass('active');
                 }
             });
             $('.toShopPay').addClass('disabled');
@@ -150,6 +161,7 @@ var shopCarView = Backbone.View.extend({
         e.stopPropagation();
     },
     toggleSelectCar: function (e) {
+        $(e.target).parent().find('.radio-dis').toggleClass('active');
         this.renderTotal();
         e.stopPropagation();
     },
@@ -260,6 +272,45 @@ var shopCarView = Backbone.View.extend({
                 }
             });
         }
+    },
+    removeCarNum: function (e) {
+        var that = this,
+            $this = $(e.target),
+            sId = $this.closest('li').attr('attrid'),
+            sVal = parseInt($.trim($this.parent().find('.apply-times').val()));
+        if(sVal > 1) {
+            var nowVal = sVal-1;
+            $this.parent().find('.apply-times').val(nowVal);
+            new updateShopModel().save({
+                cartItemId: sId,
+                applyTimes: nowVal
+            },{
+                success: function (model,res) {
+                    that.renderTotal();
+                }
+            });
+        }
+        if(sVal < 2) {
+            $this.addClass('disabled');
+        }
+
+    },
+    addCarNum: function (e) {
+        var that = this,
+            $this = $(e.target),
+            sId = $this.closest('li').attr('attrid'),
+            sVal = parseInt($.trim($this.parent().find('.apply-times').val())),
+            nowVal = sVal+1;
+        $this.parent().find('.apply-times').val(nowVal);
+        $this.parent().find('.remove-btn').removeClass('disabled');
+        new updateShopModel().save({
+            cartItemId: sId,
+            applyTimes: nowVal
+        },{
+            success: function (model,res) {
+                that.renderTotal();
+            }
+        });
     }
 });
 

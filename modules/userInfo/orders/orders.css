@@ -82,12 +82,15 @@
     float: left;
     text-align: center;
 }
-.shopCar li .orderList input[type='number']{
-    width: 42px;
+.shopCar li .orderList .apply-times{
+    width: 42px;text-align: center; height: 26px;border: 1px solid #DDD;margin-top: 40px;
 }
+.shopCar li .remove-btn,.shopCar li .add-btn {
+    width: 15px !important;height: 26px;text-align: center;font-weight: bold;background: #f0f0f0;line-height: 26px;margin-top: 40px;color: #444 !important;;
+}
+.shopCar li .remove-btn.disabled {color: #f0f0f0 !important;}
 .shopCar li .orderList span.operation{
     text-align: center;
-
     background: #e9f5fc;
 }
 .shopCar li .orderList span a{

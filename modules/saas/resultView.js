@@ -13,7 +13,7 @@ var view = Backbone.View.extend({
     initialize: function() {
         this.$el.html(this.template());
 
-        this.$dataList = this.$('.data-list');
+        this.$dataList = this.$('.saas-list');
         this.$page = this.$('.page');
         this.$count = this.$('#count');
         this.$sort = this.$('.sort');

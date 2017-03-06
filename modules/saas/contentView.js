@@ -6,6 +6,8 @@
 var searchView = require('searchWidget/searchView.js');
 var resultView = require('./resultView.js');
 
+require('./saas.css');
+
 var servicesModel = Backbone.Model.extend({
     url: mscxPage.request.saas + 'list.do'
 });

@@ -138,3 +138,7 @@
     cursor: pointer;
     margin-right: 3px;
 }
+.radio-label {position: relative;}
+.radio-label input[type="checkbox"] {opacity: 0;top: 0px;left: 14px;position: absolute;}
+.radio-dis {width: 20px; margin: 0 0 0 17px; height: 18px;  display: block;  float: left;background: url("../../../images/user-radio-check-icon.png") no-repeat 0 1px;}
+.radio-dis.active{background-position: -1px -121px;}

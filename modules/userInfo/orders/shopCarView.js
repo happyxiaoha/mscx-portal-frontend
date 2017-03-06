@@ -121,6 +121,7 @@ var shopCarView = Backbone.View.extend({
             isCheck = $this.is(":checked");
         if(isCheck){
             $('.is-select-shop').each(function () {
+                
                 if (this.checked == false) {
                     this.checked = true;
                 }

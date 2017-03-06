@@ -6,8 +6,8 @@
 var searchView = require('searchWidget/searchView.js');
 var resultView = require('./resultView.js');
 
-var dataReportModel = Backbone.Model.extend({
-    url: mscxPage.request.data + 'getDataList.do'
+var servicesModel = Backbone.Model.extend({
+    url: mscxPage.request.saas + 'list.do'
 });
 
 var view = Backbone.View.extend({
@@ -17,8 +17,8 @@ var view = Backbone.View.extend({
         this.searchView = new searchView({
             id: this.id,
             model: {
-                options: [this.id + 'Category', this.id + 'Tags', 'chargeWay'],
-                defaults: this.model || {}
+                options: ['objects', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
+                defaults: this.model
             }
         });
 
@@ -33,9 +33,9 @@ var view = Backbone.View.extend({
         this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
         this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleParams.bind(this.searchView));
 
-        this.dataAPI = new dataReportModel();
+        this.serviceAPI = new servicesModel();
 
-        this.listenTo(this.dataReportAPI, 'sync', this.resultView.render.bind(this.resultView));
+        this.listenTo(this.serviceAPI, 'sync', this.resultView.render.bind(this.resultView));
 
         this.$el.append(this.searchView.render().$el);
         this.$el.append(this.resultView.$el);

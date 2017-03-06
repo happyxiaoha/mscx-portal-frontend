@@ -16,7 +16,7 @@ var Routes =  Backbone.Router.extend({
         dataView && dataView.undelegateEvents() && dataView.stopListening();
 
         mscxPage.views['openDataViewObj'] = new openDataView({
-            id: 'service'
+            id: 'data'
         });
     },
     detailView: function (id) {

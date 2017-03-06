@@ -14,7 +14,7 @@ var configRoot = {
     'login': './js/login.js',
     'register': './js/register.js',
     'main': './js/main.js',      //首页
-     'sources': './js/sources.js',    //数据
+    'sources': './js/sources.js',    //数据
     'api': './js/api.js',
     'services': './js/services.js',     //微服务
     'demand': './js/demand.js',     //需求定制
@@ -24,7 +24,8 @@ var configRoot = {
     'search': './js/search.js',
     'contactUs': './js/contactUs.js',
     'message': './js/message.js',
-    'startup': './js/startup.js'
+    'startup': './js/startup.js',
+    'saas': './js/saas.js'
 };
 
 gulp.task('lint', function  () {

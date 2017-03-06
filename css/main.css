@@ -1174,7 +1174,8 @@ input[type=search] {
 }
 
 .ns-list {
-    margin-bottom: 36px
+    margin-bottom: 36px;
+    margin-left: -20px;
 }
 
 .ns-list .ns-list-item {
@@ -1891,7 +1892,7 @@ ul.pagination>li.active>a {
 }
 
 .ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info .cell span {
-    margin-left: .5em;
+    /*margin-left: .5em;*/
     color: #f90
 }
 
@@ -3044,6 +3045,9 @@ ul.pagination>li.active>a {
 .apply-box p span, .layer-table p span{
     font-size: 14px;
     float: right;
+}
+.data-empty {
+    margin-left: 0;
 }
 
 @media screen and (max-width: 1300px){

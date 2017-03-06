@@ -1,11 +1,20 @@
-.ns-gridPanelComponent {
+.ns-gridPanelWrap {
+    margin-left: -20px
+}
+
+.ns-gridPanelWrap:after,.ns-gridPanelWrap:before {
+    content: " ";
+    display: table
+}
+
+.ns-gridPanelWrap .ns-gridPanelComponent {
     float: left;
     width: 25%;
     margin-bottom: 25px
 }
 
-.user-center-api-list .ns-gridPanelComponent .ns-gridPanelItem {
-    margin-right: 20px
+.ns-gridPanelComponent .ns-gridPanelItem {
+    margin-left: 20px
 }
 
 .ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBody {
@@ -48,10 +57,14 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+.ns-extend-footer .container-body:after,.ns-extend-footer .container-body:before,.ns-extend-footer .ns-extend-footer-links:after,.ns-extend-footer .ns-extend-footer-links:before,.ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info:after,.ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info:before {
+    display: table;
+    content: " "
+}
+
 .ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info {
-    margin-bottom: 10px;
-    padding: 0;
-    font-size: inherit;
+    margin-bottom: 10px
 }
 
 .ns-gridPanelComponent .ns-gridPanelItem .ns-gridPanelItemBottom .info .cell {

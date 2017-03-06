@@ -22,6 +22,11 @@ var menuList = [
         name: '微服务',
         key: 'services',
         url: 'services.html'
+    },
+    {
+        name: 'SaaS应用',
+        key: 'saas',
+        url: 'saas.html'
     }
 ];
 

@@ -5,8 +5,7 @@
 var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
 var subHeader = require('subHeaderWidget/headerView.js');
-var router = require('services/router.js');
-// require('../modules/services/services.css');
+var router = require('saas/router.js');
 
 var menuList = [
     {
@@ -46,9 +45,9 @@ $(function() {
             var subHeaderView = mscxPage.views['subHeaderView'];
             subHeaderView && subHeaderView.remove();
 
-            if(res == 'serviceView' && !location.search) {
+            if(res == 'saasView' && !location.search) {
                 subHeaderView = new subHeader({
-                    id: 'services',
+                    id: 'saas',
                     model: {
                         menuList: menuList
                     }

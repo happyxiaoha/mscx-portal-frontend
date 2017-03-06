@@ -194,6 +194,5 @@ catch(Exception e){
   </head>
   
   <body>
-    This is my JSP page. <br>
   </body>
 </html>

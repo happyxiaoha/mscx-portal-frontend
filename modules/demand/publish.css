@@ -2,7 +2,7 @@
 .ReleaseInputs{padding: 24px 36px;font-size: 14px;}
 .ReleaseInputs .ReleaseList{margin-bottom: 15px;}
 .ReleaseInputs .ReleaseList .R_left{color:#8b8b8b;line-height: 32px;margin-right: 6px;text-align: right; width: 115px;}
-.ReleaseInputs .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;float: left;}
+.ReleaseInputs .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;float: left;padding: 4px 6px;}
 .ReleaseInputs .ReleaseList .R_right textarea{font-size: 14px;border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 630px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;float: left;}
 .ReleaseInputs .ReleaseList .R_right input[type="text"].error{border: 1px solid #d82e3a;}
 .ReleaseInputs .ReleaseList .R_right textarea.error{border: 1px solid #d82e3a;}
@@ -20,11 +20,11 @@
 }
     
 .R_Btns{text-align: center;margin:50px 0 10px;}
-.R_Btns .bgBlue{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;}
+.R_Btns .bgBlue{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;background: #f90;}
 .R_Btns .bgBlue:first-child{margin-right: 40px;}
 .demand-content .radio-list {width: 760px;}
 .demand-content .radio-list label{    float: left;  width: 112px;  display: block;  height: 30px;  line-height: 30px;}
-.demand-content .radio-list label input {margin: 0;}
+.demand-content .radio-list label input {margin: 0;vertical-align: middle;}
 .demand-content .radio-list .message{height: 30px; line-height: 30px;}
 .demand-content .checkbox-border {line-height: 32px;}
 .demand-content #otherLanguage {

@@ -67,7 +67,7 @@
                 <p class="fl R_left"> 数据格式：</p>
                 <div class="fl R_right">
                     <div class="radio-list">
-                        <label class="radio-inline checkbox-border">
+                        <label>
                             <% if(!data){ %>
                             <input type="radio" name="dataFormat" checked value="csv" >
                             <% }else{ %>
@@ -75,23 +75,23 @@
                             <% } %>
                             csv
                         </label>
-                        <label class="radio-inline">
+                        <label>
                             <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'pdf' && "checked" %> value="pdf" >
                             pdf
                         </label>
-                        <label class="radio-inline">
+                        <label>
                             <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'xml' && "checked" %> value="xml">
                             xml
                         </label>
-                        <label class="radio-inline">
+                        <label>
                             <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'xlsx' && "checked" %> value="xlsx">
                             xlsx
                         </label>
-                        <label class="radio-inline">
+                        <label>
                             <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'doc' && "checked" %> value="doc">
                             doc
                         </label>
-                        <label class="radio-inline">
+                        <label>
                             <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'other' && "checked" %> value="other">
                             其他
                         </label>

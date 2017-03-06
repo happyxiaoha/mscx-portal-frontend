@@ -1,6 +1,8 @@
 <div class="media">
     <div class="media-left">
-        <img src="<%- data.imageUri %>" class="media-object">
+        <a href="services.html?detail/<%= data.id %>">
+            <img src="<%- data.imageUri %>" class="media-object">
+        </a>
     </div>
     <div class="media-body">
         <a href="services.html?detail/<%= data.id %>" class="h1"><%- data.name %></a>

@@ -4,33 +4,33 @@
 <% _.each(data.list, function(item){ %>
 <li>
     <p>
-        <a href="sources.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
+        <a href="sources.html#detail/<%= item.id %>" class="ft16"><%= item.name %></a>
         <span>类型：</span>
-        <span class="corBlue">数据</span>
+        <span class="corOrange">数据</span>
     </p>
-    <p  class="cor4"><%= item.description %></p>
+    <p  class="cor9"><%= item.description %></p>
 </li>
 <% }); %>
 <% }else if(data.type =='api'){ %>
 <% _.each(data.list, function(item){ %>
 <li>
     <p>
-        <a href="api.html#detail/<%= item.apiServiceId %>" class="corOrange ft16"><%= item.apiServiceName %></a>
+        <a href="api.html#detail/<%= item.apiServiceId %>" class="ft16"><%= item.apiServiceName %></a>
         <span>类型：</span>
-        <span class="corBlue"><%= item.typeDesc %></span>
+        <span class="corOrange"><%= item.typeDesc %></span>
     </p>
-    <p  class="cor4"><%= item.description %></p>
+    <p  class="cor9"><%= item.description %></p>
 </li>
 <% }); %>
 <% }else{ %>
 <% _.each(data.list, function(item){ %>
 <li>
     <p>
-        <a href="services.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
+        <a href="services.html#detail/<%= item.id %>" class="ft16"><%= item.name %></a>
         <span>类型：</span>
-        <span class="corBlue">微服务</span>
+        <span class="corOrange">微服务</span>
     </p>
-    <p  class="cor4"><%= item.description %></p>
+    <p  class="cor9"><%= item.description %></p>
 </li>
 <% }); %>
 <% }; %>

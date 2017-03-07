@@ -1,7 +1,7 @@
 'use strict';
 
 var shareView = require('shareWidget/shareView.js');
-require('./pioneering.css');
+//require('./pioneering.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,

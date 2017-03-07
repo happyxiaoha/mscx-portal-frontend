@@ -22,7 +22,8 @@ var Routes =  Backbone.Router.extend({
         'serverFollow': 'serverFollowView',
         'serverApply': 'serverApplyView',
         'order': 'orderView',
-        'shop': 'shopView'
+        'shop': 'shopView',
+        'incubator': 'incubatorView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -99,6 +100,10 @@ var Routes =  Backbone.Router.extend({
     shopView: function () {
         var shopView = require('userInfo/orders/shopCarView.js');
         mscxPage.views['shopViewObj'] = new shopView();
+    },
+    incubatorView: function () {
+        var incubatorView = require('userInfo/incubator/incubatorView.js');
+        mscxPage.views['incubatorViewObj'] = new incubatorView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

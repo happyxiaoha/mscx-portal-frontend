@@ -1,0 +1,32 @@
+.ReleaseDownCons {position: relative;}
+.ReleaseMainCons .ReleaseTit{font-size: 24px;color: #333;padding: 36px 28px 26px;border-bottom: 5px solid #e7e7e7;}
+.ReleaseInputs{padding: 24px 36px;font-size: 14px;}
+.ReleaseInputs .ReleaseList{margin-bottom: 15px;}
+.ReleaseInputs .ReleaseList .R_left{color:#8b8b8b;line-height: 32px;width: 74px;margin-right: 6px;text-align: right; }
+.ReleaseDownCons label.error {float: left;color: red;margin-left: 20px;line-height: 30px;}
+.ReleaseDownCons input[type="text"].error {border: 1px solid red !important;float: left;}
+.ReleaseDownCons textarea.error {border: 1px solid red !important;float: left;}
+.labelleft .ReleaseList .R_left{ width: 120px;}
+.downIcon .downSmalllBtn { top:10px;}
+.ReleaseInputs .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;padding: 4px 6px;}
+.ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 590px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;font-size: 14px;}
+.R_inputs{width: 800px;padding-top: 9px;}
+.R_inputs label{display: inline-block;width: 114px;margin: 0 19px 19px 0;}
+.R_inputs label:nth-child(6n){margin-right: 0;}
+.chargeTypeRadio label input[type="radio"]{margin: 0 5px 0;vertical-align: -2px;}
+.R_code label{width: 80px;}
+.R_inputs .other{display: inline-block;}
+.R_inputs .other input[type="text"]{width: 230px !important;height: 32px !important;}
+.R_Btns{text-align: center;padding: 15px 0 10px;}
+.R_Btns input[type="submit"]{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;background: #f90;}
+.R_Btns input[type="submit"]:first-child{margin-right: 40px;}
+.checkboxlist,.chargeTypeRadio{  width: 690px;  }
+.checkboxlist label,.chargeTypeRadio label{  height: 30px;  line-height: 30px;  width: 120px;  float: left;overflow: hidden; text-overflow: ellipsis;display: inline-block;white-space: nowrap;}
+.checkboxlist label input[type="radio"]{margin: 0 5px 0;vertical-align: -2px;}
+.imgForm {position: absolute;top: 515px;left: 162px;width: 66px;height: 66px;overflow: hidden;}
+.imgForm input {opacity: 0;}
+.imgForm input[type="file"]{z-index: 9999;font-size: 999px;position: absolute;top:0;left: 0;width: 100%;height: 100%;}
+.img-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
+.allInfoImg {border: 1px solid #DDD;padding: 2px;}
+.left {float: left !important;}
+.right {float: right !important;}

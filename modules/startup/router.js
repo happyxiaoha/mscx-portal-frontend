@@ -5,10 +5,9 @@ var Routes =  Backbone.Router.extend({
         'roadshow': 'roadshowView',
         'activity': 'activityView',
         'roadshow/detail/:id': 'roadshowDetailView',
-        'activity/detail/:id': 'activityDetailView'
+        'activity/detail/:id': 'activityDetailView',
         'createRoadShow': 'createRoadShowView',
         'createActivity': 'createActivityView'
-
     },
     coachView: function () {
         // if(location.search) return;
@@ -44,10 +43,6 @@ var Routes =  Backbone.Router.extend({
         var activityView = require('startup/activityView.js');
         mscxPage.views['activityViewObj'] = new activityView();
     },
-    newsView:function () {
-        var view = require('startup/newsView.js');
-        mscxPage.views['newsViewObj'] = new view();
-    },
     newsDetailView:function (url) {
         var view = require('startup/newsDetailView.js');
         mscxPage.views['newsDetailView'] = new view({
@@ -56,12 +51,8 @@ var Routes =  Backbone.Router.extend({
             }
         });
     },
-    newsListView:function () {
-        var view = require('startup/newsListView.js');
-        mscxPage.views['newsListViewObj'] = new view();
-    },
     createRoadShowView:function () {
-        var roadShowView = require('startup/createRoadShowView.js');
+       var roadShowView = require('startup/createRoadShowView.js');
         mscxPage.views['roadShowViewObj'] = new roadShowView();
     },
     createActivityView:function () {

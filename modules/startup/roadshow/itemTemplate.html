@@ -1,24 +1,25 @@
 <div class="media">
     <div class="media-left">
-        <a href="vr.html"><img src="" class="media-object"></a>
+        <a href="#roadshow/detail/<%= data.id %>"><img src="<%= data.thumbnailImg %>" class="media-object"></a>
     </div>
     <div class="media-body">
-        <a href="vr.html" class="h1">
+        <a href="#roadshow/detail/<%= data.id %>" class="h1">
             <span class="pull-left">
-                VR直播
+                <%= data.roadName %>
             </span>
             <div class="tags">
-                <span>数据</span>
-                <span>VR</span>
-                <span>直播</span>
+                <% data.tags && data.tags.split(',').forEach(function(item){ %>
+                <span><%= item %></span>
+                <% }) %>
             </div>
         </a>
-        <p class="info">领先的VR技术，从互动角度带来了革新，拉近距离、告别扁平图像，更加生动的交流，让人们感受直播带来的乐趣。
+        <p class="info">
+            <%= data.roadDescription %>
         </p>
         <div class="media-body-footer">
-            <div class="footerItem">融资类型：<span class="keywordType2">股权融资</span></div>
-            <div class="footerItem">融资额度：<a href="" class="keywordType2">300万元</a></div>
-            <div class="footerItem">项目阶段：<a href="" class="keywordType2">研发中</a></div>
+            <div class="footerItem">融资类型：<span class="keywordType2"><%= data.tradeField %></span></div>
+            <div class="footerItem">融资额度：<a href="" class="keywordType2"><%= data.financingLimit %></a></div>
+            <div class="footerItem">项目阶段：<a href="" class="keywordType2"><%= data.projectStage %></a></div>
         </div>
     </div>
 </div>

@@ -2,6 +2,8 @@
 
 var template = require('html!./itemTemplate.html');
 
+require('util');
+
 var view = Backbone.View.extend({
     tagName: 'div',
     className: 'ns-list-item',

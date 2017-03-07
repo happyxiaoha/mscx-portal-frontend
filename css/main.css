@@ -1272,7 +1272,7 @@ input[type=search] {
     background: #fbfbfb
 }
 
-.ns-list .ns-list-item-more,.ns-listPanel .ns-list-item-more {
+.ns-list-item-more,.ns-list-item-more {
     line-height: 44px;
     text-align: center;
     cursor: pointer;
@@ -1315,7 +1315,7 @@ input[type=search] {
     background: #f90
 }
 
-.ns-list .ns-list-item-more {
+.ns-list-item-more {
     display: block;
     margin-top: 16px;
     background: #f90;
@@ -1344,13 +1344,13 @@ input[type=search] {
     height: 280px
 }
 
-.ns-listPanel .ns-list-item-more {
+/*.ns-list-item-more {
     display: block;
     margin-top: 16px;
     background: #5cb981;
     font-size: 16px;
     color: #fff
-}
+}*/
 
 .ns-listPanel .ns-listPanel-mn1 {
     float: left;

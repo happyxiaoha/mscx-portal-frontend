@@ -9,7 +9,9 @@ var userView = Backbone.View.extend({
 
     },
     initialize: function() {
-        var url = 'webapp/recharge_index.html';
+        console.log("name:" + mscxPage.userInfo.account);
+        var url = 'webapp/recharge_index.html?userName='+mscxPage.userInfo.account;
+        // var url = 'webapp/recharge_index.html?userName=test';
         this.$el.html(_.template(stemplate)({sUrl:url}));
     }
 });

@@ -1,0 +1,28 @@
+<!-- 申请购买套餐弹出框 -->
+<div class="D_table M-table">
+    <table>
+        <thead>
+        <tr>
+            <th width="5%"></th>
+            <th width="60%">名称</th>
+            <th width="18%">价格（元）</th>
+            <th width="18%">小计（元）</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-id="<%= data.id %>">
+            <td><input type="radio" name="radio" checked></td>
+            <td><%= data.name %></td>
+            <td><%- data.price || 0 %></td>
+            <td class="total"><%= data.price || 0 %></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<p class="mt20">
+    <label>
+        <input type="checkbox" id="agreementBtn">
+        阅读并接受<a href="agreement.html" target="_blank">《广州数聚平台服务协议》</a>
+    </label>
+    <span>已选择<b class="corOrange">1</b>个套餐 应付：<b class="corOrange">￥<b><%= data.price || 0 %></b></b>元</span>
+</p>

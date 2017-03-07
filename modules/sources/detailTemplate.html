@@ -5,148 +5,39 @@
                 <div class="col-md-12">
                     <ol class="breadcrumb">
                         <li><a href="sources.html">交易广场</a></li>
-                        <li><a href="saas.html">SaaS应用</a></li>
+                        <li><a href="sources.html">数据报告</a></li>
                         <li class="active"><%= data.name %></li>
                     </ol>
                 </div>
             </div>
         </div>
-        <div class="ns-sideBarComponent pull-right fade" id="selectedService">
-
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-9">
-                    <div class="ns-apiDetailComponent">
-                        <div class="ns-apiDetailTop bgWhite">
-                            <div class="media">
-                                <div class="media-left">
-                                    <div class="media-object">
-                                        <img src="<%= data.imageUri %>" alt="" class="">
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><%= data.name %>
-                                        <div class="tags">
-                                            <% data.tagNames.split(',').forEach(function(item){ %>
-                                            <span class="tagItem"><%= item %></span>
-                                            <% }) %>
-                                        </div>
-                                    </h4>
-                                    <div class="subInfo">
-                                        <%= data.description %>
-                                    </div>
-                                    <div class="baseInfo">
-                                        <div class="top">
-                                            <div class="media">
-                                                <div class="media-body">
-                                                    <div class="info">
-                                                        <div class="cell">
-                                                            数创价：<span class="text-large text-orange">
-                                                            <%= data.chargeTypeDesc %></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="info">
-                                                        <div class="cell">服务状态：
-                                                            <span>
-                                                            <%= data.statusDesc %>
-                                                            </span>
-                                                        </div>
-                                                        <div class="cell">服务方式：
-                                                            <span>
-                                                            <%= data.serviceType %>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="info">
-                                                        <div class="cell">服务商：
-                                                            <span>
-                                                            <%= data.providerName %>
-                                                            </span>
-                                                        </div>
-                                                        <div class="cell">更新时间：
-                                                            <span>
-                                                            <%= (new Date(data.updatedTime).toISOString()).slice(0,10) %>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="info">
-                                                        <div class="cell">访问地址：
-                                                        <% if(data.uri.indexOf('http') < 0){ %>
-                                                            <a href="http://<%- data.uri %>" target="_blank">
-                                                        <% }else{ %>
-                                                            <a href="<%- data.uri %>" target="_blank">
-                                                        <% }; %>
-                                                        <%= data.uri %>
-                                                        </a>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="media-right">
-                                                    <div class="rightInfo">
-                                                        <p>访问量：<span>
-                                                            <%= data.viewCount %>
-                                                        </span></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="bottom">
-                                            <div class="share">
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <%if(data.status == '0'){%>
-                                    <div class="submitBtns">
-                                        <button class="btn" id="example">查看演示</button>
-                                        <button id="attention" class="btn"><%- data.attentionFlag ? '取消关注' : '关注'%></button>
-                                    </div>
-                                    <%}%>
-                                </div>
-                            </div>
-                        </div>
-                        <% if(data.demoImage1 || data.demoImage2 || data.demoImage3){ %>
-                        <div class="ns-apiDetailBottom">
-                            <div class="tabs">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="javascript:;">详细信息</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active bgWhite">
-                                        <div class="container-fluid picScroll-left">
-                                            <a class="next" style="display: none;"></a>
-                                            <a class="prev" style="display: none;"></a>
-                                            <div class="bd">
-                                                <ul class="picList">
-                                                    <% if( data.demoImage1){ %>
-                                                    <li>
-                                                        <div class="pic"><img src="<%- data.demoImage1 %>" /></div>
-                                                    </li>
-                                                    <% }; %>
-                                                    <% if( data.demoImage2){ %>
-                                                    <li>
-                                                        <div class="pic"><img src="<%- data.demoImage2 %>" /></div>
-                                                    </li>
-                                                    <% }; %>
-                                                    <% if( data.demoImage3){ %>
-                                                    <li>
-                                                        <div class="pic"><img src="<%- data.demoImage3 %>" /></div>
-                                                    </li>
-                                                    <% }; %>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <% } %>
-                    </div>
+        <div class="container-fluid ">
+            <div class="col-md-9 ns-document bgWhite">
+                <div class="ns-documentdHead">
+                    <h1><%= data.name %><span class="text-large text-orange" style="margin-left: 30px"><%= data.chargeTypeDesc  %></span></h1>
+                    <h3>来源：<%= data.orgName  %>&nbsp;&nbsp;&nbsp;<%= new Date(data.publishDate).format('yyyy-MM-dd')  %></h3>
                 </div>
+                <div class="ns-documentContent">
+                    <div class="ns-introduction">
+                        报告简介：
+                    </div>
+                    <p><%= data.description %></p>
+                    <div class="ns-introduction">
+                        目录：
+                    </div>
+                    <p>
+                        <%= data.catelog %>
+                    </p>
+                    <div class="ns-introduction">
+                        图表目录：
+                    </div>
+                    <p>
+                        <%= data.picCatelog %>
+                    </p>
+                </div>
+                <div class="ns-documentFoot">附件下载：<a href="javascript:;"><strong><%= data.name %></strong></a></div>
+            </div>
+            <div class="col-md-3" id="hotDataReport">
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@ function jQueryAjax(url, params, async, type, dataType) {
 		}
 
 		$.ajax({
-			url : getRootPath() + "/dispacher.jsp?url=" + url,
+			url : getRootPath() + url,
 			data : paramJson,
 			contentType : 'application/json',  
 			async : async == null ? false : async,
@@ -64,7 +64,7 @@ function jQueryAjaxAsync(url, params, callback, type, dataType) {
 		}
 
 		$.ajax({
-			url : getRootPath() + "/dispacher.jsp?url=" + url,
+			url : getRootPath() + url,
 			contentType : 'application/json', 
 			data : paramJson,
 			async : true,

@@ -1,12 +1,13 @@
 'use strict';
 
-var template = require('html!./activityDetailTemplate.html');
+var template = require('html!./itemTemplate.html');
 
 var view = Backbone.View.extend({
-    el: mscxPage.domEl.startupEl,
+    tagName: 'div',
+    className: 'ns-list-item',
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.$el.html(this.template());
+        this.$el.html(this.template(this.model));
         return this;
     }
 });

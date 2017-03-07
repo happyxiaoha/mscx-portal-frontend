@@ -35,6 +35,10 @@ var Models = {
     serviceCategory: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'category/getServiceCategory.do'
     })),
+    // 路演分类
+    fieldCategory: new (Backbone.Model.extend({
+        url: mscxPage.request.dict + 'category/getRoadShowCategory.do'
+    })),
     // 数据API标签
     dataTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getDataApiTags.do'
@@ -55,6 +59,10 @@ var Models = {
     serviceTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getServiceTags.do'
     })),
+    // 活动标签
+    activityTags: new (Backbone.Model.extend({
+        url: mscxPage.request.dict + 'tags/getAllActivity.do'
+    })),
     // 标签详情 根据categoryId获取
     detailTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getTagsInfo.do'
@@ -67,9 +75,9 @@ var Models = {
     orgs: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'org/getOrganization.do'
     })),
-    // 行业领域
-    field: new (Backbone.Model.extend({
-        url: mscxPage.request.dict + 'tags/getAllFeild.do'
+    // 项目阶段
+    projectStages: new (Backbone.Model.extend({
+        url: mscxPage.request.dict + 'tags/getAllProjectStages.do'
     }))
 }
 
@@ -90,6 +98,7 @@ var view = Backbone.View.extend({
     template: _.template(template, {variable: 'data'}),
     tagTemplate: _.template(tagTemplate, {variable: 'data'}),
     categoryTemplate: _.template(categoryTemplate, {variable: 'data'}),
+    stageTemplate: _.template(categoryTemplate, {variable: 'data'}),
     scopeTemplate: _.template(scopeTemplate, {variable: 'data'}),
     initialize: function() {
         this.filterMaps = _.pick(Models, this.model.options);
@@ -143,9 +152,9 @@ var view = Backbone.View.extend({
         _.extend(model, this.filterMaps);
 
         // 处理一下model中的标签
-        model.tags = model.dataTags || model.toolTags || model.modelTags || model.openDataTags || model.serviceTags;
+        model.tags = model.dataTags || model.toolTags || model.modelTags || model.openDataTags || model.serviceTags || model.activityTags;
         // 处理一下model中的分类
-        model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory;
+        model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory || model.roadshowCategory;
 
         for(var key in model) {
             if(model[key] && model[key].toJSON) {
@@ -259,7 +268,7 @@ var view = Backbone.View.extend({
     },
     renderCategory: function(model) {
         this.$('.category-dl').html(this.categoryTemplate(model.toJSON()));
-        Models[this.id + 'Tags'].fetch();
+        Models[this.id + 'Tags'] && Models[this.id + 'Tags'].fetch();
     },
     handleCheckbox: function(event) {
         var $target = this.$(event.currentTarget);

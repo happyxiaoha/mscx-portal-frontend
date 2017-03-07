@@ -110,7 +110,7 @@
             <% if(index == 10){ %>
             <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
             <% }%>
-            <dd><a href="javascript:;" data-type="tagId" data-tagid="<%= item.tagId %>" rel="nofollow"><%= item.tagName %></a></dd>
+            <dd><a href="javascript:;" data-type="tagId" data-tagid="<%= item.tagId || item.dictCode %>" rel="nofollow"><%= item.tagName || item.dictName %></a></dd>
         <% }) %>
         
     </dl>
@@ -132,20 +132,37 @@
     </dl>
 </div>
 <% } %>
-
 <!-- 行业领域 -->
-<% if(data.field && data.field.result) { %>
+<% if(data.fieldCategory && data.fieldCategory.result) { %>
 <div class="ns-sideBarItem">
     <dl class="field-dl">
         <dt>行业领域</dt>
         <dd class="active">
             <a href="javascript:;" data-type="fieldId">不限</a>
         </dd>
-        <% data.field.result.forEach(function(item, index) { %>
+        <% data.fieldCategory.result.forEach(function(item, index) { %>
             <% if(index == 10){ %>
             <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
             <% }%>
-            <dd><a href="javascript:;" data-type="fieldId" data-fieldId="<%= item.fieldId %>" rel="nofollow"><%= item.tagName %></a></dd>
+            <dd><a href="javascript:;" data-type="fieldId" data-fieldId="<%= item.categoryId %>" rel="nofollow"><%= item.categoryName %></a></dd>
+        <% }) %>
+        
+    </dl>
+</div>
+<% } %>
+<!-- 项目阶段 -->
+<% if(data.projectStages && data.projectStages.result) { %>
+<div class="ns-sideBarItem">
+    <dl class="stages-dl">
+        <dt>项目阶段</dt>
+        <dd class="active">
+            <a href="javascript:;" data-type="stageId">不限</a>
+        </dd>
+        <% data.projectStages.result.forEach(function(item, index) { %>
+            <% if(index == 10){ %>
+            <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
+            <% }%>
+            <dd><a href="javascript:;" data-type="stage" data-stage="<%= item.dictCode %>" rel="nofollow"><%= item.dictName %></a></dd>
         <% }) %>
         
     </dl>

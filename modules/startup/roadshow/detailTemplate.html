@@ -1,0 +1,75 @@
+<div class="ns-contentComponent">
+    <div class="ns-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="startup.html">孵化器</a></li>
+                        <li><a href="#born">项目孵化</a></li>
+                        <li class="active"><%= data.roadName %></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="ns-list">
+            <div class="ns-list-item">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="<%= data.thumbnailImg %>" class="media-object">
+                    </div>
+                    <div class="media-body">
+                        <span class="h1">
+                            <span class="pull-left">
+                                <%= data.roadName %>
+                            </span>
+                            <div class="tags">
+                                <% data.tags && data.tags.split(',').forEach(function(item){ %>
+                                <span><%= item %></span>
+                                <% }) %>
+                            </div>
+                        </span>
+                        <p class="info">
+                            <%= data.roadDescription %>
+                        </p>
+                        <div class="media-body-footer">
+                            <div class="footerItem">融资类型：<span class="keywordType2"><%= data.financingType %></span></div>
+                            <div class="footerItem">融资额度：<span class="keywordType2"><%= data.financingLimit %></span></div>
+                            <div class="footerItem">项目阶段：<span class="keywordType2"><%= data.projectStage %></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 26px;">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="javascript:;" data-index="0">项目介绍</a></li>
+                <li role="presentation"><a href="javascript:;" data-index="1">团队成员</a></li>
+                <li role="presentation"><a href="javascript:;" data-index="2">运营与投资</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="home" style="padding:20px;border:1px solid #e8e8e8;border-top:none;">
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <img src="<%= data.projectDescription %>" alt="" style="width: 100%;height: 100%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="profile" style="padding:20px;border:1px solid #e8e8e8;border-top:none;">
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <img src="<%= data.teamImg %>" alt="" style="width: 100%;height: 100%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="messages" style="padding:20px;border:1px solid #e8e8e8;border-top:none;">
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <img src="<%= data.operationImg %>" alt="" style="width: 100%;height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

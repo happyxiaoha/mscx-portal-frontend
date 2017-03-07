@@ -1,0 +1,16 @@
+<div class="media">
+    <div class="media-left">
+        <a href="sources.html?detail/<%= data.id %>">
+            <img src="<%- data.reportUrl %>" class="media-object">
+        </a>
+    </div>
+    <div class="media-body">
+        <a href="sources.html?detail/<%= data.id %>" class="h1"><%- data.name %></a>
+        <p class="info"><%- data.description %></p>
+        <div class="media-body-footer">
+            <div class="footerItem"> 发布日期：<span class="keywordType2"><%- new Date(data.publishDate).format('yyyy-MM-dd') %></span></div>
+            <div class="footerItem"> 来源：<span class="keywordType2"><%- data.orgName %></span></div>
+            <div class="footerItem"> 费用：<span class="keywordType2"><%- data.chargeTypeDesc %></span></div>
+        </div>
+    </div>
+</div>

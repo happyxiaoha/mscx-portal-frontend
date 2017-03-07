@@ -2,9 +2,9 @@ var Routes =  Backbone.Router.extend({
     routes: {
         '': 'coachView',
         'coach': 'coachView',
-        'born': 'bornView',
+        'roadshow': 'roadshowView',
         'activity': 'activityView',
-        'born/detail/:id': 'bornDetailView',
+        'roadshow/detail/:id': 'roadshowDetailView',
         'activity/detail/:id': 'activityDetailView'
     },
     coachView: function () {
@@ -13,17 +13,17 @@ var Routes =  Backbone.Router.extend({
         var coachView = require('startup/coachView.js');
         mscxPage.views['coachViewObj'] = new coachView();
     },
-    bornView: function() {
-        var bornView = require('startup/bornView.js');
-        mscxPage.views['bornViewObj'] = new bornView();
+    roadshowView: function() {
+        var roadshowView = require('startup/roadshowView.js');
+        mscxPage.views['bornViewObj'] = new roadshowView();
     },
-    bornDetailView: function(id) {
-        var view = require('startup/bornDetailView.js');
+    roadshowDetailView: function(id) {
+        var view = require('startup/roadshowDetailView.js');
 
-        var detailView = mscxPage.views['bornDetailViewObj'];
+        var detailView = mscxPage.views['roadshowDetailViewObj'];
         detailView && detailView.undelegateEvents() && detailView.stopListening();
 
-        mscxPage.views['bornDetailViewObj'] = new view({
+        mscxPage.views['roadshowDetailViewObj'] = new view({
             id: id
         });
     },
@@ -41,22 +41,22 @@ var Routes =  Backbone.Router.extend({
         var activityView = require('startup/activityView.js');
         mscxPage.views['activityViewObj'] = new activityView();
     },
-    newsView:function () {
-        var view = require('startup/newsView.js');
-        mscxPage.views['newsViewObj'] = new view();
-    },
-    newsDetailView:function (url) {
-        var view = require('startup/newsDetailView.js');
-        mscxPage.views['newsDetailView'] = new view({
-            model: {
-                url: url
-            }
-        });
-    },
-    newsListView:function () {
-        var view = require('startup/newsListView.js');
-        mscxPage.views['newsListViewObj'] = new view();
-    },
+    // newsView:function () {
+    //     var view = require('startup/newsView.js');
+    //     mscxPage.views['newsViewObj'] = new view();
+    // },
+    // newsDetailView:function (url) {
+    //     var view = require('startup/newsDetailView.js');
+    //     mscxPage.views['newsDetailView'] = new view({
+    //         model: {
+    //             url: url
+    //         }
+    //     });
+    // },
+    // newsListView:function () {
+    //     var view = require('startup/newsListView.js');
+    //     mscxPage.views['newsListViewObj'] = new view();
+    // },
     openPage: function(url) {
         this.navigate(url,{trigger: true});
     },

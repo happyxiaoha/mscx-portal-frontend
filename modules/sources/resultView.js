@@ -1,7 +1,9 @@
 'use strict';
 
 var resultTemplate = require('html!./resultTemplate.html');
-var serviceItemView = require('servicesItemWidget/servicesItemView.js');
+var dataReportItemView = require('dataReportWidget/dataReportItemView.js');
+
+require('util');
 
 var view = Backbone.View.extend({
     tagName: 'div',
@@ -39,7 +41,7 @@ var view = Backbone.View.extend({
         this.$count.html(pageInfo.totalSize || 0);
 
         _.each(serviceList, function(item) {
-            var view = new serviceItemView({
+            var view = new dataReportItemView({
                 model: item
             });
             this.$dataList.append(view.$el);

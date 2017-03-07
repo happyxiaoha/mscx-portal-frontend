@@ -1,9 +1,9 @@
 var height;
-var companyName;
+var userName;
 $(function() {
-	companyName = getUrlLocationQueryString("companyName");
-	if (companyName == null){
-		alertify.alert("提示", "请输入公司名称");
+	userName = getUrlLocationQueryString("userName");
+	if (userName == null){
+		alertify.alert("提示", "请输入用户名");
 		return;
 	}
 	var $ti=$(".navs li a");
@@ -35,8 +35,8 @@ function getUrlLocationQueryString(name){
 }
 function init(tabName){
 	if (tabName == "当前商品"){
-		$("#transRuleIfm").attr("src", "./portalTransRuleQuery.html?companyName=" + companyName);
+		$("#transRuleIfm").attr("src", "./portalTransRuleQuery.html?userName=" + userName);
 	}else{
-		$("#historyTransRuleIfm").attr("src", "./portalTransRuleQuery.html?type=history&companyName=" + companyName);
+		$("#historyTransRuleIfm").attr("src", "./portalTransRuleQuery.html?type=history&userName=" + userName);
 	}
 }

@@ -1,15 +1,15 @@
 var flowTable;
 var index=1;
 var height;
-var companyName;
+var userName;
 
 $(function(){
-	companyName = GetQueryString('companyName');
+	userName = GetQueryString('userName');
 	height = window.screen.availHeight - 220;
 	initFlowQueryTables();
 	dateTimeWidget('startTime');
 	dateTimeWidget('stopTime');
-	$('#countShow').html("统计信息(总面值：成功面值：待充值面值：失败面值：成本金额)");
+//	$('#countShow').html("统计信息(总面值：成功面值：待充值面值：失败面值：成本金额)");
 })
 
 
@@ -17,14 +17,14 @@ function queryFlow(){
 	flowTable.draw();
 }
 
-function queryTotalValue(){
+/*function queryTotalValue(){
 	if($('#count').is(':checked')){
 		var res = jQueryAjax('/order/queryTotalValue',null,false,'post','json');
 		if(res.resCode == "000000"){
 			$('#countShow').html("统计信息(总面值："+res.data.totalDenomination+"  成功面值："+res.data.totalsuccessfulValue+"  待充值面值："+res.data.totalWaitValue+"  失败面值：成本金额)");
 		}
 	}
-}
+}*/
 
 /**
  * 初始化列表
@@ -159,6 +159,12 @@ function initFlowQueryTables() {
 				serverSide : true,
 				dom : 't<"col-sm-2"i><"col-sm-4"l><"col-sm-6"p>',
 				ajax : function(data, callback,settings){
+					var url;
+					if(userName == null){
+						url = getRootPath() + "dispacher.jsp?url=/order/queryAgentFlow.action";
+					}else{
+						url = getRootPath() + "/order/queryAgentFlow.action";
+					}
 					var args={
 							'operator':encodeURI($('#operator').val()),
 							'province':encodeURI($('#province').val()),
@@ -171,7 +177,7 @@ function initFlowQueryTables() {
 							'mobile':$('#phone').val(),
 							'id':$('#sysOrderNum').val(),
 							'agentOrderId':$('#merOrderNum').val(),
-							'companyName' : companyName
+							'userName' : userName
 						}
 						var param={
 							'params':JSON.stringify(args),
@@ -180,7 +186,7 @@ function initFlowQueryTables() {
 							'length':data.length
 						};
 						$.ajax({
-							url : getRootPath() + "/dispacher.jsp?url=/order/queryAgentFlow",
+							url : url,
 							data : JSON.stringify(param),
 							contentType : 'application/json',
 							type : "post",
@@ -197,32 +203,32 @@ function initFlowQueryTables() {
 }
 
 function exportExcel(){
-	if(companyName == null){
-		var url = "/dispacherDown?url=/order/exportAtfExcel&fileName=商户交易流水.xls&visitType=down"
+	if(userName == null){
+		var url = "/dispacherDown?url=/order/exportAtfExcel.action&fileName=商户交易流水.xls&visitType=down"
 			+'&startTime='+$('#startTime').val()
 			+'&stopTime='+$('#stopTime').val()
-			+'&operator='+encodeURI(encodeURI(encodeURI($('#operator').val())))
-			+'&province='+encodeURI(encodeURI(encodeURI($('#province').val())))
+			+'&operator='+encodeURI(encodeURI($('#operator').val()))
+			+'&province='+encodeURI(encodeURI($('#province').val()))
 			+'&denomination='+$('#denomination').val()
 			+'&orderStatus='+$('#flowStatus').val()
 			+'&notifyStatus='+$('#notifyStatus').val()
 			+'&mobile='+$('#phone').val()
 			+'&id='+$('#sysOrderNum').val()
 			+'&agentOrderId='+$('#merOrderNum').val()
-			+'&companyName=';
+			+'&userName=';
 	}else{
-		var url = "/dispacher.jsp?url=/order/exportAtfExcel&fileName=商户交易流水.xls&visitType=down"
+		var url = "/order/exportAtfExcel.action?fileName=商户交易流水.xls&visitType=down"
 			+'&startTime='+$('#startTime').val()
 			+'&stopTime='+$('#stopTime').val()
-			+'&operator='+encodeURI(encodeURI(encodeURI($('#operator').val())))
-			+'&province='+encodeURI(encodeURI(encodeURI($('#province').val())))
+			+'&operator='+encodeURI(encodeURI($('#operator').val()))
+			+'&province='+encodeURI(encodeURI($('#province').val()))
 			+'&denomination='+$('#denomination').val()
 			+'&orderStatus='+$('#flowStatus').val()
 			+'&notifyStatus='+$('#notifyStatus').val()
 			+'&mobile='+$('#phone').val()
 			+'&id='+$('#sysOrderNum').val()
 			+'&agentOrderId='+$('#merOrderNum').val()
-			+'&companyName='+encodeURI(encodeURI(companyName));
+			+'&userName='+encodeURI(encodeURI(userName));
 	}
 	$.download(getRootPath() + url,null,'post');
 }

@@ -2,10 +2,10 @@ var transRuleTable;
 var index=1;
 var height;
 var type = "history";
-var companyName;
+var userName;
 $(function() {
 	type = GetQueryString("type");
-	companyName = GetQueryString("companyName");
+	userName = GetQueryString("userName");
 	if (type == "history"){
 		$("#queryTimeStart").show();
 		$("#queryTimeEnd").show();
@@ -111,7 +111,7 @@ function initTransRuleTables() {
 						'operator':encodeURI($('#operator').val()),
 						'province':encodeURI($('#province').val()),
 						'denomination':$('#denomination').val(),
-						'companyName':companyName,
+						'userName':userName,
 						'type':'account',
 						'history':type
 					}
@@ -134,7 +134,7 @@ function initTransRuleTables() {
 //							callback(data);
 //						}
 //					});
-					var res = jQueryAjax("/transRule/query", param);
+					var res = jQueryAjax("/transRule/query.action", param);
 					callback(res);
 				}
 	});
@@ -158,11 +158,11 @@ function resetVal(){
 }
 
 function exportTransRule(){
-	var url = "/dispacher.jsp?url=/transRule/export&fileName=商户交易规则.xls&visitType=down"
-		+ "&operator=" + encodeURI(encodeURI(encodeURI($('#operator').val())))
-		+ "&province=" + encodeURI(encodeURI(encodeURI($('#province').val())))
+	var url = "/transRule/export.action?fileName=商户交易规则.xls&visitType=down"
+		+ "&operator=" + encodeURI(encodeURI($('#operator').val()))
+		+ "&province=" + encodeURI(encodeURI($('#province').val()))
 		+ "&denomination=" + $('#denomination').val()
-		+ "&companyName=" + encodeURI(encodeURI(companyName))
+		+ "&userName=" + userName
 		+ "&type=account&history=" + type;
 	if (type == "history"){
 		url += "&startTime=" + $("#startTime").val();

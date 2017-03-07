@@ -1,11 +1,11 @@
 var transactionDetailTable;
 var index=1;
 var height;
-var companyName = GetQueryString("companyName");
+var userName = GetQueryString("userName");
 $(function() {
 	dateWidget('queryDate');
 	//初始化select2控件
-	if (companyName == null){
+	if (userName == null){
 		$("#btn").removeClass("col-sm-offset-8").addClass("col-sm-offset-4");
 		$("#merchantNameDiv").show();
 		initSelect2();
@@ -118,7 +118,7 @@ function initTransactionDetailTableTables () {
 											'transactionType':$('#type').val(),
 											'id':$('#orderId').val(),
 											'accountId':$('#merchantName').val(),
-											'companyName' : companyName
+											'userName' : userName
 									}
 									var param={
 											'params':JSON.stringify(args),
@@ -126,8 +126,12 @@ function initTransactionDetailTableTables () {
 											'draw':data.draw,
 											'length':data.length
 									};
+									var url="/order/queryAgentTransactionDetail.action";
+									if(userName==null){
+										url="/dispacher.jsp?url=/order/queryAgentTransactionDetail.action";
+									}
 									$.ajax({
-										url : getRootPath() + "/dispacher.jsp?url=/order/queryAgentTransactionDetail",
+										url : getRootPath() + url,
 										data : JSON.stringify(param),
 										type : "post",
 										contentType : 'application/json',
@@ -164,16 +168,15 @@ function resetVal(){
 function exportExcel(){
 	var visitType=null;
 	var cn='';
-	if(companyName==null){
-		visitType="/dispacherDown";
+	if(userName==null){
+		visitType="/dispacherDown?url=/order/exportAtdExcel.action&fileName=商户交易明细查询.xls&visitType=down&";
 	}else{
-		visitType="/dispacher.jsp";
-		cn=encodeURI(encodeURI(companyName));
+		visitType="/order/exportAtdExcel.action?";
+		cn=userName;
 	}
-	var url=visitType+'?url=/order/exportAtdExcel&fileName=商户交易明细查询.xls&visitType=down'
-		+'&beginTime='+($.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+' 00:00:00')+'&endTime='
+	var url=visitType+'beginTime='+($.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+' 00:00:00')+'&endTime='
 		+($.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+' 23:59:59')+'&transactionType='+$.trim($('#type').val())
-		+'&id='+$.trim($('#orderId').val())+'&companyName='+cn+'&accountId='+$.trim($('#merchantName').val());
-	$.download(getRootPath() + encodeURIComponent(url),null,'post');
+		+'&id='+$.trim($('#orderId').val())+'&userName='+cn+'&accountId='+$.trim($('#merchantName').val());
+	$.download(getRootPath() + url,null,'post');
 }
 

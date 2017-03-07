@@ -1,12 +1,12 @@
 var transactionDetailTable;
 var index=1;
 var height;
-var companyName = GetQueryString("companyName");
+var userName = GetQueryString("userName");
 $(function() {
 	dateWidget('queryDate');
 	height = window.screen.availHeight - 140;
 	//初始化select2控件
-	if (companyName == null){
+	if (userName == null){
 		$("#btn").removeClass("col-sm-offset-8").addClass("col-sm-offset-4");
 		$("#merchantNameDiv").show();
 		initSelect2();
@@ -112,7 +112,7 @@ function initTransactionDetailTableTables () {
 											'operator':$('#operator').val(),
 											'province':$('#province').val(),
 											'accountId':$('#merchantName').val(),
-											'companyName' : companyName
+											'userName' : userName
 									}
 									var param={
 											'params':JSON.stringify(args),
@@ -120,8 +120,12 @@ function initTransactionDetailTableTables () {
 											'draw':data.draw,
 											'length':data.length
 									};
+									var url="/order/queryAgentDayTrade.action";
+									if(userName==null){
+										url="/dispacher.jsp?url=/order/queryAgentDayTrade.action";
+									}
 									$.ajax({
-										url : getRootPath() + "/dispacher.jsp?url=/order/queryAgentDayTrade",
+										url : getRootPath() + url,
 										data : JSON.stringify(param),
 										type : "post",
 										contentType : 'application/json',
@@ -158,17 +162,17 @@ function resetVal(){
 function exportExcel(){
 	var visitType=null;
 	var cn='';
-	if(companyName==null){
-		visitType="/dispacherDown";
+	if(userName==null){
+		visitType="/dispacherDown?url=/order/exportAtdDayTradeExcel.action&fileName=商户日账单交易查询.xls&visitType=down&";
 	}else{
-		visitType="/dispacher.jsp";
-		cn=encodeURI(encodeURI(companyName));
+		visitType="/order/exportAtdDayTradeExcel.action?";
+		cn=userName;
 	}
 	var startTime=$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 00:00:00";
 	var stopTime=$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 23:59:59";
-	var url=visitType+"?url=/order/exportAtdDayTradeExcel&fileName=商户日账单交易查询.xls&visitType=down&startTime="
-	+startTime+"&stopTime="+stopTime+"&operator="+encodeURI(encodeURI(encodeURI($.trim($('#operator').val()))))+'&accountId='+$.trim($('#merchantName').val())
-	+"&province="+encodeURI(encodeURI(encodeURI($.trim($('#province').val()))))+"&companyName="+cn;
+	var url=visitType+"startTime="+startTime+"&stopTime="+stopTime
+	+"&operator="+encodeURI(encodeURI($.trim($('#operator').val())))+'&accountId='+$.trim($('#merchantName').val())
+	+"&province="+encodeURI(encodeURI($.trim($('#province').val())))+"&userName="+cn;
 	$.download(getRootPath() + url,null,'post');
 }
 

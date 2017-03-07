@@ -11,8 +11,8 @@ $(function() {
 		$ti.removeClass();
 		$this.addClass('ti');
 	});
-	companyName = getUrlLocationQueryString("companyName");
-	// userName = getUrlLocationQueryString("userName");
+//	companyName = getUrlLocationQueryString("companyName");
+	userName = getUrlLocationQueryString("userName");
 
 	if (determineParameters()) {
 
@@ -39,10 +39,14 @@ $(function() {
  * @returns {Boolean}
  */
 function determineParameters() {
-	if (companyName == null || companyName == "" || companyName == undefined) {
-		alertify.alert("提示", "请传入需要查询的公司名称参数");
+	if (userName == null || userName == "" || userName == undefined) {
+		alertify.alert("提示", "请传入需要查询的用户名参数");
 		return false;
 	}
+//	if (companyName == null || companyName == "" || companyName == undefined) {
+//		alertify.alert("提示", "请传入需要查询的公司名称参数");
+//		return false;
+//	}
 	return true;
 }
 
@@ -147,7 +151,7 @@ function initRechargetTables() {
 //											callback(data);
 //										}
 //									});
-							var res = jQueryAjax("/account/queryRechargeFlow", param);
+							var res = jQueryAjax("/account/queryRechargeFlowByUser.action", param);
 							callback(res);
 						}
 					});
@@ -162,8 +166,8 @@ function initRechargetTables() {
 function getQueryParams() {
 
 	var param = {};
-	param["companyName"] = companyName;
-	// param["userName"] = userName;
+//	param["companyName"] = companyName;
+	param["userName"] = userName;
 	param["auditStatus"] = "30";// 审核状态，30-审核通过
 
 	if ($("#startTime").val() != null && $("#startTime").val() != "") {
@@ -180,8 +184,8 @@ function getQueryParams() {
  */
 function getTotalBalance() {
 	var param = {};
-	param["companyName"] = companyName;
-
+//	param["companyName"] = companyName;
+	param["userName"] = userName;
 //	$.ajax({
 //		url : getRootPath() + "/dispacher.jsp?url=/account/getTotalBalance",
 //		data : {
@@ -199,7 +203,7 @@ function getTotalBalance() {
 //			}
 //		}
 //	});
-	jQueryAjaxAsync("/account/getTotalBalance", param, function(res) {
+	jQueryAjaxAsync("/account/getTotalBalance.action", param, function(res) {
 		if (res.resCode == 1) {
 			$("#totalBalance").html(res.totalBalance + "元");
 		} else if (res.resCode == 0) {
@@ -213,8 +217,8 @@ function getTotalBalance() {
  */
 function getAccountBalance() {
 	var param = {};
-	param["companyName"] = companyName;
-	// param["userName"] = userName;
+//	param["companyName"] = companyName;
+	param["userName"] = userName;
 
 //	$.ajax({
 //		url : getRootPath() + "/dispacher.jsp?url=/account/accountBalance",
@@ -232,7 +236,7 @@ function getAccountBalance() {
 //			}
 //		}
 //	});
-	jQueryAjaxAsync("/account/accountBalance", param, function(res) {
+	jQueryAjaxAsync("/account/accountBalance.action", param, function(res) {
 		if (res.resCode == 1) {
 			$("#balance").html(res.balance);
 			$("#creditBalance").html(res.creditBalance);

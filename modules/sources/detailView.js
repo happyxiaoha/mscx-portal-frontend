@@ -5,30 +5,15 @@
 'use strict';
 
 var detailTemplate = require('html!./detailTemplate.html');
-var shareView = require('shareWidget/shareView.js');
-var selectedView = require('./selectedSaasView.js');
+// var selectedView = require('./selectedSaasView.js');
 
 var dataDetailModel = Backbone.Model.extend({
-    url: mscxPage.request.saas + 'get.do'
+    url: mscxPage.request.data + 'get.do'
 });
-
-var attentionModel = Backbone.Model.extend({   //关注
-    url: mscxPage.request.saas + 'attention/add.do'
-});
-
-var reAttentionModel = Backbone.Model.extend({   //取消关注
-    url: mscxPage.request.saas + 'attention/delete.do'
-});
-
-require('../../lib/jquery.SuperSlide.2.1.1.js');
 
 var openDataDetailView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     template: _.template(detailTemplate,{variable: 'data'}),
-    events: {
-        'click #attention': 'attentionData',
-        'click #example': 'showExample'
-    },
     initialize: function() {
         this.$el.html();
         this.$el.toggleClass('loading');
@@ -39,7 +24,7 @@ var openDataDetailView = Backbone.View.extend({
             }
         });
         this.shareView = new shareView();
-        this.selectedView = new selectedView();
+        // this.selectedView = new selectedView();
 
         this.attentionDataModel = new attentionModel();
         this.removeAttentionModel = new reAttentionModel();
@@ -59,7 +44,7 @@ var openDataDetailView = Backbone.View.extend({
 
         this.$appInfoCons.html(this.shareView.$el);
 
-        this.$selectedService.append(this.selectedView.$el).addClass('in');
+        // this.$selectedService.append(this.selectedView.$el).addClass('in');
 
         this.resourceType = this.nJson.resourceType;
         this.chargeType = this.nJson.chargeType;

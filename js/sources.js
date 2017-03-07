@@ -55,7 +55,7 @@ $(function() {
         }
 
         if(location.search){
-            this.openDataDetailView(location.search.split('?')[1].split('\/')[1]);
+            this.detailView(location.search.split('?')[1].split('\/')[1]);
         }
     })
     Backbone.history.stop();

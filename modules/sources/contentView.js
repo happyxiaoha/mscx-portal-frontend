@@ -35,7 +35,7 @@ var view = Backbone.View.extend({
 
         this.dataAPI = new dataReportModel();
 
-        this.listenTo(this.dataReportAPI, 'sync', this.resultView.render.bind(this.resultView));
+        this.listenTo(this.dataAPI, 'sync', this.resultView.render.bind(this.resultView));
 
         this.$el.append(this.searchView.render().$el);
         this.$el.append(this.resultView.$el);

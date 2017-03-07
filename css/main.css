@@ -1295,7 +1295,7 @@ input[type=search] {
 }
 
 .ns-list .ns-list-item .media-body .media-body-footer .footerItem .keywordType2 {
-    font-size: 16px;
+    font-size: 13px;
     font-style: italic;
     color: #f90
 }
@@ -3046,7 +3046,7 @@ ul.pagination>li.active>a {
     float: right;
 }
 .data-empty {
-    margin-left: 0;
+    margin-left: 0!important;
 }
 
 @media screen and (max-width: 1300px){

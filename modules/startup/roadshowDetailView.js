@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./bornDetailTemplate.html');
+var template = require('html!./roadshowDetailTemplate.html');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.startupEl,

@@ -66,6 +66,10 @@ var Models = {
     // 机构
     orgs: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'org/getOrganization.do'
+    })),
+    // 行业领域
+    field: new (Backbone.Model.extend({
+        url: mscxPage.request.dict + 'tags/getAllFeild.do'
     }))
 }
 
@@ -144,7 +148,7 @@ var view = Backbone.View.extend({
         model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory;
 
         for(var key in model) {
-            if(model[key].toJSON) {
+            if(model[key] && model[key].toJSON) {
                 params[key] = model[key].toJSON();
             }else {
                 params[key] = model[key];

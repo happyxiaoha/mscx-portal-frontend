@@ -133,7 +133,24 @@
 </div>
 <% } %>
 
-
+<!-- 行业领域 -->
+<% if(data.field && data.field.result) { %>
+<div class="ns-sideBarItem">
+    <dl class="field-dl">
+        <dt>行业领域</dt>
+        <dd class="active">
+            <a href="javascript:;" data-type="fieldId">不限</a>
+        </dd>
+        <% data.field.result.forEach(function(item, index) { %>
+            <% if(index == 10){ %>
+            <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
+            <% }%>
+            <dd><a href="javascript:;" data-type="fieldId" data-fieldId="<%= item.fieldId %>" rel="nofollow"><%= item.tagName %></a></dd>
+        <% }) %>
+        
+    </dl>
+</div>
+<% } %>
 
 <!-- 搜索 -->
 <!-- <div class="sl-search">

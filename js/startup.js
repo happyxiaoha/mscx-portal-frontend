@@ -15,8 +15,8 @@ var menuList = [
     },
     {
         name: '项目孵化',
-        key: 'born',
-        url: '#born'
+        key: 'roadshow',
+        url: '#roadshow'
     },
     {
         name: '活动',
@@ -42,8 +42,8 @@ $(function() {
             case 'coachView':
                 id = 'coach';
                 break;
-            case 'bornView':
-                id = 'born';
+            case 'roadshowView':
+                id = 'roadshow';
                 break;
             case 'activityView':
                 id = 'activity';

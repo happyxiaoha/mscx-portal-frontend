@@ -14,7 +14,7 @@ var menuList = [
         url: 'sources.html'
     },
     {
-        name: '服务接口',
+        name: 'API',
         key: 'api',
         url: 'api.html'
     },

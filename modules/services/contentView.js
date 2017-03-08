@@ -17,7 +17,7 @@ var view = Backbone.View.extend({
         this.searchView = new searchView({
             id: this.id,
             model: {
-                options: ['objects', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
+                options: ['objects', 'scopes', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
                 defaults: this.model
             }
         });

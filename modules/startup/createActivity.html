@@ -47,7 +47,7 @@
                     <p class="fl R_left"><i class="need">*</i>报名时间：</p>
                     <div class="fl R_right">
                         <p>
-                            <input id="signTime" type="text" placeholder="请输入报名时间" name="signTime">
+                            <input id="signTime" type="text" placeholder="请输入报名时间" name="signTime" readonly>
                         </p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     <p class="fl R_left"><i class="need">*</i>举办时间：</p>
                     <div class="fl R_right">
                         <p>
-                            <input id="holdTime" type="text" placeholder="请输入举办时间" name="holdTime">
+                            <input id="holdTime" type="text" placeholder="请输入举办时间" name="holdTime" readonly>
                         </p>
                     </div>
                 </div>
@@ -81,6 +81,7 @@
                         <p class="allInfoImg">
                             <img src="../../images/add.png" alt="">
                         </p>
+                        <p class="mes-des">像素要求：300*200</p>
                     </div>
                     <label class="img-error">请上传缩略图</label>
                 </div>
@@ -98,13 +99,7 @@
     </div>
 </div>
 <script id="activityType" type="template">
-    <% for(var i=0,len=tags.length; i < len; i++) { %>
-    <p class="fl tag-list">
-        <span><%=tags[i].name%></span>
-        <i class="remove-tags-btn"></i>
-    </p>
-    <% } %>
-    <%if(tags.length == 0){%>
-    <span class="un-select">未选择任何标签</span>
-    <%}%>
+    <% _.each(activityTypeList, function (titem) { %>
+    <label class="fl"><input type="radio" id="t<%=titem.id%>" value="<%=titem.id%>" name="type" <%if(titem.checked){%>checked="true"<%}%>><%=titem.dictName%></label>
+    <% }); %>
 </script>

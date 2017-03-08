@@ -1272,7 +1272,7 @@ input[type=search] {
     background: #fbfbfb
 }
 
-.ns-list .ns-list-item-more,.ns-listPanel .ns-list-item-more {
+.ns-list-item-more,.ns-list-item-more {
     line-height: 44px;
     text-align: center;
     cursor: pointer;
@@ -1315,7 +1315,7 @@ input[type=search] {
     background: #f90
 }
 
-.ns-list .ns-list-item-more {
+.ns-list-item-more {
     display: block;
     margin-top: 16px;
     background: #f90;
@@ -1344,13 +1344,13 @@ input[type=search] {
     height: 280px
 }
 
-.ns-listPanel .ns-list-item-more {
+/*.ns-list-item-more {
     display: block;
     margin-top: 16px;
     background: #5cb981;
     font-size: 16px;
     color: #fff
-}
+}*/
 
 .ns-listPanel .ns-listPanel-mn1 {
     float: left;
@@ -3045,6 +3045,13 @@ ul.pagination>li.active>a {
     font-size: 14px;
     float: right;
 }
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table tr th{background: #f2f2f2;text-align: center;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #666;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}
+.D_table table tr {cursor: pointer;}
 .data-empty {
     margin-left: 0!important;
 }

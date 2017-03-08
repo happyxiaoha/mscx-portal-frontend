@@ -1,0 +1,25 @@
+<div class="media">
+    <div class="media-left">
+        <a href="#roadshow/detail/<%= data.id %>"><img src="<%= data.thumbnailImg %>" class="media-object"></a>
+    </div>
+    <div class="media-body">
+        <a href="#roadshow/detail/<%= data.id %>" class="h1">
+            <span class="pull-left">
+                <%= data.roadName %>
+            </span>
+            <div class="tags">
+                <% data.tags && data.tags.split(',').forEach(function(item){ %>
+                <span><%= item %></span>
+                <% }) %>
+            </div>
+        </a>
+        <p class="info">
+            <%= data.roadDescription %>
+        </p>
+        <div class="media-body-footer">
+            <div class="footerItem">融资类型：<span class="keywordType2"><%= data.tradeField %></span></div>
+            <div class="footerItem">融资额度：<a href="" class="keywordType2"><%= data.financingLimit %></a></div>
+            <div class="footerItem">项目阶段：<a href="" class="keywordType2"><%= data.projectStage %></a></div>
+        </div>
+    </div>
+</div>

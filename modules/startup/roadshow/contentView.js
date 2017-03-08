@@ -1,45 +1,40 @@
-/**
- * Created by Administrator on 2016/12/14.
- */
 'use strict';
 
 var searchView = require('searchWidget/searchView.js');
 var resultView = require('./resultView.js');
 
-var servicesModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'list.do'
-});
+var roadshowAPI = Backbone.Model.extend({
+    url: mscxPage.request.roadshow + 'roadshow/getAllRoadInfo.do'
+})
 
 var view = Backbone.View.extend({
-    el: mscxPage.domEl.apiEl,
+    el: mscxPage.domEl.startupEl,
     initialize: function() {
-        // 筛选部分初始化
+        this.$el.empty();
         this.searchView = new searchView({
-            id: this.id,
+            id: 'roadshow',
             model: {
-                options: ['objects', 'scopes', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
-                defaults: this.model
+                options: ['fieldCategory', 'projectStages'],
+                defaults: this.model || {}
             }
         });
 
         // 结果部分初始化
-        this.resultView = new resultView({
-            id: this.id
-        });
+        this.resultView = new resultView();
 
         this.searchView.delegate = this;
         this.resultView.delegate = this;
 
+        this.roadshowAPI = new roadshowAPI();
+
         this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
         this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleParams.bind(this.searchView));
 
-        this.serviceAPI = new servicesModel();
-
-        this.listenTo(this.serviceAPI, 'sync', this.resultView.render.bind(this.resultView));
+        this.listenTo(this.roadshowAPI, 'sync', this.resultView.render.bind(this.resultView));
 
         this.$el.append(this.searchView.render().$el);
         this.$el.append(this.resultView.$el);
-
+        
         return this;
     }
 });

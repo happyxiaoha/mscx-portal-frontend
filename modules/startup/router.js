@@ -16,11 +16,11 @@ var Routes =  Backbone.Router.extend({
         mscxPage.views['coachViewObj'] = new coachView();
     },
     roadshowView: function() {
-        var roadshowView = require('startup/roadshowView.js');
+        var roadshowView = require('startup/roadshow/contentView.js');
         mscxPage.views['bornViewObj'] = new roadshowView();
     },
     roadshowDetailView: function(id) {
-        var view = require('startup/roadshowDetailView.js');
+        var view = require('startup/roadshow/detailView.js');
 
         var detailView = mscxPage.views['roadshowDetailViewObj'];
         detailView && detailView.undelegateEvents() && detailView.stopListening();
@@ -30,7 +30,7 @@ var Routes =  Backbone.Router.extend({
         });
     },
     activityDetailView: function(id) {
-        var view = require('startup/activityDetailView.js');
+        var view = require('startup/activity/detailView.js');
 
         var detailView = mscxPage.views['activityDetailViewObj'];
         detailView && detailView.undelegateEvents() && detailView.stopListening();
@@ -40,7 +40,7 @@ var Routes =  Backbone.Router.extend({
         });
     },
     activityView: function() {
-        var activityView = require('startup/activityView.js');
+        var activityView = require('startup/activity/contentView.js');
         mscxPage.views['activityViewObj'] = new activityView();
     },
     newsDetailView:function (url) {

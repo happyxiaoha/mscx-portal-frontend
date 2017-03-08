@@ -1,0 +1,20 @@
+<div class="media">
+    <div class="media-left">
+        <a href="#activity/detail/<%= data.id %>">
+            <img src="<%= data.image %>" class="media-object large">
+        </a>
+    </div>
+    <div class="media-body">
+        <a href="#activity/detail/<%= data.id %>">
+            <h1><%= data.name %></h1>
+        </a>
+        <p class="sub"><span><%= data.initiator %></span></p>
+        <p class="info"><%= data.description %>
+        </p>
+        <p class="info">地址：<%= data.holdAddress %></p>
+        <div class="media-body-footer">
+            <div class="footerItem">活动类型 <span class="keywordType2"><%= data.typeName %></span></div>
+            <div class="footerItem" style="width:66%">报名时间 <span class="keywordType2"><%= new Date(data.signStartTime).format('yyyy-MM-dd HH:mm:ss') %></span></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="ns-contentComponent">
+    <div class="ns-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="startup.html">孵化器</a></li>
+                        <li><a href="#activity">活动</a></li>
+                        <li class="active"><%= data.name %></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="ns-list">
+            <div class="ns-list-item">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="<%= data.image %>" class="media-object large">
+                    </div>
+                    <div class="media-body">
+                        <h1><%= data.name %></h1>
+                        <p class="info">
+                            <%= data.description %>
+                        </p>
+                        <p class="info">活动类型：<%= data.typeName %>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发起人：<%= data.initiator %></p>
+                        <p class="info">报名时间：<%= new Date(data.signStartTime).format('yyyy-MM-dd HH:mm:ss') %></p>
+                        <div class="media-body-footer">
+                            <div class="footerItem">地址：<%= data.holdAddress %></div>
+                            <button type="button" id="signBtn" class="btn btn-sm btn-warning" style="position: absolute;top: 10px;right: 190px" data-toggle="modal" data-target="#myModal">报名</button>
+                            <button type="button" id="followBtn" class="btn btn-sm btn-warning" style="position: absolute;top: 10px;right: 100px" data-toggle="modal" data-target="#myModal">关注</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ns-content-head">
+            活动详情
+        </div>
+        <div class="ns-wd">
+            <div class="wdBody">
+                <p>
+                    <%= data.detail %>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

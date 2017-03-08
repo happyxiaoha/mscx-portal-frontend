@@ -10,20 +10,28 @@ var Routes =  Backbone.Router.extend({
         'bigData': 'bigDataView'
     },
     apiEnvView:function () {
-        var view = require('pioneering/apiEnvView.js');
-        mscxPage.views['apiEnvViewObj'] = new view();
+        var view = require('pioneering/contentView.js');
+        mscxPage.views['apiEnvViewObj'] = new view({
+            id: 'apiEnv'
+        });
     },
     serverEnvView:function () {
-        var view = require('pioneering/serverEnvView.js');
-        mscxPage.views['serverEnvViewObj'] = new view();
+        var view = require('pioneering/contentView.js');
+        mscxPage.views['serverEnvViewObj'] = new view({
+            id: 'serverEnv'
+        });
     },
     dataVisiualView: function(id) {
-        var view = require('pioneering/dataVisiualView.js');
-        mscxPage.views['dataVisiualViewObj'] = new view();
+        var view = require('pioneering/contentView.js');
+        mscxPage.views['dataVisiualViewObj'] = new view({
+            id: 'dataVisiual'
+        });
     },
     bigDataView: function(id) {
-        var view = require('pioneering/bigDataView.js');
-        mscxPage.views['bigDataViewObj'] = new view();
+        var view = require('pioneering/contentView.js');
+        mscxPage.views['bigDataViewObj'] = new view({
+            id: 'bigData'
+        });
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

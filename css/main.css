@@ -2429,7 +2429,9 @@ ul.pagination>li.active>a {
 .ns-searchCom .hotKey dl a {
     color: inherit
 }
-
+.ns-searchCom .hotKey dl a.active {
+    color: #f90;
+}
 .ns-document {
     position: relative;
     padding: 30px;

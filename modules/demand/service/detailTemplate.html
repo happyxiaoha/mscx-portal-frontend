@@ -20,9 +20,9 @@
 
                         <% if(data.myself == 0 && data.status != 5){ %>
                             <% if(!data.billFlag){ %>
-                            <button class="btn" id="applyService">接单</button>
+                            <button class="btn btn-apply" id="applyService">接单</button>
                             <% }else { %>
-                            <button class="disable btn">不可接单</button>
+                            <button class="disable btn btn-apply">不可接单</button>
                             <% } %>
                         <% } %>
                         <% if(!data.attentionFlag){ %>

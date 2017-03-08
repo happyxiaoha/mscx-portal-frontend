@@ -15,14 +15,14 @@
             <button class="btn search-btn">搜索</button>
         </div>
         <div class="hotKey">
-            <dl>
+            <dl id="dateFilter">
                 <dt>发布时间：</dt>
-                <dd><a href="">7天内</a></dd>
-                <dd><a href="">1个月内</a></dd>
-                <dd><a href="">3个月内</a></dd>
-                <dd><a href="">6个月内</a></dd>
-                <dd><a href="">1年内</a></dd>
-                <dd><a href="">1年以前</a></dd>
+                <dd><a href="javascript:;" data-start="<%= new Date().addDays(-7).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">7天内</a></dd>
+                <dd><a href="javascript:;" data-start="<%= new Date().addDays(-30).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">1个月内</a></dd>
+                <dd><a href="javascript:;" data-start="<%= new Date().addDays(-90).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">3个月内</a></dd>
+                <dd><a href="javascript:;" data-start="<%= new Date().addDays(-180).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">6个月内</a></dd>
+                <dd><a href="javascript:;" data-start="<%= new Date().addDays(-365).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">1年内</a></dd>
+                <dd><a href="javascript:;" data-start="" data-end="<%= new Date().addDays(-365).format('yyyy-MM-dd') %>">1年以前</a></dd>
             </dl>
         </div>
     </div>

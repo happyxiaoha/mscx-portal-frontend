@@ -11,7 +11,7 @@ require('customValidate');
 
 var view = Backbone.View.extend({
     tagName: 'form',
-    className: 'apply-box orderDiv hide',
+    className: 'apply-box orderDiv',
     template: _.template(template),
     events: {
         'input input[type="text"]' : 'changeAttribute',

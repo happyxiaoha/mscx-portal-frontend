@@ -11,7 +11,7 @@
 .noticeListCons .TopTit .shareCons a{height: 28px;margin-right: 12px;display: inline-block;box-sizing: border-box;margin-right: 15px;}
 .noticeListCons .TopTit .shareCons a em{height: 30px;width: 26px;vertical-align: middle;}
 .noticeListCons .TopTit .shareCons a span{display: inline-block;}
-.noticeListCons .TopTit .article{font-size: 14px;line-height: 28px;}
+.noticeListCons .TopTit .article{font-size: 14px;line-height: 28px;text-align: center;}
 /* 新闻列表分页 */
 .Page{width: 100%;}
 .Page ul{text-align: center;}

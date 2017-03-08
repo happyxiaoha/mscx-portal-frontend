@@ -445,6 +445,7 @@
     white-space: nowrap;
     margin: 15px 0;
     font-size: 16px;
+    line-height: 18px;
 }
 .buyType {
     color: #ff6600;

@@ -4,7 +4,7 @@
 }
 
 body{
-	background:#eef4f9;
+	background:#fff;
 	
 	}
 a,a:hover,a:focus{
@@ -229,7 +229,7 @@ h4.smaller {
 }
 /*后台*/
 .admin{
-	width:99%;
+	width:100%;
 	/* margin:0 auto; */
 	padding:0 auto;
 	overflow:hidden;
@@ -264,7 +264,7 @@ h4.smaller {
     width:96%;
 	
 	position:relative;
-	overflow:hidden;
+	overflow:auto;
 }
 .centre_right{
 	margin:0 auto;

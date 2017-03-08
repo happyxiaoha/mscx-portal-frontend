@@ -3,6 +3,8 @@ var index=1;
 var height;
 var userName = GetQueryString("userName");
 $(function() {
+	var clientHeight=document.documentElement.clientHeight;
+	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+';');
 	dateWidget('queryDate');
 	//初始化select2控件
 	if (userName == null){
@@ -51,7 +53,11 @@ function initTransactionDetailTableTables () {
 						} ],
 						columns : [
 								{
-									data : "id"
+									data : null,
+									"render" : function(data,type,row,meta){
+										var startIndex = meta.settings._iDisplayStart;
+										return startIndex + meta.row + 1;
+									}
 								},
 								{
 									data : "transactionFlow.agentOrderId"
@@ -98,19 +104,17 @@ function initTransactionDetailTableTables () {
 									zeroRecords : "没有内容",// table
 									// tbody内容为空时，tbody的内容。
 									// 下面三者构成了总体的左下角的内容。
-									info : "总共_PAGES_ 页，显示第_START_ 到第 _END_条",// 筛选之后得到
+									info : "共_PAGES_ 页，第_START_ 到第 _END_条",// 筛选之后得到
 									// _TOTAL_
 									// 条，初始_MAX_
 									// 条",//左下角的信息显示，大写的词为关键字。
 									infoEmpty : "0条记录",// 筛选为空时左下角的显示。
 									infoFiltered : ""// 筛选之后的左下角筛选提示，
 								},
-								scrollY : height-288,
-								scrollCollapse : "true",
 								paging : true,
 								pagingType : "full_numbers",// 分页样式的类型
 								serverSide : true,
-								dom : 't<"col-sm-2"i><"col-sm-4"l><"col-sm-6"p>',
+								dom : 't<"col-sm-3"i><"col-sm-2"l><"col-sm-7"p>',
 								ajax : function(data, callback,settings){
 									var args={
 											'beginTime':$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 00:00:00",

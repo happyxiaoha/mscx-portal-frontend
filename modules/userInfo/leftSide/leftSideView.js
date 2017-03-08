@@ -24,7 +24,6 @@ var leftSideView = Backbone.View.extend({
     },
     doCheck: function () {
         var aRes = this.myApiModel.get('result');
-        console.log(aRes);
         if(aRes) {
             if(aRes.list.length > 0){
                 for(var i = 0 ,len = aRes.list.length; i < len; i++) {

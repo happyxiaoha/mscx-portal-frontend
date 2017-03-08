@@ -2,7 +2,9 @@
 
 var template = require('html!./createActivity.html');
 require('./createStartup.css');
+require('validate');
 require('formAjax');
+require('util');
 
 var activityTypeModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'tags/getAllActivity.do'
@@ -15,6 +17,51 @@ var createActivityView = Backbone.View.extend({
     el: mscxPage.domEl.startupEl,
     events: {
         'change .upload-file': 'doUploadImg'
+    },
+    validateConfig: function () {
+        var that = this;
+        return {
+            rules: {
+                name: {
+                    required: true
+                },
+                description: {
+                    required: true
+                },
+                initiator: {
+                    required: true
+                },
+                signAddress: {
+                    required: true
+                },
+                signTime: {
+                    required: true
+                },
+                holdAddress: {
+                    required: true
+                },
+                holdTime: {
+                    required: true
+                },
+                detail: {
+                    required: true
+                }
+            },
+            submitHandler: function () {
+                that.doPublish();
+            },
+            invalidHandler:function() {
+                that.checkValidateSelf();
+            }
+        }
+    },
+    checkValidateSelf: function () {
+        if(!this.model.get('image')) {
+            $('.img-error').show();
+        }
+        else {
+            $('.img-error').hide();
+        }
     },
     buildDate: function () {
         function lastDay(sdata){
@@ -50,10 +97,16 @@ var createActivityView = Backbone.View.extend({
         this.activityTypeModel.on('change',function () {
             that.buildActivityType();
         });
+        $('#publishActivity').validate(that.validateConfig());
         return this;
     },
     buildActivityType: function () {
-        console.log(this.activityTypeModel.get('result'));
+        var res = this.activityTypeModel.get('result');
+        if(res.length > 0){
+            res[0].checked = true;
+        }
+        var activityTemps = _.template($('#activityType').html());
+        $('#activityTypeRadio').html(activityTemps({'activityTypeList': res}))
     },
     doUploadImg: function () {
         var $formArea = $('#ajaxUpload'),
@@ -72,7 +125,7 @@ var createActivityView = Backbone.View.extend({
                 }
                 var src = res.result;
                 console.log(src);
-                //that.model.set('image',src.imageUri);
+                that.model.set('image',src.imageUri);
                 //that.model.set('imageKey',src.imageKey);
                 $('.allInfoImg').find('img').attr('src',src.imageUri);
                 $('.img-error').hide();
@@ -82,6 +135,18 @@ var createActivityView = Backbone.View.extend({
                 layer.msg('上传失败');
             }
         });
+    },
+    doPublish: function () {
+        if(!this.model.get('image')) {
+            $('.img-error').show();
+        }
+        else {
+            $('.img-error').hide();
+            var obj = $('#publishActivity').serializeObject();
+            console.log(obj);
+
+        }
+
     }
 });
 

@@ -88,6 +88,7 @@ var createActivityView = Backbone.View.extend({
         });
     },
     initialize: function() {
+        this.$el.data('isLogin',1);
         var that = this;
         this.$el.html(template);
         this.buildDate();
@@ -96,9 +97,14 @@ var createActivityView = Backbone.View.extend({
         this.activityTypeModel.fetch();
         this.activityTypeModel.on('change',function () {
             that.buildActivityType();
+            that.renderFormLocation();
         });
         $('#publishActivity').validate(that.validateConfig());
         return this;
+    },
+    renderFormLocation: function () {
+        var sTop = $('.allInfoImg').position().top;
+        $('#ajaxUpload').css('top',sTop);
     },
     buildActivityType: function () {
         var res = this.activityTypeModel.get('result');

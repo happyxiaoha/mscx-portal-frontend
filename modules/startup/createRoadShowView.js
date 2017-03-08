@@ -66,6 +66,7 @@ var createActivityView = Backbone.View.extend({
         this.model.get('tags') ?  $('.tag-error').hide() : $('.tag-error').show();
     },
     initialize: function() {
+        this.$el.data('isLogin',1);
         var that = this;
         this.$el.html(template);
         this.model = new addRoadShowModel();

@@ -76,6 +76,11 @@ var headerView = Backbone.View.extend({
                 sUrl = 'login.html' + '?service='+ encodeURIComponent(sHref);
             location.href = sUrl;
         }
+        if(!res && $(mscxPage.domEl.startupEl).length>0 && $(mscxPage.domEl.startupEl).data('isLogin') == 1){
+            var sHref = window.location.href,
+                sUrl = 'login.html' + '?service='+ encodeURIComponent(sHref);
+            location.href = sUrl;
+        }
         if(!res && $(mscxPage.domEl.userCenterLeft).length > 0 && $(mscxPage.domEl.userCenterLeft).data('isLogin') == 1){
             var sHref = window.location.href,
                 sUrl = 'login.html' + '?service='+ encodeURIComponent(sHref);

@@ -4,8 +4,10 @@ var searchView = require('searchWidget/searchView.js');
 var resultView = require('./resultView.js');
 
 var activityAPI = Backbone.Model.extend({
-    url: mscxPage.request.activity + 'activity/getActivityByContent.do?content='
+    url: mscxPage.request.activity + 'activity/getActivityByKeys.do'
 })
+
+require('util');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.startupEl,
@@ -14,8 +16,31 @@ var view = Backbone.View.extend({
         this.searchView = new searchView({
             id: 'activity',
             model: {
-                options: ['activityTags'],
-                defaults: this.model || {}
+                options: ['activityTags', 'date'],
+                defaults: {
+                    date: {
+                        list: [
+                            {
+                                name: '今天',
+                                startTime: this.getDate(),
+                                endTime: this.getDate()
+                            },{
+                                name: '明天',
+                                startTime: this.getDate(1),
+                                endTime: this.getDate(1)
+                            },{
+                                name: '最近7天',
+                                startTime: this.getDate(),
+                                endTime: this.getDate(7)
+                            },{
+                                name: '最近30天',
+                                startTime: this.getDate(),
+                                endTime: this.getDate(30)
+                            }
+                        ],
+                        title: '活动时间'
+                    }
+                }
             }
         });
 
@@ -36,6 +61,15 @@ var view = Backbone.View.extend({
         this.$el.append(this.resultView.$el);
         
         return this;
+    },
+    getDate: function(addDays) {
+        var res;
+        if(addDays) {
+            res = new Date().addDays(addDays).format('yyyy-MM-dd');
+        }else {
+            res = new Date().format('yyyy-MM-dd');
+        }
+        return res;
     }
 });
 

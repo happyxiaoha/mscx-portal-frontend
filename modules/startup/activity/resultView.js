@@ -7,7 +7,8 @@ var view = Backbone.View.extend({
     tagName: 'div',
     className: 'ns-contentComponent',
     events: {
-        'click .ns-list-item-more': 'loadNextPage'
+        'click .ns-list-item-more': 'loadNextPage',
+        'click #goPublish': 'goPublish'
     },
     template: _.template(resultTemplate, {variable: 'data'}),
     initialize: function() {
@@ -40,10 +41,14 @@ var view = Backbone.View.extend({
     },
     loadNextPage: function() {
         this.$loadMore.addClass('hide');
+        this.currentPage = this.currentPage + 1;
         this.trigger('page', {
-            page: this.currentPage++,
+            page: this.currentPage,
             pageSize: 10
         })
+    },
+    goPublish: function() {
+        mscxPage.isLogin() && mscxPage.isRealName() && (location.href = '#createActivity');
     }
 });
 

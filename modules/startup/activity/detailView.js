@@ -55,10 +55,10 @@ var view = Backbone.View.extend({
     render: function () {
         this.nJson = this.model.toJSON().result;
 
-        this.attentionFlag = this.nJson.attentionFlag;
-        this.signFlag = this.nJson.signFlag;
+        this.attentionFlag = !!this.nJson.isAttention;
+        this.signFlag = !!this.nJson.isSign;
 
-        this.$el.html(this.template( this.nJson ));
+        this.$el.html(this.template( this.nJson.detail ));
 
         this.$followBtn = this.$('#followBtn');
         this.$signBtn = this.$('#signBtn');

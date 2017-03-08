@@ -7,6 +7,7 @@ var searchView = require('searchWidget/searchView.js');
 var resultView = require('./resultView.js');
 
 require('./saas.css');
+require('util');
 
 var servicesModel = Backbone.Model.extend({
     url: mscxPage.request.saas + 'list.do'
@@ -19,8 +20,39 @@ var view = Backbone.View.extend({
         this.searchView = new searchView({
             id: this.id,
             model: {
-                options: ['chargeWay'],
-                defaults: this.model || {}
+                options: ['chargeWay', 'date'],
+                defaults: {
+                    date: {
+                        list: [
+                            {
+                                name: '7天内',
+                                startTime: this.getDate(-7),
+                                endTime: this.getDate()
+                            },{
+                                name: '一个月内',
+                                startTime: this.getDate(-30),
+                                endTime: this.getDate()
+                            },{
+                                name: '三个月内',
+                                startTime: this.getDate(-90),
+                                endTime: this.getDate()
+                            },{
+                                name: '半年内',
+                                startTime: this.getDate(-180),
+                                endTime: this.getDate()
+                            },{
+                                name: '一年内',
+                                startTime: this.getDate(-365),
+                                endTime: this.getDate()
+                            },{
+                                name: '一年前',
+                                startTime: '',
+                                endTime: this.getDate(-365)
+                            }
+                        ],
+                        title: '发布日期'
+                    }
+                }
             }
         });
 
@@ -43,6 +75,15 @@ var view = Backbone.View.extend({
         this.$el.append(this.resultView.$el);
 
         return this;
+    },
+    getDate: function(addDays) {
+        var res;
+        if(addDays) {
+            res = new Date().addDays(addDays).format('yyyy-MM-dd');
+        }else {
+            res = new Date().format('yyyy-MM-dd');
+        }
+        return res;
     }
 });
 

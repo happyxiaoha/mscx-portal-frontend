@@ -102,15 +102,15 @@
 <% if(data.tags && data.tags.result) { %>
 <div class="ns-sideBarItem">
     <dl class="tags-dl">
-        <dt>标签</dt>
+        <dt><%= data.tags.title || '标签' %></dt>
         <dd class="active">
-            <a href="javascript:;" data-type="tagId">不限</a>
+            <a href="javascript:;" data-type="<%= data.tags.attribute || 'tagId' %>">不限</a>
         </dd>
         <% data.tags.result.forEach(function(item, index) { %>
             <% if(index == 10){ %>
             <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
             <% }%>
-            <dd><a href="javascript:;" data-type="tagId" data-tagid="<%= item.tagId || item.dictCode %>" rel="nofollow"><%= item.tagName || item.dictName %></a></dd>
+            <dd><a href="javascript:;" data-type="<%= data.tags.attribute || 'tagId' %>" data-val="<%= item.tagId || item.dictCode %>" rel="nofollow"><%= item.tagName || item.dictName %></a></dd>
         <% }) %>
         
     </dl>
@@ -169,6 +169,20 @@
 </div>
 <% } %>
 
+<% if(_.indexOf(data.options, 'date') > -1) { %>
+<!-- 时间筛选 -->
+<div class="ns-sideBarItem">
+    <dl>
+        <dt><%= data.defaults.date.title || '时间' %></dt>
+        <dd class="active">
+            <a href="javascript:;" data-type="date" data-start="" data-end="">不限</a>
+        </dd>
+        <% data.defaults.date && data.defaults.date.list.forEach(function(item){ %>
+            <dd><a href="javascript:;" data-type="date" data-start="<%= item.startTime %>" data-end="<%= item.endTime %>" rel="nofollow"><%= item.name %></a></dd>
+        <% }) %>
+    </dl>
+</div>
+<% } %>
 <!-- 搜索 -->
 <!-- <div class="sl-search">
     <input type="text" class="search-input" value="<%= data.defaults && data.defaults.keyword %>" maxlength="30">

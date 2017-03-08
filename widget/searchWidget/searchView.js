@@ -61,6 +61,10 @@ var Models = {
     })),
     // 活动标签
     activityTags: new (Backbone.Model.extend({
+        defaults: {
+            title: '活动类型',
+            attribute: 'type'
+        },
         url: mscxPage.request.dict + 'tags/getAllActivity.do'
     })),
     // 标签详情 根据categoryId获取
@@ -226,9 +230,19 @@ var view = Backbone.View.extend({
                 tagId: ''
             })
             this.fetchTags();
+        }else if(type == 'date') {
+            _.extend(param, {
+                page: 1,
+                startTime: $target.data('start') || '',
+                endTime: $target.data('end') || '',
+                startDate: $target.data('start') || '',
+                endDate: $target.data('end') || ''
+            })
+
+            this.searchParams.set(param);
         }else {
             param.page = 1;
-            param[type] = type && $target.data(type.toLowerCase()) || '';
+            param[type] = type && $target.data('val') || '';
 
             this.searchParams.set(param);
         }

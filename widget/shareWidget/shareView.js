@@ -6,7 +6,7 @@ var QrCode = require('lib/qrCode.js');
 require('./share.css');
 
 var view = Backbone.View.extend({
-    tagName: 'dl',
+    tagName: 'div',
     events: {
         'click #shareWeixin': 'shareWeixin',
         'click #shareQzone': 'shareQzone',

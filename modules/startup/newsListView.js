@@ -1,13 +1,25 @@
 'use strict';
 
-var template = '<div class="noticeList grid960 animate-content opacity0"></div>';
-var Resource = require('./resource.js');
-var cmsUrl = Resource.cmsHost + 'static_html/datainfo/businessinfo/index.html';
+var template = '<div class="noticeList grid1190 animate-content opacity0"></div>';
+var resource = {
+    policy: {
+        listUrl: '/static_html/datainfo/gy_listPolicy/index.html',
+    },
+    class: {
+        listUrl: '/static_html/datainfo/gy_listClass/index.html',
+    },
+    article: {
+        listUrl: '/static_html/datainfo/gy_listArticle/index.html',
+    },
+    fund: {
+        listUrl: '/static_html/datainfo/gy_listFund/index.html',
+    }
+};
 
-require('./pioneering.css');
+require('./startup.css');
 
 var view = Backbone.View.extend({
-    el: mscxPage.domEl.pioneeringEl,
+    el: mscxPage.domEl.startupEl,
     events: {
         'click #go': 'jumpToInputPage'
     },
@@ -19,13 +31,13 @@ var view = Backbone.View.extend({
 
         var me = this;
 
-        window.portalUrl = Resource.cmsHost;
+        window.portalUrl = mscxPage.cmsHost;
         window.frameUrl = '?';
         window.jumpToPage = function(url) {
             me.$list.load(url + '?time=' + +(new Date()));
         }
 
-        this.$list.load(cmsUrl + '?time=' + +(new Date()), function() {
+        this.$list.load(resource[this.model.section].listUrl + '?time=' + +(new Date()), function() {
             me.$list.removeClass('opacity0');
         });
 

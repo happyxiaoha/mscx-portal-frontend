@@ -7,7 +7,9 @@ var Routes =  Backbone.Router.extend({
         'roadshow/detail/:id': 'roadshowDetailView',
         'activity/detail/:id': 'activityDetailView',
         'createRoadShow': 'createRoadShowView',
-        'createActivity': 'createActivityView'
+        'createActivity': 'createActivityView',
+        'news/detail/:url': 'newsDetailView',
+        'news/:section/list': 'newsListView'
     },
     coachView: function () {
         // if(location.search) return;
@@ -48,6 +50,14 @@ var Routes =  Backbone.Router.extend({
         mscxPage.views['newsDetailView'] = new view({
             model: {
                 url: url
+            }
+        });
+    },
+    newsListView:function (section) {
+        var view = require('startup/newsListView.js');
+        mscxPage.views['newsList' + section + 'ViewObj'] = new view({
+            model: {
+                section: section
             }
         });
     },

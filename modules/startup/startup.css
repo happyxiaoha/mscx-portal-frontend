@@ -1,0 +1,24 @@
+/*公告详情*/
+.smallNav{margin: 20px 0 14px 5px;}
+.noticeListCons{border: 1px solid #ccc;padding: 15px 28px 25px;}
+.noticeListCons .noticeListConsUl li{border-bottom: 1px dashed #CCC;font-size: 14px;padding: 14px 0;line-height: 16px;}
+.noticeListCons .noticeListConsUl li a{ display: block;width: 700px;white-space:nowrap; text-overflow:ellipsis; overflow: hidden;position: relative; padding-left: 16px;}
+.noticeListCons .noticeListConsUl li a:before{content: '';width: 5px;height: 5px;background: #069cd9;position: absolute;left: 0;top: 5px;}
+.noticeListCons .noticeListConsUl li a:hover{color: #069cd9;}
+
+.noticeListCons .TopTit h2{font-size: 25px;padding-top:40px;font-weight: normal;text-align: center;}
+.noticeListCons .TopTit .titList{font-size: 12px;padding-top:25px;border-bottom:1px solid #cccccc;padding-bottom: 10px;font-weight: normal;}
+.noticeListCons .TopTit .shareCons a{height: 28px;margin-right: 12px;display: inline-block;box-sizing: border-box;margin-right: 15px;}
+.noticeListCons .TopTit .shareCons a em{height: 30px;width: 26px;vertical-align: middle;}
+.noticeListCons .TopTit .shareCons a span{display: inline-block;}
+.noticeListCons .TopTit .article{font-size: 14px;line-height: 28px;}
+/* 新闻列表分页 */
+.Page{width: 100%;}
+.Page ul{text-align: center;}
+.Page ul li{display: inline-table;font-size: 12px;line-height: 24px;margin-right: 10px;}
+.Page ul li a{display: inline-block;padding: 0 7px;border: 1px solid #ddd;margin-right: 5px; }
+.Page ul li a:link{color: #333;}
+.Page ul li a:hover{color: #5596ed;}
+.Page ul li a.active{border: 1px solid #5596ed;color: #5596ed;}
+.Page ul li input{vertical-align: 0px; width: 30px;height: 26px;border-radius: 0;box-sizing: border-box;text-align: center;margin: 0 6px;}
+.Page ul li a#go{margin-left: 6px;}

@@ -52,7 +52,7 @@ $(function() {
                 break;
         }
 
-        if(id) {
+        if(id && !location.search) {
             subHeaderView = new subHeader({
                 id: id,
                 model: {
@@ -65,7 +65,7 @@ $(function() {
         }
 
         if(location.search){
-            this.detail(location.search.split('?')[1].split('\/')[1]);
+            this.newsDetailView(location.search.split('?')[1]);
         }
     })
     Backbone.history.stop();

@@ -6,7 +6,7 @@
 .noticeListCons .noticeListConsUl li a:before{content: '';width: 5px;height: 5px;background: #069cd9;position: absolute;left: 0;top: 5px;}
 .noticeListCons .noticeListConsUl li a:hover{color: #069cd9;}
 
-.noticeListCons .TopTit h2{font-size: 25px;padding-top:40px;font-weight: normal;text-align: center;}
+.noticeListCons .TopTit h2{font-size: 25px;padding-top:40px;font-weight: normal;text-align: center;color: #c00;}
 .noticeListCons .TopTit .titList{font-size: 12px;padding-top:25px;border-bottom:1px solid #cccccc;padding-bottom: 10px;font-weight: normal;}
 .noticeListCons .TopTit .shareCons a{height: 28px;margin-right: 12px;display: inline-block;box-sizing: border-box;margin-right: 15px;}
 .noticeListCons .TopTit .shareCons a em{height: 30px;width: 26px;vertical-align: middle;}

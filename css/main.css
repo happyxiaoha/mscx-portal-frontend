@@ -2323,7 +2323,9 @@ ul.pagination>li.active>a {
 }
 
 .ns-apiDetailComponent .ns-apiDetailBottom .tab-pane .content table caption {
-    caption-side: top
+    caption-side: top;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .ns-apiDetailComponent .ns-apiDetailBottom .tab-pane .content table th {

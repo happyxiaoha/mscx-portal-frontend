@@ -1,6 +1,6 @@
 <div class="M-mainInfo clearfix bgWhite my-api-list">
     <div class="tab-title">
-        <a href="../api.html#createIncubator">发布新路演</a>
+        <a href="../startup.html#createRoadShow">发布新路演</a>
     </div>
     <div class="M-downCons">
         <div class="D_table M-table">
@@ -29,42 +29,32 @@
 </div>
 <script id="incubatorTemps" type="template">
     <% _.each(publishRoadShowList, function (paitem) { %>
-    <tr attrId="<%=paitem.apiServiceId%>">
-        <%if(paitem.status == '0'){%>
-        <td><a target="_blank" href="./api.html?detail/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a></td>
-        <%}else{%>
+    <tr data-id="<%=paitem.id%>">
         <td>
-            <a target="_blank" href="./api.html#apiDes/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a>
+            <a target="_blank" href="./startup.html#roadShowDes/<%=paitem.id%>"><%=paitem.roadName || '-'%></a>
         </td>
-        <%}%>
-        <td><%=paitem.description%></td>
-        <td><%=paitem.applyCount || '-' %></td>
-        <td><%=paitem.statusDesc%></td>
+        <td><%=paitem.tradeField%></td>
+        <td><%=paitem.financingLimit%></td>
+        <td><%=paitem.projectStage%></td>
+        <td><%=paitem.publishTime ? new Date(paitem.publishTime).format('yyyy-MM-dd') : '-'%></td>
+        <td><%=statusMes[paitem.status]%></td>
+        <td><%=paitem.attentionCount%></td>
         <td>
             <%if(paitem.status == '0'){%>
-                <%if(paitem.chargeType == '02'){%>
-                <a href="javascript:;" class="changePrice">调价</a>
-                <%}%>
-                <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
-                <a href="javascript:;" class="downApi">下架</a>
+                <a href="javascript:;" class="closeRoadShow">关闭</a>
+            <%}else if(paitem.status == '2'){%>
+                <a href="./startup.html#createRoadShow/<%=paitem.id%>" class="displayRoadShow">查看</a>
             <%}else if(paitem.status == '3'){%>
-                <a href="javascript:;" class="displayMes">查看</a>
-                <%if(paitem.chargeType == '02'){%>
-                <a href="javascript:;" class="changePrice">调价</a>
-                <%}%>
-                <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
-                <%if(paitem.isOnline == 'N'){%>
-                    <a href="javascript:;" class="deleteApi">删除</a>
-                <%}else{%>
-                    <a href="javascript:;" class="downApi">下架</a>
-                <%}%>
+                <a href="javascript:;" class="displayRes">查看</a>
+            <%}else if(paitem.status == '5'){%>
+                <a href="./startup.html#createRoadShow/<%=paitem.id%>" class="displayRoadShow">查看</a>
             <%}%>
         </td>
     </tr>
     <% }); %>
-    <%if(publishApiList.length == 0){%>
+    <%if(publishRoadShowList.length == 0){%>
     <tr>
-        <td colspan="5">暂无数据</td>
+        <td colspan="8">暂无数据</td>
     </tr>
     <%}%>
 </script>

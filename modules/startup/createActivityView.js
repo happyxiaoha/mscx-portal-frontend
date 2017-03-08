@@ -16,7 +16,8 @@ var addActivityModel = Backbone.Model.extend({
 var createActivityView = Backbone.View.extend({
     el: mscxPage.domEl.startupEl,
     events: {
-        'change .upload-file': 'doUploadImg'
+        'change .upload-file': 'doUploadImg',
+        'mousedown input[type="submit"]': 'setSubType'
     },
     validateConfig: function () {
         var that = this;
@@ -149,10 +150,37 @@ var createActivityView = Backbone.View.extend({
         else {
             $('.img-error').hide();
             var obj = $('#publishActivity').serializeObject();
-            console.log(obj);
+            this.model.set('name',obj.name);
+            this.model.set('description',obj.description);
+            this.model.set('detail',obj.detail);
+            this.model.set('holdAddress',obj.holdAddress);
+            this.model.set('initiator',obj.initiator);
+            this.model.set('signAddress',obj.signAddress);
+            this.model.set('type',obj.type);
 
+            this.model.set('holdStartTime',$('#holdTime').data('daterangepicker').startDate.format('YYYY-MM-DD'));
+            this.model.set('holdEndTime',$('#holdTime').data('daterangepicker').endDate.format('YYYY-MM-DD'));
+            this.model.set('signStartTime',$('#signTime').data('daterangepicker').startDate.format('YYYY-MM-DD'));
+            this.model.set('signEndTime',$('#signTime').data('daterangepicker').endDate.format('YYYY-MM-DD'));
+
+            this.model.save({}, {
+                success: function () {
+                    layer.msg('已提交审核！');
+                    setTimeout(function () {
+                        location.href = 'userInfo.html#incubator';
+                    }, 1000);
+                }
+            });
         }
 
+    },
+    setSubType: function (e) {
+        var $this = $(e.target),
+            isSubmit = $this.is('input');
+        if(isSubmit){
+            var sStu = $this.val() == '发布' ? 2 : 5;
+            this.model.set('status',sStu);
+        }
     }
 });
 

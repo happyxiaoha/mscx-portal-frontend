@@ -19,13 +19,17 @@ var addRoadShowModel = Backbone.Model.extend({
 var getCategoryTagModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
 });
+var roadDetailsModel = Backbone.Model.extend({
+    url: mscxPage.request.roadshow + 'roadshow/getRoadInfoByRoadId.do'
+});
 
 var createActivityView = Backbone.View.extend({
     el: mscxPage.domEl.startupEl,
     events: {
         'change .upload-file': 'doUploadImg',
         'click #chooseTag' : 'doChooseTags',
-        'click .tradeField': 'fetTags'
+        'click .tradeField': 'fetTags',
+        'mousedown input[type="submit"]': 'setSubType'
     },
     validateConfig: function () {
         var that = this;
@@ -69,31 +73,49 @@ var createActivityView = Backbone.View.extend({
         this.$el.data('isLogin',1);
         var that = this;
         this.$el.html(template);
+        if(this.id){
+            new roadDetailsModel().fetch({
+                data: {
+                    roadId: this.id
+                },
+                success: function (model) {
+                    that.render(model.get('result'));
+                }
+            });
+        }
+        else {
+            that.render({});
+        }
+    },
+    render: function (res) {
+        var that = this;
+        this.$el.find('#publishRoadShow').html(_.template($('#addFormTemplate').html())({res:res}));
         this.model = new addRoadShowModel();
         this.projectStageTypeModel = new projectStageTypeModel();
         this.projectStageTypeModel.fetch();
         this.projectStageTypeModel.on('change',function () {
-            that.buildStageType();
+            that.buildStageType(res.projectStage);
         });
         this.projectTypeModel = new projectTypeModel();
         this.projectTypeModel.fetch();
         this.projectTypeModel.on('change',function () {
-            that.buildProjectType();
+            that.buildProjectType(res.tags,res.tradeField);
         });
 
         this.getCategoryTagModel = new getCategoryTagModel();
         $('#publishRoadShow').validate(that.validateConfig());
-        return this;
     },
-    buildStageType: function () {
+    buildStageType: function (sProjectStage) {
         var res = this.projectStageTypeModel.get('result');
         if(res.length>0) {
             res[0].checked = true;
         }
+
+        debugger;
         var stageTemps = _.template($('#stageType').html());
-        $('#projectDeadLineRadio').html(stageTemps({'stageTypeList': res}))
+        $('#projectDeadLineRadio').html(stageTemps({'stageTypeList': res,'sProjectStage':sProjectStage}));
     },
-    buildProjectType: function () {
+    buildProjectType: function (stags,sProjectType) {
         var res = this.projectTypeModel.get('result');
         if(res.length>0) {
             res[0].checked = true;
@@ -103,8 +125,9 @@ var createActivityView = Backbone.View.extend({
                 }
             });
         }
+        debugger;
         var typeTemps = _.template($('#projectType').html());
-        $('#projectTypeRadio').html(typeTemps({'proTypeList': res}))
+        $('#projectTypeRadio').html(typeTemps({'proTypeList': res,'sProjectType': sProjectType}));
     },
     doChooseTags: function () {
         this.renderCategoryTag();
@@ -216,13 +239,31 @@ var createActivityView = Backbone.View.extend({
     },
     doPublish: function () {
         this.checkValidateSelf();
-
         if(!$('.img-error').is(":visible") && !$('.tag-error').is(":visible")) {
             var obj = $('#publishRoadShow').serializeObject();
-
-            console.log(obj);
+            this.model.set('financingLimit',obj.financingLimit);
+            this.model.set('financingType',obj.financingType);
+            this.model.set('projectStage',obj.projectStage);
+            this.model.set('roadDescription',obj.roadDescription);
+            this.model.set('roadName',obj.roadName);
+            this.model.set('tradeField',obj.tradeField);
+            this.model.save({}, {
+                success: function () {
+                    layer.msg('已提交审核！');
+                    setTimeout(function () {
+                        location.href = 'userInfo.html#incubator';
+                    }, 1000);
+                }
+            });
         }
-
+    },
+    setSubType: function (e) {
+        var $this = $(e.target),
+            isSubmit = $this.is('input');
+        if(isSubmit){
+            var sStu = $this.val() == '发布' ? 2 : 5;
+            this.model.set('status',sStu);
+        }
     }
 });
 

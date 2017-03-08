@@ -8,8 +8,12 @@ var Routes =  Backbone.Router.extend({
         'activity/detail/:id': 'activityDetailView',
         'createRoadShow': 'createRoadShowView',
         'createActivity': 'createActivityView',
+        'createRoadShow/:id': 'createRoadShowView',
+        'createActivity/:id': 'createActivityView',
         'news/detail/:url': 'newsDetailView',
-        'news/:section/list': 'newsListView'
+        'news/:section/list': 'newsListView',
+        'roadShowDes/:id': 'roadShowDesView',
+        'activityDes/:id': 'activityDesView'
     },
     coachView: function () {
         // if(location.search) return;
@@ -61,13 +65,29 @@ var Routes =  Backbone.Router.extend({
             }
         });
     },
-    createRoadShowView:function () {
+    createRoadShowView:function (id) {
        var roadShowView = require('startup/createRoadShowView.js');
-        mscxPage.views['roadShowViewObj'] = new roadShowView();
+        mscxPage.views['createRoadShowViewObj'] = new roadShowView({
+            id: id
+        });
     },
-    createActivityView:function () {
+    createActivityView:function (id) {
         var activityView = require('startup/createActivityView.js');
-        mscxPage.views['activityViewObj'] = new activityView();
+        mscxPage.views['createActivityViewObj'] = new activityView({
+            id: id
+        });
+    },
+    roadShowDesView: function (id) {
+        var roadShowDesView = require('startup/roadShowDetailsView.js');
+        mscxPage.views['roadShowDesViewObj'] = new roadShowDesView({
+            id: id
+        });
+    },
+    activityDesView: function (id) {
+        var avDesView = require('startup/apiManage/activityDetailsView.js');
+        mscxPage.views['activityDesViewObj'] = new avDesView({
+            id: id
+        });
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

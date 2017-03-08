@@ -105,6 +105,7 @@
                 <div class="R_Btns">
                     <!-- <button class="bgBlue">返回</button> -->
                     <input type="submit" class="bgBlue" value="发布">
+                    <input type="submit" class="bgBlue" value="暂存" style="background-color: #5cb981;">
                 </div>
             </div>
         </form>
@@ -126,13 +127,133 @@
         </form>
     </div>
 </div>
+<script id="addFormTemplate" type="template">
+    <div class="ReleaseInputs labelleft ReleaseDown">
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>路演名称：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入活动名称" name="roadName" value="<%=res.roadName%>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>路演描述：</p>
+            <div class="fl R_right">
+                <p>
+                    <textarea cols="30" rows="10" placeholder="请输入活动简介" name ="roadDescription"><%res.roadDescription%></textarea>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>融资类型：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入融资类型" name="financingType" value="<%=res.financingType%>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>融资额度：</p>
+            <div class="fl R_right">
+                <p class="mony">
+                    <input type="text" placeholder="请输入融资额度" name="financingLimit" style="width: 200px;" value="<%=res.financingLimit%>">
+                    <span>单位：万元</span>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>项目阶段：</p>
+            <div class="fl R_right">
+                <p id="projectDeadLineRadio" class="radio-list">
+
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>行业领域：</p>
+            <div class="fl R_right">
+                <p id="projectTypeRadio" class="radio-list">
+
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>标签选择：</p>
+            <div class="fl R_right posRE">
+                <div class="tag-area fl">
+                    <span class="un-select"><%=res.tags%></span>
+                </div>
+                <a class="btn btn-warning" id="chooseTag" href="javascript:;" style="color: #FFF;">选择</a>
+            </div>
+            <label class="tag-error">请选择标签</label>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>缩略图：</p>
+            <div class="fl R_right">
+                <p class="allInfoImg">
+                    <img src="<%=res.thumbnailImg%>" alt="">
+                </p>
+                <p class="mes-des">像素要求：266*220</p>
+            </div>
+            <label class="img-error">请上传缩略图</label>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>项目介绍：</p>
+            <div class="fl R_right">
+                <p class="allInfoImg">
+                    <img src="<%=res.projectDescription%>" alt="">
+                </p>
+                <p class="mes-des">像素要求：534*324</p>
+            </div>
+            <label class="img-error">请上传项目介绍图</label>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>团队成员：</p>
+            <div class="fl R_right">
+                <p class="allInfoImg">
+                    <img src="<%=res.teamImg%>" alt="">
+                </p>
+                <p class="mes-des">像素要求：534*324</p>
+            </div>
+            <label class="img-error">请上传团队成员图</label>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>运营与投资：</p>
+            <div class="fl R_right">
+                <p class="allInfoImg">
+                    <img src="<%=res.operationImg%>" alt="">
+                </p>
+                <p class="mes-des">像素要求：534*324</p>
+            </div>
+            <label class="img-error">请上传运营与投资图</label>
+        </div>
+        <div class="R_Btns">
+            <!-- <button class="bgBlue">返回</button> -->
+            <input type="submit" class="bgBlue" value="发布">
+            <input type="submit" class="bgBlue" value="暂存" style="background-color: #5cb981;">
+        </div>
+    </div>
+</script>
 <script id="stageType" type="template">
-    <% _.each(stageTypeList, function (stitem) { %>
-    <label class="fl"><input type="radio" id="t<%=stitem.id%>" value="<%=stitem.id%>" name="projectStage" <%if(stitem.checked){%>checked="true"<%}%> ><%=stitem.dictName%></label>
-    <% }); %>
+    <%if(sProjectStage){%>
+        <% _.each(stageTypeList, function (stitem) {%>
+        <label class="fl"><input type="radio" id="t<%=stitem.id%>" value="<%=stitem.dictCode%>" name="projectStage" <%if(stitem.dictName == sProjectStage){%>checked="true"<%}%> ><%=stitem.dictName%></label>
+        <% }); %>
+    <%} else{%>
+        <% _.each(stageTypeList, function (stitem) {%>
+        <label class="fl"><input type="radio" id="t<%=stitem.id%>" value="<%=stitem.dictCode%>" name="projectStage" <%if(stitem.checked){%>checked="true"<%}%> ><%=stitem.dictName%></label>
+        <% }); %>
+    <%}%>
 </script>
 <script id="projectType" type="template">
+    <%if(sProjectType){%>
+    <% _.each(proTypeList, function (titem) { %>
+    <label class="fl"><input class="tradeField" type="radio" id="t<%=titem.categoryId%>" value="<%=titem.categoryId%>" name="tradeField" <%if(titem.categoryName == sProjectType){%>checked="true"<%}%> ><%=titem.categoryName%></label>
+    <% }); %>
+    <%} else{%>
     <% _.each(proTypeList, function (titem) { %>
     <label class="fl"><input class="tradeField" type="radio" id="t<%=titem.categoryId%>" value="<%=titem.categoryId%>" name="tradeField" <%if(titem.checked){%>checked="true"<%}%> ><%=titem.categoryName%></label>
     <% }); %>
+    <%}%>
 </script>

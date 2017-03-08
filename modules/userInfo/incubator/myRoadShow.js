@@ -5,7 +5,6 @@
 var commonTemplate = require('html!./incubatorCommon.html');
 var template = require('html!./incubator.html');
 require('./incubator.css');
-require('util');
 
 var myPublicRModel = Backbone.Model.extend({
     url: mscxPage.request.roadshow + 'roadshow/getRoadInfoByUserId.do'
@@ -14,7 +13,6 @@ var getPackageModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'charge/getMyChargeRuleByServiceId.do'
 });
 
-var statusMes = ['审核通过','已关闭','审核中','审核拒绝','已删除','暂存'];
 
 var incubatorView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -49,7 +47,7 @@ var incubatorView = Backbone.View.extend({
             this.pagObj.totalPage = page.totalPage;
             this.pagObj.pageNum = page.currentPage;
         }
-        this.$el.find('tbody').html(templates({publishRoadShowList:publishRoadShowList,statusMes: statusMes}));
+        this.$el.find('tbody').html(templates({publishRoadShowList:publishRoadShowList}));
         laypage({
             cont: 'myInPage',
             pages: page.totalPage,

@@ -1,0 +1,94 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
+    <p class="ReleaseTit">路演详情</p>
+    <div class="ReleaseDownCons">
+        <form id="publishRoadShow" onsubmit="return false;">
+            <div class="ReleaseInputs labelleft ReleaseDown">
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>路演名称：</p>
+                    <div class="fl R_right">
+                        <p class="des-p">
+                            <%=res.roadName%>
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>路演描述：</p>
+                    <div class="fl R_right">
+                        <p class="des-p">
+                            <%=res.roadDescription%>
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>融资类型：</p>
+                    <div class="fl R_right">
+                        <p class="des-p">
+                            <%=res.financingType%>
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>融资额度：</p>
+                    <div class="fl R_right">
+                        <p class="des-p">
+                            <%=res.financingLimit%>
+                            <span>万元</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>项目阶段：</p>
+                    <div class="fl R_right">
+                        <p class="des-p">
+                            <%=res.projectStage%>
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>行业领域：</p>
+                    <div class="fl R_right">
+                        <p class="des-p"><%=res.tradeField%></p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>标签选择：</p>
+                    <div class="fl R_right posRE">
+                        <p class="des-p"><%=res.tags%></p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>缩略图：</p>
+                    <div class="fl R_right">
+                        <p class="allInfoImg">
+                            <img src="<%=res.thumbnailImg%>" alt="">
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>项目介绍：</p>
+                    <div class="fl R_right">
+                        <p class="allInfoImg">
+                            <img src="<%=res.projectDescription%>" alt="">
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>团队成员：</p>
+                    <div class="fl R_right">
+                        <p class="allInfoImg">
+                            <img src="<%=res.teamImg%>" alt="">
+                        </p>
+                    </div>
+                </div>
+                <div class="clearfix ReleaseList">
+                    <p class="fl R_left"><i class="need">*</i>运营与投资：</p>
+                    <div class="fl R_right">
+                        <p class="allInfoImg">
+                            <img src="<%=res.teamImg%>" alt="">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

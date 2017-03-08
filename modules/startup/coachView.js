@@ -25,6 +25,7 @@ var view = Backbone.View.extend({
         window.articleUrl = '#news/article/list';
         window.policyUrl = '#news/policy/list';
         window.fundUrl = '#news/fund/list';
+        window.rootNewsUrl = 'startup.html';
 
         this.$rightPart.load(invertHotCmsUrl + '?time=' + +(new Date()));
         this.$policy.load(policyCmsUrl + '?time=' + +(new Date()));

@@ -14,7 +14,8 @@ var view = Backbone.View.extend({
     events: {
         'click .search-btn': 'searchKeyword',
         'keydown .search-input': 'pressEnter',
-        'click #goApiPublish': 'goPublish'
+        'click #goApiPublish': 'goPublish',
+        'click #dateFilter a': 'searchByDate'
     },
     initialize: function() {
         this.$el.html(this.wrapTemplate());
@@ -29,12 +30,6 @@ var view = Backbone.View.extend({
         this.apiModel = new apiModel();
         this.listenTo(this.apiModel, 'sync', this.renderList);
         this.listenTo(this.searchParam, 'change', this.fetch);
-
-        this.$publishDate = this.$('#publishDate');
-
-        // 选择日期
-        this.$publishDate.on('apply.daterangepicker', this.changeDate.bind(this));
-        this.$publishDate.daterangepicker().data('loaded', 1);
 
         this.$dataList = this.$('.data-list');
         this.$page = this.$('.page');
@@ -78,15 +73,17 @@ var view = Backbone.View.extend({
             data: this.searchParam.toJSON()
         })
     },
-    changeDate: function(event) {
+    searchByDate: function(event) {
         var $target = $(event.currentTarget);
-        var date = $target.val();
+        var beginTime = $target.data('start');
+        var endTime = $target.data('end');
 
-        date = date.split(' - ');
+        $target.parents('dl').find('.active').removeClass('active');
+        $target.addClass('active');
 
         this.searchParam.set({
-            beginTime: date[0],
-            endTime: date[1]
+            beginTime: beginTime,
+            endTime: endTime
         })
     },
     searchKeyword: function(event) {

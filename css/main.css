@@ -97,7 +97,6 @@ blockquote,figure {
 }
 
 a:not([href]):not([tabindex]) {
-    color: inherit;
     text-decoration: none
 }
 
@@ -2324,7 +2323,9 @@ ul.pagination>li.active>a {
 }
 
 .ns-apiDetailComponent .ns-apiDetailBottom .tab-pane .content table caption {
-    caption-side: top
+    caption-side: top;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .ns-apiDetailComponent .ns-apiDetailBottom .tab-pane .content table th {
@@ -2430,7 +2431,9 @@ ul.pagination>li.active>a {
 .ns-searchCom .hotKey dl a {
     color: inherit
 }
-
+.ns-searchCom .hotKey dl a.active {
+    color: #f90;
+}
 .ns-document {
     position: relative;
     padding: 30px;

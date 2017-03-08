@@ -86,7 +86,7 @@ var userPasswordView = Backbone.View.extend({
         var that = this;
         if(mscxPage.userInfo){
             var isDis = mscxPage.userInfo.userType == 'PARTNER_ORG' || mscxPage.userInfo.userType == 'PARTNER_GOV' ? true : false;
-            this.renderUserCommon(isDis);
+            that.renderUserCommon(isDis);
             callback();
         }
         else {
@@ -101,7 +101,7 @@ var userPasswordView = Backbone.View.extend({
             callback();
         }
         function callback() {
-            this.$el.addClass('user-center-tap');
+            that.$el.addClass('user-center-tap');
             that.$el.find('#userInfoArea').html(template);
             that.model = new userPasswordManagerModel();
             $('#userPasswordForm').validate(that.validateConfig());

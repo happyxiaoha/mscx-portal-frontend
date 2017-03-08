@@ -194,3 +194,8 @@
     right: 30px;
     top: 45px;
 }
+.demand-content .btn-apply {
+    position: absolute;
+    right: 160px;
+    top: 45px;
+}

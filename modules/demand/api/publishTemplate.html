@@ -106,67 +106,51 @@
             <div class="fl R_right checkbox-border">
                 <div class="checkbox-list">
                     <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JAVA') > -1 && "checked" %> value="JAVA">
-                        </span>
-                        </div>
+                        
+                        <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JAVA') > -1 && "checked" %> value="JAVA">
+                        
                         JAVA
                     </label>
                     <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C/C++') > -1 && "checked" %> value="C/C++">
-                        </span>
-                        </div>
+                        
+                        <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C/C++') > -1 && "checked" %> value="C/C++">
+                        
                         C/C++
                     </label>
                     <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C#') > -1 && "checked" %> value="C#">
-                        </span>
-                        </div>
+                        
+                        <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C#') > -1 && "checked" %> value="C#">
+                        
                         C#
                     </label>
                     <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JS') > -1 && "checked" %> value="JS">
-                        </span>
-                        </div>
+                        
+                        <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JS') > -1 && "checked" %> value="JS">
+                        
                         JS
                     </label>
                     <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('CSS') > -1 && "checked" %> value="CSS">
-                        </span>
-                        </div>
+                        
+                        <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('CSS') > -1 && "checked" %> value="CSS">
+                        
                         CSS
                     </label>
                     <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('HTML') > -1 && "checked" %> value="HTML">
-                        </span>
-                        </div>
+                        
+                        <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('HTML') > -1 && "checked" %> value="HTML">
+                       
                         HTML
                     </label>
                     <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('PHP') > -1 && "checked" %> value="PHP">
-                        </span>
-                        </div>
+                        
+                        <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('PHP') > -1 && "checked" %> value="PHP">
+                        
                         PHP
                     </label>
                     <label class="checkbox-inline checkbox-inline-other">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" <%= data && data.otherLanguage && "checked" %>
-                        </span>
-                        </div>
+                        
+                        <input type="checkbox" <%= data && data.otherLanguage && "checked" %>>
+                        
                         其它
                         <input type="text" value="<%= data && data.otherLanguage %>" name="otherLanguage" id="otherLanguage">
                     </label>
@@ -230,7 +214,7 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left wd160"><em>*</em>是否需要平台撮合交易：</p>
             <div class="radio-list">
-                <label class="radio-inline">
+                <label class="radio-inline checkbox-border">
                     <% if(!data.id){ %>
                     <input type="radio" checked name="matchmakeTrade" value="Y">
                     <% }else { %>
@@ -238,7 +222,7 @@
                     <% } %>
                     是
                 </label>
-                <label class="radio-inline">
+                <label class="radio-inline checkbox-border">
                     <input type="radio" <%= data && data.matchmakeTrade == 'N' && "checked" %> name="matchmakeTrade" value="N">
                     否
                 </label>

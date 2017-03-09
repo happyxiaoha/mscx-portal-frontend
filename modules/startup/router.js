@@ -84,7 +84,7 @@ var Routes =  Backbone.Router.extend({
         });
     },
     activityDesView: function (id) {
-        var avDesView = require('startup/apiManage/activityDetailsView.js');
+        var avDesView = require('startup/activityDetailsView.js');
         mscxPage.views['activityDesViewObj'] = new avDesView({
             id: id
         });

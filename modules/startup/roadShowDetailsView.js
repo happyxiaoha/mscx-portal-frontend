@@ -23,7 +23,7 @@ var createActivityView = Backbone.View.extend({
         });
     },
     render: function () {
-        var temps = _.template(template)
+        var temps = _.template(template);
         this.$el.html(temps({res:this.model.get('result')}));
     }
 });

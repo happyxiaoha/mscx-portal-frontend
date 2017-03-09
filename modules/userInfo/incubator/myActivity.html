@@ -1,0 +1,58 @@
+<div class="M-mainInfo clearfix bgWhite my-api-list">
+    <div class="tab-title">
+        <a href="../startup.html#createActivity">发布新活动</a>
+    </div>
+    <div class="M-downCons">
+        <div class="D_table M-table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="20%">活动名称</th>
+                    <th width="10%">关注次数</th>
+                    <th width="10%">浏览次数</th>
+                    <th width="10%">报名人次</th>
+                    <th width="10%">发布日期</th>
+                    <th width="10%">活动状态</th>
+                    <th width="20%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td colspan="7">暂无数据</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="page-area" id="myActivityPage"></div>
+    </div>
+</div>
+<script id="activityTemps" type="template">
+    <% _.each(publishActivityList, function (paitem) { %>
+    <tr data-id="<%=paitem.activityId%>">
+        <td>
+            <a target="_blank" href="./startup.html#activityDes/<%=paitem.activityId%>"><%=paitem.name || '-'%></a>
+        </td>
+        <td><%=paitem.attentionCount%></td>
+        <td><%=paitem.viewCount%></td>
+        <td><%=paitem.signCount%></td>
+        <td><%=paitem.publishTime ? new Date(paitem.publishTime).format('yyyy-MM-dd') : '-'%></td>
+        <td><%=statusMes[paitem.status]%></td>
+        <td>
+            <%if(paitem.status == '0'){%>
+            <a href="javascript:;" data-id="<%=paitem.activityId%>" class="closeActivity">关闭</a>
+            <%}else if(paitem.status == '2'){%>
+            <a href="./startup.html#activityDes/<%=paitem.activityId%>" class="displayRoadShow">查看</a>
+            <%}else if(paitem.status == '3'){%>
+            <a href="javascript:;" class="displayRes">查看</a>
+            <%}else if(paitem.status == '5'){%>
+            <a href="./startup.html#createActivity/<%=paitem.activityId%>" class="displayRoadShow">查看</a>
+            <%}%>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(publishActivityList.length == 0){%>
+    <tr>
+        <td colspan="7">暂无数据</td>
+    </tr>
+    <%}%>
+</script>

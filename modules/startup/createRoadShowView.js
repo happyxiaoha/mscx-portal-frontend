@@ -16,6 +16,10 @@ var projectTypeModel = Backbone.Model.extend({
 var addRoadShowModel = Backbone.Model.extend({
     url: mscxPage.request.roadshow + 'roadshow/AddRoadInfo.do'
 });
+var updateRoadShowModel = Backbone.Model.extend({
+    url: mscxPage.request.roadshow + 'roadshow/changeRoadInfo.do',
+    idAttribute: '_id'
+});
 var getCategoryTagModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
 });
@@ -89,8 +93,19 @@ var createActivityView = Backbone.View.extend({
     },
     render: function (res) {
         var that = this;
-        this.$el.find('#publishRoadShow').html(_.template($('#addFormTemplate').html())({res:res}));
-        this.model = new addRoadShowModel();
+        if(this.id) {
+            this.$el.find('#publishRoadShow').html(_.template($('#addFormTemplate').html())({res:res}));
+            this.model = new updateRoadShowModel();
+            this.model.set('thumbnailImg',res.thumbnailImg);
+            this.model.set('teamImg',res.teamImg);
+            this.model.set('projectDescription',res.projectDescription);
+            this.model.set('operationImg',res.operationImg);
+            this.model.set('tags',res.tagIds.replace('，',','));
+            this.model.set('id',this.id);
+        }
+        else {
+            this.model = new addRoadShowModel();
+        }
         this.projectStageTypeModel = new projectStageTypeModel();
         this.projectStageTypeModel.fetch();
         this.projectStageTypeModel.on('change',function () {
@@ -99,9 +114,8 @@ var createActivityView = Backbone.View.extend({
         this.projectTypeModel = new projectTypeModel();
         this.projectTypeModel.fetch();
         this.projectTypeModel.on('change',function () {
-            that.buildProjectType(res.tags,res.tradeField);
+            that.buildProjectType(res.tags,res.tradeField,res.tradeFieldId);
         });
-
         this.getCategoryTagModel = new getCategoryTagModel();
         $('#publishRoadShow').validate(that.validateConfig());
     },
@@ -110,22 +124,20 @@ var createActivityView = Backbone.View.extend({
         if(res.length>0) {
             res[0].checked = true;
         }
-
-        debugger;
         var stageTemps = _.template($('#stageType').html());
         $('#projectDeadLineRadio').html(stageTemps({'stageTypeList': res,'sProjectStage':sProjectStage}));
     },
-    buildProjectType: function (stags,sProjectType) {
+    buildProjectType: function (stags,sProjectType,tradeFieldId) {
         var res = this.projectTypeModel.get('result');
         if(res.length>0) {
             res[0].checked = true;
+            var sId = tradeFieldId ? tradeFieldId : res[0].categoryId;
             this.getCategoryTagModel.fetch({
                 data: {
-                    categoryId: res[0].categoryId
+                    categoryId:sId
                 }
             });
         }
-        debugger;
         var typeTemps = _.template($('#projectType').html());
         $('#projectTypeRadio').html(typeTemps({'proTypeList': res,'sProjectType': sProjectType}));
     },
@@ -166,7 +178,10 @@ var createActivityView = Backbone.View.extend({
         });
         $('.tag-area').find('span').html(asTags.join(','));
         this.chooseTags = cTags;
-        this.model.set('tags',aTags.join(','));
+        if(asTags.length > 0) {
+            $('.tag-error').hide();
+        }
+        this.model.set('tags',aTags.join('，'));
         return false;
     },
     fetTags: function (e) {
@@ -187,7 +202,7 @@ var createActivityView = Backbone.View.extend({
         var tagList = this.getCategoryTagModel.get('result');
         var sChooseTags = '';
         if(this.model.get('tags')){
-            sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
+            sChooseTags = '*&'+this.model.get('tags').split('，').join('*&')+'*&';
         }
         $('.tag-list-area').remove();
         var tagsView = new tagView({
@@ -247,7 +262,8 @@ var createActivityView = Backbone.View.extend({
             this.model.set('roadDescription',obj.roadDescription);
             this.model.set('roadName',obj.roadName);
             this.model.set('tradeField',obj.tradeField);
-            this.model.save({}, {
+            this.model.save({
+                type: 'POST',
                 success: function () {
                     layer.msg('已提交审核！');
                     setTimeout(function () {
@@ -261,7 +277,7 @@ var createActivityView = Backbone.View.extend({
         var $this = $(e.target),
             isSubmit = $this.is('input');
         if(isSubmit){
-            var sStu = $this.val() == '发布' ? 2 : 5;
+            var sStu = $this.val() == '发布' || $this.val() == '修改' ? 2 : 5;
             this.model.set('status',sStu);
         }
     }

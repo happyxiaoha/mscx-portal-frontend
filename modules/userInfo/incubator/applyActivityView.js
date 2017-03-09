@@ -3,19 +3,19 @@
  */
 
 var commonTemplate = require('html!./incubatorCommon.html');
-var template = require('html!./followRoadShow.html');
+var template = require('html!./applyActivity.html');
 require('./incubator.css');
 require('util');
 
-var followRoadShowModel = Backbone.Model.extend({
-    url: mscxPage.request.roadshow + 'roadshow/getAttentionRoadByUserId.do'
+var signActivityModel = Backbone.Model.extend({
+    url: mscxPage.request.activity + 'activity/getSignActivityByUserId.do'
 });
-var cacelRoadShowFollowModel = Backbone.Model.extend({
-    url: mscxPage.request.roadshow + 'roadshow/deleteUserAttention.do'
+var cacelSingModel = Backbone.Model.extend({
+    url: mscxPage.request.activity + 'activity/deleteUserSign.do'
 });
 
 
-var followListView = Backbone.View.extend({
+var signView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
         pageSize: 10,
@@ -23,12 +23,12 @@ var followListView = Backbone.View.extend({
         totalPage: 0
     },
     events: {
-        'click .cancelFollow': 'cancelFocus'
+        'click .cancelSign': 'cancelSign'
     },
     initialize: function() {
         var that = this;
-        this.$el.html(_.template(commonTemplate)({name:'followIncubator'}));
-        this.model = new followRoadShowModel();
+        this.$el.html(_.template(commonTemplate)({name:'callActivity'}));
+        this.model = new signActivityModel();
         this.model.on('change',function () {
             that.render();
         });
@@ -47,17 +47,17 @@ var followListView = Backbone.View.extend({
     render: function () {
         var that = this;
         var res = this.model.get('result');
-        var followRoadList = [], page = {};
+        var signActivityList = [], page = {};
         if(res){
-            followRoadList = res.list;
+            signActivityList = res.list;
             var page = res.page || {totalPage:0,currentPage:0,totalPage:0};
             this.pagObj.totalPage = page.totalPage;
             this.pagObj.pageNum = page.currentPage;
         }
-        var temps = _.template($('#followRoadList').html());
-        this.$el.find('tbody').html(temps({followRoadList:followRoadList}));
+        var temps = _.template($('#signAListTemps').html());
+        this.$el.find('tbody').html(temps({signActivityList:signActivityList}));
         laypage({
-            cont: 'followRoad',
+            cont: 'signActivity',
             pages: page.totalPage,
             skip: true,
             curr: this.pagObj.pageNum || 1,
@@ -69,17 +69,17 @@ var followListView = Backbone.View.extend({
             }
         });
     },
-    cancelFocus: function (e) {
+    cancelSign: function (e) {
         var that = this;
         var $this = $(e.target);
         var sid = parseInt($this.data('id'));
-        var deleteLayer = layer.confirm('确认要取消关注吗？', {
+        var deleteLayer = layer.confirm('确认要取消报名吗？', {
             btn: ['确认','取消'] //按钮
         }, function(){
-            new cacelRoadShowFollowModel().fetch({
-                data:{'roadId': sid},
+            new cacelSingModel().fetch({
+                data:{'activityId': sid},
                 success: function () {
-                    layer.msg('取消关注成功!');
+                    layer.msg('取消报名成功!');
                     if(that.model.get('result') && that.model.get('result').list && that.model.get('result').list.length == 1 && that.pagObj.pageNum != 1){
                         that.pagObj.pageNum--;
                     }
@@ -104,4 +104,4 @@ var followListView = Backbone.View.extend({
     }
 });
 
-module.exports = followListView;
+module.exports = signView;

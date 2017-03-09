@@ -29,8 +29,7 @@ var detailView = Backbone.View.extend({
     },
     template: _.template(detailTemplate,{variable: 'data'}),
     initialize: function() {
-        this.$el.html();
-        // this.$el.toggleClass('loading');
+        this.$el.empty();
         this.model = new dataDetailModel();
         this.model.fetch({
             data: {
@@ -48,7 +47,6 @@ var detailView = Backbone.View.extend({
     render: function () {
         this.nJson = this.model.toJSON().result;
 
-        this.$el.toggleClass('loading');
         this.$el.html(this.template( this.nJson ));
 
         // 热门数据报告区域

@@ -156,7 +156,7 @@
             <p class="fl R_left"><i class="need">*</i>报名时间：</p>
             <div class="fl R_right">
                 <p>
-                    <input id="signTime" type="text" placeholder="请输入报名时间" name="signTime" value="<%=res.signStartTime ? new Date(res.signStartTime).format('yyyy-MM-dd')%> -  <%=new Date(res.signEndTime).format('yyyy-MM-dd') : ''%>" readonly>
+                    <input id="signTime" type="text" placeholder="请输入报名时间" name="signTime" value="<%=res.signStartTime ? new Date(res.signStartTime).format('yyyy-MM-dd') +' - '+ new Date(res.signEndTime).format('yyyy-MM-dd') : ''%>" readonly>
                 </p>
             </div>
         </div>
@@ -172,7 +172,7 @@
             <p class="fl R_left"><i class="need">*</i>举办时间：</p>
             <div class="fl R_right">
                 <p>
-                    <input id="holdTime" type="text" placeholder="请输入举办时间" name="holdTime" value="<%=res.holdStartTime ? new Date(res.holdStartTime).format('yyyy-MM-dd')%> -  <%=new Date(res.holdEndTime).format('yyyy-MM-dd') : ''%>" readonly>
+                    <input id="holdTime" type="text" placeholder="请输入举办时间" name="holdTime" value="<%=res.holdStartTime ? new Date(res.holdStartTime).format('yyyy-MM-dd') +' - '+ new Date(res.holdEndTime).format('yyyy-MM-dd') : ''%>" readonly>
                 </p>
             </div>
         </div>

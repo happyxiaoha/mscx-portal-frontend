@@ -108,7 +108,7 @@ var createActivityView = Backbone.View.extend({
             };
         }
         $('#signTime').daterangepicker(sinOptions).on('apply.daterangepicker',function (ev,picker) {
-            $('#holdTime').data('daterangepicker').setOptions({'minDate': picker.endDate,'startDate':picker.endDate});
+            $('#holdTime').data('daterangepicker').setOptions({'minDate': picker.endDate,'startDate':picker.endDate,'endDate': picker.endDate});
         });
         $('#holdTime').daterangepicker(holdOptions).on('apply.daterangepicker',function (ev,picker) {
             $('#signTime').data('daterangepicker').setOptions({'maxDate': picker.startDate,'endDate':picker.startDate,minDate:lastDay()});
@@ -136,6 +136,7 @@ var createActivityView = Backbone.View.extend({
         var that = this;
         if(this.id) {
             this.$el.find('#publishActivity').html(_.template($('#activityTemps').html())({res:res}));
+            this.buildDate(res);
             this.model = new updateActivityModel();
             this.model.set('image',res.image );
             this.model.set('id',this.id);
@@ -215,7 +216,7 @@ var createActivityView = Backbone.View.extend({
                 success: function () {
                     layer.msg('已提交审核！');
                     setTimeout(function () {
-                        location.href = 'userInfo.html#incubator';
+                        location.href = 'userInfo.html#myActivity';
                     }, 1000);
                 }
             });

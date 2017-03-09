@@ -23,7 +23,8 @@ var incubatorView = Backbone.View.extend({
         pageNum: 1
     },
     events: {
-        'click .closeRoadShow': 'closeRoadShow'
+        'click .closeRoadShow': 'closeRoadShow',
+        'click .displayRes': 'disMsg'
     },
     initialize: function() {
         var that = this;
@@ -67,15 +68,28 @@ var incubatorView = Backbone.View.extend({
     closeRoadShow: function (e) {
         var that = this;
         var sId = $(e.target).data('id');
-        new closeModel.fetch({
-            data: {
-                roadId: sId
-            },
-            success: function () {
-                layer.mes('关闭成功!');
-                that.fetchPublic();
-            }
-        })
+        var deleteLayer = layer.confirm('确认要关闭吗？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            new closeModel().fetch({
+                data: {
+                    roadId: sId
+                },
+                success: function () {
+                    layer.msg('关闭成功!');
+                    that.fetchPublic();
+                }
+            });
+            layer.close(deleteLayer);
+        }, function(){
+            layer.close(deleteLayer);
+        });
+
+    },
+    disMsg: function (e) {
+        var mes = $(e.target).data('msg');
+        layer.alert(mes,{title:'拒绝原因'});
+        return false;
     }
 });
 

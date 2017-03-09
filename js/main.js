@@ -3,7 +3,7 @@
  */
 
 var header = require('widget/headerWidget/headerView.js');
-var footer = require('../widget/indexFooterWidget/footerView.js');
+var footer = require('../widget/footerWidget/footerView.js');
 var mainView = require('../modules/main/mainView.js');
 require('../css/base.css');
 

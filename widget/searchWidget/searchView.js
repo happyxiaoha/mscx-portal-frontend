@@ -301,7 +301,6 @@ var view = Backbone.View.extend({
                 serviceObject: params.join(',')
             });
         }else if(type == 'chargeType') {
-            debugger;
             this.searchParams.set({
                 page: 1,
                 chargeType: params.length > 1 ? '' : params[0]

@@ -35,7 +35,7 @@
         <td><%=fitem.tradeField%></td>
         <td><%=fitem.financingLimit%></td>
         <td><%=fitem.projectStage%></td>
-        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></td>
+        <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd') : '-'%></td>
         <td><%=fitem.attentionCount%>
         <td>
             <a class="cancelFollow" href="javascript:;" data-id="<%=fitem.id%>">取消关注</a>

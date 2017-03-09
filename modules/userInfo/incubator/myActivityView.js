@@ -10,6 +10,9 @@ require('util');
 var myPublicAModel = Backbone.Model.extend({
     url: mscxPage.request.activity + 'activity/getActivityByUserId.do'
 });
+var closeActivityModel = Backbone.Model.extend({
+    url: mscxPage.request.activity + 'activity/closeActivity.do'
+});
 
 var statusMes = ['审核通过','已关闭','审核中','审核拒绝','已删除','暂存'];
 
@@ -62,8 +65,29 @@ var activityView = Backbone.View.extend({
         });
     },
     closeActivity: function (e) {
-        var sid = $(e.target).data('id');
+        var that = this;
+        var sId = $(e.target).data('id');
+        var deleteLayer = layer.confirm('确认要关闭吗？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            new closeActivityModel().fetch({
+                data: {
+                    activityId: sId
+                },
+                success: function () {
+                    layer.msg('关闭成功!');
+                    that.fetchPublic();
+                }
+            });
+            layer.close(deleteLayer);
+        }, function(){
+            layer.close(deleteLayer);
+        });
 
+    },
+    disMsg: function (e) {
+        var mes = $(e.target).data('msg');
+        layer.alert(mes,{title:'拒绝原因'});
         return false;
     }
 });

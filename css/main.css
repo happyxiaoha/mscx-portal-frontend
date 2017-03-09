@@ -164,10 +164,15 @@ input[type=search] {
 .checkbox input[type=checkbox],.checkbox-inline input[type=checkbox],.radio input[type=radio],.radio-inline input[type=radio] {
     margin-top: 0;
     position: initial;
+    vertical-align: middle;
 }
 
 [hidden] {
     display: none!important
+}
+
+.nav-tabs>li>a {
+    margin-right: 0;
 }
 
 .ns-extend {
@@ -2254,7 +2259,8 @@ ul.pagination>li.active>a {
 
 .ns-apiDetailComponent .ns-apiDetailBottom .nav-tabs>li.active>a,.ns-apiDetailComponent .ns-apiDetailBottom .nav-tabs>li.active>a:focus,.ns-apiDetailComponent .ns-apiDetailBottom .nav-tabs>li.active>a:hover {
     border-radius: 0;
-    border-top-color: transparent
+    border-top-color: transparent;
+    margin-right: 0;
 }
 
 .ns-apiDetailComponent .ns-apiDetailBottom .tab-pane {

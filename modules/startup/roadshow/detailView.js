@@ -41,7 +41,7 @@ var view = Backbone.View.extend({
     render: function () {
         this.nJson = this.model.toJSON().result;
 
-        this.attentionFlag = !!this.nJson.isAttention;
+        this.attentionFlag = !!+this.nJson.isAttention;
         this.$el.html(this.template( this.nJson ));
 
         this.$tabContent = this.$('.tab-pane');

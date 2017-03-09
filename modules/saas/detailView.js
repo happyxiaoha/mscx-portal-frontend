@@ -26,8 +26,9 @@ var openDataDetailView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     template: _.template(detailTemplate,{variable: 'data'}),
     events: {
-        'click #attention': 'attentionData',
-        'click #example': 'showExample'
+        // 'click #attention': 'attentionData',
+        'click #example': 'showExample',
+        'click .nav-tabs a': 'selectTab'
     },
     initialize: function() {
         this.$el.html();
@@ -56,6 +57,8 @@ var openDataDetailView = Backbone.View.extend({
         this.$appInfoCons = this.$('.share');
         // 热门微服务区域
         this.$selectedService = this.$('#selectedService');
+        this.$tabContent = this.$('.tab-pane');
+        this.$tabWrap = this.$('.tab-content');
 
         this.$appInfoCons.html(this.shareView.$el);
 
@@ -127,6 +130,19 @@ var openDataDetailView = Backbone.View.extend({
             area: ['500px', '500px'],
             content: url //iframe的url
         });
+    },
+    selectTab: function(event) {
+        event.preventDefault();
+        this.$tabWrap.addClass('fade');
+        var $target = this.$(event.currentTarget);
+        var index = $target.data('index');
+
+        $target.parents('.nav-tabs').find('.active').removeClass('active');
+        $target.parent().addClass('active');
+
+        this.$tabContent.hide().eq(index).show();
+
+        this.$tabWrap.removeClass('fade');
     }
 });
 

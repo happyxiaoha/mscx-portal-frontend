@@ -100,18 +100,18 @@
 }
 .erweimaImg .saomiao {
     background: #439cd9 url(../../images/pay/saomiao.png)20px center no-repeat;
-    width: 120px;
+    width: 200px;
     font-size: 14px;
     height: 40px;
     padding-left: 80px;
-    padding-top: 10px;
+    padding-top: 6px;
 }
 a.wx-result-btn {
     float: right;
     display: inline-block;
-    height: 30px;
-    line-height: 30px;
-    padding: 8px;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 8px;
     color: #fff;
     margin: 20px;
 }

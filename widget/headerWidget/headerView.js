@@ -11,7 +11,7 @@ var menuList = [
     },
     {
         name: '交易广场',
-        url: mscxPage.urlConfig.apiPage,
+        url: mscxPage.urlConfig.sourcesPage,
         key: 'sources'
     },
     {

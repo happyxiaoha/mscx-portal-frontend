@@ -171,6 +171,10 @@ input[type=search] {
     display: none!important
 }
 
+.nav-tabs>li>a {
+    margin-right: 0;
+}
+
 .ns-extend {
     font-family: "Microsoft YaHei","-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif
 }
@@ -2255,7 +2259,8 @@ ul.pagination>li.active>a {
 
 .ns-apiDetailComponent .ns-apiDetailBottom .nav-tabs>li.active>a,.ns-apiDetailComponent .ns-apiDetailBottom .nav-tabs>li.active>a:focus,.ns-apiDetailComponent .ns-apiDetailBottom .nav-tabs>li.active>a:hover {
     border-radius: 0;
-    border-top-color: transparent
+    border-top-color: transparent;
+    margin-right: 0;
 }
 
 .ns-apiDetailComponent .ns-apiDetailBottom .tab-pane {

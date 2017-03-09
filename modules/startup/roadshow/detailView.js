@@ -47,6 +47,8 @@ var view = Backbone.View.extend({
         this.$tabContent = this.$('.tab-pane');
         this.$tabWrap = this.$('.tab-content');
         this.$followBtn = this.$('#followBtn');
+
+        this.$followBtn.text(this.attentionFlag ? '取消关注' : '关注');
     },
     selectTab: function(event) {
         event.preventDefault();

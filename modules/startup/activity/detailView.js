@@ -62,6 +62,9 @@ var view = Backbone.View.extend({
 
         this.$followBtn = this.$('#followBtn');
         this.$signBtn = this.$('#signBtn');
+
+        this.$followBtn.text(this.attentionFlag ? '取消关注' : '关注');
+        this.$signBtn.text(this.signFlag ? '取消报名' : '报名');
     },
     // 关注或取消关注
     follow: function() {

@@ -4,41 +4,47 @@
             <table>
                 <thead>
                 <tr>
-                    <th width="20%">API名称</th>
-                    <th width="50%">API描述</th>
-                    <th width="15%">关注时间</th>
-                    <th width="15%">操作</th>
+                    <th width="20%">路演名称</th>
+                    <th width="10%">行业领域</th>
+                    <th width="15%">融资额度</th>
+                    <th width="15%">项目阶段</th>
+                    <th width="10%">关注日期</th>
+                    <th width="10%"> 关注总次数</th>
+                    <th width="20%">操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td colspan="4">暂无数据</td>
+                    <td colspan="7">暂无数据</td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div id="followApi" class="page-area fr"></div>
+        <div id="followRoad" class="page-area fr"></div>
     </div>
 </div>
 
-<script id="followApiList" type="template">
-    <% _.each(followApiList, function (fitem) { %>
-    <tr attrId="<%=fitem.apiServiceId%>">
+<script id="followRoadList" type="template">
+    <% _.each(followRoadList, function (fitem) { %>
+    <tr>
         <%if(fitem.status == '0') {%>
-        <td><a target="_blank" href="./api.html?detail/<%=fitem.apiServiceId%>"><%=fitem.apiServiceCName%></a></td>
+        <td><a target="_blank" href="./startup.html#roadshow/detail/<%=fitem.id%>"><%=fitem.roadName%></a></td>
         <%}else{%>
-        <td><%=fitem.apiServiceCName%></td>
+        <td><%=fitem.roadName%></td>
         <%}%>
-        <td><%=fitem.description%></td>
+        <td><%=fitem.tradeField%></td>
+        <td><%=fitem.financingLimit%></td>
+        <td><%=fitem.projectStage%></td>
         <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></td>
+        <td><%=fitem.attentionCount%>
         <td>
-            <a class="cancelFollow" href="javascript:;">取消关注</a>
+            <a class="cancelFollow" href="javascript:;" data-id="<%=fitem.id%>">取消关注</a>
         </td>
     </tr>
     <% }); %>
-    <%if(followApiList.length == 0){%>
+    <%if(followRoadList.length == 0){%>
     <tr>
-        <td colspan="4">暂无数据</td>
+        <td colspan="7">暂无数据</td>
     </tr>
     <%}%>
 </script>

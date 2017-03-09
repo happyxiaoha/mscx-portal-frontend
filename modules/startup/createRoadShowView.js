@@ -256,14 +256,15 @@ var createActivityView = Backbone.View.extend({
         this.checkValidateSelf();
         if(!$('.img-error').is(":visible") && !$('.tag-error').is(":visible")) {
             var obj = $('#publishRoadShow').serializeObject();
+            var tags = this.model.get('tags').replace(',','，');
+            this.model.set('tags',tags);
             this.model.set('financingLimit',obj.financingLimit);
             this.model.set('financingType',obj.financingType);
             this.model.set('projectStage',obj.projectStage);
             this.model.set('roadDescription',obj.roadDescription);
             this.model.set('roadName',obj.roadName);
             this.model.set('tradeField',obj.tradeField);
-            this.model.save({
-                type: 'POST',
+            this.model.save({},{
                 success: function () {
                     layer.msg('已提交审核！');
                     setTimeout(function () {

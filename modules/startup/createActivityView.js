@@ -210,7 +210,7 @@ var createActivityView = Backbone.View.extend({
             this.model.set('signStartTime',$('#signTime').data('daterangepicker').startDate.format('YYYY-MM-DD'));
             this.model.set('signEndTime',$('#signTime').data('daterangepicker').endDate.format('YYYY-MM-DD'));
 
-            this.model.save({
+            this.model.save({},{
                 type: 'POST',
                 success: function () {
                     layer.msg('已提交审核！');

@@ -28,20 +28,20 @@ var Routes =  Backbone.Router.extend({
     roadshowDetailView: function(id) {
         var view = require('startup/roadshow/detailView.js');
 
-        var detailView = mscxPage.views['roadshowDetailViewObj'];
+        var detailView = mscxPage.views['roadshowDetailView'];
         detailView && detailView.undelegateEvents() && detailView.stopListening();
 
-        mscxPage.views['roadshowDetailViewObj'] = new view({
+        mscxPage.views['roadshowDetailView'] = new view({
             id: id
         });
     },
     activityDetailView: function(id) {
         var view = require('startup/activity/detailView.js');
 
-        var detailView = mscxPage.views['activityDetailViewObj'];
+        var detailView = mscxPage.views['activityDetailView'];
         detailView && detailView.undelegateEvents() && detailView.stopListening();
 
-        mscxPage.views['activityDetailViewObj'] = new view({
+        mscxPage.views['activityDetailView'] = new view({
             id: id
         });
     },

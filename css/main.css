@@ -15,7 +15,8 @@ dd,h1,h2,h3,h4,h5,h6,label,legend {
 }
 
 address,button,input,legend,select,textarea {
-    line-height: inherit
+    line-height: inherit;
+    outline: none;
 }
 
 label,output {
@@ -65,7 +66,8 @@ html {
 }
 
 *,::after,::before {
-    box-sizing: inherit
+    box-sizing: inherit;
+    outline: 0 !important;
 }
 
 @-ms-viewport {
@@ -161,6 +163,7 @@ input[type=search] {
 
 .checkbox input[type=checkbox],.checkbox-inline input[type=checkbox],.radio input[type=radio],.radio-inline input[type=radio] {
     margin-top: 0;
+    position: initial;
 }
 
 [hidden] {
@@ -2028,15 +2031,17 @@ ul.pagination>li.active>a {
 .ns-apiDetailComponent .media-object {
     width: 178px;
     height: 178px;
-    line-height: 178px;
     border: 1px solid #e6e6e6;
     text-align: center;
-    vertical-align: middle
+    vertical-align: middle;
+    display: table-cell;
+    padding: 0 10px;
 }
 
 .ns-apiDetailComponent .media-object img {
-    width: 90%;
-    height: auto
+    width: 150px;
+    height: auto;
+    vertical-align: middle;
 }
 
 .ns-apiDetailComponent .media-left,.ns-apiDetailComponent .media>.pull-left {

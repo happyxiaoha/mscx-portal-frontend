@@ -4,8 +4,8 @@
         <div class="media">
             <div class="media-body">
                 <a href="#api/detail/<%= item.id %>" class="h1"><%= item.name %></a>
-                <p class="info">网络类型：<%= item.dataDescription %></p>
-                <p class="info">所属单位：<%= item.dataUsage %></p>
+                <p class="info">网络类型：<%= item.netType %></p>
+                <p class="info">所属单位：<%= item.department %></p>
                 <div class="media-body-footer">
                     <div class="footerItem">需求用户：<span class="keywordType2"><%= item.reqUser %></span></div>
                     <div class="footerItem">发布日期：<span class="keywordType2"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span></div>

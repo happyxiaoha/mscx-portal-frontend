@@ -5,7 +5,7 @@
                 <div class="col-md-12">
                     <ol class="breadcrumb">
                         <li><a href="demand.html">需求大厅</a></li>
-                        <li><a href="#data">数据报告需求</a></li>
+                        <li><a href="#data">数据供给需求</a></li>
                         <li class="active"><%= data.name %></li>
                     </ol>
                 </div>
@@ -17,7 +17,7 @@
                     <div class="wdHead">
                         <h1><%= data.name %></h1>
                         <h3>访问量：<%= data.pageviewAmount %> &nbsp;&nbsp;&nbsp;&nbsp;关注量：<%= data.focusAmount %></h3>
-                        <button type="button" id="follow" class="btn btn-active btn-follow">
+                        <button type="button" id="follow" class="btn btn-follow">
                         <% if(data.flag == 0){ %>
                         关注
                         <% }else { %>

@@ -8,7 +8,9 @@ var mainView = require('../modules/main/mainView.js');
 require('../css/base.css');
 
 $(function() {
-    new header();
+    new header({
+        id: 'index'
+    });
     new footer();
     new mainView();
 });

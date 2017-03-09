@@ -100,7 +100,111 @@
     </div>
 </div>
 <script id="activityType" type="template">
+    <%if(typeId){%>
+    <% _.each(activityTypeList, function (titem) { %>
+    <label class="fl"><input type="radio" id="t<%=titem.id%>" value="<%=titem.id%>" name="type" <%if(titem.id == typeId){%>checked="true"<%}%>><%=titem.dictName%></label>
+    <% }); %>
+    <%}else {%>
     <% _.each(activityTypeList, function (titem) { %>
     <label class="fl"><input type="radio" id="t<%=titem.id%>" value="<%=titem.id%>" name="type" <%if(titem.checked){%>checked="true"<%}%>><%=titem.dictName%></label>
     <% }); %>
+    <%}%>
+</script>
+<script id="activityTemps" type="template">
+    <div class="ReleaseInputs labelleft ReleaseDown">
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>活动名称：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入活动名称" name="name" value="<%=res.name%>" >
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>活动简介：</p>
+            <div class="fl R_right">
+                <p>
+                    <textarea cols="30" rows="10" placeholder="请输入活动简介" name ="description"><%=res.description%></textarea>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>活动类型：</p>
+            <div class="fl R_right">
+                <p id="activityTypeRadio" class="radio-list">
+
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>发起人：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入发起人" name="initiator" value="<%=res.initiator%>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>报名地址：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入报名地址" name="signAddress" value="<%=res.signAddress%>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>报名时间：</p>
+            <div class="fl R_right">
+                <p>
+                    <input id="signTime" type="text" placeholder="请输入报名时间" name="signTime" value="<%=res.signStartTime ? new Date(res.signStartTime).format('yyyy-MM-dd')%> -  <%=new Date(res.signEndTime).format('yyyy-MM-dd') : ''%>" readonly>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>举办地址：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" placeholder="请输入举办地址" name="holdAddress" value="<%=res.holdAddress%>">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>举办时间：</p>
+            <div class="fl R_right">
+                <p>
+                    <input id="holdTime" type="text" placeholder="请输入举办时间" name="holdTime" value="<%=res.holdStartTime ? new Date(res.holdStartTime).format('yyyy-MM-dd')%> -  <%=new Date(res.holdEndTime).format('yyyy-MM-dd') : ''%>" readonly>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>活动详情：</p>
+            <div class="fl R_right">
+                <p>
+                    <textarea cols="30" rows="10" placeholder="请输入活动详情" name ="detail"><%=res.detail%></textarea>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>缩略图：</p>
+            <div class="fl R_right">
+                <p class="allInfoImg">
+                    <img src="<%=res.image%>" alt="">
+                </p>
+                <p class="mes-des">像素要求：300*200</p>
+            </div>
+            <label class="img-error">请上传缩略图</label>
+        </div>
+
+        <div class="R_Btns">
+            <!-- <button class="bgBlue">返回</button> -->
+            <%if(res.status == '5'){%>
+            <input type="submit" class="bgBlue" value="修改">
+            <input type="submit" class="bgBlue" value="暂存" style="background-color: #5cb981;">
+            <%}%>
+            <%if(!res.status){%>
+            <input type="submit" class="bgBlue" value="发布">
+            <input type="submit" class="bgBlue" value="暂存" style="background-color: #5cb981;">
+            <%}%>
+        </div>
+    </div>
 </script>

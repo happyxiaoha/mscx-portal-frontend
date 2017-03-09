@@ -3,80 +3,69 @@
  */
 
 var commonTemplate = require('html!./incubatorCommon.html');
-var template = require('html!./incubator.html');
+var template = require('html!./myActivity.html');
 require('./incubator.css');
 require('util');
 
-var myPublicRModel = Backbone.Model.extend({
-    url: mscxPage.request.roadshow + 'roadshow/getRoadInfoByUserId.do'
-});
-var closeModel = Backbone.Model.extend({
-    url: mscxPage.request.roadshow + 'roadshow/closeRoadByRoadId.do'
+var myPublicAModel = Backbone.Model.extend({
+    url: mscxPage.request.activity + 'activity/getActivityByUserId.do'
 });
 
 var statusMes = ['审核通过','已关闭','审核中','审核拒绝','已删除','暂存'];
 
-var incubatorView = Backbone.View.extend({
+var activityView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
         pageSize: 10,
         pageNum: 1
     },
     events: {
-        'click .closeRoadShow': 'closeRoadShow'
+        'click .closeActivity': 'closeActivity'
     },
     initialize: function() {
         var that = this;
         this.$el.addClass('user-center-tap');
-        this.$el.html(_.template(commonTemplate)({name:'myIncubator'}));
+        this.$el.html(_.template(commonTemplate)({name:'myActivity'}));
         this.$el.find('#incubatorInfo').html(template);
-        this.model = new myPublicRModel();
+        this.model = new myPublicAModel();
         this.model.on('change',function () {
             that.render();
         });
         this.fetchPublic();
     },
     fetchPublic: function () {
-        this.model.fetch({data:{pageSize:this.pagObj.pageSize,page:this.pagObj.pageNum}});
+        this.model.fetch({pageSize:this.pagObj.pageSize,pageNum:this.pagObj.pageNum});
     },
     render: function () {
         var that = this;
         var res = this.model.get('result');
-        var publishRoadShowList = [], page = {};
-        var templates = _.template($('#incubatorTemps').html());
+        var publishActivityList = [], page = {};
+        var templates = _.template($('#activityTemps').html());
         if(res){
-            publishRoadShowList = res.list;
+            publishActivityList = res.list;
             var page = res.page || {totalPage:0,currentPage:0,totalPage:0};
             this.pagObj.totalPage = page.totalPage;
             this.pagObj.pageNum = page.currentPage;
         }
-        this.$el.find('tbody').html(templates({publishRoadShowList:publishRoadShowList,statusMes: statusMes}));
+        this.$el.find('tbody').html(templates({publishActivityList:publishActivityList,statusMes: statusMes}));
         laypage({
-            cont: 'myInPage',
+            cont: 'myActivityPage',
             pages: page.totalPage,
             skip: true,
             curr: this.pagObj.pageNum || 1,
             jump: function(obj, first){
                 if(!first){
                     that.pagObj.pageNum = obj.curr;
-                    that.fetchPublic();
+                    that.reloadPage();
                 }
             }
         });
     },
-    closeRoadShow: function (e) {
-        var that = this;
-        var sId = $(e.target).data('id');
-        new closeModel.fetch({
-            data: {
-                roadId: sId
-            },
-            success: function () {
-                layer.mes('关闭成功!');
-                that.fetchPublic();
-            }
-        })
+    closeActivity: function (e) {
+        var sid = $(e.target).data('id');
+
+        return false;
     }
 });
 
-module.exports = incubatorView;
+module.exports = activityView;

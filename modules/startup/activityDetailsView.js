@@ -2,28 +2,30 @@
 
 var template = require('html!./activityDetails.html');
 require('./createStartup.css');
+require('util');
 
-var activityTypeModel = Backbone.Model.extend({
-    url: mscxPage.request.activity + 'tags/getAllActivity.do'
+var activityDesModel = Backbone.Model.extend({
+    url: mscxPage.request.activity + 'activity/getActivityById.do'
 });
 
 var createActivityView = Backbone.View.extend({
     el: mscxPage.domEl.startupEl,
     initialize: function() {
+        var that = this;
         this.$el.data('isLogin',1);
-
-
-        this.$el.html(template);
-        this.buildDate();
-        this.model = new addActivityModel();
-        this.activityTypeModel = new activityTypeModel();
-        this.activityTypeModel.fetch();
-        this.activityTypeModel.on('change',function () {
-            that.buildActivityType();
-            that.renderFormLocation();
+        this.model = new activityDesModel();
+        this.model.fetch({
+            data: {
+                id: this.id
+            }
         });
-        $('#publishActivity').validate(that.validateConfig());
-        return this;
+        this.model.on('change',function () {
+            that.render();
+        });
+    },
+    render: function () {
+        var temps = _.template(template);
+        this.$el.html(temps({res:this.model.get('result').detail}));
     }
 });
 

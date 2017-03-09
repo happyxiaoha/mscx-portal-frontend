@@ -141,7 +141,7 @@
             <p class="fl R_left"><i class="need">*</i>路演描述：</p>
             <div class="fl R_right">
                 <p>
-                    <textarea cols="30" rows="10" placeholder="请输入活动简介" name ="roadDescription"><%res.roadDescription%></textarea>
+                    <textarea cols="30" rows="10" placeholder="请输入活动简介" name ="roadDescription"><%=res.roadDescription%></textarea>
                 </p>
             </div>
         </div>
@@ -230,8 +230,14 @@
         </div>
         <div class="R_Btns">
             <!-- <button class="bgBlue">返回</button> -->
+            <%if(res.status == '5'){%>
+            <input type="submit" class="bgBlue" value="修改">
+            <input type="submit" class="bgBlue" value="暂存" style="background-color: #5cb981;">
+            <%}%>
+            <%if(!res.status){%>
             <input type="submit" class="bgBlue" value="发布">
             <input type="submit" class="bgBlue" value="暂存" style="background-color: #5cb981;">
+            <%}%>
         </div>
     </div>
 </script>

@@ -2,13 +2,13 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var commonTemplate = require('html!./apiCommon.html');
-var template = require('html!./followApi.html');
-require('./api.css');
+var commonTemplate = require('html!./incubatorCommon.html');
+var template = require('html!./followRoadShow.html');
+require('./incubator.css');
 require('util');
 
-var myPublicModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/getMyPublishedApi.do'
+var myFollowRoadShow = Backbone.Model.extend({
+    url: mscxPage.request.roadshow + 'roadshow/getAttentionRoadByUserId.do'
 });
 var applyApiListModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'api/getSelfApiList.do'
@@ -36,7 +36,7 @@ var followListView = Backbone.View.extend({
     },
     initialize: function() {
         var that = this;
-        this.$el.html(_.template(commonTemplate)({name:'follow'}));
+        this.$el.html(_.template(commonTemplate)({name:'followIncubator'}));
         this.model = new followApiListModel();
         this.model.on('change',function () {
             that.render();

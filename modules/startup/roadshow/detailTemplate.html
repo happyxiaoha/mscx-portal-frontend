@@ -23,7 +23,7 @@
                                 <%= data.roadName %>
                             </span>
                             <div class="tags">
-                                <% data.tags && data.tags.split(',').forEach(function(item){ %>
+                                <% data.tags && data.tags.split('，').forEach(function(item){ %>
                                 <span><%= item %></span>
                                 <% }) %>
                             </div>
@@ -35,6 +35,7 @@
                             <div class="footerItem">融资类型：<span class="keywordType2"><%= data.financingType %></span></div>
                             <div class="footerItem">融资额度：<span class="keywordType2"><%= data.financingLimit %></span></div>
                             <div class="footerItem">项目阶段：<span class="keywordType2"><%= data.projectStage %></span></div>
+                            <button type="button" id="followBtn" class="btn btn-sm btn-warning" style="position: absolute;top: 10px;right: 100px">关注</button>
                         </div>
                     </div>
                 </div>
@@ -50,21 +51,21 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="home" style="padding:20px;border:1px solid #e8e8e8;border-top:none;">
                     <div class="container-fluid">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <img src="<%= data.projectDescription %>" alt="" style="width: 100%;height: 100%;">
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="profile" style="padding:20px;border:1px solid #e8e8e8;border-top:none;">
                     <div class="container-fluid">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <img src="<%= data.teamImg %>" alt="" style="width: 100%;height: 100%;">
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="messages" style="padding:20px;border:1px solid #e8e8e8;border-top:none;">
                     <div class="container-fluid">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <img src="<%= data.operationImg %>" alt="" style="width: 100%;height: 100%;">
                         </div>
                     </div>

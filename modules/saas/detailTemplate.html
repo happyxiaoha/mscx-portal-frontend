@@ -101,7 +101,6 @@
                                     <%if(data.status == '0'){%>
                                     <div class="submitBtns">
                                         <button class="btn" id="example">查看演示</button>
-                                        <button id="attention" class="btn"><%- data.attentionFlag ? '取消关注' : '关注'%></button>
                                     </div>
                                     <%}%>
                                 </div>
@@ -112,7 +111,10 @@
                             <div class="tabs">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li role="presentation" class="active">
-                                        <a href="javascript:;">详细信息</a>
+                                        <a href="javascript:;" data-index="0">详细信息</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="javascript:;" data-index="1">版本特性</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
@@ -138,6 +140,13 @@
                                                     </li>
                                                     <% }; %>
                                                 </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane bgWhite">
+                                        <div class="container-fluid">
+                                            <div class="col-md-6">
+                                            <%= data.versionFeatures %>
                                             </div>
                                         </div>
                                     </div>

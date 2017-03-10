@@ -244,8 +244,9 @@ var createActivityView = Backbone.View.extend({
                 }
                 that.model.set('thumbnailImg',src.imageUri);
                 //that.model.set('imageKey',src.imageKey);
-                $($('.allInfoImg')[index]).find('img').attr('src',src.imageUri);
-                $formArea.find('.img-error').hide();
+                $('.allInfoImg').eq(index).find('img').attr('src',src.imageUri)
+                    .parents('.ReleaseList').find('.img-error').hide();
+                // $formArea.find('.img-error').hide();
             },
             error: function() {
                 $formArea.find('.img-error').show();

@@ -35,7 +35,8 @@ var createActivityView = Backbone.View.extend({
                     required: true
                 },
                 description: {
-                    required: true
+                    required: true,
+                    maxlength: 1000
                 },
                 initiator: {
                     required: true

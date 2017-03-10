@@ -43,7 +43,8 @@ var createActivityView = Backbone.View.extend({
                     required: true
                 },
                 roadDescription: {
-                    required: true
+                    required: true,
+                    maxlength: 1000
                 },
                 financingType: {
                     required: true

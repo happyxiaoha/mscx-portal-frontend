@@ -32,7 +32,7 @@
         <%}else{%>
         <td><%=fitem.name%></td>
         <%}%>
-        <td><%=fitem.tradeField%></td>
+        <td><%=fitem.initiator%></td>
         <td><%=fitem.holdStartTime ? new Date(fitem.holdStartTime).format('yyyy-MM-dd') +'-'+ new Date(fitem.holdEndTime).format('yyyy-MM-dd') : '-'%></td>
         <td><%=fitem.viewCount%></td>
         <td><%=fitem.holdAddress%></td>

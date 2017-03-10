@@ -6,8 +6,8 @@
 }
 
 .ns-list-item .media .media-object {
-    width: 266px;
-    height: 200px
+    width: 150px;
+    /*height: 200px*/
 }
 
 .ns-list-item .media .media-object.large {
@@ -16,7 +16,8 @@
 }
 
 .ns-list-item .media-left {
-    padding-right: 0
+    padding: 0 20px;
+    vertical-align: middle;
 }
 
 .ns-list-item .media-body {

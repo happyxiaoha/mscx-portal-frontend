@@ -120,7 +120,7 @@
 .add-api-list ul li span {width: 70px;  display: inline-block;  float: left;}
 .add-api-list ul li span.api-name-error {color: red;margin-right: 5px;float: right !important;display: none;width: auto !important;}
 .R_right label a{
-    color: #0ab7ef;
+    color: #f90;
 }
 .category-block-area {overflow: hidden;font-size: 12px;}
 .category-block-area >p {  height: 30px; line-height: 30px; margin-right: 10px;  float: left;  overflow: hidden;    font-weight: bold;}

@@ -89,6 +89,14 @@ var activityView = Backbone.View.extend({
         var mes = $(e.target).data('msg');
         layer.alert(mes,{title:'拒绝原因'});
         return false;
+    },
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
     }
 });
 

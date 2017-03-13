@@ -60,6 +60,14 @@ var incubatorView = Backbone.View.extend({
                 }
             }
         });
+    },
+    reloadPage: function () {
+        this.model.fetch({
+            data: {
+                pageSize: this.pagObj.pageSize,
+                page: this.pagObj.pageNum
+            }
+        });
     }
 });
 

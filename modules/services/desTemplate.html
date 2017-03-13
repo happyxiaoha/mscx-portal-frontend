@@ -112,6 +112,12 @@
                 </p>
             </div>
             <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>是否落地：</p>
+                <p>
+                    <%= data && data.isDataCallBack == '1' ? '是' : '否' %>
+                </p>
+            </div>
+            <div class="clearfix ReleaseList">
             <div class="D_table " <%if(data.chargeType=='01'){%>style="display: none;"<%}%> >
                 <table >
                     <thead>

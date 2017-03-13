@@ -65,6 +65,7 @@ var userPasswordView = Backbone.View.extend({
         }
     },
     doSave: function () {
+        var that = this;
         this.model.save({},{
             type: 'POST',
             success: function () {
@@ -72,6 +73,9 @@ var userPasswordView = Backbone.View.extend({
                 setTimeout(function () {
                     location.href = '#info';
                 },2000);
+            },
+            error: function() {
+                that.$('input[type="submit"]').removeAttr('disabled');
             }
         });
     },

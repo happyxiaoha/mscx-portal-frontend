@@ -99,9 +99,10 @@
     color: #00aff6;
 }
 .shopCar li .orderList a p{
-    line-height: 112px;
+    /*line-height: 112px;*/
     float: left;
     width: 180px;
+    margin-top: 43px;
     color: #00aff6;
 }
 

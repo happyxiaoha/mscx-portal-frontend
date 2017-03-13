@@ -20,12 +20,12 @@ var menuList = [
         url: 'api.html'
     },
     {
-        name: '微服务',
+        name: '微应用',
         key: 'services',
         url: 'services.html'
     },
     {
-        name: 'SaaS应用',
+        name: 'SaaS服务',
         key: 'saas',
         url: 'saas.html'
     }

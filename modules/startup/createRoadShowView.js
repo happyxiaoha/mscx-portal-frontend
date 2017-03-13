@@ -261,6 +261,8 @@ var createActivityView = Backbone.View.extend({
         this.checkValidateSelf();
         if(!$('.img-error').is(":visible") && !$('.tag-error').is(":visible")) {
             var obj = $('#publishRoadShow').serializeObject();
+            var status = this.model.get('status');
+            var msg = status == 2 ? '已提交审核！' : '已提交暂存！';
             var tags = this.model.get('tags').replace(',','，');
             this.model.set('tags',tags);
             this.model.set('financingLimit', +obj.financingLimit);
@@ -271,7 +273,7 @@ var createActivityView = Backbone.View.extend({
             this.model.set('tradeField',obj.tradeField);
             this.model.save({},{
                 success: function () {
-                    layer.msg('已提交审核！');
+                    layer.msg(msg);
                     setTimeout(function () {
                         location.href = 'userInfo.html#incubator';
                     }, 1000);

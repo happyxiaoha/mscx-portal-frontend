@@ -156,6 +156,13 @@
                     <label><input type="radio" name="chargeType" value="02" id="ct02" <%if(data.detail && data.detail.chargeType=='02'){%>checked<%}%>>收费</label>
                 </div>
             </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>是否落地：</p>
+                <div class="fl R_right charge-type-radio">
+                    <label><input type="radio" name="isDataCallBack" value="1" <%if(!data.detail || data.detail.isDataCallBack=='1'){%>checked<%}%>>是</label>
+                    <label><input type="radio" name="isDataCallBack" value="0" <%if(data.detail && data.detail.isDataCallBack=='0'){%>checked<%}%>>否</label>
+                </div>
+            </div>
             <div class="D_table server-package" <%if(!data.detail || data.detail.chargeType=='01'){%>style="display: none;"<%}%>>
                 <table >
                     <thead>

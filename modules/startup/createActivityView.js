@@ -90,12 +90,12 @@ var createActivityView = Backbone.View.extend({
             return resDate;
         }
         var sinOptions = {
-            minDate: lastDay(),
-            startDate: lastDay()
+            minDate: new Date(),
+            startDate: new Date()
         };
         if(this.id){
             sinOptions = {
-                minDate: lastDay(),
+                minDate: new Date(),
                 maxDate: new Date(res.holdStartTime),
                 startDate: new Date(res.signStartTime),
                 endDate: new Date(res.signEndTime)

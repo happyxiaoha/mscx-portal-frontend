@@ -248,7 +248,8 @@ var shopCarView = Backbone.View.extend({
         e.stopPropagation();
     },
     toPay: function (e) {
-        var $this = $(e.target).is('button') ? $(e.target) : $(e.target).parent();
+        // var $this = $(e.target).is('button') ? $(e.target) : $(e.target).parent();
+        var $this = $(e.target);
         if(!$this.hasClass('disabled')){
             new getOrderIdModel().fetch({
                 data: {
@@ -271,6 +272,8 @@ var shopCarView = Backbone.View.extend({
                     }
                 }
             });
+        }else {
+            layer.msg('请选择一个资源');
         }
     },
     removeCarNum: function (e) {

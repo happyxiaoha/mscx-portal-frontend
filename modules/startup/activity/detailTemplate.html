@@ -26,7 +26,9 @@
                         <p class="info">报名时间：<%= new Date(data.signStartTime).format('yyyy-MM-dd') %></p>
                         <div class="media-body-footer">
                             <div class="footerItem">地址：<%= data.holdAddress %></div>
+                            <% if(data.signStartTime > new Date().getTime()){ %>
                             <button type="button" id="signBtn" class="btn btn-sm btn-warning" style="position: absolute;top: 10px;right: 190px;border: 0;">报名</button>
+                            <% } %>
                             <button type="button" id="followBtn" class="btn btn-sm btn-warning" style="position: absolute;top: 10px;right: 100px;border: 0;" >关注</button>
                         </div>
                     </div>

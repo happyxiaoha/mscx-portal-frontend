@@ -77,6 +77,7 @@
 .ReleaseInputs{padding: 24px 36px;font-size: 14px;}
 .ReleaseInputs .ReleaseList{margin-bottom: 15px;}
 .ReleaseInputs .ReleaseList .R_left{color:#8b8b8b;line-height: 32px;width: 120px;margin-right: 6px;text-align: right; }
+.ReleaseInputs .ReleaseList .R_right{line-height: 32px;}
 .ReleaseInputs .ReleaseList .R_right input[type="text"]{padding:4px 6px;border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;}
 .ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 630px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;font-size: 14px;}
 .R_Btns{text-align: center;padding: 15px 0 10px;}

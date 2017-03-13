@@ -212,14 +212,14 @@
     overflow: hidden;
 }
 #uploadDemoIcon1.icon-form {
-    top: 591px;
+    top: 614px;
 }
 #uploadDemoIcon2.icon-form {
-    top: 591px;
+    top: 614px;
     left: 238px;
 }
 #uploadDemoIcon3.icon-form {
-    top: 591px;
+    top: 614px;
     left: 315px;
 }
 .icon-form input {opacity: 0;}
@@ -327,5 +327,6 @@
 .server-url-area ul li input[type="text"]{ width: 340px;float: left;}
 .server-url-area ul li textarea{width: 320px;height: 80px;resize: none;}
 .input-mes {margin: 10px 0 0 126px;font-size: 12px;color: #999;}
+#publishForm .input-mes {width: 80%;}
 .server-identify-error {float: right; color: red; margin-left: 20px; line-height: 30px;}
 /*end*/

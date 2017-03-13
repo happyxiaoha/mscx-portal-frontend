@@ -49,6 +49,9 @@ var mainView = Backbone.View.extend({
         else if(!messageArea) {
             layer.alert('留言内容不能为空',{icon:2});
         }
+        else if(messageArea.length > 500) {
+            layer.alert('留言内容长度不能超过500',{icon:2});
+        }
         else {
             new sentMessageModel().save(
                 {

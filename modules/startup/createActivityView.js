@@ -32,29 +32,34 @@ var createActivityView = Backbone.View.extend({
         return {
             rules: {
                 name: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 description: {
                     required: true,
                     maxlength: 1000
                 },
                 initiator: {
-                    required: true
+                    required: true,
+                    maxlength: 30
                 },
                 signAddress: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 signTime: {
                     required: true
                 },
                 holdAddress: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 holdTime: {
                     required: true
                 },
                 detail: {
-                    required: true
+                    required: true,
+                    maxlength: 1000
                 }
             },
             submitHandler: function () {

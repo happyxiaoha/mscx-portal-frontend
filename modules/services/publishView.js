@@ -129,6 +129,7 @@ var createDemandView = Backbone.View.extend({
                 },
                 uri: {
                     required: true,
+                    isUrl: true,
                     maxlength: 255
                 },
                 description: {
@@ -282,6 +283,9 @@ var createDemandView = Backbone.View.extend({
         this.$uploadDemoIcon1 = this.$('#uploadDemoIcon1');
         this.$uploadDemoIcon2 = this.$('#uploadDemoIcon2');
         this.$uploadDemoIcon3 = this.$('#uploadDemoIcon3');
+        $.validator.addMethod('isUrl', function(value, element) {
+            return this.optional(element) || (value.substring(0,1) == '/');
+        }, '接入URL必须以“/”开头');
         this.$form.validate(this.validateConfig());
         this.serverUrlList = detail.result ? detail.result.url : [];
         this.currentCategory = this.$('#selectCategory').val();

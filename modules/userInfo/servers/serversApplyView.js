@@ -8,9 +8,8 @@ require('./servers.css');
 require('util');
 
 var applyListModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'weiApp/getSelfWeiAppList.do'
+    url:  'order/getSelfWeiAppListWithCallback.do'
 });
-
 // 申请的服务
 var myApplyListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,

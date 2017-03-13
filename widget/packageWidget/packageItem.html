@@ -3,8 +3,14 @@
         <li>
             <label>
                 <span>计费方式：</span>
-                <p class="mes">按时间</p>
-                <input type="hidden" name="chargeType" value="04" />
+                <%if(res.isOth){%>
+                <p class="mes"><%=res.chargeType=='05'? '按次数': '按时间'%></p>
+                <%}else{%>
+                <select name="chargeType" class="charge-type">
+                    <option value="05" <%if(res && res.chargeType=='05'){%>selected="selected"<%}%>>按次数</option>
+                    <option value="04" <%if(res && res.chargeType=='04'){%>selected="selected"<%}%>>按时间</option>
+                </select>
+                <%}%>
             </label>
         </li>
         <li>
@@ -29,9 +35,11 @@
                     <span class="prePrice">天</span>
                 </label>
                 <p class="input-mes-server fl">价格大于等于0元，天数是大于1的整数</p>
+                <!--
                 <p class="input-mes-server-price fl">收入价格:<span class="earning-count">-</span>元/<span class="charge-count"><%=res && res.chargeCount%></span><span class="price-per">天</span>（套餐价格*<span class="earning-percent">-</span>%）</p>
                 <p class="input-mes-server-price fl">手续费:<span class="fee-count">-</span>元/<span class="charge-count"><%=res && res.chargeCount%></span><span class="price-per">天</span>（套餐价格*<span class="fee-percent">-</span>%）</p>
                 <%}%>
+                -->
             </label>
         </li>
         <li>

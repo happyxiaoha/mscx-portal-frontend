@@ -9,7 +9,8 @@ require('./packageItem.css');
 var view = Backbone.View.extend({
     events: {
         'blur #price': 'limitPriceFun',
-        'blur #chargeCount': 'disChargeCount'
+        'blur #chargeCount': 'disChargeCount',
+        'change .charge-type': 'doChooseType'
     },
     packageValidateConfig: function () {
         var that = this;
@@ -151,9 +152,6 @@ var view = Backbone.View.extend({
             else {
                 $($limitInput[0]).attr('disabled',false);
             }
-            if(!$this.hasClass('error') && sVal > 0){
-                this.displayFeeMes(sVal);
-            }
             $this = null;
             $limitInput = null;
         }
@@ -181,6 +179,19 @@ var view = Backbone.View.extend({
         }
         $('#serverChargePackage').validate(this.packageValidateConfig());
         this.buildData();
+    },
+    doChooseType: function () {
+        var sVal = $('.charge-type').val();
+        if(sVal == '04'){
+            $('.prePrice').html('月');
+            $('.limitPre').html('次');
+            $('.price-per').html('月');
+        }
+        else {
+            $('.limitPre').html('个月');
+            $('.prePrice').html('次');
+            $('.price-per').html('次');
+        }
     }
 });
 

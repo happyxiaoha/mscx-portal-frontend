@@ -103,7 +103,7 @@
 .img-error,.tag-error,.server-error,.package-error,.api-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
 .btn-primary {color: #FFF !important;}
 .add-price-list {display: none}
-.add-price-list ul li input.small {width: 80px;}
+.add-price-list ul li input.small {width: 80px!important;}
 .add-price-list ul li input[type="text"] { width: 320px;}
 .add-price-list ul li textarea {width: 320px;height: 80px;resize: none;}
 .add-price-list .ml20 {margin-left: 20px;}
@@ -120,7 +120,7 @@
 .add-api-list ul li span {width: 70px;  display: inline-block;  float: left;}
 .add-api-list ul li span.api-name-error {color: red;margin-right: 5px;float: right !important;display: none;width: auto !important;}
 .R_right label a{
-    color: #0ab7ef;
+    color: #f90;
 }
 .category-block-area {overflow: hidden;font-size: 12px;}
 .category-block-area >p {  height: 30px; line-height: 30px; margin-right: 10px;  float: left;  overflow: hidden;    font-weight: bold;}

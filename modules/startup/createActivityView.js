@@ -32,28 +32,34 @@ var createActivityView = Backbone.View.extend({
         return {
             rules: {
                 name: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 description: {
-                    required: true
+                    required: true,
+                    maxlength: 1000
                 },
                 initiator: {
-                    required: true
+                    required: true,
+                    maxlength: 30
                 },
                 signAddress: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 signTime: {
                     required: true
                 },
                 holdAddress: {
-                    required: true
+                    required: true,
+                    maxlength: 50
                 },
                 holdTime: {
                     required: true
                 },
                 detail: {
-                    required: true
+                    required: true,
+                    maxlength: 1000
                 }
             },
             submitHandler: function () {
@@ -199,6 +205,11 @@ var createActivityView = Backbone.View.extend({
         else {
             $('.img-error').hide();
             var obj = $('#publishActivity').serializeObject();
+            var status = this.model.get('status');
+            var msg = status == 2 ? '已提交审核！' : '已提交暂存！';
+            var holdTimeSplit = $('#holdTime').val().split(' - ');
+            var signTimeSplit = $('#signTime').val().split(' - ');
+
             this.model.set('name',obj.name);
             this.model.set('description',obj.description);
             this.model.set('detail',obj.detail);
@@ -206,15 +217,15 @@ var createActivityView = Backbone.View.extend({
             this.model.set('initiator',obj.initiator);
             this.model.set('signAddress',obj.signAddress);
             this.model.set('type',obj.type);
-            this.model.set('holdStartTime',$('#holdTime').data('daterangepicker').startDate.format('YYYY-MM-DD'));
-            this.model.set('holdEndTime',$('#holdTime').data('daterangepicker').endDate.format('YYYY-MM-DD'));
-            this.model.set('signStartTime',$('#signTime').data('daterangepicker').startDate.format('YYYY-MM-DD'));
-            this.model.set('signEndTime',$('#signTime').data('daterangepicker').endDate.format('YYYY-MM-DD'));
+            this.model.set('holdStartTime',holdTimeSplit[0]);
+            this.model.set('holdEndTime',holdTimeSplit[1]);
+            this.model.set('signStartTime',signTimeSplit[0]);
+            this.model.set('signEndTime',signTimeSplit[1]);
 
             this.model.save({},{
                 type: 'POST',
                 success: function () {
-                    layer.msg('已提交审核！');
+                    layer.msg(msg);
                     setTimeout(function () {
                         location.href = 'userInfo.html#myActivity';
                     }, 1000);

@@ -17,10 +17,19 @@ var view = Backbone.View.extend({
         this.$dataList = this.$('.data-list');
         this.$loadMore = this.$('.ns-list-item-more');
 
+        // 当前列表页分页使用无限append
+        this.appendFlag = false;
+
         return this;
     },
     render: function(model) {
         this.$el.removeClass('opacity0');
+
+        if(!this.appendFlag) {
+            this.$dataList.empty();
+        }else {
+            this.appendFlag = true;
+        }
 
         var result = model.toJSON().result || {};
         var serviceList = result.list || [];
@@ -38,10 +47,15 @@ var view = Backbone.View.extend({
         if(pageInfo.currentPage < pageInfo.totalPage) {
             this.$loadMore.removeClass('hide');
         }
+
+        if(serviceList.length < 1) {
+            this.$dataList.html('<div class="ns-list-item"><div class="media"><div class="media-body">没有符合查询条件的数据</div></div></div>');
+        }
     },
     loadNextPage: function() {
         this.$loadMore.addClass('hide');
         this.currentPage = this.currentPage + 1;
+        this.appendFlag = true;
         this.trigger('page', {
             page: this.currentPage,
             pageSize: 10

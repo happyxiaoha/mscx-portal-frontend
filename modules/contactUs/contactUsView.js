@@ -29,7 +29,8 @@ var mainView = Backbone.View.extend({
         var sName = $.trim($('#name').val()),
             sEmail = $.trim($('#email').val()),
             sPhone = $.trim($('#phone').val()),
-            messageArea = $.trim($('#messageArea').val());
+            messageArea = $.trim($('#messageArea').val()),
+            me = this;
         if(!sName) {
             layer.alert('姓名不能为空',{icon:2});
         }
@@ -58,6 +59,7 @@ var mainView = Backbone.View.extend({
                 },{
                     success: function () {
                         layer.msg('留言成功!');
+                        me.clearMessage();
                     }
                 });
         }

@@ -36,6 +36,10 @@ var view = Backbone.View.extend({
         var pageInfo = result.page || {};
         var me = this; 
 
+        if(serviceList.length < 1) {
+            this.$dataList.html('<div class="ns-list-item"><div class="media"><div class="media-body">没有符合查询条件的数据</div></div></div>');
+        }
+
         _.each(serviceList, function(item) {
             var view = new itemView({
                 model: item
@@ -49,9 +53,10 @@ var view = Backbone.View.extend({
     },
     loadNextPage: function() {
         this.$loadMore.addClass('hide');
+        this.currentPage = this.currentPage + 1;
         this.appendFlag = true;
         this.trigger('page', {
-            page: this.currentPage++,
+            page: this.currentPage,
             pageSize: 10
         })
     },

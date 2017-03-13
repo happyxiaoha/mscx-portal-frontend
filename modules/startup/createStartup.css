@@ -9,7 +9,7 @@
 .labelleft .ReleaseList .R_left{ width: 120px;}
 .downIcon .downSmalllBtn { top:10px;}
 .ReleaseInputs .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;padding: 4px 6px;}
-.ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 590px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;font-size: 14px;}
+.ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 570px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;font-size: 14px;}
 .R_inputs{width: 800px;padding-top: 9px;}
 .R_inputs label{display: inline-block;width: 114px;margin: 0 19px 19px 0;}
 .R_inputs label:nth-child(6n){margin-right: 0;}

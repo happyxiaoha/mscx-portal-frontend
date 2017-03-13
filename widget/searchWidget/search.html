@@ -144,7 +144,7 @@
             <% if(index == 10){ %>
             <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
             <% }%>
-            <dd><a href="javascript:;" data-type="fieldId" data-fieldId="<%= item.categoryId %>" rel="nofollow"><%= item.categoryName %></a></dd>
+            <dd><a href="javascript:;" data-type="fieldId" data-val="<%= item.categoryId %>" rel="nofollow"><%= item.categoryName %></a></dd>
         <% }) %>
         
     </dl>
@@ -162,7 +162,7 @@
             <% if(index == 10){ %>
             <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
             <% }%>
-            <dd><a href="javascript:;" data-type="stage" data-stage="<%= item.dictCode %>" rel="nofollow"><%= item.dictName %></a></dd>
+            <dd><a href="javascript:;" data-type="stage" data-val="<%= item.dictCode %>" rel="nofollow"><%= item.dictName %></a></dd>
         <% }) %>
         
     </dl>

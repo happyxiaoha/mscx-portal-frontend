@@ -102,11 +102,11 @@
 <script id="activityType" type="template">
     <%if(typeId){%>
     <% _.each(activityTypeList, function (titem) { %>
-    <label class="fl"><input type="radio" id="t<%=titem.id%>" value="<%=titem.id%>" name="type" <%if(titem.id == typeId){%>checked="true"<%}%>><%=titem.dictName%></label>
+    <label class="fl"><input type="radio" id="t<%=titem.id%>" value="<%=titem.dictCode%>" name="type" <%if(titem.dictCode == typeId){%>checked="true"<%}%>><%=titem.dictName%></label>
     <% }); %>
     <%}else {%>
     <% _.each(activityTypeList, function (titem) { %>
-    <label class="fl"><input type="radio" id="t<%=titem.id%>" value="<%=titem.id%>" name="type" <%if(titem.checked){%>checked="true"<%}%>><%=titem.dictName%></label>
+    <label class="fl"><input type="radio" id="t<%=titem.id%>" value="<%=titem.dictCode%>" name="type" <%if(titem.checked){%>checked="true"<%}%>><%=titem.dictName%></label>
     <% }); %>
     <%}%>
 </script>

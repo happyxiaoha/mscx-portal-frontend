@@ -40,17 +40,21 @@ var createActivityView = Backbone.View.extend({
         return {
             rules: {
                 roadName: {
-                    required: true
+                    required: true,
+                    maxlength: 200
                 },
                 roadDescription: {
-                    required: true
+                    required: true,
+                    maxlength: 1000
                 },
                 financingType: {
-                    required: true
+                    required: true,
+                    maxlength: 100
                 },
                 financingLimit: {
                     required: true,
-                    digits: true
+                    digits: true,
+                    maxlength: 10
                 }
             },
             messages: {
@@ -243,8 +247,9 @@ var createActivityView = Backbone.View.extend({
                 }
                 that.model.set('thumbnailImg',src.imageUri);
                 //that.model.set('imageKey',src.imageKey);
-                $($('.allInfoImg')[index]).find('img').attr('src',src.imageUri);
-                $formArea.find('.img-error').hide();
+                $('.allInfoImg').eq(index).find('img').attr('src',src.imageUri)
+                    .parents('.ReleaseList').find('.img-error').hide();
+                // $formArea.find('.img-error').hide();
             },
             error: function() {
                 $formArea.find('.img-error').show();
@@ -258,7 +263,7 @@ var createActivityView = Backbone.View.extend({
             var obj = $('#publishRoadShow').serializeObject();
             var tags = this.model.get('tags').replace(',','，');
             this.model.set('tags',tags);
-            this.model.set('financingLimit',obj.financingLimit);
+            this.model.set('financingLimit', +obj.financingLimit);
             this.model.set('financingType',obj.financingType);
             this.model.set('projectStage',obj.projectStage);
             this.model.set('roadDescription',obj.roadDescription);

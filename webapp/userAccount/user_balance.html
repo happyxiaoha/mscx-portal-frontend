@@ -65,6 +65,28 @@
 	position: relative;
 	display: block;
 }
+
+.icon_balance{
+	position: absolute;
+	left: 30;
+	top: -5;
+	background-image: url(../assets/images/icon_balance.png); 
+	background-repeat: no-repeat;
+	/* background-position: 0px 0px; */ 
+	width: 35px;
+	height: 30px;
+}
+
+.icon_balance_credit{
+	position: absolute;
+	left: 30;
+	top: -5;
+	background-image: url(../assets/images/icon_balance_credit.png); 
+	background-repeat: no-repeat; 
+	/* background-position: 0px 0px;  */
+	width: 35px;
+	height: 30px;
+}
 </style>
 </head>
 <body>
@@ -90,9 +112,9 @@
 														<div class="col-sm-4">
 															<div class="form-group">
 																<label
-																	class="col-sm-4 control-label no-padding-right aols">总充值金额：
+																	class="col-sm-6 control-label no-padding-right aols">总充值金额：
 																</label>
-																<div class="col-sm-8">
+																<div class="col-sm-6" style="top: 7;">
 																	<span id="totalBalance" style="color:red"></span>
 																</div>
 															</div>
@@ -141,6 +163,8 @@
 																	<button class="btn btn-grey" type="button"
 																		onclick="query()">查询</button>
 																	<button class="btn btn-grey" type="button"
+																		onclick="exportExcel()">导出</button>
+																	<button class="btn btn-grey" type="button"
 																		onclick="reset()">重置</button>
 																</div>
 															</div>
@@ -158,8 +182,8 @@
 												<tr>
 													<th>序号</th>
 													<th>名称</th>
-													<th>操作员</th>
 													<th>充值金额</th>
+													<th>账户余额</th>
 													<th>充值时间</th>
 												</tr>
 											</thead>
@@ -168,30 +192,33 @@
 								</div>
 								<div class="tab-pane" id="panel-balance">
 									<div style="text-align:center;margin-top:50px;">
-										<div class="row">
+										<div class="row" style="margin-bottom: 20px;">
 											<div class="col-xs-6">
 												<div class="form-group">
-													<label class="col-sm-4 control-label no-padding-right aols"><i
-														class="icon-search"></i>账户余额： </label>
-													<div class="col-sm-8">
+													<label class="col-sm-6 control-label no-padding-right aols"> 
+														<i class="icon_balance"></i>账户余额：
+													</label>
+													<div class="col-sm-6">
 														<span id="balance" style="color:red; width:100px">
 														</span>元
 													</div>
 												</div>
 											</div>
+											<div class="col-xs-6"></div>
 										</div>
 
 										<div class="row">
 											<div class="col-xs-6">
 												<div class="form-group">
-													<label class="col-sm-4 control-label no-padding-right aols"><i
-														class="icon-search"></i>信用余额： </label>
-													<div class="col-sm-8">
+													<label class="col-sm-6 control-label no-padding-right aols">
+														<i class="icon_balance_credit"></i>信用余额： </label>
+													<div class="col-sm-6">
 														<span id="creditBalance" style="color:green; width:100px">
 														</span>元
 													</div>
 												</div>
 											</div>
+											<div class="col-xs-6"></div>
 										</div>
 									</div>
 

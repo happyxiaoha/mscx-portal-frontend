@@ -70,6 +70,9 @@ function initTransactionDetailTableTables () {
 									data : "product.denomination"
 								},
 								{
+									data : "denominationTotal"
+								},
+								{
 									data : "amount"
 								},
 								{
@@ -110,6 +113,13 @@ function initTransactionDetailTableTables () {
 										 }));
 									 }else{
 										 $(tfoot).find('th').eq(1).html('0');
+									 }
+									 if(api.column( 5 ).data().length>0){
+										 $(tfoot).find('th').eq(3).html(api.column( 5 ).data().reduce( function ( a, b ) {
+											 return a + b;
+										 }));
+									 }else{
+										 $(tfoot).find('th').eq(3).html('0');
 									 }
 								},
 								ajax : function(data, callback,settings){

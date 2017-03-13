@@ -15,7 +15,8 @@ $(function() {
 		$this.addClass('ti');
 	});
 //	companyName = getUrlLocationQueryString("companyName");
-	userName = getUrlLocationQueryString("userName");
+//	userName = getUrlLocationQueryString("userName");
+	userName = GetQueryString("userName");
 
 	if (determineParameters()) {
 
@@ -101,10 +102,17 @@ function initRechargetTables() {
 										return "账号充值";
 									}
 								}, {
-									data : "operator"
-								}, {
 									data : "value"
-								}, {
+								},{
+									data : "balance",
+									"render" : function(data, type, row, index) {
+										if (data != null){
+											return data;
+										}else{
+											return "";
+										}
+									}
+								},  {
 									data : "operateTime"
 								} ],
 						language : {
@@ -244,6 +252,20 @@ function getAccountBalance() {
 		}
 	});
 
+}
+
+function exportExcel(){
+	var url = "/account/exportExcelRechargeFlow.action?auditStatus=30";
+//	var startTime = $.trim($('#startTime').val())==''?'':$.trim($('#startTime').val())+" 00:00:00";
+//	var stopTime = $.trim($('#endTime').val())==''?'':$.trim($('#endTime').val())+" 23:59:59";
+	var startTime = $.trim($('#startTime').val())==''?'':$.trim($('#startTime').val());
+	var stopTime = $.trim($('#endTime').val())==''?'':$.trim($('#endTime').val());
+	
+	url = url+"&beginTime="+startTime+"&stopTime="+stopTime
+			+"&userName="+userName;
+	
+	$.download(getRootPath() + url, null, 'post');
+	
 }
 
 function query() {

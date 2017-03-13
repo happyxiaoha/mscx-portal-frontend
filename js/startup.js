@@ -31,44 +31,46 @@ $(function() {
     });
     new footer();
 
-    mscxPage.appRouter = new router();
-    mscxPage.appRouter.on('route', function(res) {
-        $('html,body').animate({ scrollTop: '0' }, 100);
+    headerView.addDidRender(function() {
+        mscxPage.appRouter = new router();
+        mscxPage.appRouter.on('route', function(res) {
+            $('html,body').animate({ scrollTop: '0' }, 100);
 
-        var subHeaderView = mscxPage.views['subHeaderView'];
-        var id;
-        subHeaderView && subHeaderView.remove();
-        switch (res) {
-            case 'coachView':
-                id = 'coach';
-                break;
-            case 'roadshowView':
-                id = 'roadshow';
-                break;
-            case 'activityView':
-                id = 'activity';
-                break;
-            default:
-                break;
-        }
+            var subHeaderView = mscxPage.views['subHeaderView'];
+            var id;
+            subHeaderView && subHeaderView.remove();
+            switch (res) {
+                case 'coachView':
+                    id = 'coach';
+                    break;
+                case 'roadshowView':
+                    id = 'roadshow';
+                    break;
+                case 'activityView':
+                    id = 'activity';
+                    break;
+                default:
+                    break;
+            }
 
-        if(id && !location.search) {
-            subHeaderView = new subHeader({
-                id: id,
-                model: {
-                    menuList: menuList
-                }
-            });
-            mscxPage.views['subHeaderView'] = subHeaderView;
-            
-            headerView.$el.after(subHeaderView.$el);
-        }
+            if(id && !location.search) {
+                subHeaderView = new subHeader({
+                    id: id,
+                    model: {
+                        menuList: menuList
+                    }
+                });
+                mscxPage.views['subHeaderView'] = subHeaderView;
+                
+                headerView.$el.after(subHeaderView.$el);
+            }
 
-        if(location.search){
-            this.newsDetailView(location.search.split('?')[1]);
-        }
+            if(location.search){
+                this.newsDetailView(location.search.split('?')[1]);
+            }
+        })
+        Backbone.history.stop();
+        //Backbone.history.start({pushState: true,root: '/api/'});
+        Backbone.history.start();
     })
-    Backbone.history.stop();
-    //Backbone.history.start({pushState: true,root: '/api/'});
-    Backbone.history.start();
 });

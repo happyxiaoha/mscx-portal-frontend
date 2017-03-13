@@ -66,12 +66,20 @@ var Routes =  Backbone.Router.extend({
         });
     },
     createRoadShowView:function (id) {
-       var roadShowView = require('startup/createRoadShowView.js');
+        if(!mscxPage.isLogin() || !mscxPage.isRealName()) {
+            return;
+        }
+
+        var roadShowView = require('startup/createRoadShowView.js');
         mscxPage.views['createRoadShowViewObj'] = new roadShowView({
             id: id
         });
     },
     createActivityView:function (id) {
+        if(!mscxPage.isLogin() || !mscxPage.isRealName()) {
+            return;
+        }
+        
         var activityView = require('startup/createActivityView.js');
         mscxPage.views['createActivityViewObj'] = new activityView({
             id: id

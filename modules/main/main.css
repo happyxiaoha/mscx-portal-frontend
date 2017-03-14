@@ -561,7 +561,7 @@
 /*创客工厂*/
 .entrepreneur {  width: 1188px;  overflow: hidden;clear:both;}
 .entrepreneur ul li:first-child {margin-left: 0;}
-.entrepreneur ul li{-webkit-border-radius:2px;border-radius:2px; width: 24.2%;background: url("../../images/ent_1.png"); box-sizing: border-box; border: solid 1px #e6e6e6;text-align: center;margin-left: 1%; height:300px;cursor: pointer;}
+.entrepreneur ul li{-webkit-border-radius:2px;border-radius:2px; width: 24.2%;background: url("../../images/ent_1.png"); box-sizing: border-box; border: solid 1px #e6e6e6;text-align: center;margin-left: 1%; height:300px;}
 .entrepreneur ul li:hover {border: 1px solid #ff9900;}
 .entrepreneur .ent-ser {background: url("../../images/ent_2.png");}
 .entrepreneur .ent-soc {background: url("../../images/ent_3.png");}

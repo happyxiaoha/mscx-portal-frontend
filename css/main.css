@@ -1258,7 +1258,10 @@ input[type=search] {
 .ns-list .ns-list-item .media-body p.info {
     font-size: 14px;
     color: #999;
-    line-height: 20px
+    line-height: 20px;
+    height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .ns-list .ns-list-item .media-body p.sub {

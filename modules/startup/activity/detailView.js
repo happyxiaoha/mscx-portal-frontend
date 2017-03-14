@@ -58,6 +58,41 @@ var view = Backbone.View.extend({
         this.attentionFlag = !!this.nJson.isAttention;
         this.signFlag = !!this.nJson.isSign;
 
+        var signEndTime = this.nJson.detail.signEndTime,
+            signStartTime = this.nJson.detail.signStartTime,
+            today = new Date(),
+            isSignAvaliable = false,
+            currentDate = new Date();
+
+        signEndTime = new Date(signEndTime);
+        signStartTime = new Date(signStartTime);
+        today = today.format('yyyy-MM-dd');
+
+        today = today.split('-');
+
+        signEndTime.setHours(0);
+        signEndTime.setMinutes(0);
+        signEndTime.setSeconds(0);
+        signEndTime.setMilliseconds(0);
+
+        signStartTime.setHours(0);
+        signStartTime.setMinutes(0);
+        signStartTime.setSeconds(0);
+        signStartTime.setMilliseconds(0);
+
+        currentDate.setFullYear(today[0]);
+        currentDate.setMonth(+today[1] - 1);
+        currentDate.setDate(today[2]);
+        currentDate.setHours(0);
+        currentDate.setMinutes(0);
+        currentDate.setSeconds(0);
+        currentDate.setMilliseconds(0);
+        
+        // 只有在报名时间范围内才可以报名
+        isSignAvaliable = (currentDate <= signEndTime && currentDate >= signStartTime) ? true : false;
+
+        this.nJson.detail.isSignAvaliable = isSignAvaliable;
+
         this.$el.html(this.template( this.nJson.detail ));
 
         this.$followBtn = this.$('#followBtn');

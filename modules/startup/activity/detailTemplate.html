@@ -23,10 +23,10 @@
                             <%= data.description %>
                         </p>
                         <p class="info">活动类型：<%= data.typeName %>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发起人：<%= data.initiator %></p>
-                        <p class="info">报名时间：<%= new Date(data.signStartTime).format('yyyy-MM-dd') %></p>
+                        <p class="info">报名时间：<%= new Date(data.signStartTime).format('yyyy-MM-dd') %> ~ <%= new Date(data.signEndTime).format('yyyy-MM-dd') %></p>
                         <div class="media-body-footer">
                             <div class="footerItem">地址：<%= data.holdAddress %></div>
-                            <% if(data.signStartTime > new Date().getTime()){ %>
+                            <% if(data.isSignAvaliable){ %>
                                 <button type="button" id="signBtn" class="btn btn-sm btn-warning" style="position: absolute;top: 10px;right: 190px;border: 0;">报名</button>
                             <% }else { %>
                                 <button type="button" class="btn-sm btn-disable" style="position: absolute;top: 10px;right: 190px;border: 0;cursor:default">报名</button>

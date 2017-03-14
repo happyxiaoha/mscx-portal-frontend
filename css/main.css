@@ -1208,7 +1208,7 @@ input[type=search] {
 
 .ns-list .ns-list-item .media-body {
     position: relative;
-    padding: 20px 18px 46px 30px
+    padding: 20px 50px 46px 30px
 }
 
 .ns-list .ns-list-item .media-body .h1,.ns-list .ns-list-item .media-body h1 {
@@ -2793,7 +2793,8 @@ ul.pagination>li.active>a {
 .ns-wd2 .wdHead h1 {
     font-size: 24px;
     font-weight: 400;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    padding-right: 100px;
 }
 
 .ns-wd2 .wdHead h3 {
@@ -3037,6 +3038,13 @@ ul.pagination>li.active>a {
     background: 0 0;
     margin: 0;
     padding-left: 0;
+}
+
+.breadcrumb>li {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .apply-box {

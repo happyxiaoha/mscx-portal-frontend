@@ -114,9 +114,11 @@ var createActivityView = Backbone.View.extend({
             };
         }
         $('#signTime').daterangepicker(sinOptions).on('apply.daterangepicker',function (ev,picker) {
+            $(ev.target).trigger('blur');
             $('#holdTime').data('daterangepicker').setOptions({'minDate': picker.endDate.format('YYYY-MM-DD'), 'startDate':picker.endDate.format('YYYY-MM-DD'), 'endDate':picker.endDate.format('YYYY-MM-DD')});
         });
         $('#holdTime').daterangepicker(holdOptions).on('apply.daterangepicker',function (ev,picker) {
+            $(ev.target).trigger('blur');
             $('#signTime').data('daterangepicker').setOptions({'maxDate': picker.startDate.format('YYYY-MM-DD'),'endDate':picker.startDate.format('YYYY-MM-DD'), minDate:lastDay().format('yyyy-MM-dd')});
         });
     },

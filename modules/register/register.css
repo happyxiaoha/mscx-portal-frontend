@@ -143,8 +143,8 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .register-form ul li label{color: #555;font-size: 14px;box-sizing: border-box;margin-left: 86px}
 input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px;height: 13px;border: 1px solid #ddd;box-sizing: border-box;background: #f7f7f7;border-radius: 3px;left: 58px;top: 1px;}
 input[type="checkbox"]:checked + label:before{background: url('../../images/login/right.png') no-repeat center center;}
-.register-form ul li .golink{font-size: 14px;color: #3f89ec;}
-.register-form ul li .golink:hover{color: #3f89ec !important;}
+.register-form ul li .golink{font-size: 14px;color: #f90;}
+.register-form ul li .golink:hover{color: #f90 !important;}
 .register-form ul li button{width: 100%;background: #ff9900;text-align: center;height: 45px;border: none;font-size: 18px;color: #fff;border-radius: 5px;}
 .register-form ul li:nth-child(5){margin-bottom: 26px;height: 14px;}
 .register-form ul li input.error{ border: 1px solid #d82e3a;}

@@ -53,7 +53,7 @@ var createActivityView = Backbone.View.extend({
                 },
                 financingLimit: {
                     required: true,
-                    digits: true,
+                    price: true,
                     maxlength: 10
                 }
             },

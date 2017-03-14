@@ -90,7 +90,7 @@
 .R_right label a{
     color: #f90;
 }
-.allInfoImg {position: relative;border: 1px solid #DDD;padding: 2px;overflow: hidden;}
+.allInfoImg {position: relative;border: 1px solid #DDD;padding: 2px;overflow: hidden;line-height: normal;}
 .allInfoImg img{width: 60px;height: 60px;}
 .allInfoImg input{
     position: absolute;

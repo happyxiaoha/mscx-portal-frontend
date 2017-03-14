@@ -51,6 +51,10 @@ var checkUnique = Backbone.Model.extend({
     url: mscxPage.request.app + 'checkUnique.do'
 });
 
+$.validator.addMethod('isUrl', function(value, element) {
+    return this.optional(element) || (value.substring(0,1) == '/');
+}, '访问URL必须以“/”开头');
+
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     events: {
@@ -283,9 +287,7 @@ var createDemandView = Backbone.View.extend({
         this.$uploadDemoIcon1 = this.$('#uploadDemoIcon1');
         this.$uploadDemoIcon2 = this.$('#uploadDemoIcon2');
         this.$uploadDemoIcon3 = this.$('#uploadDemoIcon3');
-        $.validator.addMethod('isUrl', function(value, element) {
-            return this.optional(element) || (value.substring(0,1) == '/');
-        }, '访问URL必须以“/”开头');
+        
         this.$form.validate(this.validateConfig());
         this.serverUrlList = detail.result ? detail.result.url : [];
         this.currentCategory = this.$('#selectCategory').val();
@@ -507,7 +509,8 @@ var createDemandView = Backbone.View.extend({
             rules: {
                 url: {
                     required: true,
-                    maxlength: 255
+                    maxlength: 255,
+                    isUrl: true
                 },
                 description: {
                     required: true,

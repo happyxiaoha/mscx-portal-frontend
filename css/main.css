@@ -2517,7 +2517,9 @@ ul.pagination>li.active>a {
 }
 
 .ns-document p {
-    font-weight: 400
+    font-weight: 400;
+    line-height: 22px;
+    text-indent: 2em;
 }
 
 .ns-document .ns-documentFoot {

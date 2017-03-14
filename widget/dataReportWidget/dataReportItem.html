@@ -6,7 +6,7 @@
     </div>
     <div class="media-body">
         <a href="sources.html?detail/<%= data.id %>" class="h1"><%- data.name %></a>
-        <p class="info"><%- data.description %></p>
+        <p class="info<%= data.description.length > 158 ? ' more' : '' %>"><%- data.description %></p>
         <div class="media-body-footer">
             <div class="footerItem"> 发布日期：<span class="keywordType2"><%- new Date(data.publishDate).format('yyyy-MM-dd') %></span></div>
             <div class="footerItem"> 来源：<span class="keywordType2"><%- data.orgName %></span></div>

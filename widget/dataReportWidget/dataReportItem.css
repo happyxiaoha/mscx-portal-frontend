@@ -49,6 +49,13 @@
     margin-top: 4px
 }
 
+.ns-list .ns-list-item .media-body p.info.more::after {
+    content: '...';
+    position: absolute;
+    right: 41px;
+    bottom: 61px;
+}
+
 .ns-list-item .media-body .tags span {
     float: left;
     margin-right: 4px;

@@ -19,12 +19,12 @@
         <%if(chargeItem.flag != 'D'){count++%>
         <tr>
             <td><%=chargeItem.name%></td>
-            <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%>天</td>
+            <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%><%if(chargeItem.chargeType == '04'){%>天<%}else{%>次<%}%></td>
             <td><%=chargeItem.boughtLimit == 1 ? '限制一次' : '不限制'%></td>
             <td><%if(!chargeItem.invokeLimit || chargeItem.invokeLimit == '-1'){%>
                 不限制
                 <%}else{%>
-                <%=chargeItem.invokeLimit%>次
+                <%=chargeItem.invokeLimit%><%= chargeItem.chargeType == '04' ? '次' : '天'%>
                 <%}%>
             </td>
             <td><%=new Date(chargeItem.effectDate).format('yyyy-MM-dd')%></td>

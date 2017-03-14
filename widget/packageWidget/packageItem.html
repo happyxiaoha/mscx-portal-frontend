@@ -28,11 +28,11 @@
             <label style="position: relative;">
                 <span><i class="need">*</i>套餐价格：</span>
                 <%if(res.isOth){%>
-                <p class="mes"><%=res.price%>元/<%=res.chargeCount%>天</p>
+                <p class="mes"><%=res.price%>元/<%=res.chargeCount%>次</p>
                 <%}else{%>
                 <label><input type="number" class="small" name="price" id="price" value="<%=res && res.price%>">元/</label>
                 <label><input type="number" class="small" name="chargeCount" id="chargeCount" value="<%=res && res.chargeCount%>">
-                    <span class="prePrice">天</span>
+                    <span class="prePrice">次</span>
                 </label>
                 <p class="input-mes-server fl">价格大于等于0元，天数是大于1的整数</p>
                 <!--
@@ -63,7 +63,7 @@
             <label class="gl">
                 <span>使用限制：</span>
                 <input type="number" class="small fl" name="invokeLimit" id="invokeLimit" value="<%=res && res.invokeLimit%>">
-                    <b class="fl"><span class="limitPre">次</span>
+                    <b class="fl"><span class="limitPre">天</span>
                 </b>
                 <b class="fl ml20">(不填则为无限制)</b>
             </label>

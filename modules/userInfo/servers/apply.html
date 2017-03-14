@@ -32,7 +32,7 @@
                         <%if(item.callbackUrl)%>
                         <a data-id="<%= item.sourceId %>" data-url="<%= item.callbackUrl %>" href="javascript:;" class="update-call-back-url">修改回调地址</a>
                         <a data-id="<%= item.sourceId %>" data-url="<%= item.callbackUrl %>" href="javascript:;" class="delete-call-back-url">删除回调地址</a>
-                        <%else if(true){%>
+                        <%else if(item.isDataCallBack == '1'){%>
                         <a data-id="<%= item.sourceId %>" data-url="<%= item.callbackUrl %>" href="javascript:;" class="add-call-back-url">添加回调地址</a>
                         <%}%>
                     </td>

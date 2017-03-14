@@ -84,7 +84,7 @@
 .R_Btns input[type="submit"]{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;background: #f90;}
 .R_Btns input[type="submit"]:first-child{margin-right: 40px;}
 .ReleaseInputs .ReleaseList .R_left em {margin-left: -10px;}
-.ReleaseDownCons label.error {float: left;color: red;margin-left: 20px;line-height: 30px;}
+.ReleaseDownCons label.error {color: red;margin-left: 20px;line-height: 30px;}
 .ReleaseDownCons input[type="text"].error {border: 1px solid red !important;float: left;}
 .ReleaseDownCons textarea.error {border: 1px solid red !important;float: left;}
 .R_right label a{

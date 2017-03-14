@@ -20,7 +20,7 @@
 .right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;color: #f0b742;}
 .right-con-wrap .RCconsList p{border-bottom: 1px dashed #069cd9;line-height: 26px;}
 .right-con-wrap .RCconsList p span{display: inline-block;}
-.right-con-wrap .RCconsList p span:first-child{width: 60px;}
+.right-con-wrap .RCconsList p span:first-child{width: 85px;}
 .right-con-wrap .RCconsListBtn p{line-height: 26px;}
 .right-con-wrap .RCconsListBtn a{    text-align: center;line-height: 25px;display:block;width: 102px;height: 26px;border: 0;outline: none;display: block;}
 

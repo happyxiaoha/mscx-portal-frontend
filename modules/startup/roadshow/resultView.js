@@ -37,6 +37,8 @@ var view = Backbone.View.extend({
         var pageInfo = result.page || {};
         var me = this; 
 
+        this.currentPage = pageInfo.currentPage;
+
         if(serviceList.length < 1) {
             this.$dataList.html('<div class="ns-list-item"><div class="media"><div class="media-body">没有符合查询条件的数据</div></div></div>');
         }

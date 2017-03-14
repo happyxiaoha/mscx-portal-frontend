@@ -339,7 +339,7 @@ var createDemandView = Backbone.View.extend({
         _.extend(param, {
             tags: tags,
             detailTag: detail.result && detail.result.tags || []
-        })
+        });
 
         this.tagView = new tagView({
             model: param
@@ -502,6 +502,7 @@ var createDemandView = Backbone.View.extend({
             rules: {
                 url: {
                     required: true,
+                    isUrl: true,
                     maxlength: 255
                 },
                 description: {

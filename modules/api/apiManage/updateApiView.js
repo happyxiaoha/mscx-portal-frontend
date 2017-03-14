@@ -572,6 +572,9 @@ var updateApiView = Backbone.View.extend({
             cancel: function(index){
                 that.updateIndex = -1;
             },
+            end: function () {
+                that.updateIndex = -1;
+            },
             btn1: function () {          //通过
                 $('#addApiForm').submit();
             },

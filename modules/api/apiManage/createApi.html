@@ -101,13 +101,6 @@
                     <label><input type="radio" name="chargeType" id="ct02">收费</label>
                 </div>
             </div>
-            <div class="clearfix ReleaseList">
-                <p class="fl R_left"><i class="need">*</i>是否健全：</p>
-                <div class="fl R_right chargeTypeRadio">
-                    <label><input type="radio" name="isAuth" value="0">是</label>
-                    <label><input type="radio" name="isAuth" value="1" checked>否</label>
-                </div>
-            </div>
             <div class="D_table api-package">
                 <table >
                     <thead>
@@ -139,11 +132,12 @@
                         <th>API名称</th>
                         <th>API标识</th>
                         <th>API地址</th>
+                        <th>是否健全</th>
                         <th>操作</th>
                     </tr>
                     <tbody id="apiTable">
                         <tr>
-                            <td colspan="4">暂无数据</td>
+                            <td colspan="5">暂无数据</td>
                         </tr>
                     </tbody>
                 </table>
@@ -258,6 +252,7 @@
         <td><%=aitem.cname%></td>
         <td><%=aitem.name%></td>
         <td><%=aitem.uri%></td>
+        <td><%=aitem.isAuth == '1' ? '是': '否'%></td>
         <td>
             <a href="javascript:void(0);" class="editApi">修改</a>
             <a href="javascript:void(0);" class="deleteApi">删除</a>
@@ -266,7 +261,7 @@
     <% }); %>
     <%if(apiList.length == 0){%>
     <tr>
-        <td colspan="4">暂无数据</td>
+        <td colspan="5">暂无数据</td>
     </tr>
     <%}%>
 </script>
@@ -426,6 +421,11 @@
                     <textarea id="testPacket" name="testPacket"><%=res && res.testPacket%></textarea>
                     <p class="input-mes-api fl">参数和返回示例，使用MarkDown格式</p>
                 </label>
+            </li>
+            <li>
+                <label><span><i class="need">*</i>是否健全：</span></label>
+                <label class="auth-type"><input type="radio" name="isAuth" value="0" <%if(!res.isAuth || res.isAuth=='0'){%>checked<%}%>>否</label>
+                <label class="auth-type"><input type="radio" name="isAuth" value="1" <%if(res && res.isAuth=='1'){%>checked<%}%>>是</label>
             </li>
             <li>
                 <label>

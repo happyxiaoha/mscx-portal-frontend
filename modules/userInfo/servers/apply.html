@@ -5,14 +5,14 @@
                 <thead>
                 <tr>
                     <th width="10%">购买时间</th>
-                    <th width="15%">微服务名称</th>
-                    <th width="5%">服务商</th>
-                    <th width="5%">收费类型</th>
-                    <th width="5%">购买额度</th>
-                    <th width="5%">剩余额度</th>
-                    <th width="20%">接入地址</th>
-                    <th width="20%">回调地址</th>
-                    <th width="15%">操作</th>
+                    <th width="12%">微服务名称</th>
+                    <th width="8%">服务商</th>
+                    <th width="8%">收费类型</th>
+                    <th width="8%">购买额度</th>
+                    <th width="8%">剩余额度</th>
+                    <th width="17%">接入地址</th>
+                    <th width="17%">回调地址</th>
+                    <th width="12%">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -22,11 +22,20 @@
                     <td>
                         <a href="services.html?detail/<%= item.sourceId %>"><%= item.appName %></a>
                     </td>
-                    <td><%= item.price %></td>
-                    <td><%= item.provideName %></td>
+                    <td><%= item.provideName%></td>
+                    <td><%= item.feeType%></td>
                     <td><%= item.browNum %></td>
-                    <td>-</td>
-                    <td><a href="javascript:;" class="">添加回调地址</a> </td>
+                    <td><%= item.buyLimit %></td>
+                    <td><%= item.uri %></td>
+                    <td><%= item.callbackUrl ? item.callbackUrl : '-' %></td>
+                    <td>
+                        <%if(item.callbackUrl)%>
+                        <a data-id="<%= item.sourceId %>" data-url="<%= item.callbackUrl %>" href="javascript:;" class="update-call-back-url">修改回调地址</a>
+                        <a data-id="<%= item.sourceId %>" data-url="<%= item.callbackUrl %>" href="javascript:;" class="delete-call-back-url">删除回调地址</a>
+                        <%else if(true){%>
+                        <a data-id="<%= item.sourceId %>" data-url="<%= item.callbackUrl %>" href="javascript:;" class="add-call-back-url">添加回调地址</a>
+                        <%}%>
+                    </td>
                 </tr>
                 <% }); %>
                 <%if(serverList.length == 0){%>

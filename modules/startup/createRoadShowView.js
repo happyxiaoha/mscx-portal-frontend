@@ -245,7 +245,7 @@ var createActivityView = Backbone.View.extend({
                         that.model.set('operationImg',src.imageUri);
                         break;
                 }
-                that.model.set('thumbnailImg',src.imageUri);
+                // that.model.set('thumbnailImg',src.imageUri);
                 //that.model.set('imageKey',src.imageKey);
                 $('.allInfoImg').eq(index).find('img').attr('src',src.imageUri)
                     .parents('.ReleaseList').find('.img-error').hide();

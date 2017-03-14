@@ -107,15 +107,15 @@ function initTransactionDetailTableTables () {
 								dom : 't<"col-sm-3"i><"col-sm-2"l><"col-sm-7"p>',
 								"footerCallback": function( tfoot, data, start, end, display ) {
 									 var api = this.api();
-									 if(api.column( 4 ).data().length>0){
-										 $(tfoot).find('th').eq(1).html(api.column( 4 ).data().reduce( function ( a, b ) {
+									 if(api.column( 5 ).data().length>0){
+										 $(tfoot).find('th').eq(1).html(api.column( 5 ).data().reduce( function ( a, b ) {
 											 return a + b;
 										 }));
 									 }else{
 										 $(tfoot).find('th').eq(1).html('0');
 									 }
-									 if(api.column( 5 ).data().length>0){
-										 $(tfoot).find('th').eq(3).html(api.column( 5 ).data().reduce( function ( a, b ) {
+									 if(api.column( 6 ).data().length>0){
+										 $(tfoot).find('th').eq(3).html(api.column( 6 ).data().reduce( function ( a, b ) {
 											 return a + b;
 										 }));
 									 }else{

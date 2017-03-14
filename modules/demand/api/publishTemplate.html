@@ -56,7 +56,7 @@
             <p class="fl R_left"><em>*</em>所有权：</p>
             <div class="fl R_right checkbox-border">
                 <div class="radio-list">
-                    <label class="radio-inline">
+                    <label>
                         <% if(!data.id){ %>
                         <input type="radio" checked name="ownership" value="Y">
                         <% }else { %>
@@ -64,7 +64,7 @@
                         <% } %>
                         是
                     </label>
-                    <label class="radio-inline">
+                    <label>
                         <input type="radio" <%= data && data.ownership == 'N' && "checked" %> name="ownership" value="N">
                         否
                     </label>
@@ -86,7 +86,7 @@
             <p class="fl R_left"><em>*</em>网络性质：</p>
             <div class="fl R_right checkbox-border">
                 <div class="radio-list">
-                    <label class="radio-inline checkbox-border">
+                    <label class="checkbox-border">
                         <% if(!data.id){ %>
                         <input type="radio" checked name="netType" value="inner">
                         <% }else { %>
@@ -94,7 +94,7 @@
                         <% } %>
                         内网系统
                     </label>
-                    <label class="radio-inline">
+                    <label>
                         <input type="radio" name="netType" <%= data && data.netType == 'outer' && "checked" %> value="outer">
                         公网系统
                     </label>
@@ -105,49 +105,49 @@
             <p class="fl R_left">开发语言：</p>
             <div class="fl R_right checkbox-border">
                 <div class="checkbox-list">
-                    <label class="checkbox-inline">
+                    <label>
                         
                         <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JAVA') > -1 && "checked" %> value="JAVA">
                         
                         JAVA
                     </label>
-                    <label class="checkbox-inline">
+                    <label>
                         
                         <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C/C++') > -1 && "checked" %> value="C/C++">
                         
                         C/C++
                     </label>
-                    <label class="checkbox-inline">
+                    <label>
                         
                         <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C#') > -1 && "checked" %> value="C#">
                         
                         C#
                     </label>
-                    <label class="checkbox-inline">
+                    <label>
                         
                         <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JS') > -1 && "checked" %> value="JS">
                         
                         JS
                     </label>
-                    <label class="checkbox-inline">
+                    <label>
                         
                         <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('CSS') > -1 && "checked" %> value="CSS">
                         
                         CSS
                     </label>
-                    <label class="checkbox-inline">
+                    <label>
                         
                         <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('HTML') > -1 && "checked" %> value="HTML">
                        
                         HTML
                     </label>
-                    <label class="checkbox-inline">
+                    <label>
                         
                         <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('PHP') > -1 && "checked" %> value="PHP">
                         
                         PHP
                     </label>
-                    <label class="checkbox-inline checkbox-inline-other">
+                    <label>
                         
                         <input type="checkbox" <%= data && data.otherLanguage && "checked" %>>
                         
@@ -214,7 +214,7 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left wd160"><em>*</em>是否需要平台撮合交易：</p>
             <div class="radio-list">
-                <label class="radio-inline checkbox-border">
+                <label class="checkbox-border">
                     <% if(!data.id){ %>
                     <input type="radio" checked name="matchmakeTrade" value="Y">
                     <% }else { %>
@@ -222,7 +222,7 @@
                     <% } %>
                     是
                 </label>
-                <label class="radio-inline checkbox-border">
+                <label class="checkbox-border">
                     <input type="radio" <%= data && data.matchmakeTrade == 'N' && "checked" %> name="matchmakeTrade" value="N">
                     否
                 </label>

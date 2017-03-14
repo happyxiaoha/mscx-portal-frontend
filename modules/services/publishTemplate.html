@@ -20,7 +20,7 @@
                 <% } %>
                 <p class="fl R_left"><em>*</em>服务对象：</p>
                 <div class="fl R_right">
-                    <p class="fl mt10">
+                    <p class="fl">
                         <% data && data.objects.forEach(function(item){ %>
                         <label class="fl"><input name="serviceObject" value="<%= item.dictCode %>" <%= data.detail && data.detail.serviceObject.indexOf(item.dictCode) > -1 && "checked" %> type="checkbox"><%= item.dictName %></label>
                         <% }) %>

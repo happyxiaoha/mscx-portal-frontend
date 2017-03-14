@@ -85,7 +85,7 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left wd160"><em>*</em>是否需要平台撮合交易：</p>
             <div class="radio-list">
-                <label class="radio-inline">
+                <label>
                     <% if(!data.id){ %>
                     <input type="radio" checked name="matchmakeTrade" value="Y">
                     <% }else { %>
@@ -93,7 +93,7 @@
                     <% } %>
                     是
                 </label>
-                <label class="radio-inline">
+                <label>
                     <input type="radio" <%= data && data.matchmakeTrade == 'N' && "checked" %> name="matchmakeTrade" value="N">
                     否
                 </label>

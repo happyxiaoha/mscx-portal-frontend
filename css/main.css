@@ -1264,6 +1264,14 @@ input[type=search] {
     text-overflow: ellipsis;
 }
 
+.ns-list .ns-list-item .media-body p.info:after {
+    content: "...";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-left: 40px;
+}
+
 .ns-list .ns-list-item .media-body p.sub {
     font-size: 12px;
     margin-bottom: 1rem;

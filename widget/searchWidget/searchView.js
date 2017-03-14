@@ -209,9 +209,10 @@ var view = Backbone.View.extend({
     toggleMore: function(event) {
         var $target = this.$(event.currentTarget);
         if($target.hasClass('area-expand')){
-            $target.html('收起>>').removeClass('area-expand').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
+            $target.parent().hide().removeClass('area-expand').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand').append('<dd><a href="javascript:;" class="toggle-more">收起&gt;&gt;</a></dd>');
         }else{
-            $target.html('更多>>').addClass('area-expand').parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand');
+            $target.parents('.ns-sideBarItem').find('dl').scrollTop(0).toggleClass('expand').find('.toggle-more').parent().show();
+            $target.parent().remove();
         }            
     },
     selectOption: function(event) {

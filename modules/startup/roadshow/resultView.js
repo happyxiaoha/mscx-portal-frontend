@@ -24,6 +24,7 @@ var view = Backbone.View.extend({
     },
     render: function(model) {
         this.$el.removeClass('opacity0');
+        this.$loadMore.addClass('hide');
 
         if(!this.appendFlag) {
             this.$dataList.empty();

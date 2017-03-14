@@ -1192,8 +1192,8 @@ input[type=search] {
 }
 
 .ns-list .ns-list-item .media .media-object {
-    width: 266px;
-    /*height: 200px*/
+    width: 250px;
+    height: 200px
 }
 
 .ns-list .ns-list-item .media .media-object.large {

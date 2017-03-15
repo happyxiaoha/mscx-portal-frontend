@@ -112,12 +112,12 @@ var myApplyListView = Backbone.View.extend({
             sTitle = sUrl ? '修改回调URL':'添加回调URL';
         var that = this;
         layer.open({
-            content: '<div><input type="text" id="callBack" value="'+sUrl+'" /></div><label class="call-back-error">请输入要添加的回调URL</label>',
+            content: '<label for="callBack">回调URL<i class="need">*</i></label><div><input type="text" id="callBack" value="'+sUrl+'" /></div><label class="call-back-error">请输入要添加的回调URL</label>',
             shade: 0.6,
             title: sTitle,
             shadeClose: true,
             closeBtn:'1',
-            area: ['300px', '200px'],
+            area: ['300px', '210px'],
             btn: ['保存','取消'],
             btn1: function (index) {
                 var sVal = $.trim($('#callBack').val());

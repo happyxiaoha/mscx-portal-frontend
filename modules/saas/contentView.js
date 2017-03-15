@@ -51,7 +51,8 @@ var view = Backbone.View.extend({
                             }
                         ],
                         title: '发布日期'
-                    }
+                    },
+                    pageSize: 12
                 }
             }
         });

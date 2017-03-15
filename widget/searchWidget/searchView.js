@@ -195,7 +195,7 @@ var view = Backbone.View.extend({
 
         // 如果自带默认查询条件
         if(model.defaults) {
-            this.searchParams.set(_.pick(model.defaults, ['keyword', 'scope', 'chargeType', 'orderBy', 'categoryId', 'tagId', 'orgId']), {silent: true});
+            this.searchParams.set(_.pick(model.defaults, ['keyword', 'scope', 'chargeType', 'orderBy', 'categoryId', 'tagId', 'orgId', 'pageSize']), {silent: true});
             
             model.defaults.orderBy && this.delegate.$el.find('.sort a').removeClass('active').filter('[data-type="' + model.defaults.orderBy + '"]').addClass('active');
             model.defaults.categoryId && this.fetchTags();

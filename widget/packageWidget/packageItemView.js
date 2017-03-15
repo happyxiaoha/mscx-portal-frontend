@@ -28,7 +28,8 @@ var view = Backbone.View.extend({
                     required: true,
                     number: true,
                     integers: true,
-                    min: 0
+                    min: 0,
+                    max: 99
                 },
                 monthLimit: {
                     number: true,

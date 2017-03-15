@@ -4,8 +4,10 @@
 
 var firstRecommendTemplate = require('html!./firstRecommend.html');
 var firstRecommendModel = Backbone.Model.extend({
-   url: 'home/recommendation.do'
+   url: mscxPage.request.roadshow + 'roadshow/getRecommendList.do'
 });
+
+require('util');
 
 var firstRecommendView = Backbone.View.extend({
     template: _.template(firstRecommendTemplate,{variable: 'data'}),

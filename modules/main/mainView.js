@@ -43,7 +43,7 @@ var mainView = Backbone.View.extend({
     initialize: function() {
         this.$el.html(template);
         new bannerView();
-        //new firstRecommendView();
+        new firstRecommendView();
         new navigationView({
             id: 'ser',
             el: '#daohangSer',

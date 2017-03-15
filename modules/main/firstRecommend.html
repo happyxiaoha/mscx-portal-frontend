@@ -1,40 +1,18 @@
-
-<% _.each(data, function(item){ %>
-<li class="angled-135 posRE">
-    <div class="tabConsTop clearfix">
-        <div class="iconforapi">
-            <% if(item.sourceType ==='01'){ %>
-            <a href="api.html#detail/<%- item.id %>" class="apihref">
-                <% }else if(item.sourceType ==='02'){ %>
-                <a href="sources.html#detail/<%- item.id %>" class="apihref">
-                    <% }else{ %>
-                    <a href="services.html#detail/<%- item.id %>" class="apihref">
-                        <% };%>
-                    <% if(item.background){ %>
-                <img src="<%= item.background %>">
-                        <% };%>
-                <p title="<%- item.name %>"><span><%- item.name %></span></p>
-            </a>
+<ul>
+<% _.each(data, function(item, index){ %>
+    <% if(index < 4){ %>
+    <li>
+        <a href="startup.html#roadshow/detail/<%= item.id %>"><img src="<%= item.thumbnailImg %>"></a>
+        <div class="res-line2">
+            <p class="fl"><%= item.roadName %></p>
+            <span class="fr"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span>
         </div>
-        <% if(item.sourceType ==='01'){ %>
-        <a title="<%- item.name %>" href="api.html#detail/<%- item.id %>" class="apiname">
-            <% }else if(item.sourceType ==='02'){ %>
-            <a href="sources.html#detail/<%- item.id %>" class="apiname">
-                <% }else{ %>
-                <a href="services.html#detail/<%- item.id %>" class="apiname">
-                    <% };%>
-            <%- item.name %></a>
-    </div>
-    <p class="ft14">
-        <span class="charge fl">
-            <%- item.chargeTypeDesc %>
-        </span>
-        <span class="fwjirl">
-            <i><%- item.applyCount || 0 %></i>
-        </span>
-         <span class="fangwenliang">
-            <i><%- item.viewCount %></i>
-        </span>
-    </p>
-</li>
+        <div class="res-tags">
+            <% item.tags.split('，').forEach(function(tag){ %>
+            <span><%= tag %></span>
+            <% }) %>
+        </div>
+    </li>
+    <% } %>
 <% }); %>
+</ul>

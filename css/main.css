@@ -3094,6 +3094,12 @@ ul.pagination>li.active>a {
     margin-left: 0!important;
 }
 
+/* layer按钮样式覆盖 */
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: #f90!important;
+    background-color: #f90!important;
+}
+
 @media screen and (max-width: 1300px){
     .ns-body {
         width: 1000px;

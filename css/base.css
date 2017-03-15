@@ -442,6 +442,12 @@ table tr td{
 	word-break: break-all;
 }
 
+/* layer按钮样式覆盖 */
+.layui-layer-btn .layui-layer-btn0 {
+	border-color: #f90!important;
+    background-color: #f90!important;
+}
+
 @media screen and (max-width: 1300px){
 	.grid1190{
 		width: 1000px;

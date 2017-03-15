@@ -83,8 +83,10 @@
     text-align: center;
 }
 .shopCar li .orderList .apply-times{
-    width: 42px;text-align: center; height: 26px;border: 1px solid #DDD;margin-top: 40px;
+    width: 42px;text-align: center; height: 26px;border: 1px solid #DDD;
     line-height: 26px;
+    margin-top: 40px;
+    padding: 0;
 }
 .shopCar li .remove-btn,.shopCar li .add-btn {
     width: 15px !important;height: 26px;text-align: center;font-weight: bold;background: #f0f0f0;line-height: 26px;margin-top: 40px;color: #444 !important;;

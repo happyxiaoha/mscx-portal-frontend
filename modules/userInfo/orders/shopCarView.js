@@ -96,6 +96,9 @@ var shopCarView = Backbone.View.extend({
             sId = $li.attr('attrid'),
             sVal = $.trim($this.val()),
             that = this;
+        if($this.hasClass('disabled')) {
+            return;
+        }
         if(!isChecked){
             $checkBox[0].checked = true;
         }

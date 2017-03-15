@@ -39,7 +39,7 @@ var view = Backbone.View.extend({
 
         if(apiServiceList.length < 1) {
             this.$sort.hide();
-            // this.$dataList.html('没有符合查询条件的数据');
+            this.$dataList.addClass('data-empty').html('没有符合查询条件的数据');
         }else {
             this.$sort.show();
         }

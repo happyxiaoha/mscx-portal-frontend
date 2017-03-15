@@ -93,7 +93,7 @@
             <%if(scitem.resourceType == '01' || scitem.resourceType == '03'){%>
             <span class="count"><a class="remove-btn <%if(scitem.applyTimes <= 1){%>disabled<%}%>" href="javascript:;">-</a><input type="text" class="apply-times fl" value="<%=scitem.applyTimes%>"><a class="add-btn" href="javascript:;">+</a></span>
             <%}else{%>
-            <span class="count"><input type="number" class="apply-times" value="1" readonly></span>
+            <span class="count"><input type="number" class="apply-times fl disabled" value="1" readonly></span>
             <%}%>
             <span class="resourcestype borderT"><%=scitem.resourceDetailType || '-' %></span>
             <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>

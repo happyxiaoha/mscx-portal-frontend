@@ -179,7 +179,7 @@ var shopCarView = Backbone.View.extend({
                 $li = $this.closest('li'),
                 sId = $li.attr('attrid'),
                 isChecked = $li.find('input[type="checkbox"]').is(":checked"),
-                iPrice = parseFloat($li.find('.price').html().replace('元')).toFixed(2),
+                iPrice = parseFloat($li.find('.price').html().replace('元')),
                 iNumber = parseInt($.trim($li.find('.apply-times').val())),
                 iTotal = iPrice*iNumber;
             that.shopObj[sId] = {

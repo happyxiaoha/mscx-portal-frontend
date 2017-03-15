@@ -56,6 +56,7 @@
 }
 .showercode {background-position: 0 -128px;}
 .showephone {background-position: 0 -168px;}
+.showemessage {background-position: 0 -42px;}
 .theme-1:hover {border:1px solid #5cb981;}
 .er-code {
     height: 165px;

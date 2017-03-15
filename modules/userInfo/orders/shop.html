@@ -95,7 +95,7 @@
             <%}else{%>
             <span class="count"><input type="number" class="apply-times fl disabled" value="1" readonly></span>
             <%}%>
-            <span class="resourcestype borderT"><%=scitem.resourceDetailType || '-' %></span>
+            <span class="resourcestype borderT"><%=scitem.resourceDetailType || (scitem.resourceType == '02' && '数据报告') || (scitem.resourceType == '03' && '微应用') %></span>
             <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>
         </div>
     </li>

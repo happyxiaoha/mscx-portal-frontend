@@ -53,7 +53,7 @@ var checkUnique = Backbone.Model.extend({
 
 $.validator.addMethod('isUrl', function(value, element) {
     return this.optional(element) || (value.substring(0,1) == '/');
-}, '访问URL必须以“/”开头');
+}, 'URL必须以“/”开头');
 
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,

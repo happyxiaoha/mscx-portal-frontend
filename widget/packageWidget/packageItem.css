@@ -1,4 +1,4 @@
-.server-package-manage ul li input.small{width: 80px;float: left;}
+.server-package-manage ul li input.small{width: 80px;float: left;padding: 0 6px;}
 .server-package-manage ul li input[type="text"]{ width: 320px;}
 .server-package-manage ul li textarea{width: 320px;height: 80px;resize: none;}
 .server-package-manage ul li input.error{border: 1px solid red;}
@@ -13,7 +13,7 @@
     float: left;
     width: 100%;
 }
-.server-package-manage  ul li p.mes {float: left;max-width: 200px;margin-left: 10px;line-height: 30px;}
+.server-package-manage  ul li p.mes {float: left;max-width: 200px;margin-left: 10px;line-height: 30px;word-break: break-word;}
 .server-package-manage ul li label{
     float: left;
     line-height: 27px;
@@ -29,6 +29,7 @@
 .server-package-manage ul li input[type="text"]{
     width: 340px;
     float: left;
+    padding: 0 6px;
 }
 .server-package-manage #price-error {position: absolute;top: 24px; left:70px; width: 300px;}
 .server-package-manage .mes {line-height: 30px;max-width: 600px;}

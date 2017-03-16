@@ -9,7 +9,8 @@ require('./packageItem.css');
 var view = Backbone.View.extend({
     events: {
         'blur #price': 'limitPriceFun',
-        'blur #chargeCount': 'disChargeCount'
+        'blur #chargeCount': 'disChargeCount',
+        'change .charge-type': 'doChooseType'
     },
     packageValidateConfig: function () {
         var that = this;
@@ -165,6 +166,19 @@ var view = Backbone.View.extend({
             if(!$this.hasClass('error') && sVal > 0){
                 $('.charge-count').html(sVal);
             }
+        }
+    },
+    doChooseType: function () {
+        var sVal = $('.charge-type').val();
+        if(sVal == '04'){
+            $('.prePrice').html('天');
+            $('.limitPre').html('次');
+            $('.price-per').html('天');
+        }
+        else {
+            $('.limitPre').html('天');
+            $('.prePrice').html('次');
+            $('.price-per').html('次');
         }
     },
     initialize: function() {

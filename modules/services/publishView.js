@@ -426,6 +426,7 @@ var createDemandView = Backbone.View.extend({
         e.stopPropagation();
     },
     addChargePackage: function () {
+        this.updateIndex = -1; //if add set update index
         var that = this;
         new packageWidgetView({
             el: '.server-package-area',

@@ -292,13 +292,15 @@ var myPublishListView = Backbone.View.extend({
             },
             btn2: function () {         // 不通过
                 layer.close(dialog);
+            },
+            end: function () {
+                that.updateIndex = -1;
             }
         });
         return false;
     },
     updateIndex: -1,
     saveCharge: function () {
-        layer.close(this.dig);
         var chargeRule = this.chargeRule || [],
             obj = $('#serverChargePackage').serializeObject();
         if(this.updateIndex < 0){
@@ -313,10 +315,12 @@ var myPublishListView = Backbone.View.extend({
             chargeRule[this.updateIndex] = obj;
             this.updateIndex = -1;
         }
+        layer.close(this.dig);
         this.chargeRule = chargeRule;
         this.buildPackageTable();
     },
     addCharge: function () {
+        this.updateIndex = -1;
         var that = this;
         new packageWidgetView({
             el: '.server-package-area',

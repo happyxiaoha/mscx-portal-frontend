@@ -694,7 +694,6 @@ var createApiView = Backbone.View.extend({
             $('#apiName').addClass('error');
             return;
         }
-        layer.close(this.lays);
         var apiListJson = _.clone(this.model.get('apiListJson') || []);
         if(this.updateIndex < 0){
             apiListJson.push(res);
@@ -703,7 +702,7 @@ var createApiView = Backbone.View.extend({
             apiListJson[this.updateIndex] = res;
             this.updateIndex = -1;
         }
-
+        layer.close(this.lays);
         this.model.set('apiListJson',apiListJson);
         $('#addApiForm').resetForm();
     },
@@ -791,7 +790,7 @@ var createApiView = Backbone.View.extend({
                     success: function () {
                         layer.msg('提交审核成功！');
                         setTimeout(function () {
-                            location.href = 'userInfo.html#api';
+                            //location.href = 'userInfo.html#api';
                         }, 1000);
                     }
                 });

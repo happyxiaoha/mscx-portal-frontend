@@ -183,12 +183,12 @@ var view = Backbone.View.extend({
     doChooseType: function () {
         var sVal = $('.charge-type').val();
         if(sVal == '04'){
-            $('.prePrice').html('月');
+            $('.prePrice').html('天');
             $('.limitPre').html('次');
-            $('.price-per').html('月');
+            $('.price-per').html('天');
         }
         else {
-            $('.limitPre').html('个月');
+            $('.limitPre').html('天');
             $('.prePrice').html('次');
             $('.price-per').html('次');
         }

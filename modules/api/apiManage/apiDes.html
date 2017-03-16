@@ -104,6 +104,7 @@
                     <th>API名称</th>
                     <th>API标识</th>
                     <th>API地址</th>
+                    <th>是否健全</th>
                 </tr>
                 <tbody id="apiTable">
                 <tr>
@@ -160,6 +161,7 @@
         <td><%=aitem.cname%></td>
         <td><%=aitem.name%></td>
         <td><%=aitem.uri%></td>
+        <td><%=aitem.isAuth == '1' ? '是': '否'%></td>
     </tr>
     <% }%>
     <% }); %>

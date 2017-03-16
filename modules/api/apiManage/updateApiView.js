@@ -459,6 +459,7 @@ var updateApiView = Backbone.View.extend({
     addApiLay: function () {
         var that = this;
         var addApiTemplete = _.template($('#apiManageTemps').html());
+        this.updateApiName = '';
         $('.add-api-list').html(addApiTemplete({res:{}}));
         var dialog= layer.open({
             type: 1,
@@ -489,7 +490,6 @@ var updateApiView = Backbone.View.extend({
             $('#apiName').addClass('error');
             return;
         }
-        layer.close(this.lays);
         var apiListJson = _.clone(this.model.get('apiListJson') || []);
         if(this.updateIndex < 0){
             res.flag = 'C';
@@ -500,7 +500,7 @@ var updateApiView = Backbone.View.extend({
             apiListJson[this.updateIndex] = res;
             this.updateIndex = -1;
         }
-
+        layer.close(this.lays);
         this.model.set('apiListJson',apiListJson);
         $('#addApiForm').resetForm();
     },
@@ -570,6 +570,9 @@ var updateApiView = Backbone.View.extend({
                 $('#addApiForm').validate(that.apiValidateConfig());
             },
             cancel: function(index){
+                that.updateIndex = -1;
+            },
+            end: function () {
                 that.updateIndex = -1;
             },
             btn1: function () {          //通过

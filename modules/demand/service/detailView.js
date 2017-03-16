@@ -2,6 +2,7 @@
 
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
+var selectedView = require('hotDataReportWidget/dataReportView.js');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'getServiceDetail.do'
 })
@@ -34,6 +35,8 @@ var view = Backbone.View.extend({
         });
         this.pvModel = new pvModel();
 
+        this.selectedView = new selectedView();
+
         this.fetchDetail();
         this.pvModel.fetch({
             data: {
@@ -50,6 +53,11 @@ var view = Backbone.View.extend({
 
         this.attentionFlag = model.result.attentionFlag;
         this.$el.html(this.template(model.result)).removeClass('opacity0');
+
+        // 热门数据报告区域
+        this.$hotDataReport = this.$('#hotDataReport');
+
+        this.$hotDataReport.append(this.selectedView.$el).addClass('in');
     },
     fetchDetail: function() {
         this.detailModel.fetch({

@@ -104,14 +104,7 @@ function initRechargetTables() {
 								}, {
 									data : "value"
 								},{
-									data : "balance",
-									"render" : function(data, type, row, index) {
-										if (data != null){
-											return data;
-										}else{
-											return "";
-										}
-									}
+									data : "balance"
 								},  {
 									data : "operateTime"
 								} ],

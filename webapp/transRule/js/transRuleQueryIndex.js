@@ -35,7 +35,7 @@ function getUrlLocationQueryString(name){
 }
 function init(tabName){
 	if (tabName == "当前商品"){
-		$("#transRuleIfm").attr("src", "./portalTransRuleQuery.html?userName=" + userName);
+		$("#transRuleIfm").attr("src", "./portalTransRuleQuery.html?type=effective&userName=" + userName);
 	}else{
 		$("#historyTransRuleIfm").attr("src", "./portalTransRuleQuery.html?type=history&userName=" + userName);
 	}

@@ -199,6 +199,50 @@ function getNowFormatDate() {
 	var currentdate = year + seperator1 + month + seperator1 + strDate;
 	return currentdate;
 }
+
+//日期，在原有日期基础上，增加days天数，默认增加1天
+function addDate(date, days) {
+    if (days == undefined || days == '') {
+        days = 1;
+    }
+    var date = new Date(date);
+    date.setDate(date.getDate() + days);
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    return date.getFullYear() + '-' + getFormatDate(month) + '-' + getFormatDate(day);
+}
+
+// 日期月份/天的显示，如果是1位数，则在前面加上'0'
+function getFormatDate(arg) {
+    if (arg == undefined || arg == '') {
+        return '';
+    }
+
+    var re = arg + '';
+    if (re.length < 2) {
+        re = '0' + re;
+    }
+
+    return re;
+}
+
+// js 日期自动加月数
+function  addmulMonth(dtstr,n){   // n个月后 
+	   var s=dtstr.split("-");
+	   var yy=parseInt(s[0]); var mm=parseInt(s[1]-1);var dd=parseInt(s[2]);
+	   var dt=new Date(yy,mm,dd);
+	   dt.setMonth(dt.getMonth()+n);
+	   if( (dt.getFullYear()*12+dt.getMonth()) > (yy*12+mm + n) )
+	    {
+	    dt=new Date(dt.getFullYear(),dt.getMonth(),0);
+	    }
+	   var year = dt.getFullYear();
+	   var month = dt.getMonth()+1;
+	   var days = dt.getDate();
+	   var dd = year+"-"+getFormatDate(month)+"-"+getFormatDate(days);
+	   return dd;
+	} 
+
 BrowserDetect.init();
 
 // 获取url拼接参数值

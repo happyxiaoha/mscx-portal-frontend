@@ -15,6 +15,8 @@
 <link href="../assets/css/dataTables.bootstrap.css" rel="stylesheet">
 <link href="../assets/css/com.css" rel="stylesheet">
 <link href="../assets/css/select2.min.css" rel="stylesheet">
+<link href="../assets/css/datepicker.css" rel="stylesheet">
+<link href="../assets/css/ladda-themeless.min.css" rel="stylesheet">
 <link href="../assets/css/softwareCompany/admin_product.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/validationEngine.jquery.css">
@@ -32,6 +34,8 @@
 <script src="../assets/js/jquery.validationEngine.min.js"></script>
 <script src="../assets/js/bootstrapValidator.min.js"></script>
 <script src="../assets/js/select2.min.js"></script>
+<script src="../assets/js/loading/spin.js"></script>
+<script src="../assets/js/loading/ladda.js"></script>
 <script src="./js/agent_dayTrade.js"></script>
 </head>
 <body>
@@ -52,11 +56,27 @@
 												<div class="col-sm-4">
 													<div class="form-group">
 														<label
-															class="col-sm-4 control-label no-padding-right aols">查询日期：
+															class="col-sm-4 control-label no-padding-right aols">开始日期：
 														</label>
 														<div class="col-sm-8">
 															<div class="input-group input-group-sm">
-																<input type="text" id="queryDate"
+																<input data-date-end-date="10d" type="text" id="beginDate"
+																	class="form-control" readonly /> <span
+																	class="input-group-addon"> <i
+																	class="icon-calendar"></i>
+																</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label
+															class="col-sm-4 control-label no-padding-right aols">截止日期：
+														</label>
+														<div class="col-sm-8">
+															<div class="input-group input-group-sm">
+																<input type="text" id="endDate"
 																	class="form-control" readonly /> <span
 																	class="input-group-addon"> <i
 																	class="icon-calendar"></i>
@@ -80,17 +100,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-sm-4">
-													<div class="form-group">
-														<label
-															class="col-sm-4 control-label no-padding-right aols">省份：
-														</label>
-														<div class="col-sm-8">
-															<input type="text" id="province"
-																class="col-sm-12 col-sm-12" />
-														</div>
-													</div>
-												</div>
+												
 											</div>
 											<div class="row">
 												<div class="col-sm-4" id="merchantNameDiv" style="display:none;">
@@ -105,11 +115,22 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-sm-4 col-sm-offset-8" id="btn">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label
+															class="col-sm-4 control-label no-padding-right aols">省份：
+														</label>
+														<div class="col-sm-8">
+															<input type="text" id="province"
+																class="col-sm-12 col-sm-12" />
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4 col-sm-offset-4" id="btn">
 													<div class="form-group">
 														<div class="col-sm-12" style="text-align:right;">
-															<button class="btn btn-grey" type="button" onclick="query()">
-																 查询
+															<button data-style="zoom-out" class="btn btn-grey ladda-button" type="button" onclick="query()">
+																<span class="ladda-label">查询 </span>
 															</button>
 															&nbsp;
 															<button class="btn btn-grey" type="button" onclick="exportExcel()">
@@ -152,10 +173,10 @@
 							</thead>
 							<tfoot>
 								 <tr>
-					                <th colspan="1" style="text-align:center">总面值金额总计</th>
+					                <th colspan="2" style="text-align:center">总面值金额总计</th>
 					                <th colspan="2" style="text-align:center"></th>
-					                <th colspan="1" style="text-align:center">总销售金额总计</th>
-					                <th colspan="3" style="text-align:center" id="salesAmount"></th>
+					                <th colspan="2" style="text-align:center">总销售金额总计</th>
+					                <th colspan="2" style="text-align:center" id="salesAmount"></th>
 					            </tr>
 					        </tfoot>
 						</table>

@@ -9,7 +9,8 @@ require('./packageItem.css');
 var view = Backbone.View.extend({
     events: {
         'blur #price': 'limitPriceFun',
-        'blur #chargeCount': 'disChargeCount'
+        'blur #chargeCount': 'disChargeCount',
+        'change .charge-type': 'doChooseType'
     },
     packageValidateConfig: function () {
         var that = this;
@@ -125,6 +126,15 @@ var view = Backbone.View.extend({
             });
         }
     },
+    disChargeCount: function(e) {
+        if(e.target.id == 'chargeCount'){
+            var $this = $(e.target),
+                sVal = parseFloat($.trim($this.val()));
+            if(!$this.hasClass('error') && sVal > 0){
+                $('.charge-count').html(sVal);
+            }
+        }
+    },
     displayFeeMes: function (sVal) {
         new getFeeModel().fetch({
             type:'GET',
@@ -153,19 +163,21 @@ var view = Backbone.View.extend({
                 $($limitInput[0]).attr('disabled',false);
             }
             if(!$this.hasClass('error') && sVal > 0){
-                this.displayFeeMes(sVal);
+                //this.displayFeeMes(sVal);
             }
             $this = null;
             $limitInput = null;
         }
     },
-    disChargeCount: function(e) {
-        if(e.target.id == 'chargeCount'){
-            var $this = $(e.target),
-                sVal = parseFloat($.trim($this.val()));
-            if(!$this.hasClass('error') && sVal > 0){
-                $('.charge-count').html(sVal);
-            }
+    doChooseType: function () {
+        var sVal = $('.charge-type').val();
+        if(sVal == '04'){
+            $('.prePrice').html('天');
+            $('.limitPre').html('次');
+        }
+        else {
+            $('.limitPre').html('天');
+            $('.prePrice').html('次');
         }
     },
     initialize: function() {

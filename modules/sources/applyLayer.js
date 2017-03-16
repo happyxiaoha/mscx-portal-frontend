@@ -102,6 +102,13 @@ var view = Backbone.View.extend({
             isAgree = this.$('#agreementBtn')[0].checked,
             msg = '';
 
+        !isAgree && (msg += '请阅读并接受资源服务协议');
+
+        if(msg) {
+            layer.alert(msg);
+            return;
+        }
+
         var $selected = this.$el.find('td input[type="radio"]:checked'),
             $tr = $selected.parents('tr'),
             $number = $tr.find('.number'),

@@ -52,9 +52,8 @@ var view = Backbone.View.extend({
 
         if(pageInfo.currentPage < pageInfo.totalPage) {
             this.$loadMore.removeClass('hide');
-        }else {
-            this.appendFlag = false;
         }
+        this.appendFlag = false;
     },
     loadNextPage: function() {
         this.$loadMore.addClass('hide');

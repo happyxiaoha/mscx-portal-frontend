@@ -47,13 +47,13 @@ var view = Backbone.View.extend({
 
         if(pageInfo.currentPage < pageInfo.totalPage) {
             this.$loadMore.removeClass('hide');
-        }else {
-            this.appendFlag = false;
         }
 
         if(serviceList.length < 1) {
             this.$dataList.html('<div class="ns-list-item"><div class="media"><div class="media-body">没有符合查询条件的数据</div></div></div>');
         }
+
+        this.appendFlag = false;
     },
     loadNextPage: function() {
         this.$loadMore.addClass('hide');

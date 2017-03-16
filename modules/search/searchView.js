@@ -65,15 +65,15 @@ var searchView = Backbone.View.extend({
                     keyword:　this.id
                 }
             })
-        }else if(data == '数据'){
-            window.localStorage.setItem('dataType', '数据');
+        }else if(data == '数据报告'){
+            window.localStorage.setItem('dataType', '数据报告');
             this.searchDataModel.fetch({
                 data:{
                     keyword:　this.id
                 }
             })
         }else　{
-            window.localStorage.setItem('dataType', '微服务');
+            window.localStorage.setItem('dataType', '微应用');
             this.searchSerModel.fetch({
                 data:{
                     keyword:　this.id
@@ -88,7 +88,7 @@ var searchView = Backbone.View.extend({
         if($target.hasClass('active')) return;
         $allSearch.html(data);
         $target.addClass('active').siblings().removeClass('active');
-        $('.SearchList').eq($target.index()).show().siblings('.SearchList').hide();
+        $('.SearchList').eq($target.index()).removeClass('hide').siblings('.SearchList').addClass('hide');
         /*if(!this.keyword || this.keyword.length == 0){
             layer.tips('请输入需要搜索的关键字',$searchInput);
             //return false

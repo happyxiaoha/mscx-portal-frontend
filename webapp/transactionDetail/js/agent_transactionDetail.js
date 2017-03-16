@@ -30,7 +30,7 @@ $(function() {
 
 function initSelect2(){
 	$('#merchantName').select2();
-	jQueryAjaxAsync("/account/getAll",{},function(data){
+	jQueryAjaxAsync("/account/getAll",null,function(data){
 		if(data.data!=null&&data.data.length>0){
 			for(var i=0;i<data.data.length;i++){
 				$('#merchantName').append('<option value="'+data.data[i].id+'">'+data.data[i].companyName+'</option>');
@@ -132,7 +132,7 @@ function initTransactionDetailTableTables () {
 									};
 									var url="/order/queryAgentTransactionDetail.action";
 									if(userName==null){
-										url="/dispacher.jsp?url=/order/queryAgentTransactionDetail.action";
+										url="/dispacher?url=/order/queryAgentTransactionDetail.action";
 									}
 									$.ajax({
 										url : getRootPath() + url,

@@ -161,7 +161,7 @@ function initFlowQueryTables() {
 				ajax : function(data, callback,settings){
 					var url;
 					if(userName == null){
-						url = getRootPath() + "dispacher.jsp?url=/order/queryAgentFlow.action";
+						url = getRootPath() + "/dispacher?url=/order/queryAgentFlow.action";
 					}else{
 						url = getRootPath() + "/order/queryAgentFlow.action";
 					}

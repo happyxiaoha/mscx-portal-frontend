@@ -5,11 +5,12 @@ var userName = GetQueryString("userName");
 $(function() {
 	var clientHeight=document.documentElement.clientHeight;
 	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+';');
-	dateWidget('queryDate');
+	//初始化日期控件
+	initDatePicker();
 	height = window.screen.availHeight - 140;
 	//初始化select2控件
 	if (userName == null){
-		$("#btn").removeClass("col-sm-offset-8").addClass("col-sm-offset-4");
+		$("#btn").removeClass("col-sm-offset-4");
 		$("#merchantNameDiv").show();
 		initSelect2();
 	}
@@ -26,10 +27,23 @@ $(function() {
 	//初始化充值记录表格
 	initTransactionDetailTableTables();
 });
-
+function initDatePicker(){
+	dateWidget('beginDate');
+	dateWidget('endDate');
+	$('#beginDate').datepicker('setDate',new Date());
+	$('#endDate').datepicker('setDate',new Date(addDate(getNowFormatDate(),1)));
+	$('#endDate').datepicker('setStartDate',addDate(getNowFormatDate(),1));
+	$('#endDate').datepicker('setEndDate',addmulMonth(getNowFormatDate(),1));
+	$('#beginDate').datepicker()
+	.on('changeDate', function(e) {
+		$('#endDate').datepicker('setDate',new Date(addDate($(this).val(),1)));
+		$('#endDate').datepicker('setStartDate',addDate($(this).val(),1));
+		$('#endDate').datepicker('setEndDate',addmulMonth($(this).val(),1));
+    });
+}
 function initSelect2(){
 	$('#merchantName').select2();
-	jQueryAjaxAsync("/account/getAll",{},function(data){
+	jQueryAjaxAsync("/account/getAll",null,function(data){
 		if(data.data!=null&&data.data.length>0){
 			for(var i=0;i<data.data.length;i++){
 				$('#merchantName').append('<option value="'+data.data[i].id+'">'+data.data[i].companyName+'</option>');
@@ -46,6 +60,7 @@ function initTransactionDetailTableTables () {
 						ordering : false,// 是否启用排序
 						searching : false,// 搜索
 						bRetrieve : true,
+						processing: true,
 						columnDefs : [ {
 							className : "tdClass"
 						} ],
@@ -58,7 +73,10 @@ function initTransactionDetailTableTables () {
 									}
 								},
 								{
-									data : "completionTime"
+									data : "completionTime",
+									"render" : function(data,type,row,meta){
+										return data.substring(0,10);
+									}
 								},
 								{
 									data : "product.operator"
@@ -90,7 +108,7 @@ function initTransactionDetailTableTables () {
 										first : "第一页",
 										last : "最后"
 									},
-
+									
 									zeroRecords : "没有内容",// table
 									// tbody内容为空时，tbody的内容。
 									// 下面三者构成了总体的左下角的内容。
@@ -124,8 +142,8 @@ function initTransactionDetailTableTables () {
 								},
 								ajax : function(data, callback,settings){
 									var args={
-											'startTime':$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 00:00:00",
-											'stopTime':$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 23:59:59",
+											'startTime':$.trim($('#beginDate').val())==''?'':$.trim($('#beginDate').val())+" 00:00:00",
+											'stopTime':$.trim($('#endDate').val())==''?'':$.trim($('#endDate').val())+" 00:00:00",
 											'operator':$('#operator').val(),
 											'province':$('#province').val(),
 											'accountId':$('#merchantName').val(),
@@ -139,7 +157,7 @@ function initTransactionDetailTableTables () {
 									};
 									var url="/order/queryAgentDayTrade.action";
 									if(userName==null){
-										url="/dispacher.jsp?url=/order/queryAgentDayTrade.action";
+										url="/dispacher?url=/order/queryAgentDayTrade.action";
 									}
 									$.ajax({
 										url : getRootPath() + url,
@@ -156,6 +174,15 @@ function initTransactionDetailTableTables () {
 	$("#table_local_filter input[type=search]").css({
 		width : "auto"
 	});// 右上角的默认搜索文本框，不写这个就超出去了。
+	
+	$('#transactionDetailTable').on('processing.dt', function (e, settings, processing) {
+		var l = Ladda.create( document.querySelector( '.ladda-button' ) );
+		if (processing) {
+			l.start();
+	    } else {
+	    	l.stop();
+	    }
+	});
 }
 
 /**
@@ -171,6 +198,8 @@ function query(){
 function resetVal(){
 	document.getElementById("basicForm").reset(); 
 	$("#merchantName").val(null).trigger("change");
+	$('#beginDate').datepicker('setDate',new Date());
+	$('#endDate').datepicker('setDate',new Date(addDate(getNowFormatDate(),1)));
 }
 
 /**
@@ -185,8 +214,8 @@ function exportExcel(){
 		visitType="/order/exportAtdDayTradeExcel.action?";
 		cn=userName;
 	}
-	var startTime=$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 00:00:00";
-	var stopTime=$.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+" 23:59:59";
+	var startTime=$.trim($('#beginDate').val())==''?'':$.trim($('#beginDate').val())+" 00:00:00";
+	var stopTime=$.trim($('#endDate').val())==''?'':$.trim($('#endDate').val())+" 00:00:00";
 	var url=visitType+"startTime="+startTime+"&stopTime="+stopTime
 	+"&operator="+encodeURI(encodeURI($.trim($('#operator').val())))+'&accountId='+$.trim($('#merchantName').val())
 	+"&province="+encodeURI(encodeURI($.trim($('#province').val())))+"&userName="+cn;

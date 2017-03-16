@@ -45,7 +45,7 @@
     text-align: center;
     cursor: pointer;
     border-right: 1px solid #ccc;
-    width: 120px;
+    width: 130px;
 }
 .search-type span.active{
     background: #fff;

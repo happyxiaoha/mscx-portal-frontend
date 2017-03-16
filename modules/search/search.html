@@ -10,10 +10,10 @@
 <div class="grid960">
     <div class="search-type">
         <span class="<%= data.dataType =='API'?'active': '' %>" data-type="API">API</span>
-        <span class="<%= data.dataType =='数据'?'active': '' %>" data-type="数据">数据</span>
-        <span class="<%= data.dataType =='微服务'?'active': '' %>" data-type="微服务">微服务</span>
+        <span class="<%= data.dataType =='数据报告'?'active': '' %>" data-type="数据报告">数据报告</span>
+        <span class="<%= data.dataType =='微应用'?'active': '' %>" data-type="微应用">微应用</span>
     </div>
-    <div class="SearchList <%= data.dataType =='API'?'show': 'hide' %>"  id="apiResult">
+    <div class="SearchList <%= data.dataType =='API'? '': 'hide' %>"  id="apiResult">
         <ul>
 
         </ul>
@@ -21,7 +21,7 @@
 
         </div>
     </div>
-    <div class="SearchList <%= data.dataType =='数据'?'show': 'hide' %>" id="dataResult" >
+    <div class="SearchList <%= data.dataType =='数据报告'?'': 'hide' %>" id="dataResult" >
         <ul >
 
         </ul>
@@ -29,7 +29,7 @@
 
         </div>
     </div>
-    <div class="SearchList <%= data.dataType =='微服务'?'show': 'hide' %>"  id="serResult">
+    <div class="SearchList <%= data.dataType =='微应用'?'': 'hide' %>"  id="serResult">
         <ul>
 
         </ul>

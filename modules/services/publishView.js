@@ -50,6 +50,9 @@ var modifyModel = Backbone.Model.extend({
 var checkUnique = Backbone.Model.extend({
     url: mscxPage.request.app + 'checkUnique.do'
 });
+$.validator.addMethod('isUrl', function(value, element) {
+    return this.optional(element) || (value.substring(0,1) == '/');
+}, 'URL必须以“/”开头');
 
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
@@ -503,6 +506,7 @@ var createDemandView = Backbone.View.extend({
             rules: {
                 url: {
                     required: true,
+                    isUrl: true,
                     maxlength: 255
                 },
                 description: {

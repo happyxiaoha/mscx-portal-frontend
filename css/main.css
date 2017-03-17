@@ -2252,6 +2252,17 @@ ul.pagination>li.active>a {
     width: 100px
 }
 
+.api-content .btn-follow {
+    position: absolute;
+    right: 30px;
+    top: 45px;
+    border-color: #f90;
+    border-radius: 2px;
+    color: #fff;
+    background: #f90;
+    width: 100px;
+}
+
 .ns-apiDetailComponent .submitBtns .btn.btn-active, .demand-content .btn.btn-active {
     background: #fff;
     color: #f90;

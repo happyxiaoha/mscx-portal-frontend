@@ -22,3 +22,7 @@
 .Page ul li a.active{border: 1px solid #5596ed;color: #5596ed;}
 .Page ul li input{/*vertical-align: 0px; */width: 30px;height: 26px;line-height:26px;position: relative;top: -1px;border-radius: 0;box-sizing: border-box;text-align: center;margin: 0 6px;}
 .Page ul li a#go{margin-left: 6px;}
+
+#fund .ns-list .ns-list-item .media-body .media-body-footer .footerItem {
+    width: 100%;
+}

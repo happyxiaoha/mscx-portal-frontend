@@ -271,7 +271,7 @@ var view = Backbone.View.extend({
         Models[this.id + 'Category'].fetch();
     },
     renderDetailTags: function(model) {
-        this.$('.tags-dl').html(this.tagTemplate(model.toJSON()));
+        this.$('.tags-dl').removeClass('expand').html(this.tagTemplate(model.toJSON()));
 
         // var $moreWrap = this.$('.tag-wrap .sl-ext');
         // // 处理 更多 按钮是否出现

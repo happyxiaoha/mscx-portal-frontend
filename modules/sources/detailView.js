@@ -19,18 +19,28 @@ var downloadModel = Backbone.Model.extend({
 var purchaseOrNotModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/purchaseOrNot.do'
 });
-
+var followModel = Backbone.Model.extend({
+    url: mscxPage.request.data + 'addUserDataAttention.do'
+})
+var unFollowModel = Backbone.Model.extend({
+    url: mscxPage.request.data + 'removeUserDataAttention.do'
+})
 require('util');
 
 var detailView = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     events: {
         'click .downLoadBtn': 'downloadData',
+        'click #follow': 'follow'
     },
     template: _.template(detailTemplate,{variable: 'data'}),
     initialize: function() {
         this.$el.empty();
         this.model = new dataDetailModel();
+        this.followModel = new followModel({
+            dataId: this.id
+        });
+        this.unFollowModel = new unFollowModel();
         this.model.fetch({
             data: {
                 dataId: this.id
@@ -43,11 +53,15 @@ var detailView = Backbone.View.extend({
 
         this.listenTo(this.purchaseOrNotModel, 'sync', this.handlePurchase);
         this.listenTo(this.model, 'sync', this.render);
+        this.listenTo(this.followModel, 'sync', this.handleFollow);
+        this.listenTo(this.unFollowModel, 'sync', this.handleUnFollow);
     },
     render: function () {
         this.nJson = this.model.toJSON().result;
 
         this.$el.html(this.template( this.nJson ));
+
+        this.attentionFlag = this.nJson.attentionFlag;
 
         // 热门数据报告区域
         this.$hotDataReport = this.$('#hotDataReport');
@@ -140,6 +154,33 @@ var detailView = Backbone.View.extend({
             return true;
         else
             return false;
+    },
+    follow: function() {
+        if(!this.attentionFlag) {
+            this.followModel.save();
+        }else {
+            this.unFollowModel.fetch({
+                data: {
+                    dataId: this.id
+                }             
+            });
+        }
+    },
+    handleFollow: function() {
+        var model = this.followModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('关注成功');
+            this.attentionFlag = 1;
+            this.$('#follow').text('取消关注');
+        }
+    },
+    handleUnFollow: function() {
+        var model = this.unFollowModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('取消关注成功');
+            this.attentionFlag = 0;
+            this.$('#follow').text('关注');
+        }
     }
 });
 

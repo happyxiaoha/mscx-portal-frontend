@@ -691,12 +691,22 @@
 .index-res-title {margin: 30px 0;}
 .index-res-title h3 {background: url("../../images/index-chengguo.png") no-repeat center;height: 65px;}
 .index-res-list {margin-bottom: 35px;}
+.index-res-list ul {
+    overflow: hidden;
+}
 .index-res-list ul li {float: left;width: 23.5%;margin-left: 2%;}
 .index-res-list ul li:first-child {margin-left: 0;}
 .index-res-list li a {display: block;}
-.index-res-list li .res-line2 {margin: 10px 0;overflow: hidden;}
+.index-res-list li img {
+    width: 280px;
+    height: 210px;
+}
+.index-res-list li .res-line2 {margin: 10px 0;overflow: hidden;line-height: 20px;}
 .index-res-list li .res-line2 p {font-size: 16px;}
 .index-res-list li .res-line2 span {color: #a8a7a7;}
+.index-res-list .res-tags {
+    line-height: 22px;
+}
 .index-res-list .res-tags span {border: 1px solid #5cb981; color: #5cb981; border-radius: 4px;-webkit-border-radius: 4px;padding: 2px 5px;}
 .clear{clear: both;}
 .common .tis {font-size: 20px;overflow: hidden;}

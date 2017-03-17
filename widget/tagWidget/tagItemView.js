@@ -4,7 +4,7 @@ var template = require('html!./tagItem.html');
 var innerTemplate = require('html!./tagItemInner.html');
 var view = Backbone.View.extend({
     events: {
-        'keyup #tagFilter': 'filterTagRes',
+        'input #tagFilter': 'filterTagRes',
         'click .filter-a a': 'toTag'
     },
     tagName: 'div',
@@ -14,6 +14,7 @@ var view = Backbone.View.extend({
         //var filterArea = '<div class="filter-area"><input type="text" id="tagFilter"/> </div><ul class="provider-list">';
         this.model['filterVal'] = '';
         this.$el.html(this.template(this.model));
+        // this.$('#tagFilter').on('change', this.filterTagRes);
     },
     submit: function() {
         var $target = this.$('input[type="checkbox"]:checked'),

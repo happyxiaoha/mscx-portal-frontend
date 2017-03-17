@@ -490,6 +490,7 @@ var apiView = Backbone.View.extend({
         else {
             var newPackage = $('#addChargeForm').serializeObject();
             newPackage.flag = newPackage.flag == 'C' ? 'C': 'U';
+            newPackage.id = packageList[this.updateIndex].id;
             newPackage.serviceId = this.serviceId;
             packageList[this.updateIndex] = newPackage;
             this.updateIndex = -1;

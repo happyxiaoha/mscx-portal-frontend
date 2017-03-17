@@ -79,6 +79,16 @@ function initTransRuleTables() {
 						}
 					},
 					{
+						data:"availabilityTime",
+						"render":function(data, type, row){
+							if (data != null){
+								return data.substring(0,10);
+							}else{
+								return "";
+							}
+						}
+					},
+					{
 						data : "goodStatus",
 						"render":function(data, type, row){
 							return data == 'Y'?"启用":"停用";

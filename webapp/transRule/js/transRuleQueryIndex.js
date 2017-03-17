@@ -1,6 +1,8 @@
 var height;
 var userName;
 $(function() {
+	var clientHeight=document.documentElement.clientHeight;
+	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+';');
 	userName = getUrlLocationQueryString("userName");
 	if (userName == null){
 		alertify.alert("提示", "请输入用户名");

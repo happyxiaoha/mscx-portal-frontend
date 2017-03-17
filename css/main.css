@@ -1692,7 +1692,7 @@ ul.pagination>li.active>a {
     line-height: 24px;
     width: 100%;
     text-align: left;
-    padding: 0 10px;
+    padding: 0 0 0 10px;
     box-sizing: border-box;
     position: relative;
     cursor: pointer;
@@ -1713,7 +1713,7 @@ ul.pagination>li.active>a {
     border-right: 6px solid transparent;
     border-left: 6px solid transparent;
     right: 12px;
-    top: 12px
+    top: 10px
 }
 
 .ns-selectComponent .selectLabel {

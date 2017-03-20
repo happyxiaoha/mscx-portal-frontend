@@ -26,3 +26,4 @@
 #fund .ns-list .ns-list-item .media-body .media-body-footer .footerItem {
     width: 100%;
 }
+.activity-des {white-space: pre-line; word-break: break-all;overflow: hidden;}

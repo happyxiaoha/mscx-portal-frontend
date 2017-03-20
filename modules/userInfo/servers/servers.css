@@ -14,3 +14,6 @@
     color: #ff9900;
 }
 .call-back-error{display: none; color: red;}
+.delete-call-back-url{display: block;}
+#callBack {width: 95%;}
+.mes {font-size: 12px;color: #666;margin-top: -60px;float: right;margin-right: 5%;}

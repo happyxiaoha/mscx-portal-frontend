@@ -227,7 +227,7 @@ var view = Backbone.View.extend({
         if(type == 'categoryId') {
             this.searchParams.set({
                 page: 1,
-                categoryId: $target.data('categoryid'),
+                categoryId: $target.data('val'),
                 tagId: ''
             })
             this.fetchTags();

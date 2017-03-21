@@ -2,6 +2,10 @@
 
 var template = '<div class="ns-contentComponent animate-content opacity0"></div>';
 
+var developCheck = Backbone.Model.extend({
+    url: mscxPage.host+'/developer/portal.do'
+});
+
 var resource = {
     apiEnv: {
         url: '/static_html/datainfo/gy_apiEnv/index.html'
@@ -19,6 +23,9 @@ var resource = {
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,
+    events: {
+        'click .toDevelop': 'jumpDevelop'
+    },
     initialize: function() {
         this.$el.html(template);
         this.$wrap = this.$('.ns-contentComponent');
@@ -29,6 +36,16 @@ var view = Backbone.View.extend({
         });
 
         return this;
+    },
+    jumpDevelop: function() {
+        new developCheck().fetch({
+            success: function(model) {
+                var res = model.toJSON();
+                if(res.status == 'OK') {
+                    location.href = res.result;
+                }
+            }
+        });
     }
 });
 

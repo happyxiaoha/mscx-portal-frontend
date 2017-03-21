@@ -116,4 +116,5 @@ a{
 .navCons.index .nav li a:link{color: #333;}
 
 .navCons.index .nav li a:link{color: #333;}
-.navCons.index .nav li a:hover{color: #0095d1;}
+.navCons.index .nav li a:hover{color: #4dcf81;}
+.navCons .nav li.active a {color: #4dcf81 !important;}

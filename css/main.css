@@ -2255,6 +2255,10 @@ ul.pagination>li.active>a {
     background: #f90;
     width: 100px
 }
+ .demand-content .btn.disable {
+    background: #aaa;
+    border-color: #aaa;
+ }
 
 .api-content .btn-follow {
     position: absolute;

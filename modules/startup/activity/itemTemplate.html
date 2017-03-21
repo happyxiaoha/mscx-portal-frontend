@@ -9,7 +9,8 @@
             <h1><%= data.name %></h1>
         </a>
         <p class="sub"><span><%= data.initiator %></span></p>
-        <p class="info"><%= data.description %>
+        <p class="info <%= data.description.length > 158 ? 'longtxt' : '' %>">
+            <%= data.description %>
         </p>
         <p class="info">地址：<%= data.holdAddress %></p>
         <div class="media-body-footer">

@@ -91,7 +91,7 @@
             <dd><a href="javascript:;" class="toggle-more area-expand">更多&gt;&gt;</a></dd>
             <% }%>
             <dd class="<%= data.defaults && (data.defaults.categoryId == item.categoryId) ? 'active' : '' %>">
-                <a rel="nofollow" href="javascript:;" data-type="categoryId" data-categoryid="<%= item.categoryId %>"><%= item.categoryName %></a>
+                <a rel="nofollow" href="javascript:;" data-type="categoryId" data-val="<%= item.categoryId %>"><%= item.categoryName %></a>
             </dd>
         <% }) %>
     </dl>

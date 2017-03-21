@@ -13,7 +13,7 @@
                 <% }) %>
             </div>
         </a>
-        <p class="info">
+        <p class="info <%= data.roadDescription.length > 158 ? 'longtxt' : '' %>">
             <%= data.roadDescription %>
         </p>
         <div class="media-body-footer">

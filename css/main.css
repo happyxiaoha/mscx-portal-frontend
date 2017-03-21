@@ -1259,12 +1259,16 @@ input[type=search] {
     font-size: 14px;
     color: #999;
     line-height: 20px;
+    margin-bottom: 10px;
+}
+.ns-list .ns-list-item .media-body p.info.longtxt {
     height: 80px;
+    position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-right: 3px;
 }
-
-.ns-list .ns-list-item .media-body p.info:after {
+.ns-list .ns-list-item .media-body p.info.longtxt:after {
     content: "...";
     position: absolute;
     bottom: 0;
@@ -2251,6 +2255,10 @@ ul.pagination>li.active>a {
     background: #f90;
     width: 100px
 }
+ .demand-content .btn.disable {
+    background: #aaa;
+    border-color: #aaa;
+ }
 
 .api-content .btn-follow {
     position: absolute;

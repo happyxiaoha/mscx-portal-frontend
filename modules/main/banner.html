@@ -2,7 +2,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <% _.each(data, function(item){ %>
-            <a <%=  item.bannerUrl ? 'href ='+ item.bannerUrl : '' %> class="swiper-slide">
+            <a target="_blank" <%=  item.bannerUrl ? 'href ='+ item.bannerUrl : 'javascript:;' %> class="swiper-slide">
                 <img src="<%= item.bigBannerPic %>" alt="<%= item.title %>">
             </a>
             <% }); %>

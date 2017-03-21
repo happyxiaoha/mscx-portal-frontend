@@ -18,7 +18,7 @@
 }
 
 .float-div a .ercode{
-    background: url("../../images/ic_ercode.png") no-repeat;
+    background: url("../../images/qrcode.jpg") no-repeat;
 }
 
 .float-div a .callus{
@@ -75,7 +75,7 @@
 .er-code div{
     height: 126px;
     width: 126px;
-    background: url("../../images/ercode.png") no-repeat;
+    background: url("../../images/qrcode.jpg") no-repeat;
     background-size: 100% 100%;
 }
 

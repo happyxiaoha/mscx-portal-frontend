@@ -14,6 +14,7 @@ var floatView = Backbone.View.extend({
     initialize: function() {
         $('body').append(this.$el.html(template));
         $('a.showercode').hover(//为返回顶部增加鼠标进入的反馈效果，用添加删除css类实现
+
             function(){$('#erCode').fadeIn(100);},
             function(){$('#erCode').fadeOut(100);
             });
@@ -24,10 +25,10 @@ var floatView = Backbone.View.extend({
             var s = $(window).scrollTop();   //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐
             if( s > 200){
                 $("#gotoTop").fadeIn(100);
-
+                $("#erCode").css({'margin-top': '-104px'});
             }else{
                 $("#gotoTop").fadeOut(200);
-
+                $("#erCode").css({'margin-top': '-165px'});
             }
         });
     },

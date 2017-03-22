@@ -4,26 +4,29 @@
 
 /*侧导航*/
 .container{width: 190px;z-index: 2;margin: 0;padding: 0;}
-.container .topTit{height: 41px;background: #4dcf81;text-align: center;border-bottom: 3px solid #fff;}
+.container .topTit{height: 41px;background: #ff9900;text-align: center;border-bottom: 3px solid #fff;}
 .container .topTit span{
     display: block;
     float: left;
     width: 50%;
     font-size: 14px;
     position: relative;
-    color: #282828;
-    line-height: 41px;
-    cursor: default;
+    color: #FFF;
+    line-height: 38px;
+    cursor: pointer;
 }
 
 .container .topTit span.active{
     color: #FFF;
+    font-weight: bold;
+    background: url("../../images/index-menu-hand.png") no-repeat center bottom;
 }
 
 .downCons{
     width: 100%;
-    background: #fff;
+    background: #e9e9e9;
     position: relative;
+    height: 359px;
 }
 .titCons {
     height: 350px;
@@ -51,26 +54,26 @@
     background: url(../../images/newdot0.png) no-repeat center center;
 }
 .downCons ul li .leftTit a{display: block;}
-.downCons ul li .leftTit:hover{background: #ff9900;}
+.downCons ul li .leftTit:hover{background: #979ba7;}
 .downCons ul li .leftTit:hover a {color: #FFF;}
 
 .downCons ul li .leftTit span {font-size: 12px;position: absolute;right: 10px;top: 0;}
 .downCons ul li .leftTit:hover span {color: #FFF;}
 .downCons ul li .rightTips{
     width: 210px;
-    background: #ff9900;
+    background: rgba(0, 0, 0, 0.24);
     position: absolute;
     left: 190px;
     height: 350px;
     top: 0;
-    padding: 8px 20px 0;
+    padding: 0 20px 0;
     box-sizing:border-box;
     display: none;
 }
 .downCons ul li .rightTips a{
     color: #FFF;
     display: block;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 28px;
     padding: 5px 0;
     text-overflow: ellipsis;
@@ -79,7 +82,7 @@
     width: 100%;
 }
 .downCons ul li .rightTips a:hover{
-    color: #9b4200;
+    color: #ff9900;
 }
 
 

@@ -84,6 +84,7 @@ function initRechargetTables() {
 						ordering : false,// 是否启用排序
 						searching : false,// 搜索
 						bRetrieve : true,
+						autoWidth: false,
 						columnDefs : [ {
 							className : "tdClass"
 						} ],

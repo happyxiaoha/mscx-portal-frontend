@@ -73,7 +73,7 @@ function initTransactionDetailTableTables () {
 									}
 								},
 								{
-									data : "completionTime",
+									data : "createTime",
 									"render" : function(data,type,row,meta){
 										return data.substring(0,10);
 									}

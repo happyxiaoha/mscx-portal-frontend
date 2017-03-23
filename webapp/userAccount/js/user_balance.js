@@ -209,7 +209,7 @@ function getTotalBalance() {
 		if (res.resCode == 1) {
 			$("#totalBalance").html(res.totalBalance + "元");
 		} else if (res.resCode == 0) {
-			$("#totalBalance").html("元");
+			$("#totalBalance").html("0元");
 		}
 	});
 }
@@ -242,6 +242,9 @@ function getAccountBalance() {
 		if (res.resCode == 1) {
 			$("#balance").html(res.balance);
 			$("#creditBalance").html(res.creditBalance);
+		}else{
+			$("#balance").html('0');
+			$("#creditBalance").html('0');
 		}
 	});
 

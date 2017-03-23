@@ -97,12 +97,47 @@
 					<div class="span12">
 						<div class="tabbable" id="tabs-937374">
 							<ul class="navs navs-tabs">
-								<li class=""><a href="#panel-recharge" class="ti"
-									data-toggle="tab">充值记录</a></li>
-								<li><a href="#panel-balance" data-toggle="tab">账户余额</a></li>
+								<li class=""><a href="#panel-balance" class="ti"
+									data-toggle="tab">账户余额</a></li>
+								<li><a href="#panel-recharge" data-toggle="tab">充值记录</a></li>
 							</ul>
 							<div class="tab-content">
-								<div class="tab-pane active" id="panel-recharge">
+								<div class="tab-pane active" id="panel-balance">
+									<div style="text-align:center;margin-top:50px;">
+										<div class="row" style="margin-bottom: 20px;">
+											<div class="col-xs-1"></div>
+											<div class="col-xs-6">
+												<div class="form-group">
+													<label class="col-sm-6 control-label no-padding-right aols">
+														<i class="icon_balance"></i>账户余额：
+													</label>
+													<div class="col-sm-6">
+														<span id="balance" style="color:red; width:100px">0
+														</span>元
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-5"></div>
+										</div>
+
+										<div class="row">
+											<div class="col-xs-1"></div>
+											<div class="col-xs-6">
+												<div class="form-group">
+													<label class="col-sm-6 control-label no-padding-right aols">
+														<i class="icon_balance_credit"></i>信用余额： </label>
+													<div class="col-sm-6">
+														<span id="creditBalance" style="color:green; width:100px">0
+														</span>元
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-5"></div>
+										</div>
+									</div>
+
+								</div>
+								<div class="tab-pane " id="panel-recharge">
 									<div class="widget-body" style="padding-top: 15px;">
 										<div
 											class="widget-main padding-6 no-padding-left no-padding-right">
@@ -115,7 +150,7 @@
 																	class="col-sm-6 control-label no-padding-right aols">总充值金额：
 																</label>
 																<div class="col-sm-6" style="top: 7;">
-																	<span id="totalBalance" style="color:red"></span>
+																	<span id="totalBalance" style="color:red">0元</span>
 																</div>
 															</div>
 														</div>
@@ -190,39 +225,7 @@
 										</table>
 									</div>
 								</div>
-								<div class="tab-pane" id="panel-balance">
-									<div style="text-align:center;margin-top:50px;">
-										<div class="row" style="margin-bottom: 20px;">
-											<div class="col-xs-6">
-												<div class="form-group">
-													<label class="col-sm-6 control-label no-padding-right aols"> 
-														<i class="icon_balance"></i>账户余额：
-													</label>
-													<div class="col-sm-6">
-														<span id="balance" style="color:red; width:100px">
-														</span>元
-													</div>
-												</div>
-											</div>
-											<div class="col-xs-6"></div>
-										</div>
 
-										<div class="row">
-											<div class="col-xs-6">
-												<div class="form-group">
-													<label class="col-sm-6 control-label no-padding-right aols">
-														<i class="icon_balance_credit"></i>信用余额： </label>
-													<div class="col-sm-6">
-														<span id="creditBalance" style="color:green; width:100px">
-														</span>元
-													</div>
-												</div>
-											</div>
-											<div class="col-xs-6"></div>
-										</div>
-									</div>
-
-								</div>
 							</div>
 						</div>
 					</div>

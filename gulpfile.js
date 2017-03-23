@@ -62,7 +62,7 @@ gulp.task('backboneBuild', function() {
 });
 
 gulp.task('copy', function() {
-    return gulp.src(['./favicon.ico','./css/**/*', './*.html', './lib/**/*', './images/newicon/ic_newlogo.png', './images/apihelp/*', './images/guidance/*'], {base: './'})
+    return gulp.src(['./favicon.ico','./css/**/*', './*.html', './lib/**/*', './images/newicon/ic_newlogo.png', './images/apihelp/*','./images/serverHelp/*', './images/guidance/*'], {base: './'})
         .pipe(gulp.dest('build'));
 });
 

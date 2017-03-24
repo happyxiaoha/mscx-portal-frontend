@@ -4,7 +4,7 @@ var height;
 var userName = GetQueryString("userName");
 $(function() {
 	var clientHeight=document.documentElement.clientHeight;
-	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+';');
+	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 	//初始化日期控件
 	initDatePicker();
 	height = window.screen.availHeight - 140;

@@ -5,7 +5,7 @@ var type = "history";
 var userName;
 $(function() {
 	var clientHeight=document.documentElement.clientHeight;
-	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+';');
+	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 
 	type = GetQueryString("type");
 	userName = GetQueryString("userName");
@@ -129,7 +129,7 @@ function initTransRuleTables() {
 						'userName':userName,
 						'type':'account',
 						'history':type
-					}
+					};
 					if (type == "history"){
 						args.startTime = $("#startTime").val();
 						args.endTime = $("#endTime").val();
@@ -173,8 +173,8 @@ function resetVal(){
 }
 
 function exportTransRule(){
-	var url = "/transRule/export.action?fileName=商户交易规则.xls&visitType=down"
-		+ "&operator=" + encodeURI(encodeURI($('#operator').val()))
+	var url = "/transRule/export.action"
+		+ "?operator=" + encodeURI(encodeURI($('#operator').val()))
 		+ "&province=" + encodeURI(encodeURI($('#province').val()))
 		+ "&denomination=" + $('#denomination').val()
 		+ "&userName=" + userName

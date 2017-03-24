@@ -2,7 +2,10 @@ var height;
 var userName;
 $(function() {
 	var clientHeight=document.documentElement.clientHeight;
-	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+';');
+	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
+
+	$("#transRuleIfm").height(clientHeight - 100);
+	$("#historyTransRuleIfm").height(clientHeight - 100);
 	userName = getUrlLocationQueryString("userName");
 	if (userName == null){
 		alertify.alert("提示", "请输入用户名");

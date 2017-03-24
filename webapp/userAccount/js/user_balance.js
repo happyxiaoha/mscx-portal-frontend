@@ -5,7 +5,7 @@ var paramObj;// 查询参数
 
 $(function() {
 	var clientHeight=document.documentElement.clientHeight;
-	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+';');
+	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 
 	var $ti = $(".navs li a");
 	$ti.click(function() {

@@ -4,7 +4,7 @@ var height;
 var userName = GetQueryString("userName");
 $(function() {
 	var clientHeight=document.documentElement.clientHeight;
-	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+';');
+	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 	dateWidget('queryDate');
 	//初始化select2控件
 	if (userName == null){

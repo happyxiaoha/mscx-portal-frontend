@@ -4,14 +4,21 @@
 var defaultModel = Backbone.Model.extend({
     url: mscxPage.host+'/personal/dashboard.do'
 });
-
-
 var myApiListModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'api/getSelfApiList.do'
 });
 
 var myServerListModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'attention/list.do'
+});
+var latestDataModel = Backbone.Model.extend({
+    url: mscxPage.request.data + 'getLastestDataCount.do'
+});
+var latestAPIModel = Backbone.Model.extend({
+    url: mscxPage.request.api + 'service/getLastestApiCount.do'
+});
+var latestServerModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'getLastestAppCount.do'
 });
 var template = require('html!./userInfoDefault.html');
 require('./userInfoDefault.css');
@@ -31,12 +38,21 @@ var defaultView = Backbone.View.extend({
         this.model = new defaultModel();
         this.myApiListModel = new myApiListModel();
         this.myServerListModel = new myServerListModel();
+
+        this.latestDataModel = new latestDataModel();
+        this.latestAPIModel = new latestAPIModel();
+        this.latestServerModel = new latestServerModel();
+
         this.myApiListModel.on('change',function () {
             that.renderMyApi();
         });
         this.myServerListModel.on('change',function () {
             that.renderMyServer();
         });
+        this.latestDataModel.on('change', this.renderDataCount.bind(this));
+        this.latestAPIModel.on('change', this.renderAPICount.bind(this));
+        this.latestServerModel.on('change', this.renderServerCount.bind(this));
+
         this.model.fetch();
         this.myApiListModel.fetch({
             data: {
@@ -84,6 +100,9 @@ var defaultView = Backbone.View.extend({
     render: function () {
         var dasTemplate = _.template($('#userDefault').html());
         $('#dashboardAll').html(dasTemplate({'res':this.model.get('result')}));
+        this.latestDataModel.fetch();
+        this.latestAPIModel.fetch();
+        this.latestServerModel.fetch();
     },
     renderMyServer: function () {
         var apiServiceList = this.myServerListModel.get('result').list;
@@ -97,6 +116,18 @@ var defaultView = Backbone.View.extend({
                 this.$sdataList.append(view.$el);
             }.bind(this));
         }
+    },
+    renderDataCount: function() {
+        var model = this.latestDataModel.toJSON();
+        this.$('#latestData').html(model.result);
+    },
+    renderAPICount: function() {
+        var model = this.latestAPIModel.toJSON();
+        this.$('#latestAPI').html(model.result);
+    },
+    renderServerCount: function() {
+        var model = this.latestServerModel.toJSON();
+        this.$('#latestServer').html(model.result);
     }
 });
 

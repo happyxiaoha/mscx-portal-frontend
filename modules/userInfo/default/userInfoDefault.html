@@ -1,5 +1,5 @@
 <div id="dashboardAll" class="R-topList clearfix mb20">
-    <div class="fl bgWhite R-cons mr16 clearfix">
+    <div class="fl bgWhite R-cons clearfix">
         <img src="../../../images/img15.png" alt="" class="fl block mr16">
         <p class="fl">
             <span class="block ft16 corOrange">--</span>
@@ -7,7 +7,14 @@
             <a href="#userAuth" class="block corBlue unrealName">未认证</a>
         </p>
     </div>
-    <div class="fl bgWhite R-cons mr16 clearfix user-cost">
+    <div class="fl bgWhite R-cons clearfix user-cost">
+        <img src="../../../images/icon02.png" alt="" class="fl block mr16">
+        <p class="fl tc">
+            <span class="block mt16">账户余额</span>
+            <span class="block corBlue ft18 mt14">0.0<em class="ft12 corBlue">元</em></span>
+        </p>
+    </div>
+    <div class="fl bgWhite R-cons clearfix user-cost">
         <img src="../../../images/icon02.png" alt="" class="fl block mr16">
         <p class="fl tc">
             <span class="block mt16">累计消费金额</span>
@@ -35,6 +42,26 @@
             <a class="corff bgBlue" target="_blank" href="./services.html#publish">发布服务</a>
         </div>
     </div>
+    <div class="fl bgWhite R-cons clearfix user-demand">
+        <p class="fl">
+            <span class="block ft18">我的需求</span>
+            <span class="block mt30 pl60">
+                数据供给需求：<a class="corBlue ft18 mt14">-</a><span class="mr10 ml5">个</span>
+                API开发需求：<a class="corBlue ft18 mt14">-</a><span class="mr10 ml5">个</span>
+                服务开发需求：<a class="corBlue ft18 mt14">-</a><span class="mr10 ml5">个</span>
+            </span>
+        </p>
+    </div>
+    <div class="fr bgWhite R-cons clearfix user-ser">
+        <p class="fl">
+            <span class="block ft18">最新上架</span>
+            <span class="block mt30">
+                数据：<a class="corBlue ft18 mt14">-</a><span class="mr10 ml5">个</span>
+                API：<a class="corBlue ft18 mt14">-</a><span class="mr10 ml5">个</span>
+                服务：<a class="corBlue ft18 mt14">-</a><span class="mr10 ml5">个</span>
+            </span>
+        </p>
+    </div>
 </div>
 <div class="R-myServer common mb25">
     <div class="tit posRE">
@@ -59,7 +86,7 @@
     </div>
 </div>
 <script id="userDefault" type="template">
-    <div class="fl bgWhite R-cons mr16 clearfix">
+    <div class="fl bgWhite R-cons clearfix">
         <img src="../../../images/img15.png" alt="" class="fl block mr16">
         <p class="fl">
             <span class="block ft16 corOrange user-name-area" title="<%=res.user.account%>"><%=res.user.account%></span>
@@ -73,7 +100,14 @@
             <%}%>
         </p>
     </div>
-    <div class="fl bgWhite R-cons mr16 clearfix user-cost">
+    <div class="fl bgWhite R-cons clearfix user-cost">
+        <img src="../../../images/icon02.png" alt="" class="fl block mr16">
+        <p class="fl tc">
+            <span class="block mt16">账户余额</span>
+            <span class="block corBlue ft18 mt14"><%=res.cash%><em class="ft12 corBlue">元</em></span>
+        </p>
+    </div>
+    <div class="fl bgWhite R-cons clearfix user-cost">
         <img src="../../../images/icon02.png" alt="" class="fl block mr16">
         <p class="fl tc">
             <span class="block mt16">累计消费金额</span>
@@ -102,5 +136,25 @@
             <a class="corff bgBlue" target="_blank" href="./services.html#publish">发布服务</a>
             <%}%>
         </div>
+    </div>
+    <div class="fl bgWhite R-cons clearfix user-demand">
+        <p class="fl">
+            <span class="block ft18">我的需求</span>
+            <span class="block mt30 pl60">
+                数据供给需求：<a class="corBlue ft18 mt14">3</a><span class="mr10 ml5">个</span>
+                API开发需求：<a class="corBlue ft18 mt14">3</a><span class="mr10 ml5">个</span>
+                服务开发需求：<a class="corBlue ft18 mt14">3</a><span class="mr10 ml5">个</span>
+            </span>
+        </p>
+    </div>
+    <div class="fr bgWhite R-cons clearfix user-ser">
+        <p class="fl">
+            <span class="block ft18">最新上架</span>
+            <span class="block mt30">
+                数据：<a class="corBlue ft18 mt14" id="latestData" href="sources.html#catalog/orderBy-1">-</a><span class="mr10 ml5">个</span>
+                API：<a class="corBlue ft18 mt14" id="latestAPI" href="api.html#data/orderBy-1">-</a><span class="mr10 ml5">个</span>
+                服务：<a class="corBlue ft18 mt14" id="latestServer" href="services.html#service/orderBy-1">-</a><span class="mr10 ml5">个</span>
+            </span>
+        </p>
     </div>
 </script>

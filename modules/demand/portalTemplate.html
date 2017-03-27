@@ -1,8 +1,11 @@
 <div class="demand-portal fl clearfix">
-    <form onsubmit="return false;">
+    <form onsubmit="return false;" novalidate="novalidate">
+        
+        <!-- top -->
+        
+        <p class="title">数据需求定制流程</p>
 
         <div class="process-guide bgWhite">
-            <p class="title text-center">数据需求定制流程</p>
             <ul>
                 <li class="step">
                     <i class="round">1</i>
@@ -23,13 +26,14 @@
                 </li>
             </ul>
         </div>
+        
         <!-- down -->
         <div class="ReleaseInputs">
             <div class="clearfix ReleaseList">
                 <p class="fl R_left"><em>*</em> 需求名称：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="name" value="<%= data && data.name %>" id="name" placeholder="请输入需求名称" >
+                        <input type="text" name="name" value="" id="name" placeholder="请输入需求名称">
                     </p>
                 </div>
                 <div class="fl R_Btns contact">
@@ -40,7 +44,7 @@
                 <p class="fl R_left"><em>*</em> 数据描述：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea name="dataDescription" id="dataDescription" cols="30" rows="10" placeholder="请输入任务描述"><%= data && data.dataDescription %></textarea>
+                        <textarea name="dataDescription" id="dataDescription" cols="30" rows="10" placeholder="请输入任务描述"></textarea>
                     </p>
                 </div>
             </div>
@@ -48,7 +52,7 @@
                 <p class="fl R_left"><em>*</em> 数据项：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea style="height: 120px" name="dataItem" id="dataItem" cols="30" rows="10" placeholder="请输入数据项"><%= data && data.dataItem %></textarea>
+                        <textarea style="height: 120px" name="dataItem" id="dataItem" cols="30" rows="10" placeholder="请输入数据项"></textarea>
                     </p>
                 </div>
             </div>
@@ -56,7 +60,7 @@
                 <p class="fl R_left"><em>*</em> 数据用途：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea style="height: 120px" name="dataUsage" id="dataUsage" cols="30" rows="10" placeholder="请输入数据用途"><%= data && data.dataUsage %></textarea>
+                        <textarea style="height: 120px" name="dataUsage" id="dataUsage" cols="30" rows="10" placeholder="请输入数据用途"></textarea>
                     </p>
                 </div>
             </div>
@@ -65,7 +69,7 @@
                 <div class="fl R_right">
                     <div class="radio-list">
                         <p>
-                            <input type="text" name="department" value="<%= data && data.department %>" id="department" placeholder="请输入归属部门" />
+                            <input type="text" name="department" value="" id="department" placeholder="请输入归属部门">
                         </p>
                     </div>
                 </div>
@@ -75,7 +79,7 @@
                 <div class="fl R_right">
                     <div class="radio-list">
                         <p>
-                            <input type="text" name="reqUser" value="<%= data && data.reqUser %>" id="reqUser" placeholder="请输入需求用户" />
+                            <input type="text" name="reqUser" value="" id="reqUser" placeholder="请输入需求用户">
                         </p>
                     </div>
                 </div>
@@ -85,31 +89,29 @@
                 <div class="fl R_right">
                     <div class="radio-list">
                         <label class="radio-inline checkbox-border">
-                            <% if(!data){ %>
-                            <input type="radio" name="dataFormat" checked value="csv" >
-                            <% }else{ %>
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'csv' && "checked" %> value="csv" >
-                            <% } %>
+                            
+                            <input type="radio" name="dataFormat" checked="" value="csv">
+                            
                             csv
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'pdf' && "checked" %> value="pdf" >
+                            <input type="radio" name="dataFormat" value="pdf">
                             pdf
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'xml' && "checked" %> value="xml">
+                            <input type="radio" name="dataFormat" value="xml">
                             xml
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'xlsx' && "checked" %> value="xlsx">
+                            <input type="radio" name="dataFormat" value="xlsx">
                             xlsx
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'doc' && "checked" %> value="doc">
+                            <input type="radio" name="dataFormat" value="doc">
                             doc
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'other' && "checked" %> value="other">
+                            <input type="radio" name="dataFormat" value="other">
                             其他
                         </label>
                     </div>

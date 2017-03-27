@@ -28,7 +28,8 @@ body {
 	line-height: 1;
 }
 .wrapper{
-	background: #f8f8f8;
+	/*background: #f8f8f8;*/
+	background: #fff;
 }
 ol, ul {
 	list-style: none;
@@ -171,7 +172,7 @@ em{color:#cc0000;font-style: normal;}
 .boxShadiow{box-shadow: 1px 1px 3px rgba(0,0,0,.1), -1px -1px 3px rgba(0,0,0,.1);}
 
 .boxSizing{box-sizing: border-box;}
-#headSection {  background: #fff;  }
+#headSection {  background: #fff; border-bottom: 1px solid #ccc;}
 .bor0{border: 0 !important;}
 .borB1{border-bottom: 4px solid #069cd9;}
 .borc1{border-bottom: 1px dashed #ccc !important;}

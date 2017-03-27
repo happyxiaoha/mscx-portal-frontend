@@ -1,5 +1,5 @@
 /*数据模型*/
-.rightMenuWrap{width: 916px;margin-left: 2px;padding: 24px 16px;}
+.rightMenuWrap{width: 1118px;margin-left: 2px;padding: 24px 16px;}
 .ChoiceList{width: 100%;height: auto;border: 1px solid #ccc;margin: 16px 0 24px;}
 .mainDatas{border: 1px solid #ccc;padding: 26px 26px 0;margin-top: 16px;}
 .mainDatas .DataList li{width: 186px;height: 212px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 26px 26px 0;margin-right: 19px\9;}
@@ -172,4 +172,83 @@
 }
 .des p a{
    color: #0ab7ef;
+}
+.demand-portal {
+    width: 1120px;
+}
+.demand-portal .title {
+    font-size: 24px;
+    color: #333;
+    padding: 10px 28px 26px;
+}
+.demand-portal .process-guide {
+    padding: 24px 0;
+    border: 1px solid #aaa;
+    margin-left: 28px;
+}
+.demand-portal .process-guide .step {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    margin-left: 36px;
+}
+.demand-portal .process-guide .step i.round {
+    background: url(../../images/newicon/step-round.png) left center no-repeat;
+    height: 44px;
+    width: 44px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 18px;
+    color: #aaa;
+}
+.demand-portal .process-guide .step i.arrow {
+    background: url(../../images/newicon/step-arrow.png) left center no-repeat;
+    width: 140px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 179px;
+}
+.demand-portal .process-guide .step .step-title {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    padding-left: 10px;
+    color: #1ba7e1;
+    font-weight: 600;
+}
+.demand-portal .process-guide .step .des {
+    padding-left: 54px;
+    color: #aaa;
+    font-size: 14px;
+    width: 270px;
+    line-height: 20px;
+    height: 50px;
+}
+.demand-portal .ReleaseInputs {
+    padding: 24px 0;
+    background: #f2f5fb;
+    font-size: 14px;
+    margin-left: 28px;
+}
+.demand-portal .R_Btns {
+    text-align: initial;
+    margin: 30px 0 10px 121px;
+}
+.demand-portal .R_Btns button {
+    width: 100px;
+    height: 32px;
+    border: 1px solid #aaa;
+    outline: none;
+    color: #fff;
+    font-size: 14px; 
+}
+.demand-portal .R_Btns .bgWhite {
+    color: #000;
+}
+.demand-portal .R_Btns.contact {
+    margin: 0 0 0 10px;
 }

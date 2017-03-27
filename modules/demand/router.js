@@ -3,7 +3,7 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '': 'dataDemandView',
+        '': 'demandPortalView',
         'data': 'dataDemandView',
         'api': 'apiDemandView',
         'service': 'serviceDemandView',
@@ -19,6 +19,10 @@ var Routes =  Backbone.Router.extend({
         'service/des/:id': 'serviceDesView',
         'api/des/:id': 'apiDesView',
         'data/des/:id': 'dataDesView'
+    },
+    demandPortalView: function () {
+        var demandView = require('demand/portalView.js');
+        mscxPage.views['demandPortalObj'] = new demandView();
     },
     dataDemandView: function () {
         var demandView = require('demand/demandView.js');

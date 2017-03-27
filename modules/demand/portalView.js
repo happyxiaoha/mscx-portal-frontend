@@ -1,50 +1,45 @@
-/**
- * Created by Kevin on 2016/12/6.
- */
+'use strict';
 
-var template = require('html!./publishTemplate.html');
-var detailModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'modifyDataDetail.do'
-})
+var leftMenuView = require('leftMenuWidget/leftMenuView.js');
+var template = require('html!./portalTemplate.html');
+
+var Resource = require('./resource.js');
 var addModel = Backbone.Model.extend({
     idAttribute: 'addId',
     url: mscxPage.request.demand + 'addData.do'
 });
-var modifyModel = Backbone.Model.extend({
-    idAttribute: 'modifyId',
-    url: mscxPage.request.demand + 'modifyData.do'
-});
-
-
-require('../publish.css');
-require('../demand.css');
+require('./demand.css');
 require('validate');
-require('util');
 
-
-var createDemandView = Backbone.View.extend({
+var view = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
-    events: {
-        'click #goBack': 'backHistory'
-    },
     template: _.template(template, {variable: 'data'}),
+    events: {
+        'click #goBack': 'backHistory',
+        'click .contact button': 'goContact'
+    },
     initialize: function() {
-        // 如果有ID则说明是进入修改页面
-        this.$el.addClass('grid1190');
-        this.detailModel = new detailModel();
-        if(this.id) {
-            this.listenTo(this.detailModel, 'sync', this.renderDetail);
-            this.detailModel.fetch({
-                data: {
-                    id: this.id
-                }
-            })
-        }else {
-            this.renderDetail();
-        }
+        this.$el.removeClass('boxShadiow bgWhite').addClass('grid1190 mt16');
+        this.leftMenuView = new leftMenuView({
+            model: {
+                className: 'demand',
+                id: this.id,
+                sideBars: Resource.maps
+            }
+        });
 
-        this.model = this.id ? new modifyModel() : new addModel();
+        this.$el.empty();
+        this.$el.append(this.leftMenuView.$el);
+        this.$el.append(this.template());
+
+        this.$form = this.$('form');
+        this.$form.validate(this.validateConfig());
+
+        this.model = new addModel();
         this.listenTo(this.model, 'sync', this.handleSubmit);
+
+
+        return this;
     },
     validateConfig: function () {
         var me = this;
@@ -83,20 +78,15 @@ var createDemandView = Backbone.View.extend({
         var model = this.model.toJSON();
         if(model.status == 'OK') {
             this.$('#publishBtn').attr('disabled', 'disabled');
-            layer.msg((this.id ? '修改' : '创建') + '成功，请至用户中心我的需求内发布');
+            layer.msg('创建成功，请至用户中心我的需求内发布');
             setTimeout(function() {
                 location.href = 'userInfo.html#demand';
             }, 2000);
         }
     },
-    renderDetail: function() {
-        var model = this.detailModel.toJSON();
-
-        this.$el.html(this.template(model.result));
-
-        this.$form = this.$('form');
-        this.$form.validate(this.validateConfig());
+    goContact: function() {
+        location.href = 'contactUs.html#contact';
     }
 });
 
-module.exports = createDemandView;
+module.exports = view;

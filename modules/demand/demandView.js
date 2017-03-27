@@ -11,7 +11,7 @@ require('./demand.css');
 var view = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     initialize: function() {
-        this.$el.removeClass('boxShadiow bgWhite').addClass('grid1000 mt16');
+        this.$el.removeClass('boxShadiow bgWhite').addClass('grid1190 mt16');
         this.leftMenuView = new leftMenuView({
             model: {
                 className: 'demand',

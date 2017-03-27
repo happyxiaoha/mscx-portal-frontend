@@ -55,7 +55,7 @@ var loginView = Backbone.View.extend({
                         window.open( decodeURIComponent(nHref),'_self');
                     }
                     else{
-                        window.open('index.html','_self');
+                        window.open('userInfo.html','_self');
                     }
 
                 }

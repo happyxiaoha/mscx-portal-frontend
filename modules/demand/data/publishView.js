@@ -55,13 +55,18 @@ var createDemandView = Backbone.View.extend({
                     minlength: 2
                 },
                 dataDescription: {
+                    required: true,
+                    maxlength: 500
+                },
+                dataReword: {
+                    required: true,
+                    price: true
+                },
+                dataClosing: {
                     required: true
                 },
-                dataItem: {
-                    required: true
-                },
-                dataUsage: {
-                    required: true
+                reqContact: {
+                    telephone: true
                 }
             },
             submitHandler: function () {
@@ -91,11 +96,24 @@ var createDemandView = Backbone.View.extend({
     },
     renderDetail: function() {
         var model = this.detailModel.toJSON();
+        model.result = model.result || {};
+        _.extend(model.result, {
+            userInfo: mscxPage.userInfo
+        });
 
         this.$el.html(this.template(model.result));
 
         this.$form = this.$('form');
         this.$form.validate(this.validateConfig());
+
+        this.$endTime = this.$('.end-time');
+
+        // 选择日期
+        this.$endTime.daterangepicker({
+            singleDatePicker: true,
+            startDate: moment(),
+            minDate: (new Date()).format('yyyy-MM-dd')
+        });
     }
 });
 

@@ -1,6 +1,8 @@
 <div class="demand-portal data-publish fl clearfix">
     <form onsubmit="return false;">
-
+        <% if(data && data.id) { %>
+        <input type="hidden" name="id" value="<%= data.id %>" />
+        <% } %>
         <div class="process-guide bgWhite">
             <p class="title text-center">数据需求定制流程</p>
             <ul>
@@ -29,7 +31,7 @@
                 <p class="fl R_left"><em>*</em> 需求名称：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="name" class="small" value="<%= data && data.name %>" id="name" placeholder="请输入需求名称" >
+                        <input type="text" name="name" class="small" value="<%= data && data.name %>" id="name" placeholder="请输入需求名称">
                     </p>
                 </div>
                 <div class="fl R_Btns contact">
@@ -45,7 +47,7 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"><em>*</em> 数据项：</p>
+                <p class="fl R_left"> 需求数据项：</p>
                 <div class="fl R_right">
                     <p>
                         <textarea style="height: 120px" name="dataItem" id="dataItem" cols="30" rows="10" placeholder="请输入数据项"><%= data && data.dataItem %></textarea>
@@ -53,66 +55,47 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"><em>*</em> 数据用途：</p>
+                <p class="fl R_left"><em>*</em> 赏金：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea style="height: 120px" name="dataUsage" id="dataUsage" cols="30" rows="10" placeholder="请输入数据用途"><%= data && data.dataUsage %></textarea>
+                        <input type="text" name="dataReword" class="mini" value="<%= data && data.data_reword %>" id="dataReword" placeholder="请输入赏金">
                     </p>
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">归属部门：</p>
+                <p class="fl R_left"><em>*</em>截止日期：</p>
                 <div class="fl R_right">
-                    <div class="radio-list">
-                        <p>
-                            <input type="text" name="department" value="<%= data && data.department %>" id="department" placeholder="请输入归属部门" />
-                        </p>
-                    </div>
+                    <p>
+                        <input type="text" name="dataClosing" class="end-time mini" readonly value="<%= data && data.data_closing && new Date(data.data_closing).format('yyyy-MM-dd') %>">
+                    </p>
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">需求用户：</p>
+                <p class="fl R_left"> 主联系人：</p>
                 <div class="fl R_right">
-                    <div class="radio-list">
-                        <p>
-                            <input type="text" name="reqUser" value="<%= data && data.reqUser %>" id="reqUser" placeholder="请输入需求用户" />
-                        </p>
-                    </div>
+                    <p>
+                        <input type="text" name="reqUser" class="mini" value="<%= data && data.reqUser %>" placeholder="请输入主联系人">
+                    </p>
+                </div>
+                <p class="fl R_left"> 主联系人电话：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" name="reqContact" class="mini" value="<%= data && data.reqContact %>" placeholder="请输入主联系人电话">
+                    </p>
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"> 数据格式：</p>
+                <p class="fl R_left"> 备用联系人：</p>
                 <div class="fl R_right">
-                    <div class="radio-list">
-                        <label class="radio-inline checkbox-border">
-                            <% if(!data){ %>
-                            <input type="radio" name="dataFormat" checked value="csv" >
-                            <% }else{ %>
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'csv' && "checked" %> value="csv" >
-                            <% } %>
-                            csv
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'pdf' && "checked" %> value="pdf" >
-                            pdf
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'xml' && "checked" %> value="xml">
-                            xml
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'xlsx' && "checked" %> value="xlsx">
-                            xlsx
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'doc' && "checked" %> value="doc">
-                            doc
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'other' && "checked" %> value="other">
-                            其他
-                        </label>
-                    </div>
+                    <p>
+                        <input type="text" class="mini bggray cora" value="<%= data && data.userInfo && data.userInfo.name %>" readonly>
+                    </p>
+                </div>
+                <p class="fl R_left"> 备用联系人电话：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" class="mini bggray cora" value="<%= data && data.userInfo && data.userInfo.mobile %>" readonly>
+                    </p>
                 </div>
             </div>
             <div class="R_Btns">

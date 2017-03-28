@@ -38,7 +38,7 @@
             <p class="fl R_left"><em>*</em>任务金额：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="money" maxlength="50" placeholder="请输入任务金额" value="<%= data && data.money %>">
+                    <input type="text" name="money" maxlength="50" class="mini" placeholder="请输入任务金额" value="<%= data && data.money %>">
                 </p>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <p class="fl R_left"><em>*</em>截止日期：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="endTime" class="end-time" readonly value="<%= data && data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %>">
+                    <input type="text" name="endTime" class="end-time mini" readonly value="<%= data && data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %>">
                 </p>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <p class="fl R_left"><em>*</em>主联系人信息：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" maxlength="50" name="contactUsername" placeholder="请输入联系人信息" value="<%= data && data.contactUsername %>">
+                    <input type="text" maxlength="50" class="mini" name="contactUsername" placeholder="请输入联系人信息" value="<%= data && data.contactUsername %>">
                 </p>
             </div>
         </div>
@@ -62,7 +62,7 @@
             <p class="fl R_left"><em>*</em>主联系人电话：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="contactPhone" placeholder="请输入联系人电话" value="<%= data && data.contactPhone %>">
+                    <input type="text" name="contactPhone" class="mini" placeholder="请输入联系人电话" value="<%= data && data.contactPhone %>">
                 </p>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <p class="fl R_left">备用联系人信息：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" class="cora bggray" readonly value="<%= data && data.userInfo && data.userInfo.name %>">
+                    <input type="text" class="cora bggray mini" readonly value="<%= data && data.userInfo && data.userInfo.name %>">
                 </p>
             </div>
         </div>
@@ -78,7 +78,7 @@
             <p class="fl R_left">备用联系人电话：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" class="cora bggray" readonly value="<%= data && data.userInfo && data.userInfo.mobile %>">
+                    <input type="text" class="cora bggray mini" readonly value="<%= data && data.userInfo && data.userInfo.mobile %>">
                 </p>
             </div>
         </div>

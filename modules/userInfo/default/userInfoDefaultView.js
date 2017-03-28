@@ -7,18 +7,40 @@ var defaultModel = Backbone.Model.extend({
 var myApiListModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'api/getSelfApiList.do'
 });
-
 var myServerListModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'attention/list.do'
 });
+// 最新上架的3个接口
 var latestDataModel = Backbone.Model.extend({
+    idAttribute: 'latestDataId',
+    id: 'latestData',
     url: mscxPage.request.data + 'getLastestDataCount.do'
 });
 var latestAPIModel = Backbone.Model.extend({
+    idAttribute: 'latestDataId',
+    id: 'latestAPI',
     url: mscxPage.request.api + 'service/getLastestApiCount.do'
 });
 var latestServerModel = Backbone.Model.extend({
+    idAttribute: 'latestServerId',
+    id: 'latestServer',
     url: mscxPage.request.app + 'getLastestAppCount.do'
+});
+// 我的需求的3个接口
+var myDataDemandCount = Backbone.Model.extend({
+    idAttribute: 'dataDemandId',
+    id: 'dataDemandCount',
+    url: mscxPage.request.demand + 'queryAllDataCount.do'
+});
+var myAPIDemandCount = Backbone.Model.extend({
+    idAttribute: 'apiDemandId',
+    id: 'apiDemandCount',
+    url: mscxPage.request.demand + 'queryAllApiCount.do'
+});
+var myServiceDemandCount = Backbone.Model.extend({
+    idAttribute: 'serviceDemandId',
+    id: 'serviceDemandCount',
+    url: mscxPage.request.demand + 'queryAllServiceCount.do'
 });
 var template = require('html!./userInfoDefault.html');
 require('./userInfoDefault.css');
@@ -43,15 +65,23 @@ var defaultView = Backbone.View.extend({
         this.latestAPIModel = new latestAPIModel();
         this.latestServerModel = new latestServerModel();
 
+        this.myDataDemandCount = new myDataDemandCount();
+        this.myAPIDemandCount = new myAPIDemandCount();
+        this.myServiceDemandCount = new myServiceDemandCount();
+
         this.myApiListModel.on('change',function () {
             that.renderMyApi();
         });
         this.myServerListModel.on('change',function () {
             that.renderMyServer();
         });
-        this.latestDataModel.on('change', this.renderDataCount.bind(this));
-        this.latestAPIModel.on('change', this.renderAPICount.bind(this));
-        this.latestServerModel.on('change', this.renderServerCount.bind(this));
+        this.latestDataModel.on('change', this.renderCount);
+        this.latestAPIModel.on('change', this.renderCount);
+        this.latestServerModel.on('change', this.renderCount);
+
+        this.myDataDemandCount.on('change', this.renderCount);
+        this.myAPIDemandCount.on('change', this.renderCount);
+        this.myServiceDemandCount.on('change', this.renderCount);
 
         this.model.fetch();
         this.myApiListModel.fetch({
@@ -103,6 +133,10 @@ var defaultView = Backbone.View.extend({
         this.latestDataModel.fetch();
         this.latestAPIModel.fetch();
         this.latestServerModel.fetch();
+
+        this.myDataDemandCount.fetch();
+        this.myAPIDemandCount.fetch();
+        this.myServiceDemandCount.fetch();
     },
     renderMyServer: function () {
         var apiServiceList = this.myServerListModel.get('result').list;
@@ -117,17 +151,9 @@ var defaultView = Backbone.View.extend({
             }.bind(this));
         }
     },
-    renderDataCount: function() {
-        var model = this.latestDataModel.toJSON();
-        this.$('#latestData').html(model.result);
-    },
-    renderAPICount: function() {
-        var model = this.latestAPIModel.toJSON();
-        this.$('#latestAPI').html(model.result);
-    },
-    renderServerCount: function() {
-        var model = this.latestServerModel.toJSON();
-        this.$('#latestServer').html(model.result);
+    // 这个方法的this指向model自身
+    renderCount: function() {
+        $('#' + this.id).html(this.toJSON().result);
     }
 });
 

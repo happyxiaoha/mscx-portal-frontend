@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"><em>*</em> 数据项：</p>
+                <p class="fl R_left"> 需求数据项：</p>
                 <div class="fl R_right">
                     <p>
                         <textarea style="height: 120px" name="dataItem" id="dataItem" cols="30" rows="10" placeholder="请输入数据项"></textarea>
@@ -57,64 +57,47 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"><em>*</em> 数据用途：</p>
+                <p class="fl R_left"><em>*</em> 赏金：</p>
                 <div class="fl R_right">
                     <p>
-                        <textarea style="height: 120px" name="dataUsage" id="dataUsage" cols="30" rows="10" placeholder="请输入数据用途"></textarea>
+                        <input type="text" name="dataReword" class="mini" value="" id="dataReword" placeholder="请输入赏金">
                     </p>
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">归属部门：</p>
+                <p class="fl R_left"><em>*</em>截止日期：</p>
                 <div class="fl R_right">
-                    <div class="radio-list">
-                        <p>
-                            <input type="text" name="department" value="" id="department" placeholder="请输入归属部门">
-                        </p>
-                    </div>
+                    <p>
+                        <input type="text" name="dataClosing" class="end-time mini" readonly value="<%= data && data.dataClosing && new Date(data.dataClosing).format('yyyy-MM-dd') %>">
+                    </p>
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left">需求用户：</p>
+                <p class="fl R_left"> 主联系人：</p>
                 <div class="fl R_right">
-                    <div class="radio-list">
-                        <p>
-                            <input type="text" name="reqUser" value="" id="reqUser" placeholder="请输入需求用户">
-                        </p>
-                    </div>
+                    <p>
+                        <input type="text" name="reqUser" class="mini" value="" placeholder="请输入主联系人">
+                    </p>
+                </div>
+                <p class="fl R_left"> 主联系人电话：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" name="reqContact" class="mini" value="" placeholder="请输入主联系人电话">
+                    </p>
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"> 数据格式：</p>
+                <p class="fl R_left"> 备用联系人：</p>
                 <div class="fl R_right">
-                    <div class="radio-list">
-                        <label class="radio-inline checkbox-border">
-                            
-                            <input type="radio" name="dataFormat" checked="" value="csv">
-                            
-                            csv
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="pdf">
-                            pdf
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="xml">
-                            xml
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="xlsx">
-                            xlsx
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="doc">
-                            doc
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="dataFormat" value="other">
-                            其他
-                        </label>
-                    </div>
+                    <p>
+                        <input type="text" class="mini bggray cora" value="<%= data && data.userInfo && data.userInfo.name %>" readonly>
+                    </p>
+                </div>
+                <p class="fl R_left"> 备用联系人电话：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" class="mini bggray cora" value="<%= data && data.userInfo && data.userInfo.mobile %>" readonly>
+                    </p>
                 </div>
             </div>
             <div class="R_Btns">

@@ -8,8 +8,10 @@ var addModel = Backbone.Model.extend({
     idAttribute: 'addId',
     url: mscxPage.request.demand + 'addData.do'
 });
+
 require('./demand.css');
 require('validate');
+require('util');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
@@ -30,10 +32,21 @@ var view = Backbone.View.extend({
 
         this.$el.empty();
         this.$el.append(this.leftMenuView.$el);
-        this.$el.append(this.template());
+        this.$el.append(this.template({
+            userInfo: mscxPage.userInfo
+        }));
 
         this.$form = this.$('form');
         this.$form.validate(this.validateConfig());
+
+        this.$endTime = this.$('.end-time');
+
+        // 选择日期
+        this.$endTime.daterangepicker({
+            singleDatePicker: true,
+            startDate: moment(),
+            minDate: (new Date()).format('yyyy-MM-dd')
+        });
 
         this.model = new addModel();
         this.listenTo(this.model, 'sync', this.handleSubmit);
@@ -50,13 +63,18 @@ var view = Backbone.View.extend({
                     minlength: 2
                 },
                 dataDescription: {
+                    required: true,
+                    maxlength: 500
+                },
+                dataReword: {
+                    required: true,
+                    price: true
+                },
+                dataClosing: {
                     required: true
                 },
-                dataItem: {
-                    required: true
-                },
-                dataUsage: {
-                    required: true
+                reqContact: {
+                    telephone: true
                 }
             },
             submitHandler: function () {

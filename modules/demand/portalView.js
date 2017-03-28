@@ -15,7 +15,7 @@ var view = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     template: _.template(template, {variable: 'data'}),
     events: {
-        'click #goBack': 'backHistory',
+        'click .portal #goBack': 'backHistory',
         'click .contact button': 'goContact'
     },
     initialize: function() {

@@ -32,7 +32,8 @@ var createDemandView = Backbone.View.extend({
     events: {
         'click #goBack': 'backHistory',
         'change input[type="file"]': 'changeFile',
-        'click .category input[type="radio"]': 'changeCategory'
+        'click .category input[type="radio"]': 'changeCategory',
+        'click .split span': 'toggleForm'
     },
     template: _.template(template, {variable: 'data'}),
     optionTemplate: _.template(optionTemplate, {variable: 'data'}),
@@ -211,6 +212,11 @@ var createDemandView = Backbone.View.extend({
 
         this.$category.find('select').attr('disabled', 'disabled');
         this.$('#' + id).removeAttr('disabled');
+    },
+    toggleForm: function(event) {
+        var $target = this.$(event.currentTarget);
+        $target.toggleClass('more');
+        this.$('.more-info').toggleClass('hide');
     }
 });
 

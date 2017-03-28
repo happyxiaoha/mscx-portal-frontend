@@ -25,7 +25,7 @@ require('util');
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     events: {
-        'click #goBack': 'backHistory'
+        'click .data-publish #goBack': 'backHistory'
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {

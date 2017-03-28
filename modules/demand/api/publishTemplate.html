@@ -1,4 +1,4 @@
-<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
+<div class="ReleaseMainCons grid1190 clearfix bgWhite">
     <!-- top -->
     <% if(data && data.id) { %>
     <p class="ReleaseTit">修改API开发需求</p>
@@ -26,59 +26,10 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left">系统类型：</p>
-            <div class="fl R_right">
-                <select class="form-control select-type" name="sysType" id="system-type">
-                    <option value="A/S" <%= data && data.sysType == 'A/S' && "selected" %>>A/S</option>
-                    <option value="B/S带插件" <%= data && data.sysType == 'B/S带插件' && "selected" %>>B/S带插件</option>
-                    <option value="B/S无插件" <%= data && data.sysType == 'B/S无插件' && "selected" %>>B/S无插件</option>
-                    <option value="C/S" <%= data && data.sysType == 'C/S' && "selected" %>>C/S</option>
-                </select>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left">系统描述：</p>
-            <div class="fl R_right">
-                <p>
-                    <textarea cols="30" rows="10" maxlength="1000" name="sysDescription" placeholder="请输入系统描述" id="system-description"><%= data && data.sysDescription %></textarea>
-                </p>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>归属单位 ：</p>
             <div class="fl R_right">
                 <p>
                     <input type="text" value="<%= data && data.department %>" name="department" placeholder="请输入所属单位" maxlength="64" id="system-belongCompany">
-                </p>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>所有权：</p>
-            <div class="fl R_right checkbox-border">
-                <div class="radio-list">
-                    <label class="radio-inline">
-                        <% if(!data.id){ %>
-                        <input type="radio" checked name="ownership" value="Y">
-                        <% }else { %>
-                        <input type="radio" <%= data && data.ownership == 'Y' && "checked" %> name="ownership" value="Y">
-                        <% } %>
-                        是
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" <%= data && data.ownership == 'N' && "checked" %> name="ownership" value="N">
-                        否
-                    </label>
-                    <div class="fl message">
-                        <em>注:选择否,则需要在说明中说明情况</em>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left">访问网址：</p>
-            <div class="fl R_right">
-                <p>
-                    <input type="text" value="<%= data && data.site %>" name="site" placeholder="请输入http://开头的访问地址" id="system-accessUrl">
                 </p>
             </div>
         </div>
@@ -102,78 +53,6 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left">开发语言：</p>
-            <div class="fl R_right checkbox-border">
-                <div class="checkbox-list">
-                    <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JAVA') > -1 && "checked" %> value="JAVA">
-                        </span>
-                        </div>
-                        JAVA
-                    </label>
-                    <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C/C++') > -1 && "checked" %> value="C/C++">
-                        </span>
-                        </div>
-                        C/C++
-                    </label>
-                    <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C#') > -1 && "checked" %> value="C#">
-                        </span>
-                        </div>
-                        C#
-                    </label>
-                    <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JS') > -1 && "checked" %> value="JS">
-                        </span>
-                        </div>
-                        JS
-                    </label>
-                    <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('CSS') > -1 && "checked" %> value="CSS">
-                        </span>
-                        </div>
-                        CSS
-                    </label>
-                    <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('HTML') > -1 && "checked" %> value="HTML">
-                        </span>
-                        </div>
-                        HTML
-                    </label>
-                    <label class="checkbox-inline">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('PHP') > -1 && "checked" %> value="PHP">
-                        </span>
-                        </div>
-                        PHP
-                    </label>
-                    <label class="checkbox-inline checkbox-inline-other">
-                        <div class="checker" id="">
-                        <span>
-                            <input type="checkbox" <%= data && data.otherLanguage && "checked" %>
-                        </span>
-                        </div>
-                        其它
-                        <input type="text" value="<%= data && data.otherLanguage %>" name="otherLanguage" id="otherLanguage">
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>接口个数：</p>
             <div class="fl R_right">
                 <p>
@@ -185,14 +64,6 @@
             <p class="fl R_left"><em>*</em>截止日期：</p>
             <div class="fl R_right">
                 <a><input size="7" type="text" name="endTime" value="<%= data && data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %>" readonly class="end-time"></a>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left">需求用户：</p>
-            <div class="fl R_right">
-                <p>
-                    <input type="text" name="reqUser" value="<%= data && data.reqUser %>" placeholder="请输入需求用户" id="who-requirement">
-                </p>
             </div>
         </div>
         <div class="clearfix ReleaseList">
@@ -208,22 +79,6 @@
             <div class="fl R_right">
                 <p>
                     <input type="text" name="contactPhone" value="<%= data && data.contactPhone %>" placeholder="请输入联系人电话" id="system-phoneNumber">
-                </p>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left">备用联系人：</p>
-            <div class="fl R_right">
-                <p>
-                    <input type="text" class="cora bggray" value="<%= data && data.userInfo && data.userInfo.name %>" readonly>
-                </p>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left">备用联系人电话：</p>
-            <div class="fl R_right">
-                <p>
-                    <input type="text" class="cora bggray" value="<%= data && data.userInfo && data.userInfo.mobile %>" readonly>
                 </p>
             </div>
         </div>
@@ -286,23 +141,178 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left">附件：</p>
-            <div class="fl R_right pr">
-                <button class="btn beauty-file" type="button">上传文件</button>
-                <input class="btn btn-xs btn-file" id="document-0" type="file" name="file" value="选择文件">
-                <% if(data && data.fileName){ %>
-                <a id="showFileName" target="_blank" href="<%= data.fileUrl %>"><%= data && data.fileName %></a>
-                <% } else { %>
-                <span id="showFileName"><%= data && data.fileName %></span>
-                <% } %>
+            <p class="fl R_left">备用联系人：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" class="cora bggray" value="<%= data && data.userInfo && data.userInfo.name %>" readonly>
+                </p>
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left">说明：</p>
+            <p class="fl R_left">备用联系人电话：</p>
             <div class="fl R_right">
                 <p>
-                    <textarea cols="30" rows="10" name="description" placeholder="请输入其他说明" id="system-other-text"><%= data && data.description %></textarea>
+                    <input type="text" class="cora bggray" value="<%= data && data.userInfo && data.userInfo.mobile %>" readonly>
                 </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>所有权：</p>
+            <div class="fl R_right checkbox-border">
+                <div class="radio-list">
+                    <label class="radio-inline">
+                        <% if(!data.id){ %>
+                        <input type="radio" checked name="ownership" value="Y">
+                        <% }else { %>
+                        <input type="radio" <%= data && data.ownership == 'Y' && "checked" %> name="ownership" value="Y">
+                        <% } %>
+                        是
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" <%= data && data.ownership == 'N' && "checked" %> name="ownership" value="N">
+                        否
+                    </label>
+                    <div class="fl message">
+                        <em>注:选择否,则需要在说明中说明情况</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList tc split">
+            <hr/>
+            <span>
+                填写详细信息
+                <i></i>
+            </span>
+            <hr/>
+        </div>
+        <div class="more-info hide">
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">系统类型：</p>
+                <div class="fl R_right">
+                    <select class="form-control select-type" name="sysType" id="system-type">
+                        <option value="A/S" <%= data && data.sysType == 'A/S' && "selected" %>>A/S</option>
+                        <option value="B/S带插件" <%= data && data.sysType == 'B/S带插件' && "selected" %>>B/S带插件</option>
+                        <option value="B/S无插件" <%= data && data.sysType == 'B/S无插件' && "selected" %>>B/S无插件</option>
+                        <option value="C/S" <%= data && data.sysType == 'C/S' && "selected" %>>C/S</option>
+                    </select>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">系统描述：</p>
+                <div class="fl R_right">
+                    <p>
+                        <textarea cols="30" rows="10" maxlength="1000" name="sysDescription" placeholder="请输入系统描述" id="system-description"><%= data && data.sysDescription %></textarea>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">访问网址：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" value="<%= data && data.site %>" name="site" placeholder="请输入http://开头的访问地址" id="system-accessUrl">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">开发语言：</p>
+                <div class="fl R_right checkbox-border">
+                    <div class="checkbox-list">
+                        <label class="checkbox-inline">
+                            <div class="checker" id="">
+                            <span>
+                                <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JAVA') > -1 && "checked" %> value="JAVA">
+                            </span>
+                            </div>
+                            JAVA
+                        </label>
+                        <label class="checkbox-inline">
+                            <div class="checker" id="">
+                            <span>
+                                <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C/C++') > -1 && "checked" %> value="C/C++">
+                            </span>
+                            </div>
+                            C/C++
+                        </label>
+                        <label class="checkbox-inline">
+                            <div class="checker" id="">
+                            <span>
+                                <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('C#') > -1 && "checked" %> value="C#">
+                            </span>
+                            </div>
+                            C#
+                        </label>
+                        <label class="checkbox-inline">
+                            <div class="checker" id="">
+                            <span>
+                                <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('JS') > -1 && "checked" %> value="JS">
+                            </span>
+                            </div>
+                            JS
+                        </label>
+                        <label class="checkbox-inline">
+                            <div class="checker" id="">
+                            <span>
+                                <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('CSS') > -1 && "checked" %> value="CSS">
+                            </span>
+                            </div>
+                            CSS
+                        </label>
+                        <label class="checkbox-inline">
+                            <div class="checker" id="">
+                            <span>
+                                <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('HTML') > -1 && "checked" %> value="HTML">
+                            </span>
+                            </div>
+                            HTML
+                        </label>
+                        <label class="checkbox-inline">
+                            <div class="checker" id="">
+                            <span>
+                                <input type="checkbox" name="developLanguage" <%= data && data.developLanguage && data.developLanguage.indexOf('PHP') > -1 && "checked" %> value="PHP">
+                            </span>
+                            </div>
+                            PHP
+                        </label>
+                        <label class="checkbox-inline checkbox-inline-other">
+                            <div class="checker" id="">
+                            <span>
+                                <input type="checkbox" <%= data && data.otherLanguage && "checked" %>
+                            </span>
+                            </div>
+                            其它
+                            <input type="text" value="<%= data && data.otherLanguage %>" name="otherLanguage" id="otherLanguage">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">需求用户：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" name="reqUser" value="<%= data && data.reqUser %>" placeholder="请输入需求用户" id="who-requirement">
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">附件：</p>
+                <div class="fl R_right pr">
+                    <button class="btn beauty-file" type="button">上传文件</button>
+                    <input class="btn btn-xs btn-file" id="document-0" type="file" name="file" value="选择文件">
+                    <% if(data && data.fileName){ %>
+                    <a id="showFileName" target="_blank" href="<%= data.fileUrl %>"><%= data && data.fileName %></a>
+                    <% } else { %>
+                    <span id="showFileName"><%= data && data.fileName %></span>
+                    <% } %>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">说明：</p>
+                <div class="fl R_right">
+                    <p>
+                        <textarea cols="30" rows="10" name="description" placeholder="请输入其他说明" id="system-other-text"><%= data && data.description %></textarea>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="R_Btns">

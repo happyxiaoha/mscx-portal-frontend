@@ -21,8 +21,12 @@ var Routes =  Backbone.Router.extend({
         'data/des/:id': 'dataDesView'
     },
     demandPortalView: function () {
-        var demandView = require('demand/portalView.js');
-        mscxPage.views['demandPortalObj'] = new demandView();
+        var view = require('demand/portalView.js');
+
+        var demandView = mscxPage.views['demandPortalObj'];
+        demandView && demandView.undelegateEvents() && demandView.stopListening();
+
+        mscxPage.views['demandPortalObj'] = new view();
     },
     dataDemandView: function () {
         var demandView = require('demand/demandView.js');

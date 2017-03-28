@@ -129,7 +129,7 @@ var userAuthenticationView = Backbone.View.extend({
             this.model.save({}, {
                 success: function () {
                     //layer.msg('提交成功!');
-                    var layerTag = layer.alert('认证成功!',{icon:1,yes: function () {
+                    var layerTag = layer.alert('认证成功!重新登录系统才能实名使用。',{icon:1,yes: function () {
                         layer.close(layerTag);
                         location.href = '#info';
                     }});
@@ -280,7 +280,7 @@ var userAuthenticationView = Backbone.View.extend({
         var res = this.personAuthModel.get('result');
         res = res || {
                 bankCardNo: '',
-                certificationType: '01',
+                certificationType: '02',
                 mobile: '',
                 idcard: '',
                 name: '',
@@ -291,7 +291,7 @@ var userAuthenticationView = Backbone.View.extend({
         var isValidate = res.name ? true : false;
         this.buildCertificationType(isValidate,res);
         this.model = new personAuthModel();
-        this.model.set('certificationType','01');
+        this.model.set('certificationType','02');
         isValidate ? '' : $('#personForm').validate(this.personValidateConfig());
     },
     renderEnterprise: function () {

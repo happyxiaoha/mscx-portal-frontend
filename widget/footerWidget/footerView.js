@@ -11,19 +11,19 @@ var menuList = [
         url: mscxPage.urlConfig.indexPage
     },
     {
-        name: '交易广场',
+        name: '云接口',
         url: mscxPage.urlConfig.sourcesPage
     },
     {
-        name: '需求大厅',
+        name: '云服务',
         url: mscxPage.urlConfig.demandPage
     },
     {
-        name: '创客工场',
+        name: '云环境',
         url: mscxPage.urlConfig.pioneeringPage
     },
     {
-        name: '孵化器',
+        name: '部门需求',
         url: mscxPage.urlConfig.startupPage
     }
 ];

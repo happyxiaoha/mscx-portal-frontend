@@ -29,7 +29,7 @@ a{
 .header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 36px;box-shadow: none;padding-left: 10px;padding-right: 16px;}
 .header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
 .header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 35px 0 0 0;}
-.header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #5cb981;font-size: 14px;}
+.header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #4786f3;font-size: 14px;}
 .header .haslogin .noLogin span{margin: 0 4px;}
 .header .haslogin .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
 .header .haslogin .yesLogin span.down{
@@ -116,5 +116,4 @@ a{
 .navCons.index .nav li a:link{color: #333;}
 
 .navCons.index .nav li a:link{color: #333;}
-.navCons.index .nav li a:hover{color: #4dcf81;}
-.navCons .nav li.active a {color: #4dcf81 !important;}
+.navCons.index .nav li a:hover{color: #4786f3;}

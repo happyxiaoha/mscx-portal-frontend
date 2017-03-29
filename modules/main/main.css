@@ -100,14 +100,29 @@
     margin-top: 20px;
 }
 .left-banner {
-    width: 190px;
+    width: 300px;
     height: 400px;
     background: #FFF;
+    margin-left: 10px;
 }
+.left-banner .title {
+    background: #ff9900;
+    overflow: hidden;
+    height: 40px;
+    color: #FFF;
+    line-height: 40px;
+    padding: 0 15px;
+}
+.left-banner .title h3 {font-size: 14px;}
+.left-banner .title a {color: #FFF;}
+.left-banner ul li {padding: 15px;overflow: hidden;}
+.left-banner ul li h3 {font-size: 14px; line-height: 25px;}
+.left-banner ul li p {line-height: 15px;padding-bottom: 5px;}
+.left-banner ul li a {text-decoration: underline;color: #4786f3;font-size: 12px;}
 .ml10 {
     margin-left: 10px;
 }
-.bannger {width:980px;height:400px;}
+.bannger {width:880px;height:400px;}
 .swiper-container {
     width: 100%;
     height: 400px;
@@ -471,7 +486,6 @@
 .footer ul li a{
     width: 155px;
     display: block;
-    color: #888;
     font-size: 14px;
     line-height: 30px;
 }
@@ -489,15 +503,6 @@
     padding-left: 60px;
     color: #FFF;
     background: url("../../images/newicon/ic_shangwuhez.png") left center no-repeat;
-}
-.forhelp .jisuzhichi{
-    padding-left: 60px;
-    color: #FFF;
-    margin-top: 40px;
-    background: url("../../images/newicon/ic_jshuzhic.png") left center no-repeat;
-}
-.forhelp .swhz p:first-child,.forhelp .jisuzhichi p:first-child {
-    color: #888;
 }
 .righttext img{
     margin-top: 26px;
@@ -602,7 +607,7 @@
         height: 175px;
     }
     .left-banner{
-        width: 160px;
+        width: 250px;
     }
     .downCons ul li .rightTips{
         left: 160px;
@@ -626,7 +631,7 @@
         margin: 0 20px 0 0;
     }
     .bannger{
-        width: 820px;
+        width: 740px;
     }
     .layer .tabChange ul li{
         width: 320px;

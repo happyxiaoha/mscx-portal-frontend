@@ -1,6 +1,6 @@
 <div class="footer indexfooter">
     <div class="grid1190 clearfix">
-        <a href="index.html" class="block fl">
+        <a href="index.html" class="block fl" style="visibility:hidden;">
             <img src="../../images/newicon/ic_newlogo_1.png" alt="">
         </a>
         <ul class="fl clearfix">
@@ -9,6 +9,7 @@
                 <a href="<%= item.url %>"><%= item.name %></a>
                 <%})%>
             </li>
+            <!--
             <li class="fl">
                 <a href="javascript:;">帮助</a>
                 <a href="contactUs.html" target="_blank">关于我们</a>
@@ -17,22 +18,18 @@
                 <a href="serverhelp.html" target="_blank">微服务使用</a>
                 <a href="question.html" target="_blank">常见问题</a>
             </li>
-            <!--<li class="fl">
+            <li class="fl">
                 <a href="#">联系我们</a>
                 <a href="#">商务合作</a>
                 <a href="#">用户反馈</a>
                 <a href="#">合作伙伴</a>
             </li>-->
         </ul>
-        <div class="fl text-center righttext">
+        <div class="fl text-center righttext" style="display: none;">
             <p class="textinfo">关注官方微信</p>
             <img class="er-code-img" src="../../images/qrcode.jpg" alt="">
         </div>
         <div class="forhelp fl">
-            <div class="swhz">
-                <p>商务合作（工作日9:00-18:00）</p>
-                <p class="ft18 mt10">0851-82576999</p>
-            </div>
             <div class="jisuzhichi">
                 <p>技术支持</p>
                 <p class="ft18 mt10">0851-82576999</p>

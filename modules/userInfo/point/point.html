@@ -1,0 +1,53 @@
+<div class="M-mainInfo clearfix" style="padding-top: 20px;">
+    <h2 class="ft18">积分概况</h2>
+    <hr>
+    <p class="">积分余额：<span class="corBlue ft18"><%= data.remainingPoint %></span></p>
+</div>
+<div class="M-mainInfo clearfix mt20" style="padding-top: 20px;">
+    <h2 class="ft18">明细查询</h2>
+    <hr>
+    <div class="mb20">
+        <span>时间：</span>
+        <input type="text" readonly id="datepicker" class="m0">
+        <button class="btn-search corff bgBlue">查询</button>
+    </div>
+    <div class="mb10 fast-search">
+        <span>快捷查询：</span>
+        <a href="javascript:;" data-start="" data-end="">全部</a>
+        <a href="javascript:;" data-start="<%= new Date().addDays(-30).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">近1个月</a>
+        <a href="javascript:;" data-start="<%= new Date().addDays(-90).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">近3个月</a>
+        <a href="javascript:;" data-start="<%= new Date().addDays(-180).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">近6个月</a>
+        <a href="javascript:;" data-start="<%= new Date().addDays(-365).format('yyyy-MM-dd') %>" data-end="<%= new Date().format('yyyy-MM-dd') %>">近1年</a>
+    </div>
+    <div class="M-downCons" id="pointList">
+        <div class="D_table M-table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="8%"></td>
+                    <th width="10%">时间</th>
+                    <th width="10%">收入/支出</th>
+                    <th width="72%">详细说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% data && _.each(data.list, function (item, index) { %>
+                <tr>
+                    <td><%= index %></td>
+                    <td><%= new Date(item.updatedTime).format('yyyy-MM-dd') %></td>
+                    <td><%= item.point %></td>
+                    <td><%= item.detailedDescription %></td>
+                    </td>
+                </tr>
+                <% }); %>
+                <%if(data && data.list.length == 0){%>
+                <tr>
+                    <td colspan="4">暂无数据</td>
+                </tr>
+                <%}%>
+                </tbody>
+            </table>
+        </div>
+        <div id="serverPage" class="page-area fr"></div>
+    </div>
+</div>

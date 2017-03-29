@@ -23,7 +23,11 @@ var Routes =  Backbone.Router.extend({
         'serverApply': 'serverApplyView',
         'order': 'orderView',
         'shop': 'shopView',
-        'point': 'pointView'
+        'point': 'pointView',
+        'pointIncome': 'pointIncomeView',
+        'pointOutlay': 'pointOutlayView',
+        'pointRule': 'pointRuleView',
+        'pointQA': 'pointQAView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -104,6 +108,22 @@ var Routes =  Backbone.Router.extend({
     pointView: function() {
         var pointView = require('userInfo/point/pointView.js');
         mscxPage.views['pointViewObj'] = new pointView();
+    },
+    pointIncomeView: function() {
+        var pointView = require('userInfo/point/pointIncomeView.js');
+        mscxPage.views['pointIncomeViewObj'] = new pointView();
+    },
+    pointOutlayView: function() {
+        var pointView = require('userInfo/point/pointOutlayView.js');
+        mscxPage.views['pointOutlayViewObj'] = new pointView();
+    },
+    pointRuleView: function() {
+        var pointView = require('userInfo/point/pointRuleView.js');
+        mscxPage.views['pointRuleViewObj'] = new pointView();
+    },
+    pointQAView: function() {
+        var pointView = require('userInfo/point/pointQAView.js');
+        mscxPage.views['pointQAViewObj'] = new pointView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

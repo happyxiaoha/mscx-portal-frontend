@@ -1,14 +1,14 @@
 'use strict';
 
 var commonTemplate = require('html!./common.html');
-var template = require('html!./point.html');
+var template = require('html!./pointIncome.html');
 var listTemplate = require('html!./pointList.html');
 
 require('./point.css');
 require('util');
 
-var pointListModel = Backbone.Model.extend({
-    url: mscxPage.request.point + 'point/getAllPointRecordList.do'
+var pointIncomeModel = Backbone.Model.extend({
+    url: mscxPage.request.point + 'point/getIncomePointRecordList.do'
 });
 
 var userView = Backbone.View.extend({
@@ -22,20 +22,20 @@ var userView = Backbone.View.extend({
     listTemplate:  _.template(listTemplate, {variable: 'data'}),
     initialize: function() {
         this.$el.html(this.commonTemplate({
-            name: 'point'
+            name: 'pointIncome'
         })).addClass('point');
 
-        this.pointListModel = new pointListModel();
+        this.pointIncomeModel = new pointIncomeModel();
         this.searchParam = new Backbone.Model();
-        this.listenToOnce(this.pointListModel, 'sync', this.render);
+        this.listenToOnce(this.pointIncomeModel, 'sync', this.render);
         this.listenTo(this.searchParam, 'change', this.fullfillDatepicker);
 
-        this.pointListModel.fetch({
+        this.pointIncomeModel.fetch({
             data: this.searchParam.toJSON()
         })
     },
     render: function () {
-        var model = this.pointListModel.toJSON();
+        var model = this.pointIncomeModel.toJSON();
         this.$('#userInfoArea').html(this.template(model.result));
 
         this.$datepicker = this.$('#datepicker');
@@ -43,7 +43,7 @@ var userView = Backbone.View.extend({
         // 选择日期
         this.$datepicker.daterangepicker();
 
-        this.listenTo(this.pointListModel, 'sync', this.renderPartial);
+        this.listenTo(this.pointIncomeModel, 'sync', this.renderPartial);
     },
     searchDate: function() {
         var time = this.$datepicker.val();
@@ -53,7 +53,7 @@ var userView = Backbone.View.extend({
             endTime: time[1]
         })
 
-        this.pointListModel.fetch({
+        this.pointIncomeModel.fetch({
             data: this.searchParam.toJSON()
         })
     },
@@ -64,12 +64,12 @@ var userView = Backbone.View.extend({
             endTime: $target.data('end')
         })
 
-        this.pointListModel.fetch({
+        this.pointIncomeModel.fetch({
             data: this.searchParam.toJSON()
         })
     },
     renderPartial: function() {
-        var model = this.pointListModel.toJSON();
+        var model = this.pointIncomeModel.toJSON();
         this.$('#pointList').html(this.listTemplate(model.result));
     },
     fullfillDatepicker: function() {

@@ -1,0 +1,19 @@
+.point {
+    font-size: 14px;
+}
+.point .btn-search {
+    height: 28px;
+    display: inline-block;
+    line-height: 28px;
+    padding: 0 10px;
+    margin-left: 20px;
+    border: 0;
+}
+.point .fast-search a {
+    color: #069cd9;
+    padding: 0 10px;
+    border-right: 1px solid #aaa;
+}
+.point .fast-search a:last-child {
+    border-right: 0;
+}

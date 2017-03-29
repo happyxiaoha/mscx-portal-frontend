@@ -1,0 +1,34 @@
+<div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+    <h2 class="ft18">积分规则说明</h2>
+    <hr>
+    <div class="M-downCons">
+        <div class="D_table M-table">
+            <table>
+                <tr>
+                    <th width="8%"></td>
+                    <th width="15%">任务名称</th>
+                    <th width="15%">奖励积分</th>
+                    <th width="62%">描述</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% data && _.each(data.list, function (item, index) { %>
+                <tr>
+                    <td><%= index %></td>
+                    <td><%= item.taskName %></td>
+                    <td><%= item.point %></td>
+                    <td><%= item.description %></td>
+                    </td>
+                </tr>
+                <% }); %>
+                <%if(data && data.list.length == 0){%>
+                <tr>
+                    <td colspan="4">暂无数据</td>
+                </tr>
+                <%}%>
+                </tbody>
+            </table>
+        </div>
+        <div id="serverPage" class="page-area fr"></div>
+    </div>
+</div>

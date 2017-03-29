@@ -4,6 +4,7 @@
 
 var commonTemplate = require('html!./incubatorCommon.html');
 var template = require('html!./myActivity.html');
+var signListView = require('./signListLayer.js');
 require('./incubator.css');
 require('util');
 
@@ -23,7 +24,8 @@ var activityView = Backbone.View.extend({
         pageNum: 1
     },
     events: {
-        'click .closeActivity': 'closeActivity'
+        'click .closeActivity': 'closeActivity',
+        'click .sign-list': 'getSignList'
     },
     initialize: function() {
         var that = this;
@@ -97,6 +99,37 @@ var activityView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
+    },
+    getSignList: function(event) {
+        var activityId = $(event.target).data('activityid');
+        var me = this;
+
+        this.signListView = new signListView({
+            model: {
+                activityId: activityId
+            }
+        });
+        this.signListView.delegate = this;
+        this.$el.append(this.signListView.$el);
+        
+        layer.open({
+            type: 1,
+            btn: ['确定','取消'],
+            title: '<p class="ft22">报名列表</p>',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px', '450px'],
+            content: this.signListView.$el,
+            btn1: function (index) {
+                layer.close(index);
+            },
+            btn2: function (index) {
+                layer.close(index);
+            },
+            end: function() {
+                me.signListView.remove();
+            }
+        })
     }
 });
 

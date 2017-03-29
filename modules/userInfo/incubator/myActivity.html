@@ -34,7 +34,13 @@
         </td>
         <td><%=paitem.attentionCount%></td>
         <td><%=paitem.viewCount%></td>
-        <td><%=paitem.signCount%></td>
+        <td>
+            <% if(+paitem.signCount > 0){ %>
+                <a href="javascript:;" data-activityid="<%=paitem.activityId%>" class="sign-list"><%=paitem.signCount%><a>
+            <% }else {%>
+                <%=paitem.signCount%>
+            <% } %>
+        </td>
         <td><%=paitem.publishTime ? new Date(paitem.publishTime).format('yyyy-MM-dd') : '-'%></td>
         <td><%=statusMes[paitem.status]%></td>
         <td>

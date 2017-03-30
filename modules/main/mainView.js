@@ -3,22 +3,24 @@
  */
 var template = require('html!./main.html'),
     navigationView = require('./navigationView.js'),
+    recommendBarView = require('./recommendBarView.js'),
     recommendView = require('./recommendView.js'),
     bannerView = require('./banner.js');
 require('./main.css');
 require('../../lib/swiper.jquery.js');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
 
-/*
 var apiListModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getSelectedNavigation.do'
 });
-*/
 var recommendApiModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getSelectedApi.do'
 });
 var recommendSerModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'recommend/list.do'
+});
+var serListModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'selection/list.do'
 });
 
 
@@ -30,7 +32,6 @@ var mainView = Backbone.View.extend({
     initialize: function() {
         this.$el.html(template);
         new bannerView();
-        /*
         new recommendBarView({
             id: 'ser',
             el: '#serList',
@@ -43,7 +44,6 @@ var mainView = Backbone.View.extend({
             el: '#apiList',
             model: new apiListModel()
         });
-         */
         new recommendView({
             id: 'api',
             el: '.recommendApiList',

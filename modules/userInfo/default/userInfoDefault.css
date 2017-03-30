@@ -1,5 +1,5 @@
 .my-info-area {overflow: hidden;}
-.right-con-wrap {width: 790px;}
+.right-con-wrap {width: 985px;}
 .user-center-tap {border: 1px solid #CCC;border-top: 2px solid #ff9900;background: #FFF;}
 .D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
 .D_table table tr th{background: #f2f2f2;font-size: 14px;height: 36px;border-bottom: 1px solid #DDD;line-height: 37px;font-weight: 600;color: #666;text-align: center;}
@@ -61,6 +61,6 @@
 .user-center-api-list {padding: 20px 0 20px 20px;}
 .user-center-api-list .api-item .downs span { width: 58px;}
 .user-center-api-list .api-item {width: 180px;margin: 0 10px 10px 0;margin-right: 10px\9;}
-@media screen and (min-width: 1300px){
+/*@media screen and (min-width: 1300px){
     .right-con-wrap { width: 985px;}
-}
+}*/

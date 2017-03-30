@@ -5,7 +5,7 @@
     <% if(index < 9 ){ %>
         <li>
             <p class="leftTit">
-                <a  class="w2" attrid="<%= item.id %>" ><%= item.name %></a>
+                <a class="<%= item.name.length == 2 ? 'w2' : ''  %>" attrid="<%= item.id %>" ><%= item.name %></a>
                 <span> > </span>
             </p>
             <% if(item.appList && item.appList.length > 0){ %>
@@ -36,7 +36,7 @@
     <% if(index < 9 ){ %>
     <li>
         <p class="leftTit">
-            <a  class="w2" attrid="<%= item.categoryId %>" ><%= item.categoryName %></a>
+            <a class="<%= item.categoryName.length == 2 ? 'w2' : ''  %>" attrid="<%= item.categoryId %>" ><%= item.categoryName %></a>
             <span> > </span>
         </p>
         <% if(item.apiServiceList && item.apiServiceList.length > 0){ %>

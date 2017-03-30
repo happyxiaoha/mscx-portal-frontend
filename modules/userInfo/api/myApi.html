@@ -4,13 +4,13 @@
             <table>
                 <thead>
                 <tr>
-                    <th width="13%">API名称</th>
+                    <th width="15%">API名称</th>
                     <th width="30%">API描述</th>
-                    <th width="10%">申请时间</th>
-                    <th width="8%">收费类型</th>
-                    <th width="10%">使用次数</th>
-                    <th width="10%">剩余次数</th>
-                    <th width="10%">操作</th>
+                    <th width="20%">申请时间</th>
+                    <th width="9%">收费类型</th>
+                    <th width="9%">使用次数</th>
+                    <th width="9%">剩余次数</th>
+                    <th width="8%">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,7 +31,7 @@
         <td><%=aitem.applyTime%></td>
         <td><%=aitem.chargeType%></td>
         <td><%=aitem.totalTime%></td>
-        <td><%=aitem.remainTime%></td>
+        <td><%=aitem.remainTime == -1 ? '不限': aitem.remainTime%></td>
         <td><a class="applyApi" href="api.html?detail/<%=aitem.sourceId%>">再次申请</a></td>
     </tr>
     <% }); %>

@@ -39,6 +39,10 @@ var Models = {
     fieldCategory: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'category/getRoadShowCategory.do'
     })),
+    // saas分类
+    saasCategory: new (Backbone.Model.extend({
+        url: mscxPage.request.dict + 'category/getSassCategory.do'
+    })),
     // 数据API标签
     dataTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getDataApiTags.do'
@@ -58,6 +62,10 @@ var Models = {
     // 微服务标签
     serviceTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getServiceTags.do'
+    })),
+    // saas标签
+    saasTags: new (Backbone.Model.extend({
+        url: mscxPage.request.dict + 'tags/getSassTags.do'
     })),
     // 活动标签
     activityTags: new (Backbone.Model.extend({
@@ -119,10 +127,12 @@ var view = Backbone.View.extend({
         this.listenTo(Models.modelTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.openDataTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.serviceTags, 'sync', this.renderDetailTags);
+        this.listenTo(Models.saasTags, 'sync', this.renderDetailTags);
 
         this.listenTo(Models.dataCategory, 'sync', this.renderCategory);
         this.listenTo(Models.modelCategory, 'sync', this.renderCategory);
         this.listenTo(Models.toolCategory, 'sync', this.renderCategory);
+        this.listenTo(Models.saasCategory, 'sync', this.renderCategory);
 
         this.searchParams = new Backbone.Model();
 
@@ -156,9 +166,9 @@ var view = Backbone.View.extend({
         _.extend(model, this.filterMaps);
 
         // 处理一下model中的标签
-        model.tags = model.dataTags || model.toolTags || model.modelTags || model.openDataTags || model.serviceTags || model.activityTags;
+        model.tags = model.dataTags || model.toolTags || model.modelTags || model.openDataTags || model.serviceTags || model.activityTags || model.saasTags;
         // 处理一下model中的分类
-        model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory || model.roadshowCategory;
+        model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory || model.roadshowCategory || model.saasCategory;
 
         for(var key in model) {
             if(model[key] && model[key].toJSON) {

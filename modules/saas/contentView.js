@@ -16,11 +16,12 @@ var servicesModel = Backbone.Model.extend({
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     initialize: function() {
+        this.id = 'saas';
         // 筛选部分初始化
         this.searchView = new searchView({
             id: this.id,
             model: {
-                options: ['chargeWay', 'date'],
+                options: [this.id + 'Category', this.id + 'Tags', 'chargeWay', 'date'],
                 defaults: {
                     date: {
                         list: [
@@ -68,9 +69,9 @@ var view = Backbone.View.extend({
         this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
         this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleParams.bind(this.searchView));
 
-        this.serviceAPI = new servicesModel();
+        this.saasAPI = new servicesModel();
 
-        this.listenTo(this.serviceAPI, 'sync', this.resultView.render.bind(this.resultView));
+        this.listenTo(this.saasAPI, 'sync', this.resultView.render.bind(this.resultView));
 
         this.$el.append(this.searchView.render().$el);
         this.$el.append(this.resultView.$el);

@@ -1,5 +1,5 @@
 .my-info-area {overflow: hidden;}
-.right-con-wrap {width: 985px;}
+.right-con-wrap {width: 780px;}
 .user-center-tap {border: 1px solid #CCC;border-top: 2px solid #ff9900;background: #FFF;}
 .D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
 .D_table table tr th{background: #f2f2f2;font-size: 14px;height: 36px;border-bottom: 1px solid #DDD;line-height: 37px;font-weight: 600;color: #666;text-align: center;}
@@ -22,7 +22,7 @@
 .right-con-wrap .RCconsList p span{display: inline-block;}
 .right-con-wrap .RCconsList p span:first-child{width: 85px;}
 .right-con-wrap .RCconsListBtn p{line-height: 26px;}
-.right-con-wrap .RCconsListBtn a{    text-align: center;line-height: 25px;display:block;width: 102px;height: 26px;border: 0;outline: none;display: block;}
+.right-con-wrap .RCconsListBtn a{    text-align: center;line-height: 25px;display:block;width: 80px;height: 26px;border: 0;outline: none;display: block;}
 
 .more{right: 18px;top: 2px;}
 .mainDatas{padding: 20px 15px;margin-top: 16px;background: #fff;}
@@ -61,6 +61,9 @@
 .user-center-api-list {padding: 20px 0 20px 20px;}
 .user-center-api-list .api-item .downs span { width: 58px;}
 .user-center-api-list .api-item {width: 180px;margin: 0 10px 10px 0;margin-right: 10px\9;}
-/*@media screen and (min-width: 1300px){
+@media screen and (min-width: 1300px){
     .right-con-wrap { width: 985px;}
-}*/
+    .right-con-wrap .RCconsListBtn a {
+        width: 102px;
+    }
+}

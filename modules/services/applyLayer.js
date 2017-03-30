@@ -84,7 +84,7 @@ var view = Backbone.View.extend({
             num = 1;
         }
 
-        $tr.find('.total').html((price*10000 * num)/10000);
+        $tr.find('.total').html((10000*price* num)/10000);
 
         this.trigger('caculate');
     },
@@ -110,7 +110,7 @@ var view = Backbone.View.extend({
                 price = $number.data('price');
 
             count++;
-            totalPrice += (price*10000 * num)/10000;
+            totalPrice += (10000*price* num)/10000;
         }
 
         this.amount = totalPrice;

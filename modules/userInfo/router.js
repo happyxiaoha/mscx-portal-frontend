@@ -8,7 +8,7 @@ var Routes =  Backbone.Router.extend({
         'user':'userView',
         'userAuth':'userAuthView',
         'userPassword':'userPasswordView',
-        'account': 'accountView',
+        // 'account': 'accountView',
         'demand': 'demandView',
         'apiDemand': 'apiDemandView',
         'serversDemand': 'serversDemandView',
@@ -23,11 +23,17 @@ var Routes =  Backbone.Router.extend({
         'serverApply': 'serverApplyView',
         'order': 'orderView',
         'shop': 'shopView',
+        // 我的积分
         'point': 'pointView',
         'pointIncome': 'pointIncomeView',
         'pointOutlay': 'pointOutlayView',
         'pointRule': 'pointRuleView',
-        'pointQA': 'pointQAView'
+        'pointQA': 'pointQAView',
+        // 账户管理
+        'account': 'accountView',
+        'rechargeRecord': 'rechargeRecordView',
+        'paymentRecord': 'paymentRecordView'
+
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -45,10 +51,10 @@ var Routes =  Backbone.Router.extend({
         var userPasswordView = require('userInfo/user/userPassword.js');
         mscxPage.views['userPasswordViewObj'] = new userPasswordView();
     },
-    accountView: function () {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['accountViewObj'] = new accountView();
-    },
+    // accountView: function () {
+    //     var accountView = require('userInfo/account/accountView.js');
+    //     mscxPage.views['accountViewObj'] = new accountView();
+    // },
     demandView: function (id) {
         var demandView = require('userInfo/demand/demandView.js');
         mscxPage.views['demandViewObj'] = new demandView();
@@ -124,6 +130,18 @@ var Routes =  Backbone.Router.extend({
     pointQAView: function() {
         var pointView = require('userInfo/point/pointQAView.js');
         mscxPage.views['pointQAViewObj'] = new pointView();
+    },
+    accountView: function() {
+        var accountView = require('userInfo/account/accountView.js');
+        mscxPage.views['accountViewObj'] = new accountView();
+    },
+    rechargeRecordView: function() {
+        var accountView = require('userInfo/account/rechargeRecordView.js');
+        mscxPage.views['rechargeRecordViewObj'] = new accountView();
+    },
+    paymentRecordView: function() {
+        var accountView = require('userInfo/account/paymentRecordView.js');
+        mscxPage.views['paymentRecordViewObj'] = new accountView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

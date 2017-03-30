@@ -23,7 +23,7 @@ var userView = Backbone.View.extend({
     initialize: function() {
         this.$el.html(this.commonTemplate({
             name: 'point'
-        })).addClass('point');
+        }))
 
         this.pointListModel = new pointListModel();
         this.searchParam = new Backbone.Model();

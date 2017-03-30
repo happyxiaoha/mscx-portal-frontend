@@ -23,7 +23,7 @@ var userView = Backbone.View.extend({
     initialize: function() {
         this.$el.html(this.commonTemplate({
             name: 'pointIncome'
-        })).addClass('point');
+        }));
 
         this.pointIncomeModel = new pointIncomeModel();
         this.searchParam = new Backbone.Model();

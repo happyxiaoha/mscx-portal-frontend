@@ -10,14 +10,14 @@ var menuList = [
         key: 'index'
     },
     {
-        name: '交易广场',
-        url: mscxPage.urlConfig.sourcesPage,
-        key: 'sources'
-    },
-    {
         name: '需求大厅',
         url: mscxPage.urlConfig.demandPage,
         key: 'demand'
+    },
+    {
+        name: '交易广场',
+        url: mscxPage.urlConfig.sourcesPage,
+        key: 'sources'
     },
     {
         name: '创客工场',

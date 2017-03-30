@@ -11,12 +11,12 @@ var menuList = [
         url: mscxPage.urlConfig.indexPage
     },
     {
-        name: '交易广场',
-        url: mscxPage.urlConfig.sourcesPage
-    },
-    {
         name: '需求大厅',
         url: mscxPage.urlConfig.demandPage
+    },
+    {
+        name: '交易广场',
+        url: mscxPage.urlConfig.sourcesPage
     },
     {
         name: '创客工场',

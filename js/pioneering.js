@@ -17,16 +17,6 @@ var menuList = [
         name: '服务开发环境',
         key: 'serverEnv',
         url: '#serverEnv'
-    },
-    {
-        name: '数据可视化开发',
-        key: 'dataVisiual',
-        url: '#dataVisiual'
-    },
-    {
-        name: '大数据分析建模',
-        key: 'bigData',
-        url: '#bigData'
     }
 ];
 
@@ -50,12 +40,6 @@ $(function() {
             case 'serverEnvView':
                 id = 'serverEnv';
                 break;
-            case 'dataVisiualView':
-                id = 'dataVisiual';
-                break;
-            case 'bigDataView':
-                id = 'bigData';
-                break;
             default:
                 break;
         }
@@ -68,14 +52,14 @@ $(function() {
                 }
             });
             mscxPage.views['subHeaderView'] = subHeaderView;
-            
+
             headerView.$el.after(subHeaderView.$el);
         }
 
         if(location.search){
             this.newsDetailView(location.search.split('?')[1]);
         }
-    })
+    });
     Backbone.history.stop();
     Backbone.history.start();
 });

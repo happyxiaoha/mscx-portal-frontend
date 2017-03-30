@@ -11,13 +11,13 @@ var menuList = [
     },
     {
         name: '云接口',
-        url: mscxPage.urlConfig.sourcesPage,
-        key: 'sources'
+        url: mscxPage.urlConfig.apiPage,
+        key: 'api'
     },
     {
         name: '云服务',
-        url: mscxPage.urlConfig.demandPage,
-        key: 'demand'
+        url: mscxPage.urlConfig.servicesPage,
+        key: 'server'
     },
     {
         name: '云环境',
@@ -151,5 +151,4 @@ var headerView = Backbone.View.extend({
         });
     }
 });
-
 module.exports = headerView;

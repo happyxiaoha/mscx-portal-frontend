@@ -35,7 +35,7 @@ var bannerView = Backbone.View.extend({
             spaceBetween: 10,
             loop:true,
             direction: 'vertical',
-            loopedSlides:8
+            loopedSlides:4
         });
         if(size>4){
             size = 4;
@@ -47,7 +47,8 @@ var bannerView = Backbone.View.extend({
             loop:true,
             autoplay:3000,
             direction: 'vertical',
-            loopedSlides: size *2,
+            // preventClicks: false,
+            loopedSlides: size,
             slideToClickedSlide: true
         });
         galleryTop.params.control = galleryThumbs;

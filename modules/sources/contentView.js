@@ -13,6 +13,7 @@ var dataReportModel = Backbone.Model.extend({
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     initialize: function() {
+        this.id = 'openData';
         // 筛选部分初始化
         this.searchView = new searchView({
             id: this.id,
@@ -33,9 +34,9 @@ var view = Backbone.View.extend({
         this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
         this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleParams.bind(this.searchView));
 
-        this.dataAPI = new dataReportModel();
+        this.openDataAPI = new dataReportModel();
 
-        this.listenTo(this.dataAPI, 'sync', this.resultView.render.bind(this.resultView));
+        this.listenTo(this.openDataAPI, 'sync', this.resultView.render.bind(this.resultView));
 
         this.$el.append(this.searchView.render().$el);
         this.$el.append(this.resultView.$el);

@@ -176,23 +176,23 @@
 .demand-portal {
     width: 1120px;
 }
-.demand-portal .title {
+.demand-portal .title, .data-publish .title {
     font-size: 24px;
     color: #333;
     padding: 10px 28px 26px;
 }
-.demand-portal .process-guide {
+.process-guide {
     padding: 24px 0;
     border: 1px solid #aaa;
     margin-left: 28px;
 }
-.demand-portal .process-guide .step {
+.process-guide .step {
     display: inline-block;
     overflow: hidden;
     position: relative;
     margin-left: 36px;
 }
-.demand-portal .process-guide .step i.round {
+.process-guide .step i.round {
     background: url(../../images/newicon/step-round.png) left center no-repeat;
     height: 44px;
     width: 44px;
@@ -203,7 +203,7 @@
     font-size: 18px;
     color: #aaa;
 }
-.demand-portal .process-guide .step i.arrow {
+.process-guide .step i.arrow {
     background: url(../../images/newicon/step-arrow.png) left center no-repeat;
     width: 140px;
     height: 10px;
@@ -212,7 +212,7 @@
     top: 20px;
     left: 179px;
 }
-.demand-portal .process-guide .step .step-title {
+.process-guide .step .step-title {
     display: table-cell;
     vertical-align: middle;
     font-size: 18px;
@@ -220,7 +220,7 @@
     color: #1ba7e1;
     font-weight: 600;
 }
-.demand-portal .process-guide .step .des {
+.process-guide .step .des {
     padding-left: 54px;
     color: #aaa;
     font-size: 14px;
@@ -233,11 +233,11 @@
     font-size: 14px;
     margin-left: 28px;
 }
-.demand-portal .R_Btns {
+.demand-portal .R_Btns, .data-publish .R_Btns {
     text-align: initial;
     margin: 30px 0 10px 165px;
 }
-.demand-portal .R_Btns button {
+.demand-portal .R_Btns button, .data-publish .R_Btns button {
     width: 100px;
     height: 32px;
     border: 1px solid #aaa;
@@ -245,9 +245,9 @@
     color: #fff;
     font-size: 14px; 
 }
-.demand-portal .R_Btns .bgWhite {
+.demand-portal .R_Btns .bgWhite, .data-publish .R_Btns .bgWhite {
     color: #000;
 }
-.demand-portal .R_Btns.contact {
+.demand-portal .R_Btns.contact, .data-publish .R_Btns.contact {
     margin: 0 0 0 10px;
 }

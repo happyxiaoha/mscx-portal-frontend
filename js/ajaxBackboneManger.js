@@ -35,7 +35,12 @@ Backbone.sync = function(method, model, options) {
         }else if(xhr.code == 500900){ // 未实名认证
             location.href = 'userInfo.html#userAuth';
 
-        }else if(xhr.status == 'ERROR'){
+        }
+        // else if(xhr.code == 60001){ // 账户不存在时返回错误码60001,需跳转到初始密码设置界面
+        //     location.href = 'userInfo.html#setPayPassword';
+
+        // }
+        else if(xhr.status == 'ERROR'){
             var pageType = $(document).find('body').data('type');
 
             if(pageType == 'index') return;

@@ -31,6 +31,7 @@ var Routes =  Backbone.Router.extend({
         'pointQA': 'pointQAView',
         // 账户管理
         'account': 'accountView',
+        'setPayPassword': 'setPayPasswordView',
         'rechargeRecord': 'rechargeRecordView',
         'paymentRecord': 'paymentRecordView'
 
@@ -134,6 +135,10 @@ var Routes =  Backbone.Router.extend({
     accountView: function() {
         var accountView = require('userInfo/account/accountView.js');
         mscxPage.views['accountViewObj'] = new accountView();
+    },
+    setPayPasswordView: function() {
+        var accountView = require('userInfo/account/setPayPasswordView.js');
+        mscxPage.views['setPayPasswordViewObj'] = new accountView();
     },
     rechargeRecordView: function() {
         var accountView = require('userInfo/account/rechargeRecordView.js');

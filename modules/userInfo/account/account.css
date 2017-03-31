@@ -1,0 +1,94 @@
+.account {
+    padding: 20px 25px;
+    border: 1px solid #ccc;
+}
+.account.operate-area {
+    background: #f4f6fd;
+}
+.account .input-item {
+    height: 32px;
+    line-height: 32px;
+}
+.account .input-item h2 {
+    width: 100px;
+}
+.account .btn {
+    background: #069cd9;
+    display: inline-block;
+    line-height: 34px;
+    width: 86px;
+    height: 34px;
+    margin: 20px 0 0 100px;
+    padding: 0;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 0;
+}
+.account .input-item input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 10px 0 0;
+    outline: none;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 14px;
+    float: left;
+    width: 150px;
+    height: 32px;
+}
+.account .process li {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    margin-left: 36px;
+    width: 250px;
+}
+
+.account .process li i {
+    height: 36px;
+    width: 40px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+.account .process .step-title {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    padding-left: 10px;
+    color: #aaa;
+    font-weight: 600;
+}
+.account .process li.current .step-title {
+    color: #000;
+}
+.account .process li i.step1 {
+    background: url('../../../images/newicon/account-step1.png') left center no-repeat;
+}
+.account .process li i.step2 {
+    background: url('../../../images/newicon/account-step2.png') left center no-repeat;
+}
+.account .process li i.step3 {
+    background: url('../../../images/newicon/account-step3.png') left center no-repeat;
+}
+.account .process li.current i.step1 {
+    background: url('../../../images/newicon/account-curr-step1.png') left center no-repeat;
+}
+.account .process li.current i.step2 {
+    background: url('../../../images/newicon/account-curr-step2.png') left center no-repeat;
+}
+.account .process li.current i.step3 {
+    background: url('../../../images/newicon/account-curr-step3.png') left center no-repeat;
+}
+.account .process li i.done {
+    background: url('../../../images/newicon/account-done.png') left center no-repeat!important;    
+}
+.account .process li i.arrow {
+    background: url('../../../images/newicon/account-arrow.png') left center no-repeat;
+    width: 84px;
+    position: relative;
+    left: 25px;
+}

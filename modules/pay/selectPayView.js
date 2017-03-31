@@ -51,7 +51,7 @@ var view = Backbone.View.extend({
 
         this.orderInfo = _.extend(this.orderInfo, {
             channel: PayResource.channels[type],
-            title: '神州数据'
+            title: '神州数云'
         });
         /* 
          * 如果是支付宝，页面跳转

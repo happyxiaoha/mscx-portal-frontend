@@ -53,11 +53,15 @@ var createDemandView = Backbone.View.extend({
             rules: {
                 name: {
                     required: true,
-                    minlength: 2
+                    minlength: 2,
+                    maxlength: 100
                 },
                 dataDescription: {
                     required: true,
                     maxlength: 500
+                },
+                dataItem: {
+                    maxlength: 1000
                 },
                 dataReword: {
                     required: true,

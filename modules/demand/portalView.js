@@ -60,7 +60,8 @@ var view = Backbone.View.extend({
             rules: {
                 name: {
                     required: true,
-                    minlength: 2
+                    minlength: 2,
+                    maxlength: 100
                 },
                 dataDescription: {
                     required: true,
@@ -69,6 +70,9 @@ var view = Backbone.View.extend({
                 dataReword: {
                     required: true,
                     price: true
+                },
+                dataItem: {
+                    maxlength: 1000
                 },
                 dataClosing: {
                     required: true

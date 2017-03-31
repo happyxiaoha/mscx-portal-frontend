@@ -34,29 +34,10 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>网络性质：</p>
-            <div class="fl R_right checkbox-border">
-                <div class="radio-list">
-                    <label class="radio-inline checkbox-border">
-                        <% if(!data.id){ %>
-                        <input type="radio" checked name="netType" value="inner">
-                        <% }else { %>
-                        <input type="radio" <%= data && data.netType == 'inner' && "checked" %> name="netType" value="inner">
-                        <% } %>
-                        内网系统
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="netType" <%= data && data.netType == 'outer' && "checked" %> value="outer">
-                        公网系统
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>接口个数：</p>
+            <p class="fl R_left"><em>*</em>预期报价：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="interfaceNum" placeholder="请输入需要的接口个数" value="<%= data && data.interfaceNum %>" id="system-apiNumber">
+                    <input type="text" name="preOffer" placeholder="请输入预期报价" value="<%= data && data.preOffer %>" id="system-price">
                 </p>
             </div>
         </div>
@@ -64,22 +45,6 @@
             <p class="fl R_left"><em>*</em>截止日期：</p>
             <div class="fl R_right">
                 <a><input size="7" type="text" name="endTime" value="<%= data && data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %>" readonly class="end-time"></a>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>主联系人：</p>
-            <div class="fl R_right">
-                <p>
-                    <input type="text" value="<%= data && data.contactUsername %>" name="contactUsername" maxlength="50" placeholder="请输入联系人信息" id="system-contact-who">
-                </p>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>主联系人电话：</p>
-            <div class="fl R_right">
-                <p>
-                    <input type="text" name="contactPhone" value="<%= data && data.contactPhone %>" placeholder="请输入联系人电话" id="system-phoneNumber">
-                </p>
             </div>
         </div>
         <div class="clearfix ReleaseList">
@@ -133,10 +98,18 @@
             </div>
         </div>
         <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>预期报价：</p>
+            <p class="fl R_left">主联系人：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="preOffer" placeholder="请输入预期报价" value="<%= data && data.preOffer %>" id="system-price">
+                    <input type="text" value="<%= data && data.contactUsername %>" name="contactUsername" maxlength="50" placeholder="请输入联系人信息" id="system-contact-who">
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">主联系人电话：</p>
+            <div class="fl R_right">
+                <p>
+                    <input type="text" name="contactPhone" value="<%= data && data.contactPhone %>" placeholder="请输入联系人电话" id="system-phoneNumber">
                 </p>
             </div>
         </div>
@@ -154,28 +127,6 @@
                 <p>
                     <input type="text" class="cora bggray" value="<%= data && data.userInfo && data.userInfo.mobile %>" readonly>
                 </p>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>所有权：</p>
-            <div class="fl R_right checkbox-border">
-                <div class="radio-list">
-                    <label class="radio-inline">
-                        <% if(!data.id){ %>
-                        <input type="radio" checked name="ownership" value="Y">
-                        <% }else { %>
-                        <input type="radio" <%= data && data.ownership == 'Y' && "checked" %> name="ownership" value="Y">
-                        <% } %>
-                        是
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" <%= data && data.ownership == 'N' && "checked" %> name="ownership" value="N">
-                        否
-                    </label>
-                    <div class="fl message">
-                        <em>注:选择否,则需要在说明中说明情况</em>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="clearfix ReleaseList tc split">
@@ -207,11 +158,52 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
+                <p class="fl R_left">所有权：</p>
+                <div class="fl R_right checkbox-border">
+                    <div class="radio-list">
+                        <label class="radio-inline">
+                            <% if(!data.id){ %>
+                            <input type="radio" checked name="ownership" value="Y">
+                            <% }else { %>
+                            <input type="radio" <%= data && data.ownership == 'Y' && "checked" %> name="ownership" value="Y">
+                            <% } %>
+                            是
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" <%= data && data.ownership == 'N' && "checked" %> name="ownership" value="N">
+                            否
+                        </label>
+                        <div class="fl message">
+                            <em>注:选择否,则需要在说明中说明情况</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
                 <p class="fl R_left">访问网址：</p>
                 <div class="fl R_right">
                     <p>
                         <input type="text" value="<%= data && data.site %>" name="site" placeholder="请输入http://开头的访问地址" id="system-accessUrl">
                     </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">网络性质：</p>
+                <div class="fl R_right checkbox-border">
+                    <div class="radio-list">
+                        <label class="radio-inline checkbox-border">
+                            <% if(!data.id){ %>
+                            <input type="radio" checked name="netType" value="inner">
+                            <% }else { %>
+                            <input type="radio" <%= data && data.netType == 'inner' && "checked" %> name="netType" value="inner">
+                            <% } %>
+                            内网系统
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="netType" <%= data && data.netType == 'outer' && "checked" %> value="outer">
+                            公网系统
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="clearfix ReleaseList">
@@ -284,6 +276,14 @@
                             <input type="text" value="<%= data && data.otherLanguage %>" name="otherLanguage" id="otherLanguage">
                         </label>
                     </div>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">接口个数：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" name="interfaceNum" placeholder="请输入需要的接口个数" value="<%= data && data.interfaceNum %>" id="system-apiNumber">
+                    </p>
                 </div>
             </div>
             <div class="clearfix ReleaseList">

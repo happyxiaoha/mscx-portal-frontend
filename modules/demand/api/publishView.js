@@ -79,12 +79,6 @@ var createDemandView = Backbone.View.extend({
                     required: true,
                     maxlength: 64
                 },
-                ownership: {
-                    required: true
-                },
-                netType: {
-                    required: true
-                },
                 interfaceNum: {
                     required: true,
                     digits: true,
@@ -97,11 +91,9 @@ var createDemandView = Backbone.View.extend({
                     url: true
                 },
                 contactUsername: {
-                    required: true,
                     maxlength: 50
                 },
                 contactPhone: {
-                    required: true,
                     telephone: true
                 },
                 matchmakeTrade: {

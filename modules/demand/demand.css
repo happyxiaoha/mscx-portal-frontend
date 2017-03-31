@@ -245,6 +245,9 @@
     color: #fff;
     font-size: 14px; 
 }
+.demand-portal .R_Btns button.bgBlue, .data-publish .R_Btns button.bgBlue {
+    border: 1px solid #069cd9;
+}
 .demand-portal .R_Btns .bgWhite, .data-publish .R_Btns .bgWhite {
     color: #000;
 }

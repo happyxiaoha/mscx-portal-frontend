@@ -102,7 +102,8 @@ var view = Backbone.View.extend({
             }, 2000);
         }
     },
-    goContact: function() {
+    goContact: function(event) {
+        event.preventDefault();
         location.href = 'contactUs.html#contact';
     }
 });

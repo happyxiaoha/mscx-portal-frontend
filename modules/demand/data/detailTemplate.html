@@ -21,24 +21,16 @@
     <div class="titTopCons">
         <ul>
             <li class="mb10">
-                <span>数据项：</span>
-                <span class="cor7"><%= data.dataItem %></span>
-            </li>
-            <li class="mb10">
-                <span>数据用途：</span>
-                <span class="cor7"><%= data.dataUsage %></span>
-            </li>
-            <li class="mb10">
                 <span>数据描述：</span>
                 <span class="cor7"><%= data.dataDescription %></span>
             </li>
             <li class="mb10">
-                <span>归属部门：</span>
-                <span class="cor7"><%= data.department %></span>
+                <span>数据数据项：</span>
+                <span class="cor7"><%= data.dataItem %></span>
             </li>
             <li class="mb10">
-                <span>数据格式：</span>
-                <span class="cor7"><%= data.dataFormat %></span>
+                <span>需求赏金：</span>
+                <span class="cor7"><%= data.data_reword %></span>
             </li>
             <li class="mb10">
                 <span>发布用户：</span>
@@ -47,6 +39,10 @@
             <li class="mb10">
                 <span>发布日期：</span>
                 <span class="cor7"><%= data.publishTime && new Date(data.publishTime).format('yyyy-MM-dd') %></span>
+            </li>
+            <li class="mb10">
+                <span>截止日期：</span>
+                <span class="cor7"><%= data.data_closing && new Date(data.data_closing).format('yyyy-MM-dd') %></span>
             </li>
         </ul>
     </div>
@@ -66,10 +62,6 @@
             <li class="mb10">
                 <span>反馈意见：</span>
                 <span class="cor7"><%= data.feedbackSuggestion ? data.feedbackSuggestion : '暂无' %></span>
-            </li>
-            <li class="mb10">
-                <span>数据展现链接：</span>
-                <span class="cor7"><%= data.datalink ? data.datalink : '暂无' %></span>
             </li>
         </ul>
     </div>

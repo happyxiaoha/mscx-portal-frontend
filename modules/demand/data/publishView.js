@@ -25,7 +25,8 @@ require('util');
 var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     events: {
-        'click .data-publish #goBack': 'backHistory'
+        'click .data-publish #goBack': 'backHistory',
+        'click .contact button': 'goContact'
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
@@ -114,6 +115,10 @@ var createDemandView = Backbone.View.extend({
             startDate: moment(),
             minDate: (new Date()).format('yyyy-MM-dd')
         });
+    },
+    goContact: function(event) {
+        event.preventDefault();
+        location.href = 'contactUs.html#contact';
     }
 });
 

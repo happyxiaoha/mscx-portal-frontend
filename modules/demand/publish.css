@@ -8,6 +8,7 @@
 .ReleaseInputs{padding: 24px 36px;font-size: 14px;background: #f2f5fb;}
 .ReleaseInputs .ReleaseList{margin-bottom: 15px;}
 .ReleaseInputs .ReleaseList .R_left{color:#8b8b8b;line-height: 32px;margin-right: 6px;text-align: right; width: 160px;}
+.ReleaseInputs .ReleaseList .R_left.unit{width: 30px;}
 .ReleaseInputs .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 700px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;float: left;}
 .ReleaseInputs .ReleaseList .R_right input[type="text"].small {width: 590px;}
 .ReleaseInputs .ReleaseList .R_right input[type="text"].mini {width: 200px;}

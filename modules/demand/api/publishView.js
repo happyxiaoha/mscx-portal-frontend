@@ -82,7 +82,8 @@ var createDemandView = Backbone.View.extend({
                 interfaceNum: {
                     required: true,
                     digits: true,
-                    min: 1
+                    min: 1,
+                    maxlength: 10
                 },
                 endTime: {
                     required: true
@@ -103,7 +104,8 @@ var createDemandView = Backbone.View.extend({
                     required: true
                 },
                 preOffer: {
-                    required: true
+                    required: true,
+                    maxlength: 10
                 }
             },
             submitHandler: function () {

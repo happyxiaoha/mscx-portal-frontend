@@ -53,6 +53,14 @@ var bannerView = Backbone.View.extend({
         });
         galleryTop.params.control = galleryThumbs;
         galleryThumbs.params.control = galleryTop;
+
+        $(".swiper-container").hover(function(){
+            galleryTop.stopAutoplay();
+            galleryThumbs.stopAutoplay();
+        }, function(){
+            galleryTop.startAutoplay();
+            galleryThumbs.startAutoplay();
+        });
     }
 });
 

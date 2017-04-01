@@ -111,10 +111,9 @@
             <p class="fl R_left">所有权：</p>
             <div class="fl R_right checkbox-border">
                 <div class="radio-list">
-                    <label class="radio-inline">
-
+                    <p>
                         <%= data && data.ownership %>
-                    </label>
+                    </p>
                 </div>
             </div>
         </div>
@@ -130,12 +129,9 @@
             <p class="fl R_left">网络性质：</p>
             <div class="fl R_right checkbox-border">
                 <div class="radio-list">
-                    <label class="radio-inline checkbox-border">
-                        
-                            <%= (data.netType == 'inner'? '内网系统':'公网系统') %>
-                      
-                    </label>
-                   
+                    <p>
+                        <%= data.netType %>
+                    </p>
                 </div>
             </div>
         </div>

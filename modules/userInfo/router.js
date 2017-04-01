@@ -132,21 +132,33 @@ var Routes =  Backbone.Router.extend({
         var pointView = require('userInfo/point/pointQAView.js');
         mscxPage.views['pointQAViewObj'] = new pointView();
     },
+    // 账户充值
     accountView: function() {
         var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['accountViewObj'] = new accountView();
+        mscxPage.views['accountViewObj'] = new accountView({
+            id: 'recharge'
+        });
     },
+    // 支付密码设置
     setPayPasswordView: function() {
-        var accountView = require('userInfo/account/setPayPasswordView.js');
-        mscxPage.views['setPayPasswordViewObj'] = new accountView();
+        var accountView = require('userInfo/account/accountView.js');
+        mscxPage.views['setPayPasswordViewObj'] = new accountView({
+            id: 'setPayPassword'
+        });
     },
+    // 充值记录
     rechargeRecordView: function() {
-        var accountView = require('userInfo/account/rechargeRecordView.js');
-        mscxPage.views['rechargeRecordViewObj'] = new accountView();
+        var accountView = require('userInfo/account/accountView.js');
+        mscxPage.views['rechargeRecordViewObj'] = new accountView({
+            id: 'rechargeRecord'
+        });
     },
+    // 支出记录
     paymentRecordView: function() {
-        var accountView = require('userInfo/account/paymentRecordView.js');
-        mscxPage.views['paymentRecordViewObj'] = new accountView();
+        var accountView = require('userInfo/account/accountView.js');
+        mscxPage.views['paymentRecordViewObj'] = new accountView({
+            id: 'paymentRecord'
+        });
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

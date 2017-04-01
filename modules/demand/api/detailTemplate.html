@@ -39,30 +39,6 @@
     <div class="titTopCons">
         <ul>
             <li class="mb10">
-                <span>主联系人：</span>
-                <span class="cor7"><%= data.contactUsername %></span>
-            </li>
-            <li class="mb10">
-                <span>主联系人电话：</span>
-                <span class="cor7"><%= data.contactPhone %></span>
-            </li>
-            <li class="mb10">
-                <span>备用联系人：</span>
-                <span class="cor7"><%= data.spareContactUsername %></span>
-            </li>
-            <li class="mb10">
-                <span>备用联系人电话：</span>
-                <span class="cor7"><%= data.spareContactPhone %></span>
-            </li>
-            <li class="mb10">
-                <span class="wd160">是否需要平台撮合交易：</span>
-                <span class="cor7 wd660"><%= data.matchmakeTrade %></span>
-            </li>
-            <li class="mb10">
-                <span>分类：</span>
-                <span class="cor7"><%= data.categoryName %></span>
-            </li>
-            <li class="mb10">
                 <span>预期报价：</span>
                 <span class="cor7"><%= data.preOffer %></span>
             </li>
@@ -75,18 +51,12 @@
                 <span class="cor7"><%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></span>
             </li>
             <li class="mb10">
-                <span>需求描述：</span>
-                <span class="cor7"><%= data.name %></span>
-            </li>
-            <li class="mb10">
                 <span>需求用户：</span>
                 <span class="cor7"><%= data.reqUser %></span>
             </li>
             <li class="mb10">
-                <span>附件 ：</span>
-                <span class="cor7">
-                    <a class="pt0 corBlue" href="<%= data.fileUrl %>" id="documentUrl"><%= data.fileName %></a>
-                </span>
+                <span>需求描述：</span>
+                <span class="cor7"><%= data.name %></span>
             </li>
         </ul>
     </div>
@@ -113,7 +83,7 @@
             </li>
             <li class="mb10">
                 <span>所有权 ：</span>
-                <span class="cor7"><%= data.ownership == 'Y' ? '是' : '否' %></span>
+                <span class="cor7"><%= data.ownership %></span>
             </li>
             <li class="mb10">
                 <span>访问地址 ：</span>

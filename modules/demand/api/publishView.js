@@ -104,7 +104,6 @@ var createDemandView = Backbone.View.extend({
                     required: true
                 },
                 preOffer: {
-                    required: true,
                     maxlength: 10
                 }
             },

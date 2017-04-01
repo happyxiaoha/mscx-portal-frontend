@@ -89,6 +89,7 @@ var createDemandView = Backbone.View.extend({
                     required: true
                 },
                 site: {
+                    maxlength: 80,
                     url: true
                 },
                 contactUsername: {

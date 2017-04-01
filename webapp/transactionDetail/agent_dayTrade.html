@@ -103,18 +103,6 @@
 												
 											</div>
 											<div class="row">
-												<div class="col-sm-4" id="merchantNameDiv" style="display:none;">
-													<div class="form-group">
-														<label
-															class="col-sm-4 control-label no-padding-right aols">商户名称：
-														</label>
-														<div class="col-sm-8">
-															<select id="merchantName" class="js-example-basic-single form-control input-sm">
-																  <option value="">请选择...</option>
-															</select> 
-														</div>
-													</div>
-												</div>
 												<div class="col-sm-4">
 													<div class="form-group">
 														<label
@@ -126,7 +114,21 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-sm-4 col-sm-offset-4" id="btn">
+												<div class="col-sm-4">
+													<div class="form-group">
+														<label
+																class="col-sm-4 control-label no-padding-right aols">业务类型：
+														</label>
+														<div class="col-sm-8">
+															<select class="form-control input-sm" id="goodClassify">
+																<option selected value="">请选择...</option>
+																<option value="1">话费</option>
+																<option value="2">流量</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4" id="btn">
 													<div class="form-group">
 														<div class="col-sm-12" style="text-align:right;">
 															<button data-style="zoom-out" class="btn btn-grey ladda-button" type="button" onclick="query()">
@@ -168,6 +170,7 @@
 									<th>面值</th>
 									<th>总面值金额</th>
 									<th>总销售金额</th>
+									<th>业务类型</th>
 									<th>商户名称</th>
 								</tr>
 							</thead>

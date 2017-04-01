@@ -11,8 +11,8 @@ $(function() {
 	//初始化select2控件
 	if (userName == null){
 		$("#btn").removeClass("col-sm-offset-4");
-		$("#merchantNameDiv").show();
-		initSelect2();
+		// $("#merchantNameDiv").show();
+		// initSelect2();
 	}
 	// 点击出现
 	$(".pic_order").click(function() {
@@ -94,6 +94,16 @@ function initTransactionDetailTableTables () {
 									data : "amount"
 								},
 								{
+									data : "product.goodClassify",
+									"render" : function(data,type,row,meta){
+										if (data == '2'){
+											return "流量充值";
+										}else{
+											return "话费充值";
+										}
+									}
+								},
+								{
 									data : "account.companyName"
 								}],
 								language : {
@@ -146,8 +156,9 @@ function initTransactionDetailTableTables () {
 											'stopTime':$.trim($('#endDate').val())==''?'':$.trim($('#endDate').val())+" 00:00:00",
 											'operator':$('#operator').val(),
 											'province':$('#province').val(),
-											'accountId':$('#merchantName').val(),
-											'userName' : userName
+											// 'accountId':$('#merchantName').val(),
+											'userName' : userName,
+										    'goodClassify' : $("#goodClassify").val()
 									}
 									var param={
 											'params':JSON.stringify(args),
@@ -197,7 +208,7 @@ function query(){
  */
 function resetVal(){
 	document.getElementById("basicForm").reset(); 
-	$("#merchantName").val(null).trigger("change");
+	// $("#merchantName").val(null).trigger("change");
 	$('#beginDate').datepicker('setDate',new Date());
 	$('#endDate').datepicker('setDate',new Date(addDate(getNowFormatDate(),1)));
 }
@@ -217,7 +228,7 @@ function exportExcel(){
 	var startTime=$.trim($('#beginDate').val())==''?'':$.trim($('#beginDate').val())+" 00:00:00";
 	var stopTime=$.trim($('#endDate').val())==''?'':$.trim($('#endDate').val())+" 00:00:00";
 	var url=visitType+"startTime="+startTime+"&stopTime="+stopTime
-	+"&operator="+encodeURI(encodeURI($.trim($('#operator').val())))+'&accountId='+$.trim($('#merchantName').val())
+	+"&operator="+encodeURI(encodeURI($.trim($('#operator').val())))//+'&accountId='+$.trim($('#merchantName').val())
 	+"&province="+encodeURI(encodeURI($.trim($('#province').val())))+"&userName="+cn;
 	$.download(getRootPath() + url,null,'post');
 }

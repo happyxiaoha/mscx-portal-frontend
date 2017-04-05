@@ -69,7 +69,7 @@ var view = Backbone.View.extend({
                 },
                 dataReword: {
                     required: true,
-                    maxlength: 10
+                    maxlength: 20
                 },
                 dataItem: {
                     maxlength: 1000

@@ -65,7 +65,7 @@ var createDemandView = Backbone.View.extend({
                 },
                 dataReword: {
                     required: true,
-                    maxlength: 10
+                    maxlength: 20
                 },
                 dataClosing: {
                     required: true

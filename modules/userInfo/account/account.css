@@ -3,6 +3,8 @@
     border: 1px solid #ccc;
 }
 .account.operate-area {
+    padding: 20px 25px;
+    border: 1px solid #ccc;
     background: #f4f6fd;
 }
 .account .input-item {
@@ -25,15 +27,18 @@
     font-size: 14px;
     border-radius: 0;
 }
+.account .btn-set {
+    margin-left: 160px;
+}
 .account label.error {
     line-height: 30px;
     color: #d82e3a;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
     font-size: 14px;
     background: url(../../../images/del.png) no-repeat center left;
     padding-left: 32px;
     position: absolute;
-    left: 435px;
+    left: 475px;
     top: 10px;
 }
 .account .input-item input[type="text"] {
@@ -106,84 +111,33 @@
 .account .pass-area {
     margin: 80px 0 0 180px;
 }
-.account .pass-wrap {
-    height: 80px;
-    position: relative;
-}
-.account .pass-wrap h2 {
-    font-size: 16px;
-    overflow: hidden;
-    height: 50px;
-    line-height: 50px;
-    position: absolute;
-    width: 120px;
+.account .ReleaseList{margin-bottom: 15px;}
+.account .ReleaseList .R_left{
+    line-height: 32px;
     text-align: right;
+    width: 160px;
+    font-size: 14px;
 }
-.account .pass-container {
-    border: 1px solid #ccc;
-    width: 300px;
-    height: 50px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    left: 120px;
+.account .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 700px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;float: left;}
+.account .ReleaseList .R_right input[type="text"].mini {width: 180px;}
+.account .ReleaseList .R_right input[type="text"].error{border: 1px solid #d82e3a;}
+.account .ReleaseList .R_right textarea.error{border: 1px solid #d82e3a;}
+.account .ReleaseList .R_right label.error{
+    top: 0;
 }
-.account .pass-container input:hover {
+.account .ReleaseList .R_right input[readonly] {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+}
+.account .get-code {
+    height: 32px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-left: none;
+    font-size: 12px;
+    color: #555;
+    text-align: center;
     outline: none;
+    width: 120px;
 }
-.account .pass-container .pass-item {
-    width: 50px;
-    height: 100%;
-    float: left;
-    margin: 0;
-    box-sizing: border-box;
-}
-.account .pass-container .pass-item:not(:last-child) {
-    border-right: 1px solid #ccc;
-}
-.account .pass-container .input-pwd {
-    width: 328px;
-    height: 100%;
-    background-color: transparent;
-    background: transparent;
-    position: absolute;
-    border: none;
-    padding: 0px 0 0 20px;
-    outline: none;
-    font-size: 20px;
-    letter-spacing: 36px;
-    text-align: left;
-    left: 0;
-    box-shadow: none;
-    z-index: 1;
-}
-.account .tail-pwd {
-    position: absolute;
-    height: 50px;
-    left: 370px;
-    z-index: 10;
-}
-.account .tail-pwd .tail-pwd-input {
-    width: 50px;
-    height: 100%;
-    background-color: transparent;
-    background: transparent;
-    border: none;
-    outline: 0;
-    padding: 0 0 0 20px;
-    font-size: 20px;
-    box-shadow: none;
-}
-.account .pass-area .btn-set {
-    margin-left: 120px;
-}
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-    .account .pass-container .input-pwd{
-        zoom: 1.1;
-        -webkit-text-stroke-width: 2px;
-    }
-    .account .tail-pwd .tail-pwd-input {
-        -webkit-text-stroke-width: 3px;
-    }
-}
-::-ms-clear, ::-ms-reveal{display: none;}
+   

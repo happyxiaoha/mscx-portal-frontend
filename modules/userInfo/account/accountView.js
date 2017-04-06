@@ -31,17 +31,48 @@ var accountView = Backbone.View.extend({
         var accountInfo = this.accountInfoModel.toJSON();
         // 如果账户不存在，那么跳转支付密码设置页面。同时，账户充值/充值记录/支出记录tab标签隐藏
         if(accountInfo.result == 'noAccount') {
+            this.id = 'setPayPassword';
             this.currentView = new setPayPasswordView({
                 model: _.pick(this, ['id', 'hasAccount'])
             });
             this.$el.replaceWith(this.currentView.$el);
         }else {
             this.hasAccount = true;
-            this.$el.html(this.commonTemplate({
-                name: this.id,
-                hasAccount: this.hasAccount
-            }));
-            this.$('#userInfoArea').html(this.template());
+            switch(this.id) {
+                case 'recharge':
+                    this.$el.html(this.commonTemplate({
+                        name: this.id,
+                        hasAccount: this.hasAccount
+                    }));
+                    this.$('#userInfoArea').html(this.template(accountInfo));
+                    break;
+                case 'setPayPassword':
+                    this.currentView = new setPayPasswordView({
+                        model: _.pick(this, ['id', 'hasAccount'])
+                    });
+                    this.$el.replaceWith(this.currentView.$el);
+                    break;
+                case 'rechargeRecord':
+                    this.currentView = new rechargeRecordView({
+                        model: _.pick(this, ['id', 'hasAccount'])
+                    });
+                    this.$el.replaceWith(this.currentView.$el);
+                    break;
+                case 'paymentRecord':
+                    this.currentView = new paymentRecordView({
+                        model: _.pick(this, ['id', 'hasAccount'])
+                    });
+                    this.$el.replaceWith(this.currentView.$el);
+                    break;
+            }
+            
+            // console.log(this.id);
+            // this.hasAccount = true;
+            // this.$el.html(this.commonTemplate({
+            //     name: this.id,
+            //     hasAccount: this.hasAccount
+            // }));
+            // this.$('#userInfoArea').html(this.template(accountInfo));
         }
         
     }

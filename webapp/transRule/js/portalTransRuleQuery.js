@@ -58,6 +58,12 @@ function initTransRuleTables() {
 						data : "goodName"
 					},
 					{
+						data : "goodClassify",
+						"render":function(data, type, row){
+							return data == '1'?"话费":"流量";
+						}
+					},
+					{
 						data : "denomination"
 					},
 					{
@@ -128,7 +134,8 @@ function initTransRuleTables() {
 						'denomination':$('#denomination').val(),
 						'userName':userName,
 						'type':'account',
-						'history':type
+						'history':type,
+						'goodClassify':$('#goodClassify').val()
 					};
 					if (type == "history"){
 						args.startTime = $("#startTime").val();
@@ -178,7 +185,8 @@ function exportTransRule(){
 		+ "&province=" + encodeURI(encodeURI($('#province').val()))
 		+ "&denomination=" + $('#denomination').val()
 		+ "&userName=" + userName
-		+ "&type=account&history=" + type;
+		+ "&type=account&history=" + type
+		+ "&goodClassify=" +$('#goodClassify').val();
 	if (type == "history"){
 		url += "&startTime=" + $("#startTime").val();
 		url += "&endTime=" +  $("#endTime").val();

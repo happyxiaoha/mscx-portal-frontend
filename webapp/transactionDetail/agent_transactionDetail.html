@@ -92,19 +92,23 @@
 												</div>
 											</div>
 											<div class="row">
-												<div class="col-sm-4" id="merchantNameDiv" style="display:none;">
+												<div class="col-sm-4">
 													<div class="form-group">
 														<label
-															class="col-sm-4 control-label no-padding-right aols">商户名称：
+																class="col-sm-4 control-label no-padding-right aols">业务类型：
 														</label>
 														<div class="col-sm-8">
-															<select id="merchantName" class="js-example-basic-single form-control input-sm">
-																  <option value="">请选择...</option>
-															</select> 
+															<select class="form-control input-sm validate[required]" id="goodClassify"
+																	class="col-sm-12 col-sm-12 validate[required]">
+																<option value="">请选择</option>
+																<option value="1">话费</option>
+																<option value="2">流量</option>
+															</select>
 														</div>
 													</div>
 												</div>
-												<div class="col-sm-4 col-sm-offset-8" id="btn">
+												<div class="col-sm-4"></div>
+												<div class="col-sm-4">
 													<div class="form-group">
 														<div class="col-sm-12" style="text-align:right;">
 															<button class="btn btn-grey" type="button" onclick="query()">

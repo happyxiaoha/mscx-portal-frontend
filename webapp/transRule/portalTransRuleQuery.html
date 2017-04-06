@@ -88,6 +88,21 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-4">
+													<div class="form-group">
+														<label
+																class="col-sm-4 control-label no-padding-right aols">业务类型：
+														</label>
+														<div class="col-sm-8">
+															<select class="form-control input-sm validate[required]" id="goodClassify"
+																	class="col-sm-12 col-sm-12 validate[required]">
+																<option value="">请选择</option>
+																<option value="1">话费</option>
+																<option value="2">流量</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
 													<div class="form-group" id="queryTimeStart" style="display:none;">
 														<label class="col-sm-4 control-label no-padding-right aols">开始时间： </label>
 														<div class="col-sm-8">
@@ -110,15 +125,18 @@
 														</div>
 													</div>
 												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-8"></div>
 												<div class="col-sm-4">
 													<div class="form-group">
 														<div class="col-sm-12" style="text-align: right;">
 															<button class="btn btn-grey" type="button" onclick="query()">
-																 查询
+																查询
 															</button>
 															&nbsp;
 															<button class="btn btn-grey" type="button" onclick="exportTransRule()">
-																 导出
+																导出
 															</button>
 															&nbsp;
 															<button class="btn btn-grey" type="button" onclick="resetVal()">
@@ -127,7 +145,7 @@
 														</div>
 													</div>
 												</div>
-											</div>	
+											</div>
 										</div>
 									</form>
 									<!-- /form -->
@@ -147,6 +165,7 @@
 								<tr>
 									<th>序号</th>
 									<th>商品名称</th>
+									<th>商品类型</th>
 									<th>面值</th>
 									<th>运营商</th>
 									<th>省份</th>

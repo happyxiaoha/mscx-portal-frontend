@@ -7,11 +7,6 @@ $(function() {
 	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 	dateWidget('queryDate');
 	//初始化select2控件
-	if (userName == null){
-		$("#btn").removeClass("col-sm-offset-8").addClass("col-sm-offset-4");
-		$("#merchantNameDiv").show();
-		initSelect2();
-	}
 	
 	height = window.screen.availHeight - 140;
 	// 点击出现
@@ -28,16 +23,6 @@ $(function() {
 	initTransactionDetailTableTables();
 });
 
-function initSelect2(){
-	$('#merchantName').select2();
-	jQueryAjaxAsync("/account/getAll",null,function(data){
-		if(data.data!=null&&data.data.length>0){
-			for(var i=0;i<data.data.length;i++){
-				$('#merchantName').append('<option value="'+data.data[i].id+'">'+data.data[i].companyName+'</option>');
-			}
-		}
-	});
-}
 
 /**
  * 初始化商品列表
@@ -122,7 +107,8 @@ function initTransactionDetailTableTables () {
 											'transactionType':$('#type').val(),
 											'id':$('#orderId').val(),
 											'accountId':$('#merchantName').val(),
-											'userName' : userName
+											'userName' : userName,
+											'goodClassify' : $('#goodClassify').val()
 									}
 									var param={
 											'params':JSON.stringify(args),
@@ -180,7 +166,7 @@ function exportExcel(){
 	}
 	var url=visitType+'beginTime='+($.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+' 00:00:00')+'&endTime='
 		+($.trim($('#queryDate').val())==''?'':$.trim($('#queryDate').val())+' 23:59:59')+'&transactionType='+$.trim($('#type').val())
-		+'&id='+$.trim($('#orderId').val())+'&userName='+cn+'&accountId='+$.trim($('#merchantName').val());
+		+'&id='+$.trim($('#orderId').val())+'&userName='+cn+'&accountId='+$.trim($('#merchantName').val())+'&goodClassify='+$('#goodClassify').val();
 	$.download(getRootPath() + url,null,'post');
 }
 

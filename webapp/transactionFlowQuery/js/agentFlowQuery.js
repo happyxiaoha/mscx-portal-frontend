@@ -177,7 +177,8 @@ function initFlowQueryTables() {
 							'mobile':$('#phone').val(),
 							'id':$('#sysOrderNum').val(),
 							'agentOrderId':$('#merOrderNum').val(),
-							'userName' : userName
+							'userName' : userName,
+							'goodClassify':$('#goodClassify').val()
 						}
 						var param={
 							'params':JSON.stringify(args),
@@ -215,7 +216,8 @@ function exportExcel(){
 			+'&mobile='+$('#phone').val()
 			+'&id='+$('#sysOrderNum').val()
 			+'&agentOrderId='+$('#merOrderNum').val()
-			+'&userName=';
+			+'&userName='
+			+'&goodClassify=' +$('#goodClassify').val();
 	}else{
 		var url = "/order/exportAtfExcel.action?fileName=商户交易流水.xls&visitType=down"
 			+'&startTime='+$('#startTime').val()
@@ -228,7 +230,8 @@ function exportExcel(){
 			+'&mobile='+$('#phone').val()
 			+'&id='+$('#sysOrderNum').val()
 			+'&agentOrderId='+$('#merOrderNum').val()
-			+'&userName='+encodeURI(encodeURI(userName));
+			+'&userName='+encodeURI(encodeURI(userName))
+			+'&goodClassify=' +$('#goodClassify').val();
 	}
 	$.download(getRootPath() + url,null,'post');
 }

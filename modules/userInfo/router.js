@@ -33,7 +33,8 @@ var Routes =  Backbone.Router.extend({
         'account': 'accountView',
         'setPayPassword': 'setPayPasswordView',
         'rechargeRecord': 'rechargeRecordView',
-        'paymentRecord': 'paymentRecordView'
+        'paymentRecord': 'paymentRecordView',
+        'forgetPayPassword': 'forgetPayPasswordView'
 
     },
     defaultView:function () {
@@ -144,6 +145,13 @@ var Routes =  Backbone.Router.extend({
         var accountView = require('userInfo/account/accountView.js');
         mscxPage.views['setPayPasswordViewObj'] = new accountView({
             id: 'setPayPassword'
+        });
+    },
+    // 忘记密码
+    forgetPayPasswordView: function() {
+        var accountView = require('userInfo/account/accountView.js');
+        mscxPage.views['forgetPayPasswordViewObj'] = new accountView({
+            id: 'forgetPayPassword'
         });
     },
     // 充值记录

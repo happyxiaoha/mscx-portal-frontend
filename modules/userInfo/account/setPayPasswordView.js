@@ -37,13 +37,19 @@ var accountView = Backbone.View.extend({
             hasAccount: this.hasAccount
         }));
 
-        this.childView = this.hasAccount ? [editView, forgetView] : [setView];
+        this.childView = this.hasAccount ? {
+            setPayPassword: editView,
+            forgetPayPassword: forgetView
+        } : {
+            setPayPassword: setView
+        };
 
         this.$('#userInfoArea').html(this.template({
-            hasAccount: this.hasAccount
+            hasAccount: this.hasAccount,
+            id: this.id
         }));
 
-        new this.childView[0]({
+        new this.childView[this.id]({
             el: '.pass-area'
         });
 
@@ -59,7 +65,7 @@ var accountView = Backbone.View.extend({
         $target.parent().find('.active').removeClass('active');
         $target.addClass('active');
 
-        new this.childView[$target.data('index')]({
+        new this.childView[$target.data('id')]({
             el: '.pass-area'
         });
     }
@@ -317,7 +323,11 @@ var forgetView = Backbone.View.extend({
     },
     handleSubmit: function() {
         var model = this.model.toJSON();
-        layer.msg(model.result);
+        if(model.status == 'OK') {
+            layer.msg('修改支付密码成功！');
+        }else {
+            layer.msg('修改支付密码失败！');
+        }
         setTimeout(function () {
             location.href = 'userInfo.html';
         },2000);

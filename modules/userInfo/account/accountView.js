@@ -47,6 +47,7 @@ var accountView = Backbone.View.extend({
                     this.$('#userInfoArea').html(this.template(accountInfo));
                     break;
                 case 'setPayPassword':
+                case 'forgetPayPassword':
                     this.currentView = new setPayPasswordView({
                         model: _.pick(this, ['id', 'hasAccount'])
                     });

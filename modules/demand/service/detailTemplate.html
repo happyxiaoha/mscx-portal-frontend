@@ -41,25 +41,29 @@
                 <span class="cor7"><%= data.money %></span>
             </li>
             <li class="mb10">
-                <span>联系截至日期：</span>
+                <span>截止日期：</span>
                 <span class="cor7"><%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></span>
             </li>
             <li class="mb10">
-                <span>主联系人信息：</span>
+                <span>联系人：</span>
                 <span class="cor7"><%= data.contactUsername %></span>
             </li>
             <li class="mb10">
-                <span>主联系人电话：</span>
+                <span>联系人电话：</span>
                 <span class="cor7"><%= data.contactPhone %></span>
             </li>
             <li class="mb10">
+                <span>需求用户：</span>
+                <span class="cor7"><%= data.reqUser %></span>
+            </li>
+            <!-- <li class="mb10">
                 <span>备用联系人信息：</span>
                 <span class="cor7"><%= data.spareContactname %></span>
             </li>
             <li class="mb10">
                 <span>备用联系人电话：</span>
                 <span class="cor7"><%= data.spareContactphone %></span>
-            </li>
+            </li> -->
             <li class="mb10">
                 <span>邮箱：</span>
                 <span class="cor7"><%= data.contactEmail %></span>
@@ -75,6 +79,10 @@
     <p class="titTop bggray ft14 corBlue">任务描述</p>
     <div class="titTopCons">
         <ul>
+            <li class="mb10">
+                <span>任务名称：</span>
+                <span class="cor7"><%= data.name %></span>
+            </li>
             <li class="mb10">
                 <span>任务内容：</span>
                 <span class="cor7"><%= data.description %></span>

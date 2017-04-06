@@ -80,7 +80,6 @@ var createDemandView = Backbone.View.extend({
                     maxlength: 64
                 },
                 interfaceNum: {
-                    required: true,
                     digits: true,
                     min: 1,
                     maxlength: 10

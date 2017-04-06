@@ -60,8 +60,12 @@
                 <% } %>
             </li>
             <li class="mb10">
+                <span>处理状态：</span>
+                <span class="cor7"><%= data.handleStatus %></span>
+            </li>
+            <li class="mb10">
                 <span>反馈意见：</span>
-                <span class="cor7"><%= data.feedbackSuggestion ? data.feedbackSuggestion : '暂无' %></span>
+                <span class="cor7"><%= data.feedbackDepartment ? data.feedbackDepartment : '暂无' %></span>
             </li>
             <li class="mb10">
                 <span>归属部门：</span>

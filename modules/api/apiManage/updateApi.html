@@ -260,6 +260,11 @@
                 <span class="api-name-error">这是必填字段</span>
             </li>
             <li>
+                <label><span><i class="need">*</i>是否健全：</span></label>
+                <label class="auth-type"><input type="radio" name="isAuth" value="0" <%if(!res.isAuth || res.isAuth=='0'){%>checked<%}%>>否</label>
+                <label class="auth-type"><input type="radio" name="isAuth" value="1" <%if(res && res.isAuth=='1'){%>checked<%}%>>是</label>
+            </li>
+            <li>
                 <label>
                     <span><i class="need">*</i>请求类型：</span>
                     <select name="requestType">
@@ -292,11 +297,6 @@
                     <textarea id="testPacket" name="testPacket"><%=res && res.testPacket%></textarea>
                     <p class="input-mes-api fl">参数和返回示例，使用MarkDown格式</p>
                 </label>
-            </li>
-            <li>
-                <label><span><i class="need">*</i>是否健全：</span></label>
-                <label class="auth-type"><input type="radio" name="isAuth" value="0" <%if(!res.isAuth || res.isAuth=='0'){%>checked<%}%>>否</label>
-                <label class="auth-type"><input type="radio" name="isAuth" value="1" <%if(res && res.isAuth=='1'){%>checked<%}%>>是</label>
             </li>
             <li>
                 <label>

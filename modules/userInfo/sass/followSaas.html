@@ -28,7 +28,7 @@
 <script id="SaaSFollowList" type="template">
     <%_.each(followSaaSList, function (fsItem) {%>
         <tr data-id="<%=fsItem.id%>">
-            <td><a target="_blank" href="./saas.html?detail/<%=aitem.id%>"><%=fsItem.name || '-'%></a></td>
+            <td><a target="_blank" href="./saas.html?detail/<%=fsItem.id%>"><%=fsItem.name || '-'%></a></td>
             <td><%=fsItem.providerName%></td>
             <td><%=fsItem.viewCount%></td>
             <td><%=fsItem.attentionTime ? new Date(fsItem.attentionTime).format('yyyy-MM-dd') : '-'%></td>

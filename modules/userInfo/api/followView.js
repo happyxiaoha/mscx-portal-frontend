@@ -93,8 +93,10 @@ var followListView = Backbone.View.extend({
                         that.pagObj.pageNum--;
                     }
                     that.model.fetch({
-                        pageSize: that.pagObj.pageSize,
-                        page: that.pagObj.pageNum
+                        data: {
+                            pageSize: this.pagObj.pageSize,
+                            page: this.pagObj.pageNum
+                        }
                     });
                 }
             });

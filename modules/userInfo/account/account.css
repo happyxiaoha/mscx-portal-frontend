@@ -41,6 +41,10 @@
     left: 475px;
     top: 10px;
 }
+.account.operate-area label.error {
+    left: 305px;
+    top: 0;
+}
 .account .input-item input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 0;

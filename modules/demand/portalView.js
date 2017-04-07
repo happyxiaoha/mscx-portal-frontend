@@ -46,11 +46,12 @@ var view = Backbone.View.extend({
             singleDatePicker: true,
             startDate: moment(),
             minDate: (new Date()).format('yyyy-MM-dd')
+        }).on('apply.daterangepicker',function (ev,picker) {
+            $(ev.target).trigger('blur');
         });
 
         this.model = new addModel();
         this.listenTo(this.model, 'sync', this.handleSubmit);
-
 
         return this;
     },

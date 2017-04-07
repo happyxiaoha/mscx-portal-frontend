@@ -132,8 +132,8 @@ var Routes =  Backbone.Router.extend({
         mscxPage.views['mySaaSViewObj'] = new mySaaSView();
     },
     followSaaSView: function () {
-        var mySaaSView = require('userInfo/sass/followSaasView.js');
-        mscxPage.views['mySaaSViewObj'] = new mySaaSView();
+        var followSaaSView = require('userInfo/sass/followSaasView.js');
+        mscxPage.views['followSaaSViewObj'] = new followSaaSView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

@@ -48,6 +48,11 @@
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
+            <%}else if(scitem.resourceType == '04'){%>
+            <a class="resources" href="javascript:;">
+                <img src="<%=scitem.resourceUrl%>">
+                <p><%=scitem.resourceName%></p>
+            </a>
             <%}else{%>
             <a class="resources" style="width: 285px;text-align: center;" href="javascript:;">
                 <p><%=scitem.resourceName%></p>
@@ -84,18 +89,23 @@
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
+            <%}else if(scitem.resourceType == '04'){%>
+            <a class="resources" href="./saas.html?detail/<%=scitem.resourceId%>">
+                <img src="<%=scitem.resourceUrl%>">
+                <p><%=scitem.resourceName%></p>
+            </a>
             <%}else{%>
             <a class="resources" style="width: 285px;text-align: center;" href="./sources.html?detail/<%=scitem.resourceId%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}%>
             <span class="price"><%=scitem.price%>元</span>
-            <%if(scitem.resourceType == '01' || scitem.resourceType == '03'){%>
+            <%if(scitem.resourceType == '01' || scitem.resourceType == '03' || scitem.resourceType == '04'){%>
             <span class="count"><a class="remove-btn <%if(scitem.applyTimes <= 1){%>disabled<%}%>" href="javascript:;">-</a><input type="text" class="apply-times fl" value="<%=scitem.applyTimes%>"><a class="add-btn" href="javascript:;">+</a></span>
             <%}else{%>
             <span class="count"><input type="number" class="apply-times fl disabled" value="1" readonly></span>
             <%}%>
-            <span class="resourcestype borderT"><%=scitem.resourceDetailType || (scitem.resourceType == '02' && '数据报告') || (scitem.resourceType == '03' && '微应用') %></span>
+            <span class="resourcestype borderT"><%=scitem.resourceDetailType || (scitem.resourceType == '02' && '数据报告') || (scitem.resourceType == '03' && '微应用') || (scitem.resourceType == '04' && 'SaaS') %></span>
             <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>
         </div>
     </li>

@@ -42,6 +42,9 @@
             <%}else if(soitem.resourceType == '03'){%>
             <td><a  href="./services.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>微服务</td>
+            <%}else if(soitem.resourceType == '04'){%>
+            <td><a  href="./saas.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
+            <td>SaaS</td>
             <%}else{%>
             <td><a  href="./api.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>API</td>

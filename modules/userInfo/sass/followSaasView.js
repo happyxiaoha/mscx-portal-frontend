@@ -17,7 +17,7 @@ var unFollowModel = Backbone.Model.extend({
 var followSaasView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
-        pageSize: 1,
+        pageSize: 10,
         pageNum: 1,
         totalPage: 1
     },

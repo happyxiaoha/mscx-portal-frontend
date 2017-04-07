@@ -27,7 +27,9 @@ var Routes =  Backbone.Router.extend({
         'myActivity': 'myActivityView',
         'followRoadShow': 'followRoadShowView',
         'followActivity': 'followActivityView',
-        'applyActivity': 'applyActivityView'
+        'applyActivity': 'applyActivityView',
+        'mySaaS': 'mySaaSView',
+        'followSaaS': 'followSaaSView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -124,6 +126,14 @@ var Routes =  Backbone.Router.extend({
     applyActivityView: function () {
         var applyActivityView = require('userInfo/incubator/applyActivityView.js');
         mscxPage.views['applyActivityViewObj'] = new applyActivityView();
+    },
+    mySaaSView: function () {
+        var mySaaSView = require('userInfo/sass/mySaasView.js');
+        mscxPage.views['mySaaSViewObj'] = new mySaaSView();
+    },
+    followSaaSView: function () {
+        var mySaaSView = require('userInfo/sass/followSaasView.js');
+        mscxPage.views['mySaaSViewObj'] = new mySaaSView();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

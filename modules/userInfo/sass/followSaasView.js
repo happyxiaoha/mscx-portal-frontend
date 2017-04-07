@@ -4,11 +4,11 @@
 
 
 var commonTemplate = require('html!./saasCommon.html');
-var orderTemplate = require('html!./followSaas.html');
+var followTemplate = require('html!./followSaas.html');
 require('./saas.css');
 require('util');
-var orderListModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'order/getOrderList.do'
+var saasFollowListModel = Backbone.Model.extend({
+    url: mscxPage.request.saas + 'attention/list.do'
 });
 
 var followSaasView = Backbone.View.extend({
@@ -19,13 +19,13 @@ var followSaasView = Backbone.View.extend({
         totalPage: 1
     },
     events: {
-        'click .toOrderPay': 'toPay'
+        'click .cancelFollow': 'cancelFollow'
     },
     initialize: function() {
         var that = this;
         this.$el.addClass('user-center-tap');
-        this.$el.html(_.template(commonTemplate)({name:'order'}));
-        this.model = new orderListModel();
+        this.$el.html(_.template(commonTemplate)({name:'followSaas'}));
+        this.model = new saasFollowListModel();
         this.model.on('change',function () {
             that.render();
         });
@@ -37,29 +37,17 @@ var followSaasView = Backbone.View.extend({
         });
         this.initRender();
     },
-    toPay: function (e) {
-        var $this = $(e.target);
-            orderNum = $this.attr('attrOrderId');
-
-        var param = {
-            orderNum: orderNum
-        };
-        var base = new Base64;
-        window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
-        location.href = 'pay.html';
-        e.stopPropagation();
-    },
     render: function () {
         var res = this.model.get('result'),
             that = this,
-            orderList = res.list,
+            followList = res.list,
             page = res.page;
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
-        var temps = _.template($('#orderList').html());
-        this.$el.find('tbody').html(temps({orderList: orderList}));
+        var temps = _.template($('#SaaSFollowList').html());
+        this.$el.find('tbody').html(temps({followSaaSList: followList}));
         laypage({
-            cont: 'orderPages',
+            cont: 'SaaSFollowPages',
             skip: true,
             pages: this.pagObj.totalPage,
             curr: this.pagObj.pageNum || 1,
@@ -80,7 +68,10 @@ var followSaasView = Backbone.View.extend({
         });
     },
     initRender: function () {
-        this.$el.find('#orderInfo').html(orderTemplate);
+        this.$el.find('#saasInfo').html(followTemplate);
+    },
+    cancelFollow: function (e) {
+        
     }
 });
 

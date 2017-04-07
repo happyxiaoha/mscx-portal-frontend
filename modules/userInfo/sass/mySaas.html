@@ -1,104 +1,43 @@
-<div class="tabCons shop-car-area">
-    <div class="M-mainInfo clearfix bgWhite pt25">
-        <p class="car-title">
-            <span class="ml10"><label class="radio-label"><input class="select-all" type="checkbox"><i class="radio-dis"></i>全选</label></span>
-            <span class="resources">资源名称</span>
-            <span class="price">申请价格</span>
-            <span class="count">申请套餐数</span>
-            <span class="resourcestype">资源类型</span>
-            <span class="amount">金额</span>
-        </p>
-        <div class="pagination">
-            <div class="fr">
-                <span class="disabled prev-page">上一页</span>
-                <span class="disabled next-page">下一页</span>
-            </div>
+<div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+    <div class="M-downCons">
+        <div class="D_table M-table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="15%">SaaS名称</th>
+                    <th width="30%">SaaS描述</th>
+                    <th width="20%">申请时间</th>
+                    <th width="9%">收费类型</th>
+                    <th width="9%">使用次数</th>
+                    <th width="9%">剩余次数</th>
+                    <th width="8%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td colspan="7">暂无数据</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <ul class="shopCar">
-
-        </ul>
-        <p class="car-title bottom">
-            <span class="ml10"><label class="radio-label"><input class="select-all" type="checkbox"><i class="radio-dis"></i>全选</label></span>
-            <span class="fr">
-                 <i class="mr10">已选择<b class="corBlue ft18 total-number">0</b>个资源</i>
-                <i class="mr10">总价<b class="corBlue ft18 total-price">￥0.00</b></i>
-                <a href="javascript:;" class="corff pay toShopPay fr">去结算</a>
-            </span>
-        </p>
+        <div id="applyApiPages" class="page-area fr"></div>
     </div>
 </div>
-
-<script id="carMessage" type="template">
-    <% _.each(shopCarList, function (scitem) { %>
-    <%if(!scitem.chargeRuleValid || !scitem.resourceValid){%>
-    <li attrId="<%=scitem.id%>">
-        <p>
-            <span> <%=scitem.createdTime ? new Date(scitem.createdTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></span>
-            <span class="deleteCar fr"></span>
-        </p>
-        <div class="orderList">
-            <span class="ml10"style="width: 20px;height: 2px;"></span>
-            <%if(scitem.resourceType == '01' || scitem.resourceType == '03'){%>
-            <a class="resources" href="javascript:;">
-                <img src="<%=scitem.resourceUrl%>">
-                <p><%=scitem.resourceName%></p>
-            </a>
-            <%}else if(scitem.resourceType == '03'){%>
-            <a class="resources" href="javascript:;">
-                <img src="<%=scitem.resourceUrl%>">
-                <p><%=scitem.resourceName%></p>
-            </a>
-            <%}else{%>
-            <a class="resources" style="width: 285px;text-align: center;" href="javascript:;">
-                <p><%=scitem.resourceName%></p>
-            </a>
-            <%}%>
-            <span class="price"><%=scitem.price%>元</span>
-            <span class="count">
-                <img src="../../../images/downed.png">
-            </span>
-            <span class="resourcestype borderT"><%=scitem.resourceDetailType || '-' %></span>
-            <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>
-        </div>
-    </li>
-    <%}else{%>
-    <li attrId="<%=scitem.id%>">
-        <p>
-            <span> <%=scitem.createdTime ? new Date(scitem.createdTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></span>
-            <span class="deleteCar fr"></span>
-        </p>
-        <div class="orderList">
-            <span class="ml10">
-                <label class="radio-label">
-                    <i class="radio-dis <%if(scitem.applyTimes > 0 || scitem.resourceType == '02'){%>active<%}%>"></i>
-                    <input class="is-select-shop" type="checkbox" <%if(scitem.applyTimes > 0 || scitem.resourceType == '02'){%>checked="true"<%}%>>
-                </label>
-            </span>
-            <%if(scitem.resourceType == '01'){%>
-            <a class="resources" href="./api.html?detail/<%=scitem.resourceId%>">
-                <img src="<%=scitem.resourceUrl%>">
-                <p><%=scitem.resourceName%></p>
-            </a>
-            <%}else if(scitem.resourceType == '03'){%>
-            <a class="resources" href="./services.html?detail/<%=scitem.resourceId%>">
-                <img src="<%=scitem.resourceUrl%>">
-                <p><%=scitem.resourceName%></p>
-            </a>
-            <%}else{%>
-            <a class="resources" style="width: 285px;text-align: center;" href="./sources.html?detail/<%=scitem.resourceId%>">
-                <p><%=scitem.resourceName%></p>
-            </a>
-            <%}%>
-            <span class="price"><%=scitem.price%>元</span>
-            <%if(scitem.resourceType == '01' || scitem.resourceType == '03'){%>
-            <span class="count"><a class="remove-btn <%if(scitem.applyTimes <= 1){%>disabled<%}%>" href="javascript:;">-</a><input type="text" class="apply-times fl" value="<%=scitem.applyTimes%>"><a class="add-btn" href="javascript:;">+</a></span>
-            <%}else{%>
-            <span class="count"><input type="number" class="apply-times fl disabled" value="1" readonly></span>
-            <%}%>
-            <span class="resourcestype borderT"><%=scitem.resourceDetailType || (scitem.resourceType == '02' && '数据报告') || (scitem.resourceType == '03' && '微应用') %></span>
-            <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>
-        </div>
-    </li>
+<script id="apiApplyList" type="template">
+    <% _.each(applyApiList, function (aitem) { %>
+    <tr attrId="<%=aitem.sourceId%>" attrPackageId="<%=aitem.sourcePakcageId%>">
+        <td><a target="_blank" href="./api.html?detail/<%=aitem.sourceId%>"><%=aitem.apiName || '-'%></a></td>
+        <td><%=aitem.apiDesc || '-'%></td>
+        <td><%=aitem.applyTime%></td>
+        <td><%=aitem.chargeType%></td>
+        <td><%=aitem.totalTime%></td>
+        <td><%=aitem.remainTime == -1 ? '不限': aitem.remainTime%></td>
+        <td><a class="applyApi" href="api.html?detail/<%=aitem.sourceId%>">再次申请</a></td>
+    </tr>
+    <% }); %>
+    <%if(applyApiList.length == 0){%>
+    <tr>
+        <td colspan="7">暂无数据</td>
+    </tr>
     <%}%>
-    <%});%>
 </script>

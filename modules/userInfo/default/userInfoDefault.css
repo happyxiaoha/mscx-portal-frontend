@@ -8,8 +8,8 @@
 .user-name-area {width: 80px;height: 18px;  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;}
 
 .right-con-wrap .R-topList .R-cons{padding: 22px 24px;box-sizing:border-box;height: 118px;border: 1px solid #aaa;margin-left: -1px;margin-bottom: -1px;}
-.right-con-wrap .R-topList .R-cons:first-child{width: 224px;}
-.right-con-wrap .R-topList .user-cost{width: 220px;}
+.right-con-wrap .R-topList .R-cons:first-child{/*width: 224px;*/width: 300px;}
+.right-con-wrap .R-topList .user-cost{/*width: 220px;*/width: 363px;}
 .right-con-wrap .R-topList .user-ser{width: 310px;}
 .right-con-wrap .R-topList .user-demand{width: 662px;}
 .right-con-wrap .R-topList .user-demand .btn-publish-demand {

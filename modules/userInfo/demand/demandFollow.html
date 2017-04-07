@@ -85,7 +85,7 @@
             <thead>
             <tr>
                 <th>数据任务名称</th>
-                <th>数据用途</th>
+                <th>数据描述</th>
                 <th>归属部门</th>
                 <th>关注时间</th>
                 <th>操作</th>
@@ -96,7 +96,7 @@
                 <% _.each(followSourceList, function (fsitem) { %>
                 <tr attrId="<%=fsitem.id%>">
                     <td><a  href="../demand.html#data/detail/<%=fsitem.id%>"><%=fsitem.name%></a></td>
-                    <td><%= fsitem.dataUsage%></td>
+                    <td><%= fsitem.dataDiscription%></td>
                     <td><%= fsitem.department%></td>
                     <td><%= fsitem.focusTime ? new Date(fsitem.focusTime).format('yyyy-MM-dd') : '-'%></td>
                     <td>

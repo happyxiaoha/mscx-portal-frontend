@@ -118,6 +118,8 @@ var createDemandView = Backbone.View.extend({
             singleDatePicker: true,
             startDate: moment(),
             minDate: (new Date()).format('yyyy-MM-dd')
+        }).on('apply.daterangepicker',function (ev,picker) {
+            $(ev.target).trigger('blur');
         });
     },
     goContact: function(event) {

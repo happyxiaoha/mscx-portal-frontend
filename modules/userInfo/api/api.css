@@ -17,7 +17,7 @@
     float: left;
     width: 100%;
 }
-.package-manage  ul li p.mes {float: left;max-width: 200px;margin-left: 10px;line-height: 30px;}
+.package-manage  ul li p.mes {float: left;max-width: 200px;margin-left: 10px;line-height: 30px;word-break: break-all;}
 .package-manage ul li label{
     float: left;
     line-height: 27px;

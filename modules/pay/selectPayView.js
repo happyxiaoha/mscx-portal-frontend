@@ -65,13 +65,14 @@ var view = Backbone.View.extend({
                 break;
             case 'weixin':
                 $.get(payUrl, function(res) {
-                    me.weixinPayView = new weixinPayView({
-                        model: {
-                            url: res.result,
-                            order: me.orderModel.toJSON()
-                        }
-                    })
-                    me.setElement(me.weixinPayView.el);
+                    location.href = 'pay.html#weixin/' + encodeURIComponent(res.result) + '/' + me.orderInfo.orderNum;
+                    // me.weixinPayView = new weixinPayView({
+                    //     model: {
+                    //         url: res.result,
+                    //         order: me.orderModel.toJSON()
+                    //     }
+                    // })
+                    // me.setElement(me.weixinPayView.el);
                 })
                 break;
             default:

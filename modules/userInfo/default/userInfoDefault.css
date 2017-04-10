@@ -25,16 +25,38 @@
 }
 
 .right-con-wrap a.message{background: url('../../../images/news.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin: 10px 0;}
-.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;text-decoration: underline;}
-.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;}
-.right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;color: #f0b742;}
+.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 10px;text-decoration: underline;}
+.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 10px;}
+.right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 10px;color: #f0b742;}
 .right-con-wrap .RCconsList p{border-bottom: 1px dashed #069cd9;line-height: 26px;}
 .right-con-wrap .RCconsList p span{display: inline-block;}
 .right-con-wrap .RCconsList p span:first-child{width: 60px;}
 .right-con-wrap .RCconsListBtn p{line-height: 26px;}
 .right-con-wrap .RCconsListBtn a{    text-align: center;
     line-height: 25px;display:block;width: 102px;height: 26px;border: 0;outline: none;display: block;}
-
+.right-con-wrap .bonus {
+    display: block;
+    height: 30px;
+    width: 80px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background: #f77400;
+    margin-top: 10px;
+    cursor: default;
+}
+.right-con-wrap .btn-recharge {
+    height: 30px;
+    width: 80px;
+    text-align: center;
+    color: #fff;
+    background: #0f97ef;
+    margin-top: 10px;
+    border: 0;
+}
+.right-con-wrap .unit {
+    padding-left: 5px;
+}
 .more{right: 18px;top: 2px;}
 .mainDatas{padding: 20px 15px;margin-top: 16px;background: #fff;}
 .mainDatas ul p ,.R-myServerList >ul >p{padding: 50px;font-size: 18px;}
@@ -89,3 +111,8 @@
 .user-center-api-list .api-item {width: 228px;margin: 0 10px 10px 0;margin-right: 10px\9;}
 
 .tabDownCons input[readonly] {cursor: default;background-color:#fff;}
+
+.point-rule-tip {
+    list-style: initial;
+    padding-left: 20px;
+}

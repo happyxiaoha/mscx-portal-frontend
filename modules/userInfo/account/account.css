@@ -39,6 +39,7 @@
     color: #fff;
     font-size: 14px;
     border-radius: 0;
+    outline: 0;
 }
 .account .btn-set {
     margin-left: 160px;
@@ -181,4 +182,25 @@
 }
 .account .btn-pay {
     margin-left: 35px; 
+}
+.account.pay-tips {
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 80px;
+    padding-left: 100px;
+    background:  url("../../../images/newicon/account-warn.png") left top no-repeat;
+}
+.account.pay-tips p {
+    line-height: 30px;
+    font-size: 16px;
+}
+.account.pay-tips .btn-done {
+    margin: 20px 0 0 0;
+}
+.account.pay-tips .btn-ng {
+    margin: 20px 0 0 10px;
+    background: #F8F8F8;
+    color: #333;
+    border: 1px solid #eee;
+    width: 120px;
 }

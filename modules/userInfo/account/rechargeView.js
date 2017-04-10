@@ -53,7 +53,8 @@ var accountView = Backbone.View.extend({
             el: '#content'
         })
 
-        this.selectPayWayView.render();
+        // 第一步的初始化
+        this.amountView.render();
 
         this.listenTo(this.amountView, 'next', this.goSelectPayWay);
         this.listenTo(this.selectPayWayView, 'next', this.goPayResultView);
@@ -136,14 +137,15 @@ var selectPayWayView = Backbone.View.extend({
         }));
         this.$el.append(this.templete(this.model.toJSON()));
 
-        layer.open({
-            type: 1,
-            title: '支付提示',
-            shade: 0.6,
-            shadeClose: true,
-            area: ['500px', '450px'],
-            content: this.payTipsTemplate
-        })
+        // 支付提示弹层
+        // layer.open({
+        //     type: 1,
+        //     title: '支付提示',
+        //     shade: 0.6,
+        //     shadeClose: true,
+        //     area: ['600px', '350px'],
+        //     content: this.payTipsTemplate
+        // })
     },
     submitPay: function() {
         // 支付按钮
@@ -164,18 +166,11 @@ var selectPayWayView = Backbone.View.extend({
         var payUrl = PayResource.host + '?' + $.param(this.orderInfo);
         switch(type) {
             case 'alipay':
-                window.open(payUrl + '&returnUrl=' + mscxPage.payReturnHost + 'pay-result.html');
+                location.href = payUrl + '&returnUrl=' + mscxPage.payReturnHost + 'pay-result.html';
                 break;
             case 'weixin':
                 $.get(payUrl, function(res) {
-                    window.open('pay.html#weixin/' + res.result + '/' + me.orderInfo.result)
-                    // me.weixinPayView = new weixinPayView({
-                    //     model: {
-                    //         url: res.result,
-                    //         order: me.orderModel.toJSON()
-                    //     }
-                    // })
-                    // me.setElement(me.weixinPayView.render().el);
+                    location.href = 'pay.html#weixin/' + encodeURIComponent(res.result) + '/' + me.orderInfo.orderNum;
                 })
                 break;
             default:

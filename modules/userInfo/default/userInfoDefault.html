@@ -3,22 +3,24 @@
         <img src="../../../images/img15.png" alt="" class="fl block mr16">
         <p class="fl">
             <span class="block ft16 corOrange">--</span>
-            <a href="../message.html" class="block corBlue message">消息</a>
+            <!--<a href="../message.html" class="block corBlue message">消息</a>-->
             <a href="#userAuth" class="block corBlue unrealName">未认证</a>
+            <span class="bonus">任务奖励</span>
         </p>
     </div>
     <div class="fl bgWhite R-cons clearfix user-cost">
         <img src="../../../images/icon03.png" alt="" class="fl block mr16">
-        <p class="fl tc">
-            <span class="block mt16">账户余额</span>
-            <span class="block corBlue ft18 mt14">0.0<em class="ft12 corBlue">元</em></span>
+        <p class="fl">
+            <span class="block">账户余额</span>
+            <span class="block corBlue ft18 mt10">--<em class="ft12 corBlue unit">元</em></span>
+            <button class="btn-recharge">充值</button>
         </p>
     </div>
     <div class="fl bgWhite R-cons clearfix user-cost">
         <img src="../../../images/icon02.png" alt="" class="fl block mr16">
         <p class="fl tc">
             <span class="block mt16">累计消费金额</span>
-            <span class="block corBlue ft18 mt14">0.0<em class="ft12 corBlue">元</em></span>
+            <span class="block corBlue ft18 mt14">0.0<em class="ft12 corBlue unit">元</em></span>
         </p>
     </div>
     <div class="fr bgWhite R-cons clearfix pt12 user-ser">
@@ -90,7 +92,7 @@
         <img src="../../../images/img15.png" alt="" class="fl block mr16">
         <p class="fl">
             <span class="block ft16 corOrange user-name-area" title="<%=res.user.account%>"><%=res.user.account%></span>
-            <a href="../message.html" class="block corBlue message">消息</a>
+            <!--<a href="../message.html" class="block corBlue message">消息</a>-->
             <%if(res.user.certificationInfo.status == 'CERTIFICATED_PERSON'|| res.user.certificationInfo.status == 'CERTIFICATED_ENTERPRISE' || res.user.certificationInfo.status == 'CERTIFICATED_PARTNER'){%>
                 <a href="#userAuth" class="block realName">已认证</a>
             <%}else if(res.user.certificationInfo.status == 'P2E_PROCESSING'|| res.user.certificationInfo.status == 'ENTERPRISE_PROCESSING'){%>
@@ -98,20 +100,22 @@
             <%}else{%>
                 <a href="#userAuth" class="block corBlue unrealName">立刻认证</a>
             <%}%>
+            <span class="bonus">任务奖励</span>
         </p>
     </div>
     <div class="fl bgWhite R-cons clearfix user-cost">
         <img src="../../../images/icon03.png" alt="" class="fl block mr16">
-        <p class="fl tc">
-            <span class="block mt16">账户余额</span>
-            <span class="block corBlue ft18 mt14" id="balance"><em class="ft12 corBlue">元</em></span>
+        <p class="fl">
+            <span class="block">账户余额</span>
+            <span class="block corBlue ft18 mt10" id="balance"><span id="balanceNum"></span><em class="ft12 corBlue unit">元</em></span>
+            <button class="btn-recharge">充值</button>
         </p>
     </div>
     <div class="fl bgWhite R-cons clearfix user-cost">
         <img src="../../../images/icon02.png" alt="" class="fl block mr16">
         <p class="fl tc">
             <span class="block mt16">累计消费金额</span>
-            <span class="block corBlue ft18 mt14"><%=res.cash%><em class="ft12 corBlue">元</em></span>
+            <span class="block corBlue ft18 mt14"><%=res.cash%><em class="ft12 corBlue unit">元</em></span>
         </p>
     </div>
     <div class="fr bgWhite R-cons clearfix pt12 user-ser">
@@ -158,4 +162,11 @@
             </span>
         </p>
     </div>
+</script>
+<script id="pointRule" type="template">
+<ul class="point-rule-tip">
+    <% data && data.list.forEach(function(item) { %>
+        <li><%= item.description %></li>
+    <% }) %>
+</ul>
 </script>

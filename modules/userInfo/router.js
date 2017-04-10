@@ -33,7 +33,7 @@ var Routes =  Backbone.Router.extend({
         'account': 'accountView',
         'setPayPassword': 'setPayPasswordView',
         'rechargeRecord': 'rechargeRecordView',
-        'paymentRecord': 'paymentRecordView',
+        'consumeRecord': 'consumeRecordView',
         'forgetPayPassword': 'forgetPayPasswordView'
 
     },
@@ -135,15 +135,17 @@ var Routes =  Backbone.Router.extend({
     },
     // 账户充值
     accountView: function() {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['accountViewObj'] = new accountView({
+        var view = require('userInfo/account/accountView.js');
+
+        mscxPage.views['accountViewObj'] = new view({
             id: 'recharge'
         });
     },
     // 支付密码设置
     setPayPasswordView: function() {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['setPayPasswordViewObj'] = new accountView({
+        var view = require('userInfo/account/accountView.js');
+
+        mscxPage.views['setPayPasswordViewObj'] = new view({
             id: 'setPayPassword'
         });
     },
@@ -156,16 +158,18 @@ var Routes =  Backbone.Router.extend({
     },
     // 充值记录
     rechargeRecordView: function() {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['rechargeRecordViewObj'] = new accountView({
+        var view = require('userInfo/account/accountView.js');
+
+        mscxPage.views['rechargeRecordViewObj'] = new view({
             id: 'rechargeRecord'
         });
     },
     // 支出记录
-    paymentRecordView: function() {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['paymentRecordViewObj'] = new accountView({
-            id: 'paymentRecord'
+    consumeRecordView: function() {
+        var view = require('userInfo/account/accountView.js');
+
+        mscxPage.views['consumeRecordViewObj'] = new view({
+            id: 'consumeRecord'
         });
     },
     openPage: function(url) {

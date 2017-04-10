@@ -5,7 +5,7 @@ var accountInfoModel = Backbone.Model.extend({
 });
 
 var rechargeView = require('./rechargeView.js');
-var paymentRecordView = require('./paymentRecordView.js');
+var paymentRecordView = require('./consumeRecordView.js');
 var rechargeRecordView = require('./rechargeRecordView.js');
 var setPayPasswordView = require('./setPayPasswordView.js');
 
@@ -23,13 +23,16 @@ var accountView = Backbone.View.extend({
     },
     render: function() {
         var accountInfo = this.accountInfoModel.toJSON();
+
+        var accountSubView = mscxPage.views['accountSubView'];
+        accountSubView && accountSubView.undelegateEvents() && accountSubView.stopListening();
+
         // 如果账户不存在，那么跳转支付密码设置页面。同时，账户充值/充值记录/支出记录tab标签隐藏
         if(accountInfo.result == 'noAccount') {
             this.id = 'setPayPassword';
             this.currentView = new setPayPasswordView({
                 model: _.pick(this, ['id', 'hasAccount'])
             });
-            this.$el.replaceWith(this.currentView.$el);
         }else {
             this.hasAccount = true;
             switch(this.id) {
@@ -49,15 +52,15 @@ var accountView = Backbone.View.extend({
                         model: _.pick(this, ['id', 'hasAccount'])
                     });
                     break;
-                case 'paymentRecord':
+                case 'consumeRecord':
                     this.currentView = new paymentRecordView({
                         model: _.pick(this, ['id', 'hasAccount'])
                     });
                     break;
             }
-            this.$el.replaceWith(this.currentView.$el);
         }
-        
+        mscxPage.views['accountSubView'] = this.currentView;
+        this.$el.replaceWith(this.currentView.$el);
     }
 });
 module.exports = accountView;

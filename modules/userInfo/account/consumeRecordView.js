@@ -1,13 +1,13 @@
 'use strict';
 
 var commonTemplate = require('html!./common.html');
-var template = require('html!./rechargeRecord.html');
+var template = require('html!./consumeRecord.html');
 
 require('./account.css');
 require('util');
 
-var rechargeRecordModel = Backbone.Model.extend({
-    url: mscxPage.request.account + 'getRechargeList.do'
+var consumeRecordModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'getConsumeList.do'
 });
 
 var accountView = Backbone.View.extend({
@@ -15,7 +15,7 @@ var accountView = Backbone.View.extend({
     commonTemplate: _.template(commonTemplate),
     template: template,
     events: {
-        'click .recharge .btn-search': 'searchDate'
+        'click .consume .btn-search': 'searchDate'
     },
     initialize: function() {
         _.extend(this, this.model);
@@ -26,29 +26,30 @@ var accountView = Backbone.View.extend({
         }));
 
         this.$('#userInfoArea').html(this.template);
-
-        this.rechargeTemplate = _.template(this.$('#rechargeTemplate').html(), {variable: 'data'});
+        this.consumeTemplate = _.template(this.$('#consumeTemplate').html(), {variable: 'data'});
 
         this.$datepicker = this.$('#datepicker');
 
         // 选择日期
         this.$datepicker.daterangepicker();
 
-        this.rechargeRecordModel = new rechargeRecordModel();
+        this.consumeRecordModel = new consumeRecordModel();
         this.searchParam = new Backbone.Model();
-        this.listenTo(this.rechargeRecordModel, 'sync', this.render);
+        this.listenTo(this.consumeRecordModel, 'sync', this.render);
 
-        this.rechargeRecordModel.fetch({
+        this.consumeRecordModel.fetch({
             data: this.searchParam.toJSON()
         })
 
         return this;
     },
     render: function() {
-        var model = this.rechargeRecordModel.toJSON();
-        this.$('#rechargeRecord').html(this.rechargeTemplate(model.result));
+        var model = this.consumeRecordModel.toJSON();
+        this.$('#consumeRecord').html(this.consumeTemplate(model.result));
     },
-    searchDate: function() {
+    searchDate: function(event) {
+        event.preventDefault();
+
         var time = this.$datepicker.val();
         time = time.split(' - ');
         this.searchParam.set({
@@ -56,7 +57,7 @@ var accountView = Backbone.View.extend({
             endTime: time[1]
         })
 
-        this.rechargeRecordModel.fetch({
+        this.consumeRecordModel.fetch({
             data: this.searchParam.toJSON()
         })
     }

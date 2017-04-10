@@ -4,40 +4,42 @@
             <table>
                 <thead>
                 <tr>
-                    <th width="15%">SaaS名称</th>
-                    <th width="30%">SaaS描述</th>
-                    <th width="20%">申请时间</th>
-                    <th width="9%">收费类型</th>
-                    <th width="9%">使用次数</th>
-                    <th width="9%">剩余次数</th>
+                    <th width="15%">购买时间</th>
+                    <th width="10%">SaaS名称</th>
+                    <th width="8%">服务商</th>
+                    <th width="8%">收费类型</th>
+                    <th width="8%">使用次数</th>
+                    <th width="8%">剩余次数</th>
+                    <th width="35%">链接地址</th>
                     <th width="8%">操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td colspan="7">暂无数据</td>
+                    <td colspan="8">暂无数据</td>
                 </tr>
                 </tbody>
             </table>
         </div>
-        <div id="applyApiPages" class="page-area fr"></div>
+        <div id="mySaaSPages" class="page-area fr"></div>
     </div>
 </div>
-<script id="apiApplyList" type="template">
-    <% _.each(applyApiList, function (aitem) { %>
-    <tr attrId="<%=aitem.sourceId%>" attrPackageId="<%=aitem.sourcePakcageId%>">
-        <td><a target="_blank" href="./api.html?detail/<%=aitem.sourceId%>"><%=aitem.apiName || '-'%></a></td>
-        <td><%=aitem.apiDesc || '-'%></td>
-        <td><%=aitem.applyTime%></td>
-        <td><%=aitem.chargeType%></td>
-        <td><%=aitem.totalTime%></td>
-        <td><%=aitem.remainTime == -1 ? '不限': aitem.remainTime%></td>
-        <td><a class="applyApi" href="api.html?detail/<%=aitem.sourceId%>">再次申请</a></td>
+<script id="mySaaSListTemps" type="template">
+    <% _.each(mySaaSList, function (msitem) { %>
+    <tr>
+        <td><%=msitem.applyTime ? new Date(parseInt(msitem.applyTime)).format('yyyy-MM-dd') : '-'%></td>
+        <td><a target="_blank" href="./saas.html?detail/<%=msitem.sourceId%>"><%=msitem.appName%></a></td>
+        <td><%=msitem.provideName%></td>
+        <td><%=msitem.feeType%></td>
+        <td><%=msitem.buyLimit%></td>
+        <td><%=msitem.leftLimit%></td>
+        <td><%=msitem.saasUrl%></td>
+        <td><a href="./saas.html?detail/<%=msitem.sourceId%>">再次申请</a></td>
     </tr>
     <% }); %>
-    <%if(applyApiList.length == 0){%>
+    <%if(mySaaSList.length == 0){%>
     <tr>
-        <td colspan="7">暂无数据</td>
+        <td colspan="8">暂无数据</td>
     </tr>
     <%}%>
 </script>

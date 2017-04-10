@@ -9,8 +9,7 @@ var view = Backbone.View.extend({
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
         this.$el.removeClass().addClass('pay-content');
-    },
-    render: function() {
+
         this.$el.html(this.template(this.model.order));
         this.$qrcode = this.$('#qrCode');
 
@@ -20,6 +19,10 @@ var view = Backbone.View.extend({
         });
         qrcode.makeCode(this.model.url);
         return this;
+    },
+    render: function() {
+        
+        
     }
 });
 

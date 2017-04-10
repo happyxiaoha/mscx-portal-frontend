@@ -7,13 +7,21 @@ var rechargeModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/placeRechargeOrder.do'
 })
 
+var PayResource = {
+    host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
+    channels: {
+        alipay: 'ALI_WEB',
+        weixin: 'WX_NATIVE'
+    }
+}
+
 require('validate');
 require('./account.css');
 
 var accountView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     commonTemplate: _.template(commonTemplate),
-    template: _.template(template, {variable: 'data'}),
+    template: template,
     events: {
 
     },
@@ -27,7 +35,7 @@ var accountView = Backbone.View.extend({
             hasAccount: this.hasAccount
         }));
 
-        this.$('#userInfoArea').html(this.template());
+        this.$('#userInfoArea').html(this.template);
         this.$('#balance').html(this.accountInfoModel.toJSON().result.account_balance);
 
         // step1 输入金额页面
@@ -37,14 +45,15 @@ var accountView = Backbone.View.extend({
         })
         // step2 选择支付方式页面
         this.selectPayWayView = new selectPayWayView({
-            el: '#content'
+            el: '#content',
+            model: this.rechargeModel
         })
         // step3 支付结果页面
         this.payResultView = new payResultView({
             el: '#content'
         })
 
-        this.amountView.render();
+        this.selectPayWayView.render();
 
         this.listenTo(this.amountView, 'next', this.goSelectPayWay);
         this.listenTo(this.selectPayWayView, 'next', this.goPayResultView);
@@ -61,14 +70,15 @@ var accountView = Backbone.View.extend({
 var amountView = Backbone.View.extend({
     initialize: function() {
         this.templete = _.template($('#amount').html());
-        this.stepTemplete = _.template($('#step').html());
+        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
 
         this.listenTo(this.model, 'sync', this.handleRecharge);
         return this;
     },
     render: function() {
+        this.$el.empty();
         this.$el.append(this.stepTemplete({
-            done: 'step'
+            current: 'step1'
         }));
         this.$el.append(this.templete());
 
@@ -93,6 +103,7 @@ var amountView = Backbone.View.extend({
         var params = this.$form.serializeObject();
         this.amount = params.money;
 
+        this.model.set('amount', this.amount);
         this.model.fetch({
             data: {
                 rechargeAmount: this.amount
@@ -109,14 +120,79 @@ var amountView = Backbone.View.extend({
     }
 })
 var selectPayWayView = Backbone.View.extend({
+    events: {
+        'click .btn-pay': 'submitPay'
+    },
     initialize: function() {
-        this.templete = _.template($('#slectPayWay').html());
-        this.stepTemplete = _.template($('#step').html());
+        this.templete = _.template($('#slectPayWay').html(), {variable: 'data'});
+        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
+        this.payTipsTemplate = $('#payTips').html();
     },
     render: function() {
+        this.$el.empty();
         this.$el.append(this.stepTemplete({
-            done: 'step1',
+            done: ['step1'],
             current: 'step2'
+        }));
+        this.$el.append(this.templete(this.model.toJSON()));
+
+        layer.open({
+            type: 1,
+            title: '支付提示',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px', '450px'],
+            content: this.payTipsTemplate
+        })
+    },
+    submitPay: function() {
+        // 支付按钮
+        var type = this.$('.pay-type').find('input[type="radio"]:checked').val();    
+        var me = this;
+
+        this.orderInfo = _.extend({
+            orderNum: this.model.get('result'),
+            amount: this.model.get('amount')
+        }, {
+            channel: PayResource.channels[type],
+            title: '广州数聚'
+        });
+        /* 
+         * 如果是支付宝，页面跳转
+         * 如果是微信支付，ajax获取url生成二维码
+         */
+        var payUrl = PayResource.host + '?' + $.param(this.orderInfo);
+        switch(type) {
+            case 'alipay':
+                window.open(payUrl + '&returnUrl=' + mscxPage.payReturnHost + 'pay-result.html');
+                break;
+            case 'weixin':
+                $.get(payUrl, function(res) {
+                    window.open('pay.html#weixin/' + res.result + '/' + me.orderInfo.result)
+                    // me.weixinPayView = new weixinPayView({
+                    //     model: {
+                    //         url: res.result,
+                    //         order: me.orderModel.toJSON()
+                    //     }
+                    // })
+                    // me.setElement(me.weixinPayView.render().el);
+                })
+                break;
+            default:
+                break;
+        }
+    }
+})
+var payResultView = Backbone.View.extend({
+    initialize: function() {
+        this.templete = _.template($('#payResult').html());
+        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
+    },
+    render: function() {
+        this.$el.empty();
+        this.$el.append(this.stepTemplete({
+            done: ['step1', 'step2'],
+            current: 'step3'
         }));
         this.$el.append(this.templete());
     }

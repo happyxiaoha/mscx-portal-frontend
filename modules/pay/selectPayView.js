@@ -71,7 +71,7 @@ var view = Backbone.View.extend({
                             order: me.orderModel.toJSON()
                         }
                     })
-                    me.setElement(me.weixinPayView.render().el);
+                    me.setElement(me.weixinPayView.el);
                 })
                 break;
             default:

@@ -1,11 +1,21 @@
 var Routes =  Backbone.Router.extend({
     routes: {
         '': 'selectPayView',
-        'result/:id': 'resultView'
+        'result/:id': 'resultView',
+        'weixin/:url/:order': 'weixinView'
     },
     selectPayView: function () {
         var view = require('pay/selectPayView.js');
         mscxPage.views['selectPayViewObj'] = new view();
+    },
+    weixinView: function (url, order) {
+        var view = require('pay/weixinPayView.js');
+        mscxPage.views['weixinPayViewObj'] = new view({
+            model: {
+                url: url,
+                orderNum: order
+            }
+        });
     },
     resultView:function (id) {
         var view = require('pay/resultView.js');

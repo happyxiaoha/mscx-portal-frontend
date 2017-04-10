@@ -1,11 +1,24 @@
 .account.balance {
     padding: 20px 25px;
     border: 1px solid #ccc;
+    margin-top: -1px;
+}
+.account.desc {
+    padding: 20px 55px;
+    border: 1px solid #ccc;
+    margin-top: -1px;
+}
+.account.desc ul, .account.desc li {
+    list-style: initial;
+    line-height: 30px;
 }
 .account.operate-area {
     padding: 20px 25px;
     border: 1px solid #ccc;
     background: #f4f6fd;
+}
+.account.operate-area hr {
+    border-bottom: 1px solid #aaa;
 }
 .account .input-item {
     height: 32px;
@@ -103,8 +116,8 @@
 .account .process li.current i.step3 {
     background: url('../../../images/newicon/account-curr-step3.png') left center no-repeat;
 }
-.account .process li i.done {
-    background: url('../../../images/newicon/account-done.png') left center no-repeat!important;    
+.account .process li.done i{
+    background: url('../../../images/newicon/account-done.png') left center no-repeat;    
 }
 .account .process li i.arrow {
     background: url('../../../images/newicon/account-arrow.png') left center no-repeat;
@@ -144,4 +157,28 @@
     outline: none;
     width: 120px;
 }
-   
+.account .pay-type {
+    height: 100px;
+}
+.account .pay-type label {
+    width: 180px;
+    display: block;
+    margin-left: 30px;
+    margin-top: 20px;
+    float: left;
+    height: 60px;
+}
+.account .pay-type label.zfb {
+    background: url("../../../images/pay/zfb.png") right center no-repeat;
+}
+.account .pay-type label.wxzf {
+    background: url("../../../images/pay/wxzf.png") right center no-repeat;
+}
+.account .pay-type label input{
+    float: left;
+    height: 50px;
+    width: 20px;
+}
+.account .btn-pay {
+    margin-left: 35px; 
+}

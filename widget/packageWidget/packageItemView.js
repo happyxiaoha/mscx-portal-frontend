@@ -53,10 +53,12 @@ var view = Backbone.View.extend({
                     maxlength: '套餐名称不大于50个字符'
                 },
                 chargeCount: {
-                    integers: '大于1的正整数'
+                    integers: '大于1的正整数',
+                    max: '输入超过最大限制'
                 },
                 monthLimit: {
-                    integers: '大于1的正整数'
+                    integers: '大于1的正整数',
+                    max: '输入超过最大限制'
                 }
             },
             submitHandler: function () {
@@ -179,6 +181,21 @@ var view = Backbone.View.extend({
             $('.limitPre').html('天');
             $('.prePrice').html('次');
         }
+        this.setValidateWithCharge(sVal);
+    },
+    setValidateWithCharge: function (sChargeType) {
+        if(sChargeType == '05'){
+            $('#chargeCount').rules('remove');
+            $('#chargeCount').rules('add',{min:0,max:999999999});
+            $('#invokeLimit').rules('remove');
+            $('#invokeLimit').rules('add',{min:1,max:36000});
+        }
+        else {
+            $('#chargeCount').rules('remove');
+            $('#chargeCount').rules('add',{min:0,max:99});
+            $('#invokeLimit').rules('remove');
+            $('#invokeLimit').rules('add',{min:1,max:999999999});
+        }
     },
     initialize: function() {
         this.callbackSave = this.attributes ? this.attributes.callbackFun : null;
@@ -193,6 +210,8 @@ var view = Backbone.View.extend({
             }
         }
         $('#serverChargePackage').validate(this.packageValidateConfig());
+        var sChargeType = res && res.chargeType ? res.chargeType : '05';
+        this.setValidateWithCharge(sChargeType);
         this.buildData();
     }
 });

@@ -245,10 +245,12 @@ var createApiView = Backbone.View.extend({
                     maxlength: '套餐名称不大于50个字符'
                 },
                 chargeCount: {
-                    integers: '大于1的正整数'
+                    integers: '大于1的正整数',
+                    max: '输入超过最大限制'
                 },
                 monthLimit: {
-                    integers: '大于1的正整数'
+                    integers: '大于1的正整数',
+                    max: '输入超过最大限制'
                 }
             },
             submitHandler: function () {
@@ -482,6 +484,7 @@ var createApiView = Backbone.View.extend({
             success: function () {
                 that.buildDateEvents();
                 $('#addChargeForm').validate(that.packageValidateConfig());
+                that.setValidateWithCharge('05');
             },
             btn1: function () {          //通过
                 $('#addChargeForm').submit();
@@ -897,6 +900,20 @@ var createApiView = Backbone.View.extend({
             $('.api-name-error').hide();
         }
     },
+    setValidateWithCharge: function (sChargeType) {
+        if(sChargeType == '05'){
+            $('#chargeCount').rules('remove');
+            $('#chargeCount').rules('add',{min:0,max:999999999});
+            $('#invokeLimit').rules('remove');
+            $('#invokeLimit').rules('add',{min:1,max:36000});
+        }
+        else {
+            $('#chargeCount').rules('remove');
+            $('#chargeCount').rules('add',{min:0,max:99});
+            $('#invokeLimit').rules('remove');
+            $('#invokeLimit').rules('add',{min:1,max:999999999});
+        }
+    },
     doChargeType: function () {
         var sVal = $('.charge-type').val();
         if(sVal == '04'){
@@ -909,6 +926,7 @@ var createApiView = Backbone.View.extend({
             $('.prePrice').html('次');
             $('.price-per').html('次');
         }
+        this.setValidateWithCharge(sVal);
     }
 });
 

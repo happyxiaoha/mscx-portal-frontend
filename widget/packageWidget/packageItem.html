@@ -32,7 +32,7 @@
                 <%}else{%>
                 <label><input type="number" class="small" name="price" id="price" value="<%=res && res.price%>">元/</label>
                 <label><input type="number" class="small" name="chargeCount" id="chargeCount" value="<%=res && res.chargeCount%>">
-                    <span class="prePrice"><%=res.invokeLimit%><%= res.chargeType == '04' ? '天' : '次'%></span>
+                    <span class="prePrice"><%= res.chargeType == '04' ? '天' : '次'%></span>
                 </label>
                 <p class="input-mes-server fl">价格大于等于0元，天数是大于1的整数</p>
                 <!--

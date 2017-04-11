@@ -2122,7 +2122,7 @@ ul.pagination>li.active>a {
     font-size: 12px;
     line-height: 17px;
 }
-
+.ns-apiDetailComponent .media-body .baseInfo .top .info .cell a {word-break: break-all;}
 .ns-apiDetailComponent .media-body .baseInfo .top .info .cell span {
     color: #666
 }

@@ -71,22 +71,23 @@
                                                         </div>
                                                     </div>
                                                     <div class="info">
-                                                        <div class="cell">访问地址：
-                                                        <% if(data.uri.indexOf('http') < 0){ %>
-                                                            <a href="http://<%- data.uri %>" target="_blank">
-                                                        <% }else{ %>
-                                                            <a href="<%- data.uri %>" target="_blank">
-                                                        <% }; %>
-                                                        <%= data.uri %>
-                                                        </a>
-                                                        </div>
                                                         <div class="cell">版本号：
                                                             <span>
                                                             <%= data.saasVersion %>
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    
+                                                    <div class="info">
+                                                        <div class="cell">访问地址：
+                                                            <% if(data.uri.indexOf('http') < 0){ %>
+                                                            <a href="http://<%- data.uri %>" target="_blank">
+                                                                <% }else{ %>
+                                                                <a href="<%- data.uri %>" target="_blank">
+                                                                    <% }; %>
+                                                                    <%= data.uri %>
+                                                                </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="media-right">
                                                     <div class="rightInfo">

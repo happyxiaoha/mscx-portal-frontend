@@ -26,7 +26,10 @@ var userView = Backbone.View.extend({
         }));
 
         this.pointIncomeModel = new pointIncomeModel();
-        this.searchParam = new Backbone.Model();
+        this.searchParam = new Backbone.Model({
+            pageSize: 5,
+            page: 1
+        });
         this.listenToOnce(this.pointIncomeModel, 'sync', this.render);
         this.listenTo(this.searchParam, 'change', this.fullfillDatepicker);
 
@@ -36,12 +39,26 @@ var userView = Backbone.View.extend({
     },
     render: function () {
         var model = this.pointIncomeModel.toJSON();
+        var that = this;
         this.$('#userInfoArea').html(this.template(model.result));
 
         this.$datepicker = this.$('#datepicker');
 
         // 选择日期
         this.$datepicker.daterangepicker();
+
+        laypage({
+            cont: 'pointPage',
+            pages: model.result.page.totalPage,
+            skip: true,
+            curr: this.searchParam.get('page') || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.searchParam.set('page', obj.curr);
+                    that.reloadPage();
+                }
+            }
+        });
 
         this.listenTo(this.pointIncomeModel, 'sync', this.renderPartial);
     },
@@ -70,11 +87,30 @@ var userView = Backbone.View.extend({
     },
     renderPartial: function() {
         var model = this.pointIncomeModel.toJSON();
+        var that = this;
         this.$('#pointList').html(this.listTemplate(model.result));
+
+        laypage({
+            cont: 'pointPage',
+            pages: model.result.page.totalPage,
+            skip: true,
+            curr: this.searchParam.get('page') || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.searchParam.set('page', obj.curr);
+                    that.reloadPage();
+                }
+            }
+        });
+    },
+    reloadPage: function() {
+        this.pointIncomeModel.fetch({
+            data: this.searchParam.toJSON()
+        });
     },
     fullfillDatepicker: function() {
         var result = this.searchParam.toJSON();
-        if(result.startTime == '' || result.endTime == '') {
+        if(result.startTime == '' || result.endTime == '' || !result.startTime || !result.endTime) {
             this.$datepicker.val('')
         }else {
             this.$datepicker.val(result.startTime + ' - ' + result.endTime).data('daterangepicker').setOptions({

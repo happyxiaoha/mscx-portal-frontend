@@ -33,7 +33,9 @@
         <td><%=msitem.feeType%></td>
         <td><%=msitem.buyLimit%></td>
         <td><%=msitem.leftLimit%></td>
-        <td><%=msitem.saasUrl%></td>
+        <td>
+            <a target="_blank" href="<%= location.protocol + '//' + location.host + msitem.saasUrl %>"><%=msitem.saasUrl %></a>
+        </td>
         <td><a href="./saas.html?detail/<%=msitem.sourceId%>">再次申请</a></td>
     </tr>
     <% }); %>

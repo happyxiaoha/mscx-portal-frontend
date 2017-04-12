@@ -38,7 +38,9 @@ var accountView = Backbone.View.extend({
             switch(this.id) {
                 case 'recharge':
                     this.currentView = new rechargeView({
-                        model: _.pick(this, ['id', 'hasAccount', 'accountInfoModel'])
+                        model: _.extend(_.pick(this, ['id', 'hasAccount', 'accountInfoModel']), {
+                            order: this.model.order
+                        })
                     });
                     break;
                 case 'setPayPassword':

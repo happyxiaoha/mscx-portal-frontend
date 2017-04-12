@@ -23,7 +23,14 @@ var view = Backbone.View.extend({
         })
     },
     render: function() {
-        this.$el.html(this.template(this.orderModel.toJSON()));
+        var model = this.orderModel.toJSON();
+
+        // 如果是充值订单，跳转
+        if(model.order_classify == '2') {
+            location.replace('userInfo.html#recharge/result/' + model.orderNum);
+        }
+
+        this.$el.html(this.template(model));
     }
 });
 

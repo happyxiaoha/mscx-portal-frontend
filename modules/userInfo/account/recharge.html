@@ -61,13 +61,9 @@
 </script>
 <script type="template" id="payResult">
     <div class="account clearfix mt20 operate-area">
-        <form class="pr">
-            <div class="input-item clearfix">
-                <h2 class="ft18 fl">充值金额：</h2>
-                <input type="text" name="money" value="" placeholder="输入金额"><span>元</span>
-            </div>
-            <button class="btn">下一步</button>
-        </form>
+        <div class="input-item clearfix">
+            <h2 class="ft18 fl"><%= data && data.orderStatus == '3' ? '充值成功' : '充值未成功' %></h2>
+        </div>
     </div>
 </script>
 <script type="template" id="payTips">

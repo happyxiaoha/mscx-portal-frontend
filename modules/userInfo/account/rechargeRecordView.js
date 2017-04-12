@@ -17,6 +17,11 @@ var accountView = Backbone.View.extend({
     events: {
         'click .recharge .btn-search': 'searchDate'
     },
+    pagObj: {
+        pageSize: 10,
+        pageNum: 1,
+        totalPage: 0
+    },
     initialize: function() {
         _.extend(this, this.model);
 
@@ -35,7 +40,10 @@ var accountView = Backbone.View.extend({
         this.$datepicker.daterangepicker();
 
         this.rechargeRecordModel = new rechargeRecordModel();
-        this.searchParam = new Backbone.Model();
+        this.searchParam = new Backbone.Model({
+            pageSize: this.pagObj.pageSize,
+            page: this.pagObj.pageNum
+        });
         this.listenTo(this.rechargeRecordModel, 'sync', this.render);
 
         this.rechargeRecordModel.fetch({
@@ -46,13 +54,36 @@ var accountView = Backbone.View.extend({
     },
     render: function() {
         var model = this.rechargeRecordModel.toJSON();
+        var that = this;
         this.$('#rechargeRecord').html(this.rechargeTemplate(model.result));
+
+        this.searchParam.set({
+            page: model.result.page.currentPage
+        })
+
+        laypage({
+            cont: 'rechargePage',
+            pages: model.result.page.totalPage,
+            skip: true,
+            curr: this.searchParam.get('page') || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.searchParam.set('page', obj.curr);
+                    that.reloadPage();
+                }
+            }
+        });
+    },
+    reloadPage: function() {
+        this.rechargeRecordModel.fetch({
+            data: this.searchParam.toJSON()
+        });
     },
     searchDate: function() {
         var time = this.$datepicker.val();
         time = time.split(' - ');
         this.searchParam.set({
-            startTime: time[0],
+            beginTime: time[0],
             endTime: time[1]
         })
 

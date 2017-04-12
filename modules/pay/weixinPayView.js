@@ -12,6 +12,9 @@ require('./pay.css');
 var view = Backbone.View.extend({
     el: mscxPage.domEl.payEl,
     template: _.template(template, {variable: 'data'}),
+    events: {
+        'click .wx-result-btn': 'goPayResult'
+    },
     initialize: function() {
         this.$el.removeClass().addClass('pay-content');
 
@@ -35,6 +38,12 @@ var view = Backbone.View.extend({
         });
         qrcode.makeCode(decodeURIComponent(this.model.url));
         return this;
+    },
+    goPayResult: function() {
+        var model = this.orderModel.toJSON();
+
+        location.href = model.order_classify == '2' ? 'userInfo.html#recharge/result/' + model.orderNum : '#result/' + model.orderNum;
+        
     }
 });
 

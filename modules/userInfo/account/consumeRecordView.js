@@ -17,6 +17,11 @@ var accountView = Backbone.View.extend({
     events: {
         'click .consume .btn-search': 'searchDate'
     },
+    pagObj: {
+        pageSize: 10,
+        pageNum: 1,
+        totalPage: 0
+    },
     initialize: function() {
         _.extend(this, this.model);
 
@@ -34,7 +39,10 @@ var accountView = Backbone.View.extend({
         this.$datepicker.daterangepicker();
 
         this.consumeRecordModel = new consumeRecordModel();
-        this.searchParam = new Backbone.Model();
+        this.searchParam = new Backbone.Model({
+            pageSize: this.pagObj.pageSize,
+            page: this.pagObj.pageNum
+        });
         this.listenTo(this.consumeRecordModel, 'sync', this.render);
 
         this.consumeRecordModel.fetch({
@@ -46,6 +54,28 @@ var accountView = Backbone.View.extend({
     render: function() {
         var model = this.consumeRecordModel.toJSON();
         this.$('#consumeRecord').html(this.consumeTemplate(model.result));
+
+        this.searchParam.set({
+            page: model.result.page.currentPage
+        });
+
+        laypage({
+            cont: 'consumePage',
+            pages: model.result.page.totalPage,
+            skip: true,
+            curr: this.searchParam.get('page') || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.searchParam.set('page', obj.curr);
+                    that.reloadPage();
+                }
+            }
+        });
+    },
+    reloadPage: function() {
+        this.consumeRecordModel.fetch({
+            data: this.searchParam.toJSON()
+        });
     },
     searchDate: function(event) {
         event.preventDefault();
@@ -53,7 +83,7 @@ var accountView = Backbone.View.extend({
         var time = this.$datepicker.val();
         time = time.split(' - ');
         this.searchParam.set({
-            startTime: time[0],
+            beginTime: time[0],
             endTime: time[1]
         })
 

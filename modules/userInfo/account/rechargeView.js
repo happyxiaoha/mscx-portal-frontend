@@ -7,6 +7,10 @@ var rechargeModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/placeRechargeOrder.do'
 })
 
+var orderModel = Backbone.Model.extend({
+    url: mscxPage.request.order + 'order/getOrderDetail.do'
+})
+
 var PayResource = {
     host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
     channels: {
@@ -50,14 +54,22 @@ var accountView = Backbone.View.extend({
         })
         // step3 支付结果页面
         this.payResultView = new payResultView({
-            el: '#content'
+            el: '#content',
+            model: {
+                order: this.order
+            }
         })
-
-        // 第一步的初始化
-        this.amountView.render();
 
         this.listenTo(this.amountView, 'next', this.goSelectPayWay);
         this.listenTo(this.selectPayWayView, 'next', this.goPayResultView);
+
+        // 如果有订单号，则是支付回调页面
+        if(this.order) {
+            this.payResultView.render();
+        }else {
+            // 第一步的初始化
+            this.amountView.render();
+        }
 
         return this;
     },
@@ -180,7 +192,7 @@ var selectPayWayView = Backbone.View.extend({
 })
 var payResultView = Backbone.View.extend({
     initialize: function() {
-        this.templete = _.template($('#payResult').html());
+        this.templete = _.template($('#payResult').html(), {variable: 'data'});
         this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
     },
     render: function() {
@@ -189,7 +201,19 @@ var payResultView = Backbone.View.extend({
             done: ['step1', 'step2'],
             current: 'step3'
         }));
-        this.$el.append(this.templete());
+
+        this.orderModel = new orderModel();
+        this.listenTo(this.orderModel, 'sync', this.renderResult);
+
+        this.orderModel.fetch({
+            data: {
+                orderNum: this.model.order
+            }
+        })
+    },
+    renderResult: function() {
+        var model = this.orderModel.toJSON();
+        this.$el.append(this.templete(model));
     }
 })
 module.exports = accountView;

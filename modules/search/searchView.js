@@ -73,7 +73,7 @@ var searchView = Backbone.View.extend({
                 }
             })
         }else　{
-            window.localStorage.setItem('dataType', '微服务');
+            window.localStorage.setItem('dataType', '微应用');
             this.searchSerModel.fetch({
                 data:{
                     keyword:　this.id

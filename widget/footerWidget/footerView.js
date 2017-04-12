@@ -19,7 +19,7 @@ var menuList = [
         url: mscxPage.urlConfig.apiPage
     },
     {
-        name: '微服务',
+        name: '微应用',
         url: mscxPage.urlConfig.servicesPage
     },
     {

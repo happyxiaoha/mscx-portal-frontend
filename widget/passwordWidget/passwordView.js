@@ -13,6 +13,12 @@ var view = Backbone.View.extend({
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
         this.$el.html(this.template(this.model));
+
+        if(!this.model.title) {
+            this.$('.tail-pwd').css('left', '250px');
+            this.$('.pass-container').css('left', '0');
+        }
+
         return this;
     },
     handleInputPwd: function(event) {

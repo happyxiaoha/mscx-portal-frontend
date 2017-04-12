@@ -1,4 +1,6 @@
-<h2><%= data && data.title %>：</h2>
+<% if(data && data.title){ %>
+<h2><%= data.title %>：</h2>
+<% } %>
 <div class="pass-container">
     <input type="password" id="<%= data && data.name %>" name="<%= data && data.name %>" class="input-pwd" value="" maxlength="6" />
     <div class="pass-item"></div>

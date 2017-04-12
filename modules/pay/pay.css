@@ -12,6 +12,9 @@
     padding: 20px;
     border: solid 1px #aaa;
 }
+.pay-content .pass-wrap label.error {
+    left: 450px;
+}
 .pay-type {
     /*height: 250px;*/
     margin-top: 20px;
@@ -19,7 +22,7 @@
     border: 1px solid #aaa;
     padding: 20px;
 }
-.pay-type label {
+.pay-type .pay-way {
     width: 180px;
     display: inline-block;
     margin-left: 70px;
@@ -74,6 +77,11 @@
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     top: -13px;
+}
+.pay-type .forget-pass {
+    position: absolute;
+    top: 15px;
+    left: 330px;
 }
 .point-pay {
     padding: 20px;
@@ -137,6 +145,10 @@
 .pay-total .point-serve {
     display: none;
 }
+.pay-type .btn-account-pay {
+    width: 300px;
+    margin-top: 0;
+}
 .qrzf {
     padding: 12px 22px;
     border: solid 1px #2098ec;
@@ -151,6 +163,13 @@
 .qrzf.disabled {
     background: #aaa;
     border: 1px solid #aaa;
+}
+.point-rule-wrapper {
+    color: #333;
+}
+.point-rule-wrapper .point-rule-tip {
+    list-style: initial;
+    padding-left: 20px;
 }
 .corRed {
     color: #ff4200;

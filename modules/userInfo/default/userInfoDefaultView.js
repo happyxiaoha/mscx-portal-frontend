@@ -190,7 +190,7 @@ var defaultView = Backbone.View.extend({
         var model = this.pointRuleModel.toJSON();
         var html = this.pointRuleTemplate(model.result);
         this.tipIndex = layer.tips(html, '.bonus', {
-            tips: [2, '#f90'],
+            tips: [2, '#fffeed'],
             time: 0,
             maxWidth: 300
         });

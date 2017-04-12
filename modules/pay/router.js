@@ -2,7 +2,8 @@ var Routes =  Backbone.Router.extend({
     routes: {
         '': 'selectPayView',
         'result/:id': 'resultView',
-        'weixin/:url/:order': 'weixinView'
+        'weixin/:url/:order': 'weixinView',
+        'account/:order': 'accountPayView'
     },
     selectPayView: function () {
         var view = require('pay/selectPayView.js');
@@ -13,6 +14,15 @@ var Routes =  Backbone.Router.extend({
         mscxPage.views['weixinPayViewObj'] = new view({
             model: {
                 url: url,
+                orderNum: order
+            }
+        });
+    },
+    // 账户支付
+    accountPayView: function(order) {
+        var view = require('pay/accountPayView.js');
+        mscxPage.views['accountPayViewObj'] = new view({
+            model: {
                 orderNum: order
             }
         });

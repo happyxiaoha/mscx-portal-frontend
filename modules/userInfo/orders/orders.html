@@ -36,7 +36,10 @@
             <%if(i == 1 && olaitem.sourceDetail.length >= 1){%>
             <td rowspan="<%=olaitem.sourceDetail.length%>"><%=olaitem.orderNum%></td>
             <%}%>
-            <%if(soitem.resourceType == '02'){%>
+            <%if (olaitem.order_classify == '2') { %>
+            <td><%= soitem.resourceName%></td>
+            <td>充值</td>
+            <%} else if(soitem.resourceType == '02'){%>
             <td><a  href="./sources.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>数据</td>
             <%}else if(soitem.resourceType == '03'){%>
@@ -48,7 +51,9 @@
             <%}%>
             <td><%= olaitem.orderTime ? olaitem.orderTime : '-'%></td>
             <td><%= soitem.itemCash%></td>
-            <%if(soitem.resourceType == '02'){%>
+            <% if(olaitem.order_classify == '2'){ %>
+            <td>1</td>
+            <%} else if(soitem.resourceType == '02'){%>
             <td>-</td>
             <%}else {%>
             <td>
@@ -63,6 +68,7 @@
             <td>
                 <%if(olaitem.orderStatus == '未支付'){%>
                 <a href="javascript:;" attrOrderId="<%=olaitem.orderNum%>" class="toOrderPay">支付</a>
+                <a href="javascript:;" data-orderid="<%=olaitem.orderNum%>" class="toCancelPay ml5">取消</a>
                 <%}%>
             </td>
         </tr>

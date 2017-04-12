@@ -45,7 +45,7 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>截止日期：</p>
             <div class="fl R_right">
-                <a><input size="7" type="text" name="endTime" value="<%= data && data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %>" readonly class="end-time"></a>
+                <a><input size="7" type="text" name="endTime" value="<%= data && data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %>" readonly class="end-time mini"></a>
             </div>
         </div>
         <div class="clearfix ReleaseList">
@@ -63,39 +63,6 @@
                     <input type="radio" <%= data && data.matchmakeTrade == 'N' && "checked" %> name="matchmakeTrade" value="N">
                     否
                 </label>
-            </div>
-        </div>
-        <div class="clearfix ReleaseList">
-            <p class="fl R_left"><em>*</em>分类：</p>
-            <div class="fl R_right wd660 category">
-                <input type="hidden" name="categoryName" id="categoryName" value="" />
-                <!-- 数据API分类 -->
-                <label class="block-radio">
-                    <% if(!data.id){ %>
-                    <input type="radio" checked name="apiCategory" data-select="dataCategory" value="数据API">
-                    <% }else { %>
-                    <input type="radio" data-select="dataCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 2 && "checked" %> name="apiCategory" value="Y">
-                    <% } %>
-                    数据API
-                </label>
-                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 2 ? data.categoryId.split(',')[1] : '' %>" <%= data && data.categoryId && data.categoryId.split(',')[0] != 2 && "disabled" %> id="dataCategory">
-                </select>
-                <div class="clearfix"></div>
-                <!-- 模型API分类 -->
-                <label class="block-radio">
-                    <input type="radio" data-select="modelCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 3 && "checked" %> name="apiCategory" value="模型API">
-                    模型API
-                </label>
-                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 3 ? data.categoryId.split(',')[1] : '' %>" <%= (!data.id || data && data.categoryId && data.categoryId.split(',')[0] != 3) && "disabled" %> id="modelCategory">
-                </select>
-                <div class="clearfix"></div>
-                <!-- 工具API分类 -->
-                <label class="block-radio">
-                    <input type="radio" data-select="toolCategory" <%= data && data.categoryId && data.categoryId.split(',')[0] == 4 && "checked" %> name="apiCategory" value="工具API">
-                    工具API
-                </label>
-                <select name="categoryId" data-default="<%= data && data.categoryId && data.categoryId.split(',')[0] == 4 ? data.categoryId.split(',')[1] : '' %>" <%= (!data.id || data && data.categoryId && data.categoryId.split(',')[0] != 4) && "disabled" %> id="toolCategory">
-                </select>
             </div>
         </div>
         <div class="clearfix ReleaseList">

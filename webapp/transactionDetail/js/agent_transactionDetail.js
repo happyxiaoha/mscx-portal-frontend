@@ -48,6 +48,12 @@ function initTransactionDetailTableTables () {
 									data : "transactionFlow.agentOrderId"
 								},
 								{
+									data : "transactionFlow.product.goodClassify",
+									"render":function(data, type, row){
+										return data == '1'?"话费":"流量";
+									}
+								},
+								{
 									data : "mobile"
 								},
 								{

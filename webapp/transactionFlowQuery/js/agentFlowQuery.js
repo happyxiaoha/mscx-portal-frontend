@@ -58,6 +58,12 @@ function initFlowQueryTables() {
 						data : "account.companyName"
 					},
 					{
+						data : "product.gooodClassify",
+						"render":function(data, type, row){
+							return data == '1'?"话费":"流量";
+						}
+					},
+					{
 						data : "product.operator"
 					},
 					{

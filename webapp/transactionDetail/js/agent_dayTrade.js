@@ -97,9 +97,9 @@ function initTransactionDetailTableTables () {
 									data : "product.goodClassify",
 									"render" : function(data,type,row,meta){
 										if (data == '2'){
-											return "流量充值";
+											return "流量";
 										}else{
-											return "话费充值";
+											return "话费";
 										}
 									}
 								},
@@ -137,14 +137,14 @@ function initTransactionDetailTableTables () {
 									 var api = this.api();
 									 if(api.column( 5 ).data().length>0){
 										 $(tfoot).find('th').eq(1).html(api.column( 5 ).data().reduce( function ( a, b ) {
-											 return a + b;
+											 return new Number(a + b).toFixed(3);
 										 }));
 									 }else{
 										 $(tfoot).find('th').eq(1).html('0');
 									 }
 									 if(api.column( 6 ).data().length>0){
 										 $(tfoot).find('th').eq(3).html(api.column( 6 ).data().reduce( function ( a, b ) {
-											 return a + b;
+											 return new Number(a + b).toFixed(3);
 										 }));
 									 }else{
 										 $(tfoot).find('th').eq(3).html('0');

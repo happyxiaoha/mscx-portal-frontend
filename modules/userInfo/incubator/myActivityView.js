@@ -25,7 +25,8 @@ var activityView = Backbone.View.extend({
     },
     events: {
         'click .closeActivity': 'closeActivity',
-        'click .sign-list': 'getSignList'
+        'click .sign-list': 'getSignList',
+        'click .displayRes': 'disMsg'
     },
     initialize: function() {
         var that = this;

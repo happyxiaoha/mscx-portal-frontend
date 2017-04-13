@@ -90,13 +90,13 @@ var view = Backbone.View.extend({
         this.orderAmount = orderModel.orderCash;
         // 账户余额
         this.accountBalance = accountInfoModel.result.account_balance;
+        // 账户余额支付金额
+        this.payBalance = 0;
 
         // 混合价格Model
         this.priceModel = new Backbone.Model({
             // 积分抵用
-            pointAmount: 0,
-            // 账户余额支付金额
-            accountAmount: 0
+            pointAmount: 0
         });
 
         this.listenTo(this.priceModel, 'change', this.renderPrice);
@@ -138,7 +138,7 @@ var view = Backbone.View.extend({
         var me = this;
 
         var pointAmount = this.priceModel.get('pointAmount');
-        var accountAmount = this.priceModel.get('accountAmount');
+        var payBalance = this.payBalance;
 
         // 使用积分，且完全积分支付
         if(+pointAmount - +this.orderAmount >= 0) {
@@ -152,7 +152,7 @@ var view = Backbone.View.extend({
             channel: PayResource.channels[type],
             title: '广州数聚',
             payPoint: this.pointNum,
-            payBalance: accountAmount
+            payBalance: payBalance
         });
         /* 
          * 如果是支付宝，页面跳转
@@ -183,11 +183,12 @@ var view = Backbone.View.extend({
     selectPayWay: function(event) {
         var $target = this.$(event.currentTarget);
 
+        var pointAmount = this.priceModel.get('pointAmount');
         // 如果选择了账户支付
         if($target.val() == 'account') {
-            this.priceModel.set('accountAmount', +this.accountBalance - +this.orderAmount > 0 ? +this.orderAmount : +this.accountBalance);
+            this.payBalance = +this.orderAmount - pointAmount;
         }else {
-            this.priceModel.set('accountAmount', 0);
+            this.payBalance = 0;
         }
     },
     showPointPay: function(event) {
@@ -217,24 +218,10 @@ var view = Backbone.View.extend({
         }
     },
     renderPrice: function() {
-        // 判断当前金额是否可以去支付
-        // this.submitFlag = false;
         var pointAmount = this.priceModel.get('pointAmount');
-        var accountAmount = this.priceModel.get('accountAmount');
         var finalAmount;
 
-        // // 判断当前金额是否可以提交
-        // if(accountAmount) {
-        //     this.submitFlag = +this.orderAmount < +pointAmount + +accountAmount
-        // }else {
-        //     this.submitFlag = true;
-        // }
-
-        // if(this.submitFlag) {
-        //     this.$payBtn.removeClass('disabled');
-        // }else {
-        //     this.$payBtn.addClass('disabled');
-        // }
+        this.payBalance = +this.orderAmount - pointAmount;
 
         // 计算最终需要支付额度
         if(pointAmount > 0) {

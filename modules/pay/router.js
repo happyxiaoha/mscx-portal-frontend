@@ -2,6 +2,7 @@ var Routes =  Backbone.Router.extend({
     routes: {
         '': 'selectPayView',
         'result/:id': 'resultView',
+        'error/:msg': 'errorView',
         'weixin/:url/:order': 'weixinView',
         'account/:order': 'accountPayView'
     },
@@ -31,6 +32,14 @@ var Routes =  Backbone.Router.extend({
         var view = require('pay/resultView.js');
         mscxPage.views['resultView'] = new view({
             id: id
+        });
+    },
+    errorView: function(msg) {
+        var view = require('pay/errorView.js');
+        mscxPage.views['errorView'] = new view({
+            model: {
+                msg: msg
+            }
         });
     },
     openPage: function(url) {

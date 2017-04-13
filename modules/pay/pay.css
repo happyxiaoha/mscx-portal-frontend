@@ -56,6 +56,9 @@
     border-radius: 8px;
     text-align: center;
 }
+.pay-type .account-balance.disabled {
+    color: #aaa;
+}
 .pay-type .point-title {
     font-size: 16px;
     position: relative;

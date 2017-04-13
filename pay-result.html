@@ -15,16 +15,22 @@
     </div>
     <script src="dist/backboneLib.js"></script>
     <script>
-        var params = location.search.split('&');
-        var orderNum;
+        var params = location.search.split('?')[1].split('&');
+        var orderNum, errMsg;
         _.each(params, function(item) {
             var split = item.split('=');
             if(split[0] == 'out_trade_no') {
                 orderNum = split[1];
-                return;
+            }else if(split[0] == 'errMsg') {
+                errMsg = split[1];
             }
         })
-        location.replace('pay.html#result/' + orderNum);
+        if(errMsg) {
+            location.replace('pay.html#error/' + errMsg);
+        }else {
+            location.replace('pay.html#result/' + orderNum);
+        }
+        
     </script>
 </body>
 </html>

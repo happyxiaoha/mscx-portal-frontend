@@ -1,15 +1,23 @@
 .my-info-area {overflow: hidden;}
 .right-con-wrap {width: 970px;}
 .D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
-.D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tr th{
+    background: #f9f9f9;
+    font-size: 14px;
+    height: 36px;
+    border-bottom: 1px solid #ccc;
+    line-height: 37px;
+    font-weight: 600;
+    color: #666;
+}
 .D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}
 .user-name-area {width: 80px;height: 18px;  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;}
 
 .right-con-wrap .R-topList .R-cons{padding: 22px 24px;box-sizing:border-box;height: 118px;border: 1px solid #aaa;margin-left: -1px;margin-bottom: -1px;}
-.right-con-wrap .R-topList .R-cons:first-child{/*width: 224px;*/width: 300px;}
-.right-con-wrap .R-topList .user-cost{/*width: 220px;*/width: 363px;}
+.right-con-wrap .R-topList .R-cons:first-child{width: 224px;}
+.right-con-wrap .R-topList .user-cost{width: 220px;}
 .right-con-wrap .R-topList .user-ser{width: 310px;}
 .right-con-wrap .R-topList .user-demand{width: 662px;}
 .right-con-wrap .R-topList .user-demand .btn-publish-demand {
@@ -25,16 +33,38 @@
 }
 
 .right-con-wrap a.message{background: url('../../../images/news.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin: 10px 0;}
-.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;text-decoration: underline;}
-.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;}
-.right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 5px;color: #f0b742;}
+.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 10px;text-decoration: underline;}
+.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 10px;}
+.right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat left center;line-height: 16px;padding-left: 22px;margin-top: 10px;color: #f0b742;}
 .right-con-wrap .RCconsList p{border-bottom: 1px dashed #069cd9;line-height: 26px;}
 .right-con-wrap .RCconsList p span{display: inline-block;}
 .right-con-wrap .RCconsList p span:first-child{width: 60px;}
 .right-con-wrap .RCconsListBtn p{line-height: 26px;}
 .right-con-wrap .RCconsListBtn a{    text-align: center;
     line-height: 25px;display:block;width: 102px;height: 26px;border: 0;outline: none;display: block;}
-
+.right-con-wrap .bonus {
+    display: block;
+    height: 30px;
+    width: 80px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background: #f77400;
+    margin-top: 10px;
+    cursor: default;
+}
+.right-con-wrap .btn-recharge {
+    height: 30px;
+    width: 80px;
+    text-align: center;
+    color: #fff;
+    background: #0f97ef;
+    margin-top: 10px;
+    border: 0;
+}
+.right-con-wrap .unit {
+    padding-left: 5px;
+}
 .more{right: 18px;top: 2px;}
 .mainDatas{padding: 20px 15px;margin-top: 16px;background: #fff;}
 .mainDatas ul p ,.R-myServerList >ul >p{padding: 50px;font-size: 18px;}
@@ -89,3 +119,9 @@
 .user-center-api-list .api-item {width: 228px;margin: 0 10px 10px 0;margin-right: 10px\9;}
 
 .tabDownCons input[readonly] {cursor: default;background-color:#fff;}
+
+.point-rule-tip {
+    list-style: initial;
+    padding-left: 20px;
+    color: #333;
+}

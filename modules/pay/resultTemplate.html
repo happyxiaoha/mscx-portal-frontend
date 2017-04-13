@@ -4,7 +4,7 @@
   <% }else if(data.payWay == 'WX_NATIVE'){ %>
     <img class="fl" src="../../images/pay/wx_logo.png">
   <% } %>
-  <span class="fl ft22 mt5">|收银台</span>
+  <span class="fl ft22 mt5">收银台</span>
 </p>
 <div class="ReleaseMainCons mt10 grid960 bgWhite clearfix boxShadiow">
     <div class="w100">
@@ -12,7 +12,7 @@
            <div class="order-info">
                <p class="cor4">
                <% if(data && data.orderStatus == 3){ %>
-                <span class="block mb10">您已成功支付<b class="corOrange ft18"><%= data.orderCash %></b>元</span>
+                <span class="block mb10">您已成功支付<b class="corOrange ft18" style="padding: 0 5px;"><%= data.orderCash %></b>元</span>
                <% }else if(data.orderStatus == 4){ %>
                 <span class="block mb10 ft22">支付失败</span>
                <% }else if(data.orderStatus == 1){ %>
@@ -27,7 +27,7 @@
                   <% }) %>
                  </span></span>
                </p>
-               <p>您可能还需要:<a class="ml10 corBlue" style="text-decoration: underline" href="userInfo.html#order">进入我的订单</a></p>
+               <p>您可能还需要:<a class="ml10 corBlue" style="text-decoration: underline;margin-left:10px;" href="userInfo.html#order">进入我的订单</a></p>
            </div>
        </div>
     </div>

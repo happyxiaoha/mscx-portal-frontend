@@ -1,0 +1,78 @@
+<div class="clearfix account balance">
+    <h2 class="ft18">账户余额：<span class="corBlue ft18" id="balance"></span></h2>
+</div>
+<div id="content"></div>
+
+<script type="template" id="step">
+    <div class="clearfix mt20 account balance">
+        <ul class="process">
+            <li class="<%= data.current == 'step1' ? 'current ' : '' %><%= _.contains(data.done, 'step1') ? 'done' : '' %>">
+                <i class="step1"></i>
+                <h2 class="step-title">账户充值</h2>
+                <i class="arrow"></i>
+            </li>
+            <li class="<%= data.current == 'step2' ? 'current ' : '' %><%= _.contains(data.done, 'step2') ? 'done' : '' %>">
+                <i class="step2"></i>
+                <h2 class="step-title">确认并支付</h2>
+                <i class="arrow"></i>
+            </li>
+            <li class="<%= data.current == 'step3' ? 'current ' : '' %><%= _.contains(data.done, 'step3') ? 'done' : '' %>">
+                <i class="step3"></i>
+                <h2 class="step-title">完成</h2>
+            </li>
+        </ul>
+    </div>
+</script>
+<script type="template" id="amount">
+    <div class="account clearfix mt20 operate-area">
+        <form class="pr">
+            <div class="input-item clearfix">
+                <h2 class="ft18 fl">充值金额：</h2>
+                <input type="text" name="money" value="" placeholder="输入金额"><span>元</span>
+            </div>
+            <button class="btn">下一步</button>
+        </form>
+    </div>
+</script>
+<script type="template" id="slectPayWay">
+    <div class="account clearfix mt20 operate-area">
+        <div class="input-item clearfix">
+            <h2 class="ft18 fl">应付金额：</h2>
+            <span class="corBlue ft18"><%= data.amount %></span>
+            <span class="ft18">元</span>
+        </div>
+        <hr/>
+        <div class="input-item clearfix">
+            <p class="ft16">请选择支付方式：</p>
+        </div>
+        <div class="pay-type">
+            <label class="zfb"><input type="radio" name="type" value="alipay" checked=""></label>
+            <label class="wxzf"><input type="radio" name="type" value="weixin"></label>
+        </div>
+        <button class="btn btn-pay">确认支付</button>
+    </div>
+    <div class="clearfix account desc">
+        <ul class="ft14">
+            <li>请选择支付方式。如果您使用支付宝账户支付，请选择“支付宝”；如果您使用微信账户支付，请选择“微信支付”。</li>
+            <li>请遵守支付宝、微信或相关银行的规定进行操作。您在支付宝、微信或先关银行页面上进行的任何操作及其产生的任何法律后果，
+将按照您与支付宝、微信或相关银行之间签订的合同处理。本网站不承担任何责任。</li>
+        </ul>
+    </div>
+</script>
+<script type="template" id="payResult">
+    <div class="account clearfix mt20 operate-area">
+        <div class="input-item clearfix">
+            <h2 class="ft18 fl"><%= data && data.orderStatus == '3' ? '充值成功' : '充值未成功' %></h2>
+        </div>
+    </div>
+</script>
+<script type="template" id="payTips">
+    <div class="account pay-tips">
+        <p>支付完成前请不要关闭此提示窗口。</p>
+        <p>支付完成后请根据您的支付状况点击下面按钮。</p>
+        <div>
+            <button class="btn btn-done">支付完成</button>
+            <button class="btn btn-ng">支付遇到问题</button>
+        </div>
+    </div>
+</script>

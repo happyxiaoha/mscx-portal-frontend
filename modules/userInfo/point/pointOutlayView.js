@@ -26,7 +26,10 @@ var userView = Backbone.View.extend({
         }));
 
         this.pointOutlayModel = new pointOutlayModel();
-        this.searchParam = new Backbone.Model();
+        this.searchParam = new Backbone.Model({
+            pageSize: 5,
+            pageNum: 1
+        });
         this.listenToOnce(this.pointOutlayModel, 'sync', this.render);
         this.listenTo(this.searchParam, 'change', this.fullfillDatepicker);
 
@@ -36,6 +39,7 @@ var userView = Backbone.View.extend({
     },
     render: function () {
         var model = this.pointOutlayModel.toJSON();
+        var that = this;
         this.$('#userInfoArea').html(this.template(model.result));
 
         this.$datepicker = this.$('#datepicker');
@@ -43,7 +47,25 @@ var userView = Backbone.View.extend({
         // 选择日期
         this.$datepicker.daterangepicker();
 
+        laypage({
+            cont: 'pointPage',
+            pages: model.result.page.totalPage,
+            skip: true,
+            curr: this.searchParam.get('pageNum') || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.searchParam.set('pageNum', obj.curr);
+                    that.reloadPage();
+                }
+            }
+        });
+
         this.listenTo(this.pointOutlayModel, 'sync', this.renderPartial);
+    },
+    reloadPage: function() {
+        this.pointOutlayModel.fetch({
+            data: this.searchParam.toJSON()
+        });
     },
     searchDate: function() {
         var time = this.$datepicker.val();
@@ -70,11 +92,25 @@ var userView = Backbone.View.extend({
     },
     renderPartial: function() {
         var model = this.pointOutlayModel.toJSON();
+        var that = this;
         this.$('#pointList').html(this.listTemplate(model.result));
+
+        laypage({
+            cont: 'pointPage',
+            pages: model.result.page.totalPage,
+            skip: true,
+            curr: this.searchParam.get('pageNum') || 1,
+            jump: function(obj, first){
+                if(!first){
+                    that.searchParam.set('pageNum', obj.curr);
+                    that.reloadPage();
+                }
+            }
+        });
     },
     fullfillDatepicker: function() {
         var result = this.searchParam.toJSON();
-        if(result.startTime == '' || result.endTime == '') {
+        if(result.startTime == '' || result.endTime == '' || !result.startTime || !result.endTime) {
             this.$datepicker.val('')
         }else {
             this.$datepicker.val(result.startTime + ' - ' + result.endTime).data('daterangepicker').setOptions({

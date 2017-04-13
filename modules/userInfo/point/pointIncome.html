@@ -30,7 +30,6 @@
                     <td><%= new Date(item.updatedTime).format('yyyy-MM-dd') %></td>
                     <td><%= item.point %></td>
                     <td><%= item.detailedDescription %></td>
-                    </td>
                 </tr>
                 <% }); %>
                 <%if(data && data.list.length == 0){%>
@@ -41,6 +40,6 @@
                 </tbody>
             </table>
         </div>
-        <div id="serverPage" class="page-area fr"></div>
+        <div id="pointPage" class="page-area fr"></div>
     </div>
 </div>

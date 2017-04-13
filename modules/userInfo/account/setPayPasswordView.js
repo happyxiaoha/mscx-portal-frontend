@@ -324,12 +324,14 @@ var forgetView = Backbone.View.extend({
     handleSubmit: function() {
         var model = this.model.toJSON();
         if(model.status == 'OK') {
-            layer.msg('修改支付密码成功！');
+            layer.msg('重置支付密码成功！');
         }else {
-            layer.msg('修改支付密码失败！');
+            layer.msg('重置支付密码失败！');
         }
+
+        var callbackUrl = location.search.replace('?callback=','');
         setTimeout(function () {
-            location.href = 'userInfo.html';
+            location.href = callbackUrl ? callbackUrl : 'userInfo.html';
         },2000);
     },
     sendMsgCode: function (e) {

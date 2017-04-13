@@ -1,7 +1,78 @@
-<p class="split">应付金额&gt;&gt; <span class="corOrange fr">￥<span id="amount"></span></span></p>
+<p class="split">
+    <span class="mr20">应付金额：</span>
+    <span class="corOrange">￥<span id="amount"><%= data && data.order.orderCash %></span></span>
+</p>
 <div class="pay-type">
-    <label class="zfb"><input type="radio" name="type" value="alipay" checked=""></label>
-    <label class="wxzf"><input type="radio" name="type" value="weixin"></label>
+    <p class="select-title">请选择支付方式：</p>
+    <label class="zfb pay-way"><input type="radio" name="type" value="alipay" checked=""></label>
+    <label class="wxzf pay-way"><input type="radio" name="type" value="weixin"></label>
+    <% if(data && data.account != 'noAccount'){ %>
+    <label class="account pay-way">
+        <input type="radio" disabled>
+        <div class="account-balance disabled">
+            <p class="ft18">账户支付</p>
+            <p class="mt5">未开通</p>
+        </div>
+    </label>
+    <% } else { %>
+    <label class="account pay-way">
+        <input type="radio" name="type" value="account">
+        <div class="account-balance">
+            <p class="ft18">账户支付</p>
+            <p class="mt5">（余额<span class="corOrange"><%= data && data.account.account_balance %></span>元）</p>
+        </div>
+    </label>
+    <% } %>
+    <hr/>
+    <p class="point-title">使用积分抵用<i></i></p>
+    <div class="point-pay" style="display:none;">
+        <ul>
+            <li>
+                <p>积分总额：</p>
+                <p class="point-rule">
+                    <span class="mr10"><%= data && data.point.remainingPoint %>积分</span>
+                    本次最多使用<span class="corOrange"><%= data && Math.floor(data.point.remainingPoint/10)*10 %></span>积分
+                </p>
+            </li>
+            <li>
+                <p>使用积分：</p>
+                <form id="pointForm">
+                    <p>
+                        <% if(data && data.point.remainingPoint < 10){ %>
+                        <input type="text" name="point" class="input-point" readonly>
+                        <% } else { %>
+                        <input type="text" name="point" class="input-point">
+                        <% } %>
+                        积分
+                    </p>
+                    <label class="error" id="point-error" class="error" for="point" style="display: none;">
+                    </label>
+                </form>
+                
+            </li>
+            <li>
+                <p>金额抵用：</p>
+                <p>
+                    <span class="corOrange" id="serveAmount">--</span>
+                </p>
+            </li>
+        </ul>
+    </div>
 </div>
-<hr>
+<div class="pay-total">
+    <ul>
+        <li>
+            <p class="title">总额：</p>
+            <p class="amount"><%= data && data.order.orderCash %>元</p>
+        </li>
+        <li class="point-serve">
+            <p class="title">积分抵用额度：</p>
+            <p class="amount">元</p>
+        </li>
+        <li>
+            <p class="title">需要支付额度：</p>
+            <p class="amount" id="actualAmount"><%= data && data.order.orderCash %>元</p>
+        </li>
+    </ul>
+</div>
 <button class="qrzf fr" id="payBtn">确认支付</button>

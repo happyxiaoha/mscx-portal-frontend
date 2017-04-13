@@ -42,6 +42,15 @@ var myServiceDemandCount = Backbone.Model.extend({
     id: 'serviceDemandCount',
     url: mscxPage.request.demand + 'queryAllServiceCount.do'
 });
+// 获取账户余额
+var accountInfoModel = Backbone.Model.extend({
+    id: 'balance',
+    url: mscxPage.request.account + 'getAccountInfo.do'
+});
+// 获取积分规则
+var pointRuleModel = Backbone.Model.extend({
+    url: mscxPage.request.point + 'point/getPointRuleList.do'
+});
 var template = require('html!./userInfoDefault.html');
 require('./userInfoDefault.css');
 var apiItemView = require('apiItemWidget/apiItemView.js');
@@ -50,13 +59,18 @@ var serverItemView = require('servicesItemWidget/servicesItemView.js');
 var defaultView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
-        'blur .info-line input':'changeAttribute'
+        'blur .info-line input':'changeAttribute',
+        'click .btn-recharge': 'goRecharge',
+        'mouseenter .bonus': 'showBonusTip',
+        'click .bonus': 'goPoint'
     },
     initialize: function() {
         var that = this;
         this.$el.html(template);
         this.$sdataList = this.$('.server-data-list');
         this.$adataList = this.$('.api-data-list');
+        this.pointRuleTemplate = _.template($('#pointRule').html(), {variable: 'data'});
+        
         this.model = new defaultModel();
         this.myApiListModel = new myApiListModel();
         this.myServerListModel = new myServerListModel();
@@ -68,6 +82,9 @@ var defaultView = Backbone.View.extend({
         this.myDataDemandCount = new myDataDemandCount();
         this.myAPIDemandCount = new myAPIDemandCount();
         this.myServiceDemandCount = new myServiceDemandCount();
+
+        this.accountInfoModel = new accountInfoModel();
+        this.pointRuleModel = new pointRuleModel();
 
         this.myApiListModel.on('change',function () {
             that.renderMyApi();
@@ -82,6 +99,9 @@ var defaultView = Backbone.View.extend({
         this.myDataDemandCount.on('change', this.renderCount);
         this.myAPIDemandCount.on('change', this.renderCount);
         this.myServiceDemandCount.on('change', this.renderCount);
+
+        this.listenTo(this.accountInfoModel, 'sync', this.renderBalance);
+        this.listenTo(this.pointRuleModel, 'sync', this.renderPointRule);
 
         this.model.fetch();
         this.myApiListModel.fetch({
@@ -99,7 +119,6 @@ var defaultView = Backbone.View.extend({
         this.model.on('change',function () {
             that.render();
         });
-
     },
     renderMyApi: function () {
         var apiList = this.myApiListModel.get('result').list;
@@ -137,6 +156,8 @@ var defaultView = Backbone.View.extend({
         this.myDataDemandCount.fetch();
         this.myAPIDemandCount.fetch();
         this.myServiceDemandCount.fetch();
+
+        this.accountInfoModel.fetch();
     },
     renderMyServer: function () {
         var apiServiceList = this.myServerListModel.get('result').list;
@@ -154,6 +175,50 @@ var defaultView = Backbone.View.extend({
     // 这个方法的this指向model自身
     renderCount: function() {
         $('#' + this.id).html(this.toJSON().result);
+    },
+    renderBalance: function() {
+        var result = this.accountInfoModel.toJSON().result;
+        //未开通账户
+        if(result == 'noAccount') {
+            this.$('.btn-recharge').html('设置账户');
+            this.$('#balanceNum').text('--');
+        }else {
+            this.$('#balanceNum').text(result.account_balance);
+        }
+    },
+    renderPointRule: function() {
+        var model = this.pointRuleModel.toJSON();
+        var html = this.pointRuleTemplate(model.result);
+        this.tipIndex = layer.tips(html, '.bonus', {
+            tips: [2, '#fffeed'],
+            time: 0,
+            maxWidth: 300
+        });
+    },
+    goRecharge: function() {
+        location.href = '#account';
+    },
+    showBonusTip: function() {
+        var model = this.pointRuleModel.toJSON();
+
+        // 已经显示着了
+        if(this.tipIndex) {return;}
+
+        if(model.result) {
+            this.renderPointRule();
+        }else {
+            this.pointRuleModel.fetch();
+        }
+
+        $(document).on('click.ruleTip', this.closeRuleTip.bind(this));
+    },
+    closeRuleTip: function() {
+        layer.close(this.tipIndex);
+        this.tipIndex = undefined;
+        $(document).off('.ruleTip');
+    },
+    goPoint: function() {
+        location.href = '#point';
     }
 });
 

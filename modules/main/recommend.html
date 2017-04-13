@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="item-des">
-        <%= item.description %>
+        <a href="api.html#detail/<%= item.apiServiceId %>"><%= item.description.substr(0,42) %><%if(item.description.length >= 42){%>加载..<%}%></a>
     </div>
     <div class="downs clearfix">
         浏览：
@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="item-des">
-        <%= item.description %>
+        <a href="services.html#detail/<%= item.apiServiceId %>"><%= item.description.substr(0,42) %><%if(item.description.length >= 42){%>加载..<%}%></a>
     </div>
     <div class="downs clearfix">
         浏览：

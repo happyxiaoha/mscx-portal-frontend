@@ -14,7 +14,7 @@ var pointIncomeModel = Backbone.Model.extend({
 var userView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
-        'click .btn-search': 'searchDate',
+        'click .point-income .btn-search': 'searchDate',
         'click .fast-search a': 'searchFastDate',
     },
     commonTemplate: _.template(commonTemplate),

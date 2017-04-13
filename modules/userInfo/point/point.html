@@ -6,7 +6,7 @@
 <div class="M-mainInfo clearfix mt20 point" style="padding-top: 20px;">
     <h2 class="ft18">明细查询</h2>
     <hr>
-    <div class="mb20">
+    <div class="mb20 point-detail">
         <span>时间：</span>
         <input type="text" readonly id="datepicker" class="m0">
         <button class="btn-search corff bgBlue">查询</button>
@@ -33,9 +33,9 @@
                 <tbody>
                 <% data && _.each(data.list, function (item, index) { %>
                 <tr>
-                    <td><%= index %></td>
+                    <td><%= +index + 1 %></td>
                     <td><%= new Date(item.updatedTime).format('yyyy-MM-dd') %></td>
-                    <td><%= item.point %></td>
+                    <td><%= item.type == '0' ? '+' : '-' + item.point %></td>
                     <td><%= item.detailedDescription %></td>
                     </td>
                 </tr>

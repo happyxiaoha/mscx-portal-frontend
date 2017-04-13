@@ -15,6 +15,10 @@ var searchDataModel = Backbone.Model.extend({
 var searchSerModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'list.do'
 });
+var searchSaaSModel = Backbone.Model.extend({
+    url: mscxPage.request.saas + 'list.do'
+});
+
 
 var searchView = Backbone.View.extend({
     el: mscxPage.domEl.mainEl,
@@ -29,10 +33,13 @@ var searchView = Backbone.View.extend({
         this.searchApiModel = new searchApiModel();
         this.searchDataModel = new searchDataModel();
         this.searchSerModel = new searchSerModel();
+        this.searchSaaSModel = new searchSaaSModel();
+        
 
         this.listenTo( this.searchApiModel, 'sync', this.initApiResult);
         this.listenTo( this.searchDataModel, 'sync', this.initDataResult);
         this.listenTo( this.searchSerModel, 'sync', this.initSerResult);
+        this.listenTo( this.searchSaaSModel, 'sync', this.initSaaSResult);
         this.id = window.localStorage.getItem('keyword');
         this.dataType = window.localStorage.getItem('dataType') || 'API';
 
@@ -68,6 +75,13 @@ var searchView = Backbone.View.extend({
         }else if(data == '数据报告'){
             window.localStorage.setItem('dataType', '数据报告');
             this.searchDataModel.fetch({
+                data:{
+                    keyword:　this.id
+                }
+            })
+        }else if(data == 'SaaS服务'){
+            window.localStorage.setItem('dataType', 'SaaS服务');
+            this.searchSaaSModel.fetch({
                 data:{
                     keyword:　this.id
                 }
@@ -171,6 +185,34 @@ var searchView = Backbone.View.extend({
                 jump: function (obj, first) {
                     if (!first) {
                         me.searchSerModel.fetch({
+                            data: {
+                                page: obj.curr,
+                                keyword: me.id
+                            }
+                        })
+                    }
+                }
+            });
+        }
+    },
+    initSaaSResult: function(res) {
+        var pageInfo = res.toJSON().result.page,
+            me = this;
+        res = res.toJSON();
+        new searchItemView({
+            id: 'saas',
+            el:  '#saasResult ul',
+            model: res.result.list
+        });
+        if(res.result.page) {
+            laypage({
+                cont: $('#saasResult .Page'),
+                skip: true,
+                curr: pageInfo.currentPage || 1,
+                pages: pageInfo.totalPage,
+                jump: function (obj, first) {
+                    if (!first) {
+                        me.searchSaaSModel.fetch({
                             data: {
                                 page: obj.curr,
                                 keyword: me.id

@@ -12,6 +12,7 @@
         <span class="<%= data.dataType =='API'?'active': '' %>" data-type="API">API</span>
         <span class="<%= data.dataType =='数据报告'?'active': '' %>" data-type="数据报告">数据报告</span>
         <span class="<%= data.dataType =='微应用'?'active': '' %>" data-type="微应用">微应用</span>
+        <span class="<%= data.dataType =='SaaS服务'?'active': '' %>" data-type="SaaS服务">SaaS服务</span>
     </div>
     <div class="SearchList <%= data.dataType =='API'? '': 'hide' %>"  id="apiResult">
         <ul>
@@ -30,6 +31,14 @@
         </div>
     </div>
     <div class="SearchList <%= data.dataType =='微应用'?'': 'hide' %>"  id="serResult">
+        <ul>
+
+        </ul>
+        <div class="Page text-center">
+
+        </div>
+    </div>
+    <div class="SearchList <%= data.dataType =='SaaS服务'?'': 'hide' %>"  id="saasResult">
         <ul>
 
         </ul>

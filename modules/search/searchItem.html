@@ -22,6 +22,17 @@
     <p  class="cor9"><%= item.description %></p>
 </li>
 <% }); %>
+<% }else if(data.type =='saas'){ %>
+<% _.each(data.list, function(item){ %>
+<li>
+    <p>
+        <a href="saas.html#detail/<%= item.id %>" class="ft16"><%= item.name %></a>
+        <span>类型：</span>
+        <span class="corOrange">SaaS服务</span>
+    </p>
+    <p  class="cor9"><%= item.description %></p>
+</li>
+<% }); %>
 <% }else{ %>
 <% _.each(data.list, function(item){ %>
 <li>

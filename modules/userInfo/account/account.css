@@ -3,6 +3,9 @@
     border: 1px solid #ccc;
     margin-top: -1px;
 }
+.account.balance .balance-amount {
+    padding-right: 5px;
+}
 .account.desc {
     padding: 20px 55px;
     border: 1px solid #ccc;

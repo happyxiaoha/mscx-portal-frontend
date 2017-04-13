@@ -19,7 +19,7 @@
         var orderNum, payBalance;
         _.each(params, function(item) {
             var split = item.split('=');
-            if(split[0] == 'orderNo') {
+            if(split[0] == 'orderNo' || split[0] == 'oderNo') {
                 orderNum = split[1];
                 return;
             }

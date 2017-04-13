@@ -180,6 +180,7 @@ var editView = Backbone.View.extend({
         return {
             rules: {
                 oldPassword: {
+                    required: true,
                     digits: true,
                     password: false
                 },
@@ -188,6 +189,7 @@ var editView = Backbone.View.extend({
                     password: false
                 },
                 newPassword: {
+                    required: true,
                     digits: true,
                     password: false
                 },
@@ -212,10 +214,10 @@ var editView = Backbone.View.extend({
     submitForm: function () {
         var params = this.$form.serializeObject();
 
-        if(!params.oldPassword || !params.newPassword) {
-            layer.alert('请完成密码输入', {icon: 2})
-            return;
-        }
+        // if(!params.confirmNewPassword) {
+        //     this.$('#confirmNewPassword-error').text('这是必填字段').show();
+        //     return;
+        // }
 
         this.model.fetch({
             data: {

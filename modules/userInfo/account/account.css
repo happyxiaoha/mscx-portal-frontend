@@ -40,6 +40,8 @@
     font-size: 14px;
     border-radius: 0;
     outline: 0;
+    text-shadow: none;
+    box-shadow: none; 
 }
 .account .btn-set {
     margin-left: 160px;
@@ -47,6 +49,12 @@
 .account.operate-area label.error {
     left: 305px;
     top: 0;
+    line-height: 30px;
+    color: #d82e3a;
+    font-size: 14px;
+    background: url(../../../images/del.png) no-repeat center left;
+    padding-left: 32px;
+    position: absolute;
 }
 .account .input-item input[type="text"] {
     border: 1px solid #ccc;

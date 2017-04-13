@@ -132,6 +132,15 @@
 .account .ReleaseList .R_right label.error{
     top: 0;
 }
+.account .ReleaseList label.error {
+    float: left;
+    line-height: 30px;
+    color: #d82e3a;
+    margin-left: 20px;
+    font-size: 14px;
+    background: url(../../../images/del.png) no-repeat center left;
+    padding-left: 32px;
+}
 .account .ReleaseList .R_right input[readonly] {
     cursor: not-allowed;
     background-color: #eeeeee;

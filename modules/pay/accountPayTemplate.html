@@ -1,6 +1,6 @@
 <p class="split">
     <span class="mr20">应付金额：</span>
-    <span class="corOrange">￥<span id="amount"><%= data && data.order.orderCash %></span></span>
+    <span class="corOrange">￥<span id="amount"><%= data && data.order.pay_balance %></span></span>
 </p>
 <div class="pay-type">
     <div class="mb15">
@@ -10,6 +10,8 @@
     </div>
     <hr/>
 
+    <!-- 账户余额不足，先去充值 -->
+    <% if(data.order.pay_balance < data.account.account_balance){ %>
     <p class="select-title mt30">请输入支付密码</p>
     <form id="passForm" onsubmit="return false;">
       <div id="passContent" class="mt30 pr">
@@ -19,4 +21,5 @@
       </div>
       <button class="qrzf btn-account-pay disabled">确认付款</button>
     </form>
+    <% } %>
 </div>

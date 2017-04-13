@@ -8,6 +8,14 @@
     <label class="wxzf pay-way"><input type="radio" name="type" value="weixin"></label>
     <% if(data && data.account != 'noAccount'){ %>
     <label class="account pay-way">
+        <input type="radio" disabled>
+        <div class="account-balance disabled">
+            <p class="ft18">账户支付</p>
+            <p class="mt5">未开通</p>
+        </div>
+    </label>
+    <% } else { %>
+    <label class="account pay-way">
         <input type="radio" name="type" value="account">
         <div class="account-balance">
             <p class="ft18">账户支付</p>

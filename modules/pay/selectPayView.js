@@ -141,7 +141,7 @@ var view = Backbone.View.extend({
         var accountAmount = this.priceModel.get('accountAmount');
 
         // 使用积分，且完全积分支付
-        if(+pointAmount - +this.orderAmount > 0) {
+        if(+pointAmount - +this.orderAmount >= 0) {
             type = 'point';
         }else if(pointAmount > 0) {
             // 否则，积分混合支付
@@ -172,11 +172,11 @@ var view = Backbone.View.extend({
                 break;
             case 'account':
             case 'accountPoint':
-                location.href = payUrl + '&payAccountUrl=' + encodeURIComponent(mscxPage.payReturnHost + 'pay.html#account/' + me.orderInfo.orderNum)
-                    + '&returnUrl=' + encodeURIComponent(mscxPage.payReturnHost + 'pay.html#result/' + me.orderInfo.orderNum);
+                location.href = payUrl + '&payAccountUrl=' + encodeURIComponent(mscxPage.payReturnHost + 'pay-account.html')
+                    + '&returnUrl=' + encodeURIComponent(mscxPage.payReturnHost + 'pay-result.html');
                 break;
             default:
-                location.href = payUrl + '&returnUrl=' + encodeURIComponent(mscxPage.payReturnHost + 'pay.html#result/' + me.orderInfo.orderNum);
+                location.href = payUrl + '&returnUrl=' + encodeURIComponent(mscxPage.payReturnHost + 'pay-result.html');
                 break;
         }
     },
@@ -248,6 +248,14 @@ var view = Backbone.View.extend({
     renderServeAmount: function() {
         var model = this.pointDeductionModel.toJSON();
 
+        // 积分抵用金额必须小于等于订单金额
+        if(+model.result > +this.orderAmount) {
+            this.$('#point-error').text('积分抵用金额不得大于订单金额').show();
+            this.priceModel.set('pointAmount', 0);
+            this.$serveAmount.text('--');
+            this.$totalPoint.hide();
+            return;
+        }
         model.result > 0 ? this.$totalPoint.show() : this.$totalPoint.hide();
 
         this.priceModel.set('pointAmount', model.result);

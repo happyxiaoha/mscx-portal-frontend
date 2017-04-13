@@ -28,7 +28,7 @@ var userView = Backbone.View.extend({
         this.pointIncomeModel = new pointIncomeModel();
         this.searchParam = new Backbone.Model({
             pageSize: 5,
-            page: 1
+            pageNum: 1
         });
         this.listenToOnce(this.pointIncomeModel, 'sync', this.render);
         this.listenTo(this.searchParam, 'change', this.fullfillDatepicker);
@@ -51,10 +51,10 @@ var userView = Backbone.View.extend({
             cont: 'pointPage',
             pages: model.result.page.totalPage,
             skip: true,
-            curr: this.searchParam.get('page') || 1,
+            curr: this.searchParam.get('pageNum') || 1,
             jump: function(obj, first){
                 if(!first){
-                    that.searchParam.set('page', obj.curr);
+                    that.searchParam.set('pageNum', obj.curr);
                     that.reloadPage();
                 }
             }
@@ -94,10 +94,10 @@ var userView = Backbone.View.extend({
             cont: 'pointPage',
             pages: model.result.page.totalPage,
             skip: true,
-            curr: this.searchParam.get('page') || 1,
+            curr: this.searchParam.get('pageNum') || 1,
             jump: function(obj, first){
                 if(!first){
-                    that.searchParam.set('page', obj.curr);
+                    that.searchParam.set('pageNum', obj.curr);
                     that.reloadPage();
                 }
             }

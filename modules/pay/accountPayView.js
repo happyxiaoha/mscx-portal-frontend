@@ -118,11 +118,16 @@ var view = Backbone.View.extend({
     handleAccountPay: function() {
         var model = this.minusAmountModel.toJSON();
 
-        layer.msg(model.message);
+        if(model.status == 'OK') {
+            layer.msg('账户余额支付成功');
+        }else {
+            layer.msg('账户余额支付失败');
+        }
+        
 
         setTimeout(function() {
             location.href = '#result/' + this.model.orderNum;
-        }, 2000);
+        }.bind(this), 2000);
     }
 });
 

@@ -82,6 +82,7 @@
     position: absolute;
     top: 15px;
     left: 330px;
+    z-index: 99;
 }
 .point-pay {
     padding: 20px;
@@ -128,6 +129,7 @@
     margin: 0;
     height: 30px;
     width: 250px;
+    display: inline-block;
     line-height: 30px;
     margin-left: 15px;
     cursor: default;

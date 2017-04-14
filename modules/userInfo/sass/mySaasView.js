@@ -17,7 +17,9 @@ var mySaasView = Backbone.View.extend({
         pageNum: 1,
         totalPage: 0
     },
-    events: {},
+    events: {
+        'click .saas-url': 'showUrl'
+    },
     initialize: function() {
         var that = this;
         this.$el.addClass('user-center-tap');
@@ -63,6 +65,20 @@ var mySaasView = Backbone.View.extend({
                     that.reloadPage();
                 }
             }
+        });
+    },
+    showUrl: function (event) {
+        var $target = this.$(event.currentTarget);
+        var url = $target.data('url');
+
+        layer.open({
+            type: 2,
+            title: '查看链接',
+            shadeClose: false,
+            maxmin: true,
+            shade: 0.8,
+            area: ['700px', '500px'],
+            content: url //iframe的url
         });
     }
 });

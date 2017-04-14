@@ -103,6 +103,7 @@ var amountView = Backbone.View.extend({
         return {
             rules: {
                 money: {
+                    max: 10000000,
                     required: true,
                     price: true
                 }

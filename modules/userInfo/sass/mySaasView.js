@@ -70,16 +70,26 @@ var mySaasView = Backbone.View.extend({
     showUrl: function (event) {
         var $target = this.$(event.currentTarget);
         var url = $target.data('url');
+        var name = $target.data('name');
 
-        layer.open({
-            type: 2,
-            title: '查看链接',
-            shadeClose: false,
-            maxmin: true,
-            shade: 0.8,
-            area: ['700px', '500px'],
-            content: url //iframe的url
-        });
+        $.get(url, function(res) {
+            if(res.status == 'OK') {
+                var index = layer.open({
+                    type: 2,
+                    title: name,
+                    shadeClose: false,
+                    shade: 0.8,
+                    area: ['700px', '500px'],
+                    maxmin: true,
+                    content: res.result //iframe的url
+                });
+                layer.full(index);
+            }else {
+                layer.alert(res.message);
+            }
+        })
+
+        
     }
 });
 

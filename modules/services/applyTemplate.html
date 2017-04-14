@@ -17,7 +17,7 @@
             <tr>
                 <td><input type="radio" name="radio"></td>
                 <td><%= item.name %></td>
-                <td><%= item.chargeCount || 0 %><%= item.chargeType == '04' ? '天（按时间）' : '次（按次）' %></td>
+                <td><%= item.chargeCount || 0 %><%= item.chargeType == '04' ? '天' : '次' %></td>
                 <td><%= item.price %></td>
                 <td><input type="number" data-id="<%= item.id %>" data-limit="<%= item.countLimit %>" data-price="<%= item.price %>" class="number" min="1"  value="1"></td>
                 <td class="total"><%= item.price %></td>

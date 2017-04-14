@@ -97,6 +97,7 @@ var view = Backbone.View.extend({
         }
 
         var params = this.$passForm.serializeObject();
+        var me = this;
 
         this.submitting = true;
         this.$accountPayBtn.addClass('disabled');
@@ -104,6 +105,10 @@ var view = Backbone.View.extend({
             data: {
                 payPwd: params.password + params.passwordTail,
                 orderNo: this.model.orderNum
+            },
+            complete: function() {
+                me.$accountPayBtn.removeClass('disabled');
+                me.submitting = false;;
             }
         });
     },

@@ -42,7 +42,7 @@ var view = Backbone.View.extend({
         'click #payBtn': 'submitPay',
         'click .point-title': 'showPointPay',
         'click .pay-type input[type="radio"]': 'selectPayWay',
-        'mouseenter .point-rule': 'showPointTip'
+        'mouseenter .point-rule i': 'showPointTip'
     },
     template: _.template(template, {variable: 'data'}),
     pointRuleTemplate: '<div class="point-rule-wrapper"><p>积分抵用规则：</p>' +

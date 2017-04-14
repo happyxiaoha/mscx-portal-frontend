@@ -287,7 +287,6 @@ var forgetView = Backbone.View.extend({
                     password: false
                 },
                 newConfirmPassword: {
-                    required: true,
                     password: false,
                     equalTo: '#newPassword'
                 },

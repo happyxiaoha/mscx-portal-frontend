@@ -101,20 +101,28 @@ var setView = Backbone.View.extend({
     validateConfig: function () {
         var me = this;
         return {
+            groups: {
+                passwordGroup: "password passwordTail",
+                confirmPasswordGroup: 'confirmPassword confirmPasswordTail'
+            },
             rules: {
                 password: {
+                    required: true,
                     digits: true,
                     password: false
                 },
                 passwordTail: {
+                    required: true,
                     digits: true,
                     password: false
                 },
                 confirmPassword: {
+                    required: true,
                     password: false,
                     equalTo: '#password'
                 },
                 confirmPasswordTail: {
+                    required: true,
                     password: false,
                     equalTo: '#passwordTail'
                 }
@@ -178,6 +186,11 @@ var editView = Backbone.View.extend({
     validateConfig: function () {
         var me = this;
         return {
+            groups: {
+                oldPasswordGroup: "oldPassword oldPasswordTail",
+                newPasswordGroup: "newPassword newPasswordTail",
+                confirmNewPasswordGroup: 'confirmNewPassword confirmNewPasswordTail'
+            },
             rules: {
                 oldPassword: {
                     required: true,
@@ -185,6 +198,7 @@ var editView = Backbone.View.extend({
                     password: false
                 },
                 oldPasswordTail: {
+                    required: true,
                     digits: true,
                     password: false
                 },
@@ -194,10 +208,12 @@ var editView = Backbone.View.extend({
                     password: false
                 },
                 newPasswordTail: {
+                    required: true,
                     digits: true,
                     password: false
                 },
                 confirmNewPassword: {
+                    required: true,
                     password: false,
                     equalTo: '#newPassword'
                 },
@@ -276,6 +292,10 @@ var forgetView = Backbone.View.extend({
     validateConfig: function () {
         var me = this;
         return {
+            groups: {
+                newPasswordGroup: "newPassword newPasswordTail",
+                newConfirmPasswordGroup: 'newConfirmPassword newConfirmPasswordTail'
+            },
             rules: {
                 newPassword: {
                     digits: true,
@@ -283,10 +303,12 @@ var forgetView = Backbone.View.extend({
                     password: false
                 },
                 newPasswordTail: {
+                    required: true,
                     digits: true,
                     password: false
                 },
                 newConfirmPassword: {
+                    required: true,
                     password: false,
                     equalTo: '#newPassword'
                 },

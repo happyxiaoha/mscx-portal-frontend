@@ -189,6 +189,11 @@ var defaultView = Backbone.View.extend({
     renderPointRule: function() {
         var model = this.pointRuleModel.toJSON();
         var html = this.pointRuleTemplate(model.result);
+
+        if(model.result.list.length < 1) {
+            return;
+        }
+
         this.tipIndex = layer.tips(html, '.bonus', {
             tips: [2, '#fffeed'],
             time: 0,

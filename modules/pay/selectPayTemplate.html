@@ -26,6 +26,13 @@
     <hr/>
     <p class="point-title">使用积分抵用<i></i></p>
     <div class="point-pay" style="display:none;">
+        <% if(!data.pointRule){ %>
+        <ul>
+            <li>
+                <p>当前无法使用积分。</p>
+            </li>
+        </ul>
+        <% } else{ %>
         <ul>
             <li>
                 <p>积分总额：</p>
@@ -58,6 +65,7 @@
                 </p>
             </li>
         </ul>
+        <% } %>
     </div>
 </div>
 <div class="pay-total">

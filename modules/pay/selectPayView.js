@@ -67,7 +67,7 @@ var view = Backbone.View.extend({
         this.pointDeductionRuleModel = new pointDeductionRuleModel();
 
         this.listenTo(this.pointDeductionModel, 'change', this.renderServeAmount);
-        this.listenTo(this.pointDeductionRuleModel, 'sync', this.renderPointRule);
+        // this.listenTo(this.pointDeductionRuleModel, 'sync', this.renderPointRule);
 
         this.on('render', this.render);
 
@@ -75,7 +75,7 @@ var view = Backbone.View.extend({
             data: {
                 orderNum: this.orderInfo.orderNum
             }
-        }), this.accountInfoModel.fetch(), this.pointModel.fetch()];
+        }), this.accountInfoModel.fetch(), this.pointModel.fetch(), this.pointDeductionRuleModel.fetch({type: 'post'})];
 
         $.when.apply($, queue).done(function() {
             this.trigger('render');
@@ -85,6 +85,7 @@ var view = Backbone.View.extend({
         var orderModel = this.orderModel.toJSON();
         var accountInfoModel = this.accountInfoModel.toJSON();
         var pointModel = this.pointModel.toJSON();
+        var pointRuleModel = this.pointDeductionRuleModel.toJSON();
 
         // 总价
         this.orderAmount = orderModel.orderCash;
@@ -104,7 +105,8 @@ var view = Backbone.View.extend({
         this.$el.html(this.template({
             order: orderModel,
             account: accountInfoModel.result,
-            point: pointModel.result
+            point: pointModel.result,
+            pointRule: pointRuleModel.result
         }));
 
         this.$payBtn = this.$('#payBtn');
@@ -257,11 +259,12 @@ var view = Backbone.View.extend({
 
         if(model.result) {
             this.renderPointRule();
-        }else {
-            this.pointDeductionRuleModel.fetch({
-                type: 'post'
-            });
         }
+        // else {
+        //     this.pointDeductionRuleModel.fetch({
+        //         type: 'post'
+        //     });
+        // }
 
         $(document).on('click.pointTip', this.closePointTip.bind(this));
     },

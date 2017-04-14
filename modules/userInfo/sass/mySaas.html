@@ -34,7 +34,7 @@
         <td><%=msitem.buyLimit%></td>
         <td><%=msitem.leftLimit%></td>
         <td>
-            <a class="saas-url" href="javascript:;" data-url="<%= location.protocol + '//' + location.host + msitem.saasUrl %>"><%=msitem.saasUrl %></a>
+            <a class="saas-url" href="javascript:;" data-name="<%=msitem.appName%>" data-url="<%= location.protocol + '//' + location.host + msitem.saasUrl %>"><%=msitem.saasUrl %></a>
         </td>
         <td><a href="./saas.html?detail/<%=msitem.sourceId%>">再次申请</a></td>
     </tr>

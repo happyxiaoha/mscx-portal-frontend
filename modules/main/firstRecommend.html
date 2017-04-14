@@ -2,7 +2,7 @@
 <% _.each(data, function(item, index){ %>
     <% if(index < 4){ %>
     <li>
-        <a href="startup.html#roadshow/detail/<%= item.id %>"><img src="<%= item.thumbnailImg %>"></a>
+        <a href="startup.html#roadshow/detail/<%= item.id %>"><img src="<%= item.thumbnailImg %>" alt="路演 icon"></a>
         <div class="res-line2">
             <p class="fl"><%= item.roadName %></p>
             <span class="fr"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span>

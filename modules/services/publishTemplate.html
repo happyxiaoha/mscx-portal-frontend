@@ -59,9 +59,9 @@
                 <div class="fl R_right">
                     <p class="allInfoImg">
                         <% if(data.detail && data.detail.imageUri){ %>
-                            <img class="fl" id="serviceIcon" src="<%= data.detail.imageUri %>" alt="">
+                            <img class="fl" id="serviceIcon" src="<%= data.detail.imageUri %>" alt="服务icon">
                         <% }else { %>
-                            <img class="fl" id="serviceIcon" src="../../images/add.png" alt="">
+                            <img class="fl" id="serviceIcon" src="../../images/add.png" alt="服务icon">
                         <% } %>
                         <input type="hidden" value="<%= data.detail && data.detail.imageKey %>" name="imageKey" id="serviceKey">
                     </p>
@@ -125,25 +125,25 @@
                 <div class="fl R_right">
                     <p class="allInfoImg fl mr10">
                         <% if(data.detail && data.detail.demoImage1){ %>
-                            <img id="demo1Icon" src="<%= data.detail.demoImage1 %>" alt="">
+                            <img id="demo1Icon" src="<%= data.detail.demoImage1 %>" alt="示例图片">
                         <% }else { %>
-                            <img id="demo1Icon" src="../../images/add.png" alt="">
+                            <img id="demo1Icon" src="../../images/add.png" alt="示例图片">
                         <% } %>
                         <input type="text" value="<%= data.detail && data.detail.demoKey1 %>" class="hide" name="demoKey1" id="demo1Key">
                     </p>
                     <p class="allInfoImg fl mr10">
                         <% if(data.detail && data.detail.demoImage2){ %>
-                            <img id="demo2Icon" src="<%= data.detail.demoImage2 %>" alt="">
+                            <img id="demo2Icon" src="<%= data.detail.demoImage2 %>" alt="示例图片1">
                         <% }else { %>
-                            <img id="demo2Icon" src="../../images/add.png" alt="">
+                            <img id="demo2Icon" src="../../images/add.png" alt="示例图片1">
                         <% } %>
                         <input type="text" value="<%= data.detail && data.detail.demoKey2 %>" class="hide" name="demoKey2" id="demo2Key">
                     </p>
                     <p class="allInfoImg fl">
                         <% if(data.detail && data.detail.demoImage3){ %>
-                            <img id="demo3Icon" src="<%= data.detail.demoImage3 %>" alt="">
+                            <img id="demo3Icon" src="<%= data.detail.demoImage3 %>" alt="示例图片2">
                         <% }else { %>
-                            <img id="demo3Icon" src="../../images/add.png" alt="">
+                            <img id="demo3Icon" src="../../images/add.png" alt="示例图片2">
                         <% } %>
                         <input type="text" value="<%= data.detail && data.detail.demoKey3 %>" class="hide" name="demoKey3" id="demo3Key">
                     </p>

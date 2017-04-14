@@ -1,7 +1,7 @@
 
 <% if(type == 'api'){ %>
 <li>
-    <img class="api-icon" src="../../images/api-title.png">
+    <img class="api-icon" src="../../images/api-title.png" alt="api标题icon">
 </li>
 <% _.each(dataList,function(item,index){ %>
 <% if(index < 9 ){%>
@@ -11,7 +11,7 @@
         <p class="buyType"><%= item.chargeTypeDesc || '免费' %></p>
         <div class="datalist-img">
             <a  href="api.html#detail/<%= item.apiServiceId %>">
-                <img src="<%= item.iconUrl %>">
+                <img src="<%= item.iconUrl %>" alt="api icon">
             </a>
         </div>
     </div>
@@ -35,7 +35,7 @@
 
 <% if(type == 'ser'){ %>
 <li>
-    <img src="../../images/ser-title.png">
+    <img src="../../images/ser-title.png" alt="服务标题icon">
 </li>
 <% _.each(dataList,function(item,index){ %>
 <% if(index < 9 ){%>
@@ -45,7 +45,7 @@
         <p class="buyType"><%= item.chargeType %></p>
         <div class="datalist-img">
             <a href="services.html#detail/<%= item.id %>">
-                <img src="<%= item.imageUri %>">
+                <img src="<%= item.imageUri %>" alt="服务icon">
             </a>
         </div>
     </div>

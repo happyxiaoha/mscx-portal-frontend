@@ -18,7 +18,9 @@ var view = Backbone.View.extend({
             id: this.id,
             model: {
                 options: ['objects', 'scopes', 'range', this.id + 'Category', this.id + 'Tags', 'chargeWay'],
-                defaults: this.model
+                defaults: _.extend(this.model, {
+                    pageSize: 12
+                })
             }
         });
 

@@ -6,7 +6,7 @@ require('./servicesItem.css');
 
 var view = Backbone.View.extend({
     tagName: 'div',
-    className: 'ns-list-item',
+    className: 'ns-gridPanelComponent',
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
         this.$el.html(this.template(this.model));

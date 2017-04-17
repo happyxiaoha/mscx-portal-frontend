@@ -48,7 +48,7 @@ var defaultView = Backbone.View.extend({
         this.myServerListModel.fetch({
             data: {
                 page: 1,
-                pageSize: 2
+                pageSize: 4
             }
         });
         this.model.on('change',function () {

@@ -56,7 +56,7 @@ var view = Backbone.View.extend({
                 if(!first) {
                     me.trigger('page', {
                         page: obj.curr,
-                        pageSize: '10'
+                        pageSize: '12'
                     })
                 }
             }

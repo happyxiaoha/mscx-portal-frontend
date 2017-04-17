@@ -14,7 +14,7 @@
                 <tbody>
                 <% data && _.each(data.list, function (item, index) { %>
                 <tr>
-                    <td><%= index %></td>
+                    <td><%= +index + 1 %></td>
                     <td><%= item.taskName %></td>
                     <td><%= item.point %></td>
                     <td><%= item.description %></td>

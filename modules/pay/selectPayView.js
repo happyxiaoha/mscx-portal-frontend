@@ -66,7 +66,7 @@ var view = Backbone.View.extend({
         this.pointDeductionModel = new pointDeductionModel();
         this.pointDeductionRuleModel = new pointDeductionRuleModel();
 
-        this.listenTo(this.pointDeductionModel, 'change', this.renderServeAmount);
+        this.listenTo(this.pointDeductionModel, 'sync', this.renderServeAmount);
         // this.listenTo(this.pointDeductionRuleModel, 'sync', this.renderPointRule);
 
         this.on('render', this.render);
@@ -117,12 +117,24 @@ var view = Backbone.View.extend({
         this.$actualAmount = this.$('#actualAmount');
 
         this.$pointForm.validate({
+            ignore: '',
+            groups: {
+                pointGroup: 'point pointAmount'
+            },
             rules: {
                 point: {
                     number: true,
                     tenMultiple: true,
                     min: 0,
                     max: Math.floor(+pointModel.result.remainingPoint/10) * 10
+                },
+                pointAmount: {
+                    max: +this.orderAmount
+                }
+            },
+            messages: {
+                pointAmount: {
+                    max: '积分抵用金额不得大于订单金额'
                 }
             }
         });
@@ -201,10 +213,11 @@ var view = Backbone.View.extend({
     },
     getPointDeduction: function() {
         var value = this.$('.input-point').val();
+        this.$('.input-point-amount').val(0);
         this.pointNum = undefined;
 
         if(value == '') {
-            this.pointDeductionModel.set('result', 0);
+            this.pointDeductionModel.set('result', 0).trigger('sync');
             return;
         }
 
@@ -237,9 +250,13 @@ var view = Backbone.View.extend({
     renderServeAmount: function() {
         var model = this.pointDeductionModel.toJSON();
 
+        this.$('.input-point-amount').val(model.result).valid();
+
         // 积分抵用金额必须小于等于订单金额
         if(+model.result > +this.orderAmount) {
-            this.$('#point-error').text('积分抵用金额不得大于订单金额').show();
+            // this.$('#point-error').text('积分抵用金额不得大于订单金额').show();
+            // this.$('.input-point').addClass('error').attr('aria-invalid', 'true');
+
             this.priceModel.set('pointAmount', 0);
             this.$serveAmount.text('--');
             this.$totalPoint.hide();

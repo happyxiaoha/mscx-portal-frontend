@@ -23,7 +23,7 @@
             <tbody>
             <% data && _.each(data.list, function (item, index) { %>
             <tr>
-                <td><%= index %></td>
+                <td><%= +index + 1 %></td>
                 <td><%= item.rechargeType %></td>
                 <td><%= item.flowAmount %></td>
                 <td><%= item.accountBalance %></td>

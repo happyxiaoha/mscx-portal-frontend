@@ -67,7 +67,8 @@ var userView = Backbone.View.extend({
         time = time.split(' - ');
         this.searchParam.set({
             startTime: time[0],
-            endTime: time[1]
+            endTime: time[1],
+            pageNum: 1
         })
 
         this.pointIncomeModel.fetch({
@@ -78,7 +79,8 @@ var userView = Backbone.View.extend({
         var $target = this.$(event.currentTarget);
         this.searchParam.set({
             startTime: $target.data('start'),
-            endTime: $target.data('end')
+            endTime: $target.data('end'),
+            pageNum: 1
         })
 
         this.pointIncomeModel.fetch({

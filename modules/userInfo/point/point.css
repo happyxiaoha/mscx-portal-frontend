@@ -1,7 +1,7 @@
 .point {
     font-size: 14px;
 }
-.point .btn-search {
+.point .btn-search, .point .btn-reset {
     height: 28px;
     display: inline-block;
     line-height: 28px;

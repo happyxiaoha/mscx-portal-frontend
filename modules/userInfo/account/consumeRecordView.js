@@ -15,7 +15,8 @@ var accountView = Backbone.View.extend({
     commonTemplate: _.template(commonTemplate),
     template: template,
     events: {
-        'click .consume .btn-search': 'searchDate'
+        'click .consume .btn-search': 'searchDate',
+        'click .recharge .btn-reset': 'resetDate'
     },
     pagObj: {
         pageSize: 10,
@@ -91,6 +92,9 @@ var accountView = Backbone.View.extend({
         this.consumeRecordModel.fetch({
             data: this.searchParam.toJSON()
         })
+    },
+    resetDate: function() {
+        this.$datepicker.val('');
     }
 });
 module.exports = accountView;

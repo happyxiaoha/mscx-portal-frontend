@@ -16,7 +16,7 @@ var accountView = Backbone.View.extend({
     template: template,
     events: {
         'click .consume .btn-search': 'searchDate',
-        'click .recharge .btn-reset': 'resetDate'
+        'click .consume .btn-reset': 'resetDate'
     },
     pagObj: {
         pageSize: 10,

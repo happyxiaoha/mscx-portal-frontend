@@ -8,9 +8,9 @@
             <div class="centers">
                 <a data-id="<%= item.categoryId %>" href="#catalog/category/<%= item.categoryId %>">
                     <% if(item.iconUrl){ %>
-                    <img src="<%= item.iconUrl %>" >
+                    <img src="<%= item.iconUrl %>" alt="数据图标">
                     <% } else { %>
-                    <img src="../../../images/tu48.png">
+                    <img src="../../../images/tu48.png" alt="数据图标">
                     <% }; %>
                     <span><%= item.categoryName %></span>
                     <span class="corGreen"><%= item.count %></span>

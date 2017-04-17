@@ -53,6 +53,7 @@ var accountView = Backbone.View.extend({
     },
     render: function() {
         var model = this.consumeRecordModel.toJSON();
+        var that = this;
         this.$('#consumeRecord').html(this.consumeTemplate(model.result));
 
         this.searchParam.set({

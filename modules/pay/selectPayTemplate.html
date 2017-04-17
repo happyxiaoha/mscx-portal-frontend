@@ -6,7 +6,8 @@
     <p class="select-title">请选择支付方式：</p>
     <label class="zfb pay-way"><input type="radio" name="type" value="alipay" checked=""></label>
     <label class="wxzf pay-way"><input type="radio" name="type" value="weixin"></label>
-    <% if(data && data.account != 'noAccount'){ %>
+    <% if(data.order.order_classify == '2') { %>
+    <% } else if(data && data.account != 'noAccount'){ %>
     <label class="account pay-way">
         <input type="radio" name="type" value="account">
         <div class="account-balance">

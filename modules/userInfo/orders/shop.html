@@ -40,17 +40,17 @@
             <span class="ml10"style="width: 20px;height: 2px;"></span>
             <%if(scitem.resourceType == '01' || scitem.resourceType == '03'){%>
             <a class="resources" href="javascript:;">
-                <img src="<%=scitem.resourceUrl%>">
+                <img src="<%=scitem.resourceUrl%>" alt="图标">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else if(scitem.resourceType == '03'){%>
             <a class="resources" href="javascript:;">
-                <img src="<%=scitem.resourceUrl%>">
+                <img src="<%=scitem.resourceUrl%>" alt="图标">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else if(scitem.resourceType == '04'){%>
             <a class="resources" href="javascript:;">
-                <img src="<%=scitem.resourceUrl%>">
+                <img src="<%=scitem.resourceUrl%>" alt="图标">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else{%>
@@ -60,7 +60,7 @@
             <%}%>
             <span class="price"><%=scitem.price%>元</span>
             <span class="count">
-                <img src="../../../images/downed.png">
+                <img src="../../../images/downed.png" alt="图标">
             </span>
             <span class="resourcestype borderT"><%=scitem.resourceDetailType || '-' %></span>
             <span class="amount borderT amount-dis"><%=scitem.totalPrice%>元</span>

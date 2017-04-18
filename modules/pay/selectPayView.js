@@ -102,6 +102,9 @@ var view = Backbone.View.extend({
 
         this.listenTo(this.priceModel, 'change', this.renderPrice);
 
+
+        pointModel.result.remainingPoint += orderModel.havaPayPoint;
+
         this.$el.html(this.template({
             order: orderModel,
             account: accountInfoModel.result,

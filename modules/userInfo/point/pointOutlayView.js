@@ -15,7 +15,7 @@ var userView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     events: {
         'click .point-outlay .btn-search': 'searchDate',
-        'click .fast-search a': 'searchFastDate',
+        'click .point-outlay.fast-search a': 'searchFastDate',
     },
     commonTemplate: _.template(commonTemplate),
     template: _.template(template, {variable: 'data'}),

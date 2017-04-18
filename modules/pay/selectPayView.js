@@ -200,7 +200,7 @@ var view = Backbone.View.extend({
         var pointAmount = this.priceModel.get('pointAmount');
         // 如果选择了账户支付
         if($target.val() == 'account') {
-            this.payBalance = +this.orderAmount - pointAmount;
+            this.payBalance = (+this.orderAmount * 1000 - pointAmount * 1000)/1000;
         }else {
             this.payBalance = 0;
         }
@@ -236,11 +236,11 @@ var view = Backbone.View.extend({
         var pointAmount = this.priceModel.get('pointAmount');
         var finalAmount;
 
-        this.payBalance = +this.orderAmount - pointAmount;
+        this.payBalance = (+this.orderAmount * 1000 - pointAmount * 1000)/1000;
 
         // 计算最终需要支付额度
         if(pointAmount > 0) {
-            finalAmount = +pointAmount - +this.orderAmount > 0 ? 0 : +this.orderAmount - +pointAmount;
+            finalAmount = +pointAmount - +this.orderAmount > 0 ? 0 : (+this.orderAmount * 1000 - +pointAmount * 1000) / 1000;
         }else {
             finalAmount = this.orderAmount;
         }

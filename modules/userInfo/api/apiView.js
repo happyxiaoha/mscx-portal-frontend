@@ -266,8 +266,10 @@ var apiView = Backbone.View.extend({
         var deleteLay = layer.confirm('确认删除这条API吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
-            new deleteApiModel().save({apiServiceId: sId},{
-                type: 'POST',
+            new deleteApiModel().fetch({
+                data: {
+                    apiServiceId: sId
+                },
                 success: function () {
                     layer.msg('删除成功!');
                     if(that.model.get('result') && that.model.get('result').list && that.model.get('result').list.length == 1 && that.pagObj.pageNum != 1){

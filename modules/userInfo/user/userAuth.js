@@ -25,7 +25,7 @@ var addEnterpriseAuthModel = Backbone.Model.extend({
 });
 
 var personAuthModel = Backbone.Model.extend({
-    url: mscxPage.request.uc + 'certification/person.do'
+    url: 'certification/person.do'
 });
 
 var account = '';

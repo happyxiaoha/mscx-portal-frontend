@@ -63,7 +63,7 @@ var createDemandView = Backbone.View.extend({
                 dataItem: {
                     maxlength: 1000
                 },
-                dataReword: {
+                dataReward: {
                     required: true,
                     maxlength: 20
                 },

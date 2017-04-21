@@ -68,7 +68,7 @@ var view = Backbone.View.extend({
                     required: true,
                     maxlength: 500
                 },
-                dataReword: {
+                dataReward: {
                     required: true,
                     maxlength: 20
                 },

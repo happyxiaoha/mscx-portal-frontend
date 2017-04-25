@@ -30,7 +30,7 @@
         <td><%=aitem.apiDesc || '-'%></td>
         <td><%=aitem.applyTime%></td>
         <td><%=aitem.chargeType%></td>
-        <td><%=aitem.totalTime%></td>
+        <td><%=aitem.totalTime == -1 ? '不限': aitem.totalTime%></td>
         <td><%=aitem.remainTime == -1 ? '不限': aitem.remainTime%></td>
         <td><a class="applyApi" href="api.html?detail/<%=aitem.sourceId%>">再次申请</a></td>
     </tr>

@@ -31,8 +31,8 @@
         <td><a target="_blank" href="./saas.html?detail/<%=msitem.sourceId%>"><%=msitem.appName%></a></td>
         <td><%=msitem.provideName%></td>
         <td><%=msitem.feeType%></td>
-        <td><%=msitem.usedLimit%></td>
-        <td><%=msitem.leftLimit%></td>
+        <td><%=aitem.usedLimit == -1 ? '不限': aitem.usedLimit%></td>
+        <td><%=aitem.leftLimit == -1 ? '不限': aitem.leftLimit%></td>
         <td>
             <a class="saas-url" href="javascript:;" data-name="<%=msitem.appName%>" data-url="<%= location.protocol + '//' + location.host + msitem.saasUrl %>"><%=msitem.saasUrl %></a>
         </td>

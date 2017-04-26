@@ -16,6 +16,7 @@
 <link href="../assets/alertifyjs/css/alertify.min.css" rel="stylesheet">
 <link href="../assets/css/dataTables.bootstrap.css" rel="stylesheet">
 <link href="../assets/css/com.css" rel="stylesheet">
+	<link href="../assets/css/select2.min.css" rel="stylesheet">
 <link href="../assets/css/softwareCompany/admin_product.css"
 	rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/validationEngine.jquery.css">
@@ -29,18 +30,18 @@
 <script src="../assets/alertifyjs/alertify.min.js"></script>
 <script type="text/javascript" charset="utf8"
 	src="../assets/js/common/common.js"></script>
-<script type="text/javascript" charset="utf8"
-	src="../assets/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" charset="utf8" src="../assets/js/dataTables.bootstrap.js"></script>
+	<script src="../assets/js/select2.min.js"></script>
 <script src="../assets/js/jquery.validationEngine.min.js"></script>
 <script src="../assets/js/bootstrapValidator.min.js"></script>
-<script src="./js/agentFlowQuery.js"></script>
+<script src="/transactionFlowQuery/js/agentFlowQuery.js"></script>
 </head>
 <body>
 
 	<div class="admin clearfix">
 		<div class="centre_right left" id="admin_right">
 			<div class="admin_product">
-				<div class="row" height="100%">
+				<div class="row">
 					<div class="col-xs-12">
 						<div class="widget-box transparent">
 							<!-- /widget-header -->
@@ -195,14 +196,11 @@
 												<div class="col-xs-4">
 													<div class="form-group">
 														<label
-																class="col-sm-5 control-label no-padding-right aols">业务类型：
+																class="col-sm-5 control-label no-padding-right aols">商户名称：
 														</label>
 														<div class="col-sm-7">
-															<select class="form-control input-sm validate[required]" id="goodClassify"
-																	class="col-sm-12 col-sm-12 validate[required]">
-																<option value="">请选择</option>
-																<option value="1">话费</option>
-																<option value="2">流量</option>
+															<select id="merchantName" class="js-example-basic-single form-control input-sm">
+																<option value="">请选择...</option>
 															</select>
 														</div>
 													</div>
@@ -241,13 +239,31 @@
 												</div>
 												<div class="col-xs-4">
 													<div class="form-group">
+														<label
+																class="col-sm-5 control-label no-padding-right aols">业务类型：
+														</label>
+														<div class="col-sm-7">
+															<select class="form-control input-sm validate[required]" id="goodClassify"
+																	class="col-sm-12 col-sm-12 validate[required]">
+																<option value="">请选择</option>
+																<option value="1">话费</option>
+																<option value="2">流量</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-8"></div>
+												<div class="col-xs-4">
+													<div class="form-group">
 														<div class="col-sm-5"></div>
 														<div class="col-sm-7">
 															<button class="btn btn-grey" type="button"
-																onclick="queryFlow()">查询</button>
+																	onclick="queryFlow()">查询</button>
 															&nbsp;&nbsp;&nbsp;
 															<button class="btn btn-grey" type="button"
-																onclick="exportExcel()">导出</button>
+																	onclick="exportExcel()">导出</button>
 														</div>
 													</div>
 												</div>
@@ -270,7 +286,6 @@
 							<thead>
 								<tr>
 									<th>序号</th>
-									<th>下单时间</th>
 									<th>订单号</th>
 									<th>商户名称</th>
 									<th>业务类型</th>
@@ -279,10 +294,12 @@
 									<th>城市</th>
 									<th>充值账户</th>
 									<th>面值(元)</th>
+									<th>流量(M)</th>
 									<th>成功面值</th>
 									<th>待充面值</th>
 									<th>订单状态</th>
 									<th>通知状态</th>
+									<th>下单时间</th>
 									<th>完成时间</th>
 								</tr>
 							</thead>

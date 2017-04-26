@@ -4,15 +4,25 @@ var height;
 var userName;
 
 $(function(){
-	var clientHeight=document.documentElement.clientHeight;
-	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 	userName = GetQueryString('userName');
 	height = window.screen.availHeight - 220;
 	initFlowQueryTables();
-	dateTimeWidget('startTime');
-	dateTimeWidget('stopTime');
+	dateWidget('startTime');
+	dateWidget('stopTime');
+	initSelect2();
 //	$('#countShow').html("统计信息(总面值：成功面值：待充值面值：失败面值：成本金额)");
 })
+
+function initSelect2(){
+	$('#merchantName').select2();
+	jQueryAjaxAsync("/account/getAll",null,function(data){
+		if(data.data!=null&&data.data.length>0){
+			for(var i=0;i<data.data.length;i++){
+				$('#merchantName').append('<option value="'+data.data[i].id+'">'+data.data[i].companyName+'</option>');
+			}
+		}
+	});
+}
 
 
 function queryFlow(){
@@ -49,16 +59,13 @@ function initFlowQueryTables() {
 						}
 					},
 					{
-						data : "createTime"
-					},
-					{
 						data : "id"
 					},
 					{
 						data : "account.companyName"
 					},
 					{
-						data : "product.gooodClassify",
+						data : "product.goodClassify",
 						"render":function(data, type, row){
 							return data == '1'?"话费":"流量";
 						}
@@ -84,6 +91,16 @@ function initFlowQueryTables() {
 					},
 					{
 						data : "denomination",
+						"render" : function(data, type, row){
+							if(data == null){
+								return "";
+							}else{
+								return data;
+							}
+						}
+					},
+					{
+						data : "product.flow",
 						"render" : function(data, type, row){
 							if(data == null){
 								return "";
@@ -128,6 +145,9 @@ function initFlowQueryTables() {
 						}
 					},
 					{
+						data : "createTime"
+					},
+					{
 						data : "completionTime",
 						"render" : function(data, type, row){
 							if(data == null){
@@ -160,6 +180,8 @@ function initFlowQueryTables() {
 					infoEmpty : "0条记录",// 筛选为空时左下角的显示。
 					infoFiltered : ""// 筛选之后的左下角筛选提示，
 				},
+				/*scrollY : height-288,
+				scrollCollapse : "true",*/
 				paging : true,
 				pagingType : "full_numbers",// 分页样式的类型
 				serverSide : true,
@@ -175,8 +197,8 @@ function initFlowQueryTables() {
 							'operator':encodeURI($('#operator').val()),
 							'province':encodeURI($('#province').val()),
 							'denomination':$('#denomination').val(),
-							'startTime':$('#startTime').val(),
-							'stopTime':$('#stopTime').val(),
+							'startTime':$.trim($('#startTime').val())==''?'':$.trim($('#startTime').val())+" 00:00:00",
+							'stopTime':$.trim($('#stopTime').val())==''?'':$.trim($('#stopTime').val())+" 23:59:59",
 							'orderStatus':$('#flowStatus').val(),
 							'notifyStatus':$('#notifyStatus').val(),
 							'denomination':$('#denomination').val(),
@@ -184,6 +206,7 @@ function initFlowQueryTables() {
 							'id':$('#sysOrderNum').val(),
 							'agentOrderId':$('#merOrderNum').val(),
 							'userName' : userName,
+							'accountId' : $('#merchantName').val(),
 							'goodClassify':$('#goodClassify').val()
 						}
 						var param={
@@ -212,10 +235,10 @@ function initFlowQueryTables() {
 function exportExcel(){
 	if(userName == null){
 		var url = "/dispacherDown?url=/order/exportAtfExcel.action&fileName=商户交易流水.xls&visitType=down"
-			+'&startTime='+$('#startTime').val()
-			+'&stopTime='+$('#stopTime').val()
-			+'&operator='+encodeURI(encodeURI($('#operator').val()))
-			+'&province='+encodeURI(encodeURI($('#province').val()))
+			+'&startTime='+($.trim($('#startTime').val())==''?'':$.trim($('#startTime').val())+" 00:00:00")
+			+'&stopTime='+($.trim($('#stopTime').val())==''?'':$.trim($('#stopTime').val())+" 23:59:59")
+			+'&operator='+encodeURI(encodeURI(encodeURI($('#operator').val())))
+			+'&province='+encodeURI(encodeURI(encodeURI($('#province').val())))
 			+'&denomination='+$('#denomination').val()
 			+'&orderStatus='+$('#flowStatus').val()
 			+'&notifyStatus='+$('#notifyStatus').val()
@@ -223,11 +246,12 @@ function exportExcel(){
 			+'&id='+$('#sysOrderNum').val()
 			+'&agentOrderId='+$('#merOrderNum').val()
 			+'&userName='
-			+'&goodClassify=' +$('#goodClassify').val();
+			+'&accountId=' +$('#merchantName').val()
+			+'&goodClassify=' +$('#goodClassify').val()
 	}else{
 		var url = "/order/exportAtfExcel.action?fileName=商户交易流水.xls&visitType=down"
-			+'&startTime='+$('#startTime').val()
-			+'&stopTime='+$('#stopTime').val()
+			+'&startTime='+($.trim($('#startTime').val())==''?'':$.trim($('#startTime').val())+" 00:00:00")
+			+'&stopTime='+($.trim($('#stopTime').val())==''?'':$.trim($('#stopTime').val())+" 23:59:59")
 			+'&operator='+encodeURI(encodeURI($('#operator').val()))
 			+'&province='+encodeURI(encodeURI($('#province').val()))
 			+'&denomination='+$('#denomination').val()
@@ -237,7 +261,8 @@ function exportExcel(){
 			+'&id='+$('#sysOrderNum').val()
 			+'&agentOrderId='+$('#merOrderNum').val()
 			+'&userName='+encodeURI(encodeURI(userName))
-			+'&goodClassify=' +$('#goodClassify').val();
+			+'&accountId=' + $('#merchantName').val()
+			+'&goodClassify' +$('#goodClassify').val()
 	}
 	$.download(getRootPath() + url,null,'post');
 }

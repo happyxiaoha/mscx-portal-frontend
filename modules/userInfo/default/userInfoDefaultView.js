@@ -62,6 +62,7 @@ var defaultView = Backbone.View.extend({
         'blur .info-line input':'changeAttribute',
         'click .btn-recharge': 'goRecharge',
         'mouseenter .bonus': 'showBonusTip',
+        'mouseleave .bonus': 'closeRuleTip',
         'click .bonus': 'goPoint'
     },
     initialize: function() {

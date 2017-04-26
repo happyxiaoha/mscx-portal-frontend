@@ -26,7 +26,7 @@ var view = Backbone.View.extend({
         var $tailPwdInput = $target.parents('.pass-wrap').find('.tail-pwd-input');
         if($target.val().length === 5) {
             $target.attr('readonly', 'readonly').attr('UNSELECTABLE', 'on');
-            $tailPwdInput.removeAttr('readonly').focus();  
+            $tailPwdInput.removeAttr('readonly').removeAttr('UNSELECTABLE').focus();  
         }
     },
     handleTailPwd: function(event){

@@ -60,7 +60,11 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .loginCons .rightTable ul li .forgetPassword{position: absolute;right: 4px;display: block;top: 0;font-size: 14px;color: #3f89ec;}
 .loginCons .rightTable ul li .forgetPassword:hover{color: #3f89ec;}
 .loginCons .rightTable ul li button{width: 100%;background: #ff9900;text-align: center;height: 36px;border: none;font-size: 14px;color: #fff;border-radius: 5px;margin-top: 4px;}
-.loginCons .rightTable ul li .goRegister{font-size: 14px;color: #5cb981;display: block;padding-top: 4px;width: 100px;margin: 0 auto;}
+.loginCons .rightTable ul li .goRegister{font-size: 14px;color: #5cb981;display: block;padding-top: 4px;width: 83px;margin: 0 auto;}
+
+.loginCons .rightTable ul li .oauth-login {
+    width: 85px;
+}
 
 .loginCons .rightTable ul li label.error{
     position: absolute;

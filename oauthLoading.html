@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>贵阳数创-跳转中</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="window-target" content="_top">
+    <meta name="robots" content="none">
+    <meta name="keywords" content="大数据成果转化、API、接口、数据接口、数据创客、众创、大数据实训、创业、双创"/>
+    <meta name="description" content="大数据成果转化、API、接口、数据接口、数据创客、众创、大数据实训、创业、双创"/>
+    <link href="./favicon.png" rel="shortcut icon">
+</head>
+<body>
+    <div class="wrapper">
+        正在跳转...
+    </div>
+    <script src="lib/jquery.js"></script>
+    <script src="dist/backboneLib.js"></script>
+    <script>
+        var params = location.hash.split('#')[1].split('&');
+        var access_token;
+        _.each(params, function(item) {
+            var split = item.split('=');
+            if(split[0] == 'access_token') {
+                access_token = split[1];
+                return;
+            }
+        })
+        if(access_token) {
+            // 登录
+            $.get('/oauth/oauthLogin.do?accessToken=' + access_token).then(function(res) {
+                if(res.status == 'OK') {
+                    // 手机号已经存在
+                    if(res.result == 'mobile_exisit') {
+                        location.replace('/login.html#oauthLogin/' + access_token + '/' + res.message);
+                    }else {
+                        location.replace('/userInfo.html');
+                    }
+                }else {
+                    alert(res.message);
+                    location.replace('/login.html');
+                }
+            })
+
+        }else {
+            location.replace('/index.html');
+        }
+    </script>
+</body>
+</html>

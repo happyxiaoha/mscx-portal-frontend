@@ -5,11 +5,21 @@
 var Routes =  Backbone.Router.extend({
     routes: {
         '': 'loginView',
-        'login': 'loginView'
+        'login': 'loginView',
+        'oauthLogin/:accessToken/:phone': 'oauthLoginView'
     },
     loginView: function () {
         var loginView = require('./loginView.js');
         new loginView();
+    },
+    oauthLoginView: function (accessToken, phone) {
+        var oauthLoginView = require('./oauthLoginView.js');
+        new oauthLoginView({
+            model: {
+                accessToken: accessToken,
+                phone: phone
+            }
+        });
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

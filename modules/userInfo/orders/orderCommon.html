@@ -1,6 +1,9 @@
 <div id="orderTabs" class="topTab clearfix myApiTop">
-    <span <%= (name == 'shop' ? 'class=active' : '' ) %> ><a href="#shop">购物车</a></span>
-    <span <%= (name == 'order' ? 'class=active' : '' ) %> ><a href="#order">订单管理</a></span>
+    <% if(name == 'shop'){ %>
+        <span class="active"><a href="#shop">购物车</a></span>
+    <% } else if(name = 'order') { %>
+        <span class="active"><a href="#order">订单管理</a></span>
+    <% } %>    
 </div>
 <div id="orderInfo"  class="tabDownCons">
 

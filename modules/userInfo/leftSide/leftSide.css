@@ -7,9 +7,10 @@
 .left-list-wrap ul a.sources-left i {background-position: 0 -95px;}
 .left-list-wrap ul a.api-left i {background-position: 0 -142px;}
 .left-list-wrap ul a.server-left i {background-position: 0 -191px;}
-.left-list-wrap ul a.shop-left i {background-position: 0 -239px;}
+.left-list-wrap ul a.order-left i {background-position: 0 -239px;}
 .left-list-wrap ul a.incubator-left i {background-position: 3px -281px;}
 .left-list-wrap ul a.saas-left i {background-position: 3px -314px;}
+.left-list-wrap ul a.shop-left i {background: url("../../../images/shop-cart.png") no-repeat 0 0;}
 .left-list-wrap ul li a:last-child{border: 0;position: relative;}
 .left-list-wrap ul li a:hover{color: #ff9900;}
 .left-list-wrap ul li a.active{color: #ff9900;}

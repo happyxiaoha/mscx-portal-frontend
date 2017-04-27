@@ -8,11 +8,11 @@ var subHeader = require('subHeaderWidget/headerView.js');
 var router = require('pioneering/router.js');
 
 var menuList = [
-    {
-        name: 'API开发环境',
-        key: 'apiEnv',
-        url: '#apiEnv'
-    },
+    // {
+    //     name: 'API开发环境',
+    //     key: 'apiEnv',
+    //     url: '#apiEnv'
+    // },
     {
         name: '服务开发环境',
         key: 'serverEnv',

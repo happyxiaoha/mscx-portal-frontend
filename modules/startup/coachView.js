@@ -5,7 +5,7 @@ var template = require('html!./coachTemplate.html');
 var policyCmsUrl = '/static_html/datainfo/gy_enter_policy/index.html';
 var classCmsUrl = '/static_html/datainfo/gy_enter_class/index.html';
 var articleCmsUrl = '/static_html/datainfo/gy_enter_article/index.html';
-var fundCmsUrl = '/static_html/datainfo/gy_enter_fund/index.html';
+// var fundCmsUrl = '/static_html/datainfo/gy_enter_fund/index.html';
 var invertHotCmsUrl = '/static_html/datainfo/gy_invertHot/index.html';
 
 var view = Backbone.View.extend({
@@ -31,7 +31,7 @@ var view = Backbone.View.extend({
         this.$policy.load(policyCmsUrl + '?time=' + +(new Date()));
         this.$class.load(classCmsUrl + '?time=' + +(new Date()));
         this.$article.load(articleCmsUrl + '?time=' + +(new Date()));
-        this.$fund.load(fundCmsUrl + '?time=' + +(new Date()));
+        // this.$fund.load(fundCmsUrl + '?time=' + +(new Date()));
 
         return this;
     }

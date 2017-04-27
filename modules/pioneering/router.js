@@ -3,18 +3,17 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '': 'apiEnvView',
-        'apiEnv': 'apiEnvView',
+        '': 'serverEnvView',
         'serverEnv': 'serverEnvView',
         'dataVisiual': 'dataVisiualView',
         'bigData': 'bigDataView'
     },
-    apiEnvView:function () {
-        var view = require('pioneering/contentView.js');
-        mscxPage.views['apiEnvViewObj'] = new view({
-            id: 'apiEnv'
-        });
-    },
+    // apiEnvView:function () {
+    //     var view = require('pioneering/contentView.js');
+    //     mscxPage.views['apiEnvViewObj'] = new view({
+    //         id: 'apiEnv'
+    //     });
+    // },
     serverEnvView:function () {
         var view = require('pioneering/contentView.js');
         mscxPage.views['serverEnvViewObj'] = new view({

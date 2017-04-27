@@ -10,9 +10,9 @@ var ethinkCheck = Backbone.Model.extend({
 });
 
 var resource = {
-    apiEnv: {
-        url: '/static_html/datainfo/gy_apiEnv/index.html'
-    },
+    // apiEnv: {
+    //     url: '/static_html/datainfo/gy_apiEnv/index.html'
+    // },
     bigData: {
         url: '/static_html/datainfo/gy_bigData/index.html'
     },

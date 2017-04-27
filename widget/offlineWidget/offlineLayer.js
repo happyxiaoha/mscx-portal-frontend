@@ -42,7 +42,9 @@ var view = Backbone.View.extend({
         }
     },
     initialize: function() {
-        this.$el.html(this.template());
+        this.$el.html(this.template({
+            user: mscxPage.userInfo
+        }));
         this.$form = this.$('form');
         this.$form.validate(this.validateConfig());
 

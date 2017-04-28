@@ -125,3 +125,33 @@
     padding-left: 20px;
     color: #333;
 }
+
+@media screen and (max-width: 1300px){
+    .right-con-wrap {
+        width: 800px;
+    }
+    .right-con-wrap .R-topList .user-ser {
+        width: 264px;
+    }
+    .right-con-wrap .R-topList .user-cost {
+        width: 180px;
+    }
+    .right-con-wrap .R-topList .R-cons {
+        padding: 22px 10px;
+    }
+    .right-con-wrap .R-topList .R-cons:first-child {
+        width: 180px;
+    }
+    .right-con-wrap .R-topList .user-demand {
+        width: 538px;
+    }
+    .right-con-wrap .R-topList .user-demand .pl60 {
+        padding-left: 30px !important;
+    }
+    .user-center-api-list .api-item {
+        width: 185px;
+    }
+    .user-center-api-list .api-item .downs span {
+        width: 60px;
+    }
+}

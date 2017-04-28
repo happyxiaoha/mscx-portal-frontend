@@ -213,3 +213,10 @@
     border: 1px solid #eee;
     width: 120px;
 }
+
+@media screen and (max-width: 1300px){
+    .account .process li:last-child {
+        width: 120px;
+    }
+}
+

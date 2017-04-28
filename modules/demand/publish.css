@@ -115,3 +115,11 @@ label.checkbox-inline, .checker {
 .orderDiv em {
     margin-left: -10px;
 }
+@media screen and (max-width: 1300px){
+    .ReleaseInputs .ReleaseList .R_right textarea {
+        width: 550px;
+    }
+    .ReleaseInputs .ReleaseList .R_right input[type="text"].small {
+        width: 480px;
+    }
+}

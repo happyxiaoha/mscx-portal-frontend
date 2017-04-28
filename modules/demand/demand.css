@@ -254,3 +254,21 @@
 .demand-portal .R_Btns.contact, .data-publish .R_Btns.contact {
     margin: 0 0 0 10px;
 }
+@media screen and (max-width: 1300px){
+    .rightMenuWrap {
+        width: 928px;
+    }
+    .demand-portal {
+        width: 928px;
+    }
+    .process-guide .step .des {
+        width: 230px;
+        height: 60px;
+    }
+    .process-guide .step i.arrow {
+        left: 140px;
+    }
+    .process-guide .step {
+        margin-left: 10px;
+    }
+}

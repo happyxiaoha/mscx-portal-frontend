@@ -132,6 +132,19 @@ var loginView = Backbone.View.extend({
                 that.login()
             }
         }
+    },
+    subtraction: function(target ,time) {
+        var $jumpTime = $("#jumpTime"),
+            that = this;
+        $jumpTime.html(time);
+        time --;
+        if (time == 0) {
+            target.html('获取手机验证码');
+            target.removeAttr("disabled");
+        }
+        else {
+            setTimeout(function(){that.subtraction(target, time)}, 1000);
+        }
     }
 });
 

@@ -145,7 +145,7 @@ var openDataDetailView = Backbone.View.extend({
         if(url.indexOf('http') < 0){
             url = 'http://' + url
         }
-        layer.open({
+        var index = layer.open({
             type: 2,
             title: that.nJson.name+'演示',
             shadeClose: false,
@@ -154,6 +154,7 @@ var openDataDetailView = Backbone.View.extend({
             area: ['500px', '500px'],
             content: url //iframe的url
         });
+        layer.full(index);
     },
     selectTab: function(event) {
         event.preventDefault();

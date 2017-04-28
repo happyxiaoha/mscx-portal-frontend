@@ -41,13 +41,13 @@ var offlineMeetView = Backbone.View.extend({
     render: function () {
         var res = this.model.get('result'),
             that = this,
-            offlineList = res.list,
+            // offlineList = res.list,
             page = res.page;
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
 
 
-        this.$el.find('tbody').html(this.listTemplate(offlineList));
+        this.$el.find('tbody').html(this.listTemplate(res));
 
         laypage({
             cont: 'offlinePages',

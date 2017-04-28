@@ -29,7 +29,8 @@ var Routes =  Backbone.Router.extend({
         'followActivity': 'followActivityView',
         'applyActivity': 'applyActivityView',
         'mySaaS': 'mySaaSView',
-        'followSaaS': 'followSaaSView'
+        'followSaaS': 'followSaaSView',
+        'offlineMeet': 'offlineMeetView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -102,6 +103,10 @@ var Routes =  Backbone.Router.extend({
     orderView: function () {
         var orderView = require('userInfo/orders/ordersView.js');
         mscxPage.views['orderViewObj'] = new orderView();
+    },
+    offlineMeetView: function () {
+        var offlineMeetView = require('userInfo/offlineMeet/offlineMeet.js');
+        mscxPage.views['offlineMeetViewObj'] = new offlineMeetView();
     },
     shopView: function () {
         var shopView = require('userInfo/orders/shopCarView.js');

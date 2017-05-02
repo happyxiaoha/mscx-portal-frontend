@@ -23,7 +23,10 @@ var Routes =  Backbone.Router.extend({
         'serverApply': 'serverApplyView',
         'order': 'orderView',
         'shop': 'shopView',
-        'recharge': 'rechargeView'
+        'recharge': 'rechargeView',
+        'saas': 'saasView',
+        'saasApply': 'saasApplyView',
+        'saasFollow': 'saasFollowView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -107,6 +110,18 @@ var Routes =  Backbone.Router.extend({
     rechargeView: function () {
         var rechargeView = require('userInfo/recharge/rechargeView.js');
         mscxPage.views['rechargeViewObj'] = new rechargeView();
+    },
+    saasView: function() {
+        var saasView = require('userInfo/saas/saasView.js');
+        mscxPage.views['saasViewObj'] = new saasView();
+    },
+    saasApplyView: function() {
+        var saasView = require('userInfo/saas/applyView.js');
+        mscxPage.views['saasApplyViewObj'] = new saasView();
+    },
+    saasFollowView: function() {
+        var saasView = require('userInfo/saas/followView.js');
+        mscxPage.views['saasFollowViewObj'] = new saasView();
     },
     execute: function(callback,args,name) {
         if(mscxPage.userCenter){

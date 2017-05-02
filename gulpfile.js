@@ -22,7 +22,8 @@ var configRoot = {
     'userInfo': './js/userInfo.js',    //用户中心
     'pay': './js/pay.js',
     'search': './js/search.js',
-    'contactUs': './js/contactUs.js'
+    'contactUs': './js/contactUs.js',
+    'saas': './js/saas.js'
 };
 
 gulp.task('lint', function  () {

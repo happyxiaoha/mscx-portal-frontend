@@ -1,0 +1,9 @@
+<ul class="provider-list">
+    <% data && data.tags && data.tags.result.forEach(function(item) { %>
+    <li>
+        <label>
+            <input type="checkbox" name="tags" data-name="<%= item.name %>" value="<%= item.tagId %>" <%= data && data.detailTag && data.detailTag.indexOf(item.tagId) > -1 && 'checked' %>><%= item.name %>
+        </label>
+    </li>
+    <% }) %>
+</ul>

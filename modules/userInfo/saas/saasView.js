@@ -28,7 +28,7 @@ var savePackageModel = Backbone.Model.extend({
 var myPublishListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     commonTemplate: _.template(commonTemplate),
-    template: _.template(template),
+    template: _.template(template, {variable: 'data'}),
     pagObj: {
         pageSize: 10,
         pageNum: 1
@@ -44,9 +44,9 @@ var myPublishListView = Backbone.View.extend({
         'click .addServerPrice': 'addCharge'
     },
     initialize: function() {
-        this.$el.html(this.commonTemplate({name:'publish'}));
+        this.$el.html(this.commonTemplate({name:'saas'}));
 
-        this.$content = this.$('#serverInfo');
+        this.$content = this.$('#saasInfo');
 
         this.model = new publishListModel();
         this.unshelveModel = new unshelveModel();
@@ -73,19 +73,18 @@ var myPublishListView = Backbone.View.extend({
         this.pagObj.totalPage = page.totalPage;
         this.$content.html(this.template({serverList:serverList}));
 
-        debugger;
-        laypage({
-            cont: 'serverPage',
-            skip: true,
-            pages: this.pagObj.totalPage,
-            curr: this.pagObj.pageNum || 1,
-            jump: function(obj, first){
-                if(!first){
-                    me.pagObj.pageNum = obj.curr;
-                    me.reloadPage();
-                }
-            }
-        });
+        // laypage({
+        //     cont: 'serverPage',
+        //     skip: true,
+        //     pages: this.pagObj.totalPage,
+        //     curr: this.pagObj.pageNum || 1,
+        //     jump: function(obj, first){
+        //         if(!first){
+        //             me.pagObj.pageNum = obj.curr;
+        //             me.reloadPage();
+        //         }
+        //     }
+        // });
     },
     // initRender: function () {
     //     this.$el.html(this.templete({serverList:[]}));

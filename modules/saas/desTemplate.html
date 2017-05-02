@@ -1,0 +1,168 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow des">
+    <!-- top -->
+    <p class="ReleaseTit">
+        查看服务
+    </p>
+    <!-- 2016-09-08 新增 tab切换 -->
+    <!-- down -->
+    <div class="ReleaseDownCons pr">
+        <!-- SaaS 服务发布内容 -->
+        <form class="ReleaseInputs ReleaseDown" onsubmit="return false;" id="publishForm">
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务对象：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.serviceObjectNames %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务名称：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.name %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务简介：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.description %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务图标：</p>
+                <div class="fl R_right">
+                    <p class="allInfoImg">
+                        <% if(data && data.imageUri){ %>
+                            <img class="fl" id="serviceIcon" src="<%= data.imageUri %>" alt="服务图标">
+                        <% } %>
+                    </p>
+                </div>
+            </div>
+            <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
+            <div class="clearfix ReleaseList ">
+                <p class="fl R_left">分类：</p>
+                <div class="fl R_right">
+                    <!-- 2016-09-12 用 ul li 做的下拉选择框 -->
+                    <div class="classifyList Travel01">
+                        <p><%= data && data.categoryName %></p>
+                    </div>
+                </div>
+            </div>
+            <!-- 增加 选择框及选择按钮  2016-09-05-->
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">标签：</p>
+                <div class="fl R_right posRE">
+                    <p>
+                        <%= data && data.tagNames %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">服务范围：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.scope %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">演示地址：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.demoUri %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">接入URL：</p>
+                <div class="fl R_right">
+                    <p>
+                        <%= data && data.uri %>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left">示例图片：</p>
+                <div class="fl R_right">
+                    <% if(data && data.demoImage1){ %>
+                    <p class="allInfoImg fl mr10">
+                        <img id="demo1Icon" src="<%= data.demoImage1 %>" alt="示例图片1">
+                    </p>
+                    <% } %>
+                    <% if(data && data.demoImage2){ %>
+                    <p class="allInfoImg fl mr10">
+                        <img id="demo2Icon" src="<%= data.demoImage2 %>" alt="示例图片2">
+                    </p>
+                    <% } %>
+                    <% if(data && data.demoImage3){ %>
+                    <p class="allInfoImg fl">
+                        <img id="demo3Icon" src="<%= data.demoImage3 %>" alt="示例图片3">
+                    </p>
+                    <% } %>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>是否收费：</p>
+                <p>
+                    <%= data && data.chargeTypeDesc %>
+                </p>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>是否落地：</p>
+                <p>
+                    <%= data && data.isDataCallBack == '1' ? '是' : '否' %>
+                </p>
+            </div>
+            <div class="clearfix ReleaseList">
+            <div class="D_table " <%if(data.chargeType=='01'){%>style="display: none;"<%}%> >
+                <table >
+                    <thead>
+                    <tr>
+                        <th>套餐名称</th>
+                        <th>套餐价格</th>
+                        <th>购买限制</th>
+                        <th>使用限制</th>
+                        <th>生效日期</th>
+                        <th>失效日期</th>
+                    </tr>
+                    </thead>
+                    <tbody id="packageTable">
+                    <tr>
+                        <td colspan="7">暂无数据</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="clearfix ReleaseList">
+            <div class="D_table" <%if(data.chargeType=='01'){%>style="display: none;"<%}%> >
+                <table >
+                    <thead>
+                        <tr>
+                            <th>服务URL</th>
+                            <th>服务描述</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% _.each(data.url, function (sulist) { %>
+                    <tr>
+                        <td><%=sulist.url%></td>
+                        <td><%=sulist.description%></td>
+                    </tr>
+                    <% }); %>
+                    <%if(data.url.length == 0){%>
+                    <tr>
+                        <td colspan="3">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,65 +1,68 @@
-/**
- * Created by Kevin on 2016/12/6.
- */
+'use strict'
 
-var commonTemplate = require('html!./saasCommon.html');
+var commonTemplate = require('html!./common.html');
 var template = require('html!./apply.html');
-require('./saas.css');
+require('./servers.css');
 require('util');
 
-var applyApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'api/getSelfApiList.do'
+var applyListModel = Backbone.Model.extend({
+    url: mscxPage.request.order + 'weiApp/getSelfWeiAppList.do'
 });
 
-
-var myApiView = Backbone.View.extend({
+// 申请的服务
+var myApplyListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
+    commonTemplate: _.template(commonTemplate),
+    template: _.template(template),
     pagObj: {
         pageSize: 10,
         pageNum: 1
     },
-    events: {},
+    events: {
+        'click .unshelve': 'unshelveService',
+        'click .delete': 'deleteService',
+        'click .reason': 'showReason'
+    },
     initialize: function() {
-        var that = this;
-        this.$el.html(_.template(commonTemplate)({name:'apply'}));
+        this.$el.html(this.commonTemplate({name:'apply'}));
 
-        this.model = new applyApiListModel();
-        this.model.on('change',function () {
-            that.render()
-        });
+        this.$content = this.$('#serverInfo');
+
+        this.model = new applyListModel();
+        
+        this.listenTo(this.model, 'sync', this.render);
+
         this.model.fetch({
             data: {
                 pageSize: this.pagObj.pageSize,
                 page: this.pagObj.pageNum
             }
         });
-        this.initRender();
     },
     render: function () {
-        var that = this,
-            res = this.model.get('result') || {},
-            applyApiList = res.list|| [],
-            page = res.page || {currentPage:1,totalSize:1,totalPage:1};
-        var temps = _.template($('#apiApplyList').html());
+        var res = this.model.get('result'),
+            me = this,
+            serverList = res.list,
+            page = res.page;
         this.pagObj.pageNum = page.currentPage;
-        this.pagObj.pageTotal = page.totalSize;
-        this.$el.find('tbody').html(temps({applyApiList:applyApiList}));
+        this.pagObj.totalPage = page.totalPage;
+        this.$content.html(this.template({serverList:serverList}));
         laypage({
-            cont: 'applyApiPages',
-            pages: page.totalPage,
+            cont: 'serverPage',
             skip: true,
+            pages: this.pagObj.totalPage,
             curr: this.pagObj.pageNum || 1,
             jump: function(obj, first){
                 if(!first){
-                    that.pagObj.pageNum = obj.curr;
-                    that.reloadPage();
+                    me.pagObj.pageNum = obj.curr;
+                    me.reloadPage();
                 }
             }
         });
     },
-    initRender: function () {
-        this.$el.find('#apiInfo').html(template);
-    },
+    // initRender: function () {
+    //     this.$el.html(this.templete({serverList:[]}));
+    // },
     reloadPage: function () {
         this.model.fetch({
             data: {
@@ -69,4 +72,5 @@ var myApiView = Backbone.View.extend({
         });
     }
 });
-module.exports = myApiView;
+
+module.exports = myApplyListView;

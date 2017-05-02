@@ -1,107 +1,70 @@
-/**
- * Created by Kevin on 2016/12/6.
- */
+'use strict'
 
-var commonTemplate = require('html!./saasCommon.html');
+var commonTemplate = require('html!./common.html');
 var template = require('html!./follow.html');
 require('./saas.css');
 require('util');
 
-var myPublicModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/getMyPublishedApi.do'
+var followListModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'attention/list.do'
 });
-var applyApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'api/getSelfApiList.do'
-});
-var followApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/getMyAttentionApi.do'
-});
-var cacelApiListModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'userAttention/remove.do'
-});
-var deleteServerDemandModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'deleteService.do'
+var unfollowModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'attention/delete.do'
 });
 
-
-var followListView = Backbone.View.extend({
+// 关注的服务
+var myFollowListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
+    commonTemplate: _.template(commonTemplate),
+    template: _.template(template),
     pagObj: {
         pageSize: 10,
-        pageNum: 1,
-        totalPage: 0
+        pageNum: 1
     },
     events: {
-        'click .cancelFollow': 'cancelFocus'
+        'click .unfollow': 'unFollowService'
     },
     initialize: function() {
-        var that = this;
-        this.$el.html(_.template(commonTemplate)({name:'follow'}));
-        this.model = new followApiListModel();
-        this.model.on('change',function () {
-            that.render();
-        });
+        this.$el.html(this.commonTemplate({name:'follow'}));
+
+        this.$content = this.$('#serverInfo');
+
+        this.model = new followListModel();
+        this.unfollowModel = new unfollowModel();
+        this.listenTo(this.model, 'sync', this.render);
+        this.listenTo(this.unfollowModel, 'sync', this.reloadPage);
+
         this.model.fetch({
             data: {
                 pageSize: this.pagObj.pageSize,
                 page: this.pagObj.pageNum
             }
         });
-        this.initRender();
-    },
-    initRender: function () {
-        this.$el.find('#apiInfo').html(template);
     },
     render: function () {
-        var that = this;
-        var res = this.model.get('result');
-        var followApiList = [], page = {};
-        if(res){
-            followApiList = res.list;
-            var page = res.page || {totalPage:0,currentPage:0,totalPage:0};
-            this.pagObj.totalPage = page.totalPage;
-            this.pagObj.pageNum = page.currentPage;
-        }
-        var temps = _.template($('#followApiList').html());
-        this.$el.find('tbody').html(temps({followApiList:followApiList}));
+        var res = this.model.get('result'),
+            me = this,
+            followList = res.list,
+            page = res.page;
+        this.pagObj.pageNum = page.currentPage;
+        this.pagObj.totalPage = page.totalPage;
+        this.$content.html(this.template({followList: followList}));
         laypage({
-            cont: 'followApi',
-            pages: page.totalPage,
+            cont: 'serverPage',
             skip: true,
+            pages: this.pagObj.totalPage,
             curr: this.pagObj.pageNum || 1,
             jump: function(obj, first){
                 if(!first){
-                    that.pagObj.pageNum = obj.curr;
-                    that.reloadPage();
+                    me.pagObj.pageNum = obj.curr;
+                    me.reloadPage();
                 }
             }
         });
     },
-    cancelFocus: function (e) {
-        var that = this;
-        var $this = $(e.target).closest('tr');
-        var sid = parseInt($this.attr('attrId'));
-        var deleteLayer = layer.confirm('确认要取消关注吗？', {
-            btn: ['确认','取消'] //按钮
-        }, function(){
-            new cacelApiListModel().fetch({
-                data:{'apiServiceId': sid},
-                success: function () {
-                    layer.msg('取消关注成功!');
-                    if(that.model.get('result') && that.model.get('result').list && that.model.get('result').list.length == 1 && that.pagObj.pageNum != 1){
-                        that.pagObj.pageNum--;
-                    }
-                    that.model.fetch({
-                        pageSize: that.pagObj.pageSize,
-                        page: that.pagObj.pageNum
-                    });
-                }
-            });
-            layer.close(deleteLayer);
-        }, function(){
-            layer.close(deleteLayer);
-        });
-    },
+    // initRender: function () {
+    //     this.$el.html(this.templete({followList:[]}));
+    // },
     reloadPage: function () {
         this.model.fetch({
             data: {
@@ -109,7 +72,25 @@ var followListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
+    },
+    unFollowService: function(event) {
+        var id = this.$(event.currentTarget).data('id');
+        var me = this;
+
+        var unfollowLay = layer.confirm('确认取消关注这条服务吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            me.pagObj.pageNum = 1;
+            me.unfollowModel.fetch({
+                data: {
+                    id: parseInt(id)
+                }
+            })
+            layer.close(unfollowLay);
+        }, function(){
+            layer.close(unfollowLay);
+        });
     }
 });
 
-module.exports = followListView;
+module.exports = myFollowListView;

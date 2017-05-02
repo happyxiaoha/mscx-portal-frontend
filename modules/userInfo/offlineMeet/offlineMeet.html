@@ -37,8 +37,16 @@
             <td><%= item.purpose %></td>
             <td><%= item.contact %></td>
             <td><%= item.contactNo %></td>
-            <td><%= item.processFlag %></td>
-            <td><%= item.processFlag %></td>
+            <td><%= item.processName %></td>
+            <td>
+                <% if(item.processFlag == '0') { %>
+                    暂无
+                <% } else if(item.processFlag == '1') { %>
+                    <a href="javascript:;" class="show-contact" data-id="<%= item.id %>">查看联系方式</a>
+                <% } else { %>
+                    <a href="javascript:;" class="show-reason" data-id="<%= item.id %>">查看原因</a>
+                <% } %>
+            </td>
         </tr>
     <% }) %>
     <%if(data.list.length == 0){%>

@@ -10,7 +10,7 @@ var Routes =  Backbone.Router.extend({
         'userPassword':'userPasswordView',
         'account': 'accountView',
         'demand': 'demandView',
-        'apiDemand': 'apiDemandView',
+        // 'apiDemand': 'apiDemandView',
         'serversDemand': 'serversDemandView',
         'followDemand': 'followDemandView',
         'acceptDemand': 'acceptDemandView',

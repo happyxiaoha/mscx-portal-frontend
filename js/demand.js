@@ -14,11 +14,11 @@ var menuList = [
         key: 'data',
         url: '#data'
     },
-    {
-        name: 'API开发需求',
-        key: 'api',
-        url: '#api'
-    },
+    // {
+    //     name: 'API开发需求',
+    //     key: 'api',
+    //     url: '#api'
+    // },
     {
         name: '服务开发需求',
         key: 'service',

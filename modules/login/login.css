@@ -171,3 +171,9 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .register-form ul li input.phone{
     width: 220px;
 }
+
+.register-form .bind-oauth-tip {
+    line-height: 20px;
+    color: #888;
+    margin-bottom: 20px;
+}

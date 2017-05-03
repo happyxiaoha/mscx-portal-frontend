@@ -7,6 +7,7 @@ var offlineModel = Backbone.Model.extend({
 });
 
 require('./offline.css');
+require('util');
 require('validate');
 require('customValidate');
 
@@ -56,13 +57,13 @@ var view = Backbone.View.extend({
         this.$form.submit();
     },
     fetch: function() {
-        var params = this.$form.serialize();
+        var params = _.extend(this.$form.serializeObject(), {
+            apiServiceId: +this.model.apiServiceId,
+            type: this.model.type,
+            cname: this.model.cname
+        });
 
-        params += '&' + $.param(this.model);
-        
-        this.offlineModel.fetch({
-            data: params
-        })
+        this.offlineModel.save(params);
     },
     handleSubmit: function() {
         var model = this.offlineModel.toJSON();

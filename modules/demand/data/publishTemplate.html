@@ -92,6 +92,10 @@
                             doc
                         </label>
                         <label>
+                            <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'api' && "checked" %> value="api">
+                            api
+                        </label>
+                        <label>
                             <input type="radio" name="dataFormat" <%= data && data.dataFormat == 'other' && "checked" %> value="other">
                             其他
                         </label>

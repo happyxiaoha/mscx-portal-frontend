@@ -24,7 +24,7 @@
 .R_Btns .bgBlue{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;background: #f90;}
 .R_Btns .bgBlue:first-child{margin-right: 40px;}
 .demand-content .radio-list {width: 760px;}
-.demand-content .radio-list label{    float: left;  width: 112px;  display: block;padding-left: 0;line-height: 30px;}
+.demand-content .radio-list label{    float: left;  width: 100px;  display: block;padding-left: 0;line-height: 30px;}
 .demand-content .radio-list label input {margin: 0;vertical-align: middle;}
 .demand-content .radio-list .message{height: 30px; line-height: 30px;}
 .demand-content .checkbox-border {line-height: 32px;}

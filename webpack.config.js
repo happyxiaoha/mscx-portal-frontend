@@ -5,6 +5,14 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({name:'common',minCh
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+var webpackPlugins = [commonsPlugin, new ExtractTextPlugin("[name].css")];
+
+if(process.env.NODE_ENV == 'production') {
+    webpackPlugins = webpackPlugins.concat(
+        new webpack.optimize.UglifyJsPlugin()
+    );
+}
+
 module.exports = {
     entry: { },
     output: {
@@ -12,8 +20,7 @@ module.exports = {
         publicPath: './dist/',
         filename: '[name].js'
     },
-    plugins: [commonsPlugin,new ExtractTextPlugin("[name].css")
-    ],
+    plugins: webpackPlugins,
     module: {
         loaders: [
             {

@@ -6,9 +6,8 @@ var gulp = require('gulp'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
     connect = require('gulp-connect'),
-    rename = require('gulp-rename'),
-    livereload = require('gulp-livereload'),
-    webpackConfig = require('./webpack.config.js');
+    rename = require('gulp-rename');
+    // livereload = require('gulp-livereload');
 
 var configRoot = {
     'login': './js/login.js',
@@ -36,12 +35,12 @@ gulp.task('lint', function  () {
 
 
 gulp.task('webpack', function() {
+    var webpackConfig = require('./webpack.config.js');
     webpackConfig.entry = configRoot;
-    gulp.src('')
+
+    return gulp.src('')
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('./build/dist'));
-
-    gulp.start(['copy']);
 });
 gulp.task('watch', function () {
     gulp.watch(['./js/underscore.js','./js/backbone.js','./js/ajaxBackboneManger.js'], ['backboneBuild']);
@@ -58,30 +57,38 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 gulp.task('backboneBuild', function() {
-    gulp.src(['./js/underscore.js','./js/backbone.js','./js/ajaxBackboneManger.js'])
-        .pipe(concat('./backboneLib.js'))
-        .pipe(gulp.dest('./build/dist'));
+    var source = gulp.src(['./js/underscore.js','./js/backbone.js','./js/ajaxBackboneManger.js'])
+                .pipe(concat('./backboneLib.js'));
+
+    if(process.env.NODE_ENV == 'production') {
+        source.pipe(uglify());
+    }
+
+    return source.pipe(gulp.dest('./build/dist'));
 });
 
 gulp.task('copy', function() {
-    return gulp.src(['./favicon.png','./css/**/*', './*.html', './lib/**/*', './images/newicon/ic_newlogo.png', './images/apihelp/*', './images/serverHelp/*', './images/guidance/*'], {base: './'})
+    var cssSource = gulp.src('./css/**/*.css', {base: './'}),
+        jsSource = gulp.src('./lib/**/*.js', {base: './'});
+
+    if(process.env.NODE_ENV == 'production') {
+        cssSource.pipe(minifyCss());
+        jsSource.pipe(uglify());
+    }
+    
+    cssSource.pipe(gulp.dest('build'));
+    jsSource.pipe(gulp.dest('build'));
+
+    gulp.src(['./favicon.png', './*.html', './images/newicon/ic_newlogo.png', './images/apihelp/*', './images/serverHelp/*', './images/guidance/*'], {base: './'})
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('build',['webpack'], function() {
-    gulp.src(['./js/ie8fileLoader.js','./dist/common.js'])
-        .pipe(concat('./common.js'))
-        .pipe(gulp.dest('./dist'));
-
-    gulp.src('./dist/*.css')
-        .pipe(minifyCss())
-        .pipe(gulp.dest('./dist'));
-
-    gulp.src('./dist/*.js')
-        .pipe(uglify())
-        .pipe(gulp.dest('./dist'));
+gulp.task('prod', ['clean'], function() {
+    process.env.NODE_ENV = 'production';
+    gulp.start(['backboneBuild', 'webpack', 'copy']);
 });
 
 gulp.task('default',['clean'], function() {
-    gulp.start(['backboneBuild','webpack']);
+    process.env.NODE_ENV = 'development';
+    gulp.start(['backboneBuild','webpack', 'copy']);
 });

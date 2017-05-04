@@ -75,11 +75,11 @@ gulp.task('copy', function() {
         cssSource.pipe(minifyCss());
         jsSource.pipe(uglify());
     }
-    
+
     cssSource.pipe(gulp.dest('build'));
     jsSource.pipe(gulp.dest('build'));
 
-    gulp.src(['./favicon.png', './*.html', './images/newicon/ic_newlogo.png', './images/apihelp/*', './images/serverHelp/*', './images/guidance/*'], {base: './'})
+    gulp.src(['./favicon.png', './*.html', './css/**/*', '!./css/**/*.css', './lib/**/*', '!./lib/**/*.js', './images/newicon/ic_newlogo.png', './images/apihelp/*', './images/serverHelp/*', './images/guidance/*'], {base: './'})
         .pipe(gulp.dest('build'));
 });
 

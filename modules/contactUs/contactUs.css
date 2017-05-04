@@ -23,3 +23,6 @@
 .about-us p {
     font-weight: bold;
 }
+.about-us img {
+    margin: 0 auto;
+}

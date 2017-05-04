@@ -90,12 +90,12 @@ var createActivityView = Backbone.View.extend({
             return resDate;
         }
         var sinOptions = {
-            minDate: lastDay(),
-            startDate: new Date()
+            // minDate: lastDay(),
+            // startDate: new Date()
         };
         if(this.id){
             sinOptions = {
-                minDate: new Date(),
+                // minDate: new Date(),
                 maxDate: new Date(res.holdStartTime),
                 startDate: new Date(res.signStartTime),
                 endDate: new Date(res.signEndTime)
@@ -103,8 +103,8 @@ var createActivityView = Backbone.View.extend({
         }
 
         var holdOptions = {
-            minDate: lastDay(),
-            startDate: new Date()
+            // minDate: lastDay(),
+            // startDate: new Date()
         };
         if(this.id){
             holdOptions = {
@@ -119,7 +119,8 @@ var createActivityView = Backbone.View.extend({
         });
         $('#holdTime').daterangepicker(holdOptions).on('apply.daterangepicker',function (ev,picker) {
             $(ev.target).trigger('blur');
-            $('#signTime').data('daterangepicker').setOptions({'maxDate': picker.startDate.format('YYYY-MM-DD'),'endDate':picker.startDate.format('YYYY-MM-DD'), minDate:lastDay().format('yyyy-MM-dd')});
+            $('#signTime').data('daterangepicker').setOptions({'maxDate': picker.startDate.format('YYYY-MM-DD'), 'startDate': picker.startDate.subtract('d', '1').format('YYYY-MM-DD'), 'endDate': picker.startDate.format('YYYY-MM-DD')});
+            //minDate:lastDay().format('yyyy-MM-dd')
         });
     },
     initialize: function() {

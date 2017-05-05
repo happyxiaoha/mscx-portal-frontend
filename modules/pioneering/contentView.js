@@ -14,9 +14,11 @@ var resource = {
     //     url: '/static_html/datainfo/gy_apiEnv/index.html'
     // },
     bigData: {
+        param: 2,
         url: '/static_html/datainfo/gy_bigData/index.html'
     },
     dataVisiual: {
+        param: 1,
         url: '/static_html/datainfo/gy_dataVisiual/index.html'
     },
     serverEnv: {
@@ -53,6 +55,9 @@ var view = Backbone.View.extend({
     },
     jumpEThink: function() {
         new ethinkCheck().fetch({
+            data: {
+                action: resource[this.id].param
+            },
             success: function(model) {
                 var res = model.toJSON();
                 if(res.status == 'OK') {

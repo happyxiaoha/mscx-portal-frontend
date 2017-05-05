@@ -47,11 +47,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="info">
-                                                        <div class="cell">服务状态：
+                                                        <!-- <div class="cell">服务状态：
                                                             <span>
                                                             <%= data.statusDesc %>
                                                             </span>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="cell">服务方式：
                                                             <span>
                                                             <%= data.serviceType %>
@@ -91,6 +91,9 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <div class="rightInfo">
+                                                        <p>申请量：<span>
+                                                            <%= data.applyCount %>
+                                                        </span></p>
                                                         <p>访问量：<span>
                                                             <%= data.viewCount %>
                                                         </span></p>

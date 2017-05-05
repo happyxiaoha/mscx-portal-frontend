@@ -229,7 +229,7 @@
         <td><%=aitem.cname%></td>
         <td><%=aitem.name%></td>
         <td><%=aitem.uri%></td>
-        <td><%=aitem.isAuth == '1' ? '是': '否'%></td>
+        <td><%=aitem.isAuth == '0' ? '是': '否'%></td>
         <td>
             <a href="javascript:void(0);" class="editApi">修改</a>
             <a href="javascript:void(0);" class="deleteApi">删除</a>
@@ -366,8 +366,8 @@
 
             <li>
                 <label><span><i class="need">*</i>是否鉴权：</span></label>
-                <label class="auth-type"><input type="radio" name="isAuth" value="1" <%if(!res.isAuth || res.isAuth=='1'){%>checked<%}%>>是</label>
-                <label class="auth-type"><input type="radio" name="isAuth" value="0" <%if(res && res.isAuth=='0'){%>checked<%}%>>否</label>
+                <label class="auth-type"><input type="radio" name="isAuth" value="0" <%if(!res.isAuth || res.isAuth=='0'){%>checked<%}%>>是</label>
+                <label class="auth-type"><input type="radio" name="isAuth" value="1" <%if(res && res.isAuth=='1'){%>checked<%}%>>否</label>
             </li>
             <li>
                 <label>

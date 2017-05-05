@@ -216,8 +216,9 @@ var createActivityView = Backbone.View.extend({
     },
     doUploadImg: function (e) {
         var $formArea = $(e.target).closest('.imgForm'),
-            index = $formArea.index('.imgForm'),
-            uploadImgUrl = mscxPage.request.activity+'uploadFile.do';
+            type = $formArea.data('type'),
+            uploadImgUrl = mscxPage.request.activity+'uploadFile.do',
+            index = 0;
         var that = this;
         $formArea.ajaxSubmit({
             url: uploadImgUrl,
@@ -231,23 +232,35 @@ var createActivityView = Backbone.View.extend({
                     return;
                 }
                 var src = res.result;
-                switch (index) {
-                    case 0:
+                switch (type) {
+                    case 'thumbnail':
                         that.model.set('thumbnailImg',src.imageUri);
                         break;
-                    case 1:
-                        that.model.set('projectDescription',src.imageUri);
+                    case 'project':
+                        index = $formArea.data('index');
+                        var projectArray  = that.model.get('projectDescription') || [];
+
+                        projectArray[index] = src.imageUri;
+
+                        that.model.set('projectDescription', projectArray);
+
                         break;
-                    case 2:
-                        that.model.set('teamImg',src.imageUri);
+                    case 'team':
+                        index = $formArea.data('index');
+                        var teamArray  = that.model.get('teamImg') || [];
+
+                        teamArray[index] = src.imageUri;
+
+                        that.model.set('teamImg', teamArray);
+
                         break;
-                    case 3:
+                    case 'operation':
                         that.model.set('operationImg',src.imageUri);
                         break;
                 }
                 // that.model.set('thumbnailImg',src.imageUri);
                 //that.model.set('imageKey',src.imageKey);
-                $('.allInfoImg').eq(index).find('img').attr('src',src.imageUri)
+                $('.allInfoImg.' + type).eq(index).find('img').attr('src',src.imageUri)
                     .parents('.ReleaseList').find('.img-error').hide();
                 // $formArea.find('.img-error').hide();
             },
@@ -264,6 +277,11 @@ var createActivityView = Backbone.View.extend({
             var status = this.model.get('status');
             var msg = status == 2 ? '已提交审核！' : '已提交暂存！';
             var tags = this.model.get('tags').replace(',','，');
+            var projectArray = this.model.get('projectDescription');
+            var teamArray = this.model.get('teamImg');
+
+            this.model.set('projectDescription', (_.filter(projectArray, function(item){return item !== undefined})).join(','));
+            this.model.set('teamImg', (_.filter(teamArray, function(item){return item !== undefined})).join(','))
             this.model.set('tags',tags);
             this.model.set('financingLimit', +obj.financingLimit);
             this.model.set('financingType',obj.financingType);
@@ -271,6 +289,8 @@ var createActivityView = Backbone.View.extend({
             this.model.set('roadDescription',obj.roadDescription);
             this.model.set('roadName',obj.roadName);
             this.model.set('tradeField',obj.tradeField);
+
+            debugger;
             this.model.save({},{
                 success: function () {
                     layer.msg(msg);

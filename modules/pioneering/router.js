@@ -16,19 +16,31 @@ var Routes =  Backbone.Router.extend({
     // },
     serverEnvView:function () {
         var view = require('pioneering/contentView.js');
-        mscxPage.views['serverEnvViewObj'] = new view({
+        var contentView = mscxPage.views['contentView'];
+
+        contentView && contentView.undelegateEvents() && contentView.stopListening();
+
+        mscxPage.views['contentView'] = new view({
             id: 'serverEnv'
         });
     },
     dataVisiualView: function(id) {
         var view = require('pioneering/contentView.js');
-        mscxPage.views['dataVisiualViewObj'] = new view({
+        var contentView = mscxPage.views['contentView'];
+
+        contentView && contentView.undelegateEvents() && contentView.stopListening();
+
+        mscxPage.views['contentView'] = new view({
             id: 'dataVisiual'
         });
     },
     bigDataView: function(id) {
         var view = require('pioneering/contentView.js');
-        mscxPage.views['bigDataViewObj'] = new view({
+        var contentView = mscxPage.views['contentView'];
+
+        contentView && contentView.undelegateEvents() && contentView.stopListening();
+
+        mscxPage.views['contentView'] = new view({
             id: 'bigData'
         });
     },

@@ -290,7 +290,6 @@ var createActivityView = Backbone.View.extend({
             this.model.set('roadName',obj.roadName);
             this.model.set('tradeField',obj.tradeField);
 
-            debugger;
             this.model.save({},{
                 success: function () {
                     layer.msg(msg);

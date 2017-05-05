@@ -3044,13 +3044,17 @@ ul.pagination>li.active>a {
 }
 
 .hotTz .hotTzItem .media-object {
-    width: 54px;
-    height: 54px;
-    border: 1px solid #e6e6e6
+    width: 52px;
+    height: 52px;
+    /*border: 1px solid #e6e6e6*/
 }
 
 .hotTz .hotTzItem .media-object.width {
     width: 70px
+}
+
+.hotTz .hotTzItem .media-body {
+    vertical-align: middle;
 }
 
 .hotTz .media-heading {

@@ -243,9 +243,11 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><i class="need">*</i>项目介绍：</p>
             <div class="fl R_right">
-                <p class="allInfoImg">
-                    <img src="<%=res.projectDescription%>" alt="项目介绍">
-                </p>
+                <% res.projectDescription.split(',').forEach(function(item){ %>
+                    <p class="allInfoImg mr10">
+                        <img src="<%= item %>" alt="项目介绍">
+                    </p>
+                <% }) %>
                 <p class="mes-des">像素要求：534*324</p>
             </div>
             <label class="img-error">请上传项目介绍图</label>
@@ -253,9 +255,11 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><i class="need">*</i>团队成员：</p>
             <div class="fl R_right">
-                <p class="allInfoImg">
-                    <img src="<%=res.teamImg%>" alt="团队成员">
-                </p>
+                <% res.teamImg.split(',').forEach(function(item){ %>
+                    <p class="allInfoImg mr10">
+                        <img src="<%= item %>" alt="团队成员">
+                    </p>
+                <% }) %>
                 <p class="mes-des">像素要求：534*324</p>
             </div>
             <label class="img-error">请上传团队成员图</label>

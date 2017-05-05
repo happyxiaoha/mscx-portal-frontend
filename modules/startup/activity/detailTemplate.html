@@ -19,7 +19,7 @@
                     </div>
                     <div class="media-body">
                         <h1><%= data.name %></h1>
-                        <p class="info"><%= data.description %></p>
+                        <p class="info"><%= data.description.replace('\r\n', '<br/>') %></p>
                         <p class="info">活动类型：<%= data.typeName %>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发起人：<%= data.initiator %></p>
                         <p class="info">报名时间：<%= new Date(data.signStartTime).format('yyyy-MM-dd') %> ~ <%= new Date(data.signEndTime).format('yyyy-MM-dd') %></p>
                         <div class="media-body-footer">

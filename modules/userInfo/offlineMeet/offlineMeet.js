@@ -77,28 +77,28 @@ var offlineMeetView = Backbone.View.extend({
         this.listTemplate = _.template($('#offlineList').html(), {variable: 'data'});
     },
     showReason: function(event) {
-        var $target = this.$(event.currentTarget);
+        var $target = this.$(event.target);
         var id = $target.data('id');
 
-        var list = this.model.toJSON().result;
+        var list = this.model.toJSON().result.list;
 
         var reasonItem = _.find(list, function(item) {
             if(item.id == id) return item;
         })
 
-        layer.alert(reasonItem.comments, {title: '拒绝原因'});
+        layer.alert(reasonItem.comments || '暂无', {title: '拒绝原因'});
     },
     showContact: function() {
-        var $target = this.$(event.currentTarget);
+        var $target = this.$(event.target);
         var id = $target.data('id');
 
-        var list = this.model.toJSON().result;
+        var list = this.model.toJSON().result.list;
 
         var reasonItem = _.find(list, function(item) {
             if(item.id == id) return item;
         })
 
-        layer.alert(reasonItem.platContractNo, {title: '查看联系人'});
+        layer.alert(reasonItem.platContractNo || '暂无', {title: '查看联系人'});
     }
 });
 

@@ -41,7 +41,7 @@
                         var fromUrl = window.localStorage.getItem('GYFromUrl');
                         
                         if(fromUrl) {
-                            location.replace(fromUrl);
+                            location.replace(decodeURIComponent(fromUrl));
                         }else {
                             location.replace('/index.html');
                         }

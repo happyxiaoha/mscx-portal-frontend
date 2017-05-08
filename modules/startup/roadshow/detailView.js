@@ -1,6 +1,7 @@
 'use strict';
 
 var template = require('html!./detailTemplate.html');
+var offlineView = require('offlineWidget/offlineLayer.js');
 
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.roadshow + 'roadshow/getRoadInfoByRoadId.do'
@@ -18,6 +19,7 @@ var view = Backbone.View.extend({
     el: mscxPage.domEl.startupEl,
     events: {
         'click #followBtn': 'follow',
+        'click #contactBtn': 'contact',
         'click .nav-tabs a': 'selectTab'
     },
     template: _.template(template, {variable: 'data'}),
@@ -100,6 +102,43 @@ var view = Backbone.View.extend({
         }else {
             layer.msg('取消关注失败');
         }
+    },
+    contact: function() {
+        var detail = this.model.toJSON().result;
+        var me = this;
+
+        if(!mscxPage.isLogin()) {
+            return;
+        }
+
+        this.offlineView = new offlineView({
+            model: {
+                apiServiceId: this.id,
+                cname: detail.roadName,
+                type: detail.type
+            }
+        });
+        this.offlineView.delegate = this;
+        this.$el.append(this.offlineView.$el);
+        
+        layer.open({
+            type: 1,
+            btn: ['确定','取消'],
+            title: '<p class="ft22">需求</p>',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px', '450px'],
+            content: this.offlineView.$el,
+            btn1: function (index) {
+                me.offlineView.submit(index);
+            },
+            btn2: function (index) {
+                layer.close(index);
+            },
+            end: function() {
+                me.offlineView.remove();
+            }
+        })
     }
 });
 

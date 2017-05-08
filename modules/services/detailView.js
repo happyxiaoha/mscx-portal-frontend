@@ -194,7 +194,7 @@ var openDataDetailView = Backbone.View.extend({
         layer.open({
             type: 1,
             btn: ['确定','取消'],
-            title: '<p class="ft22">线下洽谈申请</p>',
+            title: '<p class="ft22">需求</p>',
             shade: 0.6,
             shadeClose: true,
             area: ['500px', '450px'],

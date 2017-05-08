@@ -78,7 +78,7 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 }
 
 .header{height: 80px;border-bottom: solid 1px #bbb;}
-.header h1{float:left;margin:12px 0 0 2px;}
+.header h1{float:left;margin:10px 0 0 2px;}
 .header h1 a{color: #333;font-size: 22px;}
 .header h1 span{line-height: 34px;padding-left: 12px;margin-left: 6px;vertical-align: 22px;font-size: 20px;font-weight: bold;}
 

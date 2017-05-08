@@ -72,13 +72,7 @@
                                                     </div>
                                                     <div class="info">
                                                         <div class="cell">访问地址：
-                                                        <% if(data.uri.indexOf('http') < 0){ %>
-                                                            <a href="http://<%- data.uri %>" target="_blank">
-                                                        <% }else{ %>
-                                                            <a href="<%- data.uri %>" target="_blank">
-                                                        <% }; %>
-                                                        <%= data.uri %>
-                                                        </a>
+                                                            <span><%= data.uri %></span>
                                                         </div>
                                                     </div>
                                                     

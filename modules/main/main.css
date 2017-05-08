@@ -465,6 +465,26 @@
 
 .bg535353{background: #fff;}
 
+.forhelp{
+    margin-left: 80px;
+    padding: 10px 0 10px 70px;
+    border-left: solid 1px #e3e3e3;
+    font-size: 14px;
+}
+.forhelp .swhz{
+    padding-left: 60px;
+    color: #FFF;
+    background: url("../../images/newicon/ic_shangwuhez.png") left center no-repeat;
+}
+.forhelp .jisuzhichi{
+    padding-left: 60px;
+    color: #FFF;
+    margin-top: 40px;
+    background: url("../../images/newicon/ic_jshuzhic.png") left center no-repeat;
+}
+.forhelp .swhz p:first-child,.forhelp .jisuzhichi p:first-child {
+    color: #888;
+}
 .righttext img{
     margin-top: 26px;
 }

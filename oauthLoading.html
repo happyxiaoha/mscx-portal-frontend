@@ -38,7 +38,13 @@
                     if(res.result == 'mobile_exisit') {
                         location.replace('/login.html#oauthLogin/' + access_token + '/' + res.message);
                     }else {
-                        location.replace('/userInfo.html');
+                        var fromUrl = window.localStorage.getItem('GYFromUrl');
+                        
+                        if(fromUrl) {
+                            location.replace(fromUrl);
+                        }else {
+                            location.replace('/index.html');
+                        }
                     }
                 }else {
                     alert(res.message);

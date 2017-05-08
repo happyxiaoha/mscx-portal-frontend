@@ -31,6 +31,14 @@ var loginView = Backbone.View.extend({
         this.model = new loginModel();
         this.$el.html(this.template());
         this.render();
+
+        var fromUrl = location.search && location.search.split('?')[1] && location.search.split('?')[1].split('=')[1];
+
+        if(fromUrl) {
+            window.localStorage.setItem('GYFromUrl', fromUrl);
+        }else {
+            window.localStorage.removeItem('GYFromUrl');
+        }
     },
     render: function () {
         this.refreshCaptcha();
@@ -50,9 +58,9 @@ var loginView = Backbone.View.extend({
             success: function (res) {
                   res = res.toJSON();
                 if(res.status == 'OK'){
-                    var nHref = location.search.replace('?service=','');
-                    if(nHref){
-                        window.open( decodeURIComponent(nHref),'_self');
+                    var fromUrl = window.localStorage.getItem('GYFromUrl');
+                    if(fromUrl){
+                        window.open( decodeURIComponent(fromUrl),'_self');
                     }
                     else{
                         window.open('index.html','_self');

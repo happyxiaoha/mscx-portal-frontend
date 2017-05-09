@@ -1,0 +1,17 @@
+<div class="hotTzcaption">最新路演</div>
+<% data && data.forEach(function(item, index) { %>
+<div class="hotTzItem">
+    <a href="startup.html#roadshow/<%= item.id %>">
+        <div class="media">
+            <div class="media-left">
+                <img src="<%= item.thumbnailImg %>" alt="roadshow icon" class="media-object">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><%= item.roadName %></h4>
+                <p class="media-heading"><%= item.roadDesc %></p>
+                <p>发布时间：<%= new Date(item.createdTime).format('yyyy-MM-dd') %></p>
+            </div>
+        </div>
+    </a>
+</div>
+<% }) %>

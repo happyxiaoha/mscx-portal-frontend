@@ -2,6 +2,7 @@
 
 var template = require('html!./detailTemplate.html');
 var offlineView = require('offlineWidget/offlineLayer.js');
+var latestView = require('./latestRoadShowView.js');
 
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.roadshow + 'roadshow/getRoadInfoByRoadId.do'
@@ -14,6 +15,8 @@ var followModel = Backbone.Model.extend({
 var unFollowModel = Backbone.Model.extend({
     url: mscxPage.request.roadshow + 'roadshow/deleteUserAttention.do'
 });
+
+require('../../../lib/swiper.jquery.js');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.startupEl,
@@ -38,6 +41,8 @@ var view = Backbone.View.extend({
             }
         });
 
+        this.latestView = new latestView();
+
         return this;
     },
     render: function () {
@@ -49,8 +54,20 @@ var view = Backbone.View.extend({
         this.$tabContent = this.$('.tab-pane');
         this.$tabWrap = this.$('.tab-content');
         this.$followBtn = this.$('#followBtn');
+        this.$latestRoadshow = this.$('#latestRoadshow');
+
+        this.$latestRoadshow.append(this.latestView.$el).addClass('in');
 
         this.$followBtn.text(this.attentionFlag ? '取消关注' : '关注');
+
+        var swiper = new Swiper('.swiper-container', {
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            slidesPerView: 1,
+            paginationClickable: true,
+            spaceBetween: 30,
+            loop: false
+        });
     },
     selectTab: function(event) {
         event.preventDefault();

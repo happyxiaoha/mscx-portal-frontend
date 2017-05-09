@@ -3024,7 +3024,7 @@ ul.pagination>li.active>a {
 
 .hotTz {
     border: 1px solid #e6e6e6;
-    padding: 25px;
+    padding: 25px 0 25px 25px;
     background: #fff;
 }
 

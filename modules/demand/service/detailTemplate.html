@@ -41,18 +41,28 @@
                             <div class="wdHead" style="position: relative;">
                                 <h1>需求详情</h1>
                             </div>
-                            <p>预算金额：<%= data.money %></p>
-                            <p>联系截至日期：<%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></p>
-                            <p>主联系人信息：<%= data.contactUsername %></p>
-                            <p>主联系人电话：<%= data.contactPhone %></p>
-                            <p>备用联系人信息：<%= data.spareContactname %></p>
+                            <p>任务描述：<%= data.description %></p>
+                            <p>任务要求：<%= data.required %></p>
+                            <p>预算金额：面议</p>
+                            <p>截止日期：<%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></p>
+                            <p>主联系人信息：
+                                <% if(data.contactUsername) { %>
+                                <%= data.contactUsername.slice(0, 1) %>*<%= new Array(data.contactUsername.slice(1).length).join('*') %>
+                                <% } %>
+                            </p>
+                            <p>主联系人电话：
+                                <%= data.contactPhone %>
+                            </p>
+                            <p>备用联系人信息：
+                                <% if(data.spareContactname) { %>
+                                <%= data.spareContactname.slice(0, 1) %>*<%= new Array(data.spareContactname.slice(1).length).join('*') %>
+                                <% } %>
+                            </p>
                             <p>备用联系人电话：<%= data.spareContactphone %></p>
                             <p>邮箱：<%= data.contactEmail %></p>
                             <p>地址：<%= data.contactAddress %></p>
                             <p>是否需要平台撮合交易：<%= data.matchmakeTradeName %></p>
                             <p>分类：<%= data.categoryName %></p>
-                            <p>任务描述：<%= data.description %></p>
-                            <p>任务要求：<%= data.required %></p>
                         </div>
                     </div>
                 </div>

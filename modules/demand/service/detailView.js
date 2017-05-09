@@ -52,6 +52,19 @@ var view = Backbone.View.extend({
         var model = this.detailModel.toJSON();
 
         this.attentionFlag = model.result.attentionFlag;
+
+        if(model.result.contactPhone) {
+            var contactPhone = model.result.contactPhone.split('');
+            contactPhone.splice(3, 4, '****');
+            model.result.contactPhone = contactPhone.join('');
+        }
+
+        if(model.result.spareContactphone) {
+            var spareContactphone = model.result.spareContactphone.split('');
+            spareContactphone.splice(3, 4, '****');
+            model.result.spareContactphone = spareContactphone.join('');
+        }
+        
         this.$el.html(this.template(model.result)).removeClass('opacity0');
 
         // 热门数据报告区域

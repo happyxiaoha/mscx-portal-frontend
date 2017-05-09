@@ -40,13 +40,15 @@
                                             <div class="media-body">
                                                 <div class="info">
                                                     <div class="cell">
-                                                        数创易价：<span class="text-large text-orange"><%= data.result && data.result.chargeTypeDesc %></span>
+                                                        收费类型：<span class="text-large text-orange"><%= data.result && data.result.chargeTypeDesc %></span>
+                                                    </div>
+                                                    <div class="cell">服务区域：<span><%= data.result && data.result.scope %></span>
                                                     </div>
                                                 </div>
-                                                <div class="info">
+                                                <!-- <div class="info"> -->
                                                     <!-- div class="cell">API状态：<span><%= data.result && data.result.statusDesc %></span></div> -->
-                                                    <div class="cell">服务区域：<span><%= data.result && data.result.scope %></span></div>
-                                                </div>
+                                                    
+                                                <!-- </div> -->
                                                 <div class="info">
                                                     <div class="cell">
                                                         服务商：<span><%= data.result && data.result.providerName %></span>

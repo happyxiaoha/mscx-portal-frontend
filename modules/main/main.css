@@ -658,6 +658,9 @@
     .entrepreneur{
         width: 998px;
     }
+    .entrepreneur ul li {
+        width: 316px;
+    }
     .partner{
         width: 998px;
     }

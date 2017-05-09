@@ -18,7 +18,7 @@ var view = Backbone.View.extend({
         
         this.url = location.href;
         this.title = document.title;
-        this.desc = '数创平台';
+        this.desc = '数创易平台';
         this.pic = mscxPage.shareHost + 'images/newicon/ic_newlogo.png';
 
         this.$qrcode = this.$('#qrcode');

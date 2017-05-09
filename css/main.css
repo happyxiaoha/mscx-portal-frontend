@@ -2861,7 +2861,8 @@ ul.pagination>li.active>a {
 .ns-wd2 .wdBody p {
     color: #999;
     margin-bottom: 1em;
-    text-decoration: 2em
+    text-decoration: 2em;
+    line-height: 26px;
 }
 
 .ns-wd2 .wdBody .imgWrap {

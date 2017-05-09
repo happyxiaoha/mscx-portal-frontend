@@ -1124,6 +1124,11 @@ input[type=search] {
     margin-top: -25px
 }
 
+.ns-content .ns-content-bannerLink .service-publish-btn {
+    width: 218px;
+    right: 65px;
+}
+
 .ns-content .ns-content-head {
     font-size: 16px;
     color: #666;

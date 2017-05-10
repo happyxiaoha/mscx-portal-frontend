@@ -96,7 +96,8 @@ var userAuthenticationView = Backbone.View.extend({
                 },
                 contractEmail: {
                     required: true,
-                    email: true
+                    email: true,
+                    maxlength: 50
                 }
             },
             submitHandler: function () {

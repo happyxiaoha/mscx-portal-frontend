@@ -61,6 +61,7 @@
     opacity: 0.7;
     border: 1px solid #ccc;
     width: 148px;
+    margin-bottom: 7px!important;
 }
 .swiper-right .swiper-slide:hover{
     opacity: 1;

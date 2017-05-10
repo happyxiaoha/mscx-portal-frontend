@@ -71,6 +71,11 @@
                                                 <img src="<%= item %>" alt="路演材料">
                                             </div>
                                         <% }) %>
+                                        <% if(data.projectDescription.split(',').length < 3){ %>
+                                            <% for(var i = 0; i < 3 - data.projectDescription.split(',').length; i++) { %>
+                                            <div class="swiper-slide"></div>
+                                            <% } %>
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>

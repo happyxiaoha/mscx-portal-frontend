@@ -62,6 +62,8 @@ var view = Backbone.View.extend({
 
         var galleryLeft = new Swiper('.swiper-left', {
             spaceBetween: 10,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
             direction: 'vertical'
         });
 
@@ -72,8 +74,6 @@ var view = Backbone.View.extend({
             slidesPerView: 2,
             touchRatio: 0.2,
             direction: 'vertical',
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
             slideToClickedSlide: true
         });
         galleryLeft.params.control = galleryThumbs;

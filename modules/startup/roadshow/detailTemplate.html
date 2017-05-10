@@ -51,7 +51,7 @@
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="home" style="padding:20px;border:1px solid #e8e8e8;border-top:none;overflow: hidden;">
+                            <div class="tab-pane active" id="home" style="padding:20px;border:1px solid #e8e8e8;border-top:none;overflow: hidden;position: relative;">
                                 <div class="swiper-left swiper-container col-md-6">
                                     <div class="swiper-wrapper">
                                         <% data.projectDescription.split(',').forEach(function(item){ %>
@@ -62,7 +62,9 @@
                                     </div>
                                     
                                 </div>
-                                <div class="swiper-container swiper-right col-md-3">
+                                <div class="roadshow-slide swiper-button-next"></div>
+                                <div class="roadshow-slide swiper-button-prev"></div>
+                                <div class="swiper-container swiper-right col-md-2">
                                     <div class="swiper-wrapper">
                                         <% data.projectDescription.split(',').forEach(function(item){ %>
                                             <div class="swiper-slide">
@@ -70,8 +72,6 @@
                                             </div>
                                         <% }) %>
                                     </div>
-                                    <div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div>
                                 </div>
                             </div>
                         </div>

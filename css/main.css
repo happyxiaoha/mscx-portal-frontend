@@ -3042,7 +3042,7 @@ ul.pagination>li.active>a {
 }
 
 .breadcrumb a,.hotTz p {
-    color: #999
+    color: #999;
 }
 
 .hotTz .hotTzItem {
@@ -3069,7 +3069,11 @@ ul.pagination>li.active>a {
 }
 
 .hotTz p {
-    font-size: 12px
+    font-size: 12px;
+    width: 170px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .tab-content {

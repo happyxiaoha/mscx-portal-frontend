@@ -98,7 +98,7 @@ var offlineMeetView = Backbone.View.extend({
             if(item.id == id) return item;
         })
 
-        layer.alert(reasonItem.platContractNo || '暂无', {title: '查看联系人'});
+        layer.alert(reasonItem.platContractNo || '暂无', {title: '查看联系方式'});
     }
 });
 

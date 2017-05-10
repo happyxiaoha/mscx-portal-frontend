@@ -16,6 +16,7 @@ var unFollowModel = Backbone.Model.extend({
     url: mscxPage.request.roadshow + 'roadshow/deleteUserAttention.do'
 });
 
+require('util');
 require('../../../lib/swiper.jquery.js');
 
 var view = Backbone.View.extend({

@@ -28,6 +28,9 @@
 }
 .activity-des {white-space: pre-line; word-break: break-all;overflow: hidden;}
 
+.swiper-left {
+    border: 1px solid #ccc;
+}
 .swiper-container {
     height: 400px;
 }
@@ -47,12 +50,17 @@
     align-items: center;
 }
 .swiper-right {
-    height: 250px;
+    height: 290px;
     overflow: hidden;
-    margin-top: 75px;
+    margin-top: 54px;
+    margin-left: 3.2%;
+    width: 150px;
+    float: left;
 }
 .swiper-right .swiper-slide {
     opacity: 0.7;
+    border: 1px solid #ccc;
+    width: 148px;
 }
 .swiper-right .swiper-slide:hover{
     opacity: 1;
@@ -71,18 +79,18 @@
 }
 .roadshow-slide.swiper-button-next {
     background: url(../../images/newicon/slide-down.png) no-repeat center;
-    width: 140px;
-    height: 50px;
-    top: 50px;
-    left: 50%;
+    left: 69%;
     border: 1px solid #ccc;
+    width: 150px;
+    height: 35px;
+    top: 42px;
 }
 .roadshow-slide.swiper-button-prev {
     background: url(../../images/newicon/slide-up.png) no-repeat center;
-    width: 140px;
-    height: 50px;
+    width: 150px;
+    height: 35px;
     bottom: 20px;
     top: initial;
-    left: 50%;
+    left: 69%;
     border: 1px solid #ccc;
 }

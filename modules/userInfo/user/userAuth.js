@@ -223,6 +223,9 @@ var userAuthenticationView = Backbone.View.extend({
     },
     changeAuthType: function (e) {
         var $this = e.target.tagName == 'I' ? $(e.target).parent() : $(e.target);
+
+        if($this.hasClass('disabled')) return;
+
         if($this.is('label') && !$this.hasClass('active')) {
             $('.identifide.active ').removeClass('active');
             $this.addClass('active');

@@ -102,7 +102,7 @@ var createActivityView = Backbone.View.extend({
             this.model = new updateRoadShowModel();
             this.model.set('thumbnailImg',res.thumbnailImg);
             // this.model.set('teamImg',res.teamImg);
-            this.model.set('projectDescription',res.projectDescription);
+            this.model.set('projectDescription', res.projectDescription);
             // this.model.set('operationImg',res.operationImg);
             this.model.set('tags',res.tagIds.replace('，',','));
             this.model.set('id',this.id);
@@ -277,10 +277,12 @@ var createActivityView = Backbone.View.extend({
             var status = this.model.get('status');
             var msg = status == 2 ? '已提交审核！' : '已提交暂存！';
             var tags = this.model.get('tags').replace(',','，');
-            var projectArray = this.model.get('projectDescription');
+            var projectArray = [].concat(this.model.get('projectDescription'));
             var teamArray = this.model.get('teamImg');
 
-            this.model.set('projectDescription', (_.filter(projectArray, function(item){return item !== undefined})).join(','));
+            if(!this.id) {
+                this.model.set('projectDescription', (_.filter(projectArray, function(item){return item !== undefined})).join(','));
+            }            
             // this.model.set('teamImg', (_.filter(teamArray, function(item){return item !== undefined})).join(','))
             this.model.set('tags',tags);
             this.model.set('financingLimit', +obj.financingLimit);

@@ -46,3 +46,36 @@
     -webkit-align-items: center;
     align-items: center;
 }
+.swiper-right {
+    height: 250px;
+    overflow: hidden;
+}
+.swiper-right .swiper-slide {
+    opacity: 0.7;
+}
+.swiper-right .swiper-slide:hover{
+    opacity: 1;
+}
+.swiper-right .swiper-slide.swiper-slide-active{
+    opacity: 1;
+}
+.swiper-right .swiper-slide img{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.swiper-right .swiper-button-next {
+    background: url(../../images/newicon/slide-down.png) no-repeat center;
+    width: 100%;
+    height: 65px;
+    top: 10px;
+    left: 0;
+}
+.swiper-right .swiper-button-prev {
+    background: url(../../images/newicon/slide-up.png) no-repeat center;
+    width: 100%;
+    height: 65px;
+    bottom: 0px;
+    top: initial;
+    left: 0;
+}

@@ -65,31 +65,13 @@
                     </div>
                 </div>
                 <div class="clearfix ReleaseList">
-                    <p class="fl R_left"><i class="need">*</i>项目介绍：</p>
+                    <p class="fl R_left"><i class="need">*</i>路演材料：</p>
                     <div class="fl R_right">
                         <% res.projectDescription.split(',').forEach(function(item){ %>
                             <p class="allInfoImg mr10">
-                                <img src="<%= item %>" alt="项目介绍">
+                                <img src="<%= item %>" alt="路演材料">
                             </p>
                         <% }) %>
-                    </div>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left"><i class="need">*</i>团队成员：</p>
-                    <div class="fl R_right">
-                        <% res.teamImg.split(',').forEach(function(item){ %>
-                            <p class="allInfoImg mr10">
-                                <img src="<%= item %>" alt="团队成员">
-                            </p>
-                        <% }) %>
-                    </div>
-                </div>
-                <div class="clearfix ReleaseList">
-                    <p class="fl R_left"><i class="need">*</i>运营与投资：</p>
-                    <div class="fl R_right">
-                        <p class="allInfoImg">
-                            <img src="<%=res.operationImg%>" alt="运营与投资">
-                        </p>
                     </div>
                 </div>
             </div>

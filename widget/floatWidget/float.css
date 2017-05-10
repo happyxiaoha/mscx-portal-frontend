@@ -57,14 +57,14 @@
 .showercode {background-position: 0 -128px;}
 .showephone {background-position: 0 -168px;}
 .showemessage {background-position: 0 -42px;}
-.theme-1:hover {border:1px solid #5cb981;}
+.wpa-container:hover {border:1px solid #5cb981;}
 .er-code {
     height: 165px;
     width: 165px;
     padding: 10px;
     position: fixed;
     top: 50%;
-    margin-top: -165px;
+    margin-top: -100px;
     z-index: 200;
     right: 55px;
     background: url("../../images/codeBg.png") no-repeat;

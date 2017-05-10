@@ -60,14 +60,24 @@ var view = Backbone.View.extend({
 
         this.$followBtn.text(this.attentionFlag ? '取消关注' : '关注');
 
-        var swiper = new Swiper('.swiper-container', {
+        var galleryLeft = new Swiper('.swiper-left', {
+            spaceBetween: 10,
+            direction: 'vertical'
+        });
+
+        //this.nJson.projectDescription.split(',').length
+
+        var galleryThumbs = new Swiper('.swiper-right', {
+            spaceBetween: 10,
+            slidesPerView: 2,
+            touchRatio: 0.2,
+            direction: 'vertical',
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
-            slidesPerView: 1,
-            paginationClickable: true,
-            spaceBetween: 30,
-            loop: false
+            slideToClickedSlide: true
         });
+        galleryLeft.params.control = galleryThumbs;
+        galleryThumbs.params.control = galleryLeft;
     },
     selectTab: function(event) {
         event.preventDefault();

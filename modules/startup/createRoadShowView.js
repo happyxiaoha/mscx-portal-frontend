@@ -101,9 +101,9 @@ var createActivityView = Backbone.View.extend({
             this.$el.find('#publishRoadShow').html(_.template($('#addFormTemplate').html())({res:res}));
             this.model = new updateRoadShowModel();
             this.model.set('thumbnailImg',res.thumbnailImg);
-            this.model.set('teamImg',res.teamImg);
+            // this.model.set('teamImg',res.teamImg);
             this.model.set('projectDescription',res.projectDescription);
-            this.model.set('operationImg',res.operationImg);
+            // this.model.set('operationImg',res.operationImg);
             this.model.set('tags',res.tagIds.replace('，',','));
             this.model.set('id',this.id);
         }
@@ -281,7 +281,7 @@ var createActivityView = Backbone.View.extend({
             var teamArray = this.model.get('teamImg');
 
             this.model.set('projectDescription', (_.filter(projectArray, function(item){return item !== undefined})).join(','));
-            this.model.set('teamImg', (_.filter(teamArray, function(item){return item !== undefined})).join(','))
+            // this.model.set('teamImg', (_.filter(teamArray, function(item){return item !== undefined})).join(','))
             this.model.set('tags',tags);
             this.model.set('financingLimit', +obj.financingLimit);
             this.model.set('financingType',obj.financingType);

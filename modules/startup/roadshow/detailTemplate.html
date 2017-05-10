@@ -47,30 +47,26 @@
                     </div>
                     <div style="margin-top: 26px;">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="javascript:;" data-index="0">项目介绍</a></li>
-                            <li role="presentation"><a href="javascript:;" data-index="1">团队介绍</a></li>
+                            <li role="presentation" class="active"><a href="javascript:;" data-index="0">路演材料</a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="home" style="padding:20px;border:1px solid #e8e8e8;border-top:none;">
-                                <div class="container-fluid swiper-container">
+                            <div class="tab-pane active" id="home" style="padding:20px;border:1px solid #e8e8e8;border-top:none;overflow: hidden;">
+                                <div class="swiper-left swiper-container col-md-6">
                                     <div class="swiper-wrapper">
                                         <% data.projectDescription.split(',').forEach(function(item){ %>
                                             <div class="swiper-slide">
-                                                <img src="<%= item %>" alt="项目介绍" />
+                                                <img src="<%= item %>" alt="路演材料" />
                                             </div>
                                         <% }) %>
                                     </div>
-                                    <div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div>
+                                    
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="profile" style="padding:20px;border:1px solid #e8e8e8;border-top:none;">
-                                <div class="container-fluid swiper-container">
+                                <div class="swiper-container swiper-right col-md-3">
                                     <div class="swiper-wrapper">
-                                        <% data.teamImg.split(',').forEach(function(item){ %>
+                                        <% data.projectDescription.split(',').forEach(function(item){ %>
                                             <div class="swiper-slide">
-                                                <img src="<%= item %>" alt="团队成员">
+                                                <img src="<%= item %>" alt="路演材料">
                                             </div>
                                         <% }) %>
                                     </div>

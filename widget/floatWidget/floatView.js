@@ -25,10 +25,10 @@ var floatView = Backbone.View.extend({
             var s = $(window).scrollTop();   //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐
             if( s > 200){
                 $("#gotoTop").fadeIn(100);
-                $("#erCode").css({'margin-top': '-104px'});
+                $("#erCode").css({'margin-top': '-50px'});
             }else{
                 $("#gotoTop").fadeOut(200);
-                $("#erCode").css({'margin-top': '-165px'});
+                $("#erCode").css({'margin-top': '-100px'});
             }
         });
     },

@@ -8,7 +8,6 @@ var template = require('html!./main.html'),
     bannerView = require('./banner.js'),
     firstRecommendView = require('./firstRecommendView.js');
 require('./main.css');
-require('util');
 require('../../lib/swiper.jquery.js');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
 

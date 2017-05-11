@@ -16,6 +16,7 @@ var unFollowModel = Backbone.Model.extend({
     url: mscxPage.request.roadshow + 'roadshow/deleteUserAttention.do'
 });
 
+require('util');
 require('../../../lib/swiper.jquery.js');
 
 var view = Backbone.View.extend({
@@ -71,10 +72,15 @@ var view = Backbone.View.extend({
 
         var galleryThumbs = new Swiper('.swiper-right', {
             spaceBetween: 10,
-            slidesPerView: 3,
+            slidesPerView: 'auto',
+            centeredSlides: true,
             touchRatio: 0.2,
             direction: 'vertical',
             slideToClickedSlide: true
+            // onClick: function(swiper, event) {
+            //     // debugger;
+            //     galleryLeft.slideTo(swiper.clickedIndex);
+            // }
         });
         galleryLeft.params.control = galleryThumbs;
         galleryThumbs.params.control = galleryLeft;

@@ -2090,7 +2090,8 @@ ul.pagination>li.active>a {
 .ns-apiDetailComponent .media-body .media-heading .tags {
     display: inline-block;
     margin-left: 1em;
-    vertical-align: top
+    vertical-align: top;
+    max-width: 280px;
 }
 
 .ns-apiDetailComponent .media-body .media-heading .tags:after,.ns-apiDetailComponent .media-body .media-heading .tags:before {
@@ -2101,6 +2102,7 @@ ul.pagination>li.active>a {
 .ns-apiDetailComponent .media-body .media-heading .tags .tagItem {
     float: left;
     margin-right: 4px;
+    margin-bottom: 4px;
     padding: 2px 4px;
     border: 1px solid #5cb981;
     font-size: 12px;

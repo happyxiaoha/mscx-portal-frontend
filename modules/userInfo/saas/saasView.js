@@ -157,7 +157,7 @@ var myPublishListView = Backbone.View.extend({
             sName = $($this.find('td')[0]).html();
         this.serviceId = sId;
         this.detailChargeModel.fetch({
-            data: {appId: sId},
+            data: {saasId: sId},
             success: function () {
                 that.chargeRule = null;
                 that.buildPackageTable();
@@ -302,13 +302,13 @@ var myPublishListView = Backbone.View.extend({
             obj = $('#serverChargePackage').serializeObject();
         if(this.updateIndex < 0){
             obj.flag = 'C';
-            obj.appId = this.serviceId;
+            obj.saasId = this.serviceId;
             chargeRule.push(obj);
         }
         else {
             var prev = chargeRule[this.updateIndex];
             obj.flag = prev.flag || 'U';
-            obj.appId = this.serviceId;
+            obj.saasId = this.serviceId;
             chargeRule[this.updateIndex] = obj;
             this.updateIndex = -1;
         }

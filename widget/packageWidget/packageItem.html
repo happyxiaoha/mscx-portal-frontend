@@ -57,12 +57,12 @@
             <%if(res.isOth){%>
             <label class="gl">
                 <span>使用限制：</span>
-                <td><%if(!res.invokeLimit || res.invokeLimit == '-1'){%>
+                <p class="mes"><%if(!res.invokeLimit || res.invokeLimit == '-1'){%>
                     不限制
                     <%}else{%>
                     <%=res.invokeLimit%><%= res.chargeType == '04' ? '次' : '天'%>
                     <%}%>
-                </td>
+                </p>
             </label>
             <%}else{%>
             <label class="gl">

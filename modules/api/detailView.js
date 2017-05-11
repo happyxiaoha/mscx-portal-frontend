@@ -4,7 +4,7 @@ var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
 var offlineView = require('offlineWidget/offlineLayer.js');
 var shareView = require('shareWidget/shareView.js');
-var selectedView = require('./selectedAPIView.js');
+var selectedView = require('selectedAPIWidget/selectedAPIView.js');
 
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getApiServiceDetailById.do?t=' + new Date().getTime()

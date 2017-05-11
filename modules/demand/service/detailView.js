@@ -2,7 +2,7 @@
 
 var template = require('html!./detailTemplate.html');
 var applyView = require('./applyLayer.js');
-var selectedView = require('hotDataReportWidget/dataReportView.js');
+var selectedView = require('selectedServiceWidget/selectedServiceView.js');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'getServiceDetail.do'
 })

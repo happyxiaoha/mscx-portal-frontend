@@ -1,7 +1,7 @@
 'use strict';
 
 var template = require('html!./detailTemplate.html');
-var selectedView = require('hotDataReportWidget/dataReportView.js');
+var selectedView = require('selectedAPIWidget/selectedAPIView.js');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'dataDetail.do'
 })

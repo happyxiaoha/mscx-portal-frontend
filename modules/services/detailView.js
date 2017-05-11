@@ -8,7 +8,7 @@ var serviceDetailModelTemplate = require('html!./detailTemplate.html');
 var shareView = require('shareWidget/shareView.js');
 var offlineView = require('offlineWidget/offlineLayer.js');
 var applyView = require('./applyLayer.js');
-var selectedView = require('./selectedServiceView.js');
+var selectedView = require('selectedServiceWidget/selectedServiceView.js');
 
 var serviceDetailModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'get.do'

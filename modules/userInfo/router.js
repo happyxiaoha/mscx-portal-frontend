@@ -26,7 +26,14 @@ var Routes =  Backbone.Router.extend({
         'recharge': 'rechargeView',
         'saas': 'saasView',
         'saasApply': 'saasApplyView',
-        'saasFollow': 'saasFollowView'
+        'saasFollow': 'saasFollowView',
+        // 账户管理
+        'account': 'accountView',
+        'setPayPassword': 'setPayPasswordView',
+        'rechargeRecord': 'rechargeRecordView',
+        'consumeRecord': 'consumeRecordView',
+        'forgetPayPassword': 'forgetPayPasswordView',
+        'recharge/result/:order': 'accountView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -122,6 +129,48 @@ var Routes =  Backbone.Router.extend({
     saasFollowView: function() {
         var saasView = require('userInfo/saas/followView.js');
         mscxPage.views['saasFollowViewObj'] = new saasView();
+    },
+    // 账户充值
+    accountView: function(order) {
+        var view = require('userInfo/account/accountView.js');
+
+        mscxPage.views['accountView'] = new view({
+            id: 'recharge',
+            model: {
+                order: order
+            }
+        });
+    },
+    // 支付密码设置
+    setPayPasswordView: function() {
+        var view = require('userInfo/account/accountView.js');
+
+        mscxPage.views['setPayPasswordViewObj'] = new view({
+            id: 'setPayPassword'
+        });
+    },
+    // 忘记密码
+    forgetPayPasswordView: function() {
+        var accountView = require('userInfo/account/accountView.js');
+        mscxPage.views['forgetPayPasswordViewObj'] = new accountView({
+            id: 'forgetPayPassword'
+        });
+    },
+    // 充值记录
+    rechargeRecordView: function() {
+        var view = require('userInfo/account/accountView.js');
+
+        mscxPage.views['rechargeRecordViewObj'] = new view({
+            id: 'rechargeRecord'
+        });
+    },
+    // 支出记录
+    consumeRecordView: function() {
+        var view = require('userInfo/account/accountView.js');
+
+        mscxPage.views['consumeRecordViewObj'] = new view({
+            id: 'consumeRecord'
+        });
     },
     execute: function(callback,args,name) {
         if(mscxPage.userCenter){

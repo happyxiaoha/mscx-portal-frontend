@@ -243,11 +243,11 @@ var createDemandView = Backbone.View.extend({
             }, 1000);
         }
     },
-    renderPackageUpdate: function (appId) {
+    renderPackageUpdate: function (saasId) {
         var that = this;
         new detailChargeModel().fetch({
             data: {
-                'appId': appId
+                'saasId': saasId
             },
             'success': function (model) {
                 that.chargeRule = model.get('result');
@@ -263,7 +263,7 @@ var createDemandView = Backbone.View.extend({
         this.chargeType = '01';
         if(detail.result && detail.result.chargeType){
             this.chargeType = detail.result.chargeType;
-            this.appId = detail.result.id;
+            this.saasId = detail.result.id;
         }
         if(this.chargeType == '02'){
             this.renderPackageUpdate(detail.result.id);
@@ -529,7 +529,7 @@ var createDemandView = Backbone.View.extend({
         if(this.model.idAttribute == 'modifyId'){
             if(this.updateIndex < 0){
                 res.flag = 'C';
-                res.appId = this.appId;
+                res.saasId = this.saasId;
                 serverList.push(res);
             }
             else {

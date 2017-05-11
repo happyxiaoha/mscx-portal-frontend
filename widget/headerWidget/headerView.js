@@ -26,6 +26,11 @@ var menuList = [
         key: 'service'
     },
     {
+        name: 'SaaS服务',
+        url: mscxPage.urlConfig.saasPage,
+        key: 'saas'
+    },
+    {
         name: '需求定制',
         url: mscxPage.urlConfig.demandPage,
         key: 'demand'

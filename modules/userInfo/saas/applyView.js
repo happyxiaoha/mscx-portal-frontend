@@ -1,12 +1,12 @@
 'use strict'
 
-var commonTemplate = require('html!./common.html');
+var commonTemplate = require('html!./saasCommon.html');
 var template = require('html!./apply.html');
-require('./servers.css');
+require('./saas.css');
 require('util');
 
 var applyListModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'weiApp/getSelfWeiAppList.do'
+    url: mscxPage.request.order + 'saas/getSaaSList.do'
 });
 
 // 申请的服务
@@ -26,7 +26,7 @@ var myApplyListView = Backbone.View.extend({
     initialize: function() {
         this.$el.html(this.commonTemplate({name:'apply'}));
 
-        this.$content = this.$('#serverInfo');
+        this.$content = this.$('#saasInfo');
 
         this.model = new applyListModel();
         

@@ -8,20 +8,20 @@ require('util');
 var packageWidgetView = require('packageWidget/packageItemView.js');
 
 var publishListModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'publish/list.do'
+    url: mscxPage.request.saas + 'publish/list.do'
 });
 var unshelveModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'unshelve.do'
+    url: mscxPage.request.saas + 'unshelve.do'
 });
 var deleteModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'delete.do'
+    url: mscxPage.request.saas + 'delete.do'
 });
 // 获取套餐信息
 var detailChargeModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'publish/chargeRule/get.do'
+    url: mscxPage.request.saas + 'publish/chargeRule/get.do'
 });
 var savePackageModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'chargeRule/modify.do'
+    url: mscxPage.request.saas + 'chargeRule/modify.do'
 });
 
 // 发布的服务

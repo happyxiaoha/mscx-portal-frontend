@@ -9,11 +9,11 @@ require('./saas.css');
 require('util');
 
 var detailModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'publish/get.do'
+    url: mscxPage.request.saas + 'publish/get.do'
 });
 // 获取套餐信息
 var detailChargeModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'publish/chargeRule/get.do'
+    url: mscxPage.request.saas + 'publish/chargeRule/get.do'
 });
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
@@ -34,7 +34,7 @@ var view = Backbone.View.extend({
         var that = this;
         new detailChargeModel().fetch({
             data: {
-                'appId': appId
+                'saasId': appId
             },
             'success': function (model) {
                 that.chargeRule = model.get('result');

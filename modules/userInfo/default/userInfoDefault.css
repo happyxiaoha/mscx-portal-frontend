@@ -1,7 +1,7 @@
 .my-info-area {overflow: hidden;}
 .right-con-wrap {width: 1000px;}
 .D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
-.D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tr th{background: #efefef;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #666;}
 .D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}

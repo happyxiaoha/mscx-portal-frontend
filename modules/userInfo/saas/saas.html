@@ -18,7 +18,7 @@
                 <tr>
                     <td>
                         <% if(item.status == '0'){ %>
-                            <a href="services.html?detail/<%= item.id %>"><%= item.name %></a>
+                            <a href="saas.html?detail/<%= item.id %>"><%= item.name %></a>
                         <% }else{ %>
                             <a class="cor3"><%= item.name %></a>
                         <% } %>
@@ -30,14 +30,14 @@
                     <td>
                         <!-- 通过 -->
                         <% if(item.status == '0'){ %>
-                            <a href="services.html#edit/<%= item.id %>">修改</a>
+                            <a href="saas.html#edit/<%= item.id %>">修改</a>
                             <%if(item.chargeType == '02'){%>
                             <a href="javascript:;" data-id="<%= item.id %>" class="changeServerPrice">调价</a>
                             <%}%>
                             <a class="unshelve" data-id="<%= item.id %>" href="javascript:;">下架</a>
                         <!-- 审核中 -->
                         <% }else if(item.status == '2'){ %>
-                            <a href="services.html#show/<%= item.id %>">查看</a>
+                            <a href="saas.html#show/<%= item.id %>">查看</a>
                         <!-- 拒绝 -->
                         <% }else if(item.status == '3'){ %>
                             <a href="javascript:;" class="reason" data-comment="<%= item.comments %>">查看原因</a>
@@ -45,11 +45,11 @@
                             <a href="javascript:;" data-id="<%= item.id %>" class="changeServerPrice">调价</a>
                             <%}%>
                             <% if(item.isOnline == 'Y'){ %>
-                                <a class="edit" href="services.html#edit/<%= item.id %>">修改</a>
+                                <a class="edit" href="saas.html#edit/<%= item.id %>">修改</a>
                                 <a class="unshelve" href="javascript:;" data-id="<%= item.id %>">下架</a>
                             <% }else{ %>
                                 <a class="delete" data-id="<%= item.id %>" href="javascript:;">删除</a>
-                                <a class="edit" href="services.html#edit/<%= item.id %>">修改</a>
+                                <a class="edit" href="saas.html#edit/<%= item.id %>">修改</a>
                             <% } %>
                         <% } %>
                     </td>

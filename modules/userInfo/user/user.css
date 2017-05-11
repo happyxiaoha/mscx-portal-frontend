@@ -1,5 +1,5 @@
 /*用户基本信息*/
-.M-mainInfo{padding: 29px 25px;border: 1px solid #ccc;}
+.M-mainInfo{padding: 29px 25px;border: 1px solid #ccc;background: #fff;}
 .M-rightMyTxt{width: 620px;font-size: 15px;}
 .M-rightMyTxt p{margin-bottom: 20px;}
 .M-rightMyTxt p span{display: inline-block;line-height: 20px}
@@ -8,7 +8,7 @@
 /*个人、企业认证*/
 .R-titTab{height: 36px;border-bottom: 1px solid #ccc;}
 .R-titTab span{height: 36px;border: 1px solid transparent;font-size: 14px;padding: 0 20px;display: inline-block;line-height: 36px;text-align: center;cursor: pointer;}
-.R-titTab span.active{background: #fff;border: 1px solid #ccc;border-bottom: 0;color: #069cd9;}
+.R-titTab span.active{background: #fff;border: 1px solid #ccc;border-bottom: 0;color: #00c4c3;}
 
 .inputConsList {position: relative;}
 .user-password-area {min-height: 298px;border: 1px solid #ccc;}

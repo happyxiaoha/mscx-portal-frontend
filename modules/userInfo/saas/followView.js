@@ -1,15 +1,15 @@
 'use strict'
 
-var commonTemplate = require('html!./common.html');
+var commonTemplate = require('html!./saasCommon.html');
 var template = require('html!./follow.html');
 require('./saas.css');
 require('util');
 
 var followListModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'attention/list.do'
+    url: mscxPage.request.saas + 'attention/list.do'
 });
 var unfollowModel = Backbone.Model.extend({
-    url: mscxPage.request.app + 'attention/delete.do'
+    url: mscxPage.request.saas + 'attention/delete.do'
 });
 
 // 关注的服务
@@ -27,7 +27,7 @@ var myFollowListView = Backbone.View.extend({
     initialize: function() {
         this.$el.html(this.commonTemplate({name:'follow'}));
 
-        this.$content = this.$('#serverInfo');
+        this.$content = this.$('#saasInfo');
 
         this.model = new followListModel();
         this.unfollowModel = new unfollowModel();
@@ -49,8 +49,9 @@ var myFollowListView = Backbone.View.extend({
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
         this.$content.html(this.template({followList: followList}));
+        
         laypage({
-            cont: 'serverPage',
+            cont: 'saasPage',
             skip: true,
             pages: this.pagObj.totalPage,
             curr: this.pagObj.pageNum || 1,

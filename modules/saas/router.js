@@ -4,9 +4,29 @@
 
 var Routes =  Backbone.Router.extend({
     routes: {
+        '': 'saasView',
+        'saas': 'saasView',
+        'detail/:id': 'detailView',
         'publish': 'publishView',
         'edit/:id': 'publishView',
         'show/:id': 'showView'
+    },
+    saasView: function() {
+        if(location.search) return;
+        
+        var saasView = require('saas/saasView.js');
+        mscxPage.views['saasObj'] = new saasView({
+            id: 'saas'
+        });
+    },
+    detailView: function(id) {
+        var saasDetailView = require('saas/detailView.js');
+        var detailView = mscxPage.views['saasDetailView'];
+        detailView && detailView.undelegateEvents() && detailView.stopListening();
+
+        mscxPage.views['saasDetailView'] = new saasDetailView({
+            id: id
+        });
     },
     publishView: function (id) {
         if(!mscxPage.isLogin() || !mscxPage.isRealName()) {

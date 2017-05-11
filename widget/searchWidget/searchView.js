@@ -34,6 +34,10 @@ var Models = {
     serviceCategory: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'category/getServiceCategory.do'
     })),
+    // saas分类
+    saasCategory: new (Backbone.Model.extend({
+        url: mscxPage.request.dict + 'category/getSassCategory.do'
+    })),
     // 数据API标签
     dataTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getDataApiTags.do'
@@ -53,6 +57,10 @@ var Models = {
     // 微服务标签
     serviceTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getServiceTags.do'
+    })),
+    // saas标签
+    saasTags: new (Backbone.Model.extend({
+        url: mscxPage.request.dict + 'tags/getSassTags.do'
     })),
     // 标签详情 根据categoryId获取
     detailTags: new (Backbone.Model.extend({
@@ -99,6 +107,7 @@ var view = Backbone.View.extend({
         this.listenTo(Models.modelTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.openDataTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.serviceTags, 'sync', this.renderDetailTags);
+        this.listenTo(Models.saasTags, 'sync', this.renderDetailTags);
 
         this.searchParams = new Backbone.Model();
 
@@ -132,9 +141,9 @@ var view = Backbone.View.extend({
         _.extend(model, this.filterMaps);
 
         // 处理一下model中的标签
-        model.tags = model.dataTags || model.toolTags || model.modelTags || model.openDataTags || model.serviceTags;
+        model.tags = model.dataTags || model.toolTags || model.modelTags || model.openDataTags || model.serviceTags || model.saasTags;
         // 处理一下model中的分类
-        model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory;
+        model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory || model.saasCategory;
 
         for(var key in model) {
             if(model[key].toJSON) {

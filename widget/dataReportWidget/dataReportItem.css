@@ -106,9 +106,12 @@
     clear: both
 }
 
+.ns-list-item.data-report-list .media-body .media-body-footer .footerItem:last-child {
+    width: 20%;
+}
 .ns-list-item.data-report-list .media-body .media-body-footer .footerItem {
     float: left;
-    width: 33.33333%;
+    width: 40%;
     font-size: 12px;
     color: #999
 }

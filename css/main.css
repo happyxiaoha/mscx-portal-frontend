@@ -3061,8 +3061,14 @@ ul.pagination>li.active>a {
     width: 70px
 }
 
+.hotTz .hotTzItem .media-left {
+    float: left;
+}
+
 .hotTz .hotTzItem .media-body {
     vertical-align: middle;
+    width: 63%;
+    float: left;
 }
 
 .hotTz .media-heading {

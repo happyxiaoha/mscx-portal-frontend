@@ -160,7 +160,7 @@ var openDataDetailView = Backbone.View.extend({
             model: {
                 apiServiceId: this.id,
                 cname: detail.name,
-                type: 6
+                type: detail.type || 7
             }
         });
         this.offlineView.delegate = this;

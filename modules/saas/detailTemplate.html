@@ -65,10 +65,15 @@
                     </div>
                 </div>
             </div>
-            <% if(data.demoImage1 || data.demoImage2 || data.demoImage3){ %>
+            
             <div class="R-Cons">
-                <p class="titTop bggray ft14 corBlue">详情信息</p>
+                <p class="titTop bggray ft14 ">
+                    <a class="corBlue mr35" data-index="0">详情信息</a>
+                    <a data-index="1">版本特性</a>
+                </p>
+                
                 <div class="titTopCons picScroll-left">
+                    <% if(data.demoImage1 || data.demoImage2 || data.demoImage3){ %>
                     <a class="next" style="display: none;"></a>
                     <a class="prev" style="display: none;"></a>
                     <div class="bd">
@@ -90,9 +95,15 @@
                             <% }; %>
                         </ul>
                     </div>
+                    <% } %>
+                </div>
+                <div class="titTopCons picScroll-left hide">
+                    <div class="pl60 text-left">
+                        <%= data.versionFeatures %>
+                    </div>
                 </div>
             </div>
-            <% }; %>
+            
         </div>
         <% }else{ %>
         <div class="slideBanner clearfix">

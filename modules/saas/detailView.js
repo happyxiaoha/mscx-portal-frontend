@@ -30,7 +30,8 @@ var openDataDetailView = Backbone.View.extend({
     events: {
         'click #attention': 'attentionData',
         'click #offlineBtn': 'offlineChat',
-        'click #applyBtn': 'apply'
+        'click #applyBtn': 'apply',
+        'click .titTop a': 'toggleContent'
     },
     initialize: function() {
         this.$el.html();
@@ -183,6 +184,15 @@ var openDataDetailView = Backbone.View.extend({
                 me.offlineView.remove();
             }
         })
+    },
+    toggleContent: function(event) {
+        var $target = this.$(event.target);
+        var index = $target.data('index');
+
+        this.$('.titTop a').removeClass('corBlue');
+        $target.addClass('corBlue');
+        this.$('.titTopCons').addClass('hide').eq(index).removeClass('hide');
+
     }
 });
 

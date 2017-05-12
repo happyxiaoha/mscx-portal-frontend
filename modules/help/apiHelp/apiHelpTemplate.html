@@ -32,17 +32,16 @@
     <li>
         <h3 name="apiCall" id="apiCall">API调用</h3>
         <div>
-            <p>(一) 协议</p>
+            <p>2.1协议</p>
             <p>所有接口调用均采用HTTP远程调用方式，客户端调用并同步返回响应。</p>
             <p>数据格式： json</p>
         </div>
         <div>
-            <p>(二) 请求</p>
+            <p>2.2请求</p>
             <p>1.请求方式：get/post， 服务地址url格式为</p>
-            <p>http://domain/[datasource]/[service]/[servicename]</p>
+            <p>http://domain/[service]/[servicename]</p>
             <p>其中:</p>
             <p>domain为服务域名</p>
-            <p>datasource为数据来源</p>
             <p>service为服务名称</p>
             <p>servicename 为API名称</p>
 
@@ -50,55 +49,50 @@
             <p>Content-Type：application/json;charset=utf-8;</p>
 
             <p>3.请求header包含以下参数:</p>
-            <p>apikey: 用户申请的apikey</p>
-            <p>sign: 数据签名，由apikey、secretkey及请求参数经过特定算法生成(参考2.2)</p>
+            <p>user-date： 调用日期。格式yyyyMMddHHmmssSSS。17位日期字符串，小时采用24小时格式，如：20160101160758675</p>
+            <p>authorization： 鉴权码，其中，鉴权码（authorition）=dc:{apikey}:{signature}。鉴权码由三部分组成，他们之间以英文冒号隔开；（详细请参考2.2）</p>
         </div>
         <div>
-            <p>(三) 响应</p>
+            <p>2.3响应</p>
             <p>1.响应报文媒体类型为application/json;charset=utf-8</p>
-            <p>1.1鉴权信息</p>
+        </div>
+        <div>
+            <p>2.4鉴权信息</p>
         </div>
         <table class="table table-bordered">
             <tbody>
                 <tr>
                     <td style="width: 30%;">apikey</td>
-                    <td>用户登录平台，申请使用API生成，可在用户个人中心查看，或者直接由平台管理员提供</td>
+                    <td>用户注册平台帐号并实名认证通过后，可在用户个人中心查看</td>
                 </tr>
                 <tr>
                     <td>secretkey</td>
-                    <td>用户登录平台，申请使用API生成，可在用户个人中心查看，或者直接由平台管理员提供</td>
+                    <td>用户注册平台帐号并实名认证通过后，可在用户个人中心查看</td>
                 </tr>
                 <tr>
-                    <td>sign</td>
-                    <td>使用apikey,secretkey以及请求参数生成的数字签名</td>
-                </tr>
-                <tr>
-                    <td>生成签名算法</td>
+                    <td>authorization</td>
                     <td>
-                        <b>GET请求</b>
-                        <p>1.将请求参数按照参数名进行排序</p>
-                        <p>2.构造拼接被签名参数串，参数和参数之间用“&”号连接</p>
-                        <p>3.计算签名</p>
-                        <p>3.1 将appkey和参数串拼接并进行base64编码</p>
-                        <p>3.2 生成MD5摘要</p>
-                        <p>3.3 用secretKey将MD5摘要进行3DES加密</p>
-
-                        <b>POST请求</b>
-                        <p>1.将请求参数构造成json字符串</p>
-                        <p>2.计算签名（同上）</p>
-                        <p>计算签名示例代码：</p>
-                        <code>public static String signRequest(String apikey,String srcText,String secretkey)throws Exception{
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 对报文进行BASE64编码，避免中文处理问题
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String base64Text = new String(Base64.encodeBase64((apikey + srcText).getBytes("utf-8"), false));
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // MD5摘要，生成固定长度字符串用于加密
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String destText = MD5Util.md5Digest(base64Text);
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   AlgorithmData data = new AlgorithmData();
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data.setDataMing(destText);
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   data.setKey(secretkey);
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  // 3DES加密
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Algorithm3DES.encryptMode(data);
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    return data.getDataMi();
-                            }</code>
+                        <p>1）第一部分：固定值为dc</p>
+                        <p>2）第二部分：用户申请的apikey</p>
+                        <p>3）第三部分：数据签名（signature）</p>
+                        <p>例如：</p>
+                        <p>dc:test-apikey:ODExQUJENUFCRTBDQTc5NzM4RkQ2RTUzQzE2MDQyNUY=</p>
+                        <p>数据签名（signature），加密格式如下：</p>
+                        <code>signature =
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BASE64 {
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hmac_sha1{
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user-params + 换行符
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ user-date + 换行符
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                        </code>
+                        <p>数据签名由hmac_sha1加密后在经base64编码。hmac_sha1密钥为用户申请的secretkey</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>user-date</td>
+                    <td>
+                        <p>用日期。格式yyyyMMddHHmmssSSS。17位日期字符串，小时采用24小时格式，如：20160101160758675；</p>
                     </td>
                 </tr>
             </tbody>

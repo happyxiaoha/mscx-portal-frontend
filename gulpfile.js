@@ -24,7 +24,8 @@ var configRoot = {
     'contactUs': './js/contactUs.js',
     'message': './js/message.js',
     'startup': './js/startup.js',
-    'saas': './js/saas.js'
+    'saas': './js/saas.js',
+    'help': './js/help.js'
 };
 
 gulp.task('lint', function  () {

@@ -1,0 +1,114 @@
+<div class="title">帮助中心<i>&gt;</i><span>API使用</span></div>
+<ul class="main-native-area api-help-menu">
+    <li><a href="javascript:;" data-src="apiApply">1. API申请</a></li>
+    <li><a href="javascript:;" data-src="apiCall">2. API调用</a></li>
+    <li><a href="javascript:;" data-src="apiDes">3. API使用次数查看</a></li>
+</ul>
+<ul class="api-help-con">
+    <li>
+        <h3 name="apiApply" id="apiApply">API申请</h3>
+        <p>简介：API申请指的是平台API资源的申请及支付过程</p>
+        <div>
+            <p>(一)有固定申请次数的情况</p>
+            <p>1.点击详细页面申请功能</p>
+            <img src="../../../images/apihelp/apihelp1.png">
+            <p>2.收费套餐：选择套餐、输入申请套餐数，接受服务协议</p>
+            <img src="../../../images/apihelp/apihelp2.png">
+            <p>3.免费套餐：接受服务协议</p>
+            <img src="../../../images/apihelp/apihelp3.png">
+            <p>4.收费套餐：如果只有一项资源可以点击立即支付完成申请</p>
+            <img src="../../../images/apihelp/apihelp4.png">
+            <p>5.收费套餐：如果支付过程中出现异常或者报错，用户可以在用户中心购物车中继续完成支付</p>
+            <img src="../../../images/apihelp/apihelp5.png">
+            <p>6.收费套餐：如果要选择多项资源可以加入购物车后统一支付完成申请</p>
+            <img src="../../../images/apihelp/apihelp6.png">
+        </div>
+        <div>
+            <p>(二)没有固定申请次数的情况</p>
+            <p>如果想对某项资源进行深度合作，可以点击线下洽谈申请，会有工作人员第一时间和您取得联系</p>
+            <img src="../../../images/apihelp/apihelp7.png">
+        </div>
+    </li>
+    <li>
+        <h3 name="apiCall" id="apiCall">API调用</h3>
+        <div>
+            <p>(一) 协议</p>
+            <p>所有接口调用均采用HTTP远程调用方式，客户端调用并同步返回响应。</p>
+            <p>数据格式： json</p>
+        </div>
+        <div>
+            <p>(二) 请求</p>
+            <p>1.请求方式：get/post， 服务地址url格式为</p>
+            <p>http://domain/[datasource]/[service]/[servicename]</p>
+            <p>其中:</p>
+            <p>domain为服务域名</p>
+            <p>datasource为数据来源</p>
+            <p>service为服务名称</p>
+            <p>servicename 为API名称</p>
+
+            <p>2.协议消息头包含以下属性:</p>
+            <p>Content-Type：application/json;charset=utf-8;</p>
+
+            <p>3.请求header包含以下参数:</p>
+            <p>apikey: 用户申请的apikey</p>
+            <p>sign: 数据签名，由apikey、secretkey及请求参数经过特定算法生成(参考2.2)</p>
+        </div>
+        <div>
+            <p>(三) 响应</p>
+            <p>1.响应报文媒体类型为application/json;charset=utf-8</p>
+            <p>1.1鉴权信息</p>
+        </div>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td style="width: 30%;">apikey</td>
+                    <td>用户登录平台，申请使用API生成，可在用户个人中心查看，或者直接由平台管理员提供</td>
+                </tr>
+                <tr>
+                    <td>secretkey</td>
+                    <td>用户登录平台，申请使用API生成，可在用户个人中心查看，或者直接由平台管理员提供</td>
+                </tr>
+                <tr>
+                    <td>sign</td>
+                    <td>使用apikey,secretkey以及请求参数生成的数字签名</td>
+                </tr>
+                <tr>
+                    <td>生成签名算法</td>
+                    <td>
+                        <b>GET请求</b>
+                        <p>1.将请求参数按照参数名进行排序</p>
+                        <p>2.构造拼接被签名参数串，参数和参数之间用“&”号连接</p>
+                        <p>3.计算签名</p>
+                        <p>3.1 将appkey和参数串拼接并进行base64编码</p>
+                        <p>3.2 生成MD5摘要</p>
+                        <p>3.3 用secretKey将MD5摘要进行3DES加密</p>
+
+                        <b>POST请求</b>
+                        <p>1.将请求参数构造成json字符串</p>
+                        <p>2.计算签名（同上）</p>
+                        <p>计算签名示例代码：</p>
+                        <code>public static String signRequest(String apikey,String srcText,String secretkey)throws Exception{
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 对报文进行BASE64编码，避免中文处理问题
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String base64Text = new String(Base64.encodeBase64((apikey + srcText).getBytes("utf-8"), false));
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // MD5摘要，生成固定长度字符串用于加密
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String destText = MD5Util.md5Digest(base64Text);
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   AlgorithmData data = new AlgorithmData();
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data.setDataMing(destText);
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   data.setKey(secretkey);
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  // 3DES加密
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Algorithm3DES.encryptMode(data);
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    return data.getDataMi();
+                            }</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </li>
+    <li>
+        <h3 name="apiDes" id="apiDes">API使用次数查看</h3>
+        <div>
+            <p>用户可以通过用户中心-我的API-申请(购买)的API查看API使用次数与API剩余次数</p>
+            <img src="../../../images/apihelp/apihelp8.png">
+        </div>
+    </li>
+</ul>

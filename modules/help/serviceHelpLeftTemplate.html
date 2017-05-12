@@ -1,0 +1,6 @@
+<a href="#info" class="helpInfo">帮助中心</a>
+<ul>
+    <% _.each(menu, function (obj) { %>
+    <li class="<%=obj.key+'View' == name ? 'active': ''%>"><a href="#<%=obj.key%>"><%=obj.val%></a></li>
+    <% }); %>
+</ul>

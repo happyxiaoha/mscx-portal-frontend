@@ -1124,7 +1124,7 @@ input[type=search] {
     margin-top: -25px
 }
 
-.ns-content .ns-content-bannerLink .service-publish-btn {
+.ns-content .ns-content-bannerLink .service-publish-btn, .ns-content .ns-content-bannerLink .data-publish-btn {
     width: 218px;
     right: 65px;
 }
@@ -3061,8 +3061,14 @@ ul.pagination>li.active>a {
     width: 70px
 }
 
+.hotTz .hotTzItem .media-left {
+    float: left;
+}
+
 .hotTz .hotTzItem .media-body {
     vertical-align: middle;
+    width: 63%;
+    float: left;
 }
 
 .hotTz .media-heading {

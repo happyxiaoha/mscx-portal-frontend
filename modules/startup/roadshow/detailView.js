@@ -72,18 +72,18 @@ var view = Backbone.View.extend({
 
         var galleryThumbs = new Swiper('.swiper-right', {
             spaceBetween: 10,
-            slidesPerView: 'auto',
-            centeredSlides: true,
-            touchRatio: 0.2,
+            slidesPerView: 4,
+            // centeredSlides: true,
+            // touchRatio: 0.2,
             direction: 'vertical',
-            slideToClickedSlide: true
-            // onClick: function(swiper, event) {
-            //     // debugger;
-            //     galleryLeft.slideTo(swiper.clickedIndex);
-            // }
+            // slideToClickedSlide: true
+            onTouchStart: function(swiper, event) {
+                var index = $(event.target).data('index');
+                galleryLeft.slideTo(index);
+            }
         });
         galleryLeft.params.control = galleryThumbs;
-        galleryThumbs.params.control = galleryLeft;
+        // galleryThumbs.params.control = galleryLeft;
     },
     selectTab: function(event) {
         event.preventDefault();

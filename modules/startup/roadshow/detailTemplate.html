@@ -52,7 +52,7 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="home" style="padding:20px;border:1px solid #e8e8e8;border-top:none;overflow: hidden;position: relative;">
-                                <div class="swiper-left swiper-container col-md-8">
+                                <div class="swiper-left swiper-container col-md-9">
                                     <div class="swiper-wrapper">
                                         <% data.projectDescription.split(',').forEach(function(item){ %>
                                             <div class="swiper-slide">
@@ -66,13 +66,13 @@
                                 <div class="roadshow-slide swiper-button-prev"></div>
                                 <div class="swiper-container swiper-right">
                                     <div class="swiper-wrapper" style="height: 500px;">
-                                        <% data.projectDescription.split(',').forEach(function(item){ %>
+                                        <% data.projectDescription.split(',').forEach(function(item, index){ %>
                                             <div class="swiper-slide">
-                                                <img src="<%= item %>" alt="路演材料">
+                                                <img src="<%= item %>" data-index="<%= index %>" alt="路演材料">
                                             </div>
                                         <% }) %>
                                         <% if(data.projectDescription.split(',').length < 3){ %>
-                                            <% for(var i = 0; i < 3 - data.projectDescription.split(',').length; i++) { %>
+                                            <% for(var i = 0; i <= 3 - data.projectDescription.split(',').length; i++) { %>
                                             <div class="swiper-slide"></div>
                                             <% } %>
                                         <% } %>

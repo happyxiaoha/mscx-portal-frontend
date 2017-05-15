@@ -37,7 +37,7 @@ var followListView = Backbone.View.extend({
     initialize: function() {
         this.$el.html(_.template(commonTemplate)({name:'followDemand'}));
 
-        this.childView = [followServersListView,followApiListView,followSourcesListView];
+        this.childView = [followServersListView,followSourcesListView];
         this.$el.find('#demandInfo').html(template);
         new this.childView[0]({
             el: '#followArea'

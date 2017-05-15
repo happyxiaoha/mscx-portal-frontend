@@ -239,7 +239,7 @@ var createDemandView = Backbone.View.extend({
         if(model.status == 'OK') {
             layer.msg('提交成功，请等待审核');
             setTimeout(function() {
-                location.href = 'userInfo.html#server';
+                location.href = 'userInfo.html#saas';
             }, 1000);
         }
     },

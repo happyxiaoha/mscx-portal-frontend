@@ -417,7 +417,7 @@ var createDemandView = Backbone.View.extend({
     changeChargeType: function (e) {
         var sId = e.target.id.replace('ct','');
         this.chargeType = sId;
-        sId == '01' ?  $('.server-package').hide() : ($('.server-package').show(),this.buildChargeTable());
+        (sId == '01' || sId == '03') ?  $('.server-package').hide() : ($('.server-package').show(),this.buildChargeTable());
         e.stopPropagation();
     },
     addChargePackage: function () {

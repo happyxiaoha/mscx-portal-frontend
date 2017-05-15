@@ -9,6 +9,9 @@ Backbone.sync = function(method, model, options) {
         success = options.success,
         complete = options.complete,
         error = options.error;
+    
+    options.timeout = 10 * 1000;
+    
     if(isIE()) {
         options.cache = false;
     }
@@ -20,11 +23,17 @@ Backbone.sync = function(method, model, options) {
     options.complete = function (xhr) {
         if (complete) return complete.apply(this, arguments);
     };
-    options.error = function(xhr) {
+    options.error = function(xhr, status) {
         var pageType = $(document).find('body').data('type');
 
         if(pageType == 'index') return;
-        layer.alert('系统错误', {icon: 2});
+        
+        if(status == 'timeout') {
+            layer.alert('网络错误', {icon: 2});
+        }else {
+            layer.alert('系统错误', {icon: 2});
+        }
+        
         if (error) return error.apply(this, arguments);
     };
     options.success = function (xhr) {

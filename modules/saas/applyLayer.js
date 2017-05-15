@@ -18,6 +18,10 @@ var freeOrderModel = Backbone.Model.extend({
 var feeOrderModel = Backbone.Model.extend({
     url: 'order/feeApp/placeOrder.do'
 });
+// 后付费saas服务下单
+var afterFeeOrderModel = Backbone.Model.extend({
+    url: 'order/afterFeeSaaS/placeOrder.do'
+});
 // 加入购物车
 var addCartModel = Backbone.Model.extend({
     url: mscxPage.request.uc + 'shopping/cart/user/add.do'
@@ -38,6 +42,7 @@ var view = Backbone.View.extend({
         this.freeOrderModel = new freeOrderModel();
         this.feeOrderModel = new feeOrderModel();
         this.addCartModel = new addCartModel();
+        this.afterFeeOrderModel = new afterFeeOrderModel();
 
         // 收费/免费
         this.chargeType = this.model.chargeType;
@@ -46,6 +51,7 @@ var view = Backbone.View.extend({
         this.listenTo(this.addCartModel, 'sync', this.handleCart);
         this.listenTo(this.feeOrderModel, 'sync', this.handleFeeOrder);
         this.listenTo(this.freeOrderModel, 'sync', this.handleFreeOrder);
+        this.listenTo(this.afterFeeOrderModel, 'sync', this.handleFreeOrder);
         // this.listenTo(this.freeIsBaughtModel, 'sync', this.handleIsBaughtOrder);
 
         this.on('caculate', this.caculate);
@@ -134,6 +140,8 @@ var view = Backbone.View.extend({
         // 免费API的提交
         if(this.chargeType == '01') {
             this.freeOrder();   
+        }else if(this.chargeType == '03'){
+            this.afterFeeOrder();
         }else {
             this.feeOrder();
         }
@@ -151,6 +159,13 @@ var view = Backbone.View.extend({
         //         sourceType: this.delegate.resourceType
         //     }
         // })
+    },
+    afterFeeOrder: function() {
+        this.afterFeeOrderModel.fetch({
+            data: {
+                appId: this.id
+            }
+        })
     },
     feeOrder: function() {
         var $selected = this.$el.find('td input[type="radio"]:checked'),
@@ -268,7 +283,7 @@ var view = Backbone.View.extend({
     //     })
     // },
     handleFreeOrder: function() {
-        var model = this.freeOrderModel.toJSON();
+        var model = this.freeOrderModel.toJSON() || this.afterFeeOrderModel.toJSON();
 
         if(model.status == 'OK') {
             layer.msg('申请成功！');

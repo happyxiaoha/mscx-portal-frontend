@@ -45,10 +45,12 @@ var view = Backbone.View.extend({
     },
     jumpDevelop: function() {
         new developCheck().fetch({
+            async: false,
             success: function(model) {
                 var res = model.toJSON();
                 if(res.status == 'OK') {
-                    location.href = res.result;
+                    // location.href = res.result;
+                    window.open(res.result);
                 }
             }
         });

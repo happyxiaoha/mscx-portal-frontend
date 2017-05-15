@@ -50,8 +50,8 @@ var view = Backbone.View.extend({
 
         this.on('caculate', this.caculate);
 
-        // 如果是免费的，就不需要获取套餐
-        if(this.chargeType == '01') {
+        // 如果是免费的或者是后付款的，就不需要获取套餐
+        if(this.chargeType == '01' || this.chargeType == '03') {
             this.render();
         }else {
             this.packageModel.fetch({

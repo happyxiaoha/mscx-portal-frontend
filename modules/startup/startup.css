@@ -32,7 +32,7 @@
     border: 1px solid #ccc;
 }
 .swiper-container {
-    height: 500px;
+    height: 400px;
 }
 
 .swiper-slide {
@@ -50,9 +50,9 @@
     align-items: center;
 }
 .swiper-right {
-    height: 385px;
+    height: 290px;
     overflow: hidden;
-    margin-top: 54px;
+    margin-top: 55px;
     margin-left: 3.2%;
     width: 150px;
     float: left;
@@ -61,7 +61,7 @@
     opacity: 0.7;
     border: 1px solid #ccc;
     width: 148px;
-    /*height: 90px;*/
+    height: 90px;
     margin-bottom: 7px!important;
 }
 .swiper-right .swiper-slide:hover{

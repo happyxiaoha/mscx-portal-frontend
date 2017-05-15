@@ -72,7 +72,7 @@ var view = Backbone.View.extend({
 
         var galleryThumbs = new Swiper('.swiper-right', {
             spaceBetween: 10,
-            slidesPerView: 4,
+            slidesPerView: 3,
             // centeredSlides: true,
             // touchRatio: 0.2,
             direction: 'vertical',

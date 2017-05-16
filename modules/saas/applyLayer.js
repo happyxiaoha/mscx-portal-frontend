@@ -51,7 +51,7 @@ var view = Backbone.View.extend({
         this.listenTo(this.addCartModel, 'sync', this.handleCart);
         this.listenTo(this.feeOrderModel, 'sync', this.handleFeeOrder);
         this.listenTo(this.freeOrderModel, 'sync', this.handleFreeOrder);
-        this.listenTo(this.afterFeeOrderModel, 'sync', this.handleFreeOrder);
+        this.listenTo(this.afterFeeOrderModel, 'sync', this.handleAfterFeeOrder);
         // this.listenTo(this.freeIsBaughtModel, 'sync', this.handleIsBaughtOrder);
 
         this.on('caculate', this.caculate);
@@ -283,8 +283,14 @@ var view = Backbone.View.extend({
     //     })
     // },
     handleFreeOrder: function() {
-        var model = this.freeOrderModel.toJSON() || this.afterFeeOrderModel.toJSON();
-
+        var model = this.freeOrderModel.toJSON();
+        this.showSuccTip(model);
+    },
+    handleAfterFeeOrder: function() {
+        var model = this.afterFeeOrderModel.toJSON();
+        this.showSuccTip(model);
+    },
+    showSuccTip: function(model) {
         if(model.status == 'OK') {
             layer.msg('申请成功！');
             layer.close(this.layerIndex);

@@ -36,12 +36,18 @@
             <%if(i == 1 && olaitem.sourceDetail.length >= 1){%>
             <td rowspan="<%=olaitem.sourceDetail.length%>"><%=olaitem.orderNum%></td>
             <%}%>
-            <%if(soitem.resourceType == '02'){%>
+            <%if (olaitem.order_classify == '2') { %>
+            <td><%= soitem.resourceName%></td>
+            <td>充值</td>
+            <%}else if(soitem.resourceType == '02'){%>
             <td><a  href="./sources.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>数据</td>
             <%}else if(soitem.resourceType == '03'){%>
             <td><a  href="./services.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>微应用</td>
+            <%}else if(soitem.resourceType == '04'){%>
+            <td><a  href="./saas.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
+            <td>SaaS服务</td>
             <%}else{%>
             <td><a  href="./api.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>API</td>

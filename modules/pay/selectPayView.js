@@ -59,10 +59,10 @@ var view = Backbone.View.extend({
          */
         var payUrl = PayResource.host + '?' + $.param(this.orderInfo);
         switch(type) {
-            case 'alipay':
-                // location.href = payUrl + '&showUrl=' + mscxPage.host + 'pay.html#result/' + me.orderInfo.orderNum;
-                location.href = payUrl + '&returnUrl=' + mscxPage.payReturnHost + 'pay-result.html';
-                break;
+            // case 'alipay':
+            //     // location.href = payUrl + '&showUrl=' + mscxPage.host + 'pay.html#result/' + me.orderInfo.orderNum;
+            //     location.href = payUrl + '&returnUrl=' + mscxPage.payReturnHost + 'pay-result.html';
+            //     break;
             case 'weixin':
                 $.get(payUrl, function(res) {
                     me.weixinPayView = new weixinPayView({

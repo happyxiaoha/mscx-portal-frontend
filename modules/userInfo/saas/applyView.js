@@ -19,9 +19,7 @@ var myApplyListView = Backbone.View.extend({
         pageNum: 1
     },
     events: {
-        'click .unshelve': 'unshelveService',
-        'click .delete': 'deleteService',
-        'click .reason': 'showReason'
+        'click .saas-url': 'showUrl'
     },
     initialize: function() {
         this.$el.html(this.commonTemplate({name:'apply'}));
@@ -70,6 +68,35 @@ var myApplyListView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
+    },
+    showUrl: function (event) {
+        var $target = this.$(event.currentTarget);
+        var url = $target.data('url');
+        var name = $target.data('name');
+
+        var model = new (Backbone.Model.extend({
+            url: url
+        }))();
+
+        model.fetch({
+            success: function(model) {
+                var res = model.toJSON();
+                if(res.status == 'OK') {
+                    var index = layer.open({
+                        type: 2,
+                        title: name,
+                        shadeClose: false,
+                        shade: 0.8,
+                        area: ['700px', '500px'],
+                        maxmin: true,
+                        content: res.result //iframe的url
+                    });
+                    layer.full(index);
+                }else {
+                    layer.alert(res.message);
+                }
+            }
+        })
     }
 });
 

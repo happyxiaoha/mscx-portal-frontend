@@ -6,6 +6,9 @@ var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
 var router = require('pioneering/router.js');
 
+require('less/base.less');
+require('pioneering/pioneering.less');
+
 $(function() {
     new header({
         id: 'pioneering'

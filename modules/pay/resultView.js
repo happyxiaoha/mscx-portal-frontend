@@ -4,8 +4,6 @@ var template = require('html!./resultTemplate.html');
 var orderModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderDetail.do'
 })
-require('./pay.css');
-
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.payEl,

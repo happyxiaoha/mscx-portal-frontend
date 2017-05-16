@@ -6,8 +6,6 @@ var template = '<div class="api-env rightMenuWrap grid1190 fl boxShadiow boxSizi
 
 // var cmsUrl = Resource.cmsHost + 'static_html/datainfo/quanguo_apiinfo/index.html';
 
-require('./pioneering.css');
-
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,
     initialize: function() {

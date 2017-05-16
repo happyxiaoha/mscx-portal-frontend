@@ -10,7 +10,6 @@ var serverEnvView = require('pioneering/serverEnvView.js');
 var navTemplate = require('html!./navTemplate.html');
 
 var Resource = require('./resource.js');
-require('./demand.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,

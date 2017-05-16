@@ -18,8 +18,6 @@ var unFollowModel = Backbone.Model.extend({
 
 var showdown = require('showdown');
 
-require('./api.css');
-
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     template: _.template(template, {variable: 'data'}),

@@ -21,7 +21,6 @@ var reAttentionModel = Backbone.Model.extend({   //取消关注
     url: mscxPage.request.app + 'attention/delete.do'
 });
 
-require('./services.css');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
 
 var openDataDetailView = Backbone.View.extend({

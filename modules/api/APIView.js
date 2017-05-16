@@ -5,8 +5,6 @@ var contentView = require('./contentView.js');
 var Resource = require('./resource.js');
 var navTemplate = require('html!./navTemplate.html');
 
-require('./api.css');
-
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     navTemplate: _.template(navTemplate, {variable: 'data'}),

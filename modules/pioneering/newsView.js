@@ -6,8 +6,6 @@ var template = '<div class="layLeft common clearfix fl bgBoxShodow animate-conte
 
 var cmsUrl = Resource.cmsHost + 'static_html/datainfo/latestnews/index.html';
 
-require('./pioneering.css');
-
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,
     initialize: function() {

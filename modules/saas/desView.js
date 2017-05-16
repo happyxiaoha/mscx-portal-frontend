@@ -4,7 +4,6 @@
 
 var template = require('html!./desTemplate.html');
 var packageTabletemplate = require('html!./packageTableTemplate.html');
-require('./saas.css');
 
 require('util');
 

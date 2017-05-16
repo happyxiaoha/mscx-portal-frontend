@@ -3,10 +3,12 @@
  */
 
 
-var header = require('../widget/headerWidget/headerView.js');
-var footer = require('../widget/footerWidget/footerView.js');
-var contactUsView = require('../modules/contactUs/contactUsView.js');
-require('../css/base.css');
+var header = require('headerWidget/headerView.js');
+var footer = require('footerWidget/footerView.js');
+var contactUsView = require('contactUs/contactUsView.js');
+
+require('less/base.less');
+require('contactUs/contactUs.less');
 
 $(function() {
     new header();

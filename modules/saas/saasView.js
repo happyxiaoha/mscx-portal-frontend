@@ -4,7 +4,6 @@
 'use strict';
 
 var contentView = require('./contentView.js');
-require('./saas.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,

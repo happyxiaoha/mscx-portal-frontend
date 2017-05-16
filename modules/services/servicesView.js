@@ -5,7 +5,6 @@
 
 // var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var contentView = require('./contentView.js');
-require('./services.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,

@@ -6,6 +6,9 @@ var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
 var router = require('api/router.js');
 
+require('less/base.less');
+require('api/api.less');
+
 $(function() {
     new header({
         id: 'api'

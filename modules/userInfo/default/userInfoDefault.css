@@ -91,5 +91,5 @@
 .layui-layer-content input[readonly]{
     cursor:default;background-color:#FFF;}
 .user-center-api-list {padding: 20px 0 20px 10px;}
-.user-center-api-list .api-item .downs span { width: 58px;}
-.user-center-api-list .api-item {width: 180px;margin: 0 10px 10px 0;margin-right: 10px\9;}
+.user-center-api-list .api-item .downs span { width: 75px;}
+.user-center-api-list .api-item {width: 235px;margin: 0 10px 10px 0;margin-right: 10px\9;}

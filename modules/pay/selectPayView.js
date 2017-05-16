@@ -6,8 +6,6 @@ var orderModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderDetail.do'
 })
 
-require('./pay.css');
-
 var PayResource = {
     host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
     channels: {

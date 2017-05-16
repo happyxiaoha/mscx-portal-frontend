@@ -14,7 +14,7 @@ var configRoot = {
     'login': './js/login.js',
     'register': './js/register.js',
     'main': './js/main.js',      //首页
-     'sources': './js/sources.js',    //数据
+    'sources': './js/sources.js',    //数据
     'api': './js/api.js',
     'services': './js/services.js',     //微服务
     'demand': './js/demand.js',     //需求定制
@@ -46,6 +46,8 @@ gulp.task('watch', function () {
     gulp.watch(['modules/*/*.html','modules/*/*/*.html','widget/*/*.html','widget/*/*/*.html'], ['webpack']);
     gulp.watch(['modules/*/*.css','modules/*/*/*.css','widget/*/*.css','widget/*/*/*.css'], ['webpack']);
     gulp.watch(['modules/*/*.js','modules/*/*/*.js','widget/*/*.js','widget/*/*/*.js'], ['webpack']);
+    gulp.watch(['less/**/*.less','modules/**/*.less','widget/**/*.less'], ['webpack']);
+
 });
 
 

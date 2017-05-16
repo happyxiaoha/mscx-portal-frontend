@@ -17,7 +17,6 @@ var unFollowModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'reduceApiFocus.do'
 })
 
-require('../demand.css');
 require('util');
 
 var view = Backbone.View.extend({

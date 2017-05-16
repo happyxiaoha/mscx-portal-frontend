@@ -2,11 +2,13 @@
  * Created by Administrator on 2016/12/19.
  */
 
-var header = require('../widget/headerWidget/headerView.js');
-var footer = require('../widget/footerWidget/footerView.js');
+var header = require('headerWidget/headerView.js');
+var footer = require('footerWidget/footerView.js');
 
-var router = require('../modules/search/router.js');
-require('../modules/search/search.css');
+var router = require('search/router.js');
+
+require('less/base.less');
+require('search/search.less');
 
 $(function() {
     new header({

@@ -4,8 +4,6 @@ var template = '<div class="noticeList grid960 animate-content opacity0"></div>'
 var Resource = require('./resource.js');
 var cmsUrl = Resource.cmsHost + 'static_html/datainfo/businessinfo/index.html';
 
-require('./pioneering.css');
-
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,
     events: {

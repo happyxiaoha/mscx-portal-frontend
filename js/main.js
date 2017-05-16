@@ -2,10 +2,12 @@
  * Created by kevin on 2016/12/6.
  */
 
-var header = require('widget/headerWidget/headerView.js');
-var footer = require('../widget/footerWidget/footerView.js');
-var mainView = require('../modules/main/mainView.js');
-require('../css/base.css');
+var header = require('headerWidget/headerView.js');
+var footer = require('footerWidget/footerView.js');
+var mainView = require('main/mainView.js');
+
+require('less/base.less');
+require('main/main.less');
 
 $(function() {
     new header({

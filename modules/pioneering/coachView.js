@@ -6,7 +6,6 @@ var template = '<div class="rightMenuWrap fl boxShadiow boxSizing bgWhite common
 
 var cmsUrl = Resource.cmsHost + 'static_html/datainfo/pioneercoach/index.html';
 var cmsPolicyUrl = Resource.cmsHost + 'static_html/datainfo/policyread/index.html';
-require('./pioneering.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,

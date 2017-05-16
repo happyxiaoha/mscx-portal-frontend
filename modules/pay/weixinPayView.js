@@ -2,7 +2,6 @@
 
 var template = require('html!./weixinPayTemplate.html');
 var QrCode = require('lib/qrCode.js');
-require('./pay.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.payEl,

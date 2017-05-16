@@ -2,11 +2,11 @@
  * Created by Administrator on 2016/12/12.
  */
 
-var header = require('../modules/register/headerView.js');
-require('../css/base.css');
+var header = require('register/headerView.js');
 
-var router = require('../modules/register/router.js');
-require('../modules/register/register.css');
+var router = require('register/router.js');
+require('less/base.less');
+require('register/register.less');
 
 $(function() {
     new header();

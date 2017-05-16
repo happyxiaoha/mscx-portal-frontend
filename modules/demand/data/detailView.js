@@ -15,7 +15,6 @@ var unFollowModel = Backbone.Model.extend({
     idAttribute: 'dataId',
     url:mscxPage.request.demand + 'reduceFocus.do'
 })
-require('../demand.css');
 require('util');
 
 var view = Backbone.View.extend({

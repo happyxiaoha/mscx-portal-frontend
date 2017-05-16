@@ -3,10 +3,11 @@
  */
 
 var header = require('../modules/login/loginHeaderView.js');
-require('../css/base.css');
 
 var router = require('../modules/login/router.js');
-require('../modules/login/login.css');
+
+require('less/base.less');
+require('login/login.less');
 
 $(function() {
     new header({

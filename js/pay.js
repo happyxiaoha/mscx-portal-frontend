@@ -6,6 +6,9 @@ var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
 var router = require('pay/router.js');
 
+require('less/base.less');
+require('pay/pay.less');
+
 $(function() {
     new header();
     new footer();

@@ -17,6 +17,12 @@ module.exports = {
     module: {
         loaders: [
             {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader", {
+                    publicPath: '../dist/'
+                })
+            },
+            {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css-loader", {
                     publicPath: '../dist/'
@@ -39,7 +45,8 @@ module.exports = {
         root: [
             path.resolve(__dirname),
             path.resolve(__dirname,'modules'),
-            path.resolve(__dirname,'widget')
+            path.resolve(__dirname,'widget'),
+            path.resolve(__dirname,'less')
         ],
         alias: {
             validate: 'lib/jquery.validate.js',
@@ -48,7 +55,7 @@ module.exports = {
             showdown: 'lib/showdown.js',
             customValidate: 'lib/additional-methods.js'
         },
-        extensions: ['', '.js', '.css']
+        extensions: ['', '.js', '.css', '.less']
     }
 };
 

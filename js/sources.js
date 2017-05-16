@@ -6,7 +6,9 @@ var header = require('../widget/headerWidget/headerView.js');
 var footer = require('../widget/footerWidget/footerView.js');
 
 var router = require('../modules/sources/router.js');
-require('../modules/sources/openData.css');
+
+require('less/base.less');
+require('sources/openData.less');
 
 $(function() {
     new header({

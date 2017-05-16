@@ -1,13 +1,5 @@
-.ml5{
-    margin-left: 5px;
-}
 
-a{
-    color: #6e7782;
-    cursor: pointer;
-}
 .navCons{height: 50px;line-height: 50px;margin-left: 60px;}
-
 .navCons .nav li{float:left;font-size: 16px;padding: 0 30px 0 17px;}
 .navCons .nav li.active a{color: #00c4c3;}
 .navCons .nav li a{color: #484848;display: block;}
@@ -112,8 +104,6 @@ a{
 }
 .navCons.index .nav li.active {background: none;}
 .navCons.index .nav li:hover{background: none;}
-.navCons.index .nav li a:link{color: #333;}
-
 .navCons.index .nav li a:link{color: #333;}
 .navCons.index .nav li a:hover{color: #00c4c3;}
 

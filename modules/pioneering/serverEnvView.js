@@ -6,8 +6,6 @@ var template = '<div class="server-env grid1190 rightMenuWrap fl boxShadiow boxS
 
 // var cmsUrl = Resource.cmsHost + 'static_html/datainfo/quanguo_serverdev/index.html';
 
-require('./pioneering.css');
-
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,
     initialize: function() {

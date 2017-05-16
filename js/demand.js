@@ -7,6 +7,9 @@ var footer = require('footerWidget/footerView.js');
 
 var router = require('demand/router.js');
 
+require('less/base.less');
+require('demand/demand.less');
+
 $(function() {
     var headerView = new header({
         id: 'demand'

@@ -4,7 +4,7 @@
 
 'use strict';
 var template = require('html!./contactUs.html');
-require('./contactUs.css');
+require('./contactUs.less');
 
 
 var mainView = Backbone.View.extend({

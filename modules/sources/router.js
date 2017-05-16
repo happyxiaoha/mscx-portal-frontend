@@ -2,7 +2,6 @@
  * Created by Administrator on 2016/12/12.
  */
 
-require('./openData.css');
 var Routes =  Backbone.Router.extend({
     routes: {
         '': 'dataThemeView',

@@ -7,7 +7,6 @@ var packageTabletemplate = require('html!./packageTableTemplate.html');
 var serverUrlTemplate = require('html!./serverUrlTemplate.html');
 var serverUrlTableTemplate = require('html!./serverUrlTableTemplate.html');
 var tagView = require('./tagsLayer.js');
-require('./services.css');
 require('validate');
 require('formAjax');
 require('util');

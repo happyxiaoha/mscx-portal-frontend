@@ -3,7 +3,6 @@
 var template = require('html!./publishTemplate.html');
 var packageTabletemplate = require('html!./packageTableTemplate.html');
 var tagView = require('./tagsLayer.js');
-require('./saas.css');
 require('validate');
 require('formAjax');
 require('util');

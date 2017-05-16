@@ -1,0 +1,182 @@
+@import '../../less/variables.less';
+
+.loginContainer{width: 100%;/*height: 552px;*/
+    background: #fff;
+    background-size: 100% 100%;}
+.loginCons{box-sizing: border-box;}
+.leftImg img{
+    margin-left: 136px;
+    margin-top: 50px;
+}
+.loginCons .rightTable{width: 252px;background: #fff;margin-top: 60px;margin-right: 156px;padding: 34px 20px 0;border: solid 1px #d4d4d4;}
+.loginCons .rightTable h2{
+    color: #333;
+    font-size: 20px;
+    padding-bottom: 30px;
+    border-bottom: solid 1px #d4d4d4;
+}
+.po-re {
+    color: #444;
+    font-weight: bold;
+    font-size: 12px;
+    padding-bottom: 12px;
+}
+.loginCons .rightTable ul{padding: 30px 0}
+.loginCons .rightTable ul li{margin-bottom: 20px;position: relative;}
+.loginCons input{
+    border: 1px solid #ddd;
+    width: 230px;
+    box-shadow: none;
+    height: 24px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    border-radius: 0;
+}
+.loginCons .rightTable ul li .close{
+    display: none;
+    position: absolute;
+    width: 34px;
+    height: 32px;
+    font-size: 16px;
+    right: 0;
+    top: 25px;
+    text-align: center;
+    line-height: 32px;
+    color: #555;
+    opacity: 1;
+}
+.leftImg {
+    margin-bottom: 50px;
+}
+.rightTable ul li span em{display: inline-block;vertical-align: -2px;margin-right: 5px;}
+
+.rightTable ul li input.error{ border: 1px solid #d82e3a;}
+
+
+.loginCons .rightTable ul li input[type="checkbox"]{display: none;}
+.loginCons .rightTable ul li label{color: #555;font-size: 14px;position: relative;padding-left: 26px;}
+input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px;height: 13px;border: 1px solid #ddd;box-sizing: border-box;background: #f7f7f7;border-radius: 3px;left: 3px;top: 1px;}
+/*input[type="checkbox"]:checked + label:before{background: url('../../images/login/right.png') no-repeat center center;}*/
+.loginCons .rightTable ul li .forgetPassword{position: absolute;right: 4px;display: block;top: 0;font-size: 14px;color: #3f89ec;}
+.loginCons .rightTable ul li .forgetPassword:hover{color: #3f89ec;}
+.loginCons .rightTable ul li button{width: 100%;background: #3f89ec;text-align: center;height: 36px;border: none;font-size: 14px;color: #fff;border-radius: 5px;margin-top: 4px;}
+.loginCons .rightTable ul li .goRegister{font-size: 14px;color: #3f89ec;display: block;padding-top: 4px;width: 100px;margin: 0 auto;}
+
+.loginCons .rightTable ul li label.error{
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 20px;
+    /*background: url(../../images/login/tip.png) no-repeat 8px center;*/
+    color: #e66c6b;
+    padding-left: 10px;
+    margin-top: 5px;
+    position: absolute;
+    bottom: -20px;
+}
+
+.header{height: 80px;border-bottom: solid 1px #bbb;}
+.header h1{float:left;margin:14px 0 0 2px;}
+.header h1 a{color: #333;font-size: 22px;}
+.header h1 a img{display: inline-block;width: 210px;}
+.header h1 span{line-height: 34px;padding-left: 12px;margin-left: 6px;vertical-align: 22px;font-size: 20px;font-weight: bold;}
+/*.header h1 a:hover{text-decoration: none;}*/
+.header .nav{float:left;margin:47px 0 0 70px;}
+.header .nav li{float:left;font-size: 16px;margin:0 40px 0 0;line-height: 18px;}
+.header .nav li.active a{color: #333;}
+.header .nav li a{color: #888;}
+.header .nav li a:hover,.header .nav li a:link{background: transparent;}
+
+.header .goHome{float: right;font-size: 18px;margin-top: 36px;}
+.header .goHome a{display: block;color: #333;background: url(../../images/login/home.png) no-repeat left center;padding-left: 35px;line-height: 26px;}
+.login-image-code input{
+    float: left;
+    width: 100px;
+}
+.login-image-code img{
+    width: 130px;
+    border-left: none;
+    height: 34px;
+    float: left;
+}
+
+.copyright{background: #f2f2f2;}
+.copyright .center{border-bottom: 1px solid #e3e3e3;}
+.copyright .center ul{padding: 34px 108px;}
+.copyright .center ul li{float: left;width: 100px;}
+.copyright .center ul li:not(:last-child){margin-right: 198px;}
+.copyright .center ul li p{font-size: 16px;color: #333;margin-bottom: 12px;}
+.copyright .center ul li a{display: block;color: #666;font-size: 14px;line-height: 22px;}
+.copyright .copytxt{text-align: center;padding: 18px 0;}
+.copyright .copytxt span{display: block;line-height: 18px;font-size: 12px;color: #999;}
+.footer {
+    padding: 60px 0 20px;
+}
+
+/*注册*/
+
+.register-content{width: 100%;background: #fff;}
+
+.register-form{margin: 60px auto; width: 510px;}
+.register-form hr{
+    border-top: none;
+    border-bottom: dashed 1px #bbb;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+.po_re em{
+    margin-right: 2px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.mt40{
+    margin-top: 40px;
+}
+.register-form ul{padding: 0 56px;}
+.register-form ul li{margin-bottom: 20px;position: relative;clear: both;display: block;}
+.register-form ul li span{float: left;width: 80px;text-align: right;font-size: 14px;color: #888;margin-right: 20px;line-height: 32px;position: relative;}
+.register-form ul li input{float:left;width: 248px;border-radius: 0;box-shadow: none;height: 22px;line-height: 22px;padding-left: 14px;font-size: 12px;color: #333;margin: 0;border: 1px solid #ddd;}
+.register-form ul li .code{width: 108px;}
+.register-form ul li .getCode{width: 140px;height: 32px;display: block;background: #f7f7f7;border: 1px solid #ddd;border-left: none;font-size: 14px;color: #555;text-align: center;line-height: 32px;padding-left: 0;border-radius: 0;outline: none;}
+.register-form ul li .close{display: none;position: absolute;width: 40px;height: 40px;font-size: 16px;right: 0;top: 50%;margin-top: -20px;text-align: center;line-height: 40px;color: #555;opacity: 1;}
+.register-form ul li input[type="checkbox"]{display: none;}
+.register-form ul li label{color: #555;font-size: 14px;box-sizing: border-box;margin-left: 86px}
+input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px;height: 13px;border: 1px solid #ddd;box-sizing: border-box;background: #f7f7f7;border-radius: 3px;left: 58px;top: 1px;}
+input[type="checkbox"]:checked + label:before{background: url('../../images/login/right.png') no-repeat center center;}
+.register-form ul li .golink{font-size: 14px;color: #3f89ec;}
+.register-form ul li .golink:hover{color: #3f89ec !important;}
+.register-form ul li button{width: 100%;background: #39b7b6;text-align: center;height: 52px;border: none;font-size: 18px;color: #fff;border-radius: 5px;}
+.register-form ul li:nth-child(5){margin-bottom: 26px;height: 14px;}
+.register-form ul li input.error{ border: 1px solid #d82e3a;}
+.register-form ul li label.error{
+    position: absolute;
+    bottom: -20px;
+    float: left;
+    margin-left:100px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    line-height: 20px;
+    background: url(../../images/login/tip.png) no-repeat left center;
+    background-size: 14px 14px;
+    color: #e66c6b;}
+
+.register-form ul li input.zone{
+    width: 29px;
+    float: left;
+    border-right: none;
+}
+.register-form ul li input.phone{
+    width: 198px;
+}
+
+.goto-login{
+    margin-top: 20px;
+    text-align: center;
+}
+.goto-login a{
+    text-decoration: underline;
+    color: #0ab7ef;
+}

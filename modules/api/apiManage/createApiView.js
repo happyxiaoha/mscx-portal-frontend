@@ -793,7 +793,7 @@ var createApiView = Backbone.View.extend({
                     success: function () {
                         layer.msg('提交审核成功！');
                         setTimeout(function () {
-                            //location.href = 'userInfo.html#api';
+                            location.href = 'userInfo.html#api';
                         }, 1000);
                     }
                 });

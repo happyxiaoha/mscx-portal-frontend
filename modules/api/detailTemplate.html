@@ -59,14 +59,14 @@
                     </div>
                     <%if(data.result.status == '0'){%>
                     <div>
-                        <button id="applyBtn">申请</button>
-                        <!-- <button><a class="corff" href="./serverAplication.html">API测试</a></button> -->
-                        <% if(data.result && !data.result.attentionFlag){ %>
-                            <button id="followBtn" class="bgMain">关注</button>
-                        <% }else{ %>
-                            <button id="followBtn" class="bgMain">取消关注</button>
+                        <% if(data.result.chargeType == '03'){ %>
+                            <button id="offlineBtn">洽谈申请</button>
+                            <button id="attention" class="bgOrange"><%- data.attentionFlag ? '取消关注' : '关注'%></button>
+                        <% }else { %>
+                            <button id="applyBtn">申请</button>
+                            <button id="attention" class="bgOrange"><%- data.attentionFlag ? '取消关注' : '关注'%></button>
+                            <button id="offlineBtn" class="fr" style="margin-right: 0;">线下洽谈申请</button>
                         <% } %>
-                        <button id="offlineBtn" class="fr" style="margin-right: 0;">线下洽谈申请</button>
                     </div>
                     <%}%>
                     <!-- 分享 -->

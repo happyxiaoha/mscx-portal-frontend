@@ -21,12 +21,19 @@
 .R_inputs .other input[type="text"]{width: 230px !important;height: 32px !important;}
 .R_Btns{text-align: center;padding: 15px 0 10px;}
 .R_Btns input[type="submit"]{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;}
-.R_Btns input[type="submit"]:first-child{margin-right: 40px;}
+.R_Btns input[type="submit"]:first-child{margin-right: 40px; background: @btnBackground;}
 .checkboxlist,.chargeTypeRadio{  width: 690px;  }
 .checkboxlist label,.chargeTypeRadio label{  height: 30px;  line-height: 30px;  width: 120px;  float: left;overflow: hidden; text-overflow: ellipsis;display: inline-block;white-space: nowrap;}
 .checkboxlist label input[type="radio"]{margin: 0 5px 0;vertical-align: -2px;}
-.chargeTypeRadio label {width: 80px; }
-.newSelBtn{right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;}
+.chargeTypeRadio {
+    label {
+        width: 80px;
+        &:last-child {
+            width: 125px;
+        }
+    }
+}
+.newSelBtn{right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;background: @btnBackground;}
 .newAddDate{width: 130px !important; text-align: center;cursor: default !important;}
 .api-content .allInfoImg {border: 1px solid #DDD;  padding: 2px;}
 .api-content .allInfoImg img {width: 60px;height: 60px;}
@@ -131,7 +138,7 @@
 .add-api-list ul li span {width: 70px;  display: inline-block;  float: left;}
 .add-api-list ul li span.api-name-error {color: red;margin-right: 5px;float: right !important;display: none;width: auto !important;}
 .R_right label a{
-    color: #0ab7ef;
+    color: @linkColorHover;
 }
 .category-block-area {overflow: hidden;font-size: 12px;}
 .category-block-area >p {  height: 30px; line-height: 30px; margin-right: 10px;  float: left;  overflow: hidden;    font-weight: bold;}

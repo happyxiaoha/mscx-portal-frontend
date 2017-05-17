@@ -89,7 +89,7 @@ var createApiView = Backbone.View.extend({
             that.buildApiTable();
         });
         this.model.on('change:chargeType',function () {
-            if(that.model.get('chargeType') == '01' && that.model.get('chargeSetJson')){
+            if((that.model.get('chargeType') == '01' || that.model.get('chargeType') == '03') && that.model.get('chargeSetJson')){
                 that.model.set('chargeSetJson',null);
             }
             else {
@@ -606,7 +606,7 @@ var createApiView = Backbone.View.extend({
     },
     buildChargeTable: function () {
         var chargeSetJson = this.model.get('chargeSetJson');
-        if(!chargeSetJson && this.model.get('chargeType') == '01'){
+        if(!chargeSetJson && (this.model.get('chargeType') == '01' || this.model.get('chargeType') == '03')){
             $('.api-package').hide();
         }
         else {

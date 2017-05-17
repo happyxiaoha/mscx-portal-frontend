@@ -1,9 +1,10 @@
+@import '../../less/variables.less';
 
 .navCons{height: 50px;line-height: 50px;margin-left: 60px;}
 .navCons .nav li{float:left;font-size: 16px;padding: 0 30px 0 17px;}
-.navCons .nav li.active a{color: #00c4c3;}
+.navCons .nav li.active a{color: @linkColorHover;}
 .navCons .nav li a{color: #484848;display: block;}
-.navCons .nav li a:hover{color: #00c4c3;background: transparent;}
+.navCons .nav li a:hover{color: @linkColorHover;background: transparent;}
 .navCons .links{font-size: 16px;}
 .navCons .links a{color: #0095d1; display: inline-block;}
 .navCons .links a:first-child{width: 24px;height:24px;vertical-align: -7px;background: url(../../images/newtel.png) no-repeat left center;margin-right: 10px; cursor: pointer;}

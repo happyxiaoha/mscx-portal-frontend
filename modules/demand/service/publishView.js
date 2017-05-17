@@ -4,7 +4,7 @@
 
 var template = require('html!./publishTemplate.html');
 var optionTemplate = require('html!./optionTemplate.html');
-require('../publish.css');
+require('../publish.less');
 require('validate');
 require('util');
 

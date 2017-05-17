@@ -292,6 +292,29 @@ table tr td{
 	word-break: break-all;
 }
 
+/*table*/
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid @tableBorder;}
+.D_table table tr th{background: @tableBackground;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #666;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}
+.D_table table tr {cursor: pointer;}
+
+
+/* layer按钮样式覆盖 */
+.layui-layer-btn .layui-layer-btn0 {
+	border-color: @btnBackground!important;
+    background-color: @btnBackground!important;
+}
+
+/*筛选条件*/
+.ConditionList{right: 0;top: 0;}
+.ConditionList a{display: inline-block;margin-right: 10px;}
+.ConditionList a:hover,.ConditionList a:link{color: @textColor;}
+.ConditionList a.active{color: @linkColorHover !important;}
+.ConditionList a:not(:last-child){margin-right: 26px;}
+
 /*@media screen and (max-width: 1300px){
 	.grid1190{
 		width: 1000px;

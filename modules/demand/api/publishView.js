@@ -20,7 +20,7 @@ var toolCategory = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getToolApiCategory.do'
 });
 
-require('../publish.css');
+require('../publish.less');
 require('validate');
 require('formAjax');
 require('util');

@@ -205,7 +205,7 @@
             <% }else{ %>
             <div class="clearfix ReleaseList mt20 server-package" <%if(!data.detail || data.detail.chargeType=='01'){%>style="display: none;"<%}%>>
                 <label class="package-error">套餐不能为空</label>
-                <span class="newSelBtn addPrice fr bgBlue" style="padding: 3px 10px;">新增收费规则</span>
+                <span class="newSelBtn addPrice fr" style="padding: 3px 10px;">新增收费规则</span>
             </div>
             <% } %>
 
@@ -221,7 +221,7 @@
             <div class="R_Btns">
                 <!-- <button class="bgBlue">返回</button> -->
                 <% if(!data.showFlag){ %>
-                    <input type="submit" class="bgBlue" value="提交">
+                    <input type="submit" value="提交">
                 <% } %>
             </div>
         </form>

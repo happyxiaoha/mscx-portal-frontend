@@ -16,7 +16,7 @@ var modifyModel = Backbone.Model.extend({
 });
 
 
-require('../publish.css');
+require('../publish.less');
 require('validate');
 require('util');
 

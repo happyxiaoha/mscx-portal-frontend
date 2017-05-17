@@ -3,7 +3,7 @@
  */
 
 var template = require('html!./updateApi.html');
-require('./createApi.css');
+require('./createApi.less');
 require('validate');
 require('formAjax');
 require('util');

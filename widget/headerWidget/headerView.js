@@ -3,7 +3,7 @@
  */
 var template = require('html!./header.html');
 var cityMap = require('./cityStation.json');
-require('./header.css');
+require('./header.less');
 var menuList = [
     {
         name: '首页',

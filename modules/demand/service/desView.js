@@ -3,7 +3,7 @@
  */
 
 var template = require('html!./desTemplate.html');
-require('../publish.css');
+require('../publish.less');
 
 require('util');
 

@@ -224,6 +224,10 @@
     border: 0;
 }
 
+.layer-form ul li span {
+    width: 130px;
+}
+
 @media screen and (max-width: 1300px){
     .account .process li:last-child {
         width: 120px;

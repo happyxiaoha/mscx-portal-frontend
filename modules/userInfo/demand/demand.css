@@ -5,11 +5,11 @@
     border: none;
     display: block;
     background: #00b7a9;
-    border-radius: 5px;
+    // border-radius: 5px;
     color: #fff;
     padding: 8px;
     width: 120px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
 }
 .tab-title a {}

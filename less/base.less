@@ -315,6 +315,76 @@ table tr td{
 .ConditionList a.active{color: @linkColorHover !important;}
 .ConditionList a:not(:last-child){margin-right: 26px;}
 
+/* layer form */
+.layer-form {
+	ul {
+		padding: 10px 20px;
+		li {
+			padding: 5px ;
+    		float: left;
+    		width: 100%;
+    		label {
+    			float: left;
+    			line-height: 27px;
+    			&.error {
+    				color: red;
+    				margin-left: 5px;
+    				float: right;
+    			}
+    		}
+    		span {
+    			width: 70px;
+			    line-height: 30px;
+			    display: block;
+			    float: left;
+			    text-align: right;
+    		}
+    		p.mes {
+    			float: left;
+    			max-width: 200px;
+    			margin-left: 10px;
+    			line-height: 30px;
+    		}
+    		input {
+    			&[type="text"] {
+    				width: 250px;
+    			}
+    			&.error {
+    				border: 1px solid red;
+    			}
+    			&.small {
+    				width: 80px;
+    			}
+    		}
+    		textarea {
+    			width: 320px;
+    			height: 80px;
+    			resize: none;
+    		}
+		}
+	}
+}
+
+/* 上传文件按钮 */
+
+.upload-file-area {
+	position: relative;
+	float: left;
+	.beauty-file {
+		position: relative;
+	    cursor: pointer;
+	    width: 80px;
+	}
+	.btn-file {
+		opacity: 0;
+	    width: 80px;
+	    position: absolute;
+	    top: 0;
+	    left: 0
+	}
+}
+
+
 /*@media screen and (max-width: 1300px){
 	.grid1190{
 		width: 1000px;

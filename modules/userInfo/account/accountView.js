@@ -8,6 +8,7 @@ var rechargeView = require('./rechargeView.js');
 var paymentRecordView = require('./consumeRecordView.js');
 var rechargeRecordView = require('./rechargeRecordView.js');
 var setPayPasswordView = require('./setPayPasswordView.js');
+var invoiceView = require('./invoiceView.js');
 
 var accountView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -29,10 +30,17 @@ var accountView = Backbone.View.extend({
 
         // 如果账户不存在，那么跳转支付密码设置页面。同时，账户充值/充值记录/支出记录tab标签隐藏
         if(accountInfo.result == 'noAccount') {
-            this.id = 'setPayPassword';
-            this.currentView = new setPayPasswordView({
-                model: _.pick(this, ['id', 'hasAccount'])
-            });
+            if(this.id == 'invoice') {
+                this.currentView = new invoiceView({
+                    model: _.pick(this, ['id', 'hasAccount'])
+                });
+            }else {
+                this.id = 'setPayPassword';
+                this.currentView = new setPayPasswordView({
+                    model: _.pick(this, ['id', 'hasAccount'])
+                });
+            }
+
         }else {
             this.hasAccount = true;
             switch(this.id) {
@@ -56,6 +64,11 @@ var accountView = Backbone.View.extend({
                     break;
                 case 'consumeRecord':
                     this.currentView = new paymentRecordView({
+                        model: _.pick(this, ['id', 'hasAccount'])
+                    });
+                    break;
+                case 'invoice': 
+                    this.currentView = new invoiceView({
                         model: _.pick(this, ['id', 'hasAccount'])
                     });
                     break;

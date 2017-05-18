@@ -89,28 +89,30 @@
                 <li>
                     <label>
                         <span>税务登记扫描文件：</span>
-                        <input type="hidden" name="taxScannFile" value="">                        
+                        <input type="hidden" id="taxScannFile" name="taxScannFile" value="">                        
                     </label>
                     <div class="upload-file-area">
                         <button class="btn beauty-file" type="button">上传文件</button>
-                        <input class="btn btn-xs btn-file" id="document-0" type="file" name="file" value="选择文件">
-                        
                         <span id="showTaxScannFileName"></span>
                     </div>
                 </li>
                 <li>
                     <label>
                         <span>一般纳税人扫描件：</span>
-                        <input type="hidden" name="taxpayerScannFile" value="">
+                        <input type="hidden" id="taxpayerScannFile" name="taxpayerScannFile" value="">
                     </label>
                     <div class="upload-file-area">
                         <button class="btn beauty-file" type="button">上传文件</button>
-                        <input class="btn btn-xs btn-file" id="document-0" type="file" name="file" value="选择文件">
-                        
                         <span id="showTaxpayerScannFile"></span>
                     </div>
                 </li>
             </ul>
+        </form>
+        <form class="scanfile-form hide" method="post">
+            <input class="btn-tax-file" data-hidden="taxScannFile" data-showarea="showTaxScannFileName" type="file" value="选择文件">
+        </form>
+        <form class="scanfile-payer-form hide" method="post">
+            <input class="btn-tax-file" data-hidden="taxpayerScannFile" data-showarea="showTaxpayerScannFile" type="file" value="选择文件">
         </form>
     </div>
 </div>

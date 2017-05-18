@@ -3,8 +3,9 @@
 var commonTemplate = require('html!./common.html');
 var template = require('html!./invoice.html');
 
-require('./account.css');
+require('./account.less');
 require('util');
+require('formAjax');
 
 var queryInvoicesModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'invoice/queryInvoices.do'
@@ -21,7 +22,8 @@ var accountView = Backbone.View.extend({
         'click .invoice .btn-search': 'search',
         'click .invoice .btn-add': 'addInvoice',
         'keydown #taxpayerName': 'handleEnterKey',
-        'change .add-invoice-form .invoice-type': 'changeInvoiceType'
+        'change .add-invoice-form .invoice-type': 'changeInvoiceType',
+        'change .btn-tax-file': 'doUploadFile',
     },
     pagObj: {
         pageSize: 10,
@@ -105,7 +107,7 @@ var accountView = Backbone.View.extend({
     },
     addInvoice: function() {
         var that = this;
-        var dialog = layer.open({
+        this.dialog = layer.open({
             type: 1,
             title: '添加发票申请',
             shade: 0.6,
@@ -120,7 +122,10 @@ var accountView = Backbone.View.extend({
                 $('.add-invoice-form').submit();
             },
             btn2: function () {
-                layer.close(dialog);
+                layer.close(that.dialog);
+                $('.add-invoice-form')[0].reset();
+            },
+            end: function() {
                 $('.add-invoice-form')[0].reset();
             }
         });
@@ -186,6 +191,15 @@ var accountView = Backbone.View.extend({
         this.saveInvoiceModel.save();
     },
     handleSaveInvoice: function() {
+        var model = this.saveInvoiceModel.toJSON();
+
+        if(model.status == 'OK') {
+            layer.msg('添加发票申请成功！');
+            layer.close(this.dialog);
+            this.reloadPage();
+        }else {
+            layer.msg('添加发票申请失败！');
+        }
 
     },
     changeInvoiceType: function(event) {
@@ -193,9 +207,61 @@ var accountView = Backbone.View.extend({
 
         if($target.val() == '01') {
             this.$('#moreForm').hide();
+            this.$('.scanfile-form').hide();
+            this.$('.scanfile-payer-form').hide();
         }else {
             this.$('#moreForm').show();
+            this.$('.scanfile-form').show();
+            this.$('.scanfile-payer-form').show();
         }
+    },
+    doUploadFile: function(event) {
+        var $target = $(event.target),
+            uploadImgUrl = mscxPage.request.order + 'invoice/uploadFile.do';
+        var that = this;
+
+        $target.parent().ajaxSubmit({
+            url: uploadImgUrl,
+            success: function(res) {
+                if(typeof (res) === 'string' ){
+                    res = JSON.parse(res)
+                }
+                if(res.status == 'ERROR'){
+                    layer.alert(res.message,{icon: 2});
+                    return;
+                }
+                var src = res.result;
+
+                $('#' + $target.data('hidden')).val(src.OSSFileKey);
+                $('#' + $target.data('showarea')).val(src.fileURL);
+            },
+            error: function() {
+                layer.msg('上传失败');
+            }
+        });
+
+        // $formArea.ajaxSubmit({
+        //     url: uploadImgUrl,
+        //     success: function(res) {
+                // if(typeof (res) === 'string' ){
+                //     res = JSON.parse(res)
+                // }
+                // if(res.status == 'ERROR'){
+                //     $('.img-error').show();
+                //     layer.alert(res.message,{icon: 2});
+                //     return;
+                // }
+                // var src = res.result;
+                // that.model.set('imageUri',src.imageUri);
+                // that.model.set('imageKey',src.imageKey);
+                // $('.allInfoImg').find('img').attr('src',src.imageUri);
+                // $('.img-error').hide();
+        //     },
+        //     error: function() {
+        //         $('.img-error').show();
+        //         layer.msg('上传失败');
+        //     }
+        // });
     }
 });
 module.exports = accountView;

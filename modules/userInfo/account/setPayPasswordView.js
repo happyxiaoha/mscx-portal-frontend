@@ -4,7 +4,7 @@ var commonTemplate = require('html!./common.html');
 var template = require('html!./setPayPassword.html');
 var passwordView = require('passwordWidget/passwordView.js');
 
-require('./account.css');
+require('./account.less');
 require('validate');
 require('util');
 require('customValidate');

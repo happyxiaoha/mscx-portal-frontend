@@ -1,3 +1,5 @@
+@import '../../../less/variables.less';
+
 .account.balance {
     padding: 20px 25px;
     border: 1px solid #ccc;
@@ -226,6 +228,22 @@
 
 .layer-form ul li span {
     width: 130px;
+}
+
+.scanfile-form, .scanfile-payer-form {
+    position: absolute;
+    top: 525px;
+    left: 155px;
+    height: 40px;
+    width: 80px;
+    .btn-tax-file {
+        opacity: 0;
+        width: 80px;
+        height: 40px;
+    }
+}
+.scanfile-payer-form {
+    top: 567px;
 }
 
 @media screen and (max-width: 1300px){

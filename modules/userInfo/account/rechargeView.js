@@ -20,7 +20,7 @@ var PayResource = {
 }
 
 require('validate');
-require('./account.css');
+require('./account.less');
 
 var accountView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,

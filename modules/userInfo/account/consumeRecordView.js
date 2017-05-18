@@ -3,7 +3,7 @@
 var commonTemplate = require('html!./common.html');
 var template = require('html!./consumeRecord.html');
 
-require('./account.css');
+require('./account.less');
 require('util');
 
 var consumeRecordModel = Backbone.Model.extend({

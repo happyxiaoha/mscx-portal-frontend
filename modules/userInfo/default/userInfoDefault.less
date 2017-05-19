@@ -1,3 +1,5 @@
+@import '../../../less/variables.less';
+
 .my-info-area {overflow: hidden;}
 .right-con-wrap {width: 1000px;}
 .user-name-area {min-width: 80px;height: 18px;  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;}
@@ -26,9 +28,9 @@
     padding-right: 40px;
 }
 
-.right-con-wrap a.message{background: url('../../../images/news.png') no-repeat 30px center;line-height: 16px;padding-left: 10px;margin-top: 10px;}
-.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat 20px 3px;line-height: 16px;padding-left: 10px;margin-top: 5px;text-decoration: underline;}
-.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat 30px;line-height: 16px;margin-top: 5px;padding-left: 10px; color:#30b7b7;}
+.right-con-wrap a.message{background: url('../../../images/news.png') no-repeat 30px center;line-height: 16px;padding-left: 10px;margin-top: 10px; background-size: 16px 12px;color:@linkColorHover;}
+.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat 30px 3px;line-height: 16px;padding-left: 10px;margin-top: 5px;text-decoration: underline;color:@linkColorHover;}
+.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat 30px;line-height: 16px;margin-top: 5px;padding-left: 10px; color:@linkColorHover;}
 .right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat 30px;line-height: 16px;margin-top: 5px;padding-left: 10px;color: #f0b742;}
 .right-con-wrap .RCconsList p{border-bottom: 1px dashed #069cd9;line-height: 26px;}
 .right-con-wrap .RCconsList p span{display: inline-block;}

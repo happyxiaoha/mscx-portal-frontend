@@ -21,6 +21,7 @@ var configRoot = {
     // 'pioneering': './js/pioneering.js',  //创业园地
     'userInfo': './js/userInfo.js',    //用户中心
     'pay': './js/pay.js',
+    'message': './js/message.js',
     'search': './js/search.js',
     'contactUs': './js/contactUs.js',
     'saas': './js/saas.js'

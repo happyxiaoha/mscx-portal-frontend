@@ -5,7 +5,7 @@
     top: 50%;
     z-index: 200;
     margin-top: -115px;
-    width: 70px;
+    width: 45px;
     height: 310px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .float-div>div{
-    height: 70px;
+    height: 45px;
 }
 .mt0 {
     margin-top: 0;
@@ -34,8 +34,8 @@
 .wpa-container {
     cursor: pointer;
     display: inline-block;
-    width: 63px;
-    height: 63px;
+    width: 45px;
+    height: 45px;
     border-radius: 2px;
     margin-top: 10px;
     /*border: 1px solid #dadee7;*/
@@ -58,9 +58,9 @@
     padding: 10px;
     position: fixed;
     top: 50%;
-    margin-top: -120px;
+    margin-top: -160px;
     z-index: 200;
-    right: 80px;
+    right: 55px;
     background: url("../../images/codeBg.png") no-repeat;
 }
 .er-code p{
@@ -90,9 +90,10 @@
 }
 .float-div a span.icon-img {
     display: inline-block;
-    width: 63px;
-    height: 63px;
+    width: 45px;
+    height: 45px;
     position: absolute;
     top: 0;
     left: 0;
+    background-size: 45px 45px;
 }

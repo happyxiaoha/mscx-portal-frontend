@@ -6,6 +6,7 @@ var template = require('html!./invoice.html');
 require('./account.less');
 require('util');
 require('formAjax');
+require('customValidate');
 
 var queryInvoicesModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'invoice/queryInvoices.do'
@@ -41,6 +42,7 @@ var accountView = Backbone.View.extend({
         this.$('#userInfoArea').html(this.template);
 
         this.invoiceTemplate = _.template(this.$('#invoiceTemplate').html(), {variable: 'data'});
+        this.addInvoiceTemplate = this.$('#addInvoiceTemplate').html();
 
         this.$datepicker = this.$('#datepicker');
 
@@ -107,13 +109,14 @@ var accountView = Backbone.View.extend({
     },
     addInvoice: function() {
         var that = this;
+        $('.add-invoice-area').html(this.addInvoiceTemplate);
         this.dialog = layer.open({
             type: 1,
             title: '添加发票申请',
             shade: 0.6,
             shadeClose: true,
             btn: ['确认', '取消'],
-            area: ['550px', '450px'],
+            area: ['570px', '450px'],
             content: $('.add-invoice-area'), //捕获的元素
             success: function() {
                 $('.add-invoice-form').validate(that.invoiceValidator());
@@ -142,7 +145,7 @@ var accountView = Backbone.View.extend({
                     price: true,
                     min: 0
                 },
-                taxpayername: {
+                taxpayerName: {
                     required: true,
                     maxlength: 50
                 },
@@ -233,35 +236,12 @@ var accountView = Backbone.View.extend({
                 var src = res.result;
 
                 $('#' + $target.data('hidden')).val(src.OSSFileKey);
-                $('#' + $target.data('showarea')).val(src.fileURL);
+                $('#' + $target.data('showarea')).attr('src', src.fileURL);
             },
             error: function() {
                 layer.msg('上传失败');
             }
         });
-
-        // $formArea.ajaxSubmit({
-        //     url: uploadImgUrl,
-        //     success: function(res) {
-                // if(typeof (res) === 'string' ){
-                //     res = JSON.parse(res)
-                // }
-                // if(res.status == 'ERROR'){
-                //     $('.img-error').show();
-                //     layer.alert(res.message,{icon: 2});
-                //     return;
-                // }
-                // var src = res.result;
-                // that.model.set('imageUri',src.imageUri);
-                // that.model.set('imageKey',src.imageKey);
-                // $('.allInfoImg').find('img').attr('src',src.imageUri);
-                // $('.img-error').hide();
-        //     },
-        //     error: function() {
-        //         $('.img-error').show();
-        //         layer.msg('上传失败');
-        //     }
-        // });
     }
 });
 module.exports = accountView;

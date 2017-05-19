@@ -3,7 +3,7 @@
  */
 var commonTemplate = require('html!./userCommon.html');
 var template = require('html!./userAuth.html');
-require('./user.css');
+require('./user.less');
 require('validate');
 require('formAjax');
 
@@ -25,7 +25,7 @@ var addEnterpriseAuthModel = Backbone.Model.extend({
 });
 
 var personAuthModel = Backbone.Model.extend({
-    url: mscxPage.request.uc + 'certification/person.do'
+    url: '/certification/person.do'
 });
 
 var account = '';
@@ -36,7 +36,8 @@ var userAuthenticationView = Backbone.View.extend({
         'change .identifide': 'changeAuthType',
         'change .upload-file': 'uploadFile',
         'input #enterpriseForm input[type="text"]' : 'changeEnterpriseAttribute',
-        'input #personForm input[type="text"]' : 'changePersonAttribute'
+        'input #personForm input[type="text"]' : 'changePersonAttribute',
+        'click .captchaImg': 'refreshCaptcha'
     },
     personValidateConfig: function () {
         var that = this;
@@ -57,6 +58,11 @@ var userAuthenticationView = Backbone.View.extend({
                 mobile: {
                     required: true,
                     telephone: true
+                },
+                captcha: {
+                    required: true,
+                    maxlength: 4,
+                    number: true
                 }
             },
             submitHandler: function () {
@@ -107,6 +113,9 @@ var userAuthenticationView = Backbone.View.extend({
             }
         }
     },
+    refreshCaptcha: function () {
+        $('.captchaImg').attr('src','/certification/captcha.do?t='+ new Date().getTime());
+    },
     savePersonSelf: function () {
         if($('.identifide ').val() == 'photo' && !$('.upload-file').val()){
             $('.identifyType').find('.phone-error').removeClass('hide');
@@ -133,6 +142,9 @@ var userAuthenticationView = Backbone.View.extend({
                     setTimeout(function () {
                         location.href = '#info';
                     }, 2000);
+                },
+                error: function () {
+                    that.refreshCaptcha();
                 }
             })
         }

@@ -3,7 +3,7 @@
  */
 var commonTemplate = require('html!./userCommon.html');
 var template = require('html!./user.html');
-require('./user.css');
+require('./user.less');
 require('validate');
 require('formAjax');
 

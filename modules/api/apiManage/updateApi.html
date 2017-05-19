@@ -109,10 +109,10 @@
             <div class="fl R_right chargeTypeRadio">
                 <label><input type="radio" name="chargeType" id="ct01" <%if(res.chargeType=='01'){%>checked<%}%>>免费</label>
                 <label><input type="radio" name="chargeType" id="ct02" <%if(res.chargeType=='02'){%>checked<%}%>>收费</label>
-                <label><input type="radio" name="chargeType" id="ct03" <%if(res.chargeType=='03'){%>checked<%}%>>按实际订单支付</label>
+                <label><input type="radio" name="chargeType" id="ct04" <%if(res.chargeType=='04'){%>checked<%}%>>按实际订单支付</label>
             </div>
         </div>
-        <div class="D_table api-package" <%if(res.chargeType=='01' || res.chargeType=='03'){%>style="display: none;"<%}%> >
+        <div class="D_table api-package" <%if(res.chargeType=='01' || res.chargeType=='04'){%>style="display: none;"<%}%> >
             <table >
                 <thead>
                 <tr>

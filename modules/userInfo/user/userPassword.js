@@ -3,7 +3,7 @@
  */
 var commonTemplate = require('html!./userCommon.html');
 var template = require('html!./userPassword.html');
-require('./user.css');
+require('./user.less');
 require('validate');
 
 var userPasswordManagerModel = Backbone.Model.extend({

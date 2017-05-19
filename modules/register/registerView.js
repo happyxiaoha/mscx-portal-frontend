@@ -66,13 +66,10 @@ var registerView = Backbone.View.extend({
                 success: function (res) {
                       res = res.toJSON();
                      if(res.message == 'success'){
-                         layer.confirm('注册成功', {
-                             btn: ['去登录','去首页'] //按钮
-                         }, function(){
-                             window.open('login.html','_self');
-                         }, function(){
-                             window.open('index.html','_self');
-                         });
+                        layer.msg('注册成功');
+                        setTimeout(function() {
+                            location.href = '/index.html';
+                        }, 1000);
                      }
                 },
                 error: function () {

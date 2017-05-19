@@ -10,110 +10,7 @@
         
     </div>
     <div class="add-invoice-area hide">
-        <form class="add-invoice-form layer-form">
-            <ul>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>发票类型：</span>
-                        <select name="invoiceType" class="invoice-type">
-                            <option value="01" >普通发票</option>
-                            <option value="02" >增值税专用发票</option>
-                        </select>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>发票金额：</span>
-                        <input type="text" name="applyAmount" class="small" value="">
-                        <!-- <p class="input-mes-api fl">套餐名称最多不超过50字</p> -->
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>发票抬头：</span>
-                        <input type="text" name="taxpayerName" value="">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span>收取方式：</span>
-                        <input type="hidden" name="tokenType" value="20">
-                        <input type="text" readonly class="small" value="邮寄" />
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>邮寄地址：</span>
-                        <input type="text" name="mailAddress" value="">
-                    </label>
-                </li>
-            </ul>
-
-            <ul id="moreForm" class="hide">
-                <li>
-                    <label>
-                        <span><i class="need">*</i>税务登记号：</span>
-                        <input type="text" name="taxpayerId" value="">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>开户银行：</span>
-                        <input type="text" name="bankDeposit" value="">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>银行账号：</span>
-                        <input type="text" name="bankAccount" value="">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>开户银行名称：</span>
-                        <input type="text" name="bankName" value="">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>注册场所地址：</span>
-                        <input type="text" name="regAddress" value="">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span><i class="need">*</i>注册固定电话：</span>
-                        <input type="text" name="regPhone" value="">
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <span>税务登记扫描文件：</span>
-                        <input type="hidden" id="taxScannFile" name="taxScannFile" value="">                        
-                    </label>
-                    <div class="upload-file-area">
-                        <button class="btn beauty-file" type="button">上传文件</button>
-                        <span id="showTaxScannFileName"></span>
-                    </div>
-                </li>
-                <li>
-                    <label>
-                        <span>一般纳税人扫描件：</span>
-                        <input type="hidden" id="taxpayerScannFile" name="taxpayerScannFile" value="">
-                    </label>
-                    <div class="upload-file-area">
-                        <button class="btn beauty-file" type="button">上传文件</button>
-                        <span id="showTaxpayerScannFile"></span>
-                    </div>
-                </li>
-            </ul>
-        </form>
-        <form class="scanfile-form hide" method="post">
-            <input class="btn-tax-file" data-hidden="taxScannFile" data-showarea="showTaxScannFileName" type="file" value="选择文件">
-        </form>
-        <form class="scanfile-payer-form hide" method="post">
-            <input class="btn-tax-file" data-hidden="taxpayerScannFile" data-showarea="showTaxpayerScannFile" type="file" value="选择文件">
-        </form>
+        
     </div>
 </div>
 <script type="template" id="invoiceTemplate">
@@ -153,4 +50,112 @@
         </table>
     </div>
     <div id="invoicePage" class="page-area fr"></div>
+</script>
+<script type="template" id="addInvoiceTemplate">
+    <form class="add-invoice-form layer-form">
+        <ul>
+            <li>
+                <label>
+                    <span><i class="need">*</i>发票类型：</span>
+                    <select name="invoiceType" class="invoice-type">
+                        <option value="01" >普通发票</option>
+                        <option value="02" >增值税专用发票</option>
+                    </select>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>发票金额：</span>
+                    <input type="text" name="applyAmount" class="small" value="">
+                    <!-- <p class="input-mes-api fl">套餐名称最多不超过50字</p> -->
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>发票抬头：</span>
+                    <input type="text" name="taxpayerName" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span>收取方式：</span>
+                    <input type="hidden" name="tokenType" value="20">
+                    <input type="text" readonly class="small" value="邮寄" />
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>邮寄地址：</span>
+                    <input type="text" name="mailAddress" value="">
+                </label>
+            </li>
+        </ul>
+
+        <ul id="moreForm" class="hide">
+            <li>
+                <label>
+                    <span><i class="need">*</i>税务登记号：</span>
+                    <input type="text" name="taxpayerId" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>开户银行：</span>
+                    <input type="text" name="bankDeposit" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>银行账号：</span>
+                    <input type="text" name="bankAccount" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>开户银行名称：</span>
+                    <input type="text" name="bankName" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>注册场所地址：</span>
+                    <input type="text" name="regAddress" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>注册固定电话：</span>
+                    <input type="text" name="regPhone" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span>税务登记扫描文件：</span>
+                    <input type="hidden" id="taxScannFile" name="taxScannFile" value="">                        
+                </label>
+                <div class="upload-file-area">
+                    <p class="allInfoImg">
+                        <img src="../../../images/add.png" id="showTaxScannFileName" alt="扫描文件图片">
+                    </p>
+                </div>
+            </li>
+            <li>
+                <label>
+                    <span>一般纳税人扫描件：</span>
+                    <input type="hidden" id="taxpayerScannFile" name="taxpayerScannFile" value="">
+                </label>
+                <div class="upload-file-area">
+                    <p class="allInfoImg">
+                        <img src="../../../images/add.png" id="showTaxpayerScannFile" alt="一般纳税人扫描件图片">
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </form>
+    <form class="scanfile-form hide" method="post">
+        <input class="btn-tax-file" data-hidden="taxScannFile" data-showarea="showTaxScannFileName" name="file" type="file" value="选择文件">
+    </form>
+    <form class="scanfile-payer-form hide" method="post">
+        <input class="btn-tax-file" data-hidden="taxpayerScannFile" data-showarea="showTaxpayerScannFile" name="file" type="file" value="选择文件">
+    </form>
 </script>

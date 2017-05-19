@@ -177,7 +177,7 @@ var accountView = Backbone.View.extend({
                 },
                 regPhone: {
                     required: true,
-                    phone: true
+                    landlinePhone: true
                 }
             },
             submitHandler: function () {

@@ -19,7 +19,7 @@ var objectModel = Backbone.Model.extend({
 });
 // 微服务分类
 var categoryModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'category/getServiceCategory.do'
+    url: mscxPage.request.dict + 'category/getSassCategory.do'
 });
 // 微服务标签
 var tagModel = Backbone.Model.extend({

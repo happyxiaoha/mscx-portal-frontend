@@ -72,7 +72,11 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left">是否收费：</p>
             <div class="fl R_right chargeTypeRadio">
-                <p class="mes"><%if(res.chargeType=='01'){%>免费<%}%><%if(res.chargeType=='02'){%>收费<%}%></p>
+                <p class="mes">
+                    <%if(res.chargeType=='01'){%>免费<%}%>
+                    <%if(res.chargeType=='02'){%>收费<%}%>
+                    <%if(res.chargeType=='04'){%>按实际订单收费<%}%>
+                </p>
             </div>
         </div>
         <div class="D_table api-package" <%if(res.chargeType=='01'){%>style="display: none;"<%}%> >

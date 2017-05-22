@@ -468,6 +468,9 @@ var createDemandView = Backbone.View.extend({
             },
             btn2: function () {         // 不通过
                 layer.close(dialog);
+            },
+            end: function() {
+                that.updateIndex = -1;
             }
         });
         return false;

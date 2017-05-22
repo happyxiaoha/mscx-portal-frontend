@@ -12,11 +12,11 @@ var packageModel = Backbone.Model.extend({
 // });
 // 免费微服务下单
 var freeOrderModel = Backbone.Model.extend({
-    url: 'order/freeApp/placeOrder.do'
+    url: 'order/freeSaaS/placeOrder.do'
 });
 // 收费微服务下单
 var feeOrderModel = Backbone.Model.extend({
-    url: 'order/feeApp/placeOrder.do'
+    url: 'order/feeSaaS/placeOrder.do'
 });
 // 后付费saas服务下单
 var afterFeeOrderModel = Backbone.Model.extend({

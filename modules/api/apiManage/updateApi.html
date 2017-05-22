@@ -141,7 +141,7 @@
                     <th>API名称</th>
                     <th>API标识</th>
                     <th>API地址</th>
-                    <th>是否健全</th>
+                    <th>是否鉴权</th>
                     <th>操作</th>
                 </tr>
                 <tbody id="apiTable">
@@ -261,7 +261,7 @@
                 <span class="api-name-error">这是必填字段</span>
             </li>
             <li>
-                <label><span><i class="need">*</i>是否健全：</span></label>
+                <label><span><i class="need">*</i>是否鉴权：</span></label>
                 <label class="auth-type"><input type="radio" name="isAuth" value="0" <%if(!res.isAuth || res.isAuth=='0'){%>checked<%}%>>否</label>
                 <label class="auth-type"><input type="radio" name="isAuth" value="1" <%if(res && res.isAuth=='1'){%>checked<%}%>>是</label>
             </li>

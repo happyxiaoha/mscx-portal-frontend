@@ -3,11 +3,3 @@
     border-right: solid 1px #ccc !important;
     max-width: 200px;
 }
-.tab-title button {
-    border: none;
-    background: #069cd9;
-    // border-radius: 5px;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 14px;
-}

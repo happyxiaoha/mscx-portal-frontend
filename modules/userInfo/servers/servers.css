@@ -1,15 +1,3 @@
-.tab-title{
-    margin-bottom: 15px;
-}
-.tab-title button {
-    border: none;
-    background: #069cd9;
-    // border-radius: 5px;
-    color: #fff;
-    padding: 5px 10px;
-    font-size: 14px;
-}
-.tab-title button a {font-size: 16px;}
 .D_table table tbody tr td a {
     color: #00c4c3;
 }

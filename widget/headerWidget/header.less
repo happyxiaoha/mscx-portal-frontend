@@ -21,7 +21,7 @@
 .header .searchCons input{display: inline-block;margin: 0;}
 .header .searchCons .search{width: 444px;height: 36px;color: #666;background: #e0e0e0;box-sizing: border-box;outline: none;border-radius: 36px;box-shadow: none;padding-left: 10px;padding-right: 16px;}
 .header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
-.header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
+.header .haslogin{position: relative;margin: 24px 0 0 0;}
 .header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
 .header .haslogin .noLogin span{margin: 0 4px;}
 .header .haslogin .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
@@ -36,6 +36,29 @@
     background: url("../../images/newicon/ic_down.png") right center no-repeat;
 }
 .header .haslogin .yesLogin .active span.down{background: url("../../images/newicon/ic_up.png") right center no-repeat;}
+
+.header .hot-search-area {
+    margin-top: 10px;
+    ul {
+        overflow: hidden;
+        width: 100%;
+        li {
+            float: left;
+            max-width: 60px;
+            margin-left: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            a {
+                color: @linkColor;
+                &:hover {
+                    color: @linkColorHover;
+                }
+            }
+        }
+    }
+}
+   
 
 /*.dropMenu{
     position: absolute;

@@ -53,21 +53,28 @@ var switchCity = Backbone.Model.extend({
     url: mscxPage.host+'/home/switchCity.do?'
 });
 
+var hotWordModel = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'hotWord/selectHotWordList.do'
+});
+
 var headerView = Backbone.View.extend({
     el: mscxPage.domEl.headerEl,
     template: _.template(template, {variable: 'data'}),
+    hotWordTemplate: _.template('<% data.forEach(function(item){ %><li><a href="javascript:;" data-word="<%= item.hotWord %>" ><%= item.hotWord %></a></li><% }) %>', {variable: 'data'}),
     events: {
         'blur .info-line input': 'changeAttribute',
         'click #exit': 'logout',
         'click .search-img': 'search',
         'keydown #inputs': 'keyDownSearch',
         'click #developLink': 'jumpDevelop',
-        'click #city-station a': 'switchCity'
+        'click #city-station a': 'switchCity',
+        'click .hot-search-ul a': 'hotSearch',
     },
     initialize: function() {
         this.model = new getUserMsg();
         this.developCheck = new developCheck();
         this.switchCity = new switchCity();
+        this.hotWordModel = new hotWordModel();
         this.currentCity = _.find(cityMap.cities, function(item){
             return item.url.indexOf(location.host) > -1;
         }) || cityMap.cities[0];
@@ -85,6 +92,7 @@ var headerView = Backbone.View.extend({
         })
         this.listenTo(this.model, 'sync', this.render);
         this.listenTo(this.switchCity, 'sync', this.handleSwitchCity);
+        this.listenTo(this.hotWordModel, 'sync', this.renderHotWord);
 
         this.model.fetch({
             data: {
@@ -114,6 +122,10 @@ var headerView = Backbone.View.extend({
             location.href = sUrl;
         }
     },
+    renderHotWord: function() {
+        var model = this.hotWordModel.toJSON();
+        this.$('.hot-search-ul').append(this.hotWordTemplate(model.result));
+    },
     render: function () {
         var nJson = this.model.toJSON();
         mscxPage.userInfo = nJson.result;
@@ -127,6 +139,8 @@ var headerView = Backbone.View.extend({
             cityStations: cityMap.cities,
             currentCity: this.currentCity
         }));
+        // 获取热门关键词搜索
+        this.hotWordModel.fetch();
         var _c;
         $("#personReal").hover(function(){
             $(".shareBox").show();
@@ -160,6 +174,11 @@ var headerView = Backbone.View.extend({
         window.localStorage.setItem('keyword', keyWord);
         window.localStorage.setItem('dataType','API');
         window.open('search.html','_self');
+    },
+    hotSearch: function(event) {
+        var $target = this.$(event.target);
+        this.$('#inputs').val($target.data('word'));
+        this.search();
     },
     keyDownSearch: function(e){
         var that = this;

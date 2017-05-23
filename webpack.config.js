@@ -5,6 +5,8 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({name:'common',minCh
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+console.log(path.resolve(__dirname,'src/modules'));
+
 module.exports = {
     entry: { },
     output: {
@@ -44,16 +46,16 @@ module.exports = {
     resolve: {
         root: [
             path.resolve(__dirname),
-            path.resolve(__dirname,'modules'),
-            path.resolve(__dirname,'widget'),
-            path.resolve(__dirname,'less')
+            path.resolve(__dirname,'src/modules'),
+            path.resolve(__dirname,'src/widget'),
+            path.resolve(__dirname,'src')
         ],
         alias: {
-            validate: 'lib/jquery.validate.js',
-            formAjax: 'lib/jquery.form.js',
-            util: 'lib/util.js',
-            showdown: 'lib/showdown.js',
-            customValidate: 'lib/additional-methods.js'
+            validate: 'src/lib/jquery.validate.js',
+            formAjax: 'src/lib/jquery.form.js',
+            util: 'src/lib/util.js',
+            showdown: 'src/lib/showdown.js',
+            customValidate: 'src/lib/additional-methods.js'
         },
         extensions: ['', '.js', '.css', '.less']
     }

@@ -116,7 +116,7 @@ var accountView = Backbone.View.extend({
             shade: 0.6,
             shadeClose: true,
             btn: ['确认', '取消'],
-            area: ['570px', '450px'],
+            area: ['588px', '450px'],
             content: $('.add-invoice-area'), //捕获的元素
             success: function() {
                 $('.add-invoice-form').validate(that.invoiceValidator());
@@ -142,6 +142,7 @@ var accountView = Backbone.View.extend({
                 },
                 applyAmount: {
                     required: true,
+                    max: 10000000,
                     price: true,
                     min: 0
                 },
@@ -155,7 +156,7 @@ var accountView = Backbone.View.extend({
                 },
                 taxpayerId: {
                     required: true,
-                    number: true,
+                    letterAndNumber: true,
                     maxlength: 50
                 },
                 bankDeposit: {

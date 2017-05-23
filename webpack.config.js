@@ -1,11 +1,7 @@
 var webpack = require('webpack');
 var path = require("path");
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin({name:'common',minChunks: 2});
-//PostCSS plugins
-var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-console.log(path.resolve(__dirname,'src/modules'));
 
 module.exports = {
     entry: { },
@@ -14,41 +10,47 @@ module.exports = {
         publicPath: './dist/',
         filename: '[name].js'
     },
-    plugins: [commonsPlugin,new ExtractTextPlugin("[name].css")
+    plugins: [commonsPlugin,new ExtractTextPlugin("[name].css"),new webpack.HotModuleReplacementPlugin()
     ],
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader", {
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {
+                            loader: "css-loader"
+                        },{
+                            loader: "less-loader"
+                        }
+                    ],
                     publicPath: '../dist/'
                 })
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader", {
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader",
                     publicPath: '../dist/'
                 })
             },
             {
                 test: /\.(jpg|png|woff|ttf|svg|gif)$/,
-                loader: "url?limit=10000"
-            },
-            {
-                test: /\.json$/,
-                loader: 'json'
+                loader: "url-loader",
+                options: {
+                    limit: 10000
+                }
             }
         ]
     },
-    postcss: [
-        autoprefixer({browsers: ['last 2 versions', "> 1%"]})
-    ],
     resolve: {
-        root: [
+        modules: [
             path.resolve(__dirname),
+            path.resolve(__dirname,'src'),
             path.resolve(__dirname,'src/modules'),
-            path.resolve(__dirname,'src/widget'),
-            path.resolve(__dirname,'src')
+            path.resolve(__dirname,'src/widget')
         ],
         alias: {
             validate: 'src/lib/jquery.validate.js',
@@ -57,7 +59,7 @@ module.exports = {
             showdown: 'src/lib/showdown.js',
             customValidate: 'src/lib/additional-methods.js'
         },
-        extensions: ['', '.js', '.css', '.less']
+        extensions: ['.js', '.css', '.less', '.json']
     }
 };
 

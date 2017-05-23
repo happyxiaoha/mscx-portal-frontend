@@ -17,7 +17,7 @@ var saveInvoiceModel = Backbone.Model.extend({
 
 var accountView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
-    commonTemplate: _.template(commonTemplate),
+    commonTemplate: _.template(commonTemplate), 
     template: template,
     events: {
         'click .invoice .btn-search': 'search',

@@ -5,9 +5,6 @@
   "main": "gulpfile.js",
   "dependencies": {
     "css-loader": "^0.23.1",
-    "express": "^4.13.4",
-    "express-http-proxy": "^0.6.0",
-    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
@@ -22,14 +19,21 @@
     "jshint": "^2.9.1",
     "json-loader": "^0.5.4",
     "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.12.15"
+    "url-loader": "^0.5.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
+    "eventsource-polyfill": "^0.9.6",
+    "express": "^4.15.3",
+    "extract-text-webpack-plugin": "^2.1.0",
     "gulp-clean": "^0.3.2",
+    "http-proxy-middleware": "^0.17.4",
     "less": "^2.7.2",
-    "less-loader": "^2.2.2"
+    "less-loader": "^2.2.2",
+    "opn": "^5.0.0",
+    "webpack": "^2.6.0",
+    "webpack-dev-middleware": "^1.10.2",
+    "webpack-hot-middleware": "^2.18.0"
   },
   "scripts": {
     "test": "none"

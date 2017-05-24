@@ -24,7 +24,7 @@
                 <th width="18%">发票抬头</th>
                 <th width="10%">发票时间</th>
                 <th width="10%">收取方式</th>
-                <th width="20%">取票地址</th>
+                <th width="20%">邮寄地址</th>
                 <th width="12%">发票状态</th>
             </tr>
             </thead>
@@ -37,7 +37,7 @@
                 <td><%= item.taxpayerName %></td>
                 <td><%= new Date(item.applyTime).format('yyyy-MM-dd') %></td>
                 <td><%= item.tokenType %></td>
-                <td><%= item.takingAddress %></td>
+                <td><%= item.mailAddress %></td>
                 <td><%= item.invoiceStatus %></td>
             </tr>
             <% }); %>

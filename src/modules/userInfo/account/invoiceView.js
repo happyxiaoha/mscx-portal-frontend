@@ -162,9 +162,9 @@ var accountView = Backbone.View.extend({
                     required: true
                 },
                 applyAmount: {
+                    price: true,
                     required: true,
                     max: 10000000,
-                    price: true,
                     min: 0
                 },
                 taxpayerName: {
@@ -200,6 +200,12 @@ var accountView = Backbone.View.extend({
                 regPhone: {
                     required: true,
                     landlinePhone: true
+                }
+            },
+            messages: {
+                applyAmount:{
+                    max: '输入的金额不能大于可开票金额',
+                    price: '请输入正确的价格，如（100.00）'
                 }
             },
             submitHandler: function () {

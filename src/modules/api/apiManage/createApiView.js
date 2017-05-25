@@ -268,6 +268,7 @@ var createApiView = Backbone.View.extend({
                     unSpecial: true
                 },
                 uri: {
+                    url: true,
                     required: true
                 },
                 testPacket: {

@@ -128,6 +128,7 @@ var createDemandView = Backbone.View.extend({
                 },
                 uri: {
                     required: true,
+                    url: true,
                     maxlength: 255
                 },
                 description: {

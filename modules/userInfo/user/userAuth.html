@@ -41,6 +41,16 @@
                     <li class="clearfix identifyType" >
 
                     </li>
+                    <%if (!name){ %>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>验证码：</span>
+                            <input type="text" id="captcha" maxlength="4" name="captcha" class="captcha" placeholder="请填写验证码" value="">
+                            <img class="captchaImg" alt="验证码" src="/certification/captcha.do">
+                            <label id="captcha-error" class="error" for="captcha"></label>
+                        </div>
+                    </li>
+                    <% } %>
                     <li class="clearfix">
                         <%if(!name){%>
                         <label class="remember fl">

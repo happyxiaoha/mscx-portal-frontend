@@ -214,7 +214,7 @@ var view = Backbone.View.extend({
         layer.open({
             type: 1,
             btn: ['确定','取消'],
-            title: '<p class="ft22">资源使用需求</p>',
+            title: '<p class="ft22">需求</p>',
             shade: 0.6,
             shadeClose: true,
             area: ['500px', '450px'],

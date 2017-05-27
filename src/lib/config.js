@@ -57,7 +57,8 @@ var mscxPage = {
         data: '/ro/mscx-data-api/',
         saas: '/ro/mscx-saas-api/',
         account: '/ro/mscx-account-api/',
-        mes: '/ro/mscx-message-api/'
+        mes: '/ro/mscx-message-api/',
+        contract: '/ro/mscx-contract-api/'
     },
     isLogin: function() {
         if(!mscxPage.userInfo){

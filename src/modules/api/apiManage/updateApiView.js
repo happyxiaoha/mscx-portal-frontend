@@ -240,7 +240,8 @@ var updateApiView = Backbone.View.extend({
                 },
                 uri: {
                     url: true,
-                    required: true
+                    required: true,
+                    maxlength: 300
                 },
                 testPacket: {
                     required: true

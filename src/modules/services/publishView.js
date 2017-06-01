@@ -111,9 +111,9 @@ var createDemandView = Backbone.View.extend({
                 imageUri: {
                     required: true
                 },
-                imageKey: {
-                    required: true
-                },
+                // imageKey: {
+                //     required: true
+                // },
                 serviceObject: {
                     required: true
                 },

@@ -15,7 +15,7 @@ var orderView = Backbone.View.extend({
         totalPage: 1
     },
     events: {
-        'click .toOrderPay': 'toPay'
+        // 'click .show-detail': 'showDetail'
     },
     initialize: function() {
         var that = this;
@@ -35,12 +35,12 @@ var orderView = Backbone.View.extend({
     render: function () {
         var res = this.model.get('result'),
             that = this,
-            salesList = res.list,
             page = res.page;
+        this.salesList = res.list;
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
         var temps = _.template($('#salesList').html());
-        this.$el.find('tbody').html(temps({salesList: salesList}));
+        this.$el.find('tbody').html(temps({salesList: this.salesList}));
         laypage({
             cont: 'orderPages',
             skip: true,
@@ -64,6 +64,28 @@ var orderView = Backbone.View.extend({
     },
     initRender: function () {
         this.$el.find('#orderInfo').html(salesRecordTemplate);
+
+        this.sourceTemplate = _.template(this.$el.find('#sourceList').html(), {variable: 'data'});
+    },
+    showDetail: function(event) {
+        var $target = this.$(event.target);
+        var index = $target.data('index');
+
+        index = (this.pagObj.pageNum - 1) * this.pagObj.pageSize + index;
+
+        var source = JSON.parse(this.salesList[index].sourceJson);
+
+        this.$el.find('#sourceLayer').html(this.sourceTemplate(source));
+
+        layer.open({
+            type: 1,
+            title: '详情',
+            btn: ['关闭'],
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px'],
+            content: this.$el.find('#sourceLayer')
+        })
     }
 });
 

@@ -34,7 +34,7 @@ var Routes =  Backbone.Router.extend({
         'rechargeRecord': 'rechargeRecordView',
         'consumeRecord': 'consumeRecordView',
         'forgetPayPassword': 'forgetPayPasswordView',
-        'recharge/result/:order': 'accountView'
+        'recharge/result/:order': 'accountView',
         'invoice': 'invoiceView'
     },
     defaultView:function () {

@@ -1,0 +1,105 @@
+@import '../../../less/variables.less';
+
+.my-info-area {overflow: hidden;}
+.right-con-wrap {width: 1000px;}
+.user-name-area {min-width: 80px;height: 18px;  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;}
+
+.right-con-wrap .R-topList .R-cons{padding: 22px 24px;box-sizing:border-box;height: 160px;text-align: center;}
+.right-con-wrap .R-topList .R-cons .user-icon{
+    width: 45px;
+}
+.right-con-wrap .R-topList .R-cons:first-child{width: 175px;background: #ececec;}
+.right-con-wrap .R-topList .user-cost{
+    height: 160px;
+    text-align: center;
+    padding: 0;
+}
+.right-con-wrap .R-topList .user-cost ul {
+    width: 100px;
+    height: 160px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.right-con-wrap .R-topList .user-cost ul li {
+    padding: 15px 0;
+}
+
+.right-con-wrap .R-topList .user-ser{
+    padding-right: 40px;
+}
+
+.right-con-wrap a.message{background: url('../../../images/news.png') no-repeat 30px center;line-height: 16px;padding-left: 10px;margin-top: 10px; background-size: 16px 12px;color:@linkColorHover;}
+.right-con-wrap .unrealName{background: url('../../../images/unAuth.png') no-repeat 30px 3px;line-height: 16px;padding-left: 10px;margin-top: 5px;text-decoration: underline;color:@linkColorHover;}
+.right-con-wrap .realName{background: url('../../../images/auth.png') no-repeat 30px;line-height: 16px;margin-top: 5px;padding-left: 10px; color:@linkColorHover;}
+.right-con-wrap .realNamenow{background: url('../../../images/authNow.png') no-repeat 30px;line-height: 16px;margin-top: 5px;padding-left: 10px;color: #f0b742;}
+.right-con-wrap .RCconsList p{border-bottom: 1px dashed #069cd9;line-height: 26px;}
+.right-con-wrap .RCconsList p span{display: inline-block;}
+.right-con-wrap .RCconsList p span:first-child{width: 60px;}
+.right-con-wrap .RCconsListBtn p{line-height: 26px;}
+.right-con-wrap .RCconsListBtn a{
+    text-align: center;
+    line-height: 30px;
+    display: block;
+    width: 102px;
+    margin-top: 25px;
+    height: 30px;
+    border: 0;
+    outline: none;
+    display: block;
+}
+.more{right: 18px;top: 2px;}
+.mainDatas{padding: 20px 15px;margin-top: 16px;background: #fff;}
+.mainDatas ul p ,.R-myServerList >ul >p{padding: 50px;font-size: 18px;}
+.mainDatas ul p a,.R-myServerList >ul >p>a {text-decoration: underline;}
+.mainDatas .DataList li{width: 177px;width: 173px\9;height: 212px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 11px 0 0;}
+.mainDatas .DataList li a{display: block;width: 100%;height: 100%;}
+.mainDatas .DataList li .top{width: 100%;height: 30px;line-height: 30px;background: #ebedf0;padding: 0 12px;}
+.mainDatas .DataList li .centers{text-align: center;}
+.mainDatas .DataList li .centers img{display: inline-block;margin: 10px 0 4px;}
+.mainDatas .DataList li .centers span{display: block;color: #444;font-size: 14px;}
+.mainDatas .DataList li .downs{margin-top: 20px;}
+.mainDatas .DataList li .downs span{display: block;text-align: center;height: 36px;width: 58px;}
+.mainDatas .DataList li .downs span:not(:last-child){border-right:1px solid #ccc;}
+.mainDatas .DataList li .downs span em{display: block;color: #999;margin-top: 7px;}
+.mainDatas .DataList li .downs span i{display: block;line-height: 36px;}
+.mainDatas .DataList li:nth-child(4n){margin: 0;}
+
+.R-myServerList{background: #fff;}
+.R-myServerList ul li{padding: 14px 12px;height: 110px;margin-top: 0;}
+/*.R-myServerList ul li:last-child{border:0;}*/
+.R-myServerList ul li img{width: 156px;height: 110px;}
+.myServerRight{width: 580px;}
+.myServerRight a{line-height: 28px;}
+.myServerRight p.R-infos{line-height: 20px;margin: 8px 0 11px;height: 44px;overflow: hidden;}
+.myServerRight p span{margin-right: 22px;}
+.citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}
+
+.topTab{
+    line-height: 50px;
+    height: 50px;
+    margin: 0 0 15px 0;
+    background: #373d41;
+    padding-left: 20px;
+}
+.topTab span a,.topTab span a:visited,.topTab span a:active {color: #79848b;display: block;}
+.topTab span{display: block;float: left;padding: 0 20px;color: #79848b;font-size: 15px;margin-right: 14px;cursor: pointer;position: relative;}
+.topTab span.active a, .topTab span.active{color:#0ca398 }
+
+.layui-layer-content input[readonly]{
+    cursor:default;background-color:#FFF;}
+.user-center-api-list {padding: 20px 0 20px 10px;}
+.user-center-api-list .api-item .downs span { width: 75px;}
+.user-center-api-list .api-item {width: 235px;margin: 0 10px 10px 0;margin-right: 10px\9;}
+
+.tab-title{
+    margin-bottom: 15px;
+}
+.tab-title button {
+    border: none;
+    background: @btnBackground;
+    // border-radius: 5px;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+.tab-title button a {font-size: 16px;}

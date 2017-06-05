@@ -1,0 +1,15 @@
+<div id="userTabs" class="topTab clearfix InfoTopTit">
+    <% if(hasAccount){ %>
+    <span <%= (name == 'recharge' ? 'class=active' : '' ) %> ><a href="#account">账户充值</a></span>
+    <% } %>
+    <span <%= (name == 'setPayPassword' || name == 'forgetPayPassword' ? 'class=active' : '' ) %> ><a href="#setPayPassword">支付密码设置</a></span>
+    <% if(hasAccount){ %>
+    <span <%= (name == 'rechargeRecord' ? 'class=active' : '' ) %> ><a href="#rechargeRecord">充值记录</a></span>
+    <% } %>
+    <% if(hasAccount){ %>
+    <span <%= (name == 'consumeRecord' ? 'class=active' : '' ) %>><a href="#consumeRecord">支出记录</a></span>
+    <% } %>
+    <!-- <span <%= (name == 'invoice' ? 'class=active' : '' ) %>><a href="#invoice">发票申请</a></span> -->
+</div>
+<div id="userInfoArea" class="tabDownCons">
+</div>

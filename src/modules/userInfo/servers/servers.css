@@ -1,0 +1,6 @@
+.D_table table tbody tr td a {
+    color: #00c4c3;
+}
+.delete-call-back-url {display: block;}
+.call-back-error{display: none; color: red;}
+.mes {font-size: 12px;color: #666;margin-top: -60px;float: right;margin-right: 5%;}

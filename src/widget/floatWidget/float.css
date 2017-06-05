@@ -1,0 +1,102 @@
+
+.float-div {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    z-index: 200;
+    margin-top: -115px;
+    width: 45px;
+    height: 310px;
+}
+
+.float-div a .gototop{
+    background: url("../../images/ic_top.png") no-repeat;
+}
+
+.float-div a .gm{
+    /*background-position:  -56px -95px;*/
+}
+
+.float-div a .message{
+    background: url("../../images/ic_message.png") no-repeat;
+}
+.float-div a .ercode{
+    background: url("../../images/ic_ercode.png") no-repeat;
+}
+
+.float-div a .callus{
+    background: url("../../images/ic_callus.png") no-repeat;
+}
+
+.float-div>div{
+    height: 45px;
+}
+.mt0 {
+    margin-top: 0;
+}
+.wpa-container {
+    cursor: pointer;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 2px;
+    margin-top: 10px;
+    /*border: 1px solid #dadee7;*/
+    position: relative;
+    font-family: "microsoft yahei";
+    font-size: 12px;
+    text-align: center;
+    top: 0;
+}
+.first-icon .wpa-container{
+    margin-top: 0;
+}
+/*.theme-1 {
+    background: #00b7a9;
+}*/
+
+.er-code {
+    height: 150px;
+    width: 150px;
+    padding: 10px;
+    position: fixed;
+    top: 50%;
+    margin-top: -100px;
+    z-index: 200;
+    right: 55px;
+    background: url("../../images/codeBg.png") no-repeat;
+}
+.er-code p{
+    text-indent: 40px;
+}
+.er-code div{
+    height: 126px;
+    width: 126px;
+    background: url("../../images/qrcode.jpg") no-repeat;
+    background-size: 100% 100%;
+}
+
+.btn-text {
+    word-break: break-all;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 70px;
+    color: #fff;
+    display: block;
+    position: relative;
+    top: 43px;
+}
+.theme-1 .btn-text {
+    color: #1e2330;
+}
+.float-div a span.icon-img {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: 45px 45px;
+}

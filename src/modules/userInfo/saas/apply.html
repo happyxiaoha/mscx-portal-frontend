@@ -1,0 +1,42 @@
+<div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+    <div class="M-downCons">
+        <div class="D_table M-table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="15%">购买时间</th>
+                    <th width="10%">SaaS名称</th>
+                    <th width="8%">服务商</th>
+                    <th width="8%">收费类型</th>
+                    <th width="8%">使用次数</th>
+                    <th width="8%">剩余次数</th>
+                    <th width="35%">链接地址</th>
+                    <th width="8%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% _.each(serverList, function (msitem) { %>
+                <tr>
+                    <td><%=msitem.applyTime ? new Date(parseInt(msitem.applyTime)).format('yyyy-MM-dd') : '-'%></td>
+                    <td><a target="_blank" href="./saas.html?detail/<%=msitem.sourceId%>"><%=msitem.appName%></a></td>
+                    <td><%=msitem.provideName%></td>
+                    <td><%=msitem.feeType%></td>
+                    <td><%=msitem.usedLimit == -1 ? '不限': msitem.usedLimit%></td>
+                    <td><%=msitem.leftLimit == -1 ? '不限': msitem.leftLimit%></td>
+                    <td>
+                        <a class="saas-url" href="javascript:;" data-name="<%=msitem.appName%>" data-url="<%= location.protocol + '//' + location.host + msitem.saasUrl %>"><%=msitem.saasUrl %></a>
+                    </td>
+                    <td><a href="./saas.html?detail/<%=msitem.sourceId%>">再次申请</a></td>
+                </tr>
+                <% }); %>
+                <%if(serverList.length == 0){%>
+                <tr>
+                    <td colspan="8">暂无数据</td>
+                </tr>
+                <%}%>
+                </tbody>
+            </table>
+        </div>
+        <div id="serverPage" class="page-area fr"></div>
+    </div>
+</div>

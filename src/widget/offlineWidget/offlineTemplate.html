@@ -1,0 +1,23 @@
+<!-- 线下洽谈弹出框 -->
+<form onsubmit="return false;">
+    <label>
+        <em class="fl line22">*</em>
+        <span>需求：</span>
+        <textarea name="resReq"></textarea>
+    </label>
+    <label>
+        <em class="fl line22">*</em>
+        <span>意向：</span>
+        <textarea name="purpose"></textarea>
+    </label>
+    <label>
+        <em class="fl line22">*</em>
+        <span>联系人：</span>
+        <input type="text" name="contact" value="<%= data.user.name %>" />
+    </label>
+    <label>
+        <em class="fl line22">*</em>
+        <span>联系电话：</span>
+        <input type="text" name="contactNo" value="<%= data.user.mobile %>" />
+    </label>
+</form>

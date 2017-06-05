@@ -1,0 +1,5 @@
+.M-DownCons{padding: 32px 16px;border: 1px solid #ccc;border-top: 0;}
+.M-table table tbody tr td{
+    border-right: solid 1px #ccc !important;
+    max-width: 200px;
+}

@@ -1,0 +1,147 @@
+@import '../../../less/variables.less';
+
+.ReleaseDownCons {position: relative;}
+.ReleaseMainCons .ReleaseTit{font-size: 24px;color: #333;padding: 36px 28px 26px;border-bottom: 5px solid #e7e7e7;}
+.ReleaseInputs{padding: 24px 36px;font-size: 14px;}
+.ReleaseInputs .ReleaseList{margin-bottom: 15px;}
+.ReleaseInputs .ReleaseList .R_left{color:#8b8b8b;line-height: 32px;width: 74px;margin-right: 6px;text-align: right; }
+.ReleaseDownCons label.error {float: left;color: red;margin-left: 20px;line-height: 30px;}
+.ReleaseDownCons input[type="text"].error {border: 1px solid red !important;float: left;}
+.ReleaseDownCons textarea.error {border: 1px solid red !important;float: left;}
+.labelleft .ReleaseList .R_left{ width: 120px;}
+.downIcon .downSmalllBtn { top:10px;}
+.ReleaseInputs .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;}
+.ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 590px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;font-size: 14px;}
+.R_inputs{width: 800px;padding-top: 9px;}
+.R_inputs label{display: inline-block;width: 114px;margin: 0 19px 19px 0;}
+.R_inputs label:nth-child(6n){margin-right: 0;}
+.chargeTypeRadio label input[type="radio"]{margin: 0 5px 0;vertical-align: -2px;}
+.R_code label{width: 80px;}
+.R_inputs .other{display: inline-block;}
+.R_inputs .other input[type="text"]{width: 230px !important;height: 32px !important;}
+.R_Btns{text-align: center;padding: 15px 0 10px;}
+.R_Btns input[type="submit"]{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;}
+.R_Btns input[type="submit"]:first-child{margin-right: 40px; background: @btnBackground;}
+.checkboxlist,.chargeTypeRadio{  width: 690px;  }
+.checkboxlist label,.chargeTypeRadio label{  height: 30px;  line-height: 30px;  width: 120px;  float: left;overflow: hidden; text-overflow: ellipsis;display: inline-block;white-space: nowrap;}
+.checkboxlist label input[type="radio"]{margin: 0 5px 0;vertical-align: -2px;}
+.chargeTypeRadio {
+    label {
+        width: 80px;
+        &:last-child {
+            width: 125px;
+        }
+    }
+}
+.newSelBtn{right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;background: @btnBackground;}
+.newAddDate{width: 130px !important; text-align: center;cursor: default !important;}
+.api-content .allInfoImg {border: 1px solid #DDD;  padding: 2px;}
+.api-content .allInfoImg img {width: 60px;height: 60px;}
+.api-content .imgForm {position: absolute;top: 372px;left: 162px;width: 66px;height: 66px;overflow: hidden;}
+.api-content .imgForm input {opacity: 0;}
+.api-content .imgForm input[type="file"]{z-index: 9999;font-size: 999px;position: absolute;top:0;left: 0;width: 100%;height: 100%;}
+.server-dist {margin-top: 8px;}
+.tag-list-area {display: none;}
+.tag-list-area .layerApi ul,.add-price-list ul,.add-api-list ul{
+    padding: 10px 20px;
+}
+.tag-list-area .layerApi  ul li,.add-price-list ul li,.add-api-list ul li{
+    padding: 5px ;
+    float: left;
+}
+.tag-list-area .layerApi ul li label,.add-price-list ul li label,.add-api-list ul li label{
+    float: left;
+    line-height: 27px;
+}
+.add-price-list ul li {
+    width: 100%;
+}
+.add-price-list  ul li p.mes {float: left;max-width: 200px;margin-left: 10px;line-height: 30px;}
+.tag-list-area .layerApi ul,.add-price-list ul{
+    padding: 10px 20px;
+}
+.tag-list-area .layerApi  ul li,.add-price-list ul li{
+    padding: 5px ;
+    float: left;
+}
+.tag-list-area .layerApi ul li label,.add-price-list ul li label{
+    float: left;
+    line-height: 27px;
+}
+.tag-list-area .layerApi ul li span, .add-price-list ul li span{
+    width: 70px;
+    line-height: 30px;
+    display: block;
+    float: left;
+    text-align: right;
+}
+.tag-list-area .layerProvider ul li span{
+    width: 80px;
+}
+.tag-list-area .layerApi ul li input{
+    width: 340px;
+    float: left;
+}
+.tag-list-area .layerApi ul li input.small{
+    width: 154px;
+    float: left;
+}
+.tag-list-area .provider-list li {
+    width: 100%;
+    padding: 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+.tag-list-area .provider-list li:hover{
+    background: #eee;
+}
+.tag-area {margin-right: 20px;max-width: 625px;}
+.tag-area span{padding: 5px 10px;
+    line-height: 15px;
+    margin-top: 5px;
+    margin-right: 18px;
+    border: 1px solid #DDD;
+    display: block;
+    position: relative;
+    border-radius: 5px;}
+.tag-area .tag-list {position: relative;}
+.tag-area .remove-tags-btn{display: block;background: url('../../../images/delete1.png') no-repeat 0;width: 25px;height: 25px;    position: absolute;
+    top: -8px;
+    right: 6px;
+    cursor: pointer;}
+.tag-area span.un-select:after {background:none;display: none;}
+.add-price-list,.add-api-list {display: none}
+.add-price-list ul li input.small,.add-api-list ul li input.small{width: 80px;float: left;}
+.add-price-list ul li input[type="text"], .add-api-list ul li input[type="text"]{ width: 320px;}
+.add-price-list ul li textarea, .add-api-list ul li textarea{width: 320px;height: 80px;resize: none;}
+.add-price-list ul li input.error,.add-api-list ul li input.error, .add-api-list ul li textarea.error{border: 1px solid red;}
+.add-price-list ul li label.error,.add-api-list ul li label.error{color: red;margin-right: 5px;float: right;}
+#price-error {position: absolute;  top: 24px;  left: 70px;  width: 300px;}
+.add-price-list .ml20,.add-api-list .ml20 {margin-left: 20px;}
+.img-error,.tag-error,.server-error,.package-error,.api-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
+.btn-primary {color: #FFF !important;}
+.add-price-list {display: none}
+.add-price-list ul li input.small {width: 80px;}
+.add-price-list ul li input[type="text"] { width: 320px;}
+.add-price-list ul li textarea {width: 320px;height: 80px;resize: none;}
+.add-price-list .ml20 {margin-left: 20px;}
+.api-server-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}
+.package-area {display: none;}
+.add-price-list input[readonly] {cursor:default;background: #FFF;}
+.add-price-list ul li span.prePrice,.add-price-list ul li span.limitPre {width:auto;}
+.mes {line-height: 30px;max-width: 600px;}
+.mes-split {line-height: 30px;margin-right: 5px;}
+.input-mes {margin: 10px 0 0 126px;font-size: 12px;color: #999;}
+.input-mes-api{margin: 0 0 0 70px;font-size: 12px;color: #999;}
+.input-mes-api-price {color: #f89406;min-width: 200px;margin: 0 0 0 70px;font-size: 12px;}
+.input-mes-api-price span {width: auto !important;display: inline!important;float: none!important;}
+.add-api-list ul li span {width: 70px;  display: inline-block;  float: left;}
+.add-api-list ul li span.api-name-error {color: red;margin-right: 5px;float: right !important;display: none;width: auto !important;}
+.R_right label a{
+    color: @linkColorHover;
+}
+.category-block-area {overflow: hidden;font-size: 12px;}
+.category-block-area >p {  height: 30px; line-height: 30px; margin-right: 10px;  float: left;  overflow: hidden;    font-weight: bold;}
+.category-block-area >div {width: 80%;float: left;}
+.add-api-list li .auth-type {width: 80px;}
+.add-api-list li .auth-type input {vertical-align: text-bottom;    margin-right: 15px;}

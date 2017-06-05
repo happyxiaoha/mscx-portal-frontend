@@ -11,22 +11,24 @@ var gulp = require('gulp'),
     webpackConfig = require('./webpack.config.js');
 
 var configRoot = {
-    'login': './js/login.js',
-    'register': './js/register.js',
-    'main': './js/main.js',      //首页
-     'sources': './js/sources.js',    //数据
-    'api': './js/api.js',
-    'services': './js/services.js',     //微服务
-    'demand': './js/demand.js',     //需求定制
-    'pioneering': './js/pioneering.js',  //创业园地
-    'userInfo': './js/userInfo.js',    //用户中心
-    'pay': './js/pay.js',
-    'search': './js/search.js',
-    'contactUs': './js/contactUs.js'
+    'login': './src/js/login.js',
+    'register': './src/js/register.js',
+    'main': './src/js/main.js',      //首页
+    'sources': './src/js/sources.js',    //数据
+    'api': './src/js/api.js',
+    'services': './src/js/services.js',     //微服务
+    'demand': './src/js/demand.js',     //需求定制
+    // 'pioneering': './js/pioneering.js',  //创业园地
+    'userInfo': './src/js/userInfo.js',    //用户中心
+    'pay': './src/js/pay.js',
+    'message': './src/js/message.js',
+    'search': './src/js/search.js',
+    'contactUs': './src/js/contactUs.js',
+    'saas': './src/js/saas.js'
 };
 
 gulp.task('lint', function  () {
-    gulp.src('./js/*.js')
+    gulp.src('./src/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -41,10 +43,12 @@ gulp.task('webpack', function() {
     gulp.start(['copy']);
 });
 gulp.task('watch', function () {
-    gulp.watch(['./js/underscore.js','./js/backbone.js','./js/ajaxBackboneManger.js'], ['backboneBuild']);
-    gulp.watch(['modules/*/*.html','modules/*/*/*.html','widget/*/*.html','widget/*/*/*.html'], ['webpack']);
-    gulp.watch(['modules/*/*.css','modules/*/*/*.css','widget/*/*.css','widget/*/*/*.css'], ['webpack']);
-    gulp.watch(['modules/*/*.js','modules/*/*/*.js','widget/*/*.js','widget/*/*/*.js'], ['webpack']);
+    gulp.watch(['./src/js/underscore.js','./src/js/backbone.js','./src/js/ajaxBackboneManger.js'], ['backboneBuild']);
+    gulp.watch(['src/modules/**/*.html','src/widget/**/*.html'], ['webpack']);
+    gulp.watch(['src/modules/**/*.css','src/widget/**/*.css'], ['webpack']);
+    gulp.watch(['src/modules/**/*.js','src/widget/**/*.js'], ['webpack']);
+    gulp.watch(['src/less/**/*.less','src/modules/**/*.less','src/widget/**/*.less'], ['webpack']);
+
 });
 
 
@@ -55,29 +59,18 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 gulp.task('backboneBuild', function() {
-    gulp.src(['./js/underscore.js','./js/backbone.js','./js/ajaxBackboneManger.js'])
+    gulp.src(['./src/js/underscore.js','./src/js/backbone.js','./src/js/ajaxBackboneManger.js'])
         .pipe(concat('./backboneLib.js'))
         .pipe(gulp.dest('./build/dist'));
 });
 
 gulp.task('copy', function() {
-    return gulp.src(['./favicon.ico','./webapp/**/*','./css/**/*', './*.html', './lib/**/*', './images/newicon/ic_newlogo.png', './images/logo/*', './images/apihelp/*', './images/servicehelp/*', './images/guidance/*'], {base: './'})
+    gulp.src(['./favicon.ico','./webapp/**/*', './*.html'], {base: './'})
+        .pipe(gulp.dest('build'));
+    return gulp.src(['./src/css/**/*', './src/lib/**/*', './src/images/newicon/ic_newlogo.png', './src/images/logo/*', './src/images/apihelp/*', './src/images/servicehelp/*', './src/images/guidance/*'], {base: './src/'})
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('build',['webpack'], function() {
-    gulp.src(['./js/ie8fileLoader.js','./dist/common.js'])
-        .pipe(concat('./common.js'))
-        .pipe(gulp.dest('./dist'));
-
-    gulp.src('./dist/*.css')
-        .pipe(minifyCss())
-        .pipe(gulp.dest('./dist'));
-
-    gulp.src('./dist/*.js')
-        .pipe(uglify())
-        .pipe(gulp.dest('./dist'));
-});
 
 gulp.task('default',['clean'], function() {
     gulp.start(['backboneBuild','webpack','watch']);

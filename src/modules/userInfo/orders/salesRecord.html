@@ -1,0 +1,88 @@
+<div class="tabCons">
+    <div class="M-mainInfo clearfix bgWhite pt25">
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>订单号</th>
+                        <th>资源名称</th>
+                        <th>买家名称</th>
+                        <th>申请时间</th>
+                        <th>申请单价</th>
+                        <th>申请次数</th>
+                        <th>总金额</th>
+                        <th>订单状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="8">暂无数据</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="orderPages" class="page-area fr"></div>
+        </div>
+    </div>
+    <div id="sourceLayer" class="apply-box"></div>
+</div>
+
+
+<script id="salesList" type="template">
+    <% salesList.forEach(function(item, index){ %>
+    <tr>
+        <td><%= item.orderNum %></td>
+        <td><%= item.resourceName %></td>
+        <td><%= item.orderUserName %></td>
+        <td><%= item.createdTime %></td>
+        <td><%= item.itemCash %></td>
+        <td><%= item.itemNumber %></td>
+        <td><%= item.itemCashTotal %></td>
+        <td><%= item.orderStatusTxt %></td>
+        <!--<td>
+            <a href="javascript:;" data-index="<%= index %>" class="show-detail">查看</a>
+        </td>-->
+    </tr>
+    <% }) %>
+    <%if(salesList.length == 0){%>
+    <tr>
+        <td colspan="8">暂无数据</td>
+    </tr>
+    <%}%>
+</script>
+<script id="sourceList" type="template">
+    <div class="D_table M-table">
+        <% if(data) { %>
+        <table>
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>次数/天数</th>
+                <th>单价（元）</th>
+                <th>数量</th>
+                <th>小计（元）</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= data.appName %></td>
+                    <td>
+                        <%= data.chargeCount || 0 %>
+                        <% if(data.chargeType == '04' || data.chargeType == '06'){ %>
+                            天
+                        <% }else if(data.chargeType == '05'){ %>
+                            次
+                        <% } %>
+                    </td>
+                    <td><%= data.price %></td>
+                    <td><%= data.feeCount %></td>
+                    <td class="total"><%= data.price %></td>
+                </tr>
+            </tbody>
+        </table>
+        <% }else { %>
+        <div class="pt14">暂无数据</div>
+        <% } %>
+    </div>
+</script>

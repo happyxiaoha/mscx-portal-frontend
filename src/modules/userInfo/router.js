@@ -35,7 +35,7 @@ var Routes =  Backbone.Router.extend({
         'consumeRecord': 'consumeRecordView',
         'forgetPayPassword': 'forgetPayPasswordView',
         'recharge/result/:order': 'accountView'
-        // 'invoice': 'invoiceView'
+        'invoice': 'invoiceView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');

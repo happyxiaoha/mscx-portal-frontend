@@ -4,7 +4,7 @@ var companyName, userName;// 公司名称，用户名称
 var paramObj;// 查询参数
 
 $(function() {
-	var clientHeight=document.documentElement.clientHeight;
+	var clientHeight=document.documentElement.clientHeight - 60;
 	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 
 	var $ti = $(".navs li a");

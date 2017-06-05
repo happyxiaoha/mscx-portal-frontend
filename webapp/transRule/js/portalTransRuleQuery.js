@@ -4,7 +4,7 @@ var height;
 var type = "history";
 var userName;
 $(function() {
-	var clientHeight=document.documentElement.clientHeight;
+	var clientHeight=document.documentElement.clientHeight - 60;
 	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 
 	type = GetQueryString("type");

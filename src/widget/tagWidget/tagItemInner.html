@@ -1,0 +1,13 @@
+<% _.each(tagList, function (tagitem) { %>
+<%if(!filterVal || tagitem.name.toLocaleUpperCase().indexOf(filterVal.toLocaleUpperCase()) >= 0){%>
+<li>
+    <input type="hidden" class="tagPinyin<%=tagitem.tagPinyin.toLocaleLowerCase()%>">
+    <label style="width: 100%;line-height: 16px;">
+        <input id="tag<%=tagitem.tagId%>" data-name="<%= tagitem.name %>" value="<%= tagitem.tagId %>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
+        <%=tagitem.name%>
+    </label>
+</li>
+<%} })%>
+<%if(tagList.length == 0){%>
+<li>此分类无标签</li>
+<%}%>

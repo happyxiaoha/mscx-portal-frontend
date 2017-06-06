@@ -1,7 +1,7 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-
+var tagView = require('tagWidget/tagItemView.js');
 var template = require('html!./updateApi.html');
 require('./createApi.less');
 require('validate');
@@ -22,7 +22,7 @@ var getCategoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getApiCategory.do'
 });
 var getCategoryTagModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'tags/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
 });
 var getServiceTypeModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'dict/getServiceObject.do'
@@ -272,7 +272,7 @@ var updateApiView = Backbone.View.extend({
         $('input[name="tagGroup"]:checked').each(function() {
             var $this = $(this),
                 sId = this.id.replace('tag',''),
-                sName = $this.attr('attrName');
+                sName = $this.data('name');
             cTags.push({id:sId,name: sName});
             aTags.push(sId);
         });
@@ -373,13 +373,16 @@ var updateApiView = Backbone.View.extend({
         });
     },
     renderCategoryTag: function () {
-        var tagTemplate = _.template($('#tagList').html());
         var tagList = this.getCategoryTagModel.get('result');
         var sChooseTags = '';
         if(this.model.get('tags')){
             sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
         }
-        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags}))
+        $('.tag-list-area').remove();
+        var tagsView = new tagView({
+            model: {tagList: tagList,sChooseTags:sChooseTags}
+        });
+        this.$el.append(tagsView.$el);
     },
     renderServiceType: function (serviceObject) {
         var categoryTemplate = _.template($('#serverTypeList').html());

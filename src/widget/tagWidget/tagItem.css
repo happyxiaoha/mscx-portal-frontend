@@ -25,3 +25,8 @@
 .provider-list li:hover{
     background: #eee;
 }
+.provider-list .empty-tip {
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+}

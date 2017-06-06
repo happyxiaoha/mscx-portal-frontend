@@ -5,7 +5,8 @@ var innerTemplate = require('html!./tagItemInner.html');
 var view = Backbone.View.extend({
     events: {
         'input #tagFilter': 'filterTagRes',
-        'click .filter-a a': 'toTag'
+        'click .filter-a a': 'toTag',
+        'click #addTag': 'addTag'
     },
     tagName: 'div',
     className: 'tag-list-area',
@@ -42,6 +43,9 @@ var view = Backbone.View.extend({
             sVal = $.trim($this.val());
         var tagTemplate = _.template(innerTemplate);
         this.model['filterVal'] = sVal;
+        this.model.filterResult = (sVal == '' ? this.model.tagList : _.filter(this.model.tagList, function(tagitem){
+            return tagitem.name.toLocaleUpperCase().indexOf(sVal.toLocaleUpperCase()) >= 0
+        }))
         this.$el.find('.provider-list').html(tagTemplate(this.model));
     },
     toTag: function (e) {
@@ -52,6 +56,9 @@ var view = Backbone.View.extend({
             $('.layui-layer-content').stop().animate({'scrollTop':(iTop-10)});
         }
         return false;
+    },
+    addTag: function() {
+
     }
 });
 

@@ -26,6 +26,8 @@ var view = Backbone.View.extend({
         $('body').on('click.shareWeixin', function(event) {
             if(event.target.id != 'shareWeixin') {
                 this.$qrcode.addClass('hide');
+            }else {
+                this.$qrcode.removeClass('hide');
             }
         }.bind(this));
 

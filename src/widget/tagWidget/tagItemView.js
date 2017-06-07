@@ -2,6 +2,15 @@
 require('./tagItem.css');
 var template = require('html!./tagItem.html');
 var innerTemplate = require('html!./tagItemInner.html');
+
+var addTagModel = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'tags/addTag.do'
+})
+
+var tagModel = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
+});
+
 var view = Backbone.View.extend({
     events: {
         'input #tagFilter': 'filterTagRes',
@@ -13,8 +22,15 @@ var view = Backbone.View.extend({
     template: _.template(template),
     initialize: function() {
         //var filterArea = '<div class="filter-area"><input type="text" id="tagFilter"/> </div><ul class="provider-list">';
+        this.categoryId = this.model.tagList[0].categoryId;
+
+        this.addTagModel = new addTagModel();
+        this.tagModel = new tagModel();
         this.model['filterVal'] = '';
         this.$el.html(this.template(this.model));
+
+        this.listenTo(this.addTagModel, 'sync', this.handleAddTag);
+        this.listenTo(this.tagModel, 'sync', this.handleTagList);
         // this.$('#tagFilter').on('change', this.filterTagRes);
     },
     submit: function() {
@@ -57,8 +73,35 @@ var view = Backbone.View.extend({
         }
         return false;
     },
-    addTag: function() {
+    addTag: function(e) {
+        var $target = this.$(e.target);
 
+        this.addTagName = $target.data('addtxt');
+        this.addTagModel.set({
+            categoryId: this.categoryId,
+            tagName: this.addTagName
+        });
+        this.addTagModel.save();
+    },
+    handleAddTag: function() {
+        var model = this.addTagModel.toJSON();
+
+        if(model.status == 'OK') {
+            this.tagModel.fetch({
+                data: {
+                    categoryId: this.categoryId
+                }
+            })
+            layer.msg('添加成功');
+        }else {
+            layer.msg('添加失败');
+        }
+    },
+    handleTagList: function() {
+        var model = this.tagModel.toJSON();
+
+        this.model.tagList = model.result;
+        this.$('#tagFilter').val(this.addTagName).trigger('input');
     }
 });
 

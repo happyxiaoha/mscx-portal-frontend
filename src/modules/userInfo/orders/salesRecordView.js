@@ -2,6 +2,7 @@
 var commonTemplate = require('html!./orderCommon.html');
 var salesRecordTemplate = require('html!./salesRecord.html');
 require('./orders.css');
+require('util');
 
 var recordListModel = Backbone.Model.extend({
     url: 'order/getSaledOrderList.do'

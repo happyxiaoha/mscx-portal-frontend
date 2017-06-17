@@ -2,9 +2,9 @@ var file = null;
 $(function() {
 	// 浏览器高度减去导航的高度是下半部分的高度
 	var height = window.screen.availHeight - 345;
-	var height1 = window.screen.availHeight - 425;
-	$("#admin_left").css('height', height);
-	$("#admin_right").css('height', height);
+	// var height1 = window.screen.availHeight - 425;
+	// $("#admin_left").css('height', height);
+	// $("#admin_right").css('height', height);
 	$("#demandTabs span").on("click",function(){
 		$(this).addClass("active").siblings().removeClass("active");
 	});

@@ -11,7 +11,7 @@ var userView = Backbone.View.extend({
     initialize: function() {
         console.log("name:" + mscxPage.userInfo.account);
         var url = 'webapp/recharge_index.html?userName='+mscxPage.userInfo.account;
-        // var url = 'webapp/recharge_index.html?userName=test';
+        // var url = 'webapp/recharge_index.html?userName=admin1';
         this.$el.html(_.template(stemplate)({sUrl:url}));
     }
 });

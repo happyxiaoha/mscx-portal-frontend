@@ -1,8 +1,8 @@
 'use strict'
 
-var template = require('./publishTemplate.html');
-var packageTabletemplate = require('./packageTableTemplate.html');
-var tagView = require('./tagsLayer.js');
+var template = require('html!./publishTemplate.html');
+var packageTabletemplate = require('html!./packageTableTemplate.html');
+var tagView = require('tagWidget/tagItemView.js');
 require('validate');
 require('formAjax');
 require('util');
@@ -23,7 +23,7 @@ var categoryModel = Backbone.Model.extend({
 });
 // 微服务标签
 var tagModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'tags/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
 });
 // 上传图片
 var uploadImgUrl = mscxPage.request.saas + 'pic/upload.do';
@@ -107,9 +107,9 @@ var createDemandView = Backbone.View.extend({
                 imageUri: {
                     required: true
                 },
-                imageKey: {
-                    required: true
-                },
+                // imageKey: {
+                //     required: true
+                // },
                 serviceObject: {
                     required: true
                 },
@@ -124,6 +124,7 @@ var createDemandView = Backbone.View.extend({
                 },
                 uri: {
                     required: true,
+                    url: true,
                     maxlength: 255
                 },
                 description: {
@@ -333,10 +334,16 @@ var createDemandView = Backbone.View.extend({
         var detail = this.detailModel.toJSON();
         var me = this;
         var param = {};
-
+        var sChooseTags = '';
+        if(this.tags.get('tagId')){
+            sChooseTags =  '*&'+this.tags.get('tagId').split(',').join('*&')+'*&';
+        }
+        else if(detail.result && detail.result.tags) {
+            sChooseTags =  '*&'+detail.result.tags.split(',').join('*&')+'*&';
+        }
         _.extend(param, {
-            tags: tags,
-            detailTag: detail.result && detail.result.tags || []
+            tagList: tags.result || [],
+            sChooseTags: sChooseTags
         });
 
         this.tagView = new tagView({
@@ -352,7 +359,7 @@ var createDemandView = Backbone.View.extend({
             title: '服务标签',
             shade: 0.6,
             shadeClose: true,
-            area: ['500px'],
+            area: ['350px', '450px'],
             content: this.tagView.$el,
             btn1: function (index) {
                 me.tagView.submit(index);

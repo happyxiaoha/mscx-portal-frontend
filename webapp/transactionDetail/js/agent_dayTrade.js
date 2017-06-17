@@ -3,7 +3,7 @@ var index=1;
 var height;
 var userName = GetQueryString("userName");
 $(function() {
-	var clientHeight=document.documentElement.clientHeight;
+	var clientHeight=document.documentElement.clientHeight - 60;
 	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 	//初始化日期控件
 	initDatePicker();
@@ -137,14 +137,14 @@ function initTransactionDetailTableTables () {
 									 var api = this.api();
 									 if(api.column( 5 ).data().length>0){
 										 $(tfoot).find('th').eq(1).html(api.column( 5 ).data().reduce( function ( a, b ) {
-											 return new Number(a + b).toFixed(3);
+											 return parseFloat(new Number(a + b).toFixed(3));
 										 }));
 									 }else{
 										 $(tfoot).find('th').eq(1).html('0');
 									 }
 									 if(api.column( 6 ).data().length>0){
 										 $(tfoot).find('th').eq(3).html(api.column( 6 ).data().reduce( function ( a, b ) {
-											 return new Number(a + b).toFixed(3);
+											 return parseFloat(new Number(a + b).toFixed(3));
 										 }));
 									 }else{
 										 $(tfoot).find('th').eq(3).html('0');

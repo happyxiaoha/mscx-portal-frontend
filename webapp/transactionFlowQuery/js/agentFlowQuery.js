@@ -5,7 +5,8 @@ var userName;
 
 $(function(){
 	userName = GetQueryString('userName');
-	height = window.screen.availHeight - 220;
+	var clientHeight=document.documentElement.clientHeight - 60;
+	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 	initFlowQueryTables();
 	dateWidget('startTime');
 	dateWidget('stopTime');

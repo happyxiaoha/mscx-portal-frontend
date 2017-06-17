@@ -72,6 +72,7 @@ var view = Backbone.View.extend({
         var $tr = $target.parents('tr');
         var $number = $tr.find('.number');
         var num = Math.floor($number.val());
+        if(num>100000) {num = 100000;}
         $number.val(num);
         var price = $number.data('price');
         // var limit = $number.data('limit');

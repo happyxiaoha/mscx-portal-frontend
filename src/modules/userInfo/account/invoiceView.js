@@ -14,6 +14,10 @@ var queryInvoicesModel = Backbone.Model.extend({
 var saveInvoiceModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'invoice/insertInvoice.do'
 });
+var invoiceAccountModel = Backbone.Model.extend({
+    url: mscxPage.request.order + 'invoice/enableAccount.do'
+});
+
 
 var accountView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -42,13 +46,14 @@ var accountView = Backbone.View.extend({
         this.$('#userInfoArea').html(this.template);
 
         this.invoiceTemplate = _.template(this.$('#invoiceTemplate').html(), {variable: 'data'});
-        this.addInvoiceTemplate = this.$('#addInvoiceTemplate').html();
+        this.addInvoiceTemplate = _.template(this.$('#addInvoiceTemplate').html(), {variable: 'data'});
 
         this.$datepicker = this.$('#datepicker');
 
         // 选择日期
         this.$datepicker.daterangepicker();
 
+        this.invoiceAccountModel = new invoiceAccountModel();
         this.queryInvoicesModel = new queryInvoicesModel();
         this.saveInvoiceModel = new saveInvoiceModel();
         this.searchParam = new Backbone.Model({
@@ -58,16 +63,26 @@ var accountView = Backbone.View.extend({
         this.listenTo(this.queryInvoicesModel, 'sync', this.render);
         this.listenTo(this.saveInvoiceModel, 'sync', this.handleSaveInvoice);
 
-        this.queryInvoicesModel.fetch({
-            data: this.searchParam.toJSON()
-        })
+        this.on('render', this.render);
+
+        var queue = [
+            this.queryInvoicesModel.fetch({
+                data: this.searchParam.toJSON()
+        }), this.invoiceAccountModel.fetch()];
+
+        $.when.apply($, queue).done(function() {
+            this.trigger('render');
+        }.bind(this));
 
         return this;
     },
     render: function() {
         var model = this.queryInvoicesModel.toJSON();
+        var invoiceAccount = this.invoiceAccountModel.toJSON();
         var that = this;
         this.$('#invoice').html(this.invoiceTemplate(model.result));
+
+        this.invoiceAccount = invoiceAccount.result;
 
         this.searchParam.set({
             page: model.result.page.currentPage
@@ -109,7 +124,13 @@ var accountView = Backbone.View.extend({
     },
     addInvoice: function() {
         var that = this;
-        $('.add-invoice-area').html(this.addInvoiceTemplate);
+        var validator = that.invoiceValidator();
+
+        validator.rules.applyAmount.max = this.invoiceAccountModel.toJSON().result;
+        $('.add-invoice-area').html(this.addInvoiceTemplate(this.invoiceAccountModel.toJSON()));
+
+        console.log(validator);
+
         this.dialog = layer.open({
             type: 1,
             title: '添加发票申请',
@@ -119,7 +140,7 @@ var accountView = Backbone.View.extend({
             area: ['588px', '450px'],
             content: $('.add-invoice-area'), //捕获的元素
             success: function() {
-                $('.add-invoice-form').validate(that.invoiceValidator());
+                $('.add-invoice-form').validate(validator);
             },
             btn1: function () {
                 $('.add-invoice-form').submit();
@@ -141,9 +162,9 @@ var accountView = Backbone.View.extend({
                     required: true
                 },
                 applyAmount: {
+                    price: true,
                     required: true,
                     max: 10000000,
-                    price: true,
                     min: 0
                 },
                 taxpayerName: {
@@ -179,6 +200,12 @@ var accountView = Backbone.View.extend({
                 regPhone: {
                     required: true,
                     landlinePhone: true
+                }
+            },
+            messages: {
+                applyAmount:{
+                    max: '输入的金额不能大于可开票金额',
+                    price: '请输入正确的价格，如（100.00）'
                 }
             },
             submitHandler: function () {

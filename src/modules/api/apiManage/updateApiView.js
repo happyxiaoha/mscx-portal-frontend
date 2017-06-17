@@ -1,8 +1,8 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-
-var template = require('./updateApi.html');
+var tagView = require('tagWidget/tagItemView.js');
+var template = require('html!./updateApi.html');
 require('./createApi.less');
 require('validate');
 require('formAjax');
@@ -22,7 +22,7 @@ var getCategoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getApiCategory.do'
 });
 var getCategoryTagModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'tags/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
 });
 var getServiceTypeModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'dict/getServiceObject.do'
@@ -91,9 +91,10 @@ var updateApiView = Backbone.View.extend({
         this.getCategoryModel.on('change',function () {
             that.renderCategory(res.categoryId);
         });
-        this.getCategoryTagModel.on('change',function () {
-            that.renderCategoryTag();
-        });
+        // this.getCategoryTagModel.on('change',function () {
+        //     that.renderCategoryTag();
+        // });
+        this.listenTo(this.getCategoryTagModel, 'sync', this.renderCategoryTag);
         this.getServiceTypeModel.on('change',function () {
             that.renderServiceType(res.serviceObject);
         });
@@ -144,7 +145,7 @@ var updateApiView = Backbone.View.extend({
                 },
                 rtnCode: {
                     required: true,
-                    maxlength: 20
+                    maxlength: 200
                 },
                 description: {
                     required: true,
@@ -160,7 +161,7 @@ var updateApiView = Backbone.View.extend({
                     maxlength: '服务名称不超过20个字'
                 },
                 rtnCode:{
-                    maxlength: '服务返回码不超过20个字'
+                    maxlength: '服务返回码不超过200个字'
                 },
                 description: {
                     maxlength: '服务简介不超过150个字'
@@ -239,7 +240,9 @@ var updateApiView = Backbone.View.extend({
                     unSpecial: true
                 },
                 uri: {
-                    required: true
+                    url: true,
+                    required: true,
+                    maxlength: 300
                 },
                 testPacket: {
                     required: true
@@ -270,7 +273,7 @@ var updateApiView = Backbone.View.extend({
         $('input[name="tagGroup"]:checked').each(function() {
             var $this = $(this),
                 sId = this.id.replace('tag',''),
-                sName = $this.attr('attrName');
+                sName = $this.data('name');
             cTags.push({id:sId,name: sName});
             aTags.push(sId);
         });
@@ -311,30 +314,13 @@ var updateApiView = Backbone.View.extend({
         this.model.set('tags',newTags.join(','));
     },
     showTagArea: function () {
-        this.renderCategoryTag();
-        var that = this;
-        var dialog = layer.open({
-            type: 1,
-            btn: ['保存','取消'],
-            title: '选择标签',
-            shade: 0.6,
-            shadeClose: true,
-            closeBtn:'1',
-            area: ['350px', '450px'],
-            content: $('.tag-list-area'), //捕获的元素
-            btn1: function () {
-                that.saveTag();
-                layer.close(dialog);
-            },
-            btn2: function () {
-                layer.close(dialog);
-            }
-        });
+        this.renderTagWithCategory();
+        // this.renderCategoryTag();
     },
     changeCategory: function (e) {
         var sId = parseInt(e.target.id.replace('c','')),
             type = $(e.target).closest('.category-block-area').find('p').data('typeid');
-        this.renderTagWithCategory(sId);
+        // this.renderTagWithCategory(sId);
         this.chooseTags = [];
         this.model.set('categoryId',sId);
         this.model.set('type',type);
@@ -360,24 +346,48 @@ var updateApiView = Backbone.View.extend({
         $('#serverCategory').html(categoryTemplate({categoryList:categoryList,defCid: defaultCategoryId}));
         if(categoryList.length > 0){
             this.model.set('categoryId',defaultCategoryId);
-            this.renderTagWithCategory(defaultCategoryId);
+            // this.renderTagWithCategory(defaultCategoryId);
         }
     },
-    renderTagWithCategory: function (cid) {
+    renderTagWithCategory: function () {
         this.getCategoryTagModel.fetch({
             data: {
-                categoryId: cid
+                categoryId: this.model.get('categoryId')
             }
         });
     },
     renderCategoryTag: function () {
-        var tagTemplate = _.template($('#tagList').html());
         var tagList = this.getCategoryTagModel.get('result');
         var sChooseTags = '';
         if(this.model.get('tags')){
             sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
         }
-        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags}))
+        this.tagsView = new tagView({
+            model: {tagList: tagList,sChooseTags:sChooseTags}
+        });
+        this.$el.append(this.tagsView.$el);
+
+        var that = this;
+        var dialog = layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '选择标签',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['350px', '450px'],
+            content: this.tagsView.$el, //捕获的元素
+            btn1: function () {
+                that.saveTag();
+                layer.close(dialog);
+            },
+            btn2: function () {
+                layer.close(dialog);
+            },
+            end: function() {
+                that.tagsView.remove();
+            }
+        });
     },
     renderServiceType: function (serviceObject) {
         var categoryTemplate = _.template($('#serverTypeList').html());

@@ -3,7 +3,7 @@
 var template = require('./offlineTemplate.html');
 
 var offlineModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'service/apiOfflineMeet.do'
+    url: mscxPage.request.contract + 'service/offlineMeet.do'
 });
 
 require('./offline.css');
@@ -43,7 +43,9 @@ var view = Backbone.View.extend({
         }
     },
     initialize: function() {
-        this.$el.html(this.template());
+        this.$el.html(this.template({
+            user: mscxPage.userInfo
+        }));
         this.$form = this.$('form');
         this.$form.validate(this.validateConfig());
 

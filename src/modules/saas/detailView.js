@@ -30,6 +30,7 @@ var openDataDetailView = Backbone.View.extend({
         'click #attention': 'attentionData',
         'click #offlineBtn': 'offlineChat',
         'click #applyBtn': 'apply',
+        'click #example': 'showExample',
         'click .titTop a': 'toggleContent'
     },
     initialize: function() {
@@ -107,6 +108,23 @@ var openDataDetailView = Backbone.View.extend({
             })
         }
     },
+    showExample: function () {
+        var that =this,
+            url = that.nJson.demoUri;
+        if(url.indexOf('http') < 0){
+            url = 'http://' + url
+        }
+        var index = layer.open({
+            type: 2,
+            title: that.nJson.name+'演示',
+            shadeClose: false,
+            maxmin: true,
+            shade: 0.8,
+            area: ['500px', '500px'],
+            content: url //iframe的url
+        });
+        layer.full(index);
+    },
     // 申请
     apply: function() {
         var me = this;
@@ -168,7 +186,7 @@ var openDataDetailView = Backbone.View.extend({
         layer.open({
             type: 1,
             btn: ['确定','取消'],
-            title: '<p class="ft22">线下洽谈申请</p>',
+            title: '<p class="ft22">需求</p>',
             shade: 0.6,
             shadeClose: true,
             area: ['500px', '450px'],

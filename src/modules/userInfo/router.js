@@ -22,6 +22,7 @@ var Routes =  Backbone.Router.extend({
         'serverFollow': 'serverFollowView',
         'serverApply': 'serverApplyView',
         'order': 'orderView',
+        'sales': 'salesView',
         'shop': 'shopView',
         'recharge': 'rechargeView',
         'saas': 'saasView',
@@ -107,6 +108,10 @@ var Routes =  Backbone.Router.extend({
     orderView: function () {
         var orderView = require('userInfo/orders/ordersView.js');
         mscxPage.views['orderViewObj'] = new orderView();
+    },
+    salesView: function () {
+        var salesView = require('userInfo/orders/salesRecordView.js');
+        mscxPage.views['salesViewObj'] = new salesView();
     },
     shopView: function () {
         var shopView = require('userInfo/orders/shopCarView.js');

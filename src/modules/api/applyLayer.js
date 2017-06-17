@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./applyTemplate.html');
+var template = require('./applyTemplate.html');
 
 // 套餐api
 var packageModel = Backbone.Model.extend({

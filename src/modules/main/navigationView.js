@@ -1,7 +1,7 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var navigationTemplate = require('html!./navigation.html');
+var navigationTemplate = require('./navigation.html');
 
 var navigationApiView = Backbone.View.extend({
     template: _.template(navigationTemplate),

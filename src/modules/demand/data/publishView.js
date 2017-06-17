@@ -2,7 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./publishTemplate.html');
+var template = require('./publishTemplate.html');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'modifyDataDetail.do'
 })

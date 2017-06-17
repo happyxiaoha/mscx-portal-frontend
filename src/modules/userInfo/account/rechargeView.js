@@ -1,7 +1,7 @@
 'use strict';
 
-var commonTemplate = require('html!./common.html');
-var template = require('html!./recharge.html');
+var commonTemplate = require('./common.html');
+var template = require('./recharge.html');
 
 var rechargeModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/placeRechargeOrder.do'

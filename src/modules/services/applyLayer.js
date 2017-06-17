@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./applyTemplate.html');
+var template = require('./applyTemplate.html');
 
 // 微服务套餐
 var packageModel = Backbone.Model.extend({

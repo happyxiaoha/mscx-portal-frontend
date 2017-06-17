@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./accountPayTemplate.html');
+var template = require('./accountPayTemplate.html');
 var passwordView = require('passwordWidget/passwordView.js');
 
 var orderModel = Backbone.Model.extend({

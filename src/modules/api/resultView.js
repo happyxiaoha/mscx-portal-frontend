@@ -1,6 +1,6 @@
 'use strict';
 
-var resultTemplate = require('html!./resultTemplate.html');
+var resultTemplate = require('./resultTemplate.html');
 var apiItemView = require('apiItemWidget/apiItemView.js');
 
 var followModel = Backbone.Model.extend({

@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/19.
  */
 'use strict';
-var searchTemplate = require('html!./search.html');
+var searchTemplate = require('./search.html');
 
 var searchApiModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/searchApi.do'

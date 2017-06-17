@@ -1,8 +1,8 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var commonTemplate = require('html!./orderCommon.html');
-var shopTemplate = require('html!./shop.html');
+var commonTemplate = require('./orderCommon.html');
+var shopTemplate = require('./shop.html');
 require('./orders.css');
 require('util');
 

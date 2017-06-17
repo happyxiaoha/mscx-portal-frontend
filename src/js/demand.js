@@ -9,6 +9,11 @@ var router = require('demand/router.js');
 
 require('less/base.less');
 require('demand/demand.less');
+require('css/datePicker/daterangepicker-bs3.css');
+
+require('js/ajaxBackboneManger.js');
+window.moment = require('moment');
+require('daterangepicker');
 
 $(function() {
     var headerView = new header({

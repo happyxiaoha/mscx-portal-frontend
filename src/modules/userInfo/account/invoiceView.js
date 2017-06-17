@@ -1,7 +1,7 @@
 'use strict';
 
-var commonTemplate = require('html!./common.html');
-var template = require('html!./invoice.html');
+var commonTemplate = require('./common.html');
+var template = require('./invoice.html');
 
 require('./account.less');
 require('util');

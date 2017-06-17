@@ -3,7 +3,7 @@
  */
 
 'use strict';
-var changePwdTemplate = require('html!./changePwd.html');
+var changePwdTemplate = require('./changePwd.html');
 require('validate');
 require('customValidate');
 

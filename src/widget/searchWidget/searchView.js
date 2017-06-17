@@ -1,8 +1,8 @@
 'use strict';
 
-var template = require('html!./search.html');
-var tagTemplate = require('html!./tagTemplate.html');
-var scopeTemplate = require('html!./scopeTemplate.html');
+var template = require('./search.html');
+var tagTemplate = require('./tagTemplate.html');
+var scopeTemplate = require('./scopeTemplate.html');
 var Resource = require('./city.json');
 
 var Models = {

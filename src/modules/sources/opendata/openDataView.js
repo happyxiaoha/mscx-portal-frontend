@@ -6,7 +6,7 @@
 
 var openDataContentView = require('./openDataContentView.js');
 var leftMenuView = require('leftMenuWidget/leftMenuView.js');
-var openDataTemplate = require('html!./openDataView.html');
+var openDataTemplate = require('./openDataView.html');
 var openDataThemeView = require('./openDataThemeView.js');
 
 var openDataView = Backbone.View.extend({

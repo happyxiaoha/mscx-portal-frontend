@@ -2,8 +2,8 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var commonTemplate = require('html!./common.html');
-var template = require('html!./apply.html');
+var commonTemplate = require('./common.html');
+var template = require('./apply.html');
 require('./servers.css');
 require('util');
 

@@ -1,7 +1,7 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var stemplate = require('html!./recharge.html');
+var stemplate = require('./recharge.html');
 
 var userView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,

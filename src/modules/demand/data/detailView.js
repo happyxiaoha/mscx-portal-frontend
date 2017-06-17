@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./detailTemplate.html');
+var template = require('./detailTemplate.html');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'dataDetail.do'
 })

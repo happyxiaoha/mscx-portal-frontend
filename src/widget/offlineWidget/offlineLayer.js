@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./offlineTemplate.html');
+var template = require('./offlineTemplate.html');
 
 var offlineModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'service/apiOfflineMeet.do'

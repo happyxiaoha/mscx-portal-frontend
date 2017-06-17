@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./apiItem.html');
+var template = require('./apiItem.html');
 
 require('./apiItem.css');
 

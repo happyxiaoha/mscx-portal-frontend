@@ -1,5 +1,5 @@
 'use strict';
-var template = require('html!./packageItem.html');
+var template = require('./packageItem.html');
 require('validate');
 var getFeeModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'calEarning.do'

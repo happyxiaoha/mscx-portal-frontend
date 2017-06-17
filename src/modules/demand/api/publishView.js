@@ -2,8 +2,8 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./publishTemplate.html');
-var optionTemplate = require('html!./optionTemplate.html');
+var template = require('./publishTemplate.html');
+var optionTemplate = require('./optionTemplate.html');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'modifyApiDetail.do'
 });

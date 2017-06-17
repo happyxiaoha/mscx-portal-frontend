@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./errorTemplate.html');
+var template = require('./errorTemplate.html');
 
 require('./pay.less');
 

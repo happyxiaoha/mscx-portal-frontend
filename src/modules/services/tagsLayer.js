@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./tagsLayerTemplate.html');
+var template = require('./tagsLayerTemplate.html');
 
 var view = Backbone.View.extend({
     tagName: 'div',

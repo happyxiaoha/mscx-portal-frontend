@@ -4,7 +4,7 @@
 
 'use strict';
 
-var openDataListTemplate = require('html!./openDataList.html');
+var openDataListTemplate = require('./openDataList.html');
 
 var view = Backbone.View.extend({
     tagName: 'div',

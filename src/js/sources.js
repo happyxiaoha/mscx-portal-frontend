@@ -2,13 +2,14 @@
  * Created by Administrator on 2016/12/12.
  */
 
-var header = require('../widget/headerWidget/headerView.js');
-var footer = require('../widget/footerWidget/footerView.js');
-
-var router = require('../modules/sources/router.js');
-
 require('less/base.less');
 require('sources/openData.less');
+require('js/ajaxBackboneManger.js');
+
+var header = require('../widget/headerWidget/headerView.js');
+var footer = require('../widget/footerWidget/footerView.js');
+var router = require('../modules/sources/router.js');
+
 
 $(function() {
     new header({

@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./weixinPayTemplate.html');
+var template = require('./weixinPayTemplate.html');
 var QrCode = require('lib/qrCode.js');
 
 var orderModel = Backbone.Model.extend({

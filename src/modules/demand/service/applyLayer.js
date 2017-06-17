@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./applyTemplate.html');
+var template = require('./applyTemplate.html');
 var model = Backbone.Model.extend({
     idAttribute: 'serviceId',
     url: mscxPage.request.demand + 'addServiceOrder.do'

@@ -88,3 +88,5 @@ var mscxPage = {
         })
     }
 };
+
+module.exports = mscxPage

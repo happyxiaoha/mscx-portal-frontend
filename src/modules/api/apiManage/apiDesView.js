@@ -2,7 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./apiDes.html');
+var template = require('./apiDes.html');
 var showdown = require('showdown');
 
 require('./createApi.less');

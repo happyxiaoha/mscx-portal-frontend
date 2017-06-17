@@ -1,14 +1,18 @@
 /**
  * Created by Administrator on 2016/12/12.
  */
+require('less/base.less');
+require('saas/saas.less');
+require('css/datePicker/daterangepicker-bs3.css');
+
+require('js/ajaxBackboneManger.js');
+window.moment = require('moment');
+require('daterangepicker');
 
 var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
 
 var router = require('saas/router.js');
-
-require('less/base.less');
-require('saas/saas.less');
 
 $(function() {
     var headerView = new header({

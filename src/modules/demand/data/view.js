@@ -3,8 +3,8 @@
 var dataModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'queryAllData.do'
 })
-var wrapTemplate = require('html!./wrapTemplate.html');
-var listTemplate = require('html!./listTemplate.html');
+var wrapTemplate = require('./wrapTemplate.html');
+var listTemplate = require('./listTemplate.html');
 
 require('util');
 

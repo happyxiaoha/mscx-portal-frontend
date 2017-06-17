@@ -1,7 +1,7 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var template = require('html!./main.html'),
+var template = require('./main.html'),
     navigationView = require('./navigationView.js'),
     recommendBarView = require('./recommendBarView.js'),
     recommendView = require('./recommendView.js'),

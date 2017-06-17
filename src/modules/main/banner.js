@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/17.
  */
 
-var bannerTemplate = require('html!./banner.html');
+var bannerTemplate = require('./banner.html');
 // var bannerModel = Backbone.Model.extend({
 //     url: 'static_html/datainfo/' + mscxPage.city.abbr + '_bannerpic/index.html?t='+new Date().getTime()
 // });

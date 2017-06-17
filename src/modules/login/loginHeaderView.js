@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/15.
  */
 'use strict';
-var loginHeaderTemplate = require('html!./loginHeader.html');
+var loginHeaderTemplate = require('./loginHeader.html');
 
 var loginHeaderView = Backbone.View.extend({
     el: '.header',

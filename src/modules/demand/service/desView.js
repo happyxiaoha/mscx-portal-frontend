@@ -2,7 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./desTemplate.html');
+var template = require('./desTemplate.html');
 require('../publish.less');
 
 require('util');

@@ -1,7 +1,7 @@
 'use strict';
 
-var wrapTemplate = require('html!./openDataReleaseContent.html');
-var listTemplate = require('html!./openDataSearchResult.html');
+var wrapTemplate = require('./openDataReleaseContent.html');
+var listTemplate = require('./openDataSearchResult.html');
 var applyView = require('./applyLayer.js');
 
 //判断数据是否已购

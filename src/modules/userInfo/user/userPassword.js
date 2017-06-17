@@ -1,8 +1,8 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var commonTemplate = require('html!./userCommon.html');
-var template = require('html!./userPassword.html');
+var commonTemplate = require('./userCommon.html');
+var template = require('./userPassword.html');
 require('./user.less');
 require('validate');
 

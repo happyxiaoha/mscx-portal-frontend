@@ -2,8 +2,8 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./desTemplate.html');
-var packageTabletemplate = require('html!./packageTableTemplate.html');
+var template = require('./desTemplate.html');
+var packageTabletemplate = require('./packageTableTemplate.html');
 
 require('util');
 

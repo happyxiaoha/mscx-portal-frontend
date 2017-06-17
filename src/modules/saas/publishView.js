@@ -1,7 +1,7 @@
 'use strict'
 
-var template = require('html!./publishTemplate.html');
-var packageTabletemplate = require('html!./packageTableTemplate.html');
+var template = require('./publishTemplate.html');
+var packageTabletemplate = require('./packageTableTemplate.html');
 var tagView = require('./tagsLayer.js');
 require('validate');
 require('formAjax');

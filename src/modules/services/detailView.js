@@ -4,7 +4,7 @@
 
 'use strict';
 
-var serviceDetailModelTemplate = require('html!./detailTemplate.html');
+var serviceDetailModelTemplate = require('./detailTemplate.html');
 var shareView = require('shareWidget/shareView.js');
 var offlineView = require('offlineWidget/offlineLayer.js');
 var applyView = require('./applyLayer.js');

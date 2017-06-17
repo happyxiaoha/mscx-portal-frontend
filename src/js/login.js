@@ -1,13 +1,13 @@
 /**
  * Created by Administrator on 2016/12/12.
  */
+require('less/base.less');
+require('login/login.less');
+require('js/ajaxBackboneManger.js');
 
 var header = require('../modules/login/loginHeaderView.js');
 
 var router = require('../modules/login/router.js');
-
-require('less/base.less');
-require('login/login.less');
 
 $(function() {
     new header({

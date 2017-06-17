@@ -1,8 +1,8 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var commonTemplate = require('html!./demandCommon.html');
-var template = require('html!./demandServersApi.html');
+var commonTemplate = require('./demandCommon.html');
+var template = require('./demandServersApi.html');
 require('./demand.css');
 require('util');
 

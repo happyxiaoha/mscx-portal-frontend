@@ -1,7 +1,7 @@
 /**
  * Created by qin on 2016/12/6.
  */
-var recommendBarTemplate = require('html!./recommendBar.html');
+var recommendBarTemplate = require('./recommendBar.html');
 
 var recommendBarView = Backbone.View.extend({
     template: _.template(recommendBarTemplate),

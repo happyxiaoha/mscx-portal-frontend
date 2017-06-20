@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/15.
  */
 
-var registerTemplate = require('html!./register.html');
+var registerTemplate = require('./register.html');
 require('validate');
 require('customValidate');
 

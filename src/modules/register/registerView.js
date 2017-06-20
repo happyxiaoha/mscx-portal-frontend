@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/15.
  */
 
-var registerTemplate = require('./register.html');
+var registerTemplate = require('html!./register.html');
 require('validate');
 require('customValidate');
 
@@ -15,7 +15,11 @@ var getSmsCaptchaModel = Backbone.Model.extend({   //获取短信验证码
 });
 
 var checkAccountModel = Backbone.Model.extend({   //验证用户名
-    url: 'ro/mscx-uc-api/unique/check/user/account/exist.do'
+    url: mscxPage.request.uc + 'unique/check/user/account/exist.do'
+});
+
+var checkMobileModel = Backbone.Model.extend({   //验证手机号
+    url: mscxPage.request.uc + 'unique/check/user/mobile/exist.do'
 });
 
 var registerModel = Backbone.Model.extend({   //登录
@@ -28,18 +32,21 @@ var registerView = Backbone.View.extend({
     events: {
         'click .captchaImg': 'refreshCaptcha',
         'change #account': 'validateAccount',
+        'change #mobile': 'validateMobile',
         //'change input.registerInput' : 'changeAttribute',
         'click #getCode': 'sendMsgCode'
     },
     initialize: function() {
         this.model = new registerModel();
         this.checkAccountModel = new checkAccountModel();
+        this.checkMobileModel = new checkMobileModel;
         this.$el.html(this.template());
         this.render();
     },
     render: function () {
         this.refreshCaptcha();
-        $('#registForm').validate(this.registerValidateConfig());
+        this.$registForm = this.$('#registForm');
+        this.$registForm.validate(this.registerValidateConfig());
     },
     register: function(){
         var that = this,
@@ -189,13 +196,42 @@ var registerView = Backbone.View.extend({
             }
         });
     },
+    validateMobile:　function (){
+        var mobile = $('#mobile').val();
+        var that = this;
+        $('#mobile').removeClass('ignore');
+        var check = this.$registForm.validate().element($('#mobile'));
+        this.flag = this.flag || true;
+
+        if(!check){
+            return
+        }
+        this.checkMobileModel.fetch({
+            data:{
+              mobile: mobile
+            },
+            success: function(res){
+                res = res.toJSON();
+                if(res.result){
+                    $('#mobile').addClass('error').addClass('ignore');
+                    if($('#mobile-error').length == 0){
+                        $('#mobile').after('<label id="mobile-error" class="error" for="mobile">该手机号已被使用</label>');
+                    }
+                    else {
+                        $('#mobile-error').html('该手机号已被使用').show();
+                    }
+                    that.flag = false;
+                }
+            }
+        });
+    },
     sendMsgCode: function (e) {
         var submitForm = $("#registForm");
-        if(!submitForm.validate().element($("#account"))){
+        if(!submitForm.validate().element($("#account")) || !submitForm.validate().element($("#mobile"))){
             return
         }
         if(!this.flag){
-            $('#account-error').html('该用户名已被注册').show();
+            // $('#account-error').html('该用户名已被注册').show();
             return
         }
         var check = submitForm.validate().element($("#password"))

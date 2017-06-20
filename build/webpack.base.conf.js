@@ -29,6 +29,7 @@ module.exports = {
             'window.jQuery': 'jquery',
             '_': 'underscore',
             Backbone: 'backbone',
+            Base64: resolve('src/lib/base64'),
             mscxPage: resolve('src/lib/config'),
             layer: resolve('src/lib/layer/layer'),
             laypage: resolve('src/lib/laypage/laypage')

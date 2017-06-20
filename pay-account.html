@@ -16,11 +16,10 @@
     <div class="wrapper">
         正在跳转...
     </div>
-    <script src="dist/backboneLib.js"></script>
     <script>
         var params = location.search.split('?')[1].split('&');
         var orderNum, payBalance;
-        _.each(params, function(item) {
+        params.forEach(params, function(item) {
             var split = item.split('=');
             if(split[0] == 'orderNo' || split[0] == 'oderNo') {
                 orderNum = split[1];

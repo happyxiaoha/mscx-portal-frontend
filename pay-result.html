@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title>广州数聚-支付</title>
+    <title>神州数云-支付</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -16,11 +16,10 @@
     <div class="wrapper">
         正在跳转...
     </div>
-    <script src="dist/backboneLib.js"></script>
     <script>
         var params = location.search.split('?')[1].split('&');
         var orderNum, errMsg;
-        _.each(params, function(item) {
+        params.forEach(params, function(item) {
             var split = item.split('=');
             if(split[0] == 'out_trade_no') {
                 orderNum = split[1];

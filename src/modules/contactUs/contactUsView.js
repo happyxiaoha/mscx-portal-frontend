@@ -12,12 +12,16 @@ var sentMessageModel = Backbone.Model.extend({
 
 var mainView = Backbone.View.extend({
     el: mscxPage.domEl.mainEl,
+    template: _.template(template, {variable: 'data'}),
     events: {
         'click #subMessage': 'addMessage',
         'click #clearMessage': 'clearMessage'
     },
     initialize: function() {
-       this.$el.html(template);
+        $.getJSON(mscxPage.cmsHost + 'static_html/datainfo/c2_indexInfo/index.html?v=' + new Date().getTime()).then(function (res) {
+            var result = res && res[0];
+            this.$el.html(this.template(result));
+        }.bind(this))
     },
     clearMessage: function () {
         $('#name').val('');

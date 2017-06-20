@@ -35,9 +35,14 @@ var footerView = Backbone.View.extend({
         'blur .info-line input':'changeAttribute'
     },
     initialize: function() {
-        this.$el.html(this.template({
-            menuList: menuList
-        }));
+        $.getJSON(mscxPage.cmsHost + 'static_html/datainfo/c2_indexInfo/index.html?v=' + new Date().getTime()).then(function (res) {
+            var result = res && res[0];
+            this.$el.html(this.template({
+                menuList: menuList,
+                support: result
+            }));
+        }.bind(this))
+        
         new float();
     }
 });

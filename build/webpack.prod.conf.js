@@ -112,6 +112,16 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new CopyWebpackPlugin([
       {
+        from: path.resolve(__dirname, '../pay-account.html')
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../pay-result.html')
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
         from: path.resolve(__dirname, '../servicehelp.html')
       }
     ]),

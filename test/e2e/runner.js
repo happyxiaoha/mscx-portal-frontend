@@ -21,6 +21,7 @@ server.ready.then(() => {
   var spawn = require('cross-spawn')
   var runner = spawn('./node_modules/.bin/nightwatch', opts, { stdio: 'inherit' })
 
+  console.log(spawn)
   runner.on('exit', function (code) {
     server.close()
     process.exit(code)

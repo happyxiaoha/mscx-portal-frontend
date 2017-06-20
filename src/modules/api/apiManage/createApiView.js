@@ -2,7 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 var tagView = require('tagWidget/tagItemView.js');
-var template = require('html!./createApi.html');
+var template = require('./createApi.html');
 require('./createApi.less');
 require('validate');
 require('formAjax');

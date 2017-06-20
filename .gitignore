@@ -2,4 +2,6 @@
 /dist
 /build
 /bower_components
+/test/e2e/reports
 .idea
+*.log

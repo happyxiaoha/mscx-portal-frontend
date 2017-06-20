@@ -1,7 +1,7 @@
 'use strict';
 require('./tagItem.css');
-var template = require('html!./tagItem.html');
-var innerTemplate = require('html!./tagItemInner.html');
+var template = require('./tagItem.html');
+var innerTemplate = require('./tagItemInner.html');
 
 var addTagModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'tags/addTag.do'

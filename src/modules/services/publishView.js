@@ -1,10 +1,10 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var template = require('html!./publishTemplate.html');
-var packageTabletemplate = require('html!./packageTableTemplate.html');
-var serverUrlTemplate = require('html!./serverUrlTemplate.html');
-var serverUrlTableTemplate = require('html!./serverUrlTableTemplate.html');
+var template = require('./publishTemplate.html');
+var packageTabletemplate = require('./packageTableTemplate.html');
+var serverUrlTemplate = require('./serverUrlTemplate.html');
+var serverUrlTableTemplate = require('./serverUrlTableTemplate.html');
 var tagView = require('tagWidget/tagItemView.js');
 require('validate');
 require('formAjax');

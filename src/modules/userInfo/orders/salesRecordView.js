@@ -1,6 +1,6 @@
 
-var commonTemplate = require('html!./orderCommon.html');
-var salesRecordTemplate = require('html!./salesRecord.html');
+var commonTemplate = require('./orderCommon.html');
+var salesRecordTemplate = require('./salesRecord.html');
 require('./orders.css');
 require('util');
 

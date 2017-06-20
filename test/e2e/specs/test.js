@@ -2,7 +2,7 @@
 // http://nightwatchjs.org/guide#usage
 
 module.exports = {
-  'default e2e tests': function (browser) {
+  'index': function (browser) {
     // automatically uses dev Server port from /config.index.js
     // default: http://localhost:8080
     // see nightwatch.conf.js
@@ -10,10 +10,13 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.hello')
-      .assert.containsText('h1', 'Welcome to Your Vue.js App')
-      .assert.elementCount('img', 1)
+      .waitForElementVisible('.wrapper', 3000)
+      // 是否存加载未完成的页面区域
+      .assert.hidden('.loading')
+      // 精选API
+      .assert.elementPresent('.recommendApiList')
+      // 精选微应用
+      .assert.elementPresent('.recommendSerList')
       .end()
   }
 }

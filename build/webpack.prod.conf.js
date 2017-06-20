@@ -82,47 +82,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../agreement.html')
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../apihelp.html')
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../guidance.html')
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../question.html')
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../realNameProtocol.html')
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../registerProtocol.html')
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../pay-account.html')
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../pay-result.html')
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../servicehelp.html')
+        from: path.resolve(__dirname, '../static')
       }
     ]),
     new CopyWebpackPlugin([

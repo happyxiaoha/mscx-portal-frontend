@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./selectPayTemplate.html');
+var template = require('./selectPayTemplate.html');
 var weixinPayView = require('./weixinPayView.js');
 var orderModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderDetail.do'

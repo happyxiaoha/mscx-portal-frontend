@@ -1,7 +1,7 @@
 'use strict';
 
-var commonTemplate = require('html!./common.html');
-var template = require('html!./recharge.html');
+var commonTemplate = require('./common.html');
+var template = require('./recharge.html');
 
 var rechargeModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/placeRechargeOrder.do'
@@ -170,7 +170,7 @@ var selectPayWayView = Backbone.View.extend({
             amount: this.model.get('amount')
         }, {
             channel: PayResource.channels[type],
-            title: '广州数聚'
+            title: '神州数云'
         });
         /* 
          * 如果是支付宝，页面跳转

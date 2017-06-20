@@ -1,7 +1,7 @@
 'use strict';
 
-var commonTemplate = require('html!./common.html');
-var template = require('html!./setPayPassword.html');
+var commonTemplate = require('./common.html');
+var template = require('./setPayPassword.html');
 var passwordView = require('passwordWidget/passwordView.js');
 
 require('./account.less');

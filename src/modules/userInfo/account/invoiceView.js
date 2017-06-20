@@ -1,7 +1,7 @@
 'use strict';
 
-var commonTemplate = require('html!./common.html');
-var template = require('html!./invoice.html');
+var commonTemplate = require('./common.html');
+var template = require('./invoice.html');
 
 require('./account.less');
 require('util');
@@ -21,7 +21,7 @@ var invoiceAccountModel = Backbone.Model.extend({
 
 var accountView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
-    commonTemplate: _.template(commonTemplate),
+    commonTemplate: _.template(commonTemplate), 
     template: template,
     events: {
         'click .invoice .btn-search': 'search',

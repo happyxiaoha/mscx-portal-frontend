@@ -2,8 +2,8 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var commonTemplate = require('html!./apiCommon.html');
-var template = require('html!./api.html');
+var commonTemplate = require('./apiCommon.html');
+var template = require('./api.html');
 require('./api.css');
 require('util');
 require('validate');

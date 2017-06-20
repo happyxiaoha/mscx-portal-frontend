@@ -3,7 +3,7 @@
  */
 
 'use strict';
-var template = require('html!./contactUs.html');
+var template = require('./contactUs.html');
 require('./contactUs.less');
 
 var sentMessageModel = Backbone.Model.extend({

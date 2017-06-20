@@ -2,7 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./footer.html');
+var template = require('./footer.html');
 var float = require('../floatWidget/floatView.js');
 require('./footer.css');
 var menuList = [

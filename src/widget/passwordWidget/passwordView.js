@@ -1,7 +1,7 @@
 'use strict';
 
 require('./password.css');
-var template = require('html!./template.html');
+var template = require('./template.html');
 
 var view = Backbone.View.extend({
     events: {

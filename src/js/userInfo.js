@@ -1,6 +1,11 @@
 /**
  * Created by Kevin on 2016/12/7.
  */
+require('js/ajaxBackboneManger.js');
+window.moment = require('moment');
+require('daterangepicker');
+
+require('css/datePicker/daterangepicker-bs3.css');
 
 var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');

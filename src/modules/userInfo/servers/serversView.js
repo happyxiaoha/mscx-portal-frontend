@@ -2,9 +2,9 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var commonTemplate = require('html!./common.html');
-var packageTabletemplate = require('html!./packageTableTemplate.html');
-var template = require('html!./servers.html');
+var commonTemplate = require('./common.html');
+var packageTabletemplate = require('./packageTableTemplate.html');
+var template = require('./servers.html');
 require('./servers.css');
 require('util');
 var packageWidgetView = require('packageWidget/packageItemView.js');

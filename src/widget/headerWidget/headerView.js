@@ -1,7 +1,7 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var template = require('html!./header.html');
+var template = require('./header.html');
 var cityMap = require('./cityStation.json');
 require('./header.less');
 var menuList = [

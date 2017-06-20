@@ -3,7 +3,7 @@
  */
 
 'use strict';
-var searchItemTemplate = require('html!./searchItem.html');
+var searchItemTemplate = require('./searchItem.html');
 
 
 var searchView = Backbone.View.extend({

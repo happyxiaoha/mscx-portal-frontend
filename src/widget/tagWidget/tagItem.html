@@ -1,0 +1,60 @@
+<div class="filter-area">
+    <div class="filter-a">
+        <a href="javascript:;">a</a>
+        <a href="javascript:;">b</a>
+        <a href="javascript:;">c</a>
+        <a href="javascript:;">d</a>
+        <a href="javascript:;">e</a>
+        <a href="javascript:;">f</a>
+        <a href="javascript:;">g</a>
+        <a href="javascript:;">h</a>
+        <a href="javascript:;">i</a>
+        <a href="javascript:;">j</a>
+        <a href="javascript:;">k</a>
+        <a href="javascript:;">l</a>
+        <a href="javascript:;">m</a>
+        <a href="javascript:;">n</a>
+        <a href="javascript:;">o</a>
+        <a href="javascript:;">p</a>
+        <a href="javascript:;">q</a>
+        <a href="javascript:;">r</a>
+        <a href="javascript:;">s</a>
+        <a href="javascript:;">t</a>
+        <a href="javascript:;">u</a>
+        <a href="javascript:;">v</a>
+        <a href="javascript:;">w</a>
+        <a href="javascript:;">x</a>
+        <a href="javascript:;">y</a>
+        <a href="javascript:;">z</a>
+    </div>
+    <input type="text" id='tagFilter'/>
+</div>
+<ul class="provider-list" style="position: relative;">
+    <% _.each(tagList, function (tagitem) { %>
+    <li>
+        <input type="hidden" class="tagPinyin<%=tagitem.tagPinyin ? tagitem.tagPinyin.toLocaleLowerCase() : ''%>">
+        <label style="width: 100%;line-height: 16px;">
+            <input id="tag<%=tagitem.tagId%>" data-name="<%= tagitem.name %>" value="<%= tagitem.tagId %>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
+            <%=tagitem.name%>
+        </label>
+    </li>
+    <% })%>
+    <%if(tagList.length == 0){%>
+    <li>此分类无标签</li>
+    <%}%>
+</ul>
+<script id="tagInner" type="template">
+    <% _.each(tagList, function (tagitem) { %>
+    <%if(!filterVal || tagitem.name.toLocaleUpperCase().indexOf(filterVal.toLocaleUpperCase()) >= 0){%>
+    <li>
+        <input type="hidden" class="tagPinyin<%=tagitem.tagPinyin ? tagitem.tagPinyin.toLocaleLowerCase() : ''%>">
+        <label style="width: 100%;line-height: 16px;">
+            <input id="tag<%=tagitem.tagId%>" data-name="<%= tagitem.name %>" value="<%= tagitem.tagId %>" name="tagGroup" type="checkbox" style="width: 20px;" <%if(sChooseTags.indexOf('*&'+tagitem.tagId+'*&')>=0){%>checked=true<%}%>>
+            <%=tagitem.name%>
+        </label>
+    </li>
+    <%} })%>
+    <%if(tagList.length == 0){%>
+    <li>此分类无标签</li>
+    <%}%>
+</script>

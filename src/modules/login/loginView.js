@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/15.
  */
 'use strict';
-var loginTemplate = require('html!./login.html');
+var loginTemplate = require('./login.html');
 var changePwdView = require('./changePwdView.js');
 require('validate');
 require('customValidate');
@@ -112,6 +112,7 @@ var loginView = Backbone.View.extend({
     },
     forgetPwd: function () {
         var that = this;
+        this.changePwdView = new changePwdView();
         var dialog= layer.open({
             type: 1,
             btn: [],
@@ -119,9 +120,8 @@ var loginView = Backbone.View.extend({
             shade: 0.6,
             shadeClose: false,
             area: ['520px', '450px'],
-            content: $('#changePwd'), //捕获的元素
+            content: this.changePwdView.$el, //捕获的元素
             success: function(index) {
-              that.changePwdView =  new changePwdView(index);
             },
             end: function(){
                 that.changePwdView && that.changePwdView.undelegateEvents() && that.changePwdView.stopListening();

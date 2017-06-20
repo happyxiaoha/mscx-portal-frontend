@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./leftMenu.html');
+var template = require('./leftMenu.html');
 require('./leftMenu.css');
 
 var view = Backbone.View.extend({

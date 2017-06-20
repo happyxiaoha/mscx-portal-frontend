@@ -3,8 +3,8 @@
  */
 
 
-var commonTemplate = require('html!./orderCommon.html');
-var orderTemplate = require('html!./orders.html');
+var commonTemplate = require('./orderCommon.html');
+var orderTemplate = require('./orders.html');
 require('./orders.css');
 require('util');
 var orderListModel = Backbone.Model.extend({

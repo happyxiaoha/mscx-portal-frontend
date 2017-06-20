@@ -52,7 +52,11 @@
 <div class="header grid1190">
     <h1 class="logo fl">
         <a href="index.html">
-            <img src="/images/logo/<%= data.currentCity.logo %>" alt="logo">
+            <% if(data.currentCity.code == '520100'){ %>
+            <img src="../../images/logo/ic_gylogo.png" alt="logo">
+            <% } else { %>
+            <img src="../../images/logo/ic_nationlogo.png" alt="logo">
+            <% } %>
         </a>
     </h1>
     <div class="navCons fl mt20 index">

@@ -2,7 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./account.html');
+var template = require('./account.html');
 require('./account.css');
 
 var userModel = Backbone.Model.extend({

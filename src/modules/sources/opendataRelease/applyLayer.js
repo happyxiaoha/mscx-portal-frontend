@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./applyTemplate.html');
+var template = require('./applyTemplate.html');
 
 // 数据数据下单
 var freeOrderModel = Backbone.Model.extend({

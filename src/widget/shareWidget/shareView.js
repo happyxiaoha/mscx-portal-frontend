@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./share.html');
+var template = require('./share.html');
 var QrCode = require('lib/qrCode.js');
 
 require('./share.css');
@@ -26,6 +26,8 @@ var view = Backbone.View.extend({
         $('body').on('click.shareWeixin', function(event) {
             if(event.target.id != 'shareWeixin') {
                 this.$qrcode.addClass('hide');
+            }else {
+                this.$qrcode.removeClass('hide');
             }
         }.bind(this));
 

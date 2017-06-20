@@ -4,7 +4,7 @@
 
 'use strict';
 
-var openDataDetailTemplate = require('html!./openDataDetailView.html');
+var openDataDetailTemplate = require('./openDataDetailView.html');
 var shareView = require('shareWidget/shareView.js');
 var applyView = require('../opendataRelease/applyLayer.js');
 var offlineView = require('offlineWidget/offlineLayer.js');

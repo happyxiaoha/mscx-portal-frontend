@@ -2,7 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 
-var template = require('html!./leftSide.html');
+var template = require('./leftSide.html');
 require('./leftSide.css');
 
 var applyApiListModel = Backbone.Model.extend({

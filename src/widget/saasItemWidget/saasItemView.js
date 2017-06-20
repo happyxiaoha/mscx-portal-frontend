@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./saasItem.html');
+var template = require('./saasItem.html');
 
 require('./saasItem.css');
 

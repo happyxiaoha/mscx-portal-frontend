@@ -2,13 +2,18 @@
  * Created by Administrator on 2016/12/12.
  */
 
-var header = require('../widget/headerWidget/headerView.js');
-var footer = require('../widget/footerWidget/footerView.js');
-
-var router = require('../modules/services/router.js');
-
 require('less/base.less');
 require('services/services.less');
+require('js/ajaxBackboneManger.js');
+require('css/datePicker/daterangepicker-bs3.css');
+
+window.moment = require('moment');
+require('daterangepicker');
+
+var header = require('headerWidget/headerView.js');
+var footer = require('footerWidget/footerView.js');
+
+var router = require('services/router.js');
 
 $(function() {
     var headerView = new header({

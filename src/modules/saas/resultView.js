@@ -1,6 +1,6 @@
 'use strict';
 
-var resultTemplate = require('html!./resultTemplate.html');
+var resultTemplate = require('./resultTemplate.html');
 var apiItemView = require('saasItemWidget/saasItemView.js');
 
 var view = Backbone.View.extend({

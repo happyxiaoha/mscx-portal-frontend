@@ -1,8 +1,8 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-
-var template = require('html!./createApi.html');
+var tagView = require('tagWidget/tagItemView.js');
+var template = require('./createApi.html');
 require('./createApi.less');
 require('validate');
 require('formAjax');
@@ -21,7 +21,7 @@ var getCategoryModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'category/getApiCategory.do'
 });
 var getCategoryTagModel = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'tags/getTagsInfo.do'
+    url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
 });
 var getServiceTypeModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'dict/getServiceObject.do'
@@ -66,12 +66,14 @@ var createApiView = Backbone.View.extend({
         //this.getCategoryModel2.fetch();
         this.getCategoryTagModel = new getCategoryTagModel();
         this.getServiceTypeModel = new getServiceTypeModel();
+
         this.getCategoryModel.on('change',function () {
             that.renderCategory();
         });
-        this.getCategoryTagModel.on('change',function () {
-            that.renderCategoryTag();
-        });
+        this.listenTo(this.getCategoryTagModel, 'sync', this.renderCategoryTag);
+        // this.getCategoryTagModel.on('change',function () {
+        //     that.renderCategoryTag();
+        // });
         this.getServiceTypeModel.on('change',function () {
             that.renderServiceType();
         });
@@ -301,7 +303,7 @@ var createApiView = Backbone.View.extend({
         $('input[name="tagGroup"]:checked').each(function() {
             var $this = $(this),
                 sId = this.id.replace('tag',''),
-                sName = $this.attr('attrName');
+                sName = $this.data('name');
             cTags.push({id:sId,name: sName});
             aTags.push(sId);
         });
@@ -326,30 +328,13 @@ var createApiView = Backbone.View.extend({
         this.model.set('tags',newTags.join(','));
     },
     showTagArea: function () {
-        this.renderCategoryTag();
-        var that = this;
-        var dialog = layer.open({
-            type: 1,
-            btn: ['保存','取消'],
-            title: '选择标签',
-            shade: 0.6,
-            shadeClose: true,
-            closeBtn:'1',
-            area: ['350px', '450px'],
-            content: $('.tag-list-area'), //捕获的元素
-            btn1: function () {
-                that.saveTag();
-                layer.close(dialog);
-            },
-            btn2: function () {
-                layer.close(dialog);
-            }
-        });
+        // this.renderCategoryTag();
+        this.renderTagWithCategory();
     },
     changeCategory: function (e) {
         var sId = parseInt(e.target.id.replace('c','')),
             type = $(e.target).closest('.category-block-area').find('p').data('typeid');
-        this.renderTagWithCategory(sId);
+        // this.renderTagWithCategory(sId);
         this.model.set('categoryId',sId);
         this.model.set('type',type);
         this.chooseTags = [];
@@ -376,24 +361,48 @@ var createApiView = Backbone.View.extend({
         if(categoryList.length > 0){
             this.model.set('categoryId',categoryList[0].categoryList[0].categoryId);
             this.model.set('type',categoryList[0].typeId);
-            this.renderTagWithCategory(categoryList[0].categoryList[0].categoryId);
+            // this.renderTagWithCategory(categoryList[0].categoryList[0].categoryId);
         }
     },
-    renderTagWithCategory: function (cid) {
+    renderTagWithCategory: function () {
         this.getCategoryTagModel.fetch({
             data: {
-                categoryId: cid
+                categoryId: this.model.get('categoryId')
             }
         });
     },
     renderCategoryTag: function () {
-        var tagTemplate = _.template($('#tagList').html());
         var tagList = this.getCategoryTagModel.get('result');
         var sChooseTags = '';
         if(this.model.get('tags')){
             sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
         }
-        this.$el.find('.tag-list-area').html(tagTemplate({tagList: tagList,sChooseTags:sChooseTags}))
+        this.tagsView = new tagView({
+            model: {tagList: tagList,sChooseTags:sChooseTags}
+        });
+        this.$el.append(this.tagsView.$el);
+
+        var that = this;
+        var dialog = layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '选择标签',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['350px', '450px'],
+            content: this.tagsView.$el, //捕获的元素
+            btn1: function () {
+                that.saveTag();
+                layer.close(dialog);
+            },
+            btn2: function () {
+                layer.close(dialog);
+            },
+            end: function() {
+                that.tagsView.remove();
+            }
+        });
     },
     renderServiceType: function () {
         var categoryTemplate = _.template($('#serverTypeList').html());

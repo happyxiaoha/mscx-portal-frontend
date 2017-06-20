@@ -3,7 +3,7 @@
  */
 
 
-var openDataThemeTemplate = require('html!./openDataThemeView.html');
+var openDataThemeTemplate = require('./openDataThemeView.html');
 
 
 var openDataModel = Backbone.Model.extend({

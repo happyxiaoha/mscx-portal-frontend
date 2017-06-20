@@ -1,5 +1,5 @@
 
-var template = require('html!./message.html');
+var template = require('./message.html');
 require('./message.css');
 require('util');
 

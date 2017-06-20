@@ -1,8 +1,8 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-var commonTemplate = require('html!./common.html');
-var template = require('html!./follow.html');
+var commonTemplate = require('./common.html');
+var template = require('./follow.html');
 require('./servers.css');
 require('util');
 

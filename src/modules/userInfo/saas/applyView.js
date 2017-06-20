@@ -1,7 +1,7 @@
 'use strict'
 
-var commonTemplate = require('html!./saasCommon.html');
-var template = require('html!./apply.html');
+var commonTemplate = require('./saasCommon.html');
+var template = require('./apply.html');
 require('./saas.css');
 require('util');
 

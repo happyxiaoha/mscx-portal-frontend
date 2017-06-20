@@ -3,7 +3,7 @@
  */
 
 require('util');
-var template = require('html!./sources.html');
+var template = require('./sources.html');
 require('./sources.css');
 
 var focusModel = Backbone.Model.extend({

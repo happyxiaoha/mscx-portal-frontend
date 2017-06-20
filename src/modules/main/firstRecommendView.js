@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/17.
  */
 
-var firstRecommendTemplate = require('html!./firstRecommend.html');
+var firstRecommendTemplate = require('./firstRecommend.html');
 var firstRecommendModel = Backbone.Model.extend({
    url: 'home/recommendation.do'
 });

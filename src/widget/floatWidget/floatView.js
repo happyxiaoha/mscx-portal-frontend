@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/12/19.
  */
 
-var template = require('html!./float.html');
+var template = require('./float.html');
 require('./float.css');
 
 

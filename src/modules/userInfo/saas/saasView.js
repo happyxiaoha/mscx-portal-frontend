@@ -1,8 +1,8 @@
 'use strict'
 
-var commonTemplate = require('html!./saasCommon.html');
-var packageTabletemplate = require('html!./packageTableTemplate.html');
-var template = require('html!./saas.html');
+var commonTemplate = require('./saasCommon.html');
+var packageTabletemplate = require('./packageTableTemplate.html');
+var template = require('./saas.html');
 require('./saas.css');
 require('util');
 var packageWidgetView = require('packageWidget/packageItemView.js');

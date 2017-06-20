@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./applyTemplate.html');
+var template = require('./applyTemplate.html');
 
 // 微服务套餐
 var packageModel = Backbone.Model.extend({
@@ -74,6 +74,7 @@ var view = Backbone.View.extend({
         var $tr = $target.parents('tr');
         var $number = $tr.find('.number');
         var num = Math.floor($number.val());
+        if(num>100000) {num = 100000;}
         $number.val(num);
         var price = $number.data('price');
 

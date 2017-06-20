@@ -7,7 +7,7 @@ var serviceView = require('./service/view.js');
 var apiEnvView = require('pioneering/apiEnvView.js');
 var serverEnvView = require('pioneering/serverEnvView.js');
 
-var navTemplate = require('html!./navTemplate.html');
+var navTemplate = require('./navTemplate.html');
 
 var Resource = require('./resource.js');
 

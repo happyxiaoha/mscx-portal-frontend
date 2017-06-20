@@ -1,6 +1,6 @@
 'use strict';
 
-var template = require('html!./resultTemplate.html');
+var template = require('./resultTemplate.html');
 var orderModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderDetail.do'
 })

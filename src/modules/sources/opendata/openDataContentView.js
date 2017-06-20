@@ -1,5 +1,5 @@
 'use strict';
-var openDataThemeListTemplate = require('html!./openDataContentView.html');
+var openDataThemeListTemplate = require('./openDataContentView.html');
 
 
 var openDataThemeListModel = Backbone.Model.extend({

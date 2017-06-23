@@ -171,6 +171,10 @@ var accountView = Backbone.View.extend({
                     required: true,
                     maxlength: 50
                 },
+                taxpayerIdentify: {
+                    maxlength: 30,
+                    letterAndNumber: true
+                },
                 mailAddress: {
                     required: true,
                     maxlength: 50

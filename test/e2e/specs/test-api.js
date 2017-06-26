@@ -2,17 +2,18 @@
 // http://nightwatchjs.org/guide#usage
 
 module.exports = {
-  'index': function (browser) {
+  'api-index': function (browser) {
     // automatically uses dev Server port from /config.index.js
-    // default: http://localhost:8080
     // see nightwatch.conf.js
-    const devServer = browser.globals.devServerURL
+    const devServer = browser.globals.devServerURL + '/api.html'
+
+    console.log(devServer)
 
     browser
       .url(devServer)
       .waitForElementVisible('.wrapper', 3000)
       // 检查title
-      .assert.title('神州数云-首页')
+      .assert.title('神州数云-API')
       // 检查是否有弹层
       .assert.elementNotPresent('.layui-layer')
       // 精选API

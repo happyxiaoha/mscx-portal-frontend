@@ -89,7 +89,10 @@ var apiDemandListView = Backbone.View.extend({
         var temps = _.template($('#apiDemandList').html());
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
-        this.$el.find('tbody').html(temps({apiDemandList:apiDemandList}));
+        this.$el.find('tbody').html(temps({
+            sourceStatus: mscxPage.sourceStatus,
+            apiDemandList: apiDemandList
+        }));
         laypage({
             cont: 'apiPage',
             skip: true,

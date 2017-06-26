@@ -126,7 +126,7 @@ var view = Backbone.View.extend({
         if(model.status == 'OK') {
             layer.msg('账户余额支付成功');
         }else {
-            layer.msg('账户余额支付失败');
+            layer.msg(model.message);
         }
         
 

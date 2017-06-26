@@ -29,6 +29,9 @@ var view = Backbone.View.extend({
     validateConfig: function () {
         var me = this;
         return {
+            groups: {
+                passwordGroup: "password passwordTail"
+            },
             rules: {
                 password: {
                     digits: true,

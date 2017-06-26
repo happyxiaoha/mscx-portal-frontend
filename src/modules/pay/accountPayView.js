@@ -128,14 +128,12 @@ var view = Backbone.View.extend({
 
         if(model.status == 'OK') {
             layer.msg('账户余额支付成功');
+            setTimeout(function() {
+                location.href = '#result/' + this.model.orderNum;
+            }.bind(this), 2000);
         }else {
             layer.msg(model.message);
-        }
-        
-
-        setTimeout(function() {
-            location.href = '#result/' + this.model.orderNum;
-        }.bind(this), 2000);
+        }        
     }
 });
 

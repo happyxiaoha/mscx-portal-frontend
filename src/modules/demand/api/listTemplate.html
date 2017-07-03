@@ -1,0 +1,34 @@
+<% if(data && data.length > 0){ %>
+    <% data && data.forEach(function(item) { %>
+    <div class="ns-list-item">
+        <div class="media">
+            <div class="media-body">
+                <a href="#api/detail/<%= item.id %>" class="h1"><%= item.sysName %></a>
+                <p class="info">网络类型：<%= item.netType %></p>
+                <p class="info">所属单位：<%= item.department %></p>
+                <div class="media-body-footer">
+                    <div class="footerItem">需求用户：<span class="keywordType2"><%= item.reqUser %></span></div>
+                    <div class="footerItem">发布日期：<span class="keywordType2"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span></div>
+                    <div class="footerItem">截止日期：<span class="keywordType2"><%= new Date(item.endTime).format('yyyy-MM-dd') %></span></div>
+                    <div class="footerItem">已浏览：<span class="keywordType2"><%= item.pageviewAmount %></span></div>
+                </div>
+                <% if(item.statusCode == 2) { %>
+                    <p class="demand-status">
+                        新需求
+                    </p>
+                <% }else if(item.statusCode == 5){ %>
+                    <p class="demand-status disabled">
+                        已结束
+                    </p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+<% }else { %>
+    <div class="ns-list-item">
+        <div class="media">
+            <div class="media-body">没有符合查询条件的数据</div>
+        </div>
+    </div>
+<% } %>

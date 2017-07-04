@@ -68,8 +68,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../src/images/servicehelp'),
-        to: 'images/servicehelp',
+        from: path.resolve(__dirname, '../src/images/serverHelp'),
+        to: 'images/serverHelp',
         ignore: ['.*']
       }
     ]),
@@ -80,7 +80,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../favicon.ico')
+        from: path.resolve(__dirname, '../favicon.png')
       }
     ])
   ]

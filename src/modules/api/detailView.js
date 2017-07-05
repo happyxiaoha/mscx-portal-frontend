@@ -121,6 +121,11 @@ var view = Backbone.View.extend({
             return;
         }
 
+        if(this.detailModel.get('publishType') === '02') {
+            this.offlineChat();
+            return;
+        }
+
         this.applyView = new applyView({
             id: this.id,
             model: {

@@ -609,6 +609,7 @@ var updateApiView = Backbone.View.extend({
                 that.model.set('cname',obj.cname);
                 that.model.set('description',obj.description);
                 that.model.set('rtnCode',obj.rtnCode || '');
+                that.model.set('publishType', obj.publishType);
                 that.model.save({},{
                     success: function () {
                         layer.msg('修改成功，已提交审核!');

@@ -125,7 +125,7 @@ var view = Backbone.View.extend({
         }
 
         // 涉密API判断
-        if(_.indexOf(mscxPage.secretAPI, +this.id) > -1) {
+        if(_.indexOf(mscxPage.secretAPI, +this.id) > -1 || this.detailModel.get('publishType') === '02') {
             this.offlineChat();
             return;
         }

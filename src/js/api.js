@@ -4,6 +4,7 @@
 require('less/base.less');
 require('css/main.css');
 require('css/datePicker/daterangepicker-bs3.css');
+require('css/markdown.css');
 require('js/ajaxBackboneManger.js');
 
 window.moment = require('moment');

@@ -85,6 +85,16 @@ var openDataDetailView = Backbone.View.extend({
             });
         }
         }
+
+        // 只有实名认证用户可以评分
+        if(mscxPage.userInfo && mscxPage.userInfo.userType !== 'REGISTER') {
+            this.$('.rating span').on('mouseover', function() {
+                var index = $(this).data('index');
+                $('.rating span').slice(0, index + 1).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+            }).on('mouseleave', function() {
+                $('.rating span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+            }).one('click', this.handleRate);
+        }
     },
     handleAttention: function(res) {
         var model = res.toJSON(),
@@ -209,6 +219,17 @@ var openDataDetailView = Backbone.View.extend({
                 me.offlineView.remove();
             }
         })
+    },
+    // 评分
+    handleRate: function(e) {
+        var $this = $(e.target);
+
+        var index = $this.data('index');
+        $('.rating span').slice(0, index + 1)
+            .removeClass('glyphicon-star-empty')
+            .addClass('glyphicon-star');
+
+        $('.rating span').off();
     }
 });
 

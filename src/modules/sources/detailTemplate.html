@@ -15,7 +15,15 @@
             <div class="col-md-9 ns-document bgWhite">
                 <div class="ns-documentdHead">
                     <h1><%= data.name %><span class="text-large text-orange" style="margin-left: 30px"><%= data.chargeTypeDesc  %></span></h1>
-                    <h3>来源：<%= data.orgName  %>&nbsp;&nbsp;&nbsp;<%= new Date(data.updatedTime).format('yyyy-MM-dd')  %></h3>
+                    <h3 class="mr25">来源：<%= data.orgName  %>&nbsp;&nbsp;&nbsp;<%= new Date(data.updatedTime).format('yyyy-MM-dd')  %></h3>
+                    <h3>综合评分：4.5</h3>
+                    <div class="rating">
+                        <span data-index="0" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                        <span data-index="1" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                        <span data-index="2" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                        <span data-index="3" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                        <span data-index="4" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                    </div>
                     <% if(!data.attentionFlag){ %>
                     <button type="button" id="follow" class="btn btn-follow">
                     关注
@@ -26,6 +34,7 @@
                     </button>
                     <% } %>
                 </div>
+
                 <div class="ns-documentContent">
                     <div class="ns-introduction">
                         报告简介：

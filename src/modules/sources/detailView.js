@@ -67,6 +67,16 @@ var detailView = Backbone.View.extend({
         this.$hotDataReport = this.$('#hotDataReport');
 
         this.$hotDataReport.append(this.selectedView.$el).addClass('in');
+
+        // 只有实名认证用户可以评分
+        if(mscxPage.userInfo && mscxPage.userInfo.userType !== 'REGISTER') {
+            this.$('.rating span').on('mouseover', function() {
+                var index = $(this).data('index');
+                $('.rating span').slice(0, index + 1).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+            }).on('mouseleave', function() {
+                $('.rating span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+            }).one('click', this.handleRate);
+        }
     },
     downloadData: function(event) {
         this.purchaseOrNotModel.fetch({
@@ -181,6 +191,17 @@ var detailView = Backbone.View.extend({
             this.attentionFlag = 0;
             this.$('#follow').text('关注');
         }
+    },
+    // 评分
+    handleRate: function(e) {
+        var $this = $(e.target);
+
+        var index = $this.data('index');
+        $('.rating span').slice(0, index + 1)
+            .removeClass('glyphicon-star-empty')
+            .addClass('glyphicon-star');
+
+        $('.rating span').off();
     }
 });
 

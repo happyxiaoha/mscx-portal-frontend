@@ -93,6 +93,16 @@ var view = Backbone.View.extend({
 
         // 默认选中第一个
         this.$('.tab span').eq(0).click();
+
+        // 只有实名认证用户可以评分
+        if(mscxPage.userInfo && mscxPage.userInfo.userType !== 'REGISTER') {
+            this.$('.rating span').on('mouseover', function() {
+                var index = $(this).data('index');
+                $('.rating span').slice(0, index + 1).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+            }).on('mouseleave', function() {
+                $('.rating span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+            }).one('click', this.handleRate);
+        }
     },
     selectTab: function(event) {
         event.preventDefault();
@@ -238,6 +248,17 @@ var view = Backbone.View.extend({
                 me.offlineView.remove();
             }
         })
+    },
+    // 评分
+    handleRate: function(e) {
+        var $this = $(e.target);
+
+        var index = $this.data('index');
+        $('.rating span').slice(0, index + 1)
+            .removeClass('glyphicon-star-empty')
+            .addClass('glyphicon-star');
+
+        $('.rating span').off();
     }
 });
 

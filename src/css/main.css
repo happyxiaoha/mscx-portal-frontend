@@ -2066,7 +2066,8 @@ ul.pagination>li.active>a {
     margin-bottom: 0;
     font-size: 12px;
     font-weight: 400;
-    color: #999
+    color: #999;
+    display: inline-block;
 }
 
 .ns-document .ns-introduction {
@@ -2608,6 +2609,16 @@ ul.pagination>li.active>a {
 .apply-box p span, .layer-table p span{
     font-size: 14px;
     float: right;
+}
+.rating {
+    font-size: 14px;
+    display: inline-block;
+    position: relative;
+    top: 1px;
+    margin-left: 5px;
+}
+.rating span {
+    color: #f90!important;
 }
 .D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
 .D_table table tr th{background: #f2f2f2;text-align: center;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #666;}

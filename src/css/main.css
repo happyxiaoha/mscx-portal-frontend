@@ -10,9 +10,9 @@ caption,th {
     text-align: left
 }
 
-dd,h1,h2,h3,h4,h5,h6,label,legend {
-    margin-bottom: .5rem
-}
+// dd,h1,h2,h3,h4,h5,h6,label,legend {
+//     margin-bottom: .5rem
+// }
 
 address,button,input,legend,select,textarea {
     line-height: inherit;

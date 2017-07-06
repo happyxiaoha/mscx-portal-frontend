@@ -1,6 +1,7 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
+var tagView = require('tagWidget/tagItemView.js');
 var commonTemplate = require('./userCommon.html');
 var template = require('./userAuth.html');
 require('./user.css');
@@ -28,6 +29,14 @@ var personAuthModel = Backbone.Model.extend({
     url: 'certification/person.do'
 });
 
+var getCategoryModel = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'category/getProviderCategory.do'
+});
+
+var getCategoryTagModel = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
+});
+
 var account = '';
 var userAuthenticationView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -35,6 +44,9 @@ var userAuthenticationView = Backbone.View.extend({
         'click #authTab':'changeTab',
         'click .identifide': 'changeAuthType',
         'change .upload-file': 'uploadFile',
+        'click #chooseTag': 'showTagArea',
+        'click .tag-area .remove-tags-btn': 'deleteTag',
+        'change input:radio[name="category"]': 'changeCategory',
         'input #enterpriseForm input[type="text"]' : 'changeEnterpriseAttribute',
         'input #personForm input[type="text"]' : 'changePersonAttribute'
     },
@@ -174,6 +186,8 @@ var userAuthenticationView = Backbone.View.extend({
         var that = this;
         this.personAuthModel = new getPersonAuthModel();
         this.getEnterpriseAuthModel = new getEnterpriseAuthModel();
+        this.getCategoryModel = new getCategoryModel();
+        this.getCategoryTagModel = new getCategoryTagModel();
         if(!mscxPage.userInfo){
             new userInfoModel().fetch({
                 success: function (model,res) {
@@ -217,6 +231,10 @@ var userAuthenticationView = Backbone.View.extend({
                 }
             });
         }
+
+        this.listenTo(this.getCategoryTagModel, 'sync', this.renderCategoryTag);
+        this.listenTo(this.getCategoryModel, 'sync', this.renderCategory);
+
         this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'userAuth',isDisplay:false}));
 
@@ -334,6 +352,10 @@ var userAuthenticationView = Backbone.View.extend({
         if(res.contractName){
             this.model.set('licencePicUrl',res.licencePicUrl)
         }
+        this.model.on('change:tags',function () {
+            this.buildChooseTags();
+        }.bind(this));
+        this.getCategoryModel.fetch();
         $('#enterpriseForm').validate(this.enterpriseValidateConfig());
     },
     uploadFile: function (e) {
@@ -400,6 +422,97 @@ var userAuthenticationView = Backbone.View.extend({
         var sId = e.target.id == 'mobile1' ? 'mobile':  e.target.id;
         this.model.set(sId,e.target.value);
         return false;
+    },
+    chooseTags: [],
+    saveTag: function () {
+        var cTags = [],
+            aTags = [];
+        $('input[name="tagGroup"]:checked').each(function() {
+            var $this = $(this),
+                sId = this.id.replace('tag',''),
+                sName = $this.data('name');
+            cTags.push({id:sId,name: sName});
+            aTags.push(sId);
+        });
+        this.chooseTags = cTags;
+        this.model.set('tags', aTags.join(','));
+        return false;
+    },
+    buildChooseTags: function () {
+        var cTags = this.chooseTags;
+        var tagAreaTemplate = _.template($('#chooseTagArea').html());
+        $('.tag-area').html(tagAreaTemplate({tags: cTags}));
+    },
+    deleteTag: function (e) {
+        var $this = $(e.target).closest('p').find('span'),
+            newTags = [],
+            newChooseTags = [],
+            sVal = $this.text();
+        if(!$this.hasClass('un-select')){
+            for(var i = 0,len = this.chooseTags.length; i < len; i++){
+                if(this.chooseTags[i].name != sVal){
+                    newTags.push(this.chooseTags[i].id);
+                    newChooseTags.push(this.chooseTags[i]);
+                }
+            }
+        }
+        this.chooseTags = newChooseTags;
+        this.model.set('tags',newTags.join(','));
+    },
+    showTagArea: function () {
+        this.getCategoryTagModel.fetch({
+            data: {
+                categoryId: this.model.get('categoryId')
+            }
+        });
+    },
+    changeCategory: function (e) {
+        var $this = this.$(e.target);
+        
+        this.model.set('categoryId', $this.val());
+        this.chooseTags = [];
+        this.model.set('tags', '');
+        return false;
+    },
+    renderCategory: function () {
+        var categoryTemplate = _.template($('#categoryList').html());
+        var categoryList = this.getCategoryModel.get('result');
+        $('#serverCategory').html(categoryTemplate({categoryList:categoryList}));
+        if(categoryList.length > 0){
+            this.model.set('categoryId',categoryList[0].categoryId);
+        }
+    },
+    renderCategoryTag: function () {
+        var tagList = this.getCategoryTagModel.get('result');
+        var sChooseTags = '';
+        if(this.model.get('tags')){
+            sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
+        }
+        $('.tag-list-area').remove();
+        var tagsView = new tagView({
+            model: {tagList: tagList,sChooseTags:sChooseTags}
+        });
+        this.$el.append(tagsView.$el);
+
+        var that = this;
+        var dialog = layer.open({
+            type: 1,
+            btn: ['保存','取消'],
+            title: '选择标签',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['350px', '450px'],
+            content: $('.tag-list-area'), //捕获的元素
+            btn1: function () {
+                that.saveTag();
+                layer.close(dialog);
+                $('.tag-list-area').remove();
+            },
+            btn2: function () {
+                layer.close(dialog);
+            }
+        });
     }
 });
 module.exports = userAuthenticationView;

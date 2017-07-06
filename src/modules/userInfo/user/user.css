@@ -44,3 +44,50 @@
 .identifide i {width: 20px;  height: 30px;  display: block;  float: left;background: url("../../../images/user-radio-check-icon.png") no-repeat 0 -69px;}
 .identifide.active i {background-position: 0 -28px;}
 .disabled.identifide {opacity: 0.5; cursor: default;}
+
+.loginTable ul li .name {
+  width: 130px;
+}
+.loginTable ul li .tag-area {margin-right: 20px;max-width: 625px;}
+.loginTable ul li .tag-area span{
+  padding: 5px 10px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  display: block;
+  position: relative;
+  text-align: left;
+  border-radius: 5px;
+  width: 50px;
+}
+.loginTable ul li .tag-area .tag-list {position: relative;}
+.loginTable ul li .tag-area .remove-tags-btn{display: block;background: url('../../../images/delete1.png') no-repeat 0;width: 25px;height: 25px;    position: absolute;
+    top: -8px;
+    right: 6px;
+    cursor: pointer;
+}
+.loginTable ul li .tag-area span.un-select {
+  width: 120px;
+}
+.loginTable ul li .tag-area span.un-select:after {background:none;display: none;}
+
+.category-block-area {overflow: hidden;font-size: 12px;}
+
+.checkboxlist {
+    width: 690px
+}
+
+.checkboxlist label {
+    height: 30px;
+    line-height: 30px;
+    width: 120px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap
+}
+
+.checkboxlist label input[type=radio] {
+    margin: 0 5px;
+    vertical-align: -2px
+}

@@ -180,6 +180,26 @@
                             <input type="text" name="contractEmail" id="contractEmail" placeholder="请填写有效的公司邮箱" value="<%=contractEmail%>" <%if(status == '02'){%>disabled<%}%>>
                         </div>
                     </li>
+                </ul>
+                <h4 class="ft18">添加服务商标签</h4>
+                <ul class="mt30 mb30">
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span class="name">分类：</span>
+                            <p id="serverCategory" class="checkboxlist">
+                            </p>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span class="name">标签：</span>
+                            <div class="tag-area fl">
+                                <span class="un-select">未选择任何标签</span>
+                            </div>
+                            <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
+                        </div>
+                    </li>
+                    
                     <li class="clearfix">
                         <%if(status != '02'){%>
                         <label class="remember fl">
@@ -196,5 +216,23 @@
                 </ul>
             </div>
         </form>
+    </div>
+</script>
+<script id="chooseTagArea" type="template">
+    <% for(var i=0,len=tags.length; i < len; i++) { %>
+    <p class="fl tag-list">
+        <span><%=tags[i].name%></span>
+        <i class="remove-tags-btn"></i>
+    </p>
+    <% } %>
+    <%if(tags.length == 0){%>
+    <span class="un-select">未选择任何标签</span>
+    <%}%>
+</script>
+<script id="categoryList" type="template">
+    <div class="category-block-area">
+    <% _.each(categoryList, function (citem) { %>
+        <label title="<%=citem.categoryName%>"><input type="radio" value="<%=citem.categoryId%>" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == categoryList[0].categoryId){%>checked<%}%> ><%=citem.categoryName%></label>
+    <% }); %>
     </div>
 </script>

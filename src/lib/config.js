@@ -76,7 +76,8 @@ var mscxPage = {
         mes: '/ro/mscx-message-api/',
         saas: '/ro/mscx-saas-api/',
         activity: '/ro/mscx-incubator-api/',
-        roadshow: '/ro/mscx-incubator-api/'
+        roadshow: '/ro/mscx-incubator-api/',
+        account: '/ro/mscx-account-api/'
     },
     //苏州社保查询, 徐州社保查询, 社保信息, 马鞍山社保查询, 社保信息查询, 徐州公积金查询, 漯河公积金查询
     secretAPI: [24, 33, 162, 52468, 52556, 34, 36],

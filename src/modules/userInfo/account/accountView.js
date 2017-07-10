@@ -1,90 +1,70 @@
-/**
- * Created by Kevin on 2016/12/6.
- */
+'use strict';
 
-var template = require('./account.html');
-require('./account.css');
-
-var userModel = Backbone.Model.extend({
-    url: 'user/info.do'
+var accountInfoModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'getAccountInfo.do'
 });
+
+var rechargeView = require('./rechargeView.js');
+var paymentRecordView = require('./consumeRecordView.js');
+var rechargeRecordView = require('./rechargeRecordView.js');
+var setPayPasswordView = require('./setPayPasswordView.js');
 
 var accountView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
-    events: {
-        'click #accountTabs span': 'changeTab'
+    initialize: function() {
+        this.$el.addClass('user-center-tap');
+        // 获取账户余额信息，同时更重要的是校验账户是否存在
+        this.accountInfoModel = new accountInfoModel();
 
+        this.listenTo(this.accountInfoModel, 'sync', this.render);
+
+        this.accountInfoModel.fetch();
+        // 账户是否存在标识，默认不存在
+        this.hasAccount = false;
     },
-    changeTab: function (e) {
-        var $this = $(e.target),
-            isActive = $this.hasClass('active'),
-            index = $this.index();
-        if(!isActive){
-            $this.parent().find('.active').removeClass('active');
-            $this.addClass('active');
-            new this.childView[index]({el: '#accountInfo'});
+    render: function() {
+        var accountInfo = this.accountInfoModel.toJSON();
+
+        var accountSubView = mscxPage.views['accountSubView'];
+        accountSubView && accountSubView.undelegateEvents() && accountSubView.stopListening();
+
+        // 如果账户不存在，那么跳转支付密码设置页面。同时，账户充值/充值记录/支出记录tab标签隐藏
+        if(accountInfo.result == 'noAccount') {
+            this.id = 'setPayPassword';
+            this.currentView = new setPayPasswordView({
+                model: _.pick(this, ['id', 'hasAccount'])
+            });
+
+        }else {
+            this.hasAccount = true;
+            switch(this.id) {
+                case 'recharge':
+                    this.currentView = new rechargeView({
+                        model: _.extend(_.pick(this, ['id', 'hasAccount', 'accountInfoModel']), {
+                            order: this.model.order
+                        })
+                    });
+                    break;
+                case 'setPayPassword':
+                case 'forgetPayPassword':
+                    this.currentView = new setPayPasswordView({
+                        model: _.pick(this, ['id', 'hasAccount'])
+                    });
+                    break;
+                case 'rechargeRecord':
+                    this.currentView = new rechargeRecordView({
+                        model: _.pick(this, ['id', 'hasAccount'])
+                    });
+                    break;
+                case 'consumeRecord':
+                    this.currentView = new paymentRecordView({
+                        model: _.pick(this, ['id', 'hasAccount'])
+                    });
+                    break;
+            }
         }
-    },
-    initialize: function() {
-        this.childView = [accountSourcesView,accountApplyView];
-        this.$el.html(template);
-        new accountSourcesView({el: '#accountInfo'});
-    }
-});
-var accountSourcesView = Backbone.View.extend({
-    events: {
-        'click #applyTab': 'changeTab'
-    },
-    initialize: function() {
-        this.template = _.template($('#accountSources').html());
-        //this.model.fetch();
-        this.render();
-    },
-    changeTab: function (e) {
-        var $this = $(e.target),
-            isActive = $this.hasClass('active'),
-            index = $this.index();
-        if(!isActive){
-            var $nowActive = $this.parent().find('.active'),
-                $colsList = this.$el.find('.M-downCons'),
-                nowIndex = $nowActive.index();
-            $nowActive.removeClass('active');
-            $this.addClass('active');
-            $($colsList[nowIndex]).toggleClass('hide');
-            $($colsList[index]).toggleClass('hide');
-            $nowActive = null;$colsList = null;
-        }
-    },
-    render: function () {
-        var res = {
-            userInfo: '1',
-            status: '未认证',
-            apiKey: 'dasdsa',
-            secretKey: '64517dd09056a42997c36ae3a8b0d354444464517dd0905e',
-            telephone: '123444333',
-            userType: 'sadsa'
-        };
-        this.$el.html(this.template(res));
-    }
-});
-var accountApplyView = Backbone.View.extend({
-    events: {
-    },
-    initialize: function() {
-        this.template = _.template($('#accountApply').html());
-        //this.model.fetch();
-        this.render();
-    },
-    render: function () {
-        var res = {
-            userInfo: '1',
-            status: '未认证',
-            apiKey: 'dasdsa',
-            secretKey: '64517dd09056a42997c36ae3a8b0d354444464517dd0905e',
-            telephone: '123444333',
-            userType: 'sadsa'
-        };
-        this.$el.html(this.template(res));
+        mscxPage.views['accountSubView'] = this.currentView;
+        this.$el.replaceWith(this.currentView.$el);
     }
 });
 module.exports = accountView;

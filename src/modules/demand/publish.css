@@ -19,7 +19,29 @@
     margin: 0;
     vertical-align: middle;
 }
-    
+.ReleaseInputs .ReleaseList .R_right.bail select {
+    margin-bottom: 0;
+    width: 100px;
+}
+.ReleaseInputs .ReleaseList .R_right.bail span {
+    color: #8b8b8b;
+    margin: 0 10px;
+}
+.ReleaseInputs .ReleaseList .R_right.bail input {
+    float: initial;
+    width: 258px;
+}
+.ReleaseInputs .tips {
+    margin-bottom: 15px;
+    line-height: 20px;
+    background: #fcf8e3;
+    padding: 5px 10px 5px 120px;
+    color: #8a6d3b;
+ }
+ .ReleaseInputs .tips.bottom {
+    padding-left: 20px;
+    line-height: 25px;
+ }
 .R_Btns{text-align: center;margin:50px 0 10px;}
 .R_Btns .bgBlue{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;background: #f90;}
 .R_Btns .bgBlue:first-child{margin-right: 40px;}
@@ -77,3 +99,32 @@ label.checkbox-inline, .checker {
 .orderDiv em {
     margin-left: -10px;
 }
+.ReleaseInputs .ReleaseList .R_right .tag-area {margin-right: 20px;max-width: 625px;}
+.ReleaseInputs .ReleaseList .R_right .tag-area span{
+    padding: 5px 10px;
+    line-height: 15px;
+    margin-top: 5px;
+    margin-right: 18px;
+    border: 1px solid #ddd;
+    display: block;
+    border-radius: 5px;
+}
+.ReleaseInputs .ReleaseList .R_right .tag-area .tag-list {position: relative;}
+.ReleaseInputs .ReleaseList .R_right .tag-area .remove-tags-btn{display: block;background: url('../../images/delete1.png') no-repeat 0;width: 25px;height: 25px;    position: absolute;
+    top: -8px;
+    right: 6px;
+    cursor: pointer;
+}
+.ReleaseInputs .ReleaseList .R_right .tag-area span.un-select {
+  width: 120px;
+}
+.ReleaseInputs .ReleaseList .R_right .tag-area span.un-select:after {background:none;display: none;}
+
+.ReleaseInputs .ReleaseList .R_right .cell {
+    float: left;
+    height: 32px;
+    line-height: 32px;
+    margin-left: 15px;
+    color: #8b8b8b;
+}
+

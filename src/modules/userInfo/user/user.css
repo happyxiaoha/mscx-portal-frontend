@@ -70,6 +70,15 @@
 }
 .loginTable ul li .tag-area span.un-select:after {background:none;display: none;}
 
+.loginTable ul li img.captchaImg {
+    width: 130px;
+    border-left: none;
+    height: 34px;
+    float: left;
+}
+.loginTable ul li input[type="text"].captcha {
+    width: 130px;
+}
 .category-block-area {overflow: hidden;font-size: 12px;}
 
 .checkboxlist {

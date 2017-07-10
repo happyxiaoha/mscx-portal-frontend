@@ -189,6 +189,24 @@
 .data-list .demand-status.disabled {
     background: #aaa;
 }
+.data-list .demand-ensure {
+    position: absolute;
+    left: 25%;
+    top: 10px;
+    line-height: 28px;
+    padding: 10px;
+    color: #6fc992;
+    font-size: 14px;
+}
+.data-list .demand-top {
+    position: absolute;
+    right: 15%;
+    top: 0;
+    line-height: 28px;
+    padding: 0 5px;
+    color: #fff;
+    background: #ec8b62;
+}
 .demand-content .btn-follow {
     position: absolute;
     right: 30px;

@@ -133,11 +133,7 @@ var createDemandView = Backbone.View.extend({
         params.categoryName = categoryName;
 
         this.model.set(params);
-        // this.model.save();
-
-        this.$el.replaceWith(new confirmRechargeView({
-            model: this.model
-        }).$el);
+        this.model.save();
     },
     backHistory: function (event) {
         event.preventDefault();
@@ -155,7 +151,9 @@ var createDemandView = Backbone.View.extend({
                     location.href = 'userInfo.html#serversDemand';
                 }, 2000);
             }else {
-                this.$el.replaceWith(new confirmRechargeView().$el);
+                this.$el.replaceWith(new confirmRechargeView({
+                    model: this.model
+                }).$el);
             }
         }
     },
@@ -299,7 +297,7 @@ var createDemandView = Backbone.View.extend({
         var $target = this.$(e.target);
         var percent = $target.val();
 
-        this.$('#ensureMoney').val(this.taskMoney * percent);
+        this.$('#ensureMoney').val((this.taskMoney * percent).toFixed(2));
     }
 });
 

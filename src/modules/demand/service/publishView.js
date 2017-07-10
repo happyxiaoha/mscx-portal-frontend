@@ -3,6 +3,7 @@
  */
 
 var tagView = require('tagWidget/tagItemView.js');
+var confirmRechargeView = require('./confirmRecharge.js');
 var template = require('./publishTemplate.html');
 var optionTemplate = require('./optionTemplate.html');
 var tagTemplate = require('./tagTemplate.html');
@@ -108,8 +109,22 @@ var createDemandView = Backbone.View.extend({
             },
             submitHandler: function () {
                 me.submitForm();
+            },
+            invalidHandler:function() {
+                me.checkValidateSelf();
             }
         }
+    },
+    checkValidateSelf: function () {
+        var res = true;
+
+        if(!this.model.get('tags')) {
+            $('.tag-error').show();
+            res = false;
+        } else {
+            $('.tag-error').hide();
+        }
+        return res;
     },
     submitForm: function () {
         var params = this.$form.serializeObject();
@@ -118,7 +133,11 @@ var createDemandView = Backbone.View.extend({
         params.categoryName = categoryName;
 
         this.model.set(params);
-        this.model.save();
+        // this.model.save();
+
+        this.$el.replaceWith(new confirmRechargeView({
+            model: this.model
+        }).$el);
     },
     backHistory: function (event) {
         event.preventDefault();
@@ -128,10 +147,16 @@ var createDemandView = Backbone.View.extend({
         var model = this.model.toJSON();
         if(model.status == 'OK') {
             this.$('#publishBtn').attr('disabled', 'disabled');
-            layer.msg((this.id ? '修改' : '创建') + '成功，请至用户中心我的需求内发布');
-            setTimeout(function() {
-                location.href = 'userInfo.html#serversDemand';
-            }, 2000);
+            
+            // 保证金是否为0，是->用户中心，否->确认充值页面
+            if(this.model.get('ensureMoney') == 0) {
+                layer.msg((this.id ? '修改' : '创建') + '成功，请至用户中心我的需求内发布');
+                setTimeout(function() {
+                    location.href = 'userInfo.html#serversDemand';
+                }, 2000);
+            }else {
+                this.$el.replaceWith(new confirmRechargeView().$el);
+            }
         }
     },
     changeDate: function(event) {
@@ -208,6 +233,7 @@ var createDemandView = Backbone.View.extend({
         });
         this.chooseTags = cTags;
         this.model.set('tags', aTags.join(','));
+        this.model.set('tagsName', cTags)
         return false;
     },
     buildChooseTags: function () {
@@ -265,9 +291,15 @@ var createDemandView = Backbone.View.extend({
     },
     handleTaskMoney: function(e) {
         var $target = this.$(e.target);
+
+        this.taskMoney = $target.val();
+        this.$('#ensurePercent').trigger('change');
     },
     handleEnsurePercent: function(e) {
         var $target = this.$(e.target);
+        var percent = $target.val();
+
+        this.$('#ensureMoney').val(this.taskMoney * percent);
     }
 });
 

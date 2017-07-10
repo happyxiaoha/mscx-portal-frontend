@@ -1,0 +1,79 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow des">
+    <!-- top -->
+<div class="ReleaseTit w100">
+    <p>需求保证金提交</p>
+</div>
+    <!-- down -->
+    <div class="ReleaseInputs">
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">需求名称：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.name %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">任务描述：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.description %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">任务要求：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.required %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">需求分类：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.categoryName %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">需求标签：</p>
+            <div class="fl R_right">
+                <p>
+                    <% data && data.tagsName.forEach(function(item){ %>
+                        <%= item.name %>&nbsp;&nbsp;&nbsp;
+                    <% }) %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">任务金额：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.money %>
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">担保资金比例：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && (+data.percent * 100) %>%
+                </p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">需提供担保金：</p>
+            <div class="fl R_right">
+                <p>
+                    <%= data && data.ensureMoney %>
+                </p>
+            </div>
+        </div>
+        <div class="R_Btns">
+            <button class="bgBlue" id="nextBtn">下一步</button>
+            <button id="goBack" class="bgBlue">返回</button>
+        </div>
+    </div>
+</div>

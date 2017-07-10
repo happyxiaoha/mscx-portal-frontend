@@ -48,15 +48,15 @@
         <div class="clearfix ReleaseList">
             <p class="fl R_left">设置保证金比例：</p>
             <div class="fl R_right bail">
-                <select id="ensurePercent">
-                    <option value="0%">0%</option>
-                    <option value="30%" selected>30%</option>
-                    <option value="50%">50%</option>
-                    <option value="70%">70%</option>
-                    <option value="100%">100%</option>
+                <select id="ensurePercent" name="percent">
+                    <option value="0">0%</option>
+                    <option value="0.3" selected>30%</option>
+                    <option value="0.5">50%</option>
+                    <option value="0.7">70%</option>
+                    <option value="1">100%</option>
                 </select>
                 <span>金额</span>
-                <input type="text" name="ensureMoney" maxlength="20" readonly placeholder="请输入保证金" value="<%= data && data.money %>">
+                <input type="text" name="ensureMoney" id="ensureMoney" maxlength="20" readonly placeholder="请输入保证金" value="<%= data && data.money %>">
                 <span>单位（元）</span>
             </div>
         </div>
@@ -128,12 +128,13 @@
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left"><em>*</em>标签：</p>
-            <div class="fl R_right wd660 category">
+            <div class="fl R_right category">
                 <div class="tag-area fl">
                     <span class="un-select">未选择任何标签</span>
                 </div>
                 <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
             </div>
+            <label class="tag-error">请选择标签</label>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">需求用户：</p>

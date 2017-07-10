@@ -127,4 +127,10 @@ label.checkbox-inline, .checker {
     margin-left: 15px;
     color: #8b8b8b;
 }
-
+.tag-error {
+    float: left;
+    color: red;
+    margin-left: 20px;
+    line-height: 30px;
+    display: none;
+}

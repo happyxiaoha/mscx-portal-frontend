@@ -6,16 +6,6 @@
         <a href="#account" <%= (name == 'accountView' ? 'class=active' : '' ) %> >我的账户</a>
         -->
         <a class="demand-left <%= (name == 'demandView'||name == 'apiDemandView'||name == 'serversDemandView'||name == 'followDemandView'||name == 'acceptDemandView' ? 'active' : '') %>" href="#demand" ><i></i>我的需求</a>
-        <a class="sources-left <%= (name == 'sourcesView' ? 'active' : '' ) %>" href="#sources" ><i></i>数据报告</a>
-        <a class="api-left <%= (name == 'apiView'||name == 'myApiView'||name == 'followView' ? 'active' : '' ) %>" href="#api" ><i></i>我的API</a>
-        <a class="server-left <%= (name == 'serverView'||name == 'serverFollowView'||name == 'serverApplyView' ? 'active' : '' ) %>" href="#server"><i></i>我的微应用</a>
-        <a class="saas-left <%= (name == 'mySaaSView'||name == 'followSaaSView' ? 'active' : '' ) %> " href="#mySaaS"><i></i>我的SaaS</a>
-        <a class="offline-left <%= (name == 'offlineMeetView' ? 'active' : '' ) %> " href="#offlineMeet"><i></i>
-        <span style="margin-left: 15px;">我的线下洽谈</span>
-        </a>
-        <a class="incubator-left <%= (name == 'incubatorView'||name == 'followRoadShowView'||name == 'myActivityView' ||name == 'followActivityView' ||name == 'applyActivityView' ? 'active' : '' ) %> " href="#incubator"><i></i>孵化器</a>
-        <a class="order-left <%= (name == 'orderView' ? 'active' : '' ) %> " href="#order"> <i></i>订单管理</a>
-        <a class="shop-left <%= (name == 'shopView' ? 'active' : '' ) %> " href="#shop"> <i></i>购物车</a>
-        <a class="account-left <%= (name == 'accountView'||name == 'setPayPasswordView'||name == 'rechargeRecordView'||name == 'consumeRecordView'||name == 'forgetPayPasswordView' ? 'active' : '' ) %> " href="#account"> <i></i>我的账户</a>
+        <a class="api-left <%= (name == 'apiView'||name == 'myApiView'||name == 'followView' ? 'active' : '' ) %>" href="#api" ><i></i>发布的资源</a>
     </li>
 </ul>

@@ -25,7 +25,7 @@ var menuList = [
         key: 'pioneering'
     },
     {
-        name: '孵化器',
+        name: '孵化空间',
         url: mscxPage.urlConfig.startupPage,
         key: 'startup'
     }

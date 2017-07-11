@@ -5,9 +5,9 @@
         <% } %>
         <!-- top -->
         <% if(data && data.id) { %>
-        <p class="ReleaseTit">修改数据需求</p>
+        <p class="ReleaseTit">修改需求</p>
         <% }else{ %>
-        <p class="ReleaseTit">新增数据需求</p>
+        <p class="ReleaseTit">新增需求</p>
         <% } %>
         <!-- down -->
         <div class="ReleaseInputs">
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"><em>*</em> 数据描述：</p>
+                <p class="fl R_left"><em>*</em> 需求描述：</p>
                 <div class="fl R_right">
                     <p>
                         <textarea name="dataDescription" id="dataDescription" cols="30" rows="10" placeholder="请输入任务描述"><%= data && data.dataDescription %></textarea>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"><em>*</em> 数据项：</p>
+                <p class="fl R_left"><em>*</em> 需求项：</p>
                 <div class="fl R_right">
                     <p>
                         <textarea style="height: 120px" name="dataItem" id="dataItem" cols="30" rows="10" placeholder="请输入数据项"><%= data && data.dataItem %></textarea>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"><em>*</em> 数据用途：</p>
+                <p class="fl R_left"><em>*</em> 需求用途：</p>
                 <div class="fl R_right">
                     <p>
                         <textarea style="height: 120px" name="dataUsage" id="dataUsage" cols="30" rows="10" placeholder="请输入数据用途"><%= data && data.dataUsage %></textarea>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="clearfix ReleaseList">
-                <p class="fl R_left"> 数据格式：</p>
+                <p class="fl R_left"> 格式：</p>
                 <div class="fl R_right">
                     <div class="radio-list">
                         <label>

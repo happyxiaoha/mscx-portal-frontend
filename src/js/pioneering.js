@@ -17,17 +17,17 @@ var menuList = [
     //     url: '#apiEnv'
     // },
     {
-        name: '服务开发环境',
+        name: '实验室',
         key: 'serverEnv',
         url: '#serverEnv'
     },
     {
-        name: '数据可视化开发',
+        name: '知识库',
         key: 'dataVisiual',
         url: '#dataVisiual'
     },
     {
-        name: '大数据分析建模',
+        name: '专家',
         key: 'bigData',
         url: '#bigData'
     }

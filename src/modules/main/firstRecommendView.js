@@ -15,18 +15,20 @@ var firstRecommendView = Backbone.View.extend({
     events: {
     },
     initialize: function() {
-        this.$el.toggleClass('loading');
-        this.model = new firstRecommendModel();
-        this.model.fetch();
-        this.listenTo(this.model,'sync',this.render);
+        // this.$el.toggleClass('loading');
+        // this.model = new firstRecommendModel();
+        // this.model.fetch();
+        // this.listenTo(this.model,'sync',this.render);
+
+        this.render();
     },
     render: function() {
-        this.$el.toggleClass('loading');
-        var nJson =  this.model.toJSON();
-        this.$el.html(this.template(nJson.result));
-        if(!nJson.result || nJson.result.length == 0){
-            this.$el.closest('.layer').remove();
-        }
+        // this.$el.toggleClass('loading');
+        // var nJson =  this.model.toJSON();
+        this.$el.html(this.template());
+        // if(!nJson.result || nJson.result.length == 0){
+        //     this.$el.closest('.layer').remove();
+        // }
     }
 });
 

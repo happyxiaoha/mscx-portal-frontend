@@ -18,62 +18,62 @@ var view = Backbone.View.extend({
     initialize: function() {
         this.id = 'saas';
         // 筛选部分初始化
-        this.searchView = new searchView({
-            id: this.id,
-            model: {
-                options: [this.id + 'Category', this.id + 'Tags', 'chargeWay', 'date'],
-                defaults: {
-                    date: {
-                        list: [
-                            {
-                                name: '7天内',
-                                startTime: this.getDate(-7),
-                                endTime: this.getDate()
-                            },{
-                                name: '一个月内',
-                                startTime: this.getDate(-30),
-                                endTime: this.getDate()
-                            },{
-                                name: '三个月内',
-                                startTime: this.getDate(-90),
-                                endTime: this.getDate()
-                            },{
-                                name: '半年内',
-                                startTime: this.getDate(-180),
-                                endTime: this.getDate()
-                            },{
-                                name: '一年内',
-                                startTime: this.getDate(-365),
-                                endTime: this.getDate()
-                            },{
-                                name: '一年前',
-                                startTime: '',
-                                endTime: this.getDate(-365)
-                            }
-                        ],
-                        title: '发布日期'
-                    },
-                    pageSize: 12
-                }
-            }
-        });
+        // this.searchView = new searchView({
+        //     id: this.id,
+        //     model: {
+        //         options: [this.id + 'Category', this.id + 'Tags', 'chargeWay', 'date'],
+        //         defaults: {
+        //             date: {
+        //                 list: [
+        //                     {
+        //                         name: '7天内',
+        //                         startTime: this.getDate(-7),
+        //                         endTime: this.getDate()
+        //                     },{
+        //                         name: '一个月内',
+        //                         startTime: this.getDate(-30),
+        //                         endTime: this.getDate()
+        //                     },{
+        //                         name: '三个月内',
+        //                         startTime: this.getDate(-90),
+        //                         endTime: this.getDate()
+        //                     },{
+        //                         name: '半年内',
+        //                         startTime: this.getDate(-180),
+        //                         endTime: this.getDate()
+        //                     },{
+        //                         name: '一年内',
+        //                         startTime: this.getDate(-365),
+        //                         endTime: this.getDate()
+        //                     },{
+        //                         name: '一年前',
+        //                         startTime: '',
+        //                         endTime: this.getDate(-365)
+        //                     }
+        //                 ],
+        //                 title: '发布日期'
+        //             },
+        //             pageSize: 12
+        //         }
+        //     }
+        // });
 
         // 结果部分初始化
         this.resultView = new resultView({
             id: this.id
         });
 
-        this.searchView.delegate = this;
-        this.resultView.delegate = this;
+        // this.searchView.delegate = this;
+        // this.resultView.delegate = this;
 
-        this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
-        this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleParams.bind(this.searchView));
+        // this.searchView.listenTo(this.resultView, 'page', this.searchView.handlePageJump.bind(this.searchView));
+        // this.searchView.listenTo(this.resultView, 'sort', this.searchView.handleParams.bind(this.searchView));
 
-        this.saasAPI = new servicesModel();
+        // this.saasAPI = new servicesModel();
 
-        this.listenTo(this.saasAPI, 'sync', this.resultView.render.bind(this.resultView));
+        // this.listenTo(this.saasAPI, 'sync', this.resultView.render.bind(this.resultView));
 
-        this.$el.append(this.searchView.render().$el);
+        // this.$el.append(this.searchView.render().$el);
         this.$el.append(this.resultView.$el);
 
         return this;

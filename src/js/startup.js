@@ -18,7 +18,7 @@ var router = require('startup/router.js');
 
 var menuList = [
     {
-        name: '创业辅导',
+        name: '双创政策',
         key: 'coach',
         url: '#coach'
     },

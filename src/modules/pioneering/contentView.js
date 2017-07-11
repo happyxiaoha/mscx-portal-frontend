@@ -2,6 +2,7 @@
 
 var template = '<div class="ns-contentComponent animate-content"></div>';
 var subTemplate = require('./template.html');
+var secondTemplate = require('./second.html');
 
 var developCheck = Backbone.Model.extend({
     url: mscxPage.host+'/developer/portal.do'
@@ -38,7 +39,12 @@ var view = Backbone.View.extend({
         this.$wrap = this.$('.ns-contentComponent');
         var me = this;
 
-        this.$wrap.html(subTemplate);
+        if(this.id == 'dataVisiual') {
+            this.$wrap.html(secondTemplate);
+        }else {
+            this.$wrap.html(subTemplate);
+        }
+        
 
         // this.$wrap.load(resource[this.id].url + '?time=' + +(new Date()), function() {
         //     me.$wrap.removeClass('opacity0');

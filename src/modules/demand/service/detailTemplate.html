@@ -16,6 +16,11 @@
                 <div class="col-md-9 ns-wd2 bgWhite">
                     <div class="wdHead">
                         <h1><%= data.name %></h1>
+                        <div class="tags">
+                            <% data.tagsName && data.tagsName.split(',').forEach(function(item){ %>
+                                <span class="tagItem"><%= item %></span>
+                            <% }) %>
+                        </div>
                         <h3>访问量：<%= data.pageviewAmount %> &nbsp;&nbsp;&nbsp;&nbsp;关注量：<%= data.focusAmount %></h3>
 
                         <% if(data.myself == 0 && data.status != 5){ %>
@@ -43,7 +48,14 @@
                             </div>
                             <p>任务描述：<%= data.description %></p>
                             <p>任务要求：<%= data.required %></p>
-                            <p>预算金额：面议</p>
+                            <p>预算金额：<%= data.money %>
+                                <% if(data.ensureStatus == 'Y') { %>
+                                <span style="margin-left: 45px;">
+                                    <img src="../../../images/newicon/ic-ensure-money.png">
+                                    已托管资金
+                                </span>
+                                <% } %>
+                            </p>
                             <p>截止日期：<%= data.endTime && new Date(data.endTime).format('yyyy-MM-dd') %></p>
                             <p>主联系人信息：
                                 <% if(data.contactUsername) { %>

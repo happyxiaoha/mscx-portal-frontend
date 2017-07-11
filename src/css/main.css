@@ -2354,7 +2354,7 @@ ul.pagination>li.active>a {
     font-size: 24px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: #c00
+    color: #c00;
 }
 
 .ns-wd .wdHead h2,.ns-wd .wdHead h3 {
@@ -2388,7 +2388,27 @@ ul.pagination>li.active>a {
     font-size: 24px;
     font-weight: 400;
     margin-bottom: 20px;
-    padding-right: 100px;
+    // padding-right: 100px;
+    display: inline-block;
+}
+
+.ns-wd2 .wdHead .tags {
+    display: inline-block;
+    margin-left: 5em;
+    vertical-align: top;
+    max-width: 280px;
+    margin-top: 3px;
+}
+
+.ns-wd2 .wdHead .tags .tagItem {
+    float: left;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    padding: 2px 4px;
+    border: 1px solid #5cb981;
+    font-size: 12px;
+    color: #5cb981;
+    border-radius: 2px;
 }
 
 .ns-wd2 .wdHead h3 {

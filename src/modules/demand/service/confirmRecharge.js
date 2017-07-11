@@ -27,7 +27,11 @@ var view = Backbone.View.extend({
         location.href = 'userInfo.html#serversDemand';
     },
     handleUpdateStatus: function() {
+        var model = this.updateStatusModel.toJSON();
 
+        if(model.status == 'OK') {
+            console.log('success');
+        }
     }
 });
 

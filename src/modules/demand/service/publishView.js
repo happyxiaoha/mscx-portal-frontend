@@ -17,9 +17,8 @@ var detailModel = Backbone.Model.extend({
 var getCategoryTagModel = Backbone.Model.extend({
     url: mscxPage.request.dict + 'tags/getTagsInfo4pinyin.do'
 });
-// 微服务分类
 var serviceCategory = Backbone.Model.extend({
-    url: mscxPage.request.dict + 'category/getServiceCategory.do'
+    url: mscxPage.request.dict + 'category/getProviderCategory.do'
 });
 var addModel = Backbone.Model.extend({
     idAttribute: 'addId',
@@ -151,6 +150,7 @@ var createDemandView = Backbone.View.extend({
                     location.href = 'userInfo.html#serversDemand';
                 }, 2000);
             }else {
+                this.model.set('id', model.result);
                 this.$el.replaceWith(new confirmRechargeView({
                     model: this.model
                 }).$el);

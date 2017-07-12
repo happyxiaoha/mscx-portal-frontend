@@ -6,7 +6,7 @@
                     <ol class="breadcrumb">
                         <li><a href="demand.html">需求大厅</a></li>
                         <li><a href="#data">需求详情</a></li>
-                        <li class="active"><%= data.name %></li>
+                        <li class="active">集团公司2016年年度报告</li>
                     </ol>
                 </div>
             </div>
@@ -15,15 +15,13 @@
             <div class="row">
                 <div class="col-md-12 ns-wd2 bgWhite">
                     <div class="wdHead">
-                        <h1><%= data.name %></h1>
-                        <h3>访问量：<%= data.pageviewAmount %> &nbsp;&nbsp;&nbsp;&nbsp;关注量：<%= data.focusAmount %></h3>
+                        <h1>集团公司2016年年度报告</h1>
+                        <h3>访问量：140 &nbsp;&nbsp;&nbsp;&nbsp;关注量：30</h3>
+                        <button class="btn btn-apply" id="applyService">接单</button>
+                        </button>
                         <button type="button" id="follow" class="btn btn-follow">
-                        <% if(data.flag == 0){ %>
                         关注
-                        <% }else { %>
-                        取消关注
-                        <% } %>
-                        </button>                        
+                        </button>                  
                     </div>
                     <hr>
                     <div class="wdBody">
@@ -31,25 +29,21 @@
                             <div class="wdHead" style="position: relative;">
                                 <h1>需求详情</h1>
                             </div>
-                            <p>需求描述：<%= data.dataDescription %></p>
-                            <p>需求用途：<%= data.dataUsage %></p>
-                            <p>数据项：<%= data.dataItem %></p>
-                            <p>数据格式：<%= data.dataFormat %></p>
-                            <p>发布用户：<%= data.reqUser %></p>
-                            <p>发布日期：<%= data.publishTime && new Date(data.publishTime).format('yyyy-MM-dd') %></p>
+                            <p>需求描述：集团公司2016年年度报告总体内容</p>
+                            <p>需求用途：对外宣传材料资源</p>
+                            <p>数据项：整体报告</p>
+                            <p>数据格式：word</p>
+                            <p>发布用户：刘*</p>
+                            <p>发布日期：2017-6-26</p>
                             <hr />
                             <div class="wdHead" style="position: relative;">
                                      <h1>需求反馈</h1>
                                         </div>
-                                        <p>归属部门：<%= data.department %></p>
+                                        <p>归属部门：暂无</p>
                                         <p>反馈日期：
-                                            <% if(data.feedbackTime){ %>
-                                            <%= data.feedbackTime && new Date(data.feedbackTime).format('yyyy-MM-dd') %>
-                                            <% }else{ %>
                                             暂无
-                                            <% } %>
                                         </p>
-                            <p>部门反馈：<%= data.feedbackDepartment ? data.feedbackDepartment : '暂无' %></p>
+                            <p>部门反馈：暂无</p>
                            <!-- <img src="dist/images/111.png" alt="">-->
                         </div>
                     </div>

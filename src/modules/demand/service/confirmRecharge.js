@@ -13,16 +13,18 @@ var view = Backbone.View.extend({
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.updateStatusModel = new updateStatusModel({
-            id: this.model.get('id')
-        });
+        this.updateStatusModel = new updateStatusModel();
 
         this.listenTo(this.updateStatusModel, 'sync', this.handleUpdateStatus);
 
         this.$el.html(this.template(this.model.toJSON()));
     },
     goNext: function() {
-        this.updateStatusModel.save()
+        this.updateStatusModel.save({
+            id: this.model.get('id')
+        }, {
+            type: 'POST'
+        })
     },
     goBack: function() {
         location.href = 'userInfo.html#serversDemand';

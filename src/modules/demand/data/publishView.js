@@ -3,6 +3,7 @@
  */
 
 var template = require('./publishTemplate.html');
+var optionTemplate = require('./optionTemplate.html');
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'modifyDataDetail.do'
 })
@@ -13,6 +14,9 @@ var addModel = Backbone.Model.extend({
 var modifyModel = Backbone.Model.extend({
     idAttribute: 'modifyId',
     url: mscxPage.request.demand + 'modifyData.do'
+});
+var serviceCategory = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'category/getProviderCategory.do'
 });
 
 
@@ -27,9 +31,14 @@ var createDemandView = Backbone.View.extend({
         'click #goBack': 'backHistory'
     },
     template: _.template(template, {variable: 'data'}),
+    optionTemplate: _.template(optionTemplate, {variable: 'data'}),
     initialize: function() {
         // 如果有ID则说明是进入修改页面
         this.detailModel = new detailModel();
+        this.serviceCategory = new serviceCategory();
+
+        this.listenTo(this.serviceCategory, 'sync', this.renderServiceCategory);
+
         if(this.id) {
             this.listenTo(this.detailModel, 'sync', this.renderDetail);
             this.detailModel.fetch({
@@ -70,12 +79,25 @@ var createDemandView = Backbone.View.extend({
     submitForm: function () {
         var params = this.$form.serializeObject();
 
+        params.categoryName = this.$('#category').find("option:selected").text();
+
         this.model.set(params);
         this.model.save();
     },
     backHistory: function (event) {
         event.preventDefault();
         history.back();
+    },
+    renderServiceCategory: function() {
+        var model = this.serviceCategory.toJSON();
+        var $serviceCategory = this.$('#category');
+        $serviceCategory.html(this.optionTemplate(model));
+
+        this.model.set('categoryId', $serviceCategory.val());
+
+        if($serviceCategory.data('default')) {
+            $serviceCategory.val($serviceCategory.data('default'));
+        }
     },
     handleSubmit: function() {
         var model = this.model.toJSON();
@@ -94,6 +116,8 @@ var createDemandView = Backbone.View.extend({
 
         this.$form = this.$('form');
         this.$form.validate(this.validateConfig());
+
+        this.serviceCategory.fetch();
     }
 });
 

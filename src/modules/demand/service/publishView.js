@@ -180,6 +180,12 @@ var createDemandView = Backbone.View.extend({
 
         this.$el.html(this.template(model.result));
 
+        if(model.result.id) {
+            this.chooseSelectTags(model.result.tagsName);
+            this.model.set('tags',model.result.tags);
+            this.$('#taskMoney').trigger('input');
+        }
+
         this.serviceCategory.fetch();
 
         this.$form = this.$('form');
@@ -222,6 +228,20 @@ var createDemandView = Backbone.View.extend({
         return false;
     },
     chooseTags: [],
+    chooseSelectTags: function (chooseTags) {
+        var chooseArray = [];
+        if(chooseTags.indexOf(',')>=0){
+            chooseArray = chooseTags.split(',');
+        }
+        else {
+            chooseArray = [chooseTags];
+        }
+        for(var k = 0, kLen = chooseArray.length; k < kLen; k++){
+            if(chooseArray[k]) {
+                this.chooseTags.push({name:chooseArray[k]});
+            }
+        }
+    },
     saveTag: function () {
         var cTags = [],
             aTags = [];

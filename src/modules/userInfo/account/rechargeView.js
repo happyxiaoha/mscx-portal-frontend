@@ -83,16 +83,16 @@ var accountView = Backbone.View.extend({
 var amountView = Backbone.View.extend({
     initialize: function() {
         this.templete = _.template($('#amount').html());
-        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
+        // this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
 
         this.listenTo(this.model, 'sync', this.handleRecharge);
         return this;
     },
     render: function() {
         this.$el.empty();
-        this.$el.append(this.stepTemplete({
-            current: 'step1'
-        }));
+        // this.$el.append(this.stepTemplete({
+        //     current: 'step1'
+        // }));
         this.$el.append(this.templete());
 
         this.$form = this.$('form');
@@ -139,15 +139,15 @@ var selectPayWayView = Backbone.View.extend({
     },
     initialize: function() {
         this.templete = _.template($('#slectPayWay').html(), {variable: 'data'});
-        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
+        // this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
         this.payTipsTemplate = $('#payTips').html();
     },
     render: function() {
         this.$el.empty();
-        this.$el.append(this.stepTemplete({
-            done: ['step1'],
-            current: 'step2'
-        }));
+        // this.$el.append(this.stepTemplete({
+        //     done: ['step1'],
+        //     current: 'step2'
+        // }));
         this.$el.append(this.templete(this.model.toJSON()));
 
         // 支付提示弹层
@@ -194,14 +194,14 @@ var selectPayWayView = Backbone.View.extend({
 var payResultView = Backbone.View.extend({
     initialize: function() {
         this.templete = _.template($('#payResult').html(), {variable: 'data'});
-        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
+        // this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
     },
     render: function() {
         this.$el.empty();
-        this.$el.append(this.stepTemplete({
-            done: ['step1', 'step2'],
-            current: 'step3'
-        }));
+        // this.$el.append(this.stepTemplete({
+        //     done: ['step1', 'step2'],
+        //     current: 'step3'
+        // }));
 
         this.orderModel = new orderModel();
         this.listenTo(this.orderModel, 'sync', this.renderResult);

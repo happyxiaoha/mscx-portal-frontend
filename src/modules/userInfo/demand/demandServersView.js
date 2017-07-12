@@ -249,21 +249,24 @@ var serversDemandListView = Backbone.View.extend({
     ensureSerPlanInfo: function(e){
         var planId = $(e.target).closest('td').data('id'),
             that = this;
-        that.addPlanModel.save({
+
+        layer.confirm('平台只允许确认一个接单人项目，确认后其他将自动关闭，是否确认？', function() {
+            that.addPlanModel.save({
                 id: +planId
-            },
-            {success: function(res){
-                res = res.toJSON();
-                if(res.result == 1){
-                    layer.msg('确认接单成功');
-                    that.reloadSerOrderPage('1')
+            },{
+                success: function(res){
+                    res = res.toJSON();
+                    if(res.result == 1){
+                        layer.msg('确认接单成功');
+                        that.reloadSerOrderPage('1')
+                    }
+                    else {
+                        layer.alert('拒绝接单失败');
+                    }
                 }
-                else {
-                    layer.alert('拒绝接单失败');
-                }
-            }
-            }
-        )
+            })
+        })
+        
     },
     refuseSerPlanInfo: function(e){
         var planId = $(e.target).closest('td').data('id'),

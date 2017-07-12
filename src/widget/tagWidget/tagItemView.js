@@ -22,7 +22,7 @@ var view = Backbone.View.extend({
     template: _.template(template),
     initialize: function() {
         //var filterArea = '<div class="filter-area"><input type="text" id="tagFilter"/> </div><ul class="provider-list">';
-        this.categoryId = this.model.tagList[0].categoryId;
+        this.categoryId = this.model.categoryId || this.model.tagList[0] && this.model.tagList[0].categoryId;
 
         this.addTagModel = new addTagModel();
         this.tagModel = new tagModel();

@@ -131,6 +131,8 @@ var createDemandView = Backbone.View.extend({
         var categoryName = this.$('#category').find('option:selected').text();
         params.categoryName = categoryName;
 
+        params.percent = params.percent * 100;
+
         this.model.set(params);
         this.model.save();
     },
@@ -151,6 +153,7 @@ var createDemandView = Backbone.View.extend({
                 }, 2000);
             }else {
                 this.model.set('id', model.result);
+                this.model.set('tagsName', this.chooseTags);
                 this.$el.replaceWith(new confirmRechargeView({
                     model: this.model
                 }).$el);
@@ -231,7 +234,6 @@ var createDemandView = Backbone.View.extend({
         });
         this.chooseTags = cTags;
         this.model.set('tags', aTags.join(','));
-        this.model.set('tagsName', cTags)
         return false;
     },
     buildChooseTags: function () {
@@ -263,7 +265,7 @@ var createDemandView = Backbone.View.extend({
         }
         $('.tag-list-area').remove();
         var tagsView = new tagView({
-            model: {tagList: tagList,sChooseTags:sChooseTags}
+            model: {tagList: tagList,sChooseTags:sChooseTags, categoryId: this.model.get('categoryId')}
         });
         this.$el.append(tagsView.$el);
 

@@ -1,29 +1,33 @@
 <div class="clearfix account balance">
     <h2 class="ft18">账户余额：<span class="corBlue ft18 balance-amount" id="balance"></span>元</h2>
 </div>
-<div id="content"></div>
-
-<script type="template" id="step">
-    <div class="clearfix mt20 account balance">
-        <ul class="process">
-            <li class="<%= data.current == 'step1' ? 'current ' : '' %><%= _.contains(data.done, 'step1') ? 'done' : '' %>">
-                <i class="step1"></i>
-                <h2 class="step-title">账户充值</h2>
-                <i class="arrow"></i>
-            </li>
-            <li class="<%= data.current == 'step2' ? 'current ' : '' %><%= _.contains(data.done, 'step2') ? 'done' : '' %>">
-                <i class="step2"></i>
-                <h2 class="step-title">确认并支付</h2>
-                <i class="arrow"></i>
-            </li>
-            <li class="<%= data.current == 'step3' ? 'current ' : '' %><%= _.contains(data.done, 'step3') ? 'done' : '' %>">
-                <i class="step3"></i>
-                <h2 class="step-title">完成</h2>
-            </li>
-        </ul>
-    </div>
-</script>
+<div id="content">
+    
+</div>
 <script type="template" id="amount">
+    <div class="D_table M-table">
+        <table>
+            <thead>
+            <tr>
+                <th width="8%">
+                </th><th width="20%">名称</th>
+                <th width="20%">充值金额</th>
+                <th width="20%">账户余额</th>
+                <th width="32%">时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            <tr>
+                <td>1</td>
+                <td>支付宝充值</td>
+                <td>10.00</td>
+                <td>25.00</td>
+                <td>2017-03-30 18:03:22</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="account clearfix mt20 operate-area">
         <form class="pr">
             <div class="input-item clearfix">

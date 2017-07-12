@@ -13,8 +13,9 @@ var view = Backbone.View.extend({
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.updateStatusModel = new updateStatusModel();
-        this.updateStatusModel.set('id', this.model.get('id'));
+        this.updateStatusModel = new updateStatusModel({
+            id: this.model.get('id')
+        });
 
         this.listenTo(this.updateStatusModel, 'sync', this.handleUpdateStatus);
 

@@ -27,7 +27,7 @@ var view = Backbone.View.extend({
         this.$loadMore.addClass('hide');
 
         if(!this.appendFlag) {
-            this.$dataList.empty();
+            // this.$dataList.empty();
         }else {
             this.appendFlag = true;
         }
@@ -39,16 +39,16 @@ var view = Backbone.View.extend({
 
         this.currentPage = pageInfo.currentPage;
 
-        if(serviceList.length < 1) {
-            this.$dataList.html('<div class="ns-list-item"><div class="media"><div class="media-body">没有符合查询条件的数据</div></div></div>');
-        }
+        // if(serviceList.length < 1) {
+        //     this.$dataList.html('<div class="ns-list-item"><div class="media"><div class="media-body">没有符合查询条件的数据</div></div></div>');
+        // }
 
-        _.each(serviceList, function(item) {
-            var view = new itemView({
-                model: item
-            });
-            this.$dataList.append(view.$el);
-        }.bind(this));
+        // _.each(serviceList, function(item) {
+        //     var view = new itemView({
+        //         model: item
+        //     });
+        //     this.$dataList.append(view.$el);
+        // }.bind(this));
 
         if(pageInfo.currentPage < pageInfo.totalPage) {
             this.$loadMore.removeClass('hide');

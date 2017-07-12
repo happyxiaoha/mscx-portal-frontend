@@ -1,6 +1,7 @@
 'use strict';
 
 var template = require('./coachTemplate.html');
+var spicTemplate = require('./spic-demo.html');
 
 var policyCmsUrl = 'static_html/datainfo/gy_enter_policy/index.html';
 var classCmsUrl = 'static_html/datainfo/gy_enter_class/index.html';
@@ -28,7 +29,7 @@ var view = Backbone.View.extend({
         window.rootNewsUrl = 'startup.html';
 
         this.$rightPart.load(invertHotCmsUrl + '?time=' + +(new Date()));
-        this.$policy.load(policyCmsUrl + '?time=' + +(new Date()));
+        this.$policy.html(spicTemplate);
         this.$class.load(classCmsUrl + '?time=' + +(new Date()));
         this.$article.load(articleCmsUrl + '?time=' + +(new Date()));
         // this.$fund.load(fundCmsUrl + '?time=' + +(new Date()));

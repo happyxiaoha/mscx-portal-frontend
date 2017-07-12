@@ -53,19 +53,19 @@ var view = Backbone.View.extend({
             this.$dataList.removeClass('animate-content');
         }
 
-        laypage({
-            cont: 'page',
-            skip: true,
-            curr: pageInfo.currentPage || 1,
-            pages: pageInfo.totalPage,
-            jump: function(obj, first) {
-                if(!first) {
-                    me.searchParam.set({
-                        page: obj.curr
-                    })
-                }
-            }
-        })
+        // laypage({
+        //     cont: 'page',
+        //     skip: true,
+        //     curr: pageInfo.currentPage || 1,
+        //     pages: pageInfo.totalPage,
+        //     jump: function(obj, first) {
+        //         if(!first) {
+        //             me.searchParam.set({
+        //                 page: obj.curr
+        //             })
+        //         }
+        //     }
+        // })
 
     },
     fetch: function() {

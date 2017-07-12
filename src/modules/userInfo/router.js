@@ -3,8 +3,8 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '':'defaultView',
-        'info': 'defaultView',
+        '':'demandView',
+        'info': 'demandView',
         'user':'userView',
         'userAuth':'userAuthView',
         'userPassword':'userPasswordView',

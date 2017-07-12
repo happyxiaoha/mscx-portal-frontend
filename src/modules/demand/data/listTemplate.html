@@ -1,34 +1,40 @@
-<% if(data && data.length > 0){ %>
-    <% data && data.forEach(function(item) { %>
-    <div class="ns-list-item">
-        <div class="media">
-            <div class="media-body">
-                <a href="#data/detail/<%= item.id %>" class="h1"><%= item.name %></a>
-                <p class="info">需求描述：<%= item.dataDescription %></p>
-                <p class="info">需求用途：<%= item.dataUsage %></p>
-                <div class="media-body-footer">
-                    <div class="footerItem">需求用户：<span class="keywordType2"><%= item.reqUser %></span></div>
-                    <div class="footerItem">发布日期：<span class="keywordType2"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span></div>
-                    <div class="footerItem">归属部门：<span class="keywordType2"><%= item.department %></span></div>
-                    <div class="footerItem">处理状态：<span class="keywordType2"><%= item.status %></span></div>
-                </div>
-                <% if(item.status == '已通过') { %>
-                    <p class="demand-status">
-                        新需求
-                    </p>
-                <% }else { %>
-                    <p class="demand-status disabled">
-                        <%= item.status %>
-                    </p>
-                <% } %>
+<div class="ns-list-item">
+    <div class="media">
+        <div class="media-body">
+            <a href="#data/detail/251" class="h1">集团公司2016年年度报告</a>
+            <p class="info">需求描述：集团公司2016年年度报告总体内容</p>
+            <p class="info">需求用途：对外宣传材料资源</p>
+            <div class="media-body-footer">
+                <div class="footerItem">需求用户：<span class="keywordType2">刘* 138****8762</span></div>
+                <div class="footerItem">发布日期：<span class="keywordType2">2017-07-04</span></div>
+                <div class="footerItem">归属部门：<span class="keywordType2"></span></div>
+                <div class="footerItem">处理状态：<span class="keywordType2">已通过</span></div>
             </div>
+            
+                <p class="demand-status">
+                    新需求
+                </p>
+            
         </div>
     </div>
-    <% }) %>
-<% }else { %>
-    <div class="ns-list-item">
-        <div class="media">
-            <div class="media-body">没有符合查询条件的数据</div>
+</div>
+<div class="ns-list-item">
+    <div class="media">
+        <div class="media-body">
+            <a href="#data/detail/251" class="h1">2016年安全举措</a>
+            <p class="info">需求描述：集团公司2016年安全举措</p>
+            <p class="info">需求用途：内部培训</p>
+            <div class="media-body-footer">
+                <div class="footerItem">需求用户：<span class="keywordType2">赵女士</span></div>
+                <div class="footerItem">发布日期：<span class="keywordType2">2017-07-04</span></div>
+                <div class="footerItem">归属部门：<span class="keywordType2"></span></div>
+                <div class="footerItem">处理状态：<span class="keywordType2">已通过</span></div>
+            </div>
+            
+                <p class="demand-status">
+                    新需求
+                </p>
+            
         </div>
     </div>
-<% } %>
+</div>

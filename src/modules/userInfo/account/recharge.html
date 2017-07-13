@@ -1,11 +1,15 @@
 <div class="clearfix account balance">
     <h2 class="ft18">账户余额：<span class="corBlue ft18 balance-amount" id="balance"></span>元</h2>
+    <h2 class="ft14 alarm-tel">预警电话：18611325859</h2>
+    <h2 class="ft14 alarm-money">预警底线金额：400元</h2>
 </div>
 <div id="content">
     
 </div>
 <script type="template" id="amount">
-    <div class="D_table M-table">
+    <div class="D_table M-table account ensure-list">
+        <h2 class="title">服务需求项目保证金</h2>
+        <h2 class="title">余额总数：50000元</h2>
         <table>
             <thead>
             <tr>
@@ -27,6 +31,21 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div class="account operate-type">
+        <h2>操作类型</h2>
+        <label>
+            <input type="radio" name="operate">账户余额充值
+        </label>
+        <label>
+            <input type="radio" name="operate">项目保证金充值
+        </label>
+        <label>
+            <input type="radio" name="operate">项目保证金转账
+        </label>
+        <label>
+            <input type="radio" name="operate">账户余额提款申请
+        </label>
     </div>
     <div class="account clearfix mt20 operate-area">
         <form class="pr">

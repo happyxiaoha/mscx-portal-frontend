@@ -57,7 +57,7 @@
   position: relative;
   text-align: left;
   border-radius: 5px;
-  width: 50px;
+  width: auto;
 }
 .loginTable ul li .tag-area .tag-list {position: relative;}
 .loginTable ul li .tag-area .remove-tags-btn{display: block;background: url('../../../images/delete1.png') no-repeat 0;width: 25px;height: 25px;    position: absolute;

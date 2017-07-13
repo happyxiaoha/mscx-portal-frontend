@@ -6,7 +6,8 @@ var Routes =  Backbone.Router.extend({
         '': 'serverEnvView',
         'serverEnv': 'serverEnvView',
         'dataVisiual': 'dataVisiualView',
-        'bigData': 'bigDataView'
+        'bigData': 'bigDataView',
+        'api': 'apiView'
     },
     // apiEnvView:function () {
     //     var view = require('pioneering/contentView.js');
@@ -42,6 +43,16 @@ var Routes =  Backbone.Router.extend({
 
         mscxPage.views['contentView'] = new view({
             id: 'bigData'
+        });
+    },
+    apiView: function(id) {
+        var view = require('pioneering/contentView.js');
+        var contentView = mscxPage.views['contentView'];
+
+        contentView && contentView.undelegateEvents() && contentView.stopListening();
+
+        mscxPage.views['contentView'] = new view({
+            id: 'api'
         });
     },
     openPage: function(url) {

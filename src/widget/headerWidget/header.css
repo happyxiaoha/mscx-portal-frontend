@@ -20,7 +20,7 @@ a{
 .header{height: 90px;}
 .header h1{margin:20px 0 0;}
 .header h1 a{display: block;}
-.header h1 a img{display: block;width: 181px;}
+.header h1 a img{display: block;width: 180px;}
 .header .citys{margin: 35px 0 0 6px;cursor: pointer;}
 .header .citys input{padding: 0;margin: 0;border: 0;box-shadow: none;width: 88px;color: #069cd9;font-size: 14px;background: transparent;cursor: pointer;}
 .header .searchCons{margin: 0 30px 0 0;background: #fff;position: relative}

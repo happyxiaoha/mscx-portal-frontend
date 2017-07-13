@@ -30,6 +30,11 @@ var menuList = [
         name: '专家',
         key: 'bigData',
         url: '#bigData'
+    },
+    {
+        name: 'API',
+        key: 'api',
+        url: '#api'
     }
 ];
 
@@ -58,6 +63,9 @@ $(function() {
                 break;
             case 'bigDataView':
                 id = 'bigData';
+                break;
+            case 'apiView':
+                id = 'api';
                 break;
             default:
                 break;

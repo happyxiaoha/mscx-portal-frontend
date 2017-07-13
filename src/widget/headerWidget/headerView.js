@@ -14,13 +14,13 @@ var menuList = [
         url: mscxPage.urlConfig.demandPage,
         key: 'demand'
     },
+    // {
+    //     name: '交易广场',
+    //     url: mscxPage.urlConfig.sourcesPage,
+    //     key: 'sources'
+    // },
     {
-        name: '交易广场',
-        url: mscxPage.urlConfig.sourcesPage,
-        key: 'sources'
-    },
-    {
-        name: '创客工场',
+        name: '资源广场',
         url: mscxPage.urlConfig.pioneeringPage,
         key: 'pioneering'
     },

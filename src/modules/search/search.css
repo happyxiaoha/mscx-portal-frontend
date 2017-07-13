@@ -1,7 +1,9 @@
 /*综合搜索*/
 .bigInputs{width: 830px;margin:26px auto;}
 .sel{position: relative;}
-.sel p{width: 142px;height: 56px;background: #fff;border: 1px solid #ccc;box-sizing: border-box;text-align: center;line-height: 54px;position: relative;font-size: 18px;  padding-left: 22px;padding-right: 22px;}
+.sel p{width: 142px;height: 56px;background: #fff;border: 1px solid #ccc;box-sizing: border-box;text-align: center;line-height: 54px;position: relative;font-size: 18px;  padding-left: 22px;padding-right: 22px;
+    margin-top: 0;
+}
 .sel ul{position: absolute;width: 142px;border: 1px solid #ccc;box-sizing: border-box;top: 60px;left: 0;background: #fff;z-index: 2;display: none;}
 .sel ul li{height: 42px;line-height: 42px;text-align: center;border-bottom: 1px solid #ccc;font-size: 16px;cursor: pointer;}
 .sel ul li:last-child{border: 0;}

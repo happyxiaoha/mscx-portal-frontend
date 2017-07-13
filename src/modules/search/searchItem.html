@@ -33,6 +33,23 @@
     <p  class="cor9"><%= item.description %></p>
 </li>
 <% }); %>
+<% }else if(data.type =='incubator'){ %>
+<% _.each(data.list, function(item){ %>
+<li>
+    <p>
+        <% if(item.type == '活动'){ %>
+        <a href="startup.html#activity/detail/<%= item.id %>" class="ft16"><%= item.name %></a>
+        <% }else if(item.type == '路演'){ %>
+        <a href="startup.html#roadshow/detail/<%= item.id %>" class="ft16"><%= item.name %></a>
+        <% } else { %>
+        <a href="startup.html?<%= item.html %>" class="ft16"><%= item.name %></a>
+        <% } %>
+        <span>类型：</span>
+        <span class="corOrange"><%= item.type %></span>
+    </p>
+    <p  class="cor9"><%= item.description %></p>
+</li>
+<% }); %>
 <% }else{ %>
 <% _.each(data.list, function(item){ %>
 <li>

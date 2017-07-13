@@ -18,6 +18,9 @@ var searchSerModel = Backbone.Model.extend({
 var searchSaaSModel = Backbone.Model.extend({
     url: mscxPage.request.saas + 'list.do'
 });
+var searchIncubatorModel = Backbone.Model.extend({
+    url: mscxPage.request.activity + 'incubator/getIncubatorList.do'
+});
 
 
 var searchView = Backbone.View.extend({
@@ -34,12 +37,14 @@ var searchView = Backbone.View.extend({
         this.searchDataModel = new searchDataModel();
         this.searchSerModel = new searchSerModel();
         this.searchSaaSModel = new searchSaaSModel();
+        this.searchIncubatorModel = new searchIncubatorModel();
         
 
         this.listenTo( this.searchApiModel, 'sync', this.initApiResult);
         this.listenTo( this.searchDataModel, 'sync', this.initDataResult);
         this.listenTo( this.searchSerModel, 'sync', this.initSerResult);
         this.listenTo( this.searchSaaSModel, 'sync', this.initSaaSResult);
+        this.listenTo( this.searchIncubatorModel, 'sync', this.initIncubatorResult);
         this.id = window.localStorage.getItem('keyword');
         this.dataType = window.localStorage.getItem('dataType') || 'API';
 
@@ -82,6 +87,13 @@ var searchView = Backbone.View.extend({
         }else if(data == 'SaaS服务'){
             window.localStorage.setItem('dataType', 'SaaS服务');
             this.searchSaaSModel.fetch({
+                data:{
+                    keyword:　this.id
+                }
+            })
+        }else if(data == '孵化器'){
+            window.localStorage.setItem('dataType', '孵化器');
+            this.searchIncubatorModel.fetch({
                 data:{
                     keyword:　this.id
                 }
@@ -222,7 +234,35 @@ var searchView = Backbone.View.extend({
                 }
             });
         }
-    }
+    },
+    initIncubatorResult: function(res) {
+        var pageInfo = res.toJSON().result.page,
+            me = this;
+        res = res.toJSON();
+        new searchItemView({
+            id: 'incubator',
+            el:  '#incubatorResult ul',
+            model: res.result.list
+        });
+        if(res.result.page) {
+            laypage({
+                cont: $('#incubatorResult .Page'),
+                skip: true,
+                curr: pageInfo.currentPage || 1,
+                pages: pageInfo.totalPage,
+                jump: function (obj, first) {
+                    if (!first) {
+                        me.searchIncubatorModel.fetch({
+                            data: {
+                                page: obj.curr,
+                                keyword: me.id
+                            }
+                        })
+                    }
+                }
+            });
+        }
+    },
 });
 
 module.exports = searchView;

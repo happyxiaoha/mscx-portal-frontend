@@ -11,6 +11,14 @@ var orderModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderDetail.do'
 })
 
+var alarmModel = Backbone.Model.extend({
+    url: mscxPage.request.order + 'getBalanceAlertInfo.do'
+})
+
+var guaranteeListModel = Backbone.Model.extend({
+    url: mscxPage.request.order + 'getRequirementGuaranteeList.do'
+})
+
 var PayResource = {
     host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
     channels: {
@@ -45,7 +53,7 @@ var accountView = Backbone.View.extend({
         // step1 输入金额页面
         this.amountView = new amountView({
             el: '#content',
-            model: this.rechargeModel
+            model: this.model
         })
         // step2 选择支付方式页面
         this.selectPayWayView = new selectPayWayView({
@@ -85,7 +93,16 @@ var amountView = Backbone.View.extend({
         this.templete = _.template($('#amount').html());
         // this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
 
-        this.listenTo(this.model, 'sync', this.handleRecharge);
+        this.rechargeModel = new rechargeModel();
+        // 预警信息
+        this.alarmModel = new alarmModel();
+        // 保证金列表
+        this.guaranteeListModel = new guaranteeListModel();
+
+        this.listenTo(this.alarmModel, 'sync', this.renderAlarm);
+        this.listenTo(this.rechargeModel, 'sync', this.handleRecharge);
+        this.listenTo(this.guaranteeListModel, 'sync', this.renderGuaranteeList);
+        
         return this;
     },
     render: function() {
@@ -95,8 +112,28 @@ var amountView = Backbone.View.extend({
         // }));
         this.$el.append(this.templete());
 
+        this.alarmModel.fetch({
+            accountId: this.model.accountInfoModel.get('id')
+        });
+
+        this.guaranteeListModel.fetch();
+
         this.$form = this.$('form');
         this.$form.validate(this.validateConfig());
+    },
+    renderAlarm: function() {
+        var model = this.alarmModel.toJSON();
+
+        if(model.status == 'OK') {
+
+        }
+    },
+    renderGuaranteeList: function() {
+        var model = this.guaranteeListModel.toJSON();
+
+        if(model.status == 'OK') {
+
+        }
     },
     validateConfig: function () {
         var me = this;

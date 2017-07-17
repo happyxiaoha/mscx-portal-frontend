@@ -152,7 +152,7 @@ var createDemandView = Backbone.View.extend({
                     location.href = 'userInfo.html#serversDemand';
                 }, 2000);
             }else {
-                this.model.set('id', model.result);
+                this.model.set('id', this.id ? this.id : model.result);
                 this.model.set('tagsName', this.chooseTags);
                 this.$el.replaceWith(new confirmRechargeView({
                     model: this.model
@@ -181,7 +181,7 @@ var createDemandView = Backbone.View.extend({
         this.$el.html(this.template(model.result));
 
         if(model.result.id) {
-            this.chooseSelectTags(model.result.tagsName);
+            this.chooseSelectTags(model.result.tagNames);
             this.model.set('tags',model.result.tags);
             this.$('#taskMoney').trigger('input');
         }

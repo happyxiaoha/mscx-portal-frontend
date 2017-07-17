@@ -12,11 +12,11 @@ var orderModel = Backbone.Model.extend({
 })
 
 var alarmModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'getBalanceAlertInfo.do'
+    url: mscxPage.request.account + 'getBalanceAlertInfo.do'
 })
 
 var guaranteeListModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'getRequirementGuaranteeList.do'
+    url: mscxPage.request.account + 'getRequirementGuaranteeList.do'
 })
 
 var PayResource = {
@@ -92,6 +92,7 @@ var amountView = Backbone.View.extend({
     initialize: function() {
         this.templete = _.template($('#amount').html());
         // this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
+        this.alarmTemplete = _.template($('#alarm').html(), {variable: 'data'});
 
         this.rechargeModel = new rechargeModel();
         // 预警信息
@@ -113,7 +114,9 @@ var amountView = Backbone.View.extend({
         this.$el.append(this.templete());
 
         this.alarmModel.fetch({
-            accountId: this.model.accountInfoModel.get('id')
+            data: {
+                accountId: this.model.accountInfoModel.get('result').id    
+            }
         });
 
         this.guaranteeListModel.fetch();
@@ -125,7 +128,7 @@ var amountView = Backbone.View.extend({
         var model = this.alarmModel.toJSON();
 
         if(model.status == 'OK') {
-
+            $('.alarm-wrapper').html(this.alarmTemplete(model.result));
         }
     },
     renderGuaranteeList: function() {

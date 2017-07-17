@@ -1,11 +1,20 @@
 <div class="clearfix account balance">
     <h2 class="ft18">账户余额：<span class="corBlue ft18 balance-amount" id="balance"></span>元</h2>
-    <h2 class="ft14 alarm-tel">预警电话：18611325859<a href="javascript:;">修改</a></h2>
-    <h2 class="ft14 alarm-money">预警底线金额：400元</h2>
+    <div class="alarm-wrapper">
+        
+    </div>
 </div>
 <div id="content">
     
 </div>
+<script type="template" id="alarm">
+    <% if(data) { %>
+    <h2 class="ft14 alarm-tel">预警电话：<span><%= data.alertPhone %></span></h2>
+    <h2 class="ft14 alarm-money">预警底线金额：<span><%= data.alertAmount %></span>元</h2>
+    <% }else { %>
+    <h2 class="ft14"><a href="javascript:;" id="setAlarm">设置预警提醒</a></h2>
+    <% } %>
+</script>
 <script type="template" id="amount">
     <div class="D_table M-table account ensure-list">
         <h2 class="title">服务需求项目保证金</h2>

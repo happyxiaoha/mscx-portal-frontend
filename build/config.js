@@ -26,16 +26,27 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: '/',
     assetsPublicPath: '/',
-    proxyTable: {
-        '**/*.do': {
-            target: 'http://mscx-portal-gy.eastdc.cn:85',
-            changeOrigin: true
-        },
-        '/static_html': {
-            target: 'http://mscx-portal-gy.eastdc.cn:85',
-            changeOrigin: true
+    proxyTable: [
+        {
+            rule: 'gy/*.do',
+            options: {
+                target: 'http://localhost:81'
+            }
+        }, {
+            rule: ['**/*.do', '!gy/*.do'],
+            options: {
+                target: 'http://mscx-portal-gy.eastdc.cn:85',
+                changeOrigin: true
+            }
+            
+        }, {
+            rule: '/static_html',
+            options: {
+                target: 'http://mscx-portal-gy.eastdc.cn:85',
+                changeOrigin: true
+            }
         }
-    },
+    ],
     cssSourceMap: false
   },
   entry: {

@@ -34,12 +34,12 @@ compiler.plugin('compilation', function (compilation) {
 })
 
 // proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
-  var options = proxyTable[context]
+proxyTable.forEach(function (item) {
+  var options = item.options
   if (typeof options === 'string') {
     options = { target: options }
   }
-  app.use(proxyMiddleware(options.filter || context, options))
+  app.use(proxyMiddleware(item.filter || item.rule, options))
 })
 
 // // handle fallback for HTML5 history API

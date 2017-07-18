@@ -14,6 +14,7 @@
 }
 .account.desc {
     padding: 20px 55px;
+    margin: 20px 25px;
     border: 1px solid #ccc;
     margin-top: -1px;
 }
@@ -245,15 +246,54 @@
     width: 120px;
 }
 .account .alarm-tel {
-    margin: 0 70px;
+    // margin-left: 50px;
 }
 .account .alarm-money {
     margin: 0 20px;
 }
 .account .alarm-wrapper {
     display: inline-block;
-    margin: 0 70px;
+    margin-left: 50px;
+    .alarm-input {
+        border: 1px solid #ccc;
+        padding: 3px 6px;
+        width: 140px;
+        margin-right: 10px;
+        vertical-align: middle;
+        &.error {
+            border: 1px solid #d82e3a;
+        }
+    }
+    label.error {
+        color: #d82e3a;
+        position: absolute;
+        left: 70px;
+        top: 30px;
+        &.error-amount {
+            left: 312px;
+        }
+    }
+    .btn-edit-alarm {
+        line-height: 27px;
+        width: 47px;
+        height: 27px;
+        margin: 0;
+    }
+    .edit-link {
+        margin-left: 10px;
+    }
 }
+#selectServiceLayer {
+    li {
+        line-height: 25px;
+        input {
+            vertical-align: middle;
+            margin-top: 0;
+            margin-right: 5px;
+        }
+    }
+}
+
 .btn-search, .btn-reset {
     height: 28px;
     display: inline-block;

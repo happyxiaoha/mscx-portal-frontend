@@ -19,6 +19,20 @@ var guaranteeListModel = Backbone.Model.extend({
     url: mscxPage.request.account + 'getRequirementGuaranteeList.do'
 })
 
+var addAlarmModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'addBalanceAlert.do'
+})
+var editAlarmPhoneModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'modifyAlertPhone.do'
+})
+var editAlarmAmountModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'modifyBalanceAlert.do'
+})
+var rechargeServiceModel = Backbone.Model.extend({
+    url: mscxPage.request.demand + 'getRechargeServices.do'
+})
+
+
 var PayResource = {
     host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
     channels: {
@@ -35,25 +49,51 @@ var accountView = Backbone.View.extend({
     commonTemplate: _.template(commonTemplate),
     template: template,
     events: {
-
+        'click #setAlarm': 'showEditForm',
+        'click #editAlarmPhone': 'showEditPhone',
+        'click #editAlarmAmount': 'showEditAmount'
     },
     initialize: function() {
         _.extend(this, this.model);
 
         this.rechargeModel = new rechargeModel();
+        // 预警信息
+        this.alarmModel = new alarmModel();
+        // 保证金列表
+        this.guaranteeListModel = new guaranteeListModel();
+        // 设置预警
+        this.addAlarmModel = new addAlarmModel();
+        this.editAlarmPhoneModel = new editAlarmPhoneModel();
+        this.editAlarmAmountModel = new editAlarmAmountModel();
 
         this.$el.html(this.commonTemplate({
             name: this.id,
             hasAccount: this.hasAccount
         }));
 
+        this.accountId = this.model.accountInfoModel.get('result').id;
+        this.total = this.model.accountInfoModel.get('result').guaranteeBalance;
+
         this.$('#userInfoArea').html(this.template);
         this.$('#balance').html(this.accountInfoModel.toJSON().result.account_balance);
+
+        this.alarmTemplete = _.template($('#alarm').html(), {variable: 'data'});
+        this.editAlarmTemplate = _.template($('#alarmForm').html(), {variable: 'data'});
+        this.ensureListTemplate = _.template($('#ensureList').html(), {variable: 'data'});
+
+        this.alarmModel.fetch({
+            data: {
+                accountId: this.accountId
+            }
+        });
+
+        this.guaranteeListModel.fetch();
+
 
         // step1 输入金额页面
         this.amountView = new amountView({
             el: '#content',
-            model: this.model
+            model: this.rechargeModel
         })
         // step2 选择支付方式页面
         this.selectPayWayView = new selectPayWayView({
@@ -70,6 +110,11 @@ var accountView = Backbone.View.extend({
 
         this.listenTo(this.amountView, 'next', this.goSelectPayWay);
         this.listenTo(this.selectPayWayView, 'next', this.goPayResultView);
+        this.listenTo(this.alarmModel, 'sync', this.renderAlarm);
+        this.listenTo(this.guaranteeListModel, 'sync', this.renderGuaranteeList);
+        this.listenTo(this.addAlarmModel, 'sync', this.handleAddAlarm);
+        this.listenTo(this.editAlarmPhoneModel, 'sync', this.handleEditAlarmPhone);
+        this.listenTo(this.editAlarmAmountModel, 'sync', this.handleEditAlarmAmount);
 
         // 如果有订单号，则是支付回调页面
         if(this.order) {
@@ -81,29 +126,168 @@ var accountView = Backbone.View.extend({
 
         return this;
     },
+    validateConfig: function () {
+        var me = this;
+        return {
+            rules: {
+                alertPhone: {
+                    required: true,
+                    telephone: true
+                },
+                alertAmount: {
+                    required: true,
+                    integers: true
+                }
+            },
+            messages: {
+                alertAmount: {
+                    integers: '金额为大于0的整数'
+                }
+            },
+            submitHandler: function () {
+                me.submitForm();
+            }
+        }
+    },
     goSelectPayWay: function() {
         this.selectPayWayView.render();
     },
     goPayResultView: function() {
         this.payResultView.render();
+    },
+    renderAlarm: function() {
+        var model = this.alarmModel.toJSON();
+
+        if(model.status == 'OK') {
+            this.$('.alarm-wrapper').html(this.alarmTemplete(model.result));
+        }
+    },
+    renderGuaranteeList: function() {
+        var model = this.guaranteeListModel.toJSON();
+        _.extend(model.result, {
+            total: this.total
+        })
+
+        if(model.status == 'OK') {
+            this.$('.ensure-list').html(this.ensureListTemplate(model.result));
+        }
+    },
+    showEditForm: function() {
+        this.$('.alarm-wrapper').html(this.editAlarmTemplate({
+            alertPhone: mscxPage.userInfo.mobile
+        }));
+
+        this.$('#editAlarmForm').validate(this.validateConfig())
+    },
+    showEditPhone: function(e) {
+        var $target = this.$(e.target);
+        var model = this.alarmModel.toJSON();
+        var me = this;
+        this.$('.alarm-tel #telContent').html('<form><input class="alarm-input" name="alertPhone" maxlength="11" value="' + model.result.alertPhone + '"><label id="alertPhone-error" style="left:0" class="error" for="alertPhone"></label><button class="btn btn-edit-alarm">确定</button></form>');
+        this.$('.alarm-tel form').validate({
+            rules: {
+                alertPhone: {
+                    required: true,
+                    telephone: true
+                }
+            },
+            submitHandler: function () {
+                me.submitEditPhoneForm();
+            }
+        })
+        $target.hide();
+        this.$('#telTitle').hide();
+    },
+    showEditAmount: function(e) {
+        var $target = this.$(e.target);
+        var model = this.alarmModel.toJSON();
+        var me = this;
+        this.$('.alarm-money #amountContent').html('<form><input class="alarm-input" name="alertAmount" value="' + model.result.alertAmount + '">元&nbsp;&nbsp;<label id="alertAmount-error" style="left:0" class="error" for="alertAmount"></label><button class="btn btn-edit-alarm">确定</button></form>');
+        this.$('.alarm-money form').validate({
+            rules: {
+                alertAmount: {
+                    required: true,
+                    integers: true
+                }
+            },
+            messages: {
+                alertAmount: {
+                    integers: '金额为大于0的整数'
+                }
+            },
+            submitHandler: function () {
+                me.submitEditAmountForm();
+            }
+        })
+        $target.hide();
+        this.$('#amountTitle').hide();
+    },
+    submitForm: function() {
+        var params = this.$('#editAlarmForm').serializeObject();
+
+        params.accountId = this.accountId;
+        this.addAlarmModel.set(params);
+        this.addAlarmModel.save();
+    },
+    submitEditPhoneForm: function() {
+        var params = this.$('.alarm-tel form').serializeObject();
+        params.accountId = this.accountId;
+        this.editAlarmPhoneModel.set(params);
+        this.editAlarmPhoneModel.save();
+    },
+    submitEditAmountForm: function() {
+        var params = this.$('.alarm-money form').serializeObject();
+        params.accountId = this.accountId;
+        this.editAlarmAmountModel.set(params);
+        this.editAlarmAmountModel.save();
+    },
+    handleAddAlarm: function() {
+        var model = this.addAlarmModel.toJSON();
+
+        if(model.status == 'OK') {
+            this.$('.alarm-wrapper').html(this.alarmTemplete(model.result));
+        }
+    },
+    handleEditAlarmPhone: function() {
+        var model = this.editAlarmPhoneModel.toJSON();
+
+        if(model.status == 'OK') {
+            layer.msg(model.result);
+            this.alarmModel.fetch({
+                data: {
+                    accountId: this.accountId
+                }
+            });
+        } 
+    },
+    handleEditAlarmAmount: function() {
+        var model = this.editAlarmAmountModel.toJSON();
+
+        if(model.status == 'OK') {
+            layer.msg(model.result);
+            this.alarmModel.fetch({
+                data: {
+                    accountId: this.accountId
+                }
+            });
+        }
     }
 });
 var amountView = Backbone.View.extend({
+    events: {
+        'change input[type=radio]': 'changeOperateType'
+    },
     initialize: function() {
         this.templete = _.template($('#amount').html());
         // this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
-        this.alarmTemplete = _.template($('#alarm').html(), {variable: 'data'});
+        this.serviceListTemplate = _.template($('#serviceList').html(), {variable: 'data'});
 
         this.rechargeModel = new rechargeModel();
-        // 预警信息
-        this.alarmModel = new alarmModel();
-        // 保证金列表
-        this.guaranteeListModel = new guaranteeListModel();
+        this.rechargeServiceModel = new rechargeServiceModel();
 
-        this.listenTo(this.alarmModel, 'sync', this.renderAlarm);
         this.listenTo(this.rechargeModel, 'sync', this.handleRecharge);
-        this.listenTo(this.guaranteeListModel, 'sync', this.renderGuaranteeList);
-        
+        this.listenTo(this.rechargeServiceModel, 'sync', this.renderRechageList);
+
         return this;
     },
     render: function() {
@@ -113,29 +297,39 @@ var amountView = Backbone.View.extend({
         // }));
         this.$el.append(this.templete());
 
-        this.alarmModel.fetch({
-            data: {
-                accountId: this.model.accountInfoModel.get('result').id    
-            }
-        });
-
-        this.guaranteeListModel.fetch();
-
         this.$form = this.$('form');
         this.$form.validate(this.validateConfig());
     },
-    renderAlarm: function() {
-        var model = this.alarmModel.toJSON();
+    renderRechageList: function() {
+        var model = this.rechargeServiceModel.toJSON();
 
-        if(model.status == 'OK') {
-            $('.alarm-wrapper').html(this.alarmTemplete(model.result));
-        }
+        $('#selectServiceLayer').html(this.serviceListTemplate(model.result));
+
+        var dialog= layer.open({
+            type: 1,
+            btn: ['确定','取消'],
+            title: '请选择充值项目',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['350px', '350px'],
+            content: $('#selectServiceLayer'),
+            success: function () {
+                // $('#addApiForm').validate(that.apiValidateConfig());
+            },
+            btn1: function () {
+                
+            },
+            btn2: function () {
+                layer.close(dialog);
+            }
+        });
     },
-    renderGuaranteeList: function() {
-        var model = this.guaranteeListModel.toJSON();
+    changeOperateType: function(e) {
+        var $target = this.$(e.target);
 
-        if(model.status == 'OK') {
-
+        if($target.val() == 'services') {
+            this.rechargeServiceModel.fetch();
         }
     },
     validateConfig: function () {
@@ -157,15 +351,15 @@ var amountView = Backbone.View.extend({
         var params = this.$form.serializeObject();
         this.amount = params.money;
 
-        this.model.set('amount', this.amount);
-        this.model.fetch({
+        this.rechargeModel.set('amount', this.amount);
+        this.rechargeModel.fetch({
             data: {
                 rechargeAmount: this.amount
             }
         })
     },
     handleRecharge: function() {
-        var model = this.model.toJSON();
+        var model = this.rechargeModel.toJSON();
 
         // 下单成功
         if(model.status == 'OK') {

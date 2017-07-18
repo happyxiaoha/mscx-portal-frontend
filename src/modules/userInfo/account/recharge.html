@@ -4,53 +4,71 @@
         
     </div>
 </div>
+<div class="D_table M-table account ensure-list">
+    
+</div>
 <div id="content">
     
 </div>
+<div id="selectServiceLayer"></div>
 <script type="template" id="alarm">
     <% if(data) { %>
-    <h2 class="ft14 alarm-tel">预警电话：<span><%= data.alertPhone %></span></h2>
-    <h2 class="ft14 alarm-money">预警底线金额：<span><%= data.alertAmount %></span>元</h2>
+    <h2 class="ft14 alarm-tel pr"><span id="telTitle">预警电话：</span><span id="telContent"><%= data.alertPhone %></span><a class="edit-link corBlue" href="javascript:;" id="editAlarmPhone">修改</a></h2>
+    <h2 class="ft14 alarm-money pr"><span id="amountTitle">预警底线金额：</span><span id="amountContent"><%= data.alertAmount %>元</span><a class="edit-link corBlue" href="javascript:;" id="editAlarmAmount">修改</a></h2>
     <% }else { %>
     <h2 class="ft14"><a href="javascript:;" id="setAlarm">设置预警提醒</a></h2>
     <% } %>
 </script>
+<script type="template" id="alarmForm">
+    <form id="editAlarmForm" onSubmit="return false;" class="pr">
+        <h2 class="ft14 alarm-tel">预警电话：<input name="alertPhone" maxlength="11" placeholder="请输入预警电话" class="alarm-input" value="<%= data && data.alertPhone %>"></h2>
+        <h2 class="ft14 alarm-money">预警底线金额：<input name="alertAmount" placeholder="请输入预警底线金额" class="alarm-input" value="<%= data && data.alertAmount %>">元
+            <label id="alarmAmount-error" class="error error-amount" for="alarmAmount"></label>
+        </h2>
+        <button class="btn btn-edit-alarm">设置</button>
+    </form>
+</script>
+<script type="template" id="ensureList">
+    <h2 class="title">服务需求项目保证金</h2>
+    <h2 class="title">余额总数：<%= data.total %>元</h2>
+    <table>
+        <thead>
+        <tr>
+            <th width="20%">项目</th>
+            <th width="15%">发布日期</th>
+            <th width="15%">截止日期</th>
+            <th width="20%">保证金</th>
+            <th width="10%">余额</th>
+            <th width="10%">入账时间</th>
+            <th width="10%">保证金比例</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% data.list.forEach(function(item) { %>
+        <tr>
+            <td><%= item.reqName %></td>
+            <td><%= item.publishTime %></td>
+            <td><%= item.endTime %></td>
+            <td><%= item.rechargeAmount %></td>
+            <td><%= item.guaranteeBalance %></td>
+            <td><%= item.receiveDate %></td>
+            <td><%= item.rate %></td>
+        </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</script>
 <script type="template" id="amount">
-    <div class="D_table M-table account ensure-list">
-        <h2 class="title">服务需求项目保证金</h2>
-        <h2 class="title">余额总数：50000元</h2>
-        <table>
-            <thead>
-            <tr>
-                <th width="8%">
-                </th><th width="20%">名称</th>
-                <th width="20%">充值金额</th>
-                <th width="20%">账户余额</th>
-                <th width="32%">时间</th>
-            </tr>
-            </thead>
-            <tbody>
-            
-            <tr>
-                <td>1</td>
-                <td>支付宝充值</td>
-                <td>10.00</td>
-                <td>25.00</td>
-                <td>2017-03-30 18:03:22</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
     <div class="account operate-type">
         <h2>操作类型</h2>
         <label>
-            <input type="radio" name="operate">账户余额充值
+            <input type="radio" name="operate" checked>账户余额充值
         </label>
         <label>
-            <input type="radio" name="operate">项目保证金充值
+            <input type="radio" name="operate" value="services">项目保证金充值
         </label>
-        <label>
-            <input type="radio" name="operate">项目保证金转账
+        <label class="cora">
+            <input type="radio" name="operate" disabled>项目保证金转账
         </label>
         <label>
             <input type="radio" name="operate">账户余额提款申请
@@ -64,6 +82,19 @@
             </div>
             <button class="btn">下一步</button>
         </form>
+    </div>
+</script>
+<script type="template" id="serviceList">
+    <div style="padding: 30px">
+        <ul>
+        <% data.forEach(function(item) { %>
+            <li>
+            <label>
+                <input type="radio" name="" value="<%= item.id %>"><%= item.name %>
+            </label>
+            </li>
+        <% }) %>
+        </ul>      
     </div>
 </script>
 <script type="template" id="slectPayWay">

@@ -31,7 +31,7 @@ var view = Backbone.View.extend({
         var model = this.updateStatusModel.toJSON();
 
         if(model.status == 'OK') {
-            console.log('success');
+            location.href = 'userInfo.html#account';
         }
     }
 });

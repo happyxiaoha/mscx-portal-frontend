@@ -21,6 +21,9 @@ var attentionModel = Backbone.Model.extend({   //关注
 var reAttentionModel = Backbone.Model.extend({   //取消关注
     url: mscxPage.request.app + 'attention/delete.do'
 });
+var userScoreModel = Backbone.Model.extend({
+    url: mscxPage.request.app + 'userScore/add.do'
+});
 
 require('./services.css');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
@@ -48,8 +51,10 @@ var openDataDetailView = Backbone.View.extend({
 
         this.attentionDataModel = new attentionModel();
         this.removeAttentionModel = new reAttentionModel();
+        this.userScoreModel = new userScoreModel();
         this.listenTo(this.attentionDataModel, 'sync', this.handleAttention);
         this.listenTo(this.removeAttentionModel, 'sync', this.handlereAttention);
+        this.listenTo(this.userScoreModel, 'sync', this.handleScore);
 
         this.listenTo(this.model, 'sync', this.render);
     },
@@ -88,12 +93,20 @@ var openDataDetailView = Backbone.View.extend({
 
         // 只有实名认证用户可以评分
         if(mscxPage.userInfo && mscxPage.userInfo.userType !== 'REGISTER') {
+            this.$('.rating').removeClass('hide');
             this.$('.rating span').on('mouseover', function() {
                 var index = $(this).data('index');
                 $('.rating span').slice(0, index + 1).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
             }).on('mouseleave', function() {
                 $('.rating span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-            }).one('click', this.handleRate);
+            }).one('click', this.handleRate.bind(this));
+        }
+    },
+    handleScore: function() {
+        var result = this.userScoreModel.toJSON();
+
+        if(result.status == 'OK') {
+
         }
     },
     handleAttention: function(res) {
@@ -228,6 +241,13 @@ var openDataDetailView = Backbone.View.extend({
         $('.rating span').slice(0, index + 1)
             .removeClass('glyphicon-star-empty')
             .addClass('glyphicon-star');
+
+        this.userScoreModel.fetch({
+            data: {
+                appId: this.id,
+                score: index + 1
+            }
+        })
 
         $('.rating span').off();
     }

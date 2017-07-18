@@ -1,7 +1,7 @@
 var template = require('./confirmRecharge.html');
 
 var updateStatusModel = Backbone.Model.extend({
-    id: 'resourceId',
+    idAttribute: 'resourceId',
     url: mscxPage.request.demand + 'updateStatusBeforeRecharge.do'
 });
 
@@ -13,18 +13,16 @@ var view = Backbone.View.extend({
     },
     template: _.template(template, {variable: 'data'}),
     initialize: function() {
-        this.updateStatusModel = new updateStatusModel();
+        this.updateStatusModel = new updateStatusModel({
+            id: +this.model.get('id')
+        });
 
         this.listenTo(this.updateStatusModel, 'sync', this.handleUpdateStatus);
 
         this.$el.html(this.template(this.model.toJSON()));
     },
     goNext: function() {
-        this.updateStatusModel.save({
-            id: this.model.get('id')
-        }, {
-            type: 'POST'
-        })
+        this.updateStatusModel.save();
     },
     goBack: function() {
         location.href = 'userInfo.html#serversDemand';

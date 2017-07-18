@@ -16,6 +16,9 @@ var followModel = Backbone.Model.extend({
 var unFollowModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'userAttention/remove.do'
 });
+var userScoreModel = Backbone.Model.extend({
+    url: mscxPage.request.api + 'userScore/add.do'
+});
 
 var showdown = require('showdown');
 
@@ -33,10 +36,12 @@ var view = Backbone.View.extend({
         this.detailModel = new detailModel();
         this.followModel = new followModel();
         this.unFollowModel = new unFollowModel();
+        this.userScoreModel = new userScoreModel();
 
         this.listenTo(this.detailModel, 'sync', this.render);
         this.listenTo(this.followModel, 'sync', this.handleFollow);
         this.listenTo(this.unFollowModel, 'sync', this.handleUnFollow);
+        this.listenTo(this.userScoreModel, 'sync', this.handleScore);
         
         this.detailModel.fetch({
             data: {
@@ -96,12 +101,13 @@ var view = Backbone.View.extend({
 
         // 只有实名认证用户可以评分
         if(mscxPage.userInfo && mscxPage.userInfo.userType !== 'REGISTER') {
+            this.$('.rating').removeClass('hide');
             this.$('.rating span').on('mouseover', function() {
                 var index = $(this).data('index');
                 $('.rating span').slice(0, index + 1).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
             }).on('mouseleave', function() {
                 $('.rating span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-            }).one('click', this.handleRate);
+            }).one('click', this.handleRate.bind(this));
         }
     },
     selectTab: function(event) {
@@ -211,6 +217,13 @@ var view = Backbone.View.extend({
             layer.msg('取消关注失败');
         }
     },
+    handleScore: function() {
+        var result = this.userScoreModel.toJSON();
+
+        if(result.status == 'OK') {
+
+        }
+    },
     // 线下洽谈
     offlineChat: function() {
         var me = this;
@@ -257,6 +270,13 @@ var view = Backbone.View.extend({
         $('.rating span').slice(0, index + 1)
             .removeClass('glyphicon-star-empty')
             .addClass('glyphicon-star');
+
+        this.userScoreModel.fetch({
+            data: {
+                apiServiceId: this.id,
+                score: index + 1
+            }
+        })
 
         $('.rating span').off();
     }

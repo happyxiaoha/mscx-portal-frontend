@@ -116,7 +116,7 @@ var createDemandView = Backbone.View.extend({
     },
     checkValidateSelf: function () {
         var res = true;
-
+        
         if(!this.model.get('tags')) {
             $('.tag-error').show();
             res = false;
@@ -157,6 +157,7 @@ var createDemandView = Backbone.View.extend({
                 this.$el.replaceWith(new confirmRechargeView({
                     model: this.model
                 }).$el);
+                $('body').animate({scrollTop: 0}, 300);
             }
         }
     },

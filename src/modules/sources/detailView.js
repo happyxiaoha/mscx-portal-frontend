@@ -25,6 +25,9 @@ var followModel = Backbone.Model.extend({
 var unFollowModel = Backbone.Model.extend({
     url: mscxPage.request.data + 'removeUserDataAttention.do'
 })
+var userScoreModel = Backbone.Model.extend({
+    url: mscxPage.request.data + 'userScore/add.do'
+});
 require('util');
 
 var detailView = Backbone.View.extend({
@@ -50,11 +53,13 @@ var detailView = Backbone.View.extend({
 
         this.purchaseOrNotModel = new purchaseOrNotModel();
         this.downloadModel = new downloadModel();
+        this.userScoreModel = new userScoreModel();
 
         this.listenTo(this.purchaseOrNotModel, 'sync', this.handlePurchase);
         this.listenTo(this.model, 'sync', this.render);
         this.listenTo(this.followModel, 'sync', this.handleFollow);
         this.listenTo(this.unFollowModel, 'sync', this.handleUnFollow);
+        this.listenTo(this.userScoreModel, 'sync', this.handleScore);
     },
     render: function () {
         this.nJson = this.model.toJSON().result;
@@ -70,12 +75,13 @@ var detailView = Backbone.View.extend({
 
         // 只有实名认证用户可以评分
         if(mscxPage.userInfo && mscxPage.userInfo.userType !== 'REGISTER') {
+            this.$('.rating').removeClass('hide');
             this.$('.rating span').on('mouseover', function() {
                 var index = $(this).data('index');
                 $('.rating span').slice(0, index + 1).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
             }).on('mouseleave', function() {
                 $('.rating span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-            }).one('click', this.handleRate);
+            }).one('click', this.handleRate.bind(this));
         }
     },
     downloadData: function(event) {
@@ -86,6 +92,13 @@ var detailView = Backbone.View.extend({
                 sourceType: '02'
             }
         });
+    },
+    handleScore: function() {
+        var result = this.userScoreModel.toJSON();
+
+        if(result.status == 'OK') {
+
+        }
     },
     handlePurchase: function (res) {
         res = res.toJSON();
@@ -200,6 +213,13 @@ var detailView = Backbone.View.extend({
         $('.rating span').slice(0, index + 1)
             .removeClass('glyphicon-star-empty')
             .addClass('glyphicon-star');
+
+        this.userScoreModel.fetch({
+            data: {
+                dataId: this.id,
+                score: index + 1
+            }
+        })
 
         $('.rating span').off();
     }

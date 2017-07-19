@@ -52,7 +52,7 @@
             <td><%= item.rechargeAmount %></td>
             <td><%= item.guaranteeBalance %></td>
             <td><%= item.receiveDate %></td>
-            <td><%= item.rate %></td>
+            <td><%= (+item.rate * 100).toFixed(2) %>%</td>
         </tr>
         <% }) %>
         </tbody>

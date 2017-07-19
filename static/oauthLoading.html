@@ -18,12 +18,10 @@
     <div class="wrapper">
         正在跳转...
     </div>
-    <script src="lib/jquery.js"></script>
-    <script src="dist/backboneLib.js"></script>
     <script>
         var params = location.hash.split('#')[1].split('&');
         var access_token;
-        _.each(params, function(item) {
+        params.forEach(function(item) {
             var split = item.split('=');
             if(split[0] == 'access_token') {
                 access_token = split[1];
@@ -32,7 +30,12 @@
         })
         if(access_token) {
             // 登录
-            $.get('/oauth/oauthLogin.do?accessToken=' + access_token).then(function(res) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/oauth/oauthLogin.do?accessToken=' + access_token, true);
+            xhr.send(null);
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState==4 && xhr.status ==200) {
+                var res = xhr.responseText;
                 if(res.status == 'OK') {
                     // 手机号已经存在
                     if(res.result == 'mobile_exisit') {
@@ -50,8 +53,8 @@
                     alert(res.message);
                     location.replace('/login.html');
                 }
-            })
-
+              }
+            }
         }else {
             location.replace('/index.html');
         }

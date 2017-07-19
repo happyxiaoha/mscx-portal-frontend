@@ -18,25 +18,28 @@
     <div class="wrapper">
         正在跳转...
     </div>
-    <script src="lib/jquery.js"></script>
-    <script src="dist/backboneLib.js"></script>
     <script>
         var params =  window.location.search.split('?')[1].split('&');
         var code;
-        $.each(params, function(index,item) {
+        params.forEach(function(item) {
             var split = item.split('=');
             if(split[0] == 'code') {
-            	code = split[1];
+                code = split[1];
                 return;
             }
-        });
+        })
         if(code) {
             // 登录
-            $.get('/gy/loading.do?code=' + code).then(function(res) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/gy/loading.do?code=' + code, true);
+            xhr.send(null);
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState==4 && xhr.status ==200) {
+                var res = xhr.responseText;
                 if(res.status == 'OK') {
-                	 // 手机号已经存在
+                     // 手机号已经存在
                     if(res.result!=null && res.result.result!=null && res.result.result == 'mobile_exisit') {
-                    	var access_token = res.result.accessToken;
+                        var access_token = res.result.accessToken;
                         location.replace('/login.html#oauthLogin/' + access_token + '/' + res.message);
                     }else {
                         var fromUrl = window.localStorage.getItem('GYFromUrl');
@@ -50,8 +53,8 @@
                     alert(res.message);
                     location.replace('/login.html');
                 }
-            })
-
+              }
+            }
         }else {
             location.replace('/index.html');
         }

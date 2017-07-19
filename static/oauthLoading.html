@@ -35,7 +35,7 @@
             xhr.send(null);
             xhr.onreadystatechange = function () {
               if (xhr.readyState==4 && xhr.status ==200) {
-                var res = xhr.responseText;
+                var res = JSON.parse(xhr.responseText);
                 if(res.status == 'OK') {
                     // 手机号已经存在
                     if(res.result == 'mobile_exisit') {

@@ -28,12 +28,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: [
         {
-            rule: 'gy/*.do',
-            options: {
-                target: 'http://localhost:81'
-            }
-        }, {
-            rule: ['**/*.do', '!gy/*.do'],
+            rule: '**/*.do',
             options: {
                 target: 'http://mscx-portal-gy.eastdc.cn:85',
                 changeOrigin: true

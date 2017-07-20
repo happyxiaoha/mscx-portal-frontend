@@ -107,7 +107,10 @@ var createDemandView = Backbone.View.extend({
                 }
             },
             submitHandler: function () {
-                me.submitForm();
+                var customCheck = me.checkValidateSelf();
+                if(customCheck) {
+                    me.submitForm();
+                }
             },
             invalidHandler:function() {
                 me.checkValidateSelf();

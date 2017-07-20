@@ -65,11 +65,11 @@
     <div class="account operate-type">
         <h2>操作类型</h2>
         <label>
-            <input type="radio" name="operate" value="acount" <%= data && data.serviceId || data.transferId ? 'disabled' : 'checked' %>>
+            <input type="radio" name="operate" value="account" <%= data && data.serviceId || data.transferId ? 'disabled' : 'checked' %>>
             <span>账户余额充值</span>
         </label>
         <label>
-            <input type="radio" name="operate" value="services" <%= data && data.serviceId ? 'checked' : (data.transferId ? 'disabled' : 'checked') %>>
+            <input type="radio" name="operate" value="services" <%= data && data.serviceId ? 'checked' : (data.transferId ? 'disabled' : '') %>>
             <span>项目保证金充值</span>
         </label>
         <label>

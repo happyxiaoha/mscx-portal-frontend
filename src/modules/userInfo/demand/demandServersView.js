@@ -179,17 +179,23 @@ var serversDemandListView = Backbone.View.extend({
     showSerOrderList: function (e){
         var that = this;
         that.serOrderattrid = $(e.target).closest('tr').attr('attrId');
+        var status = $(e.target).data('status');
+
         this.serOrderModel.fetch({
             data: {
                 reqId: +that.serOrderattrid,
                 pageSize: 5
             }
         });
-        this.guaranteeDetailModel.fetch({
-            data: {
-                reqId: this.serOrderattrid
-            }
-        })
+        // 状态为已接单
+        if(status == 4) {
+            this.guaranteeDetailModel.fetch({
+                data: {
+                    reqId: this.serOrderattrid
+                }
+            })
+        }
+        
         this.$el.find('#serNameList tbody').html('');
         var dialog = layer.open({
             type: 1,
@@ -229,11 +235,6 @@ var serversDemandListView = Backbone.View.extend({
                 pageSize: 5
             }
         });
-        this.guaranteeDetailModel.fetch({
-            data: {
-                reqId: this.serOrderattrid
-            }
-        })
     },
     renderGuaranteeDetail: function() {
         var model = this.guaranteeDetailModel.toJSON();
@@ -286,6 +287,11 @@ var serversDemandListView = Backbone.View.extend({
                     if(res.result == 1){
                         layer.msg('确认接单成功');
                         that.reloadSerOrderPage('1')
+                        that.guaranteeDetailModel.fetch({
+                            data: {
+                                reqId: that.serOrderattrid
+                            }
+                        })
                     }
                     else {
                         layer.alert('拒绝接单失败');

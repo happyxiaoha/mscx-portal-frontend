@@ -216,11 +216,13 @@ var amountView = Backbone.View.extend({
         var $target = this.$(e.target);
 
         this.operateType = $target.val();
+        this.$('.operate-area').show();
 
         if(this.operateType == 'services') {
             this.rechargeServiceModel.fetch();
         }else if(this.operateType == 'draw') {
             this.applyDrawingModel.fetch();
+            this.$('.operate-area').hide();
         }else{
             //  清空选择的项目
             this.selectedServiceModel.clear();

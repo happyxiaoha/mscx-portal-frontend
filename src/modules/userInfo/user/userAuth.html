@@ -206,7 +206,9 @@
                             <div class="tag-area fl">
                                 <span class="un-select">未选择任何标签</span>
                             </div>
-                            <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
+                            <% if(status != '02'){ %>
+                                <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
+                            <% } %>
                         </div>
                     </li>
                     

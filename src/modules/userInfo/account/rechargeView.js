@@ -270,6 +270,7 @@ var accountView = Backbone.View.extend({
         var model = this.addAlarmModel.toJSON();
 
         if(model.status == 'OK') {
+            this.alarmModel.set('result', model.result);
             this.$('.alarm-wrapper').html(this.alarmTemplete(model.result));
         }
     },

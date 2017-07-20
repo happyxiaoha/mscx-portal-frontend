@@ -232,7 +232,8 @@ var accountView = Backbone.View.extend({
             rules: {
                 alertAmount: {
                     required: true,
-                    integers: true
+                    integers: true,
+                    max: 1000000
                 }
             },
             messages: {

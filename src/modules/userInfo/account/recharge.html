@@ -115,10 +115,10 @@
         <% data.forEach(function(item, index) { %>
             <li>
             <label>
-                <input type="radio" name="services" data-balance="<%= item.balance %>" data-name="<%= item.name %>" data-type="<%= item.applyType %>" <%= index == 0 ? 'checked' : '' %> value="<%= item.reqId %>"><%= item.name %>
+                <input type="radio" name="services" data-balance="<%= item.balance %>" data-name="<%= item.name %>" data-type="<%= item.applyType %>" <%= index == 0 ? 'checked' : '' %> value="<%= item.reqId %>" <%= item.reqStatus == 5 ? '' : 'disabled' %>><%= item.name %>
             </label>
             <span class="fr corMain">余额：<%= item.balance %></span>
-            <% if(item.applyType == '02'){ %>
+            <% if(item.applyType == '02' && item.reqStatus != 5 ){ %>
                 <div class="corBlue">项目结束前即<%= item.endTime %>无法进行提款申请</div>
             <% } %>
             <hr/>

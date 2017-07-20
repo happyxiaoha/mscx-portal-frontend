@@ -41,6 +41,10 @@ var publishServiceModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'publishService.do'
 });
 
+var guaranteeDetailModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'getRequirementGuaranteeByReqId.do'
+});
+
 var serversDemandListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
@@ -68,10 +72,12 @@ var serversDemandListView = Backbone.View.extend({
         this.serOrderPlanModel = new serOrderPlanModel();
         this.addPlanModel = new addPlanModel();
         this.refusePlanModel = new refusePlanModel();
+        this.guaranteeDetailModel = new guaranteeDetailModel();
 
         this.listenTo(this.serOrderPlanModel, 'sync', this.handleSerOrderPlan);
         this.listenTo(this.serOrderModel, 'sync', this.handleSerOrder);
         this.listenTo(this.publishServiceModel, 'sync', this.handlePublish);
+        this.listenTo(this.guaranteeDetailModel, 'sync', this.renderGuaranteeDetail);
         this.model.on('change',function () {
             that.render();
         });
@@ -91,6 +97,7 @@ var serversDemandListView = Backbone.View.extend({
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
         var temps = _.template($('#serversDemandList').html());
+        this.payTipTemplate = _.template($('#payTipTemplate').html(), {variable: 'data'});
         this.$el.find('tbody').html(temps({serverDemandList:serverDemandList}));
         laypage({
             cont: 'serverPage',
@@ -178,6 +185,11 @@ var serversDemandListView = Backbone.View.extend({
                 pageSize: 5
             }
         });
+        this.guaranteeDetailModel.fetch({
+            data: {
+                reqId: this.serOrderattrid
+            }
+        })
         this.$el.find('#serNameList tbody').html('');
         var dialog = layer.open({
             type: 1,
@@ -217,10 +229,25 @@ var serversDemandListView = Backbone.View.extend({
                 pageSize: 5
             }
         });
+        this.guaranteeDetailModel.fetch({
+            data: {
+                reqId: this.serOrderattrid
+            }
+        })
+    },
+    renderGuaranteeDetail: function() {
+        var model = this.guaranteeDetailModel.toJSON();
+
+        if(model.status == 'OK') {
+            model = model.result;
+            model.reqId = this.serOrderattrid;
+
+            this.$('#payTip').html(this.payTipTemplate(model)).show();
+        }
     },
     showPlanInfo: function(e){
         var that = this,
-            planId= $(e.target).closest('td').data('id');
+            planId = $(e.target).closest('td').data('id');
         this.serOrderPlanModel.fetch({
             data: {
                 id: +planId

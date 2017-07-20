@@ -135,7 +135,6 @@
 .D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}
-.D_table table tr {cursor: pointer;}
 
 .add-api-list li .auth-type {width: 80px;}
 .add-api-list li .auth-type input {vertical-align: text-bottom;    margin-right: 15px;}

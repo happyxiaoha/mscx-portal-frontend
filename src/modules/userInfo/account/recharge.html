@@ -11,6 +11,8 @@
     
 </div>
 <div id="selectServiceLayer"></div>
+<div id="applyDrawingLayer"></div>
+<div id="transferLayer"></div>
 <script type="template" id="alarm">
     <% if(data) { %>
     <h2 class="ft14 alarm-tel pr"><span id="telTitle">预警电话：</span><span id="telContent"><%= data.alertPhone %></span><a class="edit-link corBlue" href="javascript:;" id="editAlarmPhone">修改</a></h2>
@@ -57,28 +59,35 @@
         <% }) %>
         </tbody>
     </table>
+    <div id="guaranteePage" class="mt10 tc"></div>
 </script>
 <script type="template" id="amount">
     <div class="account operate-type">
         <h2>操作类型</h2>
         <label>
-            <input type="radio" name="operate" checked>账户余额充值
+            <input type="radio" name="operate" value="acount" <%= data && data.serviceId || data.transferId ? 'disabled' : 'checked' %>>
+            <span>账户余额充值</span>
         </label>
         <label>
-            <input type="radio" name="operate" value="services">项目保证金充值
-        </label>
-        <label class="cora">
-            <input type="radio" name="operate" disabled>项目保证金转账
+            <input type="radio" name="operate" value="services" <%= data && data.serviceId ? 'checked' : (data.transferId ? 'disabled' : 'checked') %>>
+            <span>项目保证金充值</span>
         </label>
         <label>
-            <input type="radio" name="operate">账户余额提款申请
+            <input type="radio" name="operate" value="transfer" <%= data && data.transferId ? 'checked' : 'disabled' %>>
+            <span>项目保证金转账</span>
+        </label>
+        <label>
+            <input type="radio" name="operate" value="draw" <%= data && data.serviceId || data.transferId ? 'disabled' : '' %>>
+            <span>账户余额提款申请</span>
         </label>
     </div>
     <div class="account clearfix mt20 operate-area">
         <form class="pr">
             <div class="input-item clearfix">
                 <h2 class="ft18 fl">充值金额：</h2>
-                <input type="text" name="money" value="" placeholder="输入金额"><span>元</span>
+                <input type="text" id="amountInput" name="money" value="" placeholder="输入金额">
+                <span>元</span>
+                <span id="rechargeTip"></span>
             </div>
             <button class="btn">下一步</button>
         </form>
@@ -87,16 +96,64 @@
 <script type="template" id="serviceList">
     <div style="padding: 30px">
         <ul>
-        <% data.forEach(function(item) { %>
+        <% data.forEach(function(item, index) { %>
             <li>
             <label>
-                <input type="radio" name="" value="<%= item.id %>"><%= item.name %>
+                <input type="radio" name="services" data-name="<%= item.name %>" <%= index == 0 ? 'checked' : '' %> value="<%= item.id %>"><%= item.name %>
             </label>
             </li>
         <% }) %>
         </ul>      
     </div>
 </script>
+<script type="template" id="drawingList">
+    <div style="padding: 20px 30px">
+        <ul>
+        <% data.forEach(function(item, index) { %>
+            <li>
+            <label>
+                <input type="radio" name="services" data-balance="<%= item.balance %>" data-name="<%= item.name %>" data-type="<%= item.applyType %>" <%= index == 0 ? 'checked' : '' %> value="<%= item.reqId %>"><%= item.name %>
+            </label>
+            <span class="fr corMain">余额：<%= item.balance %></span>
+            <% if(item.applyType == '02'){ %>
+                <div class="corBlue">项目结束前即<%= item.endTime %>无法进行提款申请</div>
+            <% } %>
+            <hr/>
+            </li>
+        <% }) %>
+        </ul>
+        <div class="draw-tip corMain">提款过程出现问题请联系0851-82576999</div>
+    </div>
+</script>
+<script type="template" id="transferTemplate">
+    <div style="padding: 20px 30px">
+        <ul>
+            <li>
+                <span>项目信息：<%= data.result.name %></span>
+                <span class="fr corMain">余额&nbsp;&nbsp;<%= data.result.guaranteeBalance %>元</span>
+                <hr/>
+            </li>
+            <li>
+            <li>
+                <span>确认需求用户为：张广良</span>
+                <span style="margin-left: 20px;">账户：usersky</span>
+            </li>
+            <li>
+                <span>本次转账金额：<%= data.amount %>元</span>
+            </li>
+            <li>
+                <p>请输入支付密码</p>
+                <form id="passForm" onsubmit="return false;">
+                  <div id="passContent" class="mt10 pr">
+                    
+                  </div>
+                </form>
+            </li>
+        </ul>
+        <p class="corMain">支付后金额将进入对方的平台账户中心</p>
+    </div>
+</script>
+
 <script type="template" id="slectPayWay">
     <div class="account clearfix mt20 operate-area">
         <div class="input-item clearfix">

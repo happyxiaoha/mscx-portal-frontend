@@ -41,7 +41,9 @@ var accountView = Backbone.View.extend({
                 case 'recharge':
                     this.currentView = new rechargeView({
                         model: _.extend(_.pick(this, ['id', 'hasAccount', 'accountInfoModel']), {
-                            order: this.model.order
+                            order: this.model.order,
+                            serviceId: this.model.serviceId,
+                            transferId: this.model.transferId
                         })
                     });
                     break;

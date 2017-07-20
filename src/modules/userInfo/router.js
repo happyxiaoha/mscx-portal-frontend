@@ -8,7 +8,6 @@ var Routes =  Backbone.Router.extend({
         'user':'userView',
         'userAuth':'userAuthView',
         'userPassword':'userPasswordView',
-        'account': 'accountView',
         'demand': 'demandView',
         // 'apiDemand': 'apiDemandView',
         'serversDemand': 'serversDemandView',
@@ -33,6 +32,8 @@ var Routes =  Backbone.Router.extend({
         'offlineMeet': 'offlineMeetView',
         // 账户管理
         'account': 'accountView',
+        'account/guarantee/:id': 'guaranteeRechargeView',
+        'account/transfer/:id': 'guaranteeTransferView',
         'setPayPassword': 'setPayPasswordView',
         'rechargeRecord': 'rechargeRecordView',
         'consumeRecord': 'consumeRecordView',
@@ -55,10 +56,10 @@ var Routes =  Backbone.Router.extend({
         var userPasswordView = require('userInfo/user/userPassword.js');
         mscxPage.views['userPasswordViewObj'] = new userPasswordView();
     },
-    accountView: function () {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['accountViewObj'] = new accountView();
-    },
+    // accountView: function () {
+    //     var accountView = require('userInfo/account/accountView.js');
+    //     mscxPage.views['accountViewObj'] = new accountView();
+    // },
     demandView: function (id) {
         var demandView = require('userInfo/demand/demandView.js');
         mscxPage.views['demandViewObj'] = new demandView();
@@ -155,6 +156,26 @@ var Routes =  Backbone.Router.extend({
             id: 'recharge',
             model: {
                 order: order
+            }
+        });
+    },
+    // 需求界面跳转来的保证金充值
+    guaranteeRechargeView: function(id) {
+        var view = require('userInfo/account/accountView.js');
+        mscxPage.views['accountView'] = new view({
+            id: 'recharge',
+            model: {
+                serviceId: id
+            }
+        });
+    },
+    // 保证金转账
+    guaranteeTransferView: function(id) {
+        var view = require('userInfo/account/accountView.js');
+        mscxPage.views['accountView'] = new view({
+            id: 'recharge',
+            model: {
+                transferId: id
             }
         });
     },

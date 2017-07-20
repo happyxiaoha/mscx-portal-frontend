@@ -139,7 +139,6 @@
 .D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}
-.D_table table tr {cursor: pointer;}
 /*服务新增*/
 .server-url .add-server-url {right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;background: #f90;}
 .server-url .url-error {float: left;color: red;margin-left: 20px;line-height: 30px;display: none;}

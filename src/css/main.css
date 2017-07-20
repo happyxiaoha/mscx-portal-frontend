@@ -2646,7 +2646,6 @@ ul.pagination>li.active>a {
 .D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
 .D_table table tbody tr:last-child td{border: 0;}
 .D_table table tbody tr td a{color: #113c6a;}
-.D_table table tr {cursor: pointer;}
 .data-empty {
     margin-left: 0!important;
 }
@@ -2655,6 +2654,9 @@ ul.pagination>li.active>a {
 .layui-layer-btn .layui-layer-btn0 {
     border-color: #f90!important;
     background-color: #f90!important;
+}
+.layui-layer-btn a {
+    line-height: 26px;
 }
 
 @media screen and (max-width: 1300px){

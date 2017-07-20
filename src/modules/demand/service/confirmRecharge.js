@@ -31,7 +31,7 @@ var view = Backbone.View.extend({
         var model = this.updateStatusModel.toJSON();
 
         if(model.status == 'OK') {
-            location.href = 'userInfo.html#account';
+            location.href = 'userInfo.html#account/guarantee/' + this.model.get('id');
         }
     }
 });

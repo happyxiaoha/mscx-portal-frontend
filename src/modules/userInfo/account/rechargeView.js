@@ -2,10 +2,7 @@
 
 var commonTemplate = require('./common.html');
 var template = require('./recharge.html');
-
-var rechargeModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'order/placeRechargeOrder.do'
-})
+var amountView = require('./amountView');
 
 var orderModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderDetail.do'
@@ -17,6 +14,7 @@ var alarmModel = Backbone.Model.extend({
 
 var guaranteeListModel = Backbone.Model.extend({
     url: mscxPage.request.account + 'getRequirementGuaranteeList.do'
+    // url: mscxPage.request.demand + 'queryData.do'
 })
 
 var addAlarmModel = Backbone.Model.extend({
@@ -28,10 +26,6 @@ var editAlarmPhoneModel = Backbone.Model.extend({
 var editAlarmAmountModel = Backbone.Model.extend({
     url: mscxPage.request.account + 'modifyBalanceAlert.do'
 })
-var rechargeServiceModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'getRechargeServices.do'
-})
-
 
 var PayResource = {
     host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
@@ -56,7 +50,6 @@ var accountView = Backbone.View.extend({
     initialize: function() {
         _.extend(this, this.model);
 
-        this.rechargeModel = new rechargeModel();
         // 预警信息
         this.alarmModel = new alarmModel();
         // 保证金列表
@@ -65,6 +58,9 @@ var accountView = Backbone.View.extend({
         this.addAlarmModel = new addAlarmModel();
         this.editAlarmPhoneModel = new editAlarmPhoneModel();
         this.editAlarmAmountModel = new editAlarmAmountModel();
+
+        this.guaranteePage = 1;
+        this.guaranteePageSize = 5;
 
         this.$el.html(this.commonTemplate({
             name: this.id,
@@ -87,18 +83,24 @@ var accountView = Backbone.View.extend({
             }
         });
 
-        this.guaranteeListModel.fetch();
-
+        this.guaranteeListModel.fetch({
+            data: {
+                page: this.guaranteePage,
+                pageSize: this.guaranteePageSize
+            }
+        });
 
         // step1 输入金额页面
         this.amountView = new amountView({
             el: '#content',
-            model: this.rechargeModel
+            model: {
+                serviceId: this.serviceId,
+                transferId: this.transferId
+            }
         })
         // step2 选择支付方式页面
         this.selectPayWayView = new selectPayWayView({
-            el: '#content',
-            model: this.rechargeModel
+            el: '#content'
         })
         // step3 支付结果页面
         this.payResultView = new payResultView({
@@ -149,7 +151,8 @@ var accountView = Backbone.View.extend({
             }
         }
     },
-    goSelectPayWay: function() {
+    goSelectPayWay: function(model) {
+        this.selectPayWayView.model = model;
         this.selectPayWayView.render();
     },
     goPayResultView: function() {
@@ -170,7 +173,28 @@ var accountView = Backbone.View.extend({
 
         if(model.status == 'OK') {
             this.$('.ensure-list').html(this.ensureListTemplate(model.result));
+
+            laypage({
+                cont: 'guaranteePage',
+                pages: model.result.page.totalPage,
+                skip: true,
+                curr: this.guaranteePage || 1,
+                jump: function(obj, first){
+                    if(!first){
+                        this.guaranteePage = obj.curr;
+                        this.reloadGuaranteePage();
+                    }
+                }.bind(this)
+            });
         }
+    },
+    reloadGuaranteePage: function() {
+        this.guaranteeListModel.fetch({
+            data: {
+                page: this.guaranteePage,
+                pageSize: this.guaranteePageSize
+            }
+        });
     },
     showEditForm: function() {
         this.$('.alarm-wrapper').html(this.editAlarmTemplate({
@@ -273,100 +297,7 @@ var accountView = Backbone.View.extend({
         }
     }
 });
-var amountView = Backbone.View.extend({
-    events: {
-        'change input[type=radio]': 'changeOperateType'
-    },
-    initialize: function() {
-        this.templete = _.template($('#amount').html());
-        // this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
-        this.serviceListTemplate = _.template($('#serviceList').html(), {variable: 'data'});
 
-        this.rechargeModel = new rechargeModel();
-        this.rechargeServiceModel = new rechargeServiceModel();
-
-        this.listenTo(this.rechargeModel, 'sync', this.handleRecharge);
-        this.listenTo(this.rechargeServiceModel, 'sync', this.renderRechageList);
-
-        return this;
-    },
-    render: function() {
-        this.$el.empty();
-        // this.$el.append(this.stepTemplete({
-        //     current: 'step1'
-        // }));
-        this.$el.append(this.templete());
-
-        this.$form = this.$('form');
-        this.$form.validate(this.validateConfig());
-    },
-    renderRechageList: function() {
-        var model = this.rechargeServiceModel.toJSON();
-
-        $('#selectServiceLayer').html(this.serviceListTemplate(model.result));
-
-        var dialog= layer.open({
-            type: 1,
-            btn: ['确定','取消'],
-            title: '请选择充值项目',
-            shade: 0.6,
-            shadeClose: true,
-            closeBtn:'1',
-            area: ['350px', '350px'],
-            content: $('#selectServiceLayer'),
-            success: function () {
-                // $('#addApiForm').validate(that.apiValidateConfig());
-            },
-            btn1: function () {
-                
-            },
-            btn2: function () {
-                layer.close(dialog);
-            }
-        });
-    },
-    changeOperateType: function(e) {
-        var $target = this.$(e.target);
-
-        if($target.val() == 'services') {
-            this.rechargeServiceModel.fetch();
-        }
-    },
-    validateConfig: function () {
-        var me = this;
-        return {
-            rules: {
-                money: {
-                    max: 10000000,
-                    required: true,
-                    price: true
-                }
-            },
-            submitHandler: function () {
-                me.submitForm();
-            }
-        }
-    },
-    submitForm: function () {
-        var params = this.$form.serializeObject();
-        this.amount = params.money;
-
-        this.rechargeModel.set('amount', this.amount);
-        this.rechargeModel.fetch({
-            data: {
-                rechargeAmount: this.amount
-            }
-        })
-    },
-    handleRecharge: function() {
-        var model = this.rechargeModel.toJSON();
-
-        // 下单成功
-        if(model.status == 'OK') {
-            this.trigger('next');
-        }
-    }
-})
 var selectPayWayView = Backbone.View.extend({
     events: {
         'click .btn-pay': 'submitPay'
@@ -382,7 +313,7 @@ var selectPayWayView = Backbone.View.extend({
         //     done: ['step1'],
         //     current: 'step2'
         // }));
-        this.$el.append(this.templete(this.model.toJSON()));
+        this.$el.append(this.templete(this.model));
 
         // 支付提示弹层
         // layer.open({
@@ -400,11 +331,11 @@ var selectPayWayView = Backbone.View.extend({
         var me = this;
 
         this.orderInfo = _.extend({
-            orderNum: this.model.get('result'),
-            amount: this.model.get('amount')
+            orderNum: this.model.result,
+            amount: this.model.amount
         }, {
             channel: PayResource.channels[type],
-            title: '神州数云'
+            title: '数创易'
         });
         /* 
          * 如果是支付宝，页面跳转

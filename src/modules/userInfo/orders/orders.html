@@ -36,7 +36,10 @@
             <%if(i == 1 && olaitem.sourceDetail.length >= 1){%>
             <td rowspan="<%=olaitem.sourceDetail.length%>"><%=olaitem.orderNum%></td>
             <%}%>
-            <%if(soitem.resourceType == '02'){%>
+            <%if (olaitem.order_classify == '2' || olaitem.order_classify == '3') { %>
+            <td><%= soitem.resourceName%></td>
+            <td>充值</td>
+            <%}else if(soitem.resourceType == '02'){%>
             <td><a  href="./sources.html?detail/<%=soitem.resourceId%>"><%= soitem.resourceName%></a></td>
             <td>数据报告</td>
             <%}else if(soitem.resourceType == '03'){%>

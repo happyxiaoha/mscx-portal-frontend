@@ -25,7 +25,7 @@
     <form id="editAlarmForm" onSubmit="return false;" class="pr">
         <h2 class="ft14 alarm-tel">预警电话：<input name="alertPhone" maxlength="11" placeholder="请输入预警电话" class="alarm-input" value="<%= data && data.alertPhone %>"></h2>
         <h2 class="ft14 alarm-money">预警底线金额：<input name="alertAmount" placeholder="请输入预警底线金额" class="alarm-input" value="<%= data && data.alertAmount %>">元
-            <label id="alarmAmount-error" class="error error-amount" for="alarmAmount"></label>
+            <label id="alertAmount-error" class="error error-amount" for="alertAmount"></label>
         </h2>
         <button class="btn btn-edit-alarm">设置</button>
     </form>

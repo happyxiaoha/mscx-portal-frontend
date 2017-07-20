@@ -85,8 +85,8 @@ var createDemandView = Backbone.View.extend({
                     required: true
                 },
                 money: {
-                    required: true,
-                    integers: true
+                    required: true
+                    // integers: true
                 },
                 endTime: {
                     required: true

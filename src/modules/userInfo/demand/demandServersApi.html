@@ -121,8 +121,12 @@
     </label>
 </script>
 <script id="payTipTemplate" type="template">
-    <% if(data.rate == 0) { %>
-        您尚未提供资金担保，确认方案后请及时提供！<a href="userInfo.html#account/guarantee/<%= data.reqId %>" class="corMain">立即充值</a>
+    <% if(data.percent == 0){ %>
+        是否向该用户支付款项？
+        <a href="userInfo.html#account/transfer/<%= data.reqId %>" class="corMain">立即付款</a>
+    <% } else if(data.rate == 0) { %>        
+        您尚未提供资金担保，确认方案后请及时提供！
+        <a href="userInfo.html#account/guarantee/<%= data.reqId %>" class="corMain">立即充值</a>
     <% } else if(data.guaranteeBalance != 0){ %>
         您已提供<%= data.rate %>%担保金，项目余额<%= data.leftMoney %>元，是否向该用户支付款项？<a href="userInfo.html#account/transfer/<%= data.reqId %>" class="corMain">立即付款</a>
     <% } else if(data.guaranteeBalance == 0){ %>

@@ -87,12 +87,14 @@ var amountView = Backbone.View.extend({
     },
     renderRechageList: function() {
         var model = this.rechargeServiceModel.toJSON();
+        var btn = model.result.length > 0 ? ['确定','取消'] : ['取消']
 
         $('#selectServiceLayer').html(this.serviceListTemplate(model.result));
 
+
         var dialog= layer.open({
             type: 1,
-            btn: ['确定','取消'],
+            btn: btn,
             title: '请选择充值项目',
             shade: 0.6,
             shadeClose: true,
@@ -297,6 +299,9 @@ var amountView = Backbone.View.extend({
                 })
                 break;
             case 'services':
+                if(!this.selectedServiceModel.get('id')) {
+                    return;
+                }
                 this.guaranteeRechargeModel.set('amount', this.amount);
                 this.guaranteeRechargeModel.fetch({
                     data: {

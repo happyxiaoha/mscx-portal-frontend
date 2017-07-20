@@ -32,7 +32,7 @@
 </script>
 <script type="template" id="ensureList">
     <h2 class="title">服务需求项目保证金</h2>
-    <h2 class="title">余额总数：<%= data.total %>元</h2>
+    <h2 class="title">余额总数：<%= data.total || 0 %>元</h2>
     <table>
         <thead>
         <tr>
@@ -103,7 +103,10 @@
             </label>
             </li>
         <% }) %>
-        </ul>      
+        </ul>
+        <% if(data.length == 0){ %>
+        <p>暂无数据</p>
+        <% } %>
     </div>
 </script>
 <script type="template" id="drawingList">

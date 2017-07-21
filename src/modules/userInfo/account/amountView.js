@@ -22,6 +22,12 @@ var rechargeServiceModel = Backbone.Model.extend({
 var applyDrawingModel = Backbone.Model.extend({
     url: mscxPage.request.account + 'getApplyDrawingList.do'
 })
+var getBillInfoModel = Backbone.Model.extend({
+    url: mscxPage.request.demand + 'getBillInfo.do'
+})
+var getTransferInfoModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'getTransferGuaranteeInfo.do'
+})
 
 var amountView = Backbone.View.extend({
     events: {
@@ -44,6 +50,10 @@ var amountView = Backbone.View.extend({
         this.serviceDetailModel = new serviceDetailModel();
         // 保证金转帐接口
         this.transferGuaranteeModel = new transferGuaranteeModel();
+        // 某个服务需求的接单信息接口
+        this.getBillInfoModel = new getBillInfoModel();
+        // 项目保证金转账所需信息接口
+        this.getTransferInfoModel = new getTransferInfoModel();
 
         this.rechargeServiceModel = new rechargeServiceModel();
         this.applyDrawingModel = new applyDrawingModel();
@@ -55,6 +65,8 @@ var amountView = Backbone.View.extend({
         this.listenTo(this.drawAmountModel, 'sync', this.handleDrawAmount);
         
         this.listenTo(this.serviceDetailModel, 'sync', this.renderServiceDetail);
+        this.listenTo(this.getTransferInfoModel, 'sync', this.renderTransferLayer);
+        this.listenTo(this.getBillInfoModel, 'sync', this.handleBillInfo);
         this.listenTo(this.rechargeServiceModel, 'sync', this.renderRechageList);
         this.listenTo(this.applyDrawingModel, 'sync', this.renderApplyDrawingList);
 
@@ -158,11 +170,6 @@ var amountView = Backbone.View.extend({
         var moneyIpt;
 
         if(model.status == 'OK') {
-            // 渲染保证金转账layer
-            if(this.model.transferId) {
-                this.renderTransferLayer();
-                return;
-            }
             model = model.result;
             this.selectedServiceModel.set({
                 id: this.model.serviceId,
@@ -179,7 +186,7 @@ var amountView = Backbone.View.extend({
         }        
     },
     renderTransferLayer: function() {
-        var model = this.serviceDetailModel.toJSON();
+        var model = this.getTransferInfoModel.toJSON();
 
         $('#transferLayer').html(this.transferTemplate(model));
         this.$passForm = $('#passForm');
@@ -314,8 +321,8 @@ var amountView = Backbone.View.extend({
                 })
                 break;
             case 'transfer':
-                this.serviceDetailModel.set('amount', this.amount);
-                this.serviceDetailModel.fetch({
+                this.getBillInfoModel.set('amount', this.amount);
+                this.getBillInfoModel.fetch({
                     data: {
                         reqId: this.model.transferId
                     }
@@ -323,6 +330,16 @@ var amountView = Backbone.View.extend({
                 break;
         }
         
+    },
+    handleBillInfo: function() {
+        var model = this.getBillInfoModel.toJSON();
+        var billId = model.result.id;
+
+        this.getTransferInfoModel.fetch({
+            data: {
+                billId: billId
+            }
+        })
     },
     handleRecharge: function() {
         var model = this.rechargeModel.toJSON();

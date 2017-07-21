@@ -45,6 +45,10 @@ var guaranteeDetailModel = Backbone.Model.extend({
     url: mscxPage.request.account + 'getRequirementGuaranteeByReqId.do'
 });
 
+var getBillInfoModel = Backbone.Model.extend({
+    url: mscxPage.request.demand + 'getBillInfo.do'
+});
+
 var serversDemandListView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     pagObj: {
@@ -73,11 +77,14 @@ var serversDemandListView = Backbone.View.extend({
         this.addPlanModel = new addPlanModel();
         this.refusePlanModel = new refusePlanModel();
         this.guaranteeDetailModel = new guaranteeDetailModel();
+        this.getBillInfoModel = new getBillInfoModel();
 
         this.listenTo(this.serOrderPlanModel, 'sync', this.handleSerOrderPlan);
         this.listenTo(this.serOrderModel, 'sync', this.handleSerOrder);
         this.listenTo(this.publishServiceModel, 'sync', this.handlePublish);
         this.listenTo(this.guaranteeDetailModel, 'sync', this.renderGuaranteeDetail);
+        this.listenTo(this.getBillInfoModel, 'sync', this.handleBillInfo);
+        
         this.model.on('change',function () {
             that.render();
         });
@@ -187,14 +194,13 @@ var serversDemandListView = Backbone.View.extend({
                 pageSize: 5
             }
         });
-        // 状态为已接单
-        if(status == 4) {
-            this.guaranteeDetailModel.fetch({
-                data: {
-                    reqId: this.serOrderattrid
-                }
-            })
-        }
+
+        // 获取接单状态
+        this.getBillInfoModel.fetch({
+            data: {
+                reqId: this.serOrderattrid
+            }
+        })
         
         this.$el.find('#serNameList tbody').html('');
         var dialog = layer.open({
@@ -209,6 +215,17 @@ var serversDemandListView = Backbone.View.extend({
                 layer.close(dialog);
             }
         })
+    },
+    // 判断是否有接单
+    handleBillInfo: function() {
+        var model = this.getBillInfoModel.toJSON();
+        if(model.result.reqId) {
+            this.guaranteeDetailModel.fetch({
+                data: {
+                    reqId: this.serOrderattrid
+                }
+            })
+        }
     },
     handleSerOrder: function(res){
         res = res.toJSON().result;

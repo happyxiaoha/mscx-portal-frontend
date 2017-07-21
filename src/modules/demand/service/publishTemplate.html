@@ -50,7 +50,7 @@
             <div class="fl R_right bail">
                 <select id="ensurePercent" name="percent">
                     <option value="0" <%= data && data.percent == 0 ? 'selected' : '' %>>0%</option>
-                    <option value="0.3" <%= data && data.percent == 30 ? 'selected' : '' %>>30%</option>
+                    <option value="0.3" <%= data.percent ? (data.percent == 30 ? 'selected' : '') : 'selected' %>>30%</option>
                     <option value="0.5" <%= data && data.percent == 50 ? 'selected' : '' %>>50%</option>
                     <option value="0.7" <%= data && data.percent == 70 ? 'selected' : '' %>>70%</option>
                     <option value="1" <%= data && data.percent == 100 ? 'selected' : '' %>>100%</option>

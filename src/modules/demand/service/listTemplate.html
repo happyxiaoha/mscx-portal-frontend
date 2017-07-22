@@ -7,7 +7,7 @@
                 <p class="info">任务金额：<%= item.money %></p>
                 <p class="info">任务描述：<%= item.description %></p>
                 <div class="media-body-footer">
-                    <div class="footerItem">需求用户：<span class="keywordType2"><%= item.contactUsername %></span></div>
+                    <div class="footerItem">需求用户：<span class="keywordType2"><%= item.reqUser || item.contactUsername %></span></div>
                     <div class="footerItem">发布日期：<span class="keywordType2"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span></div>
                     <div class="footerItem">截止日期：<span class="keywordType2"><%= new Date(item.endTime).format('yyyy-MM-dd') %></span></div>
                     <div class="footerItem">已浏览：<span class="keywordType2"><%= item.pageviewAmount %></span></div>

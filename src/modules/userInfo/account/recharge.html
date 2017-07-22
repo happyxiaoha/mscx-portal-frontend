@@ -132,14 +132,22 @@
     <div style="padding: 20px 30px">
         <ul>
             <li>
-                <span>项目信息：<%= data.result.name %></span>
-                <span class="fr corMain">余额&nbsp;&nbsp;<%= data.result.guaranteeBalance %>元</span>
-                <hr/>
+                项目信息：
             </li>
             <li>
+                <span><%= data.result.name %></span>
+                <span class="fr corMain">余额&nbsp;&nbsp;<%= data.result.guaranteeBalance %>元</span>
+            </li>
+            <% data.result.list.forEach(function(item) { %>
             <li>
-                <span>确认需求用户为：张广良</span>
-                <span style="margin-left: 20px;">账户：usersky</span>
+                <span class="cora"><%= item.reqName %></span>
+                <span class="fr cora">余额&nbsp;&nbsp;<%= item.guaranteeBalance %>元</span>
+            </li>
+            <% }) %>
+            <li>
+                <hr/>
+                <span>确认需求用户为：<%= data.result.userName %></span>
+                <span style="margin-left: 20px;">账户：<%= data.result.account %></span>
             </li>
             <li>
                 <span>本次转账金额：<%= data.amount %>元</span>

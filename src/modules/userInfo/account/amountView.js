@@ -66,7 +66,7 @@ var amountView = Backbone.View.extend({
         
         this.listenTo(this.serviceDetailModel, 'sync', this.renderServiceDetail);
         this.listenTo(this.getTransferInfoModel, 'sync', this.renderTransferLayer);
-        this.listenTo(this.getBillInfoModel, 'sync', this.handleBillInfo);
+        // this.listenTo(this.getBillInfoModel, 'sync', this.handleBillInfo);
         this.listenTo(this.rechargeServiceModel, 'sync', this.renderRechageList);
         this.listenTo(this.applyDrawingModel, 'sync', this.renderApplyDrawingList);
 
@@ -166,6 +166,9 @@ var amountView = Backbone.View.extend({
         this.$('#rechargeTip').html(this.selectedServiceModel.get('name') ? '充值项目：' + this.selectedServiceModel.get('name') : '');
     },
     renderServiceDetail: function() {
+        if(this.model.transferId) {
+            return
+        }
         var model = this.serviceDetailModel.toJSON();
         var moneyIpt;
 
@@ -187,6 +190,9 @@ var amountView = Backbone.View.extend({
     },
     renderTransferLayer: function() {
         var model = this.getTransferInfoModel.toJSON();
+        var serviceDetailModel = this.serviceDetailModel.toJSON();
+
+        _.extend(model.result, serviceDetailModel.result);
 
         $('#transferLayer').html(this.transferTemplate(model));
         this.$passForm = $('#passForm');
@@ -209,7 +215,7 @@ var amountView = Backbone.View.extend({
             shade: 0.6,
             shadeClose: true,
             closeBtn:'1',
-            area: ['450px', '350px'],
+            area: ['450px', '400px'],
             content: $('#transferLayer'),
             btn1: function () {
                 this.$passForm.submit();
@@ -277,20 +283,26 @@ var amountView = Backbone.View.extend({
         }
 
         var params = this.$passForm.serializeObject();
-        var model = this.serviceDetailModel.toJSON();
+        var transferModel = this.getTransferInfoModel.toJSON();
+        var billInfoModel = this.getBillInfoModel.toJSON();
         var me = this;
-        // TODO
 
         this.submitting = true;
         this.transferGuaranteeModel.set({
             payPwd: params.password + params.passwordTail,
-            amount: model.amount,
-            billId: ''
+            amount: transferModel.amount,
+            billId: billInfoModel.result.id
         })
-        this.transferGuaranteeModel.save({
+        this.transferGuaranteeModel.save({}, {
+            success: function(res) {
+                res = res.toJSON();
+                if(res.status == 'OK') {
+                    layer.msg(res.result);
+                }
+            },
             complete: function(res) {
                 layer.close(this.transferDialog);
-                me.submitting = false;
+                this.submitting = false;
             }.bind(this)
         });
     },
@@ -321,20 +333,31 @@ var amountView = Backbone.View.extend({
                 })
                 break;
             case 'transfer':
-                this.getBillInfoModel.set('amount', this.amount);
-                this.getBillInfoModel.fetch({
+                this.getTransferInfoModel.set('amount', this.amount);
+                this.once('handleBillInfo', this.handleBillInfo);
+
+                var queue = [this.getBillInfoModel.fetch({
                     data: {
                         reqId: this.model.transferId
                     }
-                })
+                }), this.serviceDetailModel.fetch({
+                    data: {
+                        reqId: this.model.transferId
+                    }
+                })];
+
+                $.when.apply($, queue).done(function() {
+                    this.trigger('handleBillInfo');
+                }.bind(this));
+                
                 break;
         }
         
     },
     handleBillInfo: function() {
-        var model = this.getBillInfoModel.toJSON();
-        var billId = model.result.id;
-
+        var billInfoModel = this.getBillInfoModel.toJSON();
+        var billId = billInfoModel.result.id;
+        
         this.getTransferInfoModel.fetch({
             data: {
                 billId: billId

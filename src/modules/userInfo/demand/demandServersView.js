@@ -219,7 +219,7 @@ var serversDemandListView = Backbone.View.extend({
     // 判断是否有接单
     handleBillInfo: function() {
         var model = this.getBillInfoModel.toJSON();
-        if(model.result.reqId) {
+        if(model.result) {
             this.guaranteeDetailModel.fetch({
                 data: {
                     reqId: this.serOrderattrid

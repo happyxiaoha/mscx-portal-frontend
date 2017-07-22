@@ -359,14 +359,19 @@ var userAuthenticationView = Backbone.View.extend({
                 contractIdcard: ''
             };
         res.account = account;
+
         this.model = res.contractName ? new updateEnterpriseAuthModel(res) : new addEnterpriseAuthModel(res);
-        this.$el.find('.inputCons').html(_.template($('#userEnterpriseAuth').html())(res));
-        if(res.contractName){
-            this.model.set('licencePicUrl',res.licencePicUrl)
-        }
-        this.model.on('change:tags',function () {
+        this.model.on('change:tags', function () {
             this.buildChooseTags();
         }.bind(this));
+        
+        this.$el.find('.inputCons').html(_.template($('#userEnterpriseAuth').html())(res));
+
+        if(res.contractName){
+            this.model.set('licencePicUrl',res.licencePicUrl)
+            this.chooseSelectTags(res.tagNames);
+            this.buildChooseTags();
+        }
         this.getCategoryModel.fetch();
         $('#enterpriseForm').validate(this.enterpriseValidateConfig());
     },
@@ -424,6 +429,20 @@ var userAuthenticationView = Backbone.View.extend({
     render: function () {
         this.$el.find('#userInfoArea').html(template);
         this.buidPerson();
+    },
+    chooseSelectTags: function (chooseTags) {
+        var chooseArray = [];
+        if(chooseTags.indexOf(',')>=0){
+            chooseArray = chooseTags.split(',');
+        }
+        else {
+            chooseArray = [chooseTags];
+        }
+        for(var k = 0, kLen = chooseArray.length; k < kLen; k++){
+            if(chooseArray[k]) {
+                this.chooseTags.push({name:chooseArray[k]});
+            }
+        }
     },
     changeEnterpriseAttribute: function (e) {
         var sId = e.target.id == 'companyName' ? 'name':  e.target.id;

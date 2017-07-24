@@ -13,6 +13,9 @@ var orderListModel = Backbone.Model.extend({
 var updateShopModel = Backbone.Model.extend({
     url: mscxPage.request.uc + 'shopping/cart/user/modify/times.do'
 });
+var cancelOrderModel = Backbone.Model.extend({
+    url: mscxPage.request.order + 'order/cancelOrder.do'
+});
 
 var orderView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -22,13 +25,17 @@ var orderView = Backbone.View.extend({
         totalPage: 1
     },
     events: {
-        'click .toOrderPay': 'toPay'
+        'click .toOrderPay': 'toPay',
+        'click .toCancelPay': 'cancelPay'
     },
     initialize: function() {
         var that = this;
         this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'order'}));
         this.model = new orderListModel();
+        this.cancelOrderModel = new cancelOrderModel();
+
+        this.listenTo(this.cancelOrderModel, 'sync', this.handleCancelOrder);
         this.model.on('change',function () {
             that.render();
         });
@@ -51,6 +58,16 @@ var orderView = Backbone.View.extend({
         window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
         location.href = 'pay.html';
         e.stopPropagation();
+    },
+    cancelPay: function(e) {
+        var $this = $(e.target);
+            orderNum = $this.data('orderid');
+
+        this.cancelOrderModel.fetch({
+            data: {
+                orderNo: orderNum
+            }
+        })
     },
     render: function () {
         var res = this.model.get('result'),
@@ -84,6 +101,14 @@ var orderView = Backbone.View.extend({
     },
     initRender: function () {
         this.$el.find('#orderInfo').html(orderTemplate);
+    },
+    handleCancelOrder: function() {
+        var model = this.cancelOrderModel.toJSON();
+
+        layer.msg(model.message);
+        setTimeout(function() {
+            this.reloadPage();
+        }.bind(this), 1000);
     }
 });
 

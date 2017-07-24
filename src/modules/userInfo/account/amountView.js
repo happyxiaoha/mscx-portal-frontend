@@ -131,7 +131,7 @@ var amountView = Backbone.View.extend({
     renderApplyDrawingList: function() {
         var model = this.applyDrawingModel.toJSON();
 
-        $('#applyDrawingLayer').html(this.applyDrawingListTemplate(model.result));
+        $('#applyDrawingLayer').html(this.applyDrawingListTemplate(model.result)).find('input[type="radio"]:enabled').first().attr('checked', 'checked');
 
         var dialog= layer.open({
             type: 1,

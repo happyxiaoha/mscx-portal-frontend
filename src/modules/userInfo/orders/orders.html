@@ -68,7 +68,7 @@
             <td><%= olaitem.orderStatus%></td>
             <td>
                 <%if(olaitem.orderStatus == '未支付'){%>
-                <a href="javascript:;" attrOrderId="<%=olaitem.orderNum%>" class="toOrderPay">支付</a>
+                <a href="javascript:;" data-classify="<%= olaitem.order_classify %>" attrOrderId="<%=olaitem.orderNum%>" class="toOrderPay">支付</a>
                 <a href="javascript:;" data-orderid="<%=olaitem.orderNum%>" class="toCancelPay ml5">取消</a>
                 <%}%>
             </td>

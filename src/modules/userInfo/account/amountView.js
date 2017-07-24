@@ -131,11 +131,14 @@ var amountView = Backbone.View.extend({
     renderApplyDrawingList: function() {
         var model = this.applyDrawingModel.toJSON();
 
-        $('#applyDrawingLayer').html(this.applyDrawingListTemplate(model.result)).find('input[type="radio"]:enabled').first().attr('checked', 'checked');
+        var enabledItems = $('#applyDrawingLayer').html(this.applyDrawingListTemplate(model.result)).find('input[type="radio"]:enabled');
+        var btns = enabledItems.length < 1 ? ['取消'] : ['提交申请','取消'];
+
+        enabledItems.first().attr('checked', 'checked');
 
         var dialog= layer.open({
             type: 1,
-            btn: ['提交申请','取消'],
+            btn: btns,
             title: '请选择提款申请类别',
             shade: 0.6,
             shadeClose: true,

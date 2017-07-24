@@ -203,6 +203,7 @@ var serversDemandListView = Backbone.View.extend({
         })
         
         this.$el.find('#serNameList tbody').html('');
+        this.$('#payTip').empty();
         var dialog = layer.open({
             type: 1,
             btn: ['关闭'],

@@ -146,17 +146,19 @@ var amountView = Backbone.View.extend({
             area: ['400px', '350px'],
             content: $('#applyDrawingLayer'),
             btn1: function () {
-                var checkedItem = $('#applyDrawingLayer').find('input[name="services"]:checked');
+                if(btns.length > 1) {
+                    var checkedItem = $('#applyDrawingLayer').find('input[name="services"]:checked');
 
-                this.drawAmountModel.set({
-                    applyAmount: checkedItem.data('balance'),
-                    applyType: checkedItem.data('type'),
-                    balanceAmount: (checkedItem.data('type') == '01' ? checkedItem.data('balance') : ''),
-                    projectAmount: (checkedItem.data('type') == '02' ? checkedItem.data('balance') : ''),
-                    projectId: checkedItem.val(),
-                    projectName: checkedItem.data('name')
-                })
-                this.drawAmountModel.save();
+                    this.drawAmountModel.set({
+                        applyAmount: checkedItem.data('balance'),
+                        applyType: checkedItem.data('type'),
+                        balanceAmount: (checkedItem.data('type') == '01' ? checkedItem.data('balance') : ''),
+                        projectAmount: (checkedItem.data('type') == '02' ? checkedItem.data('balance') : ''),
+                        projectId: checkedItem.val(),
+                        projectName: checkedItem.data('name')
+                    })
+                    this.drawAmountModel.save();
+                }
 
                 layer.close(dialog);
             }.bind(this),

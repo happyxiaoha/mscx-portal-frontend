@@ -346,11 +346,12 @@ var selectPayWayView = Backbone.View.extend({
          */
         var payUrl = PayResource.host + '?' + $.param(this.orderInfo);
         switch(type) {
-            case 'alipay':
-                location.href = payUrl + '&returnUrl=' + mscxPage.payReturnHost + 'pay-result.html';
-                break;
+            // case 'alipay':
+            //     location.href = payUrl + '&returnUrl=' + mscxPage.payReturnHost + 'pay-result.html';
+            //     break;
             case 'weixin':
                 $.get(payUrl, function(res) {
+                    debugger
                     location.href = 'pay.html#weixin/' + encodeURIComponent(res.result) + '/' + me.orderInfo.orderNum;
                 })
                 break;

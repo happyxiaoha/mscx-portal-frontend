@@ -197,17 +197,22 @@
                         <div class="fl clearfix posRE">
                             <span class="name">分类：</span>
                             <p id="serverCategory" class="checkboxlist">
+                            <% if(status == '02'){ %>
+                                <input type="text" value="<%= categoryName %>" disabled/>
+                            <% } %>
                             </p>
                         </div>
                     </li>
                     <li class="clearfix">
                         <div class="fl clearfix posRE">
                             <span class="name">标签：</span>
-                            <div class="tag-area fl">
-                                <span class="un-select">未选择任何标签</span>
-                            </div>
                             <% if(status != '02'){ %>
+                                <div class="tag-area fl">
+                                    <span class="un-select">未选择任何标签</span>
+                                </div>
                                 <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
+                            <% } else { %>
+                                <input type="text" value="<%= tagName %>" disabled/>
                             <% } %>
                         </div>
                     </li>

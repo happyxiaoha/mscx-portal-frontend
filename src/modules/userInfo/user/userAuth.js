@@ -367,12 +367,14 @@ var userAuthenticationView = Backbone.View.extend({
         
         this.$el.find('.inputCons').html(_.template($('#userEnterpriseAuth').html())(res));
 
-        if(res.contractName){
+        // 如果已经通过审核
+        if(res.status != '02') {
             this.model.set('licencePicUrl',res.licencePicUrl)
-            this.chooseSelectTags(res.tagNames);
+            this.chooseSelectTags(res.tagName);
             this.buildChooseTags();
+            this.getCategoryModel.fetch();
         }
-        this.getCategoryModel.fetch();
+        
         $('#enterpriseForm').validate(this.enterpriseValidateConfig());
     },
     uploadFile: function (e) {

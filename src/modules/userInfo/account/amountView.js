@@ -303,6 +303,9 @@ var amountView = Backbone.View.extend({
                 res = res.toJSON();
                 if(res.status == 'OK') {
                     layer.msg(res.result);
+                    setTimeout(function() {
+                        location.href = 'userInfo.html#account';
+                    }, 1000);
                 }
             },
             complete: function(res) {
@@ -361,6 +364,9 @@ var amountView = Backbone.View.extend({
     },
     handleBillInfo: function() {
         var billInfoModel = this.getBillInfoModel.toJSON();
+
+        if(!billInfoModel.result) return;
+
         var billId = billInfoModel.result.id;
         
         this.getTransferInfoModel.fetch({

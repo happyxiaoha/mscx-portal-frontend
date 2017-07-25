@@ -367,11 +367,13 @@ var userAuthenticationView = Backbone.View.extend({
         
         this.$el.find('.inputCons').html(_.template($('#userEnterpriseAuth').html())(res));
 
-        // 如果已经通过审核
-        if(res.status != '02') {
+        // 如果未通过审核
+        if(res.name && res.status != '02') {
             this.model.set('licencePicUrl',res.licencePicUrl)
             this.chooseSelectTags(res.tagName);
             this.buildChooseTags();
+            this.getCategoryModel.fetch();
+        }else if(!res.name) {// 新增企业认证时
             this.getCategoryModel.fetch();
         }
         

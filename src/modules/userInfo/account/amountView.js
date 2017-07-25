@@ -187,7 +187,7 @@ var amountView = Backbone.View.extend({
             if(model.rate == 0) {
                 moneyIpt = (model.money * model.percent / 100);
             }else if(model.guaranteeBalance == 0) {
-                moneyIpt = (model.money * model.leftRate);
+                moneyIpt = (model.money * model.leftRate).toFixed();
             }
             
             this.$('#amountInput').val(moneyIpt).attr('readonly', 'readonly');

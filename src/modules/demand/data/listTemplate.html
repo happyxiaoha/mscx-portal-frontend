@@ -1,5 +1,5 @@
-<% if(data && data.length > 0){ %>
-    <% data && data.forEach(function(item) { %>
+<% if(data && data.list.length > 0){ %>
+    <% data.list.forEach(function(item, index) { %>
     <div class="ns-list-item">
         <div class="media">
             <div class="media-body">
@@ -19,6 +19,11 @@
                 <% }else { %>
                     <p class="demand-status disabled">
                         <%= item.status %>
+                    </p>
+                <% } %>
+                <% if(data.pageInfo.currentPage === 1 && index < 3){ %>
+                    <p class="demand-top">
+                        置顶
                     </p>
                 <% } %>
             </div>

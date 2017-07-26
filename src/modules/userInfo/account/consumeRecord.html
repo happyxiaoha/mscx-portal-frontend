@@ -15,9 +15,10 @@
             <thead>
             <tr>
                 <th width="8%"></td>
-                <th width="20%">支出金额</th>
-                <th width="20%">账户余额</th>
-                <th width="20%">时间</th>
+                <th width="15%">名称</th>
+                <th width="15%">支出金额</th>
+                <th width="15%">账户余额</th>
+                <th width="15%">时间</th>
                 <th width="32%">备注</th>
             </tr>
             </thead>
@@ -25,6 +26,7 @@
             <% data && _.each(data.list, function (item, index) { %>
             <tr>
                 <td><%= +data.page.startIndex + +index + 1 %></td>
+                <td><%= item.flowName %></td>
                 <td><%= item.flowAmount %></td>
                 <td><%= item.accountBalance %></td>
                 <td><%= new Date(item.updatedTime).format('yyyy-MM-dd HH:mm:ss') %></td>

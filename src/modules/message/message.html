@@ -1,9 +1,9 @@
 <p class="smallNav">当前位置：<a href="../index.html">首页</a>>><span>消息管理</span></p>
 <div class="bgWhite noticeListCons">
     <ul class="noticeListConsUl mb25" id="firstPage">
-        <% _.each(messageList, function (mLitem) { %>
+        <% _.each(messageList, function (mLitem, index) { %>
         <li class="clearfix">
-            <a data-id="<%=mLitem.id%>" data-message="<%=mLitem.msgContent%>" data-time="<%=mLitem.publishTime%>" href="javascript:;" class="fl mes-li"><%=mLitem.msgTitle%>(<%=mLitem.publishTime ? new Date(mLitem.publishTime).format('yyyyMMdd HH:mm') : '-'%>)</a>
+            <a data-id="<%=mLitem.id%>" data-index="<%= index %>" href="javascript:;" class="fl mes-li"><%=mLitem.msgTitle%>(<%=mLitem.publishTime ? new Date(mLitem.publishTime).format('yyyyMMdd HH:mm') : '-'%>)</a>
         </li>
         <% }); %>
         <%if(messageList.length == 0){%>

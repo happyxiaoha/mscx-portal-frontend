@@ -2,6 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 var template = require('./message.html');
+var detailTemplate = require('./messageDetail.html');
 require('util');
 
 var messageModel = Backbone.Model.extend({
@@ -10,6 +11,7 @@ var messageModel = Backbone.Model.extend({
 
 var newsView = Backbone.View.extend({
     el: mscxPage.domEl.mainEl,
+    detailTemplate: _.template(detailTemplate, {variable: 'data'}),
     events: {
         'click .mes-li': 'messageDes'
     },
@@ -25,16 +27,17 @@ var newsView = Backbone.View.extend({
     },
     messageDes: function (e) {
         var $this = $(e.target),
-            messsage = $this.data('message'),
-            timmes = $this.data('time');
+            index = $this.data('index'),
+            item = this.model.get('result')[index];
+
         var dialog = layer.open({
             type: 1,
             btn: ['关闭'],
             title: '消息详情',
             shade: 0.6,
             shadeClose: true,
-            area: ['500px'],
-            content: '<div style="overflow:hidden;"><p class="dig-con">'+messsage+'</p><p class="dig-time">'+new Date(timmes).format('yyyy-MM-dd HH:mm')+'</p></div>', //捕获的元素
+            area: ['500px', '300px'],
+            content: this.detailTemplate(item),
             btn1: function () {          //通过
                 layer.close(dialog);
             }

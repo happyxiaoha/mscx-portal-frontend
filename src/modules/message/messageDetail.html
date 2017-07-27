@@ -1,0 +1,15 @@
+<div style="overflow:hidden;">
+    <% if(data.resId){ %>
+    <p class="dig-con"><%= data.msgTitle %></p>
+    <% } %>
+    <p class="dig-con">
+        <%= data.msgContent %>
+        <% if(data.resId){ %>
+        <a class="corBlue" href="demand.html#<%= data.resType == 'req_data' ? 'data' : 'service' %>/detail/<%= data.resId %>">点击查看</a>
+        <% } %>
+    </p>
+    <p class="dig-time">数创易运营团队</p>
+    <p class="dig-time">
+    <%= new Date(data.publishTime).format('yyyy-MM-dd HH:mm') %>
+    </p>
+</div>

@@ -105,7 +105,7 @@ var serversDemandListView = Backbone.View.extend({
         this.pagObj.totalPage = page.totalPage;
         var temps = _.template($('#serversDemandList').html());
         this.payTipTemplate = _.template($('#payTipTemplate').html(), {variable: 'data'});
-        this.$el.find('tbody').html(temps({serverDemandList:serverDemandList}));
+        this.$el.find('#demandListTbody').html(temps({serverDemandList:serverDemandList}));
         laypage({
             cont: 'serverPage',
             skip: true,
@@ -304,13 +304,9 @@ var serversDemandListView = Backbone.View.extend({
                     res = res.toJSON();
                     if(res.result == 1){
                         layer.msg('确认接单成功');
+                        debugger
                         that.reloadSerOrderPage('1')
-                        that.model.fetch({
-                            data: {
-                                pageSize: that.pagObj.pageSize,
-                                page: that.pagObj.pageNum
-                            }
-                        });
+                        that.reloadPage();
                         that.guaranteeDetailModel.fetch({
                             data: {
                                 reqId: that.serOrderattrid

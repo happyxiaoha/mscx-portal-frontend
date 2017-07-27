@@ -1,7 +1,8 @@
 var webpack = require('webpack');
 var path = require("path");
+var vueLoaderConfig = require('./vue-loader.conf')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var config = require('./config')
+var config = require('../config')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resolve (dir) {
@@ -23,16 +24,9 @@ module.exports = {
         }),
         new ExtractTextPlugin("css/[name].[contenthash:8].css"),
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            jquery: 'jquery',
-            'window.jQuery': 'jquery',
             '_': 'underscore',
-            Backbone: 'backbone',
             Base64: resolve('src/lib/base64'),
-            mscxPage: resolve('src/lib/config'),
-            layer: resolve('src/lib/layer/layer'),
-            laypage: resolve('src/lib/laypage/laypage')
+            mscxPage: resolve('src/lib/config')
         }),
         // https://github.com/ampedandwired/html-webpack-plugin
         new HtmlWebpackPlugin({
@@ -43,94 +37,94 @@ module.exports = {
             chunks: ["manifest", "vendor", "common", 'main'],
             chunksSortMode: 'dependency'
         }),
-        new HtmlWebpackPlugin({
-            title: '登录',
-            filename: 'login.html',
-            template: 'src/ejs/login.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'login'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '注册',
-            filename: 'register.html',
-            template: 'src/ejs/register.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'register'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: 'API',
-            filename: 'api.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'api'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '联系我们',
-            filename: 'contactUs.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'contactUs'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '需求定制',
-            filename: 'demand.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'demand'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '消息管理',
-            filename: 'message.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'message'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '支付',
-            filename: 'pay.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'pay'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: 'SaaS服务',
-            filename: 'saas.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'saas'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '查询',
-            filename: 'search.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'search'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '微应用',
-            filename: 'services.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'services'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '用户中心',
-            filename: 'userInfo.html',
-            template: 'src/ejs/userInfo.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'userInfo'],
-            chunksSortMode: 'dependency'
-        })
+        // new HtmlWebpackPlugin({
+        //     title: '登录',
+        //     filename: 'login.html',
+        //     template: 'src/ejs/login.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'login'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '注册',
+        //     filename: 'register.html',
+        //     template: 'src/ejs/register.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'register'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: 'API',
+        //     filename: 'api.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'api'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '联系我们',
+        //     filename: 'contactUs.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'contactUs'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '需求定制',
+        //     filename: 'demand.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'demand'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '消息管理',
+        //     filename: 'message.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'message'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '支付',
+        //     filename: 'pay.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'pay'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: 'SaaS服务',
+        //     filename: 'saas.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'saas'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '查询',
+        //     filename: 'search.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'search'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '微应用',
+        //     filename: 'services.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'services'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '用户中心',
+        //     filename: 'userInfo.html',
+        //     template: 'src/ejs/userInfo.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'userInfo'],
+        //     chunksSortMode: 'dependency'
+        // })
     ],
     module: {
         rules: [
@@ -144,6 +138,11 @@ module.exports = {
             //       formatter: require('eslint-friendly-formatter')
             //     }
             // },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: vueLoaderConfig
+            },
             {
                 test: /\.less$/,
                 include: [resolve('src')],
@@ -198,15 +197,16 @@ module.exports = {
             resolve('src/widget')
         ],
         alias: {
-            validate: resolve('src/lib/jquery.validate.js'),
-            formAjax: resolve('src/lib/jquery.form.js'),
+            'vue$': 'vue/dist/vue.common.js',
+            // validate: resolve('src/lib/jquery.validate.js'),
+            // formAjax: resolve('src/lib/jquery.form.js'),
             util: resolve('src/lib/util.js'),
-            showdown: resolve('src/lib/showdown.js'),
-            customValidate: resolve('src/lib/additional-methods.js'),
-            moment: resolve('src/lib/datePicker/moment.js'),
-            daterangepicker: resolve('src/lib/datePicker/daterangepicker.js')
+            showdown: resolve('src/lib/showdown.js')
+            // customValidate: resolve('src/lib/additional-methods.js'),
+            // moment: resolve('src/lib/datePicker/moment.js'),
+            // daterangepicker: resolve('src/lib/datePicker/daterangepicker.js')
         },
-        extensions: ['.js', '.css', '.less', '.json']
+        extensions: ['.js', '.vue', '.less', '.json']
     }
 };
 

@@ -1,0 +1,126 @@
+.manage{
+	width:100%;
+	margin:27px auto;
+	padding:0 auto;
+	overflow:hidden;
+	text-align:center;
+	
+}	
+.manage_p{
+	font-size:26px;
+	color:#000;
+	margin-bottom:10PX;
+}
+.manage_sz{
+	width:814px;
+	height:325px;
+	margin:0 auto;
+	padding:0 auto;
+	overflow:hidden;
+	text-align:center;
+}
+.manage_ul{
+	float:left;
+	width:260px;
+	margin:10px 8px;
+}
+.manage_ul span{
+    color:#fff;
+	font-size:26px;
+}
+.manage_ul_p{
+	color:#fff;
+	font-size:16px;
+}
+.manage_ul_p b{
+	font-size:34px;
+}
+.manage_ul_p2{
+	color:#eef4f9;
+	font-size:16px;
+}
+.manage_jc{
+	background:url(../images/manage_jc.png) no-repeat top center;
+	background-size:100% 100%;
+	padding:30px 0px 20px 0px;
+}
+.manage_gj{
+	background:url(../images/manage_gj.png) no-repeat top center;
+	background-size:100% 100%;
+	padding:30px 0px 20px 0px;
+	
+}
+.manage_zy{
+	background:url(../images/manage_zy.png) no-repeat top center;
+	background-size:100% 100%;
+	padding:30px 0px 20px 0px;
+}
+.manage_a,.manage_a:hover{
+	width:80%;
+	display:inline-block;
+	color:#fff;
+	border:1px solid #fff;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	margin-top:18px;
+	padding:6px 0px;
+	cursor: pointer;
+}
+.manage_compare{
+	width:100%;
+	background:#fff;
+	margin:0 auto;
+	padding:0 auto;
+	overflow:hidden;
+}
+.manage_compare_div{
+	width:80%;
+	margin:0 auto;
+	padding:40px 0px;
+	overflow:hidden;
+	
+	
+}
+.manage_compare_div p{
+	color:#59a7e3;
+	font-size:18px;
+	text-align:center;
+}
+.manage_compare_table{
+	width:100%;
+	table-layout:fixed;
+	border:solid #fff; 
+	border-width:3px 0px 0px 3px;
+}
+.manage_compare_table tr th{
+	border:solid #fff; 
+	border-width:3px;
+	text-align:center;
+	line-height:40px;
+	color:#fff;
+}
+.manage_compare_table tr td{
+	border:solid #fff; 
+	border-width:0px 3px 3px 0px;
+	text-align:center;
+	line-height:45px;
+}
+.manage_compare_table tr:nth-child(even){
+	background:#eef4f9;	
+}
+.manage_compare_table tr:nth-child(odd){
+    background:#fafcfd;
+}
+.manage_compare_table1{
+    background:#2d97de;
+
+}
+.manage_compare_table2{
+    background:#b7c4ce;
+
+}
+.manage_compare_table3{
+    background:#879498;
+
+}

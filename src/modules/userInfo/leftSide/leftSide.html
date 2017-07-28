@@ -17,5 +17,8 @@
         <a class="order-left <%= (name == 'orderView' ? 'active' : '' ) %> " href="#order"> <i></i>订单管理</a>
         <a class="shop-left <%= (name == 'shopView' ? 'active' : '' ) %> " href="#shop"> <i></i>购物车</a>
         <a class="account-left <%= (name == 'accountView'||name=='guaranteeRechargeView'||name=='guaranteeTransferView'||name == 'setPayPasswordView'||name == 'rechargeRecordView'||name == 'consumeRecordView'||name == 'forgetPayPasswordView' ? 'active' : '' ) %> " href="#account"> <i></i>我的账户</a>
+        <%if(isDisPhone){%>
+        <a href="#recharge" <%= (name == 'rechargeView' ? 'class=active' : '' ) %> >话费充值</a>
+        <%}%>
     </li>
 </ul>

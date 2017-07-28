@@ -1,0 +1,109 @@
+
+<html>
+<head>
+<title>充值类交易</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="./assets/css/font-awesome.min.css" rel="stylesheet">
+<!-- <link href="./assets/css/ace.min.css" rel="stylesheet"> -->
+<link href="./assets/css/fileinput.min.css" rel="stylesheet">
+<link href="./assets/css/iconfont.css" rel="stylesheet">
+<link href="./assets/alertifyjs/css/alertify.min.css" rel="stylesheet">
+<link href="./assets/alertifyjs/css/themes/bootstrap.min.css"
+	rel="stylesheet">
+
+<!--[if IE 7]>
+      <link rel="stylesheet" href="./css/font-awesome-ie7.min.css">
+      <![endif]-->
+<link href="./assets/css/com.css" rel="stylesheet">
+<link href="./assets/css/admin.css" rel="stylesheet">
+<script src="./assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="./assets/js/fileinput.min.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="./assets/js/fileinput_locale_zh.js"></script>
+<script src="./assets/alertifyjs/alertify.min.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="./assets/js/common/common.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<script src="./account/js/admin_index.js"></script>
+<style type="text/css">
+.topTab {
+    line-height: 50px;
+    height: 50px;
+    margin: 0 0 15px 0;
+    background: #373d41;
+    padding-left: 20px;
+}
+.clearfix {
+    display: block;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.topTab span.active {
+    color: #0ca398;
+}
+.topTab span {
+    display: block;
+    float: left;
+    padding: 0 20px;
+    color: #79848b;
+    font-size: 15px;
+    margin-right: 14px;
+    cursor: pointer;
+    position: relative;
+}
+.topTab span.active a, .topTab span.active {
+    color: #0ca398 !important;
+}
+ .topTab span a, .topTab span a:visited, .topTab span a:active {
+    color: #79848b;
+    display: block;
+}
+/*a:link, a:visited, a:hover, a:active {
+    outline: none;
+    text-decoration: none;
+    color: #444;
+}
+a:link, a:visited, a:hover, a:active {
+    outline: none;
+    text-decoration: none;
+    color: #444;
+} */
+</style>
+<script type="text/javascript">
+	var userName = GetQueryString("userName");
+</script>
+</head>
+<body>
+	<div class="admin clearfix">
+		<div id="demandTabs" class="topTab clearfix myApiTop">
+			<span class="active"><a href="javascript:webLink('./userAccount/user_balance.html?userName=' + userName)">账户充值记录</a></span>
+			<span><a href="javascript:webLink('./transRule/transRuleQueryIndex.html?userName=' + userName)">充值类商品</a></span>
+			<span><a href="javascript:webLink('./transactionDetail/agent_dayTrade.html?userName=' + userName)">日交易账单</a></span> 
+			<span><a href="javascript:webLink('./transactionDetail/agent_transactionDetail.html?userName=' + userName)">资金流水</a></span>
+			<span><a href="javascript:webLink('./transactionFlowQuery/agentFlowQuery.html?userName=' + userName)">充值订单</a></span>
+		</div>
+		<div class="admin_right left" id="admin_right" style="width:100%;height:100%">
+			<iframe id="center" name="center" width="100%" height="99%"
+				frameborder=0 scrolling=auto></iframe>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+if (userName == null){
+	alertify.alert("提示","用户名称必填");
+}else{
+	webLink('./userAccount/user_balance.html?userName=' + userName);
+}
+</script>
+</html>

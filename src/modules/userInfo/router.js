@@ -38,7 +38,9 @@ var Routes =  Backbone.Router.extend({
         'rechargeRecord': 'rechargeRecordView',
         'consumeRecord': 'consumeRecordView',
         'forgetPayPassword': 'forgetPayPasswordView',
-        'recharge/result/:order': 'accountView'
+        'recharge/result/:order': 'accountView',
+        // 话费充值
+        'recharge': 'rechargeView'
     },
     defaultView:function () {
         var defaultView = require('userInfo/default/userInfoDefaultView.js');
@@ -60,6 +62,10 @@ var Routes =  Backbone.Router.extend({
     //     var accountView = require('userInfo/account/accountView.js');
     //     mscxPage.views['accountViewObj'] = new accountView();
     // },
+    rechargeView: function () {
+        var rechargeView = require('userInfo/recharge/rechargeView.js');
+        mscxPage.views['rechargeViewObj'] = new rechargeView();
+    },
     demandView: function (id) {
         var demandView = require('userInfo/demand/demandView.js');
         mscxPage.views['demandViewObj'] = new demandView();

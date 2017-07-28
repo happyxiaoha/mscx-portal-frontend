@@ -26,7 +26,7 @@
                                 <!-- JiaThis Button END -->
                                 <h4 class="media-heading"><%= data.result && data.result.apiServiceCName %>
                                     <div class="tags">
-                                        <% data.result && data.result.tagsName.split(',').forEach(function(item){ %>
+                                        <% data.result && data.result.tagsName && data.result.tagsName.split(',').forEach(function(item){ %>
                                         <span class="tagItem"><%= item %></span>
                                         <% }) %>
                                     </div>

@@ -21,6 +21,14 @@ module.exports = merge(baseWebpackConfig, {
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    // copy custom assets
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../webapp'),
+        to: 'webapp',
+        ignore: ['.*']
+      }
+    ]),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static')

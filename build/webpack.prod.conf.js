@@ -54,6 +54,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     // copy custom assets
     new CopyWebpackPlugin([
       {
+        from: path.resolve(__dirname, '../webapp'),
+        to: 'webapp',
+        ignore: ['.*']
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
         from: path.resolve(__dirname, '../src/images/apihelp'),
         to: 'images/apihelp',
         ignore: ['.*']

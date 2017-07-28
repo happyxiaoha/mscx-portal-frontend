@@ -20,6 +20,13 @@ var publishDataModel = Backbone.Model.extend({
     idAttribute: 'dataId',
     url: mscxPage.request.demand + 'publishData.do'
 });
+var queryRefuseModel = Backbone.Model.extend({
+    url: mscxPage.request.demand + 'queryRefusedDataCause.do'
+});
+var offshopModel = Backbone.Model.extend({   //下架需求
+    idAttribute: 'dataId',
+    url: mscxPage.request.demand + 'offShopData.do'
+});
 
 var demandView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -32,7 +39,8 @@ var demandView = Backbone.View.extend({
         'click .deleteSource': 'deleteSource',
         'click .closeSource': 'closeSource',
         'click .offShopSource': 'offShopSource',
-        'click .dataPublish': 'publishDemand'
+        'click .dataPublish': 'publishDemand',
+        'click .queryRefuse': 'showQueryRefuse'
     },
     initialize: function() {
         this.$el.addClass('user-center-tap');
@@ -43,9 +51,13 @@ var demandView = Backbone.View.extend({
         this.model = new demandListModel();
         this.publishDataModel = new publishDataModel();
         this.closeSourceDemandModel = new closeSourceDemandModel();
+        this.queryRefuseModel = new queryRefuseModel();
+        this.offshopModel = new offshopModel();
 
         this.listenTo(this.publishDataModel, 'sync', this.handlePublish);
         this.listenTo(this.closeSourceDemandModel, 'sync', this.handleCloseData);
+        this.listenTo(this.queryRefuseModel, 'sync', this.handleQueryRefuse);
+        this.listenTo(this.offshopModel, 'sync', this.handleOffshop);
         this.model.on('change',function () {
             that.render();
         });
@@ -96,8 +108,32 @@ var demandView = Backbone.View.extend({
             id: id
         })
     },
-    offShopSource: function() {
-        
+    offShopSource: function(e) {
+        var id = $(e.target).closest('tr').attr('attrId');
+        this.offshopModel.save({
+            id: +id
+        })
+    },
+    handleOffshop: function() {
+        var model = this.offshopModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('下架成功');
+            this.reloadPage();
+        }
+    },
+    handleQueryRefuse: function() {
+        var model = this.queryRefuseModel.toJSON();
+        if(model.status == 'OK') {
+            layer.alert(model.result[0].checkSuggestion, {title:'拒绝原因'});
+        }
+    },
+    showQueryRefuse: function(e) {
+        var id = $(e.target).closest('tr').attr('attrId');
+        this.queryRefuseModel.fetch({
+            data: {
+                reqId: id
+            }
+        })
     },
     handleCloseData: function() {
         var model = this.closeSourceDemandModel.toJSON();

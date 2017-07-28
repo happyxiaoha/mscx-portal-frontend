@@ -9,7 +9,7 @@
                     <th width="25%">数据需求描述</th>
                     <th width="8%">发布日期</th>
                     <th width="8%">状态</th>
-                    <th width="8%">反馈日期</th>
+                    <!--<th width="8%">反馈日期</th>-->
                     <th width="16%">操作</th>
                 </tr>
                 </thead>
@@ -36,7 +36,7 @@
         <td><%=item.dataDescription%></td>
         <td><%= item.publishTime ? new Date(item.publishTime).format('yyyy-MM-dd') : '-'%></td>
         <td><%= item.statusName %></td>
-        <td><%= item.feedbackTime ? new Date(item.feedbackTime).format('yyyy-MM-dd') : '-'%></td>
+        <!--<td><%= item.feedbackTime ? new Date(item.feedbackTime).format('yyyy-MM-dd') : '-'%></td>-->
         <td>
             <%if(item.statusCode == '0'){%>
                 <a href="javascript:;" class="dataPublish" data-id="<%=item.id%>">发布</a>

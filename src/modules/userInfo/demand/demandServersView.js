@@ -55,7 +55,7 @@ var getBillInfoModel = Backbone.Model.extend({
 });
 
 var queryRefuseModel = Backbone.Model.extend({
-    url: mscxPage.request.demand + 'queryRefusedCause.do'
+    url: mscxPage.request.demand + 'queryRefusedServiceCause.do'
 });
 
 var serversDemandListView = Backbone.View.extend({

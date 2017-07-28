@@ -12,6 +12,10 @@ var demandListModel = Backbone.Model.extend({
 var deleteSourceDemandModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'deleteData.do'
 });
+var closeSourceDemandModel = Backbone.Model.extend({
+    idAttribute: 'dataId',
+    url: mscxPage.request.demand + 'closeData.do'
+});
 var publishDataModel = Backbone.Model.extend({
     idAttribute: 'dataId',
     url: mscxPage.request.demand + 'publishData.do'
@@ -26,6 +30,8 @@ var demandView = Backbone.View.extend({
     },
     events: {
         'click .deleteSource': 'deleteSource',
+        'click .closeSource': 'closeSource',
+        'click .offShopSource': 'offShopSource',
         'click .dataPublish': 'publishDemand'
     },
     initialize: function() {
@@ -36,8 +42,10 @@ var demandView = Backbone.View.extend({
 
         this.model = new demandListModel();
         this.publishDataModel = new publishDataModel();
+        this.closeSourceDemandModel = new closeSourceDemandModel();
 
         this.listenTo(this.publishDataModel, 'sync', this.handlePublish);
+        this.listenTo(this.closeSourceDemandModel, 'sync', this.handleCloseData);
         this.model.on('change',function () {
             that.render();
         });
@@ -81,6 +89,22 @@ var demandView = Backbone.View.extend({
                 page: this.pagObj.pageNum
             }
         });
+    },
+    closeSource: function(e) {
+        var id = this.$(e.target).data('id');
+        this.closeSourceDemandModel.save({
+            id: id
+        })
+    },
+    offShopSource: function() {
+        
+    },
+    handleCloseData: function() {
+        var model = this.closeSourceDemandModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('关闭成功');
+            this.reloadPage();
+        }
     },
     publishDemand: function(event) {
         var id = this.$(event.currentTarget).data('id');

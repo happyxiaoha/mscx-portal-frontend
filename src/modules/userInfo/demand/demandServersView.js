@@ -36,6 +36,11 @@ var refusePlanModel = Backbone.Model.extend({   //拒绝接单
     url: mscxPage.request.demand + 'refuseServiceOrder.do'
 });
 
+var offshopModel = Backbone.Model.extend({   //下架需求
+    idAttribute: 'serviceId',
+    url: mscxPage.request.demand + 'offShopService.do'
+});
+
 var publishServiceModel = Backbone.Model.extend({
     idAttribute: 'serviceId',
     url: mscxPage.request.demand + 'publishService.do'
@@ -47,6 +52,10 @@ var guaranteeDetailModel = Backbone.Model.extend({
 
 var getBillInfoModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'getBillInfo.do'
+});
+
+var queryRefuseModel = Backbone.Model.extend({
+    url: mscxPage.request.demand + 'queryRefusedCause.do'
 });
 
 var serversDemandListView = Backbone.View.extend({
@@ -63,7 +72,9 @@ var serversDemandListView = Backbone.View.extend({
         'click .showSerOrderInfo':　'showSerOrderList',
         'click .showSerPlanInfo': 'showPlanInfo',
         'click .ensureSerPlanInfo': 'ensureSerPlanInfo',
-        'click .refuseSerPlanInfo': 'refuseSerPlanInfo'
+        'click .refuseSerPlanInfo': 'refuseSerPlanInfo',
+        'click .offshopServers': 'offshopService',
+        'click .queryRefuse': 'showQueryRefuse'
     },
     initialize: function() {
         this.$el.html(_.template(commonTemplate)({name:'serversDemand'}));
@@ -78,12 +89,16 @@ var serversDemandListView = Backbone.View.extend({
         this.refusePlanModel = new refusePlanModel();
         this.guaranteeDetailModel = new guaranteeDetailModel();
         this.getBillInfoModel = new getBillInfoModel();
+        this.offshopModel = new offshopModel();
+        this.queryRefuseModel = new queryRefuseModel();
 
         this.listenTo(this.serOrderPlanModel, 'sync', this.handleSerOrderPlan);
         this.listenTo(this.serOrderModel, 'sync', this.handleSerOrder);
         this.listenTo(this.publishServiceModel, 'sync', this.handlePublish);
         this.listenTo(this.guaranteeDetailModel, 'sync', this.renderGuaranteeDetail);
         this.listenTo(this.getBillInfoModel, 'sync', this.handleBillInfo);
+        this.listenTo(this.offshopModel, 'sync', this.handleOffshop);
+        this.listenTo(this.queryRefuseModel, 'sync', this.handleQueryRefuse);
         
         this.model.on('change',function () {
             that.render();
@@ -182,6 +197,33 @@ var serversDemandListView = Backbone.View.extend({
             this.pagObj.pageNum = 1;
             this.reloadPage();
         }
+    },
+    handleOffshop: function() {
+        var model = this.offshopModel.toJSON();
+        if(model.status == 'OK') {
+            layer.msg('下架成功');
+            this.reloadPage();
+        }
+    },
+    handleQueryRefuse: function() {
+        var model = this.queryRefuseModel.toJSON();
+        if(model.status == 'OK') {
+            layer.alert(model.result[0].checkSuggestion, {title:'拒绝原因'});
+        }
+    },
+    showQueryRefuse: function(e) {
+        var id = $(e.target).closest('tr').attr('attrId');
+        this.queryRefuseModel.fetch({
+            data: {
+                reqId: id
+            }
+        })
+    },
+    offshopService: function(e) {
+        var id = $(e.target).closest('tr').attr('attrId');
+        this.offshopModel.save({
+            id: +id
+        })
     },
     showSerOrderList: function (e){
         var that = this;

@@ -42,7 +42,14 @@
                 <a href="javascript:;" class="dataPublish" data-id="<%=item.id%>">发布</a>
                 <a href="./demand.html#data/edit/<%=item.id%>" class="editSource">修改</a>
                 <a href="javascript:;" class="deleteSource">删除</a>
-            <%}%>
+            <%}else if(item.statusCode == '2'){%>
+                <a href="javascript:;" data-id="<%=item.id%>" class="closeSource">关闭</a>
+                <a href="javascript:;" data-id="<%=item.id%>" class="offShopSource">下架</a>
+            <%}else if(item.statusCode == '5'){%>
+                <a href="javascript:;" data-id="<%=item.id%>" class="offShopSource">下架</a>
+            <%}else if(item.statusCode == '3'){%>
+                <a href="javascript:;" data-id="<%=item.id%>" class="queryRefuse">查看拒绝原因</a>
+            <% } %>
         </td>
     </tr>
     <% }); %>

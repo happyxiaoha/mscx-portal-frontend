@@ -61,21 +61,23 @@ var orderView = Backbone.View.extend({
         var list = this.model.toJSON().result.list;
         var orderItem;
 
-        // 如果是保证金充值订单，先判断该资源是否已经下架
-        if(orderClassify == 3) {
-            orderItem = _.find(list, function(item) {
-                return item.orderNum == orderNum
-            }) 
+        this.jumpPay(orderNum);
 
-            this.serviceDetailModel.set('orderNum', orderNum);
-            this.serviceDetailModel.fetch({
-                data: {
-                    id: orderItem.sourceDetail[0].resourceId
-                }
-            })
-        }else {
-            this.jumpPay(orderNum);
-        }
+        // 如果是保证金充值订单，先判断该资源是否已经下架
+        // if(orderClassify == 3) {
+        //     orderItem = _.find(list, function(item) {
+        //         return item.orderNum == orderNum
+        //     }) 
+
+        //     this.serviceDetailModel.set('orderNum', orderNum);
+        //     this.serviceDetailModel.fetch({
+        //         data: {
+        //             id: orderItem.sourceDetail[0].resourceId
+        //         }
+        //     })
+        // }else {
+        //     this.jumpPay(orderNum);
+        // }
     },
     jumpPay: function(orderNum) {
         var param = {

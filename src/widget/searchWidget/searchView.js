@@ -321,12 +321,18 @@ var view = Backbone.View.extend({
     handleTypeChange: function(event) {
         var $target = this.$(event.currentTarget);
         var value = $target.val();
+        var searchParams = this.searchParams.toJSON();
 
         this.id = value;
 
         this.fetchCategory();
 
         this.searchParams.clear({silent: true});
+        if(searchParams.orderBy) {
+            this.searchParams.set({
+                orderBy: searchParams.orderBy
+            }, {silent: true});
+        }
         this.searchData();
     },
     handlePageJump: function(params) {

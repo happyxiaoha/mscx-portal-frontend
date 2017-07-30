@@ -124,7 +124,7 @@
         <dt>收费类型</dt>
         <% data.chargeWay.result.forEach(function(item) { %>
             <dd>
-                <label class="checkbox-inline">
+                <label class="checkbox-inline" title="<%= item.dictName %>">
                     <input type="checkbox" <%= data.defaults && data.defaults.chargeType == item.dictCode && 'checked' %> data-type="chargeType" value="<%= item.dictCode %>" id="chargeWay<%= item.dictCode %>"><%= item.dictName %>
                 </label>
             </dd>

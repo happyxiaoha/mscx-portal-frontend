@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require("path");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
 var config = require('./config')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -22,6 +23,10 @@ module.exports = {
             minChunks: 2
         }),
         new ExtractTextPlugin("css/[name].[contenthash:8].css"),
+        new CSSSplitWebpackPlugin({
+            size: 4000,
+            filename: 'css/[name]-[part].css'
+        }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',

@@ -28,7 +28,10 @@ var webpackConfig = merge(baseWebpackConfig, {
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
       cssProcessorOptions: {
-        safe: true
+        safe: true,
+        discardComments: { 
+          removeAll: true
+        }
       }
     }),
     // split vendor js into its own file

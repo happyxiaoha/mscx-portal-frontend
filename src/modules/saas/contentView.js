@@ -53,7 +53,8 @@ var view = Backbone.View.extend({
                         ],
                         title: '发布日期'
                     },
-                    pageSize: 12
+                    pageSize: 12,
+                    orderBy: 1
                 }
             }
         });

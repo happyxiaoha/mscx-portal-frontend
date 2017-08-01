@@ -21,7 +21,9 @@ var view = Backbone.View.extend({
             id: this.id,
             model: {
                 options: ['objects', 'scopes', 'range', 'dataCategory', 'dataTags', 'type', 'chargeWay'],
-                defaults: this.model || {}
+                defaults: this.model || {
+                    orderBy: 1
+                }
             }
         });
 

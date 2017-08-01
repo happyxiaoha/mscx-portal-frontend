@@ -17,7 +17,7 @@ var view = Backbone.View.extend({
 
         this.orderModel.fetch({
             data: {
-                orderNum: this.model.orderNum
+                orderNum: this.model.order.orderNum
             }
         })
     },
@@ -35,7 +35,7 @@ var view = Backbone.View.extend({
     goPayResult: function() {
         var model = this.orderModel.toJSON();
 
-        location.href = model.order_classify == '2' ? 'userInfo.html#recharge/result/' + model.orderNum : '#result/' + model.orderNum;
+        location.href = model.order.order_classify == '2' ? 'userInfo.html#recharge/result/' + model.order.orderNum : '#result/' + model.order.orderNum;
         
     }
 });

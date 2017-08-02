@@ -31,6 +31,12 @@ var view = Backbone.View.extend({
 
         var me = this;
 
+        window.classUrl = '#news/class/list';
+        window.articleUrl = '#news/article/list';
+        window.policyUrl = '#news/policy/list';
+        window.fundUrl = '#news/fund/list';
+        window.rootNewsUrl = 'startup.html';
+
         window.portalUrl = mscxPage.cmsHost;
         window.frameUrl = '?';
         window.jumpToPage = function(url) {

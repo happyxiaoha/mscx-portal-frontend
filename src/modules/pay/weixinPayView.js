@@ -17,7 +17,7 @@ var view = Backbone.View.extend({
 
         this.orderModel.fetch({
             data: {
-                orderNum: this.model.order.orderNum
+                orderNum: this.model.order
             }
         })
     },

@@ -351,7 +351,6 @@ var selectPayWayView = Backbone.View.extend({
             //     break;
             case 'weixin':
                 $.get(payUrl, function(res) {
-                    debugger
                     location.href = 'pay.html#weixin/' + encodeURIComponent(res.result) + '/' + me.orderInfo.orderNum;
                 })
                 break;

@@ -15,7 +15,7 @@ var Routes =  Backbone.Router.extend({
         mscxPage.views['weixinPayViewObj'] = new view({
             model: {
                 url: url,
-                orderNum: order
+                order: order
             }
         });
     },

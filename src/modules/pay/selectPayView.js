@@ -66,7 +66,7 @@ var view = Backbone.View.extend({
                     me.weixinPayView = new weixinPayView({
                         model: {
                             url: res.result,
-                            order: me.orderModel.toJSON()
+                            order: me.orderModel.toJSON().orderNum
                         }
                     })
                     me.setElement(me.weixinPayView.render().el);

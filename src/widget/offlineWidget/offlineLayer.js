@@ -3,7 +3,7 @@
 var template = require('./offlineTemplate.html');
 
 var offlineModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'service/apiOfflineMeet.do'
+    url: mscxPage.request.contract + 'service/offlineMeet.do'
 });
 
 require('./offline.css');

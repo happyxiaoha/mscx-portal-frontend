@@ -63,6 +63,11 @@ var apiView = Backbone.View.extend({
                     price: true,
                     min: 0
                 },
+                cost: {
+                    required: true,
+                    price: true,
+                    min: 0
+                },
                 chargeCount: {
                     required: true,
                     number: true,
@@ -509,7 +514,7 @@ var apiView = Backbone.View.extend({
         else {
             var newPackage = $('#addChargeForm').serializeObject();
             newPackage.flag = newPackage.flag == 'C' ? 'C': 'U';
-            newPackage.id = newPackage[this.updateIndex].id;
+            newPackage.id = packageList[this.updateIndex].id;
             newPackage.serviceId = this.serviceId;
             packageList[this.updateIndex] = newPackage;
             this.updateIndex = -1;

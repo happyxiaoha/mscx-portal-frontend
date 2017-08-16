@@ -293,6 +293,14 @@
                     <p class="input-mes-api fl">价格大于等于0元，次数或者月数是大于1的整数</p>
                     <%}%>
                 </label>
+                <label style="position: relative;">
+                  <span><i class="need">*</i>成本价：</span>
+                  <%if(res.isOth){%>
+                    <p class="mes"><%=res.cost%>元/次</p>
+                    <%}else{%>
+                    <label><input type="number" class="small" name="cost" id="cost" value="<%=res && res.cost%>">元/次</label>
+                  <%}%>
+                </label>
             </li>
             <li>
                 <label>

@@ -221,6 +221,11 @@ var createApiView = Backbone.View.extend({
                     price: true,
                     min: 0
                 },
+                cost: {
+                    required: true,
+                    price: true,
+                    min: 0
+                },
                 chargeCount: {
                     required: true,
                     number: true,

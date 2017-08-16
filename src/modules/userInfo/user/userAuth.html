@@ -31,11 +31,11 @@
                     <li class="clearfix">
                         <div class="fl clearfix posRE w100">
                             <span><em>*</em>认证方式：</span>
-                            <label class="identifide <%if(certificationType == '01'){%>active<%}%> <%if(name){%>disabled<%}%>" data-val="photo"><i></i>照片认证</label>
+                            <label class="identifide <%if(certificationType == '04'){%>active<%}%> <%if(name){%>disabled<%}%>" data-val="identify"><i></i>身份证认证</label>
                             <label class="identifide <%if(certificationType == '02'){%>active<%}%> <%if(name){%>disabled<%}%>" data-val="phone"><i></i>手机认证</label>
                             <label class="identifide <%if(certificationType == '03'){%>active<%}%> <%if(name){%>disabled<%}%>" data-val="creditCard"><i></i>银行卡号认证</label>
                             <select style="display: none;" class="identifide" <%if(name){%>disabled<%}%>>
-                                <option value="photo" >照片认证</option>
+                                <option value="identify" >身份证认证</option>
                                 <option value="phone" >手机认证</option>
                                 <option value="creditCard" <%if(certificationType == '03'){%>selected<%}%>>银行卡号认证</option>
                             </select>
@@ -68,10 +68,7 @@
                 </ul>
             </div>
         </form>
-        <form id="ajaxUpload" class="imgForm" action="" method="post" <%if(name){%>style="display: none;"<%}%>>
-            <input type="file" name="photo" class="upload-file">
-            <input type="submit" id="btnAjax">
-        </form>
+        
         <div id="photo" class="clearfix" style="display: none;">
             <span><em>*</em>个人照片：</span>
             <label  class="upLoad mr25 front allInfoImg">
@@ -80,6 +77,8 @@
             <label class="phone-error hide">请上传个人照片</label>
             <br>
             <label style="margin: 20px 10px 20px 105px;">注意：照片中人像需要为唯一或者主要人脸，人像至少100×100像素，最大不要超过800x800像素</label>
+        </div>
+        <div id="identify" class="clearfix" style="display: none;">
         </div>
         <div id="phone" class="clearfix" style="display: none;">
             <span><em>*</em>手机号码：</span>

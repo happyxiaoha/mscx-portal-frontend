@@ -266,9 +266,9 @@ var userAuthenticationView = Backbone.View.extend({
                     $('#ajaxUpload').hide();
                     this.model.set('certificationType','02');
                     break;
-                case 'photo':
-                    $('#ajaxUpload').show();
-                    this.model.set('certificationType','01');
+                case 'identify':
+                    $('#ajaxUpload').hide();
+                    this.model.set('certificationType','04');
                     break;
                 case 'creditCard':
                     $('#ajaxUpload').hide();
@@ -294,9 +294,9 @@ var userAuthenticationView = Backbone.View.extend({
         e.preventDefault();
     },
     buildCertificationType: function (isValidate,res) {
-        var sVal = 'photo';
-        if(res.certificationType == '02'){
-            sVal = 'phone';
+        var sVal = 'identify';
+        if(res.certificationType == '04'){
+            sVal = 'identify';
         }
         else if(res.certificationType == '03'){
             sVal = 'creditCard';
@@ -320,7 +320,7 @@ var userAuthenticationView = Backbone.View.extend({
         var res = this.personAuthModel.get('result');
         res = res || {
                 bankCardNo: '',
-                certificationType: '01',
+                certificationType: '04',
                 mobile: '',
                 idcard: '',
                 name: '',
@@ -331,7 +331,7 @@ var userAuthenticationView = Backbone.View.extend({
         var isValidate = res.name ? true : false;
         this.buildCertificationType(isValidate,res);
         this.model = new personAuthModel();
-        this.model.set('certificationType','01');
+        this.model.set('certificationType','04');
         isValidate ? '' : $('#personForm').validate(this.personValidateConfig());
     },
     renderEnterprise: function () {

@@ -294,7 +294,7 @@ var userAuthenticationView = Backbone.View.extend({
         e.preventDefault();
     },
     buildCertificationType: function (isValidate,res) {
-        var sVal = 'identify';
+        var sVal = 'phone';
         if(res.certificationType == '04'){
             sVal = 'identify';
         }

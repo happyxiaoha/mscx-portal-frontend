@@ -1,33 +1,19 @@
-/**
- * Created by Kevin on 2016/12/7.
- */
-require('less/base.less');
-require('api/api.less');
-require('css/datePicker/daterangepicker-bs3.css');
-require('js/ajaxBackboneManger.js');
+import Vue from 'vue'
+import App from 'api/App'
+import router from 'api/router'
+import store from 'store'
+import ElementUI from 'element-ui'
+import 'assets/theme/reset.css'
+import 'assets/theme/index.css'
+import 'assets/less/base.less'
+  
+Vue.use(ElementUI)
 
-window.moment = require('moment');
-require('daterangepicker');
-
-var header = require('headerWidget/headerView.js');
-var footer = require('footerWidget/footerView.js');
-var router = require('api/router.js');
-
-$(function() {
-    new header({
-        id: 'api'
-    });
-    new footer();
-
-    mscxPage.appRouter = new router();
-    mscxPage.appRouter.on('route', function() {
-        $('html,body').animate({ scrollTop: '0' }, 100);
-
-        if(location.search){
-            this.detail(location.search.split('?')[1].split('\/')[1]);
-        }
-    })
-    Backbone.history.stop();
-    //Backbone.history.start({pushState: true,root: '/api/'});
-    Backbone.history.start();
-});
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router: router,
+  store: store,
+  template: '<App/>',
+  components: { App: App }
+})

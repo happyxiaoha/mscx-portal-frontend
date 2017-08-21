@@ -1,0 +1,96 @@
+<template>
+  <div class="api-ordered" v-loading="loading">
+    <table class="table usercenter-table">
+      <thead>
+        <tr>
+          <th width="15%">API名称</th>
+          <th width="30%">API描述</th>
+          <th width="20%">申请时间</th>
+          <th width="9%">收费类型</th>
+          <th width="9%">使用次数</th>
+          <th width="9%">剩余次数</th>
+          <th width="8%">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template v-if="apiList.length > 0">
+          <tr v-for="(item, index) in apiList">
+            <td><a target="_blank" :href="'api.html#detail/' + item.sourceId">{{ item.apiName || '-' }}</a></td>
+            <td>{{ item.apiDesc || '-' }}</td>
+            <td>{{ item.applyTime }}</td>
+            <td>{{ item.chargeType }}</td>
+            <td>{{ item.totalTime == -1 ? '不限': item.totalTime }}</td>
+            <td>{{ item.remainTime == -1 ? '不限': item.remainTime }}</td>
+            <td><a :href="'api.html#detail/' + item.sourceId">再次申请</a></td>
+          </tr>
+        </template>
+        <tr v-else>
+          <td colspan="7">暂无数据</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="page-wrapper" v-if="pageInfo.totalSize > 5">
+      <el-pagination
+        layout="prev, pager, next"
+        @current-change="jumpPage"
+        :current-page.sync="pageInfo.currentPage"
+        :page-size="5"
+        :total="pageInfo.totalSize">
+      </el-pagination>
+    </div>
+  </div>
+</template>
+<script>
+  import API from 'common/api'
+  export default {
+    data () {
+      return {        
+        loading: false,
+        apiList: {},
+        pageInfo: {
+          totalSize: 0
+        },
+        params: {
+          page: 1,
+          pageSize: 5,
+        }
+      }
+    },
+    watch: {
+      params: {
+        handler (val) {
+          this.queryApi()
+        },
+        deep: true
+      }
+    },
+    created () {
+      this.queryApi()
+    },
+    methods: {
+      queryApi () {
+        this.loading = true
+        this.apiList = []
+        API.Order.getSelfApiList(this.params).then((res) => {
+          this.loading = false
+          this.apiList = res.result.list
+          this.pageInfo = res.result.page
+        })
+      },
+      jumpPage (page) {
+        this.params.page = page
+      },
+    }
+  }
+</script>
+<style lang="less" scoped>
+  @import "../../../../assets/less/variables.less";
+  @import "../../../../assets/less/mixins.less";
+  .api-ordered {
+    .box-shadow();
+    box-sizing: border-box;
+    padding: 29px 25px;
+    background: #fff;
+  }
+</style>

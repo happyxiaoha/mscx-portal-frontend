@@ -1,13 +1,17 @@
-/**
- * Created by Kevin on 2017/2/20.
- */
+import Vue from 'vue'
+import App from 'message/App'
+import store from 'store'
+import ElementUI from 'element-ui'
+import 'assets/theme/reset.css'
+import 'assets/theme/index.css'
+import 'assets/less/base.less'
 
-var header = require('../widget/headerWidget/headerView.js');
-var footer = require('../widget/footerWidget/footerView.js');
-var messageView = require('../modules/message/messageView.js');
+Vue.use(ElementUI)
 
-$(function() {
-    new header();
-    new footer();
-    new messageView();
-});
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  store: store,
+  template: '<App/>',
+  components: { App: App }
+})

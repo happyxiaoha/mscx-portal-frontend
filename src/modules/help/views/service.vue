@@ -1,0 +1,287 @@
+<template>
+  <div>
+    <div class="title">帮助中心<i>&gt;</i><span>微应用使用</span></div>
+<ul class="main-native-area ser-help-menu">
+    <li><a href="javascript:;" data-src="serCall">1. 微应用申请</a></li>
+    <li><a href="javascript:;" data-src="serApply">2. 微应用发布规范</a></li>
+    <li><a href="javascript:;" data-src="serGet">3. 微应用接入流程</a></li>
+</ul>
+<ul class="api-help-con">
+    <li>
+        <h3 name="serCall" id="serCall">微应用申请</h3>
+        <p>简介：微应用申请指的是平台微应用资源的申请及支付过程</p>
+        <div>
+            <p>(一)有固定申请次数的情况</p>
+            <p>1.点击详细页面服务申请功能</p>
+            <img src="../images/serverHelp/ser_1.png">
+            <p>2.收费套餐：选择套餐、输入申请套餐数，接受服务协议</p>
+            <img src="../images/serverHelp/ser_2.png">
+            <p>3.免费套餐：接受服务协议</p>
+            <img src="../images/serverHelp/ser_3.png">
+            <p>4.收费套餐：如果只有一项资源可以点击立即支付完成申请</p>
+            <img src="../images/serverHelp/ser_4.png">
+            <p>5.收费套餐：如果支付过程中出现异常或者报错，用户可以在用户中心购物车中继续完成支付</p>
+            <img src="../images/serverHelp/ser_5.png">
+            <p>6.收费套餐：如果要选择多项资源可以加入购物车后统一支付完成申请</p>
+            <img src="../images/serverHelp/ser_6.png">
+        </div>
+        <div>
+            <p>(二)没有固定申请次数的情况</p>
+            <p>如果想对某项资源进行深度合作，可以点击线下洽谈申请，会有工作人员第一时间和您取得联系</p>
+            <img src="../images/serverHelp/ser_7.png">
+        </div>
+    </li>
+    <li>
+        <h3 name="serApply" id="serApply">微应用发布规范</h3>
+        <div>
+            <p>(一)  微应用H5样式规范</p>
+            <p>1.界面规范</p>
+            <p>微应用界面应体现H5界面风格，功能简约、颜色单一。如下示例：</p>
+            <img style="width: 431px;" src="../images/serverHelp/ser_8.png">
+            <p>上图分辨率:1366*608</p>
+
+            <p>2.适应性规范</p>
+            <p>微应用主要功能，如输入框、检索框、功能按钮等应可以随浏览器宽度自动适应。如下示例：</p>
+            <img style="width: 364px;" src="../images/serverHelp/ser_9.png">
+            <p>上图分辨率：495*495</p>
+
+            <p>3.颜色规范</p>
+            <p>背景颜色易采用灰色背景“ededed”</p>
+            <p>功能按钮颜色易采用绿色“1db5b6”</p>
+        </div>
+        <div>
+            <p>(二) 微应用发布功能</p>
+            <img src="../images/serverHelp/ser_10.png">
+            <p>上图为平台发布微应用功能界面，以下为部分字段解释</p>
+            <p>1.服务对象</p>
+            <p>>个人主要为天气预报查询等生活类应用</p>
+            <p>>企业主要为工商信息查询等企业经营类应用</p>
+            <p>>政府主要为精准招商等政务服务类应用</p>
+
+            <p>2.服务标识</p>
+            <p>微应用的英文展现标识，用于形成微应用平台地址</p>
+
+            <p>3.服务图标</p>
+            <p>用于展现门户的服务图标，贵阳数创易平台此服务图标像素要求为250*200</p>
+
+            <p>4.演示地址</p>
+            <p>用于展现微应用的界面演示，一般采用静态页面的形式展现测试数据及页面交互，开发者需要自行开发并部署形成演示地址</p>
+
+            <p>5.访问URL</p>
+            <p>微应用的主程序地址，用于体现主要功能，接入方将通过映射的方式获取此地址界面</p>
+
+            <p>6.是否收费</p>
+            <p>发布者通过此功能设定微应用收费规则</p>
+
+            <p>7.服务URL</p>
+            <p>此地址为收费功能监控地址，即收费功能地址。一项微应用可能有多项功能，比如查询图片验证码、发送短信等。只有配置此服务URL的功能，平台才会进行收费监控，进行计费</p>
+
+            <p>8.是否落地</p>
+            <p>发布者需要判断是否可以将接入方的调用数据及结果进行返回用于接入方数据落地，如果不可以要选择“否”，可以选择“是”</p>
+        </div>
+
+
+    </li>
+    <li>
+        <h3 name="serGet" id="serGet">微应用接入流程</h3>
+        <div>
+            <p>(一)接入步骤:</p>
+            <p>1.在页面申请微应用使用（参见申请流程）</p>
+            <p>2.微应用接入时，在用户后端携带密钥、微应用标识、用户信息（可选）请求微应用入口地址和鉴权 ticket</p>
+            <p>3.用户后台得到微应用地址和鉴权 ticket ，使用微应用地址和鉴权 ticket 组合做302跳转，进入微应用展示页面。</p>
+            <p>4.接入流程图如下</p>
+            <img src="../images/serverHelp/ser_11.png">
+
+            <p>(二)调用请求参数说明:</p>
+            <p>微应用访问地址可以是以下两种类型：</p>
+            <p>1>请求参数全在url后面</p>
+            <a href="http://service.areacode.com:48011/phone/getPhoneNo?ticket=dd2bd51337454156ba8a300ec350070d&userId=xuchaoj&user-data=201701091111111&authorization=dc:234567:MGEzMmJkNTk0NzkxMjM5YjJiNGM0OTk1ODY1ZmY4Mzg1ZmYxNjdhNw==">http://service.areacode.com:48011/phone/getPhoneNo?ticket=dd2bd51337454156ba8a300ec350070d&userId=xuchaoj&user-data=201701091111111&authorization=dc:234567:MGEzMmJkNTk0NzkxMjM5YjJiNGM0OTk1ODY1ZmY4Mzg1ZmYxNjdhNw==</a>
+            <p>2>请求参数都放在头header里,除了ticket</p>
+            <a href="http://service.areacode.com:48011/phone/getPhoneNo?ticket=dd2bd51337454156ba8a300ec350070d">http://service.areacode.com:48011/phone/getPhoneNo?ticket=dd2bd51337454156ba8a300ec350070d</a>
+            <p>其中，header里需放入以下字段:</p>
+            <code>userId="xuchaoj"</code>
+            <code>user-data="201701091111111"</code>
+            <code>authorization="dc:234567:MGEzMmJkNTk0NzkxMjM5YjJiNGM0OTk1ODY1ZmY4Mzg1ZmYxNjdhNw=="</code>
+            <code>user-param="放在url后面的业务参数"(如param1=a&param2=b)【可选】</code>
+
+            <p>(三) 微应用生成ticket接口说明</p>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="width: 30%;" class="bg-1">访问地址</td>
+                    <td colspan="5">生产环境：/getTicket</td>
+                </tr>
+                <tr>
+                    <td class="bg-1"></td>
+                    <td colspan="5">集成环境：http://mscx-gateway.springclould.cn:58080/gateway-web-1.8.0/getTicket</td>
+                </tr>
+                <tr>
+                    <td class="bg-1">请求方式</td>
+                    <td colspan="5">POST</td>
+                </tr>
+                <tr>
+                    <td class="bg-1">服务编码</td>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td class="bg-1">参数说明</td>
+                    <td class="bg-1" style="width: 10%;">序号</td>
+                    <td class="bg-1" style="width: 20%;">参数</td>
+                    <td class="bg-1" style="width: 10%;">数据类型</td>
+                    <td class="bg-1" style="width: 10%;">是否必填</td>
+                    <td class="bg-1" style="width: 20%;">参数说明</td>
+                </tr>
+                <tr>
+                    <td>输入参数</td>
+                    <td>1</td>
+                    <td>serviceUrl</td>
+                    <td>String</td>
+                    <td>Y</td>
+                    <td>微应用context</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>2</td>
+                    <td>userId</td>
+                    <td>String</td>
+                    <td>Y</td>
+                    <td>用户标识</td>
+                </tr>
+                <tr>
+                    <td>输出参数</td>
+                    <td colspan="5">返回Response，详见下方“输出参数Response值说明”</td>
+                </tr>
+                <tr>
+                    <td class="bg-1">备注</td>
+                    <td colspan="5">
+                        <p>请求报文报文：</p>
+                        <code>{
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"data" : [
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"serviceUrl" : "/phone/getPhoneNo",
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"userId":"000001000002330"
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]
+                            }
+                        </code>
+                        <p>响应报文：</p>
+                        <p>成功:</p>
+                        <p>http://微应用域名/serviceUrl?ticket=b2aff98b3c1b496cbad42b3a8d9a2b5b</p>
+                        <p>失败:</p>
+                        <p>http://404notfound</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="bg-1">
+                        <p style="text-align: center">返回值公共参数说明</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1" class="bg-1">
+                        <p style="text-align: center">序号</p>
+                    </td>
+                    <td colspan="2" class="bg-1">
+                        <p style="text-align: center">参数</p>
+                    </td>
+                    <td colspan="3" class="bg-1">
+                        <p style="text-align: center">参数说明</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        <p style="text-align: center">1</p>
+                    </td>
+                    <td colspan="2">
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        <p style="text-align: center">2</p>
+                    </td>
+                    <td colspan="2">
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        <p style="text-align: center">3</p>
+                    </td>
+                    <td colspan="2">
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        <p style="text-align: center">4</p>
+                    </td>
+                    <td colspan="2">
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="bg-1">
+                        <p style="text-align: center">返回码、返回信息说明</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1" class="bg-1">
+                        <p style="text-align: center">序号</p>
+                    </td>
+                    <td colspan="2" class="bg-1">
+                        <p style="text-align: center">返回码(code)</p>
+                    </td>
+                    <td colspan="3" class="bg-1">
+                        <p style="text-align: center">返回信息(message)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        <p style="text-align: center">1</p>
+                    </td>
+                    <td colspan="2">
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        <p style="text-align: center">2</p>
+                    </td>
+                    <td colspan="2">
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        <p style="text-align: center">3</p>
+                    </td>
+                    <td colspan="2">
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p>(四) 微应用回调</p>
+            <img src="../images/serverHelp/ser_12.png">
+            <p>微服务：根据返回的回调地址，进行业务处理结果的发送。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需要规范，回调的传送报文格式（在回调描述中描述，MK格式）</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;需要规范，回调之后的请求规范（在回调描述中描述，MK格式）</p>
+            <p>网关地址：http://gy-service.springcloud.cn:83/</p>
+        </div>
+    </li>
+</ul>
+  </div>
+</template>
+<script>
+  export default {
+
+  }
+</script>

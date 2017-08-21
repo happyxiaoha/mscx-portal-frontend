@@ -1,18 +1,17 @@
-/**
- * Created by Administrator on 2016/12/24.
- */
-require('less/base.less');
-require('contactUs/contactUs.less');
+import Vue from 'vue'
+import App from 'contactUs/App'
+import store from 'store'
+import ElementUI from 'element-ui'
+import 'assets/theme/reset.css'
+import 'assets/theme/index.css'
+import 'assets/less/base.less'
+  
+Vue.use(ElementUI)
 
-require('js/ajaxBackboneManger.js');
-
-var header = require('headerWidget/headerView.js');
-var footer = require('footerWidget/footerView.js');
-var contactUsView = require('contactUs/contactUsView.js');
-
-$(function() {
-    new header();
-    new footer();
-    new contactUsView();
-
-});
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  store: store,
+  template: '<App/>',
+  components: { App: App }
+})

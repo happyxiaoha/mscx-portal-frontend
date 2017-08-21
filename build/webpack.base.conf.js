@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require("path");
+var utils = require('./utils');
 var vueLoaderConfig = require('./vue-loader.conf')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var config = require('../config')
@@ -14,7 +15,7 @@ module.exports = {
     output: {
         path: resolve('./dist/'), //文件输出目录
         publicPath: '/',
-        filename: 'js/[name].[chunkhash:8].js'
+        filename: 'js/[name].[hash:8].js'
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
@@ -37,94 +38,102 @@ module.exports = {
             chunks: ["manifest", "vendor", "common", 'main'],
             chunksSortMode: 'dependency'
         }),
-        // new HtmlWebpackPlugin({
-        //     title: '登录',
-        //     filename: 'login.html',
-        //     template: 'src/ejs/login.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'login'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '注册',
-        //     filename: 'register.html',
-        //     template: 'src/ejs/register.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'register'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: 'API',
-        //     filename: 'api.html',
-        //     template: 'src/ejs/index.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'api'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '联系我们',
-        //     filename: 'contactUs.html',
-        //     template: 'src/ejs/index.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'contactUs'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '需求定制',
-        //     filename: 'demand.html',
-        //     template: 'src/ejs/index.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'demand'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '消息管理',
-        //     filename: 'message.html',
-        //     template: 'src/ejs/index.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'message'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '支付',
-        //     filename: 'pay.html',
-        //     template: 'src/ejs/index.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'pay'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: 'SaaS服务',
-        //     filename: 'saas.html',
-        //     template: 'src/ejs/index.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'saas'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '查询',
-        //     filename: 'search.html',
-        //     template: 'src/ejs/index.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'search'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '微应用',
-        //     filename: 'services.html',
-        //     template: 'src/ejs/index.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'services'],
-        //     chunksSortMode: 'dependency'
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: '用户中心',
-        //     filename: 'userInfo.html',
-        //     template: 'src/ejs/userInfo.ejs',
-        //     inject: true,
-        //     chunks: ["manifest", "vendor", "common", 'userInfo'],
-        //     chunksSortMode: 'dependency'
-        // })
+        new HtmlWebpackPlugin({
+            title: '登录',
+            filename: 'login.html',
+            template: 'src/ejs/login.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'login'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '注册',
+            filename: 'register.html',
+            template: 'src/ejs/register.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'register'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'API',
+            filename: 'api.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'api'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '联系我们',
+            filename: 'contactUs.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'contactUs'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '需求定制',
+            filename: 'demand.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'demand'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '消息管理',
+            filename: 'message.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'message'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '支付',
+            filename: 'pay.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'pay'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'SaaS服务',
+            filename: 'saas.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'saas'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '查询',
+            filename: 'search.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'search'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '微应用',
+            filename: 'services.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'services'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '用户中心',
+            filename: 'userInfo.html',
+            template: 'src/ejs/userInfo.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'userInfo'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '帮助中心',
+            filename: 'help.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'help'],
+            chunksSortMode: 'dependency'
+        }),
     ],
     module: {
         rules: [
@@ -142,6 +151,11 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: vueLoaderConfig
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: [resolve('src')]
             },
             {
                 test: /\.less$/,
@@ -165,26 +179,28 @@ module.exports = {
                 })
             },
             {
-                test: /\.(jpg|png|svg|gif)$/,
-                loader: "url-loader",
-                include: [resolve('src')],
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
                 options: {
-                    limit: 10000,
-                    name: 'images/[hash:8].[ext]'
+                  limit: 10000,
+                  name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                }
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                  limit: 10000,
+                  name: utils.assetsPath('media/[name].[hash:7].[ext]')
                 }
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'file-loader',
-                include: [resolve('src')],
+                loader: 'url-loader',
                 options: {
-                    limit: 10000
+                  limit: 10000,
+                  name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
-            },
-            {
-                test: /\.html$/,
-                include: [resolve('src')],
-                loader: 'html-loader'
             }
         ]
     },
@@ -193,6 +209,7 @@ module.exports = {
             'node_modules',
             resolve(''),
             resolve('src'),
+            resolve('src/components'),
             resolve('src/modules'),
             resolve('src/widget')
         ],

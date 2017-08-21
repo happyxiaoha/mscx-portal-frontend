@@ -22,9 +22,9 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8090,
     autoOpenBrowser: true,
-    assetsSubDirectory: '/',
+    assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
         '**/*.do': {
@@ -39,18 +39,18 @@ module.exports = {
     cssSourceMap: false
   },
   entry: {
-    // login: './src/js/login.js',
-    // register: './src/js/register.js',
-    // main: './src/js/main.js',      //首页
-    // sources: './src/js/sources.js',    //数据
-    // api: './src/js/api.js',
-    // services: './src/js/services.js',     //微服务
-    // demand: './src/js/demand.js',     //需求定制
-    // userInfo: './src/js/userInfo.js',    //用户中心
-    // pay: './src/js/pay.js',
-    // message: './src/js/message.js',
-    // search: './src/js/search.js',
-    // contactUs: './src/js/contactUs.js',
-    saas: './src/js/saas.js'
+    login: './src/js/login.js',
+    register: './src/js/register.js',
+    main: './src/js/main.js',      //首页
+    api: './src/js/api.js',
+    services: './src/js/services.js',     //微服务
+    demand: './src/js/demand.js',     //需求定制
+    userInfo: './src/js/userInfo.js',    //用户中心
+    pay: './src/js/pay.js',
+    message: './src/js/message.js',
+    search: './src/js/search.js',
+    contactUs: './src/js/contactUs.js',
+    saas: './src/js/saas.js',
+    help: './src/js/help.js'
   }
 }

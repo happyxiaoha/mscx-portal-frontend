@@ -1,22 +1,19 @@
-/**
- * Created by Kevin on 2016/12/7.
- */
+import Vue from 'vue'
+import App from 'pay/App'
+import router from 'pay/router'
+import store from 'store'
+import ElementUI from 'element-ui'
+import 'assets/theme/reset.css'
+import 'assets/theme/index.css'
+import 'assets/less/base.less'
+  
+Vue.use(ElementUI)
 
-var header = require('headerWidget/headerView.js');
-var footer = require('footerWidget/footerView.js');
-var router = require('pay/router.js');
-
-require('less/base.less');
-require('pay/pay.less');
-
-$(function() {
-    new header();
-    new footer();
-
-    mscxPage.appRouter = new router();
-    mscxPage.appRouter.on('route', function() {
-        $('html,body').animate({ scrollTop: '0' }, 100);
-    })
-    Backbone.history.stop();
-    Backbone.history.start();
-});
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router: router,
+  store: store,
+  template: '<App/>',
+  components: { App: App }
+})

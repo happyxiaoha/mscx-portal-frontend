@@ -1,8 +1,0 @@
-.left-list-wrap{width: 166px;text-align: center;}
-.left-list-wrap.bod{border: 1px solid #CCC;}
-.left-list-wrap .myinfo{height: 50px;font-size: 18px;color: #fff;line-height: 50px;background: #373d41;display: block;}
-.left-list-wrap ul li a{height: 44px;line-height: 44px;font-size: 14px;cursor: pointer;background: #fff;position: relative;display: block;}
-.left-list-wrap ul li a:last-child{border: 0;position: relative;}
-.left-list-wrap ul li a:hover{color: #00c4c3;}
-.left-list-wrap ul li a.active{color: #00c4c3;}
-.left-list-wrap ul li a.active:before{content: '';position: absolute;width: 5px;height: 44px;background: #00c4c3;left: 0;}

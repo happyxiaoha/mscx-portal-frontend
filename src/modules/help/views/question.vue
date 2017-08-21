@@ -1,0 +1,73 @@
+<template>
+  <div>
+    <div class="title">帮助中心<i>&gt;</i><span>常见问题</span></div>
+      <ul class="main-native-area common-help-menu">
+          <li><a href="javascript:;" data-src="account-h">1. 账户相关</a></li>
+          <li><a href="javascript:;" data-src="use-h">2. 使用相关</a></li>
+          <li><a href="javascript:;" data-src="message-h">3. 发票相关</a></li>
+          <li><a href="javascript:;" data-src="tech-h">4. 技术相关</a></li>
+      </ul>
+      <ul class="api-help-con">
+          <li>
+              <h3 name="account" id="account-h">账户相关</h3>
+              <div>
+                  <p>1.注册的方式有哪些？</p>
+                  <p>答：平台主要采用手机号码注册的方式进行注册，一个手机号只能注册一次。</p>
+                  <p style="margin-top: 40px;">2.如果密码忘记了，怎么办？</p>
+                  <p>答：通过平台找回密码进行找回。</p>
+                  <p style="margin-top: 40px;">3.账户为什么要进行实名认证？</p>
+                  <p>答：根据平台政策，只有实名认证用户才能使用、发布资源。</p>
+                  <p style="margin-top: 40px;">4.实名认证的方式有哪些？</p>
+                  <p>答：如果是个人实名认证，可以采用照片认证、手机号认证以及银行卡认证；如果是公司实名认证，填写公司信息后将由人工进行认证，认证周期一般是三个工作日。</p>
+              </div>
+          </li>
+          <li>
+              <h3 name="use-h" id="use-h">使用相关</h3>
+              <div>
+                  <p>1.如何查看APIKey和secretKey？</p>
+                  <p>答：实名认证后登录账号在用户中心-个人中心-用户基本信息中查询。</p>
+                  <p style="margin-top: 40px;">2.数据是否可以重复下载？</p>
+                  <p>答：如果已完成数据申请流程，数据可以进行重复下载。</p>
+                  <p style="margin-top: 40px;">3.API调用过程中报错，在哪儿查看报错码字典？</p>
+                  <p>答：在API详情页面有平台以及接口报错码字典查看。</p>
+                  <p style="margin-top: 40px;">4.支付方式有哪些？</p>
+                  <p>答：支付宝支付以及微信支付。</p>
+
+                  <p style="margin-top: 40px;">5.如何查询API使用的剩余次数？</p>
+                  <p>答：用户中心-我的API-申请(购买)的API查看剩余次数。</p>
+                  <p style="margin-top: 40px;">6.平台API采用什么调用方式？</p>
+                  <p>答：所有接口调用均采用HTTP远程调用方式，客户端调用并同步返回响应。</p>
+                  <p style="margin-top: 40px;">7.提供的查询接口，接口使用平台有哪些？</p>
+                  <p>答：这个是通用接口，web、android、ios等等都可以使用。</p>
+                  <p style="margin-top: 40px;">8.接口返回的数据是什么编码？</p>
+                  <p>答：API接口的编码为UTF-8。</p>
+              </div>
+          </li>
+          <li>
+              <h3 name="use-h" id="message-h">发票相关</h3>
+              <div>
+                  <p>1.1.购买资源后如何申请发票？</p>
+                  <p>答：在用户中心-我的账户-发票申请中完成发票申请操作，发票一般是在1到7个工作日寄出。</p>
+                  <p style="margin-top: 40px;">2.开发票需要提供什么资料？</p>
+                  <p>答：开票资料（公司名称，纳税人识别号，注册地址，电话，开户行，账号），邮寄资料（地址，收件人，手机）。</p>
+              </div>
+          </li>
+          <li>
+              <h3 name="use-h" id="tech-h">技术相关</h3>
+              <div>
+                  <p>1.代理服务性能指标如何？</p>
+                  <p>答：目前数创易平台处理性能稳定，还不存在严重时延。</p>
+                  <p style="margin-top: 40px;">2.服务数据安全性如何？</p>
+                  <p>答：服务数据信息只有创建服务的服务商和数创易平台管理人员可见，对服务数据严格权限控制。</p>
+                  <p style="margin-top: 40px;">3.APIKEY解决什么问题?</p>
+                  <p>答：APIKEY用于解决网络接口认证的安全问题。目前对用户的合法性验证。</p>
+              </div>
+          </li>
+      </ul>
+  </div>
+</template>
+<script>
+  export default {
+
+  }
+</script>

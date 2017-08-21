@@ -1,36 +1,19 @@
-/**
- * Created by Administrator on 2016/12/12.
- */
-require('less/base.less');
-require('saas/saas.less');
-require('css/datePicker/daterangepicker-bs3.css');
+import Vue from 'vue'
+import App from 'saas/App'
+import router from 'saas/router'
+import store from 'store'
+import ElementUI from 'element-ui'
+import 'assets/theme/reset.css'
+import 'assets/theme/index.css'
+import 'assets/less/base.less'
+  
+Vue.use(ElementUI)
 
-require('js/ajaxBackboneManger.js');
-window.moment = require('moment');
-require('daterangepicker');
-
-var header = require('headerWidget/headerView.js');
-var footer = require('footerWidget/footerView.js');
-
-var router = require('saas/router.js');
-
-$(function() {
-    var headerView = new header({
-        id: 'saas'
-    });
-    new footer();
-
-    headerView.addDidRender(function() {
-        mscxPage.appRouter = new router();
-
-        mscxPage.appRouter.on('route', function(res) {
-            $('html,body').animate({ scrollTop: '0' }, 100);
-            
-            if(location.search){
-                this.detailView(location.search.split('?')[1].split('\/')[1]);
-            }
-        })
-        Backbone.history.stop();
-        Backbone.history.start();
-    })
-});
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router: router,
+  store: store,
+  template: '<App/>',
+  components: { App: App }
+})

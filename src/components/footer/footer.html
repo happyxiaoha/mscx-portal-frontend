@@ -1,0 +1,46 @@
+<div class="footer indexfooter">
+    <div class="grid1190 clearfix">
+        <a href="index.html" class="block fl">
+            <img src="../../images/newicon/ic_newlogo_1.png" alt="logo">
+        </a>
+        <ul class="fl clearfix">
+            <li class="fl">
+                <% _.each(data.menuList, function (item) { %>
+                <a href="<%= item.url %>"><%= item.name %></a>
+                <%})%>
+            </li>
+            <li class="fl">
+                <a href="javascript:;">帮助</a>
+                <a href="contactUs.html" target="_blank">关于我们</a>
+                <a href="help.html#newHelp" target="_blank">新手指导</a>
+                <a href="help.html#apiHelp" target="_blank">API使用</a>
+                <a href="help.html#serHelp" target="_blank">微应用使用</a>
+                <a href="help.html#commonQue" target="_blank">常见问题</a>
+            </li>
+            <!--<li class="fl">
+                <a href="#">联系我们</a>
+                <a href="#">商务合作</a>
+                <a href="#">用户反馈</a>
+                <a href="#">合作伙伴</a>
+            </li>-->
+        </ul>
+        <div class="fl text-center righttext">
+            <p class="textinfo">关注官方微信</p>
+            <img class="er-code-img" src="../../images/qrcode.jpg" alt="二维码">
+        </div>
+        <div class="forhelp fl">
+            <div class="swhz">
+                <p>商务合作（工作日9:00-18:00）</p>
+                <p class="ft18 mt10">0851-82576999</p>
+            </div>
+            <div class="jisuzhichi">
+                <p>技术支持</p>
+                <p class="ft18 mt10">0851-82576999</p>
+            </div>
+            <div class="bro-support">支持浏览器：IE9以上及Chrome内核浏览器</div>
+        </div>
+    </div>
+    <div class="copyright">
+        ©版权所有 贵州数创易孵化运营有限公司 2017 黔ICP备17003880号
+    </div>
+</div>

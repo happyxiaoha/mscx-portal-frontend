@@ -1,0 +1,77 @@
+<template>
+  <div>
+    <div class="title">帮助中心<i>&gt;</i><span>常见问题</span></div>
+    <ul class="main-native-area new-help-menu">
+        <li><a href="javascript:;" data-src="register-n">1. 用户注册流程</a></li>
+        <li><a href="javascript:;" data-src="auth-n">2. 实名认证流程</a></li>
+        <li><a href="javascript:;" data-src="call-api-n">3. 购买API流程</a></li>
+        <li><a href="javascript:;" data-src="apply-api-n">4. 发布API流程</a></li>
+        <li><a href="javascript:;" data-src="apply-ser-n">5. 发布微应用流程</a></li>
+    </ul>
+    <ul class="api-help-con">
+        <li>
+            <h3 name="register-n" id="register-n">用户注册流程</h3>
+            <div>
+                <p>(一)点击注册</p>
+                <img src="../images/guidance/guidance1.png">
+                <p>(二)输入账号信息</p>
+                <img src="../images/guidance/guidance2.png">
+                <p>(三)完成注册登录系统</p>
+                <img src="../images/guidance/guidance3.png">
+            </div>
+        </li>
+        <li>
+            <h3 name="auth-n" id="auth-n">实名认证流程</h3>
+            <div>
+                <p>(一)个人实名认证</p>
+                <p>1.用户中心点击立刻认证</p>
+                <img src="../images/guidance/guidance4.png">
+
+                <p>2.选择个人，输入信息，认证方式有照片认证、手机认证和银行卡号认证</p>
+                <img src="../images/guidance/guidance5.png">
+                <p>(二)企业实名认证</p>
+                <p>1.选择企业，输入信息</p>
+                <img src="../images/guidance/guidance6.png">
+            </div>
+        </li>
+        <li>
+            <h3 name="call-api-n" id="call-api-n">购买API流程</h3>
+            <div>
+                <p>(一)点击API，选择数据API/工具API/模型API</p>
+                <img src="../images/guidance/guidance7.png">
+                <p>(二)进入详情后，点击申请</p>
+                <img src="../images/guidance/guidance8.png">
+                <p>(三)输入套餐信息，点击平台服务协议，点击立即支付</p>
+                <img src="../images/guidance/guidance9.png">
+                <p>(四)如果想针对此资源进行深度合作，可以点击线下洽谈申请</p>
+                <img src="../images/guidance/guidance10.png">
+                <p>(五)资源也可以加入购物车统一支付</p>
+                <img src="../images/guidance/guidance11.png">
+            </div>
+        </li>
+        <li>
+            <h3 name="apply-api-n" id="apply-api-n">发布API流程</h3>
+            <div>
+                <p>(一)用户完成实名认证后可以进行发布API操作，在用户中心-我的API点击发布API</p>
+                <img src="../images/guidance/guidance12.png">
+                <p>(二)填写发布信息，审核员审核过后会在门户API频道展现相关内容</p>
+                <img src="../images/guidance/guidance13.png">
+            </div>
+        </li>
+        <li>
+            <h3 name="apply-ser-n" id="apply-ser-n">发布微应用流程</h3>
+            <div>
+                <p>(一)用户完成实名认证后可以进行发布微应用操作，在用户中心-我的服务点击发布新服务</p>
+                <img src="../images/guidance/guidance14.png">
+                <p>(二)填写发布信息，审核员审核过后可以在门户微应用频道展现相关内容</p>
+                <img src="../images/guidance/guidance15.png">
+            </div>
+        </li>
+    </ul>
+  </div>
+</template>
+<script>
+  export default {
+
+  }
+</script>

@@ -1,203 +1,407 @@
 /**
- * Created by Kevin_gu on 2016/4/7.
+ * 用户中心模块的路由设置
  */
-var Routes =  Backbone.Router.extend({
-    routes: {
-        '':'defaultView',
-        'info': 'defaultView',
-        'user':'userView',
-        'userAuth':'userAuthView',
-        'userPassword':'userPasswordView',
-        'account': 'accountView',
-        'demand': 'apiDemandView',
-        'apiDemand': 'apiDemandView',
-        'serversDemand': 'serversDemandView',
-        'followDemand': 'followDemandView',
-        'acceptDemand': 'acceptDemandView',
-        'sources': 'sourcesView',
-        'api': 'apiView',
-        'myApi': 'myApiView',
-        'follow': 'followView',
-        'server': 'serverView',
-        'serverFollow': 'serverFollowView',
-        'serverApply': 'serverApplyView',
-        'order': 'orderView',
-        'sales': 'salesView',
-        'shop': 'shopView',
-        'recharge': 'rechargeView',
-        'saas': 'saasView',
-        'saasApply': 'saasApplyView',
-        'saasFollow': 'saasFollowView',
-        // 账户管理
-        'account': 'accountView',
-        'setPayPassword': 'setPayPasswordView',
-        'rechargeRecord': 'rechargeRecordView',
-        'consumeRecord': 'consumeRecordView',
-        'forgetPayPassword': 'forgetPayPasswordView',
-        'recharge/result/:order': 'accountView',
-        'invoice': 'invoiceView'
-    },
-    defaultView:function () {
-        var defaultView = require('userInfo/default/userInfoDefaultView.js');
-        mscxPage.views['defaultViewObj'] = new defaultView();
-    },
-    userView: function (id) {
-        var userView = require('userInfo/user/userView.js');
-        mscxPage.views['userViewObj'] = new userView();
-    },
-    userAuthView: function () {
-        var userAuthView = require('userInfo/user/userAuth.js');
-        mscxPage.views['userAuthViewObj'] = new userAuthView();
-    },
-    userPasswordView: function () {
-        var userPasswordView = require('userInfo/user/userPassword.js');
-        mscxPage.views['userPasswordViewObj'] = new userPasswordView();
-    },
-    accountView: function () {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['accountViewObj'] = new accountView();
-    },
-    demandView: function (id) {
-        var demandView = require('userInfo/demand/demandView.js');
-        mscxPage.views['demandViewObj'] = new demandView();
-    },
-    apiDemandView: function () {
-        var apiDemandView = require('userInfo/demand/demandApiView.js');
-        mscxPage.views['apiDemandViewObj'] = new apiDemandView();
-    },
-    serversDemandView: function (id) {
-        var serversDemandView = require('userInfo/demand/demandServersView.js');
-        mscxPage.views['serversDemandViewObj'] = new serversDemandView();
-    },
-    followDemandView: function () {
-        var followDemandView = require('userInfo/demand/demandFollowView.js');
-        mscxPage.views['followDemandViewObj'] = new followDemandView();
-    },
-    acceptDemandView: function () {
-        var acceptDemandView = require('userInfo/demand/demandAcceptView.js');
-        mscxPage.views['acceptDemandViewObj'] = new acceptDemandView();
-    },
-    sourcesView: function () {
-        var sourcesView = require('userInfo/sources/sourcesView.js');
-        mscxPage.views['sourcesViewObj'] = new sourcesView();
-    },
-    serverView: function () {
-        var serverView = require('userInfo/servers/serversView.js');
-        mscxPage.views['serverViewObj'] = new serverView();
-    },
-    serverFollowView: function () {
-        var serverFollowView = require('userInfo/servers/serversFollowView.js');
-        mscxPage.views['serverFollowViewObj'] = new serverFollowView();
-    },
-    serverApplyView: function () {
-        var serverApplyView = require('userInfo/servers/serversApplyView.js');
-        mscxPage.views['serverApplyViewObj'] = new serverApplyView();
-    },
-    apiView: function () {
-        var apiView = require('userInfo/api/apiView.js');
-        mscxPage.views['apiViewObj'] = new apiView();
-    },
-    myApiView: function () {
-        var myApiView = require('userInfo/api/myApiView.js');
-        mscxPage.views['myApiViewObj'] = new myApiView();
-    },
-    followView: function () {
-        var followView = require('userInfo/api/followView.js');
-        mscxPage.views['followViewObj'] = new followView();
-    },
-    orderView: function () {
-        var orderView = require('userInfo/orders/ordersView.js');
-        mscxPage.views['orderViewObj'] = new orderView();
-    },
-    salesView: function () {
-        var salesView = require('userInfo/orders/salesRecordView.js');
-        mscxPage.views['salesViewObj'] = new salesView();
-    },
-    shopView: function () {
-        var shopView = require('userInfo/orders/shopCarView.js');
-        mscxPage.views['shopViewObj'] = new shopView();
-    },
-    openPage: function(url) {
-        this.navigate(url,{trigger: true});
-    },
-    rechargeView: function () {
-        var rechargeView = require('userInfo/recharge/rechargeView.js');
-        mscxPage.views['rechargeViewObj'] = new rechargeView();
-    },
-    saasView: function() {
-        var saasView = require('userInfo/saas/saasView.js');
-        mscxPage.views['saasViewObj'] = new saasView();
-    },
-    saasApplyView: function() {
-        var saasView = require('userInfo/saas/applyView.js');
-        mscxPage.views['saasApplyViewObj'] = new saasView();
-    },
-    saasFollowView: function() {
-        var saasView = require('userInfo/saas/followView.js');
-        mscxPage.views['saasFollowViewObj'] = new saasView();
-    },
-    // 账户充值
-    accountView: function(order) {
-        var view = require('userInfo/account/accountView.js');
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import store from 'store'
+Vue.use(VueRouter)
 
-        mscxPage.views['accountView'] = new view({
-            id: 'recharge',
-            model: {
-                order: order
+var router = new VueRouter({
+  routes: [
+    {
+      path: '/',
+      component: function (reslove) {
+        return require(['./views/index'], reslove)
+      },
+      children: [
+        {
+          path: '',
+          name: 'userDefault',
+          component: function (reslove) {
+            return require(['./views/default'], reslove)
+          }
+        },
+        {
+          path: '/user',
+          component: function (reslove) {
+            return require(['./views/user/index'], reslove)
+          },
+          children: [
+            {
+              path: '',
+              name: 'centerBasic',
+              component: function (reslove) {
+                return require(['./views/user/basic'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'auth',
+              name: 'centerAuth',
+              component: function (reslove) {
+                return require(['./views/user/auth'], reslove)
+              },
+              meta: {
+                subIndex: 1
+              }
+            },
+            {
+              path: 'password',
+              name: 'centerPassword',
+              component: function (reslove) {
+                return require(['./views/user/password'], reslove)
+              },
+              meta: {
+                subIndex: 2
+              }
             }
-        });
-    },
-    // 支付密码设置
-    setPayPasswordView: function() {
-        var view = require('userInfo/account/accountView.js');
-
-        mscxPage.views['setPayPasswordViewObj'] = new view({
-            id: 'setPayPassword'
-        });
-    },
-    // 忘记密码
-    forgetPayPasswordView: function() {
-        var accountView = require('userInfo/account/accountView.js');
-        mscxPage.views['forgetPayPasswordViewObj'] = new accountView({
-            id: 'forgetPayPassword'
-        });
-    },
-    // 充值记录
-    rechargeRecordView: function() {
-        var view = require('userInfo/account/accountView.js');
-
-        mscxPage.views['rechargeRecordViewObj'] = new view({
-            id: 'rechargeRecord'
-        });
-    },
-    // 支出记录
-    consumeRecordView: function() {
-        var view = require('userInfo/account/accountView.js');
-
-        mscxPage.views['consumeRecordViewObj'] = new view({
-            id: 'consumeRecord'
-        });
-    },
-    // 发票申请
-    invoiceView: function() {
-        var view = require('userInfo/account/accountView.js');
-
-        mscxPage.views['invoiceViewObj'] = new view({
-            id: 'invoice'
-        });
-    },
-    execute: function(callback,args,name) {
-        if(mscxPage.userCenter){
-            mscxPage.userCenter.leftView.initialize(name);
+          ]
+        }, {
+          path: '/demand',
+          component: function (reslove) {
+            return require(['./views/demand/index'], reslove)
+          },
+          children: [
+            {
+              path: '',
+              name: 'demandApi',
+              component: function (reslove) {
+                return require(['./views/demand/api'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'service',
+              name: 'demandService',
+              component: function (reslove) {
+                return require(['./views/demand/service'], reslove)
+              },
+              meta: {
+                subIndex: 1
+              }
+            },
+            {
+              path: 'follow',
+              name: 'demandFollow',
+              component: function (reslove) {
+                return require(['./views/demand/follow'], reslove)
+              },
+              meta: {
+                subIndex: 2
+              }
+            },
+            {
+              path: 'accept',
+              name: 'demandAccept',
+              component: function (reslove) {
+                return require(['./views/demand/accept'], reslove)
+              },
+              meta: {
+                subIndex: 3
+              }
+            }
+          ]
+        }, {
+          path: '/api',
+          component: function (reslove) {
+            return require(['./views/api/index'], reslove)
+          },
+          children: [
+            {
+              path: '',
+              name: 'apiPublished',
+              component: function (reslove) {
+                return require(['./views/api/published'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'ordered',
+              name: 'apiOrdered',
+              component: function (reslove) {
+                return require(['./views/api/ordered'], reslove)
+              },
+              meta: {
+                subIndex: 1
+              }
+            },
+            {
+              path: 'follow',
+              name: 'apiFollow',
+              component: function (reslove) {
+                return require(['./views/api/follow'], reslove)
+              },
+              meta: {
+                subIndex: 2
+              }
+            }
+          ]
+        }, {
+          path: '/saas',
+          component: function (reslove) {
+            return require(['./views/saas/index'], reslove)
+          },
+          children: [
+            {
+              path: '',
+              name: 'saasPublished',
+              component: function (reslove) {
+                return require(['./views/saas/published'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'follow',
+              name: 'saasFollow',
+              component: function (reslove) {
+                return require(['./views/saas/follow'], reslove)
+              },
+              meta: {
+                subIndex: 1
+              }
+            },
+            {
+              path: 'record',
+              name: 'saasRecord',
+              component: function (reslove) {
+                return require(['./views/saas/record'], reslove)
+              },
+              meta: {
+                subIndex: 2
+              }
+            },
+          ]
+        }, {
+          path: '/service',
+          component: function (reslove) {
+            return require(['./views/service/index'], reslove)
+          },
+          children: [
+            {
+              path: '',
+              name: 'servicePublished',
+              component: function (reslove) {
+                return require(['./views/service/published'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'follow',
+              name: 'serviceFollow',
+              component: function (reslove) {
+                return require(['./views/service/follow'], reslove)
+              },
+              meta: {
+                subIndex: 1
+              }
+            },
+            {
+              path: 'record',
+              name: 'serviceRecord',
+              component: function (reslove) {
+                return require(['./views/service/record'], reslove)
+              },
+              meta: {
+                subIndex: 2
+              }
+            },
+          ]
+        }, {
+          path: '/point',
+          component: function (reslove) {
+            return require(['./views/point/index'], reslove)
+          },
+          children: [
+            {
+              path: '',
+              name: 'pointList',
+              component: function (reslove) {
+                return require(['./views/point/list'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'income',
+              name: 'pointIncome',
+              component: function (reslove) {
+                return require(['./views/point/income'], reslove)
+              },
+              meta: {
+                subIndex: 1
+              }
+            },
+            {
+              path: 'outlay',
+              name: 'pointOutlay',
+              component: function (reslove) {
+                return require(['./views/point/outlay'], reslove)
+              },
+              meta: {
+                subIndex: 2
+              }
+            },
+            {
+              path: 'rule',
+              name: 'pointRule',
+              component: function (reslove) {
+                return require(['./views/point/rule'], reslove)
+              },
+              meta: {
+                subIndex: 3
+              }
+            },
+            {
+              path: 'qa',
+              name: 'pointQA',
+              component: function (reslove) {
+                return require(['./views/point/qa'], reslove)
+              },
+              meta: {
+                subIndex: 4
+              }
+            },
+          ]
+        }, {
+          path: '/orders',
+          component: function (reslove) {
+            return require(['./views/orders/index'], reslove)
+          },
+          children: [
+            {
+              path: '',
+              name: 'shopcart',
+              component: function (reslove) {
+                return require(['./views/orders/shopcart'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'list',
+              name: 'orderList',
+              component: function (reslove) {
+                return require(['./views/orders/list'], reslove)
+              },
+              meta: {
+                subIndex: 1
+              }
+            },
+            {
+              path: 'sales',
+              name: 'orderSales',
+              component: function (reslove) {
+                return require(['./views/orders/sales'], reslove)
+              },
+              meta: {
+                subIndex: 2
+              }
+            }
+          ]
+        }, {
+          path: '/recharge',
+          name: 'recharge',
+          component: function (reslove) {
+            return require(['./views/recharge/index'], reslove)
+          }
+        }, {
+          path: '/account',
+          component: function (reslove) {
+            return require(['./views/account/index'], reslove)
+          },
+          children: [
+            {
+              path: '',
+              name: 'accountIndex',
+              component: function (reslove) {
+                return require(['./views/account/recharge'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'recharge/result/:orderNum',
+              name: 'rechargeResult',
+              component: function (reslove) {
+                return require(['./views/account/recharge'], reslove)
+              },
+              meta: {
+                subIndex: 0
+              }
+            },
+            {
+              path: 'setPayPassword',
+              name: 'accountPassword',
+              component: function (reslove) {
+                return require(['./views/account/setPayPassword'], reslove)
+              },
+              meta: {
+                subIndex: 1
+              }
+            },
+            {
+              path: 'rechargeRecord',
+              name: 'rechargeRecord',
+              component: function (reslove) {
+                return require(['./views/account/rechargeRecord'], reslove)
+              },
+              meta: {
+                subIndex: 2
+              }
+            },
+            {
+              path: 'consumeRecord',
+              name: 'consumeRecord',
+              component: function (reslove) {
+                return require(['./views/account/consumeRecord'], reslove)
+              },
+              meta: {
+                subIndex: 3
+              }
+            },
+            {
+              path: 'invoice',
+              name: 'accountInvoice',
+              component: function (reslove) {
+                return require(['./views/account/invoice'], reslove)
+              },
+              meta: {
+                subIndex: 4
+              }
+            }
+          ]
         }
-        if(mscxPage.views[name+'Obj']) {
-            mscxPage.views[name+'Obj'].initialize(args[0]);
-        }
-        else {
-            if (callback) callback.apply(this, args);
-        }
+      ]
+    },
+    {
+      path: '*', redirect: '/'
     }
-});
+  ]
+})
 
-module.exports = Routes;
+router.beforeEach(function (to, from, next) {
+  // console.log(store.getters.user)
+  // if(!store.getters.user.userId) {
+  //   location.href = 'login.html'
+  // }else {
+    next()
+  // }
+})
 
+router.afterEach(function (route) {
+})
+
+export default router

@@ -24,6 +24,26 @@ var router = new VueRouter({
           }
         },
         {
+          path: '/category-:category/',
+          name: 'servicesCategoryList',
+          component: function (reslove) {
+            return require(['./views/list'], reslove)
+          },
+          meta: {
+            index: 0
+          }
+        },
+        {
+          path: '/category-:category/tag-:tag',
+          name: 'servicesTagList',
+          component: function (reslove) {
+            return require(['./views/list'], reslove)
+          },
+          meta: {
+            index: 0
+          }
+        },
+        {
           path: '/detail/:id',
           name: 'detail',
           component: function (reslove) {

@@ -2,12 +2,12 @@
   <div class="selected-wrapper">
     <div class="top">
       <img src="../images/selected-saas-title.png">
-      <a href="#">更多</a>
+      <a href="saas.html">更多</a>
     </div>
     <div class="selected" v-loading="loading">
       <div class="selected-side">
-        <img src="../images/selected-saas-side.png">
-        <button>开始背调</button>
+        <img :src="marketTheme && marketTheme.imageUrl">
+        <button @click="jump">立即进入</button>
       </div>
       <div class="selected-content">
         <ul class="selected-ul">
@@ -18,8 +18,8 @@
               </div>
             </div>
             <div class="item-right">
-              <a href="#" class="title">{{item.name}}</a>
-              <p class="sub-title">一大段文字</p>
+              <a :href="'saas.html#detail/' + item.id" class="title">{{item.name}}</a>
+              <p class="sub-title">{{item.name}}</p>
             </div>
           </li>
         </ul>
@@ -35,17 +35,27 @@
         isApiActive: true,
         selectedApp: [],
         loading: true,
-        chargeIcon: ''
+        chargeIcon: '',
+        marketTheme: {}
       }
     },
     created () {
-      API.App.getSelectedApp().then((res) => {
+      API.Saas.getSelectedSaas().then((res) => {
         this.selectedApp = res.result
         this.loading = false
       })
+      API.Saas.getMarketingTheme().then((res) => {
+        this.marketTheme = res.result
+      })
     },
     methods: {
-      
+      jump () {
+        if(marketTheme.showRuleType === '2') {
+          location.href = marketTheme.browseUrl
+        }else {
+          location.href = 'saas.html' + marketTheme.categoryId ? '#category-' + marketTheme.categoryId : ''
+        }
+      }
     }
   }
 </script>
@@ -71,6 +81,10 @@
         vertical-align: top;
         padding-left: 20px;
         position: relative;
+        img {
+          width: 200px;
+          height: 380px;
+        }
         button {
           position: absolute;
           top: 300px;

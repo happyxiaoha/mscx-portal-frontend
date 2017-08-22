@@ -22,6 +22,15 @@ var apiAPI = {
       url : baseUrl + 'service/getSelectedApi.do',
     })
   },
+  // 首页-saas营销信息
+  getMarketingTheme: function (options) {
+    options = options || {};
+
+    return Axios({
+      method: 'GET',
+      url : baseUrl + 'getMarketingTheme.do'
+    })
+  },
   // 获取数据API列表
   getDataApi: function (options) {
     options = options || {};

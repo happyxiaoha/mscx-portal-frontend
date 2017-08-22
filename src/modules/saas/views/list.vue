@@ -1,6 +1,6 @@
 <template>
   <div class="content grid-l">
-    <c-filter type="saas" v-on:updateParams="updateParams"></c-filter>
+    <c-filter type="saas" :category="routeCategory" :tag="routeTag" v-on:updateParams="updateParams"></c-filter>
     <div class="app-list">
       <div class="search-banner">
         <h4>此条件下，共<span class="result-count">{{pageInfo.totalSize}}</span>个微应用</h4>
@@ -56,7 +56,9 @@
           categoryId: '',
           tagId: '',
           scope: ''
-        }
+        },
+        routeCategory: '',
+        routeTag: ''
       }
     },
     mounted () {
@@ -71,6 +73,14 @@
       }
     },
     created () {
+      if(this.$route.params.category) {
+        this.routeCategory = this.$route.params.category
+        this.params.categoryId = this.routeCategory
+      }
+      if(this.$route.params.tag) {
+        this.routeTag = this.$route.params.tag
+        this.params.tagId = this.routeTag
+      }
       this.filterList();
     },
     methods: {

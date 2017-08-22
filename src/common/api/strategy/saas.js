@@ -4,13 +4,31 @@ import _ from 'lodash'
 var baseUrl = 'ro/mscx-saas-api/'
 
 var saasAPI = {
-  // 首页-精选saas
+  // 首页-导航saas
   getNavigationApi: function (options) {
     options = options || {};
 
     return Axios({
       method: 'GET',
       url : baseUrl + 'service/getNavigationApi.do'
+    })
+  },
+  // 首页-精选saas
+  getSelectedSaas: function (options) {
+    options = options || {};
+
+    return Axios({
+      method: 'GET',
+      url : baseUrl + 'recommend/list.do'
+    })
+  },
+  // 首页-saas营销信息
+  getMarketingTheme: function (options) {
+    options = options || {};
+
+    return Axios({
+      method: 'GET',
+      url : baseUrl + 'getMarketingTheme.do'
     })
   },
   // 获取Saas套餐信息

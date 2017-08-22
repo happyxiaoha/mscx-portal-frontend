@@ -22,6 +22,15 @@ var appAPI = {
       url : baseUrl + 'recommend/list.do'
     })
   },
+  // 首页-saas营销信息
+  getMarketingTheme: function (options) {
+    options = options || {};
+
+    return Axios({
+      method: 'GET',
+      url : baseUrl + 'getMarketingTheme.do'
+    })
+  },
   // 列表页-查询微服务列表
   getAppList: function (options) {
     options = options || {};

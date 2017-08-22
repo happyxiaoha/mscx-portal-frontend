@@ -2,12 +2,12 @@
   <div class="selected-wrapper">
     <div class="top">
       <img src="../images/selected-app-title.png">
-      <a href="#">更多</a>
+      <a href="services.html">更多</a>
     </div>
     <div class="selected" v-loading="loading">
       <div class="selected-side">
-        <img src="../images/selected-app-side.png">
-        <button>点击进入</button>
+        <img :src="marketTheme && marketTheme.imageUrl">
+        <button @click="jump">点击进入</button>
       </div>
       <div class="selected-content">
         <ul class="selected-ul">
@@ -25,11 +25,11 @@
               </div>
               <ul class="rec-count">
                 <li>
-                  <h2>32</h2>
+                  <h2>{{item.applyCount}}</h2>
                   <span class="sub-title">申请量</span>
                 </li>
                 <li>
-                  <h2>32</h2>
+                  <h2>{{item.applyCount}}</h2>
                   <span class="sub-title">关注量</span>
                 </li>
                 <li>
@@ -52,7 +52,8 @@
         isApiActive: true,
         selectedApp: [],
         loading: true,
-        chargeIcon: ''
+        chargeIcon: '',
+        marketTheme: {}
       }
     },
     created () {
@@ -60,9 +61,18 @@
         this.selectedApp = res.result
         this.loading = false
       })
+      API.App.getMarketingTheme().then((res) => {
+        this.marketTheme = res.result
+      })
     },
     methods: {
-      
+      jump () {
+        if(marketTheme.showRuleType === '2') {
+          location.href = marketTheme.browseUrl
+        }else {
+          location.href = 'services.html' + marketTheme.categoryId ? '#category-' + marketTheme.categoryId : ''
+        }
+      }
     }
   }
 </script>
@@ -88,6 +98,10 @@
         vertical-align: top;
         padding-left: 20px;
         position: relative;
+        img {
+          width: 200px;
+          height: 440px;
+        }
         button {
           position: absolute;
           top: 330px;

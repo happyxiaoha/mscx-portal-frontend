@@ -85,7 +85,7 @@
   const SERVICE_TYPE = 'service'
   const SAAS_TYPE = 'saas'
   export default {
-    props: ['type'],
+    props: ['type', 'category', 'tag'],
     data: function () {
       return {
         loading: false,
@@ -240,6 +240,8 @@
             this.categoryList = category.result;
             this.tagsList = tags.result;
             this.loading = false;
+            this.handleDefaultCategory()
+            this.handleDefaultTag()
           }))
       },
       getToolApiBundle () {
@@ -250,6 +252,8 @@
             this.categoryList = category.result;
             this.tagsList = tags.result;
             this.loading = false;
+            this.handleDefaultCategory()
+            this.handleDefaultTag()
           }))
       },
       getModelApiBundle () {
@@ -260,6 +264,8 @@
             this.categoryList = category.result;
             this.tagsList = tags.result;
             this.loading = false;
+            this.handleDefaultCategory()
+            this.handleDefaultTag()
           }))
       },
       getServiceBundle () {
@@ -270,6 +276,8 @@
             this.categoryList = category.result;
             this.tagsList = tags.result;
             this.loading = false;
+            this.handleDefaultCategory()
+            this.handleDefaultTag()
           }))
       },
       getSaaSBundle () {
@@ -280,6 +288,8 @@
             this.categoryList = category.result;
             this.tagsList = tags.result;
             this.loading = false;
+            this.handleDefaultCategory()
+            this.handleDefaultTag()
           }))
       },
       chooseCategory (index) {
@@ -291,7 +301,31 @@
         index = typeof index === undefined ? -1 : index
         this.activeTagIndex = index
         this.tagId = index !== -1 ? this.tagsList[index].tagId : ''
-      }
+      },
+      handleDefaultCategory () {
+        let defaultCategoryIndex = -1
+        if(this.category) {
+          _.each(this.categoryList, (item, index) => {
+            if(item.categoryId == this.category)  {
+              defaultCategoryIndex = index
+              return
+            }
+          })
+          this.activeCateIndex = defaultCategoryIndex
+        }
+      },
+      handleDefaultTag () {
+        let defaultTagIndex = -1
+        if(this.tag) {
+          _.each(this.tagsList, (item, index) => {
+            if(item.tagId == this.tag)  {
+              defaultTagIndex = index
+              return
+            }
+          })
+          this.activeTagIndex = defaultTagIndex
+        }
+      },
     }
   }
 </script>

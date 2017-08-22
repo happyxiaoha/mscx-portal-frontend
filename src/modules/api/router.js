@@ -34,6 +34,26 @@ var router = new VueRouter({
           }
         },
         {
+          path: '/data/category-:category/',
+          name: 'dataApiCategoryList',
+          component: function (reslove) {
+            return require(['./views/list'], reslove)
+          },
+          meta: {
+            index: 0
+          }
+        },
+        {
+          path: '/data/category-:category/tag-:tag',
+          name: 'dataApiTagList',
+          component: function (reslove) {
+            return require(['./views/list'], reslove)
+          },
+          meta: {
+            index: 0
+          }
+        },
+        {
           path: '/tool',
           name: 'toolList',
           component: function (reslove) {
@@ -44,10 +64,50 @@ var router = new VueRouter({
           }
         },
         {
+          path: '/tool/category-:category/',
+          name: 'toolApiCategoryList',
+          component: function (reslove) {
+            return require(['./views/list'], reslove)
+          },
+          meta: {
+            index: 1
+          }
+        },
+        {
+          path: '/tool/category-:category/tag-:tag',
+          name: 'toolApiTagList',
+          component: function (reslove) {
+            return require(['./views/list'], reslove)
+          },
+          meta: {
+            index: 1
+          }
+        },
+        {
           path: '/model',
           name: 'modelList',
           component: function (reslove) {
             return require(['./views/modelList'], reslove)
+          },
+          meta: {
+            index: 2
+          }
+        },
+        {
+          path: '/model/category-:category/',
+          name: 'modelApiCategoryList',
+          component: function (reslove) {
+            return require(['./views/list'], reslove)
+          },
+          meta: {
+            index: 2
+          }
+        },
+        {
+          path: '/model/category-:category/tag-:tag',
+          name: 'modelApiTagList',
+          component: function (reslove) {
+            return require(['./views/list'], reslove)
           },
           meta: {
             index: 2

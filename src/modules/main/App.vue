@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <c-header active="index"></c-header>
+    <c-header active="index" @loaded="handleHeaderLoaded"></c-header>
     <div class="content grid-l">
       <el-row class="main-area">
         <el-col :span="5" class="navigator">
@@ -8,10 +8,12 @@
         </el-col>
         <el-col :span="14" class="center">
           <el-carousel :interval="banner.autoplaySpeed" height="366px" class="banner">
-              <el-carousel-item>
-                  <img src="../../assets/images/banner1.png">
+              <el-carousel-item v-for="item in banner.list">
+                <a :href="item.bannerUrl">
+                  <img :src="item.bigBannerPic">
+                </a>
               </el-carousel-item>
-              <el-carousel-item>
+              <!-- <el-carousel-item>
                   <img src="../../assets/images/banner2.png">
               </el-carousel-item>
               <el-carousel-item>
@@ -19,7 +21,7 @@
               </el-carousel-item>
               <el-carousel-item>
                   <img src="../../assets/images/banner4.png">
-              </el-carousel-item>
+              </el-carousel-item> -->
           </el-carousel>
           <c-recommand></c-recommand>
         </el-col>
@@ -42,39 +44,42 @@
           <div class="user-middle">
             <ul>
               <li class="api">
-                <a href="api.html#create">
+                <a href="javascript:;" @click="goPublishApi">
                   <span>发布API</span>
                 </a>
               </li>
               <li class="app">
-                <a href="services.html#create">
+                <a href="javascript:;" @click="goPublishService">
                   <span>发布微应用</span>
                 </a>
               </li>
               <li class="demand">
-                <a href="demand.html#api/create">
+                <a href="javascript:;" @click="goPublishDemand">
                   <span>发布需求</span>
                 </a>
               </li>
               <li class="saas">
-                <a href="saas.html#create">
+                <a href="javascript:;" @click="goPublishSaas">
                   <span>发布SaaS</span>
                 </a>
               </li>
               <li class="paas">
-                <a href="#">
+                <a href="javascript:;" @click="goPaas">
                   <span>进入PaaS</span>
                 </a>
               </li>
               <li class="data">
-                <a href="#">
+                <a href="javscript:;" @click="goEthink">
                   <span>数据可视化</span>
                 </a>
               </li>
             </ul>
           </div>
           <div class="user-bottom">
-            公告
+            <span class="notice-title">公告</span>
+            <ul class="notice-list">
+              <li v-for="item in noticeList">{{item.newestInfo}}</li>
+            </ul>
           </div>
           <!-- <div class="user-middle">
             <c-upload id="fileId">
@@ -97,7 +102,7 @@
           <p class="develop-title">API测试工具</p>
           <div class="develop-content">
             <p>神州数云为您提供在线API测试工具，在您申请 完API后，方可使用该工具。选择申请的接口，查看 参数信息，输入参数</p>
-            <button>点击查看</button>
+            <button @click="goApiTest">点击查看</button>
           </div>
         </div>
         <div class="develop-item">
@@ -105,7 +110,7 @@
           <p class="develop-title">数据可视化</p>
           <div class="develop-content">
             <p>数据可视化工具利用数据仓库、数据挖掘技术 对数据迚行系统的储存和管理，幵通过各种数据统 计分析工具迚行分析，提供各</p>
-            <button>点击查看</button>
+            <button @click="goEthink">点击查看</button>
           </div>
         </div>
         <div class="develop-item">
@@ -113,7 +118,7 @@
           <p class="develop-title">神州数云PaaS</p>
           <div class="develop-content">
             <p>神州数云PASS平台为您提供丰富的开发资源和 模板，包括测试资源申请、生产资源申请、环境配 置、测试功能、上线功能</p>
-            <button>点击查看</button>
+            <button @click="goPaas">点击查看</button>
           </div>
         </div>
       </div>
@@ -132,24 +137,36 @@
   import selectedApi from './components/selectedApi'
   import selectedApp from './components/selectedApp'
   import selectedSaas from './components/selectedSaas'
+  import API from 'common/api'
+  import Axios from 'axios'
+  const cityStation = require('common/json/cityStation.json')
   export default {
     data: function() {
       return {
         banner: {
-          autoplaySpeed: 3000
+          autoplaySpeed: 3000,
+          list: []
         },
-        barStyle: {}
+        barStyle: {},
+        noticeList: []
       }
     },
     computed: {
       user () {
         return this.$store.getters.user
+      },
+      city () {
+        return this.$store.getters.city
       }
     },
     mounted () {
       
     },
     created () {
+      // 获取公共
+      Axios.get('static_html/datainfo/c2_newestInfo/index.html').then((res) => {
+        this.noticeList = res
+      })
     },
     components: {
       'c-header': header,
@@ -163,7 +180,56 @@
       'c-side-nav': sideNav
     },
     methods: {
-      
+      goApiTest () {
+        location.href = 'http://mscx_apitest_utils.citysdk.cn/'
+      },
+      goPaas () {
+        if(this.user.userType && this.user.userType !== 'REGISTER') {
+          API.Common.jumpDevelop().then((res)=> {
+            location.href = res.result
+          })
+        }else {
+          location.href = 'userInfo.html#user/auth'
+        }
+      },
+      goEthink () {
+        API.Common.redirectToEthink().then((res) => {
+          location.href = res.result
+        })
+      },
+      goPublishApi () {
+        if(!this.user.userId) {
+          location.href = 'login.html' + '?service='+ encodeURIComponent('api.html#create')
+        }else {
+          location.href = 'api.html#create'
+        }
+      },
+      goPublishService () {
+        if(!this.user.userId) {
+          location.href = 'login.html' + '?service='+ encodeURIComponent('services.html#create')
+        }else {
+          location.href = 'services.html#create'
+        }
+      },
+      goPublishDemand () {
+        if(!this.user.userId) {
+          location.href = 'login.html' + '?service='+ encodeURIComponent('demand.html#api/create')
+        }else {
+          location.href = 'demand.html#api/create'
+        }
+      },
+      goPublishSaas () {
+        if(!this.user.userId) {
+          location.href = 'login.html' + '?service='+ encodeURIComponent('saas.html#create')
+        }else {
+          location.href = 'saas.html#create'
+        }
+      },
+      handleHeaderLoaded () {
+        Axios.get('static_html/datainfo/' + this.city.abbr + '_bannerpic/index.html?t='+new Date().getTime()).then((res) => {
+          this.banner.list = res
+        })
+      }
     }
   }
 </script>
@@ -187,6 +253,10 @@
         height: inherit;
         .banner {
           height: 366px;
+          img {
+            height: 366px;
+            width: 100%;
+          }
         }
       }
       .user {
@@ -259,6 +329,16 @@
         }
         .user-bottom {
           padding-top: 25px;
+          .notice-title {
+            background: url(./images/notice-icon.png) left center no-repeat;
+            padding: 25px;
+          }
+          .notice-list {
+            margin-top: 10px;
+            li {
+              line-height: 20px;
+            }
+          }
         }
       }
     }

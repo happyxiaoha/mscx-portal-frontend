@@ -44,7 +44,7 @@ var router = new VueRouter({
                 return require(['./views/user/auth'], reslove)
               },
               meta: {
-                subIndex: 1
+                subIndex: 2
               }
             },
             {
@@ -54,7 +54,7 @@ var router = new VueRouter({
                 return require(['./views/user/password'], reslove)
               },
               meta: {
-                subIndex: 2
+                subIndex: 1
               }
             }
           ]

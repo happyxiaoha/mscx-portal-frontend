@@ -296,8 +296,18 @@
       },
       chargeRuleList () {
         return this.$store.getters.chargeRuleList
+      },
+      user () {
+        return this.$store.getters.user
       }
     },
+    // beforeRouteEnter (to, from, next) {
+    //   next((vm) => {
+    //     if(!vm.user.userId) {
+    //       location.href = 'login.html'
+    //     }
+    //   })
+    // },
     watch: {
       form: {
         handler (val, oldVal) {

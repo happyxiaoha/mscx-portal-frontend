@@ -10,6 +10,7 @@ import Order from './strategy/order'
 import Point from './strategy/point'
 import Account from './strategy/account'
 import Message from './strategy/message'
+import Provider from './strategy/provider'
 
 var API = {
   Common,
@@ -23,7 +24,8 @@ var API = {
   Order,
   Point,
   Account,
-  Message
+  Message,
+  Provider
 };
 
 export default API;

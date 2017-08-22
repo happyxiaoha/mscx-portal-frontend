@@ -5,11 +5,11 @@
       <div :class="[activeTabIndex === 0 ? 'active' : '', 'center-item-tab']">
         <a href="#/user">用户基本信息</a>
       </div>
-      <div :class="[activeTabIndex === 1 ? 'active' : '', 'center-item-tab']" v-if="showAuth">
-        <a href="#/user/auth">实名认证</a>
-      </div>
-      <div :class="[activeTabIndex === 2 ? 'active' : '', 'center-item-tab']">
+      <div :class="[activeTabIndex === 1 ? 'active' : '', 'center-item-tab']">
         <a href="#/user/password">修改密码</a>
+      </div>
+      <div :class="[activeTabIndex === 2 ? 'active' : '', 'center-item-tab']" v-if="showAuth">
+        <a href="#/user/auth">实名认证</a>
       </div>
     </div>
     <div class="center-content">
@@ -48,9 +48,6 @@
       },
       showAuth () {
         return this.user.userType !== 'PARTNER_ORG' && this.user.userType !== 'PARTNER_GOV'
-      },
-      nextActiveIndex () {
-        return 
       }
     },
     watch: {

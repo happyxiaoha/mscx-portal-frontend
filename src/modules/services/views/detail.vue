@@ -100,7 +100,8 @@
         loadDemo: false,
         score: 0,
         scoreDisabled: false,
-        scoreErrorText: ''
+        scoreErrorText: '',
+        discountInfo: {}
       }
     },
     computed: {
@@ -127,6 +128,7 @@
     created () {
       this.appId = +this.$route.params.id
       this.getDetail()
+
     },
     methods: {
       handleScore () {
@@ -141,6 +143,14 @@
           setTimeout(() => {
             this.scoreErrorText = ''
           }, 1000)
+        })
+      },
+      getDiscountInfo () {
+        API.Provider.getDiscountInfo({
+          resourceId: this.appId,
+          resourceType: '03'
+        }).then((res) => {
+          this.discountInfo = res.result
         })
       },
       getDetail () {

@@ -24,7 +24,7 @@
               <span class="sub-title">关注量</span>
             </li>
             <li>
-              <h2 class="rate">{{item.score || '-'}}</h2>
+              <h2 class="rate">{{item.score}}</h2>
               <span class="sub-title">综合评分</span>
             </li>
           </ul>
@@ -63,6 +63,8 @@
   @import "../../../assets/less/mixins.less";
   .recommand {
     padding-top: 15px;
+    height: 130px;
+    box-sizing: border-box;
     .rec-item {
       padding-left: 3%;
       border-right: 1px solid #ccc;

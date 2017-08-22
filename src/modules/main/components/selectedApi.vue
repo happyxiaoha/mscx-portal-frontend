@@ -31,7 +31,7 @@
                   <span class="sub-title">关注量</span>
                 </li>
                 <li>
-                  <h2 class="rate">5.0</h2>
+                  <h2 class="rate">{{item.score}}</h2>
                   <span class="sub-title">综合评分</span>
                 </li>
               </ul>

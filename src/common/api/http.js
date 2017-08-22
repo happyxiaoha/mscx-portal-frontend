@@ -23,16 +23,15 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
   // loadingInstance.close();
   if (response.data.code === '500800') {
-    location.href = 'login.html';
+    var currentUrl = window.location.href;
+    location.href = 'login.html' + '?service='+ encodeURIComponent(currentUrl);;
+    return Promise.reject(response.data)
   // 全局错误信息的提示，建议各自页面处理，全局弹层提示错误体验不佳
   } else if (response.data.status === 'ERROR') {
-    // layer.alert(response.data.message, {icon: 2})
-    // MessageBox.alert(response.data.message, '提示', {
-    //   type: 'error'
-    // })
+    
     // 未授权的情况
     if (response.data.code === '600900' || response.data.code === '600910') {
-      location.href = 'login.html';
+      location.href = 'userInfo.html#user/auth';
     }
     return Promise.reject(response.data)
   }

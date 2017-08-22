@@ -2,7 +2,21 @@
   <div class="header">
     <div class="header-top">
       <el-row class="grid-l">
-        <el-col :span="5">hi，欢迎进入新型智慧城市OS！</el-col>
+        <el-col :span="5" class="area-picker">
+          <div @mouseenter="showCityStation" @mouseleave="hideCityStation">
+            <span>hi，欢迎进入新型智慧城市OS！</span>
+            <span class="down">
+              <span>【{{city && city.name || '全国' }}】</span>
+            </span>
+            <div id="city-station" v-show="cityStationVisiable">
+              <ul>
+                <li v-for="item in cityStation" :class="[city && city.code == item.code ? 'selected' : '']">
+                  <a @click="switchCity(item)" href="javascript:;">{{ item.name }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </el-col>
         <el-col :span="4" :offset="15" class="login-area">
           <div v-if="user.userId" class="user-drop" @mouseover="showDropdown" @mouseout="hideDropdown">
             {{user.name || user.account}}
@@ -30,7 +44,9 @@
     <div class="header-main">
       <el-row class="grid-l">
         <el-col :span="5">
-          <img src="./images/logo.png">
+          <a href="index.html">
+            <img src="./images/logo.png">
+          </a>
         </el-col>
         <el-col :span="13">
           <ul class="channel">
@@ -69,7 +85,7 @@
 <script>
   import API from 'common/api/index'
   import _ from 'lodash'
-  const cityStation = require('./cityStation.json')
+  const cityStation = require('common/json/cityStation.json')
   export default {
     props: ['active'],
     data () {
@@ -79,17 +95,34 @@
         hotWords: [],
         dropClass: 'drop-menu',
         dropHover: false,
-        searchTxt: ''
+        searchTxt: '',
+        cityStation: cityStation.cities,
+        cityStationVisiable: false
+      }
+    },
+    computed: {
+      city () {
+        return this.$store.getters.city
       }
     },
     created () {
+      // 城市判断
+      let city = _.find(cityStation.cities, function(item){
+        return item.url.indexOf(location.host) > -1;
+      }) || cityStation.cities[0];
+      this.$store.commit('setCity', city)
+
+      console.log(this.city.code, this.cityStation)
+
+      // 切换下areaCode
+      API.Common.switchCity({areaCode: this.city.code})
       // 获取用户信息
       API.Common.getLoginInfo().then((res) => {
         if(res.result) {
           this.user = res.result
           this.$store.commit('setUser', res.result)
-          this.$emit('loaded')
         }
+        this.$emit('loaded')
       })
       // 获取热搜词
       API.Dict.getHotWordList().then((res) => {
@@ -97,19 +130,6 @@
           this.hotWords = res.result
         }
       })
-      // 城市判断
-      let city = _.find(cityStation.cities, function(item){
-        return item.url.indexOf(location.host) > -1;
-      }) || cityStation.cities[0];
-      this.$store.commit('setCity', city)
-
-      // API.Common.switchCity(city).then((res) => {
-      //   if(res.status == 'OK') {
-      //       location.href = this.swicthUrl;
-      //   }else {
-      //       layer.msg('切换城市失败，请稍后再试');
-      //   }
-      // })
     },
     methods: {
       showDropdown () {
@@ -136,6 +156,20 @@
       clickSearch (val) {
         this.searchTxt = val
         this.search()
+      },
+      switchCity (city) {
+        API.Common.switchCity({areaCode: this.city.code}).then((res) => {
+          if(res.status == 'OK') {
+            location.href = city.url;
+          }
+        }).catch((res) => {
+        })
+      },
+      showCityStation () {
+        this.cityStationVisiable = true
+      },
+      hideCityStation () {
+        this.cityStationVisiable = false
       }
     }
   }
@@ -199,6 +233,41 @@
           text-align: center;
           color: #7b7b7b;
         }
+      }
+      /* 新增头部顶栏 */
+      .area-picker #city-station {
+        position: absolute;
+        border: solid 1px #eee;
+        background: #fff;
+        top: 35px;
+        left: 0;
+        z-index: 1001;
+        width: 300px;
+        padding: 0 10px;
+          /*-webkit-transition: opacity .3s ease-in-out;
+          -moz-transition: opacity .3s ease-in-out;
+          -o-transition: opacity .3s ease-in-out;
+          transition: opacity .3s ease-in-out;*/
+      }
+      .area-picker.active #city-station {
+          /*opacity: 1;*/
+          display: block;
+      }
+      .area-picker #city-station li {
+          width: 50px;
+          text-align: center;
+          float: left;
+          padding: 10px 10px;
+      }
+      .area-picker #city-station li a {
+          display: block;
+          height: 30px;
+          line-height: 30px;
+      }
+      .area-picker #city-station li a:hover, .area-picker #city-station li.selected a {
+          background: @mainBackground;
+          color: #fff;
+          border-radius: 10px;
       }
     }
     .header-main {

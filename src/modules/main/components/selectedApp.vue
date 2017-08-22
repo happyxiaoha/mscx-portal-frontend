@@ -15,7 +15,7 @@
             <a :href="'services.html#detail/' + item.id">
               <div class="rec-item-top">
                 <img :src="item.imageUri">
-                <a href="#">
+                <a :href="'services.html#detail/' + item.id">
                 </a>
               </div>
               <div class="rec-title">
@@ -29,11 +29,11 @@
                   <span class="sub-title">申请量</span>
                 </li>
                 <li>
-                  <h2>{{item.applyCount}}</h2>
+                  <h2>{{item.attentionCount}}</h2>
                   <span class="sub-title">关注量</span>
                 </li>
                 <li>
-                  <h2 class="rate">5.0</h2>
+                  <h2 class="rate">{{item.score}}</h2>
                   <span class="sub-title">综合评分</span>
                 </li>
               </ul>

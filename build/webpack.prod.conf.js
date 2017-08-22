@@ -61,27 +61,6 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../src/assets/images/apihelp'),
-        to: 'images/apihelp',
-        ignore: ['.*']
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../src/assets/images/guidance'),
-        to: 'images/guidance',
-        ignore: ['.*']
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../src/assets/images/servicehelp'),
-        to: 'images/servicehelp',
-        ignore: ['.*']
-      }
-    ]),
-    new CopyWebpackPlugin([
-      {
         from: path.resolve(__dirname, '../static')
       }
     ]),

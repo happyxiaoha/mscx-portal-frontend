@@ -11,6 +11,11 @@ var env = process.env.NODE_ENV === 'testing'
   ? 'testing'
   : config.build.env
 
+// add hot-reload related code to entry chunks
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+  baseWebpackConfig.entry[name] = ['babel-polyfill'].concat(baseWebpackConfig.entry[name])
+})
+
 var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   plugins: [

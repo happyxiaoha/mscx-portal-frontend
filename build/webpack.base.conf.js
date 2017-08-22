@@ -215,13 +215,8 @@ module.exports = {
         ],
         alias: {
             'vue$': 'vue/dist/vue.common.js',
-            // validate: resolve('src/lib/jquery.validate.js'),
-            // formAjax: resolve('src/lib/jquery.form.js'),
             util: resolve('src/lib/util.js'),
             showdown: resolve('src/lib/showdown.js')
-            // customValidate: resolve('src/lib/additional-methods.js'),
-            // moment: resolve('src/lib/datePicker/moment.js'),
-            // daterangepicker: resolve('src/lib/datePicker/daterangepicker.js')
         },
         extensions: ['.js', '.vue', '.less', '.json']
     }

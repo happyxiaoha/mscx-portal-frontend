@@ -5,7 +5,14 @@
       <div class="user-content-left">
         <div class="user-avatar">
           <div class="user-avatar-top">
-            <img src="../images/avatar.png">
+            <img class="avatar-image" v-if="user.headPortrait && user.headPortrait !== 'null' || avatarUri" :src="avatarUri || user.headPortrait">
+            <!-- <img src="../images/avatar.png" > -->
+            <c-upload v-else id="fileId" v-on:uploaded="handlePicSuccess" name="photo" :url="serviceIconUrl">
+              <el-upload slot="elUpload" id="serviceIcon" name="photo" :action="serviceIconUrl" :on-success="handlePicSuccess" :show-file-list="false">
+                <img v-if="avatarUri" :src="avatarUri" class="picture">
+                <i v-else class="el-icon-plus picture-uploader-icon"></i>
+              </el-upload>
+            </c-upload>
             <h1>{{user.account}}</h1>
             <p>{{authText}}</p>
           </div>
@@ -59,6 +66,7 @@
   import API from 'common/api'
   import header from 'components/header/header'
   import footer from 'components/footer/footer'
+  import upload from 'components/upload/upload'
   import _ from 'lodash'
   export default {
     data () {
@@ -66,7 +74,10 @@
         loadContent: false,
         activeIndex: -1,
         routeName: '',
-        displayRechargeMenu: false
+        displayRechargeMenu: false,
+        serviceIconUrl: API.UC.uploadAvatarUrl,
+        avatarUri: '',
+        avatarKey: ''
       }
     },
     watch: {
@@ -161,11 +172,25 @@
       },
       handleHeaderLoaded () {
         this.loadContent = true
+      },
+      handlePicSuccess (res) {
+        this.avatarUri = ''
+        this.avatarKey = ''
+        if(res.status === 'OK') {
+          this.avatarKey = res.result.imageId
+          this.avatarUri = res.result.imageUrl
+        }else {
+          this.$message({
+            message: res.message,
+            type: 'warning'
+          })
+        }
       }
     },
     components: {
       'c-header': header,
-      'c-footer': footer
+      'c-footer': footer,
+      'c-upload': upload,
     }
   }
 </script>
@@ -195,6 +220,33 @@
             box-sizing: border-box;
             h1 {
               margin-top: 20px;
+            }
+            .avatar-image {
+              width: 80px;
+              height: 80px;
+            }
+            .picture-uploader-icon {
+              font-size: 28px;
+              color: #8c939d;
+              width: 80px;
+              height: 80px;
+              line-height: 80px;
+              text-align: center;
+            }
+            .el-upload {
+              border: 1px dashed #d9d9d9;
+              border-radius: 6px;
+              cursor: pointer;
+              position: relative;
+              overflow: hidden;
+              &:hover {
+                border-color: #20a0ff;
+              }
+            }
+            .picture {
+              width: 80px;
+              height: 80px;
+              display: block;
             }
           }
           .user-avatar-bottom {

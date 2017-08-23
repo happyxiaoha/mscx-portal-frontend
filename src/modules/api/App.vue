@@ -7,6 +7,9 @@
       return {
         
       }
+    },
+    created () {
+      
     }
   }
 </script>

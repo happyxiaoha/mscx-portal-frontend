@@ -9,7 +9,7 @@
         <span v-if="isRegister">欢迎注册</span>
       </div>
       <div class="title">
-        <span v-if="isLogin" class="login-tip">神州数云首页</span>
+        <span v-if="isLogin" class="login-tip"><a href="index.html">神州数云首页</a></span>
         <span v-if="isRegister" class="register-tip">已有账号？<a href="login.html">请登录</a></span>
       </div>
     </div>
@@ -66,6 +66,9 @@
         border-radius: 15px;
       }
       .login-tip {
+        a {
+          color: #666;
+        }
         background: #f2f2f2;
       }
       .register-tip {

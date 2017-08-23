@@ -30,7 +30,7 @@
         get() {
           let style = {};
           let offset = 0;
-          let tabWidth = 125;
+          let tabWidth = 140;
 
           offset = tabWidth * this.activeTabIndex +  (this.activeTabIndex + 1) * 20 + 40;
 
@@ -69,7 +69,7 @@
     margin-bottom: 25px;
     .box-shadow();
     .tab-active-bar {
-      width: 125px;
+      width: 140px;
       transform: translateX(0);
       position: absolute;
       bottom: 0;
@@ -85,7 +85,7 @@
     }
     .center-item-tab {
       float: left;
-      width: 125px;
+      width: 140px;
       text-align: center;
       padding-left: 20px;
       &.active a {
@@ -93,6 +93,7 @@
       }
       a {
         color: #333;
+        font-size: 16px;
       }
     }
   }

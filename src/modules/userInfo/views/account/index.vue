@@ -124,6 +124,7 @@
       }
       a {
         color: #333;
+        font-size: 16px;
       }
     }
   }

@@ -112,8 +112,6 @@
       }) || cityStation.cities[0];
       this.$store.commit('setCity', city)
 
-      console.log(this.city.code, this.cityStation)
-
       // 切换下areaCode
       API.Common.switchCity({areaCode: this.city.code})
       // 获取用户信息

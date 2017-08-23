@@ -28,7 +28,8 @@
         <el-col :span="5" class="user">
           <div class="user-top">
             <div class="user-top-inner">
-              <img src="../../assets/images/avatar.png">
+              <img v-if="user.headPortrait && user.headPortrait !== 'null'" :src="user.headPortrait">
+              <img v-else src="../../assets/images/avatar.png">
               <div class="user-tip">
                 <p>欢迎来到神州数云</p>
                 <template v-if="user.userId">
@@ -77,9 +78,11 @@
           </div>
           <div class="user-bottom">
             <span class="notice-title">公告</span>
-            <ul class="notice-list">
-              <li v-for="item in noticeList">{{item.newestInfo}}</li>
-            </ul>
+            <div class="scroll-wrap">
+              <ul class="notice-list" id="noticeList" :style="{top}">
+                <li v-for="item in noticeList">{{item.newestInfo}}</li>
+              </ul>
+            </div>
           </div>
           <!-- <div class="user-middle">
             <c-upload id="fileId">
@@ -148,7 +151,8 @@
           list: []
         },
         barStyle: {},
-        noticeList: []
+        noticeList: [],
+        activeScrollIndex: 0
       }
     },
     computed: {
@@ -157,10 +161,19 @@
       },
       city () {
         return this.$store.getters.city
+      },
+      top () {
+        return - this.activeScrollIndex * 20 + 'px'
       }
     },
     mounted () {
-      
+      setInterval(() => {
+        if(this.activeScrollIndex < this.noticeList.length - 1) {
+          this.activeScrollIndex += 1
+        }else {
+          this.activeScrollIndex = 0
+        }
+      }, 1000)
     },
     created () {
       // 获取公共
@@ -331,10 +344,16 @@
           padding-top: 25px;
           .notice-title {
             background: url(./images/notice-icon.png) left center no-repeat;
-            padding: 25px;
+            padding-left: 25px;
+          }
+          .scroll-wrap {
+            margin-top: 10px;
+            height: 60px;
+            overflow: hidden;
           }
           .notice-list {
-            margin-top: 10px;
+            position: relative;
+            transition: top 0.5s;
             li {
               line-height: 20px;
             }

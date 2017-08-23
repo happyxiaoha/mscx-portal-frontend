@@ -125,6 +125,8 @@ var ucAPI = {
       data: _.pick(options, ['cartItemId', 'applyTimes'])
     })
   },
+  // 上传头像
+  uploadAvatarUrl: baseUrl + 'register/upload/headPortrait.do'
 }
 
 export default ucAPI;

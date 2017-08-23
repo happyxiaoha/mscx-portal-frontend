@@ -5,7 +5,7 @@
       <thead>
         <tr>
           <th>API名称</th>
-          <th>API描述</th>
+          <th width="40%">API描述</th>
           <th>申请次数</th>
           <th>状态</th>
           <th>操作</th>

@@ -1,13 +1,15 @@
 import Axios from '../http'
 import _ from 'lodash'
 
+var baseUrl = location.protocol + '//' + location.host + '/'
+
 var commonAPI = {
   getLoginInfo: function (options) {
     options = options || {};
 
     return Axios({
       method: 'GET',
-      url : 'briefInfo.do',
+      url : baseUrl + 'briefInfo.do',
       params: {
         t: +new Date()
       }
@@ -18,7 +20,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'home/switchCity.do',
+      url : baseUrl + 'home/switchCity.do',
       params: {
         t: +new Date(),
         areaCode: options.areaCode
@@ -30,7 +32,7 @@ var commonAPI = {
 
     return Axios({
       method: 'POST',
-      url : 'login.do',
+      url : baseUrl + 'login.do',
       data: _.pick(options, ['loginName', 'password', 'captcha'])
     })
   },
@@ -39,7 +41,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'logout.do'
+      url : baseUrl + 'logout.do'
     })
   },
   jumpDevelop: function(options) {
@@ -47,7 +49,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'developer/portal.do'
+      url : baseUrl + 'developer/portal.do'
     })
   },
   // 忘记密码-获取短信验证码
@@ -56,7 +58,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'forget/password/sms/send.do',
+      url : baseUrl + 'forget/password/sms/send.do',
       params: _.pick(options, ['mobile', 'captcha'])
     })
   },
@@ -66,7 +68,7 @@ var commonAPI = {
 
     return Axios({
       method: 'POST',
-      url : 'forget/password.do',
+      url : baseUrl + 'forget/password.do',
       data: _.pick(options, ['mobile', 'authCode', 'password', 'passwordConfirm'])
     })
   },
@@ -76,7 +78,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'register/sms/send.do',
+      url : baseUrl + 'register/sms/send.do',
       params: _.pick(options, ['mobile', 'captcha'])
     })
   },
@@ -86,7 +88,7 @@ var commonAPI = {
 
     return Axios({
       method: 'POST',
-      url : 'register.do',
+      url : baseUrl + 'register.do',
       data: _.pick(options, ['account', 'password', 'passwordConfirm', 'mobile', 'authCode'])
     })
   },
@@ -96,7 +98,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'home/recommendation.do'
+      url : baseUrl + 'home/recommendation.do'
     })
   },
   // 免费API下单
@@ -105,7 +107,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/freeApi/placeOrder.do',
+      url : baseUrl + 'order/freeApi/placeOrder.do',
       params: _.pick(options, ['apiId'])
     })
   },
@@ -115,7 +117,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/feeApi/placeOrder.do',
+      url : baseUrl + 'order/feeApi/placeOrder.do',
       params: _.pick(options, ['apiId', 'charRuleId', 'itemNum'])
     })
   },
@@ -125,7 +127,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/freeApp/placeOrder.do',
+      url : baseUrl + 'order/freeApp/placeOrder.do',
       params: _.pick(options, ['appId'])
     })
   },
@@ -135,7 +137,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/feeApp/placeOrder.do',
+      url : baseUrl + 'order/feeApp/placeOrder.do',
       params: _.pick(options, ['appId', 'charRuleId', 'itemNum'])
     })
   },
@@ -145,7 +147,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/freeSaaS/placeOrder.do',
+      url : baseUrl + 'order/freeSaaS/placeOrder.do',
       params: _.pick(options, ['appId'])
     })
   },
@@ -155,7 +157,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/feeSaaS/placeOrder.do',
+      url : baseUrl + 'order/feeSaaS/placeOrder.do',
       params: _.pick(options, ['appId', 'charRuleId', 'itemNum'])
     })
   },
@@ -165,7 +167,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/afterFeeSaaS/placeOrder.do',
+      url : baseUrl + 'order/afterFeeSaaS/placeOrder.do',
       params: _.pick(options, ['appId'])
     })
   },
@@ -175,7 +177,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/cart/placeOrder.do',
+      url : baseUrl + 'order/cart/placeOrder.do',
       params: _.pick(options, ['cartIds'])
     })
   },
@@ -185,7 +187,7 @@ var commonAPI = {
 
     return Axios({
       method: 'POST',
-      url : 'change/password.do',
+      url : baseUrl + 'change/password.do',
       data: _.pick(options, ['oldPassword', 'password', 'passwordConfirm'])
     })
   },
@@ -195,7 +197,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'personal/dashboard.do'
+      url : baseUrl + 'personal/dashboard.do'
     })
   },
   // 获取我申请的微应用
@@ -204,7 +206,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/getSelfWeiAppListWithCallback.do',
+      url : baseUrl + 'order/getSelfWeiAppListWithCallback.do',
       params: _.pick(options, ['pageSize', 'page'])
     })
   },
@@ -214,7 +216,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'order/getSaledOrderList.do',
+      url : baseUrl + 'order/getSaledOrderList.do',
       params: _.pick(options, ['pageSize', 'page'])
     })
   },
@@ -224,7 +226,7 @@ var commonAPI = {
 
     return Axios({
       method: 'POST',
-      url : 'forget/payPwd.do',
+      url : baseUrl + 'forget/payPwd.do',
       data: _.pick(options, ['password', 'passwordConfirm', 'authCode'])
     })
   },
@@ -234,7 +236,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'forget/payPwd/sms/send.do',
+      url : baseUrl + 'forget/payPwd/sms/send.do',
       params: _.pick(options, ['captcha'])
     })
   },
@@ -244,7 +246,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'static_html/datainfo/c2_indexInfo/index.html?v=' + new Date().getTime()
+      url : baseUrl + 'static_html/datainfo/c2_indexInfo/index.html?v=' + new Date().getTime()
     })
   },
   // 数据可视化接口
@@ -253,7 +255,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : 'ethink/redirectToEthink.do?action=1'
+      url : baseUrl + 'ethink/redirectToEthink.do?action=1'
     })
   },
 }

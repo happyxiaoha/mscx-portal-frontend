@@ -1,7 +1,7 @@
 import Axios from '../http'
 import _ from 'lodash'
 
-var baseUrl = 'ro/mscx-provider-api/'
+var baseUrl = location.protocol + '//' + location.host + '/ro/mscx-provider-api/'
 
 var apiAPI = {
   // 判断某个资源是否有折扣

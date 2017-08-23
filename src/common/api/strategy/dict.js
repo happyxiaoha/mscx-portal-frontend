@@ -1,7 +1,7 @@
 import Axios from '../http'
 import _ from 'lodash'
 
-var baseUrl = 'ro/mscx-dict-api/'
+var baseUrl = location.protocol + '//' + location.host + '/ro/mscx-dict-api/'
 
 var ucAPI = {
   // 头部-热搜关键词

@@ -1,7 +1,7 @@
 <template>
   <div class="content grid-l">
     <div class="pay-amount-block">
-      <h2>应付金额：<span class="pay-price">￥{{orderDetail.orderCash || 0}}</span>
+      <h2>应付金额：<span class="pay-price">￥{{orderDetail.orderCash}}</span>
       </h2>
     </div>
     <div class="pay-amount-block">
@@ -169,6 +169,8 @@
       var base = new Base64;
 
       this.orderInfo = orderInfo && JSON.parse(base.decode(orderInfo)) || {};
+
+      debugger
 
       Axios.all([this.getOrderDetail(), this.getAccountInfo(), this.getRemainingPoint(), this.getPointDeductionRule()])
         .then(Axios.spread((order, accountInfo, point, pointRule) => {

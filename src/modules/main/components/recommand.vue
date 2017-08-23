@@ -43,7 +43,8 @@
         loading: true,
         map: {
           '01': 'api.html',
-          '03': 'services.html'
+          '03': 'services.html',
+          '04': 'saas.html'
         }
       }
     },

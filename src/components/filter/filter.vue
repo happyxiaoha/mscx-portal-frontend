@@ -12,6 +12,7 @@
       <label>范围：</label>
       <div class="filter-content">
         <el-select v-model="province" class="range-select" placeholder="请选择">
+          <el-option key="" label="不限" value=""></el-option>
           <el-option
             v-for="item in provinceOptions"
             :key="item.code"
@@ -21,6 +22,7 @@
         </el-select>
         <span class="append-txt">省</span>
         <el-select v-model="city" class="range-select" placeholder="请选择">
+          <el-option key="" label="不限" value=""></el-option>
           <el-option
             v-for="item in cityOptions"
             :key="item.code"
@@ -30,6 +32,7 @@
         </el-select>
         <span class="append-txt">市</span>
         <el-select v-model="area" class="range-select" placeholder="请选择">
+          <el-option key="" label="不限" value=""></el-option>
           <el-option
             v-for="item in areaOptions"
             :key="item.code"
@@ -116,10 +119,10 @@
         this.area = ''
         let province = _.find(resource.provinces, (item) => {
             return item.code === val;
-        });
-        this.cityOptions = province.cities
+        }) || {};
+        this.cityOptions = province.cities || []
         this.$emit('updateParams', {
-          scope: province.name
+          scope: province.name || ''
         })
       },
       city (val, oldVal) {
@@ -127,10 +130,10 @@
         if(!val) return
         let city = _.find(this.cityOptions, (item) => {
             return item.code === val;
-        });
-        this.areaOptions = city.areas
+        }) || {};
+        this.areaOptions = city.areas || []
         this.$emit('updateParams', {
-          scope: city.name
+          scope: city.name || ''
         })
       },
       area (val, oldVal) {
@@ -139,7 +142,7 @@
             return item.code === val;
         });
         this.$emit('updateParams', {
-          scope: area.name
+          scope: area.name || ''
         })
       },
       checkedObject (val, oldVal) {

@@ -1,7 +1,7 @@
 import Axios from '../http'
 import _ from 'lodash'
 
-var baseUrl = 'ro/mscx-uc-api/'
+var baseUrl = location.protocol + '//' + location.host + '/ro/mscx-uc-api/'
 
 var ucAPI = {
   // 注册-验证用户名

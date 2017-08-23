@@ -1,7 +1,7 @@
 import Axios from '../http'
 import _ from 'lodash'
 
-var baseUrl = 'ro/mscx-requirement-api/'
+var baseUrl = location.protocol + '//' + location.host + '/ro/mscx-requirement-api/'
 
 var demandAPI = {
   // API需求列表页

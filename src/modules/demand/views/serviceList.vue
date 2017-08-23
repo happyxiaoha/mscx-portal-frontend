@@ -24,12 +24,12 @@
       <c-demand-item v-for="item in apiList" type="service" :itemObj="item" :key="item.id"></c-demand-item>
       <h4 v-if="apiList.length < 1">没有符合查询条件的数据</h4>
     </div>
-    <div class="page-wrapper" v-if="pageInfo.totalSize > 15">
+    <div class="page-wrapper" v-if="pageInfo.totalSize > 10">
       <el-pagination
         layout="prev, pager, next"
         @current-change="jumpPage"
         :current-page.sync="pageInfo.currentPage"
-        :page-size="15"
+        :page-size="10"
         :total="pageInfo.totalSize">
       </el-pagination>
     </div>
@@ -81,7 +81,7 @@
           beginTime: '',
           endTime: '',
           page: 1,
-          pageSize: 15
+          pageSize: 10
         }
       }
     },

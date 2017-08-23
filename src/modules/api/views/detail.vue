@@ -22,7 +22,7 @@
             <el-tooltip class="item" effect="dark" content="申请量" placement="top-end">
               <span class="api-apply">{{detail.applyCnt}}</span>
             </el-tooltip>
-            <el-tooltip class="item" effect="dark" content="关注量" placement="top-end">
+            <el-tooltip class="item" effect="dark" content="访问量" placement="top-end">
               <span class="api-view">{{detail.viewCnt}}</span>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" :content="detail.attentionFlag ? '点击取消关注' : '点击关注'" placement="top-end">

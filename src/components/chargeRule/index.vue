@@ -31,7 +31,7 @@
       </el-form-item>
       <el-form-item label="使用限制：" prop="monthLimit">
         <el-input-number v-model="form.monthLimit" :min="0" :max="10"></el-input-number>
-        <span>{{form.chargeType === '05' ? '次':limitTimeText}}</span>
+        <span>{{form.chargeType === '04' ? '次':limitTimeText}}</span>
         <span>(0为无限制)</span>
         <p class="charge-form-tip">      
           次数或者{{limitTimeText}}数是大于1的整数

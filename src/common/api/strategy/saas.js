@@ -1,7 +1,7 @@
 import Axios from '../http'
 import _ from 'lodash'
 
-var baseUrl = 'ro/mscx-saas-api/'
+var baseUrl = location.protocol + '//' + location.host + '/ro/mscx-saas-api/'
 
 var saasAPI = {
   // 首页-导航saas

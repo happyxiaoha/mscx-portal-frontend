@@ -1,7 +1,7 @@
 import Axios from '../http'
 import _ from 'lodash'
 
-var baseUrl = 'ro/mscx-message-api/'
+var baseUrl = location.protocol + '//' + location.host + '/ro/mscx-message-api/'
 
 var apiAPI = {
   // 提交留言反馈

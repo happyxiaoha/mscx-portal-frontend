@@ -60,16 +60,20 @@
               <img :src="item.resourceUrl">
               <p>{{ item.resourceName }}</p>
             </a>
+            <a v-else-if="item.resourceType == '04'" class="resources" :href="'saas.html#detail/' + item.resourceId">
+              <img :src="item.resourceUrl">
+              <p>{{ item.resourceName }}</p>
+            </a>
             <a v-else class="resources" style="width: 250px;text-align: center;display:inline-block;">
               <p>{{ item.resourceName }}</p>
             </a>
             <span class="price item-col">{{item.price}}元</span>
 
             <span v-if="item.resourceType == '01' || item.resourceType == '03'" class="count">
-              <el-input-number size="small" v-model="item.applyTimes" :min="1" :max="100" @change="handleTimesChange(item)"></el-input-number>
+              <el-input-number size="small" v-model="item.applyTimes" :min="1" :max="1000000" @change="handleTimesChange(item)"></el-input-number>
             </span>
             <span v-else class="count">
-              <el-input-number size="small" :disabled="true" v-model="item.applyTimes" :min="1" :max="100"></el-input-number>
+              <el-input-number size="small" :disabled="true" v-model="item.applyTimes" :min="1" :max="1000000"></el-input-number>
             </span>
             <span class="resourcestype item-col">
               {{item.resourceDetailType || (item.resourceType == '02' && '数据报告') || (item.resourceType == '03' && '微应用') || (item.resourceType == '04' && 'SaaS') }}</span>

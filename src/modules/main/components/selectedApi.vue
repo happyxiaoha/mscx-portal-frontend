@@ -75,11 +75,11 @@
     },
     methods: {
       jump () {
-        if(marketTheme.showRuleType === '2') {
-          location.href = marketTheme.browseUrl
+        if(this.marketTheme.showRuleType === '2') {
+          location.href = this.marketTheme.browseUrl
         }else {
           location.href = 'saas.html' + (this.apiTypeName ? '#' + this.apiTypeName + '/' : '') +
-          marketTheme.categoryId ? 'category-' + marketTheme.categoryId : ''
+          this.marketTheme.categoryId ? 'category-' + this.marketTheme.categoryId : ''
         }
       }
     }

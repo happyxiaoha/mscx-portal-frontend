@@ -67,10 +67,10 @@
     },
     methods: {
       jump () {
-        if(marketTheme.showRuleType === '2') {
-          location.href = marketTheme.browseUrl
+        if(this.marketTheme.showRuleType === '2') {
+          location.href = this.marketTheme.browseUrl
         }else {
-          location.href = 'services.html' + marketTheme.categoryId ? '#category-' + marketTheme.categoryId : ''
+          location.href = 'services.html' + this.marketTheme.categoryId ? '#category-' + this.marketTheme.categoryId : ''
         }
       }
     }

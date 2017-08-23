@@ -535,7 +535,7 @@
         this.$store.commit('removeChargeRule', index)
       },
       fillUpdateForm (detail) {
-        _.extend(this.form, _.pick(detail, ['scope', 'cname', 'name', 'description', 
+        _.extend(this.form, _.pick(detail, ['scope', 'cname', 'name', 'description', 'publishType',
           'imageUri', 'imageKey', 'categoryId', 'type', 'tags', 'rtnCode', 'chargeType']))
         
         let checkedTags = []

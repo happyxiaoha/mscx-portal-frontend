@@ -102,7 +102,8 @@
         },
         packageList: [],
         packageRadio: 0,
-        totalPrice: 0
+        totalPrice: 0,
+        discountInfo: {}
       }
     },
     created () {
@@ -114,6 +115,12 @@
           this.packageList.forEach((item) => {
             item.num = 1
           })
+        })
+      }
+      // API或APP，查询折扣信息
+      if(this.resourceType === '01' || this.resourceType === '03') {
+        this.getDiscountInfo(this.id).then((res) => {
+          this.discountInfo = res.result
         })
       }
     },

@@ -23,6 +23,12 @@
           charRuleId: options.charRuleId,
           itemNum: options.itemNum
         })
+      },
+      getDiscountInfo (id) {
+        return API.Provider.getDiscountInfo({
+          resourceId: id,
+          resourceType: '01'
+        })
       }
     }
   }

@@ -19,7 +19,7 @@
             <td>{{item.name}}</td>
             <td>{{item.price + '元/' + item.chargeCount + (item.chargeType === '05' ? '次' : limitTimeText)}}</td>
             <td>{{item.countLimit === '-1' ? '不限制' : '限制一次'}}</td>
-            <td>{{(item.monthLimit || item.invokeLimit) === 0 ? '不限制' : ((item.monthLimit || item.invokeLimit) + (item.chargeType === '05' ? '次' : limitTimeText))}}</td>
+            <td>{{(item.monthLimit || item.invokeLimit) === 0 ? '不限制' : ((item.monthLimit || item.invokeLimit) + (item.chargeType === '04' ? '次' : limitTimeText))}}</td>
             <td>{{item.effectDate && new Date(item.effectDate).format('yyyy-MM-dd')}}</td>
             <td>{{(item.expireDate || item.expiryDate) && new Date(item.expireDate || item.expiryDate).format('yyyy-MM-dd')}}</td>
             <td>

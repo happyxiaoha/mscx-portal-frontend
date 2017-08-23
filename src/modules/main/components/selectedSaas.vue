@@ -53,7 +53,9 @@
         if(this.marketTheme.showRuleType === '2') {
           location.href = this.marketTheme.browseUrl
         }else {
-          location.href = 'saas.html' + this.marketTheme.categoryId ? '#category-' + this.marketTheme.categoryId : ''
+          location.href = 'saas.html#' + 
+          (this.marketTheme.categoryId ? '/category-' + this.marketTheme.categoryId : '') + 
+          (this.marketTheme.tags ? '/tag-' + this.marketTheme.tags.split(',')[0] : '')
         }
       }
     }

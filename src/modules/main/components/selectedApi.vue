@@ -78,8 +78,9 @@
         if(this.marketTheme.showRuleType === '2') {
           location.href = this.marketTheme.browseUrl
         }else {
-          location.href = 'saas.html' + (this.apiTypeName ? '#' + this.apiTypeName + '/' : '') +
-          this.marketTheme.categoryId ? 'category-' + this.marketTheme.categoryId : ''
+          location.href = 'api.html' + (this.apiTypeName ? '#' + this.apiTypeName : '') +
+          (this.marketTheme.categoryId ? '/category-' + this.marketTheme.categoryId : '') + 
+          (this.marketTheme.tags ? '/tag-' + this.marketTheme.tags.split(',')[0] : '')
         }
       }
     }

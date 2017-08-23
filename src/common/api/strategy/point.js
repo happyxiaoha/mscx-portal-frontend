@@ -40,7 +40,8 @@ var apiAPI = {
 
     return Axios({
       method: 'GET',
-      url : baseUrl + 'point/getPointRuleList.do'
+      url : baseUrl + 'point/getPointRuleList.do',
+      params: _.pick(options, ['pageNum', 'pageSize'])
     })
   },
   getRemainingPoint: function (options) {

@@ -170,8 +170,6 @@
 
       this.orderInfo = orderInfo && JSON.parse(base.decode(orderInfo)) || {};
 
-      debugger
-
       Axios.all([this.getOrderDetail(), this.getAccountInfo(), this.getRemainingPoint(), this.getPointDeductionRule()])
         .then(Axios.spread((order, accountInfo, point, pointRule) => {
           this.orderDetail = order

@@ -68,7 +68,7 @@ var router = new VueRouter({
           path: '/tool/category-:category/',
           name: 'toolApiCategoryList',
           component: function (reslove) {
-            return require(['./views/list'], reslove)
+            return require(['./views/toolList'], reslove)
           },
           meta: {
             index: 1
@@ -78,7 +78,7 @@ var router = new VueRouter({
           path: '/tool/category-:category/tag-:tag',
           name: 'toolApiTagList',
           component: function (reslove) {
-            return require(['./views/list'], reslove)
+            return require(['./views/toolList'], reslove)
           },
           meta: {
             index: 1
@@ -98,7 +98,7 @@ var router = new VueRouter({
           path: '/model/category-:category/',
           name: 'modelApiCategoryList',
           component: function (reslove) {
-            return require(['./views/list'], reslove)
+            return require(['./views/modelList'], reslove)
           },
           meta: {
             index: 2
@@ -108,7 +108,7 @@ var router = new VueRouter({
           path: '/model/category-:category/tag-:tag',
           name: 'modelApiTagList',
           component: function (reslove) {
-            return require(['./views/list'], reslove)
+            return require(['./views/modelList'], reslove)
           },
           meta: {
             index: 2

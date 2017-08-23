@@ -7,6 +7,27 @@ var commonAPI = {
   getLoginInfo: function (options) {
     options = options || {};
 
+    
+    // return new Promise(function(resolve, reject) {
+
+    //   debugger
+    //   var xhr = new XMLHttpRequest();
+    //   xhr.open('GET', baseUrl + 'briefInfo.do', false);
+    //   xhr.send(null);
+    //   xhr.onreadystatechange = function () {
+    //     debugger
+    //     if(xhr.readyState==4 && xhr.status ==200) {
+    //       var res = JSON.parse(xhr.responseText);
+    //       if(res.status == 'OK') {
+    //         debugger
+    //         resolve(res)
+    //       }else {
+    //         reject()
+    //       }
+    //     }
+    //   }
+    // })
+    
     return Axios({
       method: 'GET',
       url : baseUrl + 'briefInfo.do',

@@ -307,13 +307,17 @@
         return this.$store.getters.user
       }
     },
-    // beforeRouteEnter (to, from, next) {
-    //   next((vm) => {
-    //     if(!vm.user.userId) {
-    //       location.href = 'login.html'
-    //     }
-    //   })
-    // },
+    beforeRouteEnter (to, from, next) {
+      API.Common.getLoginInfo().then((res) => {
+        if(!res.result) {
+          location.href = 'login.html'
+        }else if(res.result.userType === 'REGISTER') {
+          location.href = 'userInfo.html#user/auth'
+        }else {
+          next()
+        }
+      })
+    },
     watch: {
       form: {
         handler (val, oldVal) {

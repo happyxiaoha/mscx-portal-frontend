@@ -24,6 +24,7 @@
 <script>
   import header from 'components/header/header'
   import footer from 'components/footer/footer'
+  import API from 'common/api'
   export default {
     data: function() {
       return {

@@ -122,6 +122,7 @@
         }
         this.$emit('loaded')
       })
+      
       // 获取热搜词
       API.Dict.getHotWordList().then((res) => {
         if(res.status == 'OK') {

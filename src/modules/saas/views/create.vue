@@ -355,6 +355,17 @@
         return this.$store.getters.chargeRuleList
       }
     },
+    beforeRouteEnter (to, from, next) {
+      API.Common.getLoginInfo().then((res) => {
+        if(!res.result) {
+          location.href = 'login.html'
+        }else if(res.result.userType === 'REGISTER') {
+          location.href = 'userInfo.html#user/auth'
+        }else {
+          next()
+        }
+      })
+    },
     created () {
       this.updateSaasId = this.$route.params.id
       // 如果有updateSaasId，则进入修改模式

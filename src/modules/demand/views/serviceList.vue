@@ -2,7 +2,7 @@
   <div class="content grid-l">
     <div class="demand-api-banner">
       <img src="../images/demand-service-banner.png">
-      <button class="btn-publish">发布任务</button>
+      <button class="btn-publish" @click="goPublish">发布任务</button>
     </div>
     <div class="demand-api-condition">
       <h3>服务开发需求</h3>
@@ -100,6 +100,9 @@
       this.filterList();
     },
     methods: {
+      goPublish () {
+        location.href = '#service/create'
+      },
       filterList () {
         this.loading = true
         this.apiList = []

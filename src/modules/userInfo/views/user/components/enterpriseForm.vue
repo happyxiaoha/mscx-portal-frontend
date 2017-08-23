@@ -208,7 +208,6 @@
     },
     created () {
       _.extend(this.enterpriseForm, this.model)
-      console.log(this.enterpriseForm, this.model)
     },
     computed: {
       user () {

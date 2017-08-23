@@ -14,7 +14,10 @@
               </el-upload>
             </c-upload>
             <h1>{{user.account}}</h1>
-            <p>{{authText}}</p>
+            <p>
+              <a href="#user/auth" v-if="authText === '立刻认证'">{{authText}}</a>
+              <span v-else>{{authText}}</span>
+            </p>
           </div>
           <div class="user-avatar-bottom">
             <div class="user-message">

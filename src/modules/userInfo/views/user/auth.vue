@@ -129,6 +129,7 @@
           this.loadEnterpriseForm = true
         }else {
           this.getPersonAuth()
+          this.loadEnterpriseForm = true
         }
       })
     },

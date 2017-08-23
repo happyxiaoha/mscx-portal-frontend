@@ -27,6 +27,13 @@
         activeTabIndex: 0
       }
     },
+    beforeRouteEnter (to, from, next) {
+      next((vm) => {
+        if(vm.user.userType === 'REGISTER') {
+          vm.$router.push({name: 'centerAuth'})
+        }
+      })
+    },
     computed: {
       barStyle: {
         cache: false,

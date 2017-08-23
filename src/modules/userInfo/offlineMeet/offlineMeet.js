@@ -6,7 +6,7 @@ var offlineTemplate = require('./offlineMeet.html');
 require('util');
 
 var offlineModel = Backbone.Model.extend({
-    url: mscxPage.request.order + 'service/getOfflineMeetByUserId.do'
+    url: mscxPage.request.contract + 'service/getOfflineMeetByUserId.do'
 });
 
 

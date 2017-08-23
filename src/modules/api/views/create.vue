@@ -54,6 +54,11 @@
           <el-checkbox :label="item.dictCode" v-for="item in serviceObjectArr" :key="item.dictCode">{{item.dictName}}</el-checkbox>
         </el-checkbox-group>
       </el-form-item>
+      <el-form-item label="资源类型：" prop="publishType">
+        <el-radio class="radio" v-model="form.publishType" label="01">完全公开</el-radio>
+        <el-radio class="radio" v-model="form.publishType" label="02">展示但不能申请</el-radio>
+        <el-radio class="radio" v-model="form.publishType" label="03">不展示</el-radio>
+      </el-form-item>
       <el-form-item label="是否收费：" prop="chargeType">
         <el-radio class="radio" v-model="form.chargeType" label="01">免费</el-radio>
         <el-radio class="radio" v-model="form.chargeType" label="02">收费</el-radio>
@@ -175,7 +180,8 @@
           type: '',
           tags: '',
           rtnCode: '',
-          chargeType: '01'
+          chargeType: '01',
+          publishType: '01'
         },
         rawCategoryId: '',
         imageError: '',

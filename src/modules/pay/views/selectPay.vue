@@ -19,7 +19,7 @@
             <input type="radio" v-model="payType" name="type" value="account">
             <div class="account-balance">
               <h3>账户支付</h3>
-              <span>（余额<span class="pay-price">{{ accountInfo.account_balance }}</span>元）</span>
+              <span style="font-size:12px;">（余额<span class="pay-price">{{ accountInfo.account_balance }}</span>元）</span>
             </div>
           </label>
         </template>
@@ -47,7 +47,15 @@
             <p class="point-rule">
               <span class="mr10">{{ point.remainingPoint }}积分</span>
               本次最多使用<span class="pay-price">{{ point && Math.floor(point.remainingPoint/10)*10 }}</span>积分
-              <i></i>
+              <el-tooltip class="item" effect="dark" placement="right">
+                <div slot="content">
+                  <span class="pay-price">{{pointRule.deductionPoint}}</span>积分=
+                  <span class="pay-price">{{ pointRule.deductionMoney }}</span>元
+                  <br/>
+                  每次使用的积分必须为10的整倍数
+                </div>
+                <i></i>
+              </el-tooltip>
             </p>
           </li>
           <li>
@@ -123,7 +131,8 @@
         // 积分抵用金额
         pointAmount: 0,
         payBalance: 0,
-        inputPointError: ''
+        inputPointError: '',
+        pointTips: ''
       }
     },
     computed: {

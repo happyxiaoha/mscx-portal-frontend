@@ -66,10 +66,10 @@
   export default {
     data () {
       return {
-        cash: '',
-        focusApi: '',
-        focusApp: '',
-        applyApi: '',
+        cash: 0,
+        focusApi: 0,
+        focusApp: 0,
+        applyApi: 0,
         applyList: '',
         focusList: ''
       }

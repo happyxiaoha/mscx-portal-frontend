@@ -31,11 +31,21 @@
                       {{item.chargeCount || 0}}
                       {{resourceType === '01' ? (item.chargeType === '04' ? '月' : '次') : (item.chargeType === '04' || item.chargeType === '06' ? '天' : '次')}}
                   </td>
-                  <td>{{item.price}}</td>
+                  <td>
+                    <template v-if="discountInfo">
+                      <el-tooltip class="item" content="折扣价" effect="dark" placement="top">
+                        <span class="pay-price">{{discountInfo}}</span>
+                      </el-tooltip>
+                      <span class="disabled-price">{{item.rawPrice}}</span>
+                    </template>
+                    <span v-else>
+                      {{item.price}}
+                    </span>
+                  </td>
                   <td>
                     <input type="number" @input="typeNum($event)" class="number" min="1" value="1">
                   </td>
-                  <td class="total">{{item.price}}</td>
+                  <td class="total">{{(item.price * item.num).toFixed(2)}}</td>
               </tr>
             </tbody>
         </table>
@@ -103,7 +113,7 @@
         packageList: [],
         packageRadio: 0,
         totalPrice: 0,
-        discountInfo: {}
+        discountInfo: ''
       }
     },
     created () {
@@ -115,12 +125,19 @@
           this.packageList.forEach((item) => {
             item.num = 1
           })
-        })
-      }
-      // API或APP，查询折扣信息
-      if(this.resourceType === '01' || this.resourceType === '03') {
-        this.getDiscountInfo(this.id).then((res) => {
-          this.discountInfo = res.result
+          // API或APP，查询折扣信息
+          if(this.resourceType === '01' || this.resourceType === '03') {
+            this.getDiscountInfo(this.id).then((res) => {
+              this.discountInfo = res.result
+              if(this.discountInfo) {
+                this.packageList.forEach((item) => {
+                  item.rawPrice = item.price
+                  item.price = this.discountInfo
+                })
+                this.totalPrice = this.packageList[this.packageRadio].price
+              }
+            })
+          }
         })
       }
     },
@@ -345,6 +362,7 @@
   }
 </script>
 <style lang="less">
+  @import "../../assets/less/variables.less";
   .package-dialog {
     width: 530px;
     position: relative;
@@ -364,6 +382,15 @@
       float: right;
       display: block;
       margin-left: 15px;
+    }
+    .pay-price {
+      color: @priceTextColor;
+    }
+    .disabled-price {
+      text-decoration:line-through;
+      color: #aaa;
+      font-size: 12px;
+      margin-left: 5px;
     }
     .package-price-total {
       float: right;

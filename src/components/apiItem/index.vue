@@ -1,26 +1,34 @@
 <template>
   <div :class="[className, colClass]">
     <div class="api-top">
-      <a :href="'api.html#/detail/' + (itemObj.apiServiceId || itemObj.sourceId)">
-        <div class="api-icon">
-          <img :src="itemObj.iconUrl || itemObj.logoUrl">
+      <a :href="'api.html#/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">
+        <div :class="['api-icon', apiItem.disocunt ? 'discount' : '']">
+          <img :src="apiItem.iconUrl || apiItem.logoUrl">
         </div>
       </a>
     </div>
     <div class="api-middle">
       <h4>
-        <a :href="'api.html#/detail/' + (itemObj.apiServiceId || itemObj.sourceId)">{{itemObj.apiServiceName || itemObj.apiName}}</a>
+        <a :href="'api.html#/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">{{apiItem.apiServiceName || apiItem.apiName}}</a>
       </h4>
       <div class="api-sub-text">智慧神州</div>
       <div class="api-count">
-        <span class="api-apply">{{itemObj.applyCnt || 0}}</span>
-        <span class="api-view">{{itemObj.viewCnt || 0}}</span>
+        <span class="api-apply">{{apiItem.applyCnt || 0}}</span>
+        <span class="api-view">{{apiItem.viewCnt || 0}}</span>
       </div>
     </div>
     <div class="api-bottom">
       <img src="./images/api-charge-icon.png">
-      <span v-if="itemObj.sourceId" class="api-pirce">{{itemObj.chargeType}}</span>
-      <span v-else :class="[itemObj.chargeType !== '01' ? 'api-pirce' : '']">{{itemObj.price ? '¥' + itemObj.price + '/' + itemObj.chargeCount + '次' : itemObj.chargeTypeDesc}}</span>
+      <span v-if="apiItem.sourceId" class="api-pirce">{{apiItem.chargeType}}</span>
+      <span v-else :class="[apiItem.chargeType !== '01' ? 'api-pirce' : '']">
+        <template v-if="itemObj.disocunt">
+          ¥{{apiItem.price}}
+          <span class="disabled-price">{{apiItem.rawPrice}}</span>/{{apiItem.chargeCount}}次
+        </template>
+        <template v-else>
+          {{apiItem.price ? '¥' + apiItem.price + '/' + apiItem.chargeCount + '次' : apiItem.chargeTypeDesc}}
+        </template>
+      </span>
     </div>
   </div>
 </template>
@@ -29,8 +37,8 @@
     props: ["itemObj", "cols"],
     data: function () {
       return {
-        className: 'api-item'
-        
+        className: 'api-item',
+        apiItem: this.itemObj
       }
     },
     computed: {
@@ -39,7 +47,10 @@
       }
     },
     created: function () {
-      
+      if(this.itemObj.disocunt) {
+        this.apiItem.rawPrice = this.itemObj.price
+        this.apiItem.price = this.itemObj.disocunt
+      }
     },
     methods: {
       
@@ -69,12 +80,15 @@
     }
     .api-top {
       height: 140px;
-      background: #f1f2f7;
+      background: #f4f5f9;
       border-bottom: 1px solid #ddd;
       box-sizing: border-box;
       .api-icon {
         padding: 25px 0px;
         text-align: center;
+        &.discount {
+          background: url(./images/discount-banner.png) right top no-repeat;
+        }
         img {
           height: 90px;
         }
@@ -116,6 +130,12 @@
       box-sizing: border-box;
       padding: 0 15px;
       line-height: 55px;
+      .disabled-price {
+        text-decoration:line-through;
+        color: #aaa;
+        font-size: 12px;
+        margin: 0 5px;
+      }
       img {
         vertical-align: middle;
       }

@@ -298,7 +298,8 @@
           .header-oper {
             float: right;
             span {
-              padding: 2px 25px;
+              padding: 2px 15px 0 25px;
+              margin-left: 10px;
               border-right: 1px solid #ccc;
               &:last-child {
                 border-right: 0;

@@ -275,6 +275,7 @@
             float: right;
             span {
               padding: 2px 25px;
+              margin-left: 10px;
               border-right: 1px solid #ccc;
               &:last-child {
                 border-right: 0;

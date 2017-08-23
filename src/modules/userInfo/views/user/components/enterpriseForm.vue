@@ -233,8 +233,19 @@
             this.enterpriseLoading.status = true
             // 新增企业实名认证
             if(!this.isAuthorizing) {
-              API.UC.addEnterpriseAuth(this.enterpriseForm).then(() => {
-
+              API.UC.addEnterpriseAuth(this.enterpriseForm).then((res) => {
+                this.enterpriseResponse = res
+                this.enterpriseLoading.tip = '提交成功'
+                setTimeout(() => {
+                  this.enterpriseLoading.status = false
+                  this.$router.push({name: 'userDefault'})
+                }, 3000)
+              }).catch((res) => {
+                this.enterpriseResponse = res
+                this.enterpriseLoading.tip = res.message
+                setTimeout(() => {
+                  this.enterpriseLoading.status = false
+                }, 3000)
               })
             }else {
               // 修改企业实名认证

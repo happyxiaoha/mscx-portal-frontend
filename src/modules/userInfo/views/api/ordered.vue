@@ -15,13 +15,13 @@
       <tbody>
         <template v-if="apiList.length > 0">
           <tr v-for="(item, index) in apiList">
-            <td><a target="_blank" :href="'api.html#detail/' + item.sourceId">{{ item.apiName || '-' }}</a></td>
+            <td><a target="_blank" :href="'/api/detail/' + item.sourceId">{{ item.apiName || '-' }}</a></td>
             <td>{{ item.apiDesc || '-' }}</td>
             <td>{{ item.applyTime }}</td>
             <td>{{ item.chargeType }}</td>
             <td>{{ item.totalTime == -1 ? '不限': item.totalTime }}</td>
             <td>{{ item.remainTime == -1 ? '不限': item.remainTime }}</td>
-            <td><a :href="'api.html#detail/' + item.sourceId">再次申请</a></td>
+            <td><a :href="'/api/detail/' + item.sourceId">再次申请</a></td>
           </tr>
         </template>
         <tr v-else>

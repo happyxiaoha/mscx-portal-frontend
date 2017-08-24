@@ -19,7 +19,7 @@
           <tr v-for="(item, index) in serviceList">
             <td>{{item.applyTime ? new Date(parseInt(item.applyTime)).format('yyyy-MM-dd') : '-'}}</td>
             <td>
-              <a target="_blank" :href="'services.html#detail/' + item.sourceId">{{ item.appName }}
+              <a target="_blank" :href="'/services/detail/' + item.sourceId">{{ item.appName }}
               </a>
             </td>
             <td>{{ item.provideName }}</td>

@@ -16,7 +16,7 @@
         <template v-if="serviceList.length > 0">
           <tr v-for="(item, index) in serviceList">
             <td v-if="item.status == '0'">
-              <a target="_blank" :href="'services.html#detail/'+ item.id">{{ item.name || '-' }}</a>
+              <a target="_blank" :href="'/services/detail/'+ item.id">{{ item.name || '-' }}</a>
             </td>
             <td v-else>
               {{ item.name || '-' }}
@@ -28,13 +28,13 @@
             <td>
               <!-- 通过 -->
               <template v-if="item.status == '0'">
-                <a :href="'services.html#update/' + item.id">修改</a>
+                <a :href="'/services/update/' + item.id">修改</a>
                 <a v-if="item.chargeType == '02'" href="javascript:;" @click="changePrice(item.id)">调价</a>
                 <a href="javascript:;" @click="downService(item.id)">下架</a>
               </template>
               <!-- 审核中 -->
               <template v-if="item.status == '2'">
-                <a :href="'services.html#desc/' + item.id">查看</a>
+                <a :href="'/services/desc/' + item.id">查看</a>
               </template>
               <!-- 拒绝 -->
               <template v-else-if="item.status == '3'">
@@ -42,7 +42,7 @@
 
                 <a v-if="item.chargeType == '02'" href="javascript:;" @click="changePrice(item.id)">调价</a>
 
-                <a :href="'services.html#update/' + item.id">修改</a>
+                <a :href="'/services/update/' + item.id">修改</a>
                 <a v-if="item.isOnline == 'N'" href="javascript:;" @click="deleteService(item.id)">删除</a>
                 <a v-else href="javascript:;" @click="downService(item.id)">下架</a>
               </template>
@@ -156,7 +156,7 @@
         this.params.page = page
       },
       jumpPublish () {
-        location.href = 'services.html#create'
+        location.href = '/services/create'
       },
       deleteService (id) {
         this.$confirm('确认删除这条服务吗？', '提示', {

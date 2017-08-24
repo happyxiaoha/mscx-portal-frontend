@@ -14,15 +14,15 @@
         <template v-if="apiList.length > 0">
           <tr v-for="(item, index) in apiList">
             <td>
-              <a v-if="item.statusCode === '0'|| item.statusCode === '1'" target="_blank" :href="'demand.html#api/des/' + item.id">{{item.sysName || '-'}}</a>
-              <a v-else target="_blank" :href="'demand.html#api/detail/' + item.id">{{item.sysName || '-'}}</a>
+              <a v-if="item.statusCode === '0'|| item.statusCode === '1'" target="_blank" :href="'/demand/api/des/' + item.id">{{item.sysName || '-'}}</a>
+              <a v-else target="_blank" :href="'/demand/api/detail/' + item.id">{{item.sysName || '-'}}</a>
             </td>
             <td>{{item.sysDescription || '-'}}</td>
             <td>{{item.statusName}}</td>
             <td>
               <template v-if="item.statusCode === '0'">
                 <a href="javascript:;" @click="publish(item.id)">发布</a>
-                <a :href="'demand.html#api/update/' + item.id">修改</a>
+                <a :href="'/demand/api/update/' + item.id">修改</a>
                 <a href="javascript:;" @click="deleteApi(item.id)">删除</a>
               </template>
               <template v-else-if="item.statusCode === '2'">
@@ -101,7 +101,7 @@
         this.params.page = page
       },
       jumpPublish () {
-        location.href = 'demand.html#api/create'
+        location.href = '/demand/api/create'
       },
       publish (id) {
         API.Demand.publishApi({

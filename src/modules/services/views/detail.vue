@@ -62,6 +62,8 @@
         </div>
       </div>
     </div>
+    <hr>
+    <c-share></c-share>
     <offline-dialog v-if="user.userId && loadOffline" :visible="offlineDialogVisible" :apiServiceId="appId" :type="6" :cname="detail.name" @toggle="toggleOfflineVisible"></offline-dialog>
     <apply-dialog v-if="user.userId && loadApply" :visible="applyDialogVisible" :id="appId" :chargeType="detail.chargeType" :resourceType="detail.resourceType" @toggle="toggleApplyVisible"></apply-dialog>
     <el-dialog v-if="loadDemo" :title="detail.name + '演示'" custom-class="demo-dialog" :visible.sync="demoVisible">
@@ -226,7 +228,8 @@
     },
     components: {
       'offline-dialog': () => import('components/offline'),
-      'apply-dialog': () => import('../components/applyApp')
+      'apply-dialog': () => import('../components/applyApp'),
+      'c-share': () => import('components/share')
     }
   }
 </script>

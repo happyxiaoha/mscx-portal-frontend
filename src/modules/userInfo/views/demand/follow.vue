@@ -17,7 +17,7 @@
             <template v-if="service.list.length > 0">
               <tr v-for="item in service.list">
                 <td>
-                  <a :href="'demand.html#service/detail/' + item.serviceId">{{item.name}}</a>
+                  <a :href="'/demand/service/detail/' + item.serviceId">{{item.name}}</a>
                 </td>
                 <td>{{item.publisher}}</td>
                 <td>{{item.money}}</td>
@@ -59,7 +59,7 @@
             <template v-if="api.list.length > 0">
               <tr v-for="item in api.list">
                 <td>
-                  <a :href="'demand.html#api/detail/' + item.id">{{item.sysName}}</a>
+                  <a :href="'/demand/api/detail/' + item.id">{{item.sysName}}</a>
                 </td>
                 <td>{{item.pulibsher}}</td>
                 <td>{{item.preOffer}}</td>

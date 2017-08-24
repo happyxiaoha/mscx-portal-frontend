@@ -100,13 +100,13 @@
     },
     methods: {
       goServiceList() {
-        location.href = 'services.html'
+        location.href = '/services/'
       },
       goServiceCreate() {
-        location.href = 'services.html#create'
+        location.href = '/services/create'
       },
       goApiList() {
-        location.href = 'api.html'
+        location.href = '/api/'
       }
     },
     components: {

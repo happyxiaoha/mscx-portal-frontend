@@ -32,7 +32,7 @@
               </template>
               <template v-else-if="item.resourceType == '03'">
                 <td>
-                  <a :href="'services.html#detail/' + item.resourceId">
+                  <a :href="'/services/detail/' + item.resourceId">
                     {{ item.resourceName }}
                   </a>
                 </td>
@@ -40,7 +40,7 @@
               </template>
               <template v-else-if="item.resourceType == '04'">
                 <td>
-                  <a :href="'saas.html#detail/' + item.resourceId">
+                  <a :href="'/saas/detail/' + item.resourceId">
                     {{ item.resourceName }}
                   </a>
                 </td>
@@ -48,7 +48,7 @@
               </template>
               <template v-else>
                 <td>
-                  <a :href="'api.html#detail/' + item.resourceId">
+                  <a :href="'/api/detail/' + item.resourceId">
                     {{ item.resourceName }}
                   </a>
                 </td>

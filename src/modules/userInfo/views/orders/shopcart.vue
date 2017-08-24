@@ -52,15 +52,15 @@
               <el-checkbox v-model="item.checked"></el-checkbox>
               <!-- <input class="is-select-shop" type="checkbox" <%if(scitem.applyTimes > 0 || scitem.resourceType == '02'){%>checked="true"<%}%>> -->
             </span>
-            <a v-if="item.resourceType == '01'" class="resources" :href="'api.html#detail/' + item.resourceId">
+            <a v-if="item.resourceType == '01'" class="resources" :href="'/api/detail/' + item.resourceId">
               <img :src="item.resourceUrl">
               <p>{{ item.resourceName }}</p>
             </a>
-            <a v-else-if="item.resourceType == '03'" class="resources" :href="'services.html#detail/' + item.resourceId">
+            <a v-else-if="item.resourceType == '03'" class="resources" :href="'/services/detail/' + item.resourceId">
               <img :src="item.resourceUrl">
               <p>{{ item.resourceName }}</p>
             </a>
-            <a v-else-if="item.resourceType == '04'" class="resources" :href="'saas.html#detail/' + item.resourceId">
+            <a v-else-if="item.resourceType == '04'" class="resources" :href="'/saas/detail/' + item.resourceId">
               <img :src="item.resourceUrl">
               <p>{{ item.resourceName }}</p>
             </a>

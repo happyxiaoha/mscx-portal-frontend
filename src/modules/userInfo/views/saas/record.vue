@@ -18,7 +18,7 @@
           <tr v-for="(item, index) in apiList">
             <td>{{item.applyTime ? new Date(parseInt(item.applyTime)).format('yyyy-MM-dd') : '-'}}</td>
             <td>
-              <a target="_blank" :href="'saas.html#detail/' + item.sourceId">{{ item.appName }}
+              <a target="_blank" :href="'/saas/detail/' + item.sourceId">{{ item.appName }}
               </a>
             </td>
             <td>{{ item.provideName }}</td>
@@ -31,7 +31,7 @@
               </a>
             </td>
             <td>
-              <a :href="'saas.html#detail/' + item.sourceId">再次申请</a>
+              <a :href="'/saas/detail/' + item.sourceId">再次申请</a>
             </td>
           </tr>
         </template>

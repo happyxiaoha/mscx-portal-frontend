@@ -14,7 +14,7 @@
           <tr v-for="(item, index) in apiList">
             
             <td v-if="item.status == '0'">
-              <a target="_blank" :href="'api.html#detail/' + item.apiServiceId">{{ item.apiServiceCName }}</a>
+              <a target="_blank" :href="'/api/detail/' + item.apiServiceId">{{ item.apiServiceCName }}</a>
             </td>
             <td v-else>{{ item.apiServiceCName }}</td>
             <td>{{ item.description }}</td>

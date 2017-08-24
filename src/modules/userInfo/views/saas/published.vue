@@ -16,7 +16,7 @@
         <template v-if="saasList.length > 0">
           <tr v-for="(item, index) in saasList">
             <td v-if="item.status == '0'">
-              <a target="_blank" :href="'saas.html#detail/'+ item.id">{{ item.name || '-' }}</a>
+              <a target="_blank" :href="'/saas/detail/'+ item.id">{{ item.name || '-' }}</a>
             </td>
             <td v-else>
               {{ item.name || '-' }}
@@ -28,13 +28,13 @@
             <td>
               <!-- 通过 -->
               <template v-if="item.status == '0'">
-                <a :href="'saas.html#update/' + item.id">修改</a>
+                <a :href="'/saas/update/' + item.id">修改</a>
                 <a v-if="item.chargeType == '02'" href="javascript:;" @click="changePrice(item.id)">调价</a>
                 <a href="javascript:;" @click="downSaas(item.id)">下架</a>
               </template>
               <!-- 审核中 -->
               <template v-if="item.status == '2'">
-                <a :href="'saas.html#desc/' + item.id">查看</a>
+                <a :href="'/saas/desc/' + item.id">查看</a>
               </template>
               <!-- 拒绝 -->
               <template v-else-if="item.status == '3'">
@@ -42,7 +42,7 @@
 
                 <a v-if="item.chargeType == '02'" href="javascript:;" @click="changePrice(item.id)">调价</a>
 
-                <a :href="'saas.html#update/' + item.id">编辑</a>
+                <a :href="'/saas/update/' + item.id">编辑</a>
                 <a v-if="item.isOnline == 'N'" href="javascript:;" @click="deleteSaas(item.id)">删除</a>
                 <a v-else href="javascript:;" @click="downSaas(item.id)">下架</a>
               </template>
@@ -156,7 +156,7 @@
         this.params.page = page
       },
       jumpPublish () {
-        location.href = 'saas.html#create'
+        location.href = '/saas/create'
       },
       deleteSaas (id) {
         this.$confirm('确认删除这条SaaS服务吗？', '提示', {

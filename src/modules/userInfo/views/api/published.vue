@@ -15,10 +15,10 @@
         <template v-if="apiList.length > 0">
           <tr v-for="(item, index) in apiList">
             <td v-if="item.status == '0'">
-              <a target="_blank" :href="'api.html#detail/'+ item.apiServiceId">{{ item.apiServiceCName || '-' }}</a>
+              <a target="_blank" :href="'/api/detail/'+ item.apiServiceId">{{ item.apiServiceCName || '-' }}</a>
             </td>
             <td v-else>
-              <a target="_blank" :href="'api.html#desc/' + item.apiServiceId">{{ item.apiServiceCName || '-' }}</a>
+              <a target="_blank" :href="'/api/desc/' + item.apiServiceId">{{ item.apiServiceCName || '-' }}</a>
             </td>
             <td>{{item.description}}</td>
             <td>{{item.applyCount || '-' }}</td>
@@ -26,13 +26,13 @@
             <td>
               <template v-if="item.status == '0'">
                 <a v-if="item.chargeType == '02'" href="javascript:;" @click="changePrice(item.apiServiceId)">调价</a>
-                <a :href="'api.html#update/' + item.apiServiceId">编辑</a>
+                <a :href="'/api/update/' + item.apiServiceId">编辑</a>
                 <a href="javascript:;" @click="downApi(item.apiServiceId)">下架</a>
               </template>
               <template v-else-if="item.status == '3'">
                 <!-- <a href="javascript:;" class="displayMes">查看</a> -->
                 <a v-if="item.chargeType == '02'" href="javascript:;" @click="changePrice(item.apiServiceId)">调价</a>
-                <a :href="'api.html#update/' + item.apiServiceId" class="updateApi">编辑</a>
+                <a :href="'/api/update/' + item.apiServiceId" class="updateApi">编辑</a>
                 <a v-if="item.isOnline == 'N'" href="javascript:;" @click="deleteApi(item.apiServiceId)">删除</a>
                 <a v-else href="javascript:;" @click="downApi(item.apiServiceId)">下架</a>
               </template>
@@ -132,7 +132,7 @@
         this.params.page = page
       },
       jumpPublish () {
-        location.href = 'api.html#create'
+        location.href = '/api/create'
       },
       deleteApi (id) {
         this.$confirm('确认删除这条API吗？', '提示', {

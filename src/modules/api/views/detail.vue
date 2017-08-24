@@ -91,6 +91,8 @@
         </div>
       </div>
     </div>
+    <hr>
+    <c-share></c-share>
     <offline-dialog v-if="user.userId && loadOffline" :visible="offlineDialogVisible" :apiServiceId="apiId" :type="detail.type" :cname="detail.apiServiceCName" @toggle="toggleOfflineVisible"></offline-dialog>
     <apply-dialog v-if="user.userId && loadApply" :visible="applyDialogVisible" :id="apiId" :chargeType="detail.chargeType" :resourceType="detail.resourceType" @toggle="toggleApplyVisible"></apply-dialog>
   </div>
@@ -249,7 +251,8 @@
     },
     components: {
       'offline-dialog': () => import('components/offline'),
-      'apply-dialog': () => import('../components/applyApi')
+      'apply-dialog': () => import('../components/applyApi'),
+      'c-share': () => import('components/share')
     }
   }
 </script>

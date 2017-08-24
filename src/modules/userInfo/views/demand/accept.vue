@@ -17,7 +17,7 @@
             <template v-if="service.list.length > 0">
               <tr v-for="item in service.list">
                 <td>
-                  <a :href="'demand.html#service/detail/' + item.reqId">{{item.name}}</a></td>
+                  <a :href="'/demand/service/detail/' + item.reqId">{{item.name}}</a></td>
                 <td>{{ item.money}}</td>
                 <td>{{ item.endTime ? new Date(item.endTime).format('yyyy-MM-dd') : '-'}}</td>
                 <td>{{ item.createdTime ? new Date(item.createdTime).format('yyyy-MM-dd') : '-'}}</td>
@@ -57,7 +57,7 @@
             <template v-if="api.list.length > 0">
               <tr v-for="item in api.list">
                 <td>
-                  <a :href="'demand.html#api/detail/'+ item.reqId">{{item.sysName}}</a></td>
+                  <a :href="'/demand/api/detail/'+ item.reqId">{{item.sysName}}</a></td>
                 <td>{{ item.endTime ? new Date(item.endTime).format('yyyy-MM-dd') : '-'}}</td>
                 <td>{{ item.orderTime ? new Date(item.orderTime).format('yyyy-MM-dd') : '-'}}</td>
                 <td>{{ item.reqUser }}</td>

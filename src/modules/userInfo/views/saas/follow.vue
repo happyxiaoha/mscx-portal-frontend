@@ -16,7 +16,7 @@
           <tr v-for="(item, index) in saasList">
             
             <td>
-              <a target="_blank" :href="'saas.html#detail/' + item.id">{{ item.name }}</a>
+              <a target="_blank" :href="'/saas/detail/' + item.id">{{ item.name }}</a>
             </td>
             <td>{{ item.providerName }}</td>
             <td>{{ item.serviceType }}</td>

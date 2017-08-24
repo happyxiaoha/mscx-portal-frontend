@@ -15,7 +15,7 @@
         <template v-if="serviceList.length > 0">
           <tr v-for="(item, index) in serviceList">
             <td>
-              <a target="_blank" :href="'demand.html#service/des/' + item.id">{{ item.name || '-' }}</a>
+              <a target="_blank" :href="'/demand/service/des/' + item.id">{{ item.name || '-' }}</a>
             </td>
             <td>{{item.description || '-'}}</td>
             <td>{{item.endTime}}</td>
@@ -23,7 +23,7 @@
             <td>
               <template v-if="item.status === '0'">
                 <a href="javascript:;" @click="publish(item.id)">发布</a>
-                <a :href="'demand.html#service/update/' + item.id">修改</a>
+                <a :href="'/demand/service/update/' + item.id">修改</a>
                 <a href="javascript:;" @click="deleteService(item.id)">删除</a>
               </template>
               <template v-else-if="item.status === '2'">
@@ -102,7 +102,7 @@
         this.params.page = page
       },
       jumpPublish () {
-        location.href = 'demand.html#service/create'
+        location.href = '/demand/service/create'
       },
       publish (id) {
         API.Demand.publishService({

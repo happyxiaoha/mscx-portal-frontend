@@ -5,7 +5,7 @@
       <thead>
         <tr>
           <th>需求方系统</th>
-          <th>需求方系统描述</th>
+          <th width="40%">需求方系统描述</th>
           <th>状态</th>
           <th>操作</th>
         </tr>

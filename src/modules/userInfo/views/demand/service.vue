@@ -5,7 +5,7 @@
       <thead>
         <tr>
           <th>服务需求名称</th>
-          <th>服务需求名称</th>
+          <th width="40%">服务需求描述</th>
           <th>截止日期</th>
           <th>状态</th>
           <th>操作</th>

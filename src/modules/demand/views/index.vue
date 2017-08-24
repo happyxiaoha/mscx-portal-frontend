@@ -6,16 +6,16 @@
         <div class="tab-wrapper">
           <div class="tab-active-bar" :style="barStyle"></div>
           <div :class="[activeTabIndex === 0 ? 'active' : '', 'api-tab']">
-            <a href="#/">API开发环境</a>
+            <a href="/demand/">API开发环境</a>
           </div>
           <div :class="[activeTabIndex === 1 ? 'active' : '', 'api-tab']">
-            <a href="#/serverEnv">服务开发环境</a>
+            <a href="/demand/serverEnv">服务开发环境</a>
           </div>
           <div :class="[activeTabIndex === 2 ? 'active' : '', 'api-tab']">
-            <a href="#/api">API开发需求</a>
+            <a href="/demand/api">API开发需求</a>
           </div>
           <div :class="[activeTabIndex === 3 ? 'active' : '', 'api-tab']">
-            <a href="#/service">服务任务</a>
+            <a href="/demand/service">服务任务</a>
           </div>
         </div>
       </div>

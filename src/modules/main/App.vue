@@ -212,34 +212,34 @@
       },
       goPublishApi () {
         if(!this.user.userId) {
-          location.href = 'login.html' + '?service='+ encodeURIComponent('api.html#create')
+          location.href = 'login.html' + '?service='+ encodeURIComponent('/api/create')
         }else {
-          location.href = 'api.html#create'
+          location.href = '/api/create'
         }
       },
       goPublishService () {
         if(!this.user.userId) {
-          location.href = 'login.html' + '?service='+ encodeURIComponent('services.html#create')
+          location.href = 'login.html' + '?service='+ encodeURIComponent('/services/create')
         }else {
-          location.href = 'services.html#create'
+          location.href = '/services/create'
         }
       },
       goPublishDemand () {
         if(!this.user.userId) {
-          location.href = 'login.html' + '?service='+ encodeURIComponent('demand.html#api/create')
+          location.href = 'login.html' + '?service='+ encodeURIComponent('/demand/api/create')
         }else {
-          location.href = 'demand.html#api/create'
+          location.href = '/demand/api/create'
         }
       },
       goPublishSaas () {
         if(!this.user.userId) {
-          location.href = 'login.html' + '?service='+ encodeURIComponent('saas.html#create')
+          location.href = 'login.html' + '?service='+ encodeURIComponent('/saas/create')
         }else {
-          location.href = 'saas.html#create'
+          location.href = '/saas/create'
         }
       },
       handleHeaderLoaded () {
-        Axios.get('static_html/datainfo/' + this.city.abbr + '_bannerpic/index.html?t='+new Date().getTime()).then((res) => {
+        Axios.get('/static_html/datainfo/' + this.city.abbr + '_bannerpic/index.html?t='+new Date().getTime()).then((res) => {
           this.banner.list = res
         })
       }

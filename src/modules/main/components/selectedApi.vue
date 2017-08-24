@@ -2,7 +2,7 @@
   <div class="selected-wrapper">
     <div class="top">
       <img src="../images/selected-api-title.png">
-      <a href="api.html">更多</a>
+      <a href="/api/">更多</a>
     </div>
     <div class="selected" v-loading="loading">
       <div class="selected-side">
@@ -12,7 +12,7 @@
       <div class="selected-content">
         <ul class="selected-ul">
           <li v-for="(item, index) in selectedAPI" v-if="index < 8">
-            <a :href="'api.html#detail/' + item.apiServiceId">
+            <a :href="'/api/detail/' + item.apiServiceId">
               <div class="rec-item-top">
                 <img :src="item.iconUrl">
               </div>
@@ -75,10 +75,11 @@
     },
     methods: {
       jump () {
+        if(!this.marketTheme) return
         if(this.marketTheme.showRuleType === '2') {
           location.href = this.marketTheme.browseUrl
         }else {
-          location.href = 'api.html' + (this.apiTypeName ? '#' + this.apiTypeName : '') +
+          location.href = '/api/' + (this.apiTypeName ? '/' + this.apiTypeName : '') +
           (this.marketTheme.categoryId ? '/category-' + this.marketTheme.categoryId : '') + 
           (this.marketTheme.tags ? '/tag-' + this.marketTheme.tags.split(',')[0] : '')
         }

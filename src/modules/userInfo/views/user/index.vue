@@ -32,7 +32,7 @@
           let offset = 0;
           let tabWidth = 100;
 
-          offset = tabWidth * this.activeTabIndex +  (this.activeTabIndex + 1) * 20 + 40;
+          offset = tabWidth * this.activeTabIndex +  (this.activeTabIndex + 1) * 20;
 
           const transform = 'translateX(' + offset + 'px)';
           style.width = tabWidth + 'px';
@@ -67,7 +67,7 @@
     height: 60px;
     line-height: 60px;
     background: #fff;
-    padding-left: 40px;
+    padding-left: 0;
     position: relative;
     margin-bottom: 25px;
     .box-shadow();

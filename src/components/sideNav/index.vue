@@ -3,11 +3,11 @@
     <div class="side-nav">
       <a class="wpa-container icon-top" @click="goTop" title="返回顶部">
       </a>
-      <a href="message.html" class="wpa-container icon-message">
+      <a href="/message.html" class="wpa-container icon-message">
       </a>
       <a class="wpa-container icon-code" @mouseenter="showErCode" @mouseleave="hideErCode">
       </a>
-      <a class="wpa-container icon-contact" href="contactUs.html#contact">
+      <a class="wpa-container icon-contact" href="/contactUs.html#contact">
       </a>
     </div>
     <div id="erCode" class="er-code" v-show="erCodeVisiable">

@@ -12,10 +12,10 @@
       <div class="selected-content">
         <ul class="selected-ul">
           <li v-for="(item, index) in selectedApp" v-if="index < 8">
-            <a :href="'services.html#detail/' + item.id">
+            <a :href="'/services/detail/' + item.id">
               <div class="rec-item-top">
                 <img :src="item.imageUri">
-                <a :href="'services.html#detail/' + item.id">
+                <a :href="'/services/detail/' + item.id">
                 </a>
               </div>
               <div class="rec-title">
@@ -70,7 +70,7 @@
         if(this.marketTheme.showRuleType === '2') {
           location.href = this.marketTheme.browseUrl
         }else {
-          location.href = 'services.html#' + 
+          location.href = '/services/' + 
           (this.marketTheme.categoryId ? '/category-' + this.marketTheme.categoryId : '') + 
           (this.marketTheme.tags ? '/tag-' + this.marketTheme.tags.split(',')[0] : '')
         }

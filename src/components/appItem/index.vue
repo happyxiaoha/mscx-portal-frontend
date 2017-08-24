@@ -5,7 +5,7 @@
         <img :src="itemObj.imageUri">
       </div>
       <div class="app-content">
-        <a :href="detailLink + '#/detail/' + itemObj.id">
+        <a :href="detailLink + 'detail/' + itemObj.id">
           <h1>{{itemObj.name}}</h1>
         </a>
         <span>服务商：{{itemObj.providerName}}</span>
@@ -45,7 +45,7 @@
         return this.itemObj.description.length > 69
       },
       detailLink () {
-        return this.type === 'saas' ? 'saas.html' : 'services.html'
+        return this.type === 'saas' ? '/saas/' : '/services/'
       }
     },
     created: function () {

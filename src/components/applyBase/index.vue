@@ -61,7 +61,7 @@
       </div>
       <el-form-item prop="agreement">
         <el-checkbox v-model="form.agreement">阅读并接受</el-checkbox>
-        <a href="agreement.html" target="_blank">《神州数云平台服务协议》</a>
+        <a href="/agreement.html" target="_blank">《神州数云平台服务协议》</a>
         <div v-if="packageList.length > 0" class="package-price-total">已选择1个套餐 应付：￥<span>{{totalPrice}}</span>元</div>
       </el-form-item>
       <template v-if="chargeType === '01' || chargeType === '03'">
@@ -348,7 +348,7 @@
 
         var base = new Base64;
         window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
-        location.href = 'pay.html';
+        location.href = '/pay.html';
       }
     },
     watch: {

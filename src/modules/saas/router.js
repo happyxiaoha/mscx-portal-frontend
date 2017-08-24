@@ -6,9 +6,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 var router = new VueRouter({
+  mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/saas/',
       component: function (reslove) {
         return require(['./views/index'], reslove)
       },
@@ -24,7 +25,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/category-:category/',
+          path: 'category-:category/',
           name: 'saasCategoryList',
           component: function (reslove) {
             return require(['./views/list'], reslove)
@@ -34,7 +35,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/category-:category/tag-:tag',
+          path: 'category-:category/tag-:tag',
           name: 'saasTagList',
           component: function (reslove) {
             return require(['./views/list'], reslove)
@@ -44,28 +45,28 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/detail/:id',
+          path: 'detail/:id',
           name: 'detail',
           component: function (reslove) {
             return require(['./views/detail'], reslove)
           }
         },
         {
-          path: '/create',
+          path: 'create',
           name: 'create',
           component: function (reslove) {
             return require(['./views/create'], reslove)
           }
         },
         {
-          path: '/update/:id',
+          path: 'update/:id',
           name: 'update',
           component: function (reslove) {
             return require(['./views/create'], reslove)
           }
         },
         {
-          path: '/desc/:id',
+          path: 'desc/:id',
           name: 'desc',
           component: function (reslove) {
             return require(['./views/desc'], reslove)

@@ -2,15 +2,15 @@
   <div class="header">
     <div class="grid-l">
       <div class="logo">
-        <a href="index.html">
+        <a href="/index.html">
           <img src="./images/header-logo.png"/>
         </a>
         <span v-if="isLogin">欢迎登录</span>
         <span v-if="isRegister">欢迎注册</span>
       </div>
       <div class="title">
-        <span v-if="isLogin" class="login-tip"><a href="index.html">神州数云首页</a></span>
-        <span v-if="isRegister" class="register-tip">已有账号？<a href="login.html">请登录</a></span>
+        <span v-if="isLogin" class="login-tip"><a href="/index.html">神州数云首页</a></span>
+        <span v-if="isRegister" class="register-tip">已有账号？<a href="/login.html">请登录</a></span>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
   <div class="selected-wrapper">
     <div class="top">
       <img src="../images/selected-saas-title.png">
-      <a href="saas.html">更多</a>
+      <a href="/saas/">更多</a>
     </div>
     <div class="selected" v-loading="loading">
       <div class="selected-side">
@@ -18,7 +18,7 @@
               </div>
             </div>
             <div class="item-right">
-              <a :href="'saas.html#detail/' + item.id" class="title">{{item.name}}</a>
+              <a :href="'/saas/detail/' + item.id" class="title">{{item.name}}</a>
               <p class="sub-title">{{item.name}}</p>
             </div>
           </li>
@@ -53,7 +53,7 @@
         if(this.marketTheme.showRuleType === '2') {
           location.href = this.marketTheme.browseUrl
         }else {
-          location.href = 'saas.html#' + 
+          location.href = '/saas/' + 
           (this.marketTheme.categoryId ? '/category-' + this.marketTheme.categoryId : '') + 
           (this.marketTheme.tags ? '/tag-' + this.marketTheme.tags.split(',')[0] : '')
         }

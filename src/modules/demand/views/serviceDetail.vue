@@ -155,9 +155,9 @@
       },
       applyDemand () {
         if(!this.user.userId) {
-          location.href = 'login.html?service=' + encodeURIComponent(location.href);
+          location.href = '/login.html?service=' + encodeURIComponent(location.href);
         }else if(this.user.userType === 'REGISTER') {
-          location.href = 'userInfo.html#userAuth';
+          location.href = '/userInfo.html#userAuth';
         }else {
           this.loadApply = true
           this.applyDialogVisible = true

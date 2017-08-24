@@ -220,9 +220,9 @@
     beforeRouteEnter (to, from, next) {
       API.Common.getLoginInfo().then((res) => {
         if(!res.result) {
-          location.href = 'login.html'
+          location.href = '/login.html'
         }else if(res.result.userType === 'REGISTER') {
-          location.href = 'userInfo.html#user/auth'
+          location.href = '/userInfo.html#user/auth'
         }else {
           next()
         }
@@ -262,7 +262,7 @@
                 this.loading.tip = '修改成功，请至用户中心我的需求内发布！'
                 setTimeout(() => {
                   this.loading.status = false
-                  location.href = 'userInfo.html#/demand/service'
+                  location.href = '/userInfo.html#/demand/service'
                 }, 3000)
               }).catch((res) => {
                 this.response = res
@@ -278,7 +278,7 @@
                 this.loading.tip = '创建成功，请至用户中心我的需求内发布！'
                 setTimeout(() => {
                   this.loading.status = false
-                  location.href = 'userInfo.html#/demand/service'
+                  location.href = '/userInfo.html#/demand/service'
                 }, 3000)
               }).catch((res) => {
                 this.response = res

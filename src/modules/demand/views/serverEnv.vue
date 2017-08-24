@@ -19,9 +19,9 @@
         jumpDevelop () {
           Axios.get('/developer/portal.do').then((data) => {
             if(data.code == '500800') {
-              location.href = 'login.html?service=' + encodeURIComponent(location.href);
+              location.href = '/login.html?service=' + encodeURIComponent(location.href);
             } else if(data.code == '500900') {
-              location.href = 'userInfo.html#userAuth';
+              location.href = '/userInfo.html#userAuth';
             } else {
               location.href = data.result;
             }

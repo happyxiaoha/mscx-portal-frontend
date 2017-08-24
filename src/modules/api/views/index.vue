@@ -6,13 +6,13 @@
         <div class="tab-wrapper">
           <div class="tab-active-bar" :style="barStyle"></div>
           <div :class="[activeTabIndex === 0 ? 'active' : '', 'api-tab']">
-            <a href="#/">数据API</a>
+            <a href="/api/">数据API</a>
           </div>
           <div :class="[activeTabIndex === 1 ? 'active' : '', 'api-tab']">
-            <a href="#tool">工具API</a>
+            <a href="/api/tool/">工具API</a>
           </div>
           <div :class="[activeTabIndex === 2 ? 'active' : '', 'api-tab']">
-            <a href="#model">模型API</a>
+            <a href="/api/model/">模型API</a>
           </div>
         </div>
       </div>

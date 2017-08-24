@@ -6,10 +6,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 var router = new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/api/',
       component: function (reslove) {
         return require(['./views/index'], reslove)
       },
@@ -25,7 +25,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/data',
+          path: 'data',
           name: 'dataList',
           component: function (reslove) {
             return require(['./views/list'], reslove)
@@ -35,7 +35,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/data/category-:category/',
+          path: 'data/category-:category/',
           name: 'dataApiCategoryList',
           component: function (reslove) {
             return require(['./views/list'], reslove)
@@ -45,7 +45,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/data/category-:category/tag-:tag',
+          path: 'data/category-:category/tag-:tag',
           name: 'dataApiTagList',
           component: function (reslove) {
             return require(['./views/list'], reslove)
@@ -55,7 +55,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/tool',
+          path: 'tool',
           name: 'toolList',
           component: function (reslove) {
             return require(['./views/toolList'], reslove)
@@ -65,7 +65,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/tool/category-:category/',
+          path: 'tool/category-:category/',
           name: 'toolApiCategoryList',
           component: function (reslove) {
             return require(['./views/toolList'], reslove)
@@ -75,7 +75,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/tool/category-:category/tag-:tag',
+          path: 'tool/category-:category/tag-:tag',
           name: 'toolApiTagList',
           component: function (reslove) {
             return require(['./views/toolList'], reslove)
@@ -85,7 +85,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/model',
+          path: 'model',
           name: 'modelList',
           component: function (reslove) {
             return require(['./views/modelList'], reslove)
@@ -95,7 +95,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/model/category-:category/',
+          path: 'model/category-:category/',
           name: 'modelApiCategoryList',
           component: function (reslove) {
             return require(['./views/modelList'], reslove)
@@ -105,7 +105,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/model/category-:category/tag-:tag',
+          path: 'model/category-:category/tag-:tag',
           name: 'modelApiTagList',
           component: function (reslove) {
             return require(['./views/modelList'], reslove)
@@ -115,28 +115,28 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/detail/:id',
+          path: 'detail/:id',
           name: 'detail',
           component: function (reslove) {
             return require(['./views/detail'], reslove)
           }
         },
         {
-          path: '/desc/:id',
+          path: 'desc/:id',
           name: 'desc',
           component: function (reslove) {
             return require(['./views/desc'], reslove)
           }
         },
         {
-          path: '/create',
+          path: 'create',
           name: 'create',
           component: function (reslove) {
             return require(['./views/create'], reslove)
           }
         },
         {
-          path: '/update/:id',
+          path: 'update/:id',
           name: 'update',
           component: function (reslove) {
             return require(['./views/create'], reslove)

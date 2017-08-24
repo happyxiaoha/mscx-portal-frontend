@@ -8,7 +8,7 @@
         <p>{{itemObj.name}}</p>
         <div v-if="type === 'api'" class="app-content-right">{{itemObj.netType}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{{itemObj.department}}</div>
         <div class="app-view-count">
-          <div class="app-view-wrapper">
+          <div class="app-view-wrapper" v-if="itemObj.money">
             <span class="app-view-text app-money">{{itemObj.money}}</span>
             <span>任务金额</span>
           </div>
@@ -41,7 +41,7 @@
     computed: {
       detailLink () {
         let type = this.type
-        return '#/' + type + '/detail/' + this.itemObj.id
+        return '/demand/' + type + '/detail/' + this.itemObj.id
       }
     },
     created: function () {

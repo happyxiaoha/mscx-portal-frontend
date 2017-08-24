@@ -3,7 +3,7 @@
     <c-filter type="saas" :category="routeCategory" :tag="routeTag" v-on:updateParams="updateParams"></c-filter>
     <div class="app-list">
       <div class="search-banner">
-        <h4>此条件下，共<span class="result-count">{{pageInfo.totalSize}}</span>个微应用</h4>
+        <h4>此条件下，共<span class="result-count">{{pageInfo.totalSize}}</span>个SaaS服务</h4>
         <div class="condition">
             <a href="javascript:;" @click="sort()" :class="[sortActiveIndex === '' ? 'active' : '']">默认排序</a>
             <a href="javascript:;" @click="sort(1)" :class="[sortActiveIndex === 1 ? 'active' : '']">最新上线</a>

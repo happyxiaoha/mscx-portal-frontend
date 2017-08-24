@@ -6,9 +6,10 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 var router = new VueRouter({
+  mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/demand/',
       component: function (reslove) {
         return require(['./views/index'], reslove)
       },
@@ -24,7 +25,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/serverEnv',
+          path: 'serverEnv',
           name: 'serverEnv',
           component: function (reslove) {
             return require(['./views/serverEnv'], reslove)
@@ -34,7 +35,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/api',
+          path: 'api',
           name: 'apiList',
           component: function (reslove) {
             return require(['./views/apiList'], reslove)
@@ -44,7 +45,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/service',
+          path: 'service',
           name: 'serviceList',
           component: function (reslove) {
             return require(['./views/serviceList'], reslove)
@@ -54,7 +55,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/api/detail/:id',
+          path: 'api/detail/:id',
           name: 'apiDetail',
           component: function (reslove) {
             return require(['./views/apiDetail'], reslove)
@@ -64,7 +65,7 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/service/detail/:id',
+          path: 'service/detail/:id',
           name: 'serviceDetail',
           component: function (reslove) {
             return require(['./views/serviceDetail'], reslove)
@@ -74,42 +75,42 @@ var router = new VueRouter({
           }
         },
         {
-          path: '/api/create',
+          path: 'api/create',
           name: 'apiCreate',
           component: function (reslove) {
             return require(['./views/createApi'], reslove)
           }
         },
         {
-          path: '/service/create',
+          path: 'service/create',
           name: 'serviceCreate',
           component: function (reslove) {
             return require(['./views/createService'], reslove)
           }
         },
         {
-          path: '/api/update/:id',
+          path: 'api/update/:id',
           name: 'apiUpdate',
           component: function (reslove) {
             return require(['./views/createApi'], reslove)
           }
         },
         {
-          path: '/api/desc/:id',
+          path: 'api/desc/:id',
           name: 'apiDesc',
           component: function (reslove) {
             return require(['./views/apiDesc'], reslove)
           }
         },
         {
-          path: '/service/update/:id',
+          path: 'service/update/:id',
           name: 'serviceUpdate',
           component: function (reslove) {
             return require(['./views/createService'], reslove)
           }
         },
         {
-          path: '/service/desc/:id',
+          path: 'service/desc/:id',
           name: 'serviceDesc',
           component: function (reslove) {
             return require(['./views/serviceDesc'], reslove)
@@ -131,95 +132,3 @@ router.afterEach(function (route) {
 })
 
 export default router
-
-// var Routes =  Backbone.Router.extend({
-//     routes: {
-//         '': 'dataAPI',
-//         'data': 'dataAPI',
-//         'data(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'dataAPI',
-//         'tool(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'toolAPI',
-//         'model(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'modelAPI',
-//         'detail/:id': 'detail',
-//         'createApi': 'createApiView',
-//         'updateApi/:id': 'updateApiView',
-//         'apiDes/:id': 'apiDesView'
-//     },
-//     dataAPI:function (keyword, scope, chargeType, orderBy) {
-//         if(location.search) return;
-        
-//         var APIView = require('api/APIView.js');
-//         mscxPage.views['dataAPIObj'] = new APIView({
-//             id: 'data',
-//             model: {
-//                 keyword: keyword,
-//                 scope: scope,
-//                 chargeType: chargeType,
-//                 orderBy: orderBy
-//             }
-//         });
-//     },
-//     toolAPI:function (keyword, scope, chargeType, orderBy) {
-//         var APIView = require('api/APIView.js');
-//         mscxPage.views['toolAPIObj'] = new APIView({
-//             id: 'tool',
-//             model: {
-//                 keyword: keyword,
-//                 scope: scope,
-//                 chargeType: chargeType,
-//                 orderBy: orderBy
-//             }
-//         });
-//     },
-//     modelAPI:function (keyword, scope, chargeType, orderBy) {
-//         var APIView = require('api/APIView.js');
-//         mscxPage.views['modelAPIObj'] = new APIView({
-//             id: 'model',
-//             model: {
-//                 keyword: keyword,
-//                 scope: scope,
-//                 chargeType: chargeType,
-//                 orderBy: orderBy
-//             }
-//         });
-//     },
-//     detail: function(id) {
-//         var view = require('api/detailView.js');
-
-//         var detailView = mscxPage.views['apiDetailView'];
-//         detailView && detailView.undelegateEvents() && detailView.stopListening();
-
-//         mscxPage.views['apiDetailView'] = new view({
-//             id: id
-//         });
-//     },
-//     createApiView: function () {
-//         var createApiView = require('api/apiManage/createApiView.js');
-//         mscxPage.views['createApiViewObj'] = new createApiView();
-//     },
-//     updateApiView: function (id) {
-//         var updateApiView = require('api/apiManage/updateApiView.js');
-//         mscxPage.views['updateApiViewObj'] = new updateApiView({
-//             id: id
-//         });
-//     },
-//     apiDesView: function (id) {
-//         var apiDesView = require('api/apiManage/apiDesView.js');
-//         mscxPage.views['apiDesViewObj'] = new apiDesView({
-//             id: id
-//         });
-//     },
-//     openPage: function(url) {
-//         this.navigate(url,{trigger: true});
-//     },
-//     execute: function(callback,args,name) {
-//         if(mscxPage.views[name + 'Obj']) {
-//             mscxPage.views[name + 'Obj'].initialize();
-//         }
-//         else {
-//             if (callback) callback.apply(this, args);
-//         }
-//     }
-// });
-
-// module.exports = Routes;
-

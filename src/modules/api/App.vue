@@ -8,8 +8,9 @@
         
       }
     },
+    beforeRouteEnter (to, from, next) {
+    },
     created () {
-      
     }
   }
 </script>

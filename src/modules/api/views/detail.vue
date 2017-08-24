@@ -202,7 +202,7 @@
             this.applyDialogVisible = true
           }
         }else {
-          location.href = 'login.html?service=' + encodeURIComponent(location.href);
+          location.href = '/login.html?service=' + encodeURIComponent(location.href);
         }
       },
       offlineChat () {
@@ -210,7 +210,7 @@
           this.loadOffline = true
           this.offlineDialogVisible = true
         }else {
-          location.href = 'login.html?service=' + encodeURIComponent(location.href);
+          location.href = '/login.html?service=' + encodeURIComponent(location.href);
         }
       },
       toggleOfflineVisible (arg) {

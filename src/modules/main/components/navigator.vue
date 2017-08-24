@@ -13,14 +13,14 @@
             <div :class="[ activeApiIndex === index ? 'active' : '', subMenuClass ]" v-if="item.apiServiceList.length > 0">
               <ul>
                 <li v-for="service in item.apiServiceList">
-                  <a :href="'api.html#detail/' + service.apiServiceId">{{service.apiServiceName}}</a>
+                  <a :href="'/api/detail/' + service.apiServiceId">{{service.apiServiceName}}</a>
                 </li>
               </ul>
             </div>
           </li>
           <li @mouseover="showApiSubMenu(-1)">
             <p>
-              <a href="api.html">更多</a>
+              <a href="/api/">更多</a>
             </p>
           </li>
         </ul>
@@ -32,7 +32,7 @@
             <div :class="[ activeAppIndex === index ? 'active' : '', subMenuClass ]">
               <ul>
                 <li v-for="service in item.appList">
-                  <a :href="'services.html#detail/' + service.id">{{service.name}}</a>
+                  <a :href="'/services/detail/' + service.id">{{service.name}}</a>
                 </li>
               </ul>
             </div>

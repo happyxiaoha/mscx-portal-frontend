@@ -1,7 +1,7 @@
 <template>
   <div :class="[className, colClass]">
     <div class="api-top">
-      <a :href="'api.html#/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">
+      <a :href="'/api/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">
         <div :class="['api-icon', apiItem.disocunt ? 'discount' : '']">
           <img :src="apiItem.iconUrl || apiItem.logoUrl">
         </div>
@@ -9,7 +9,7 @@
     </div>
     <div class="api-middle">
       <h4>
-        <a :href="'api.html#/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">{{apiItem.apiServiceName || apiItem.apiName}}</a>
+        <a :href="'/api/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">{{apiItem.apiServiceName || apiItem.apiName}}</a>
       </h4>
       <div class="api-sub-text">智慧神州</div>
       <div class="api-count">

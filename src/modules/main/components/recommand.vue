@@ -3,11 +3,11 @@
     <el-row>
       <el-col :span="8" class="rec-item" v-for="item in recommandList">
         <div class="rec-item-top">
-          <a :href="map[item.sourceType] + '#detail/' + item.id">
+          <a :href="map[item.sourceType] + 'detail/' + item.id">
             <img :src="item.imageUri">
           </a>
           <div class="rec-title">
-            <a :href="map[item.sourceType] + '#detail/' + item.id">
+            <a :href="map[item.sourceType] + 'detail/' + item.id">
               <p class="title">{{item.name}}</p>
             </a>
             <p class="sub-title">{{item.providerName}}</p>
@@ -42,9 +42,9 @@
         recommandList: [],
         loading: true,
         map: {
-          '01': 'api.html',
-          '03': 'services.html',
-          '04': 'saas.html'
+          '01': '/api/',
+          '03': '/services/',
+          '04': '/saas/'
         }
       }
     },

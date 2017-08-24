@@ -79,7 +79,7 @@
         if(this.marketTheme.showRuleType === '2') {
           location.href = this.marketTheme.browseUrl
         }else {
-          location.href = '/api/' + (this.apiTypeName ? '/' + this.apiTypeName : '') +
+          location.href = '/api/' + (this.apiTypeName ? this.apiTypeName : '') +
           (this.marketTheme.categoryId ? '/category-' + this.marketTheme.categoryId : '') + 
           (this.marketTheme.tags ? '/tag-' + this.marketTheme.tags.split(',')[0] : '')
         }

@@ -23,8 +23,8 @@
       <span class="app-person">
         {{itemObj.reqUser}}
       </span>
-      <span>发布于<span class="app-time">{{new Date(itemObj.publishTime).toISOString().slice(0,10)}}</span></span>
-      <span>截止于<span class="app-time">{{new Date(itemObj.endTime).toISOString().slice(0,10)}}</span></span>
+      <span>发布于<span class="app-time">{{new Date(itemObj.publishTime).format('yyyy-MM-dd')}}</span></span>
+      <span>截止于<span class="app-time">{{new Date(itemObj.endTime).format('yyyy-MM-dd')}}</span></span>
       <div class="app-status">
         {{itemObj.statusCode || itemObj.status == 2 ? '新任务' : '已结束'}}
       </div>
@@ -32,6 +32,7 @@
   </div>
 </template>
 <script>
+  require('common/utils/date')
   export default {
     props: ["itemObj", "type"],
     data: function () {

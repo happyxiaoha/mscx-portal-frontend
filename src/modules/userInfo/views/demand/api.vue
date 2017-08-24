@@ -14,7 +14,7 @@
         <template v-if="apiList.length > 0">
           <tr v-for="(item, index) in apiList">
             <td>
-              <a v-if="item.statusCode === '0'|| item.statusCode === '1'" target="_blank" :href="'/demand/api/des/' + item.id">{{item.sysName || '-'}}</a>
+              <a v-if="item.statusCode === '0'|| item.statusCode === '1'" target="_blank" :href="'/demand/api/desc/' + item.id">{{item.sysName || '-'}}</a>
               <a v-else target="_blank" :href="'/demand/api/detail/' + item.id">{{item.sysName || '-'}}</a>
             </td>
             <td>{{item.sysDescription || '-'}}</td>

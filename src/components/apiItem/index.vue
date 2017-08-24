@@ -49,7 +49,7 @@
     created: function () {
       if(this.itemObj.disocunt) {
         this.apiItem.rawPrice = this.itemObj.price
-        this.apiItem.price = this.itemObj.disocunt
+        this.apiItem.price = (this.itemObj.discount * this.apiItem.rawPrice).toFixed(2)
       }
     },
     methods: {

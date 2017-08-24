@@ -14,7 +14,7 @@
           <ul v-if="apiList.length > 0">
             <li v-for="item in apiList">
                 <p>
-                    <a :href="'api.html#detail/' + item.apiServiceId" class="corOrange ft16">{{ item.apiServiceName}}</a>
+                    <a :href="'/api/detail/' + item.apiServiceId" class="corOrange ft16">{{ item.apiServiceName}}</a>
                     <span>类型：</span>
                     <span class="corBlue">{{ item.typeDesc }}</span>
                 </p>
@@ -36,7 +36,7 @@
           <ul v-if="serviceList.length > 0">
             <li v-for="item in serviceList">
                 <p>
-                    <a :href="'services.html#detail/' + item.id" class="corOrange ft16">{{ item.name}}</a>
+                    <a :href="'/services/detail/' + item.id" class="corOrange ft16">{{ item.name}}</a>
                     <span>类型：</span>
                     <span class="corBlue">微应用</span>
                 </p>

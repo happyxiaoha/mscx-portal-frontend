@@ -1,19 +1,20 @@
 <template>
   <div class="app-item">
-    <div class="app-main">
+    <div :class="['app-main', serviceItem.disocunt ? 'discount' : '']">
       <div class="app-icon">
-        <img :src="itemObj.imageUri">
+        <img :src="serviceItem.imageUri">
       </div>
       <div class="app-content">
-        <a :href="detailLink + 'detail/' + itemObj.id">
-          <h1>{{itemObj.name}}</h1>
+        <a :href="detailLink + 'detail/' + serviceItem.id">
+          <h1>{{serviceItem.name}}</h1>
         </a>
-        <span>服务商：{{itemObj.providerName}}</span>
-        <span>服务方式：{{itemObj.serviceType}}</span>
-        <span>服务渠道：{{itemObj.serviceChannel}}</span>
+        <span>服务商：{{serviceItem.providerName}}</span>
+        <span>服务方式：{{serviceItem.serviceType}}</span>
+        <span>服务渠道：{{serviceItem.serviceChannel}}</span>
       </div>
-      <div :class="[itemObj.chargeType === '02' ? 'app-price' : '' ,'app-charge']">
-        {{itemObj.chargeTypeDesc}}
+      <div :class="[serviceItem.chargeType === '02' ? 'app-price' : '' ,'app-charge']">
+        {{serviceItem.chargeTypeDesc}}
+        <span v-if="serviceItem.rawPrice" class="disabled-price">{{serviceItem.rawPrice}}</span>
       </div>      
     </div>
     <div class="app-bottom">
@@ -22,7 +23,7 @@
           {{scope}}
         </span>
       </el-tooltip>
-      <p :class="isDescLong && toggleFlag ? 'ellipsis' : ''">{{itemObj.description}}</p>
+      <p :class="isDescLong && toggleFlag ? 'ellipsis' : ''">{{serviceItem.description}}</p>
       <span v-if="isDescLong && toggleFlag" class="app-desc-toggle" @click="toggleFlag = false">
         <i class="el-icon-arrow-down"></i>
       </span>
@@ -34,7 +35,8 @@
     props: ["itemObj", 'type'],
     data: function () {
       return {
-        toggleFlag: true
+        toggleFlag: true,
+        serviceItem: this.itemObj
       }
     },
     computed: {
@@ -48,8 +50,11 @@
         return this.type === 'saas' ? '/saas/' : '/services/'
       }
     },
-    created: function () {
-      
+    created () {
+      if(this.itemObj.disocunt) {
+        this.serviceItem.rawPrice = this.itemObj.price
+        this.serviceItem.price = (this.itemObj.discount * this.serviceItem.rawPrice).toFixed(2)
+      }
     },
     methods: {
       
@@ -71,6 +76,9 @@
       padding: 28px 0 28px 30px;
       box-sizing: border-box;
       overflow: hidden;
+      &.discount {
+        background: url(./images/service-discount-banner.png) right top no-repeat;
+      }
       .app-icon {
         float: left;
         img {
@@ -113,6 +121,12 @@
         &.app-price {
           color: @priceTextColor;
         }
+      }
+      .disabled-price {
+        text-decoration:line-through;
+        color: #aaa;
+        font-size: 12px;
+        margin: 0 5px;
       }
     }
     .app-bottom {

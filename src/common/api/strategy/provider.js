@@ -10,7 +10,7 @@ var apiAPI = {
 
     return Axios({
       method: 'GET',
-      url : baseUrl + 'selectDisocunt.do',
+      url : baseUrl + 'selectDiscount.do',
       params: _.pick(options, ['resourceId', 'resourceType'])
     })
   }

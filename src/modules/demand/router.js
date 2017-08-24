@@ -119,7 +119,7 @@ var router = new VueRouter({
       ]
     },
     {
-      path: '*', redirect: '/'
+      path: '*', redirect: '/demand/'
     }
   ]
 })

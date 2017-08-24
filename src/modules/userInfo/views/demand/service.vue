@@ -15,7 +15,7 @@
         <template v-if="serviceList.length > 0">
           <tr v-for="(item, index) in serviceList">
             <td>
-              <a target="_blank" :href="'/demand/service/des/' + item.id">{{ item.name || '-' }}</a>
+              <a target="_blank" :href="'/demand/service/desc/' + item.id">{{ item.name || '-' }}</a>
             </td>
             <td>{{item.description || '-'}}</td>
             <td>{{item.endTime}}</td>

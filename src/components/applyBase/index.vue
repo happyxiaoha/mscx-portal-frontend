@@ -34,7 +34,7 @@
                   <td>
                     <template v-if="discountInfo">
                       <el-tooltip class="item" content="折扣价" effect="dark" placement="top">
-                        <span class="pay-price">{{discountInfo}}</span>
+                        <span class="pay-price">{{item.price}}</span>
                       </el-tooltip>
                       <span class="disabled-price">{{item.rawPrice}}</span>
                     </template>
@@ -132,7 +132,7 @@
               if(this.discountInfo) {
                 this.packageList.forEach((item) => {
                   item.rawPrice = item.price
-                  item.price = this.discountInfo
+                  item.price = (this.discountInfo * item.rawPrice).toFixed(2)
                 })
                 this.totalPrice = this.packageList[this.packageRadio].price
               }

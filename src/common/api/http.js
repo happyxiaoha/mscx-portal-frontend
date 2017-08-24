@@ -30,7 +30,7 @@ axios.interceptors.response.use(function (response) {
   } else if (response.data.status === 'ERROR') {
     
     // 未授权的情况
-    if (response.data.code === '600900' || response.data.code === '600910') {
+    if (response.data.code === '500900' || response.data.code === '500910') {
       location.href = 'userInfo.html#user/auth';
     }
     return Promise.reject(response.data)

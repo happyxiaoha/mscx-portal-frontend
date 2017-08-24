@@ -1,8 +1,0 @@
-<li class="active">
-    <a href="javascript:;" data-type="tagId">不限</a>
-</li>
-<% data && data.result.forEach(function(item) { %>
-    <li>
-        <a href="javascript:;" data-type="tagId" data-tagid="<%= item.tagId %>" rel="nofollow"><%= item.name || item.tagName %></a>
-    </li>
-<% }) %>

@@ -2,7 +2,7 @@
   <div :class="[className, colClass]">
     <div class="api-top">
       <a :href="'/api/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">
-        <div :class="['api-icon', apiItem.disocunt ? 'discount' : '']">
+        <div :class="['api-icon', apiItem.discount ? 'discount' : '']">
           <img :src="apiItem.iconUrl || apiItem.logoUrl">
         </div>
       </a>
@@ -21,7 +21,7 @@
       <img src="./images/api-charge-icon.png">
       <span v-if="apiItem.sourceId" class="api-pirce">{{apiItem.chargeType}}</span>
       <span v-else :class="[apiItem.chargeType !== '01' ? 'api-pirce' : '']">
-        <template v-if="itemObj.disocunt">
+        <template v-if="itemObj.discount">
           ¥{{apiItem.price}}
           <span class="disabled-price">{{apiItem.rawPrice}}</span>/{{apiItem.chargeCount}}次
         </template>
@@ -47,7 +47,7 @@
       }
     },
     created: function () {
-      if(this.itemObj.disocunt) {
+      if(this.itemObj.discount) {
         this.apiItem.rawPrice = this.itemObj.price
         this.apiItem.price = (this.itemObj.discount * this.apiItem.rawPrice).toFixed(2)
       }

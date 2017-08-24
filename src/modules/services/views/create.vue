@@ -621,7 +621,7 @@
                 this.loading.tip = '提交审核成功！'
                 setTimeout(() => {
                   this.loading.status = false
-                  location.href = '/userInfo.html'
+                  location.href = '/userInfo.html#service'
                 }, 3000)
               }).catch((res) => {
                 this.response = res

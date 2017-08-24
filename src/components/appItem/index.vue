@@ -1,6 +1,6 @@
 <template>
   <div class="app-item">
-    <div :class="['app-main', serviceItem.disocunt ? 'discount' : '']">
+    <div :class="['app-main', serviceItem.discount ? 'discount' : '']">
       <div class="app-icon">
         <img :src="serviceItem.imageUri">
       </div>
@@ -51,7 +51,7 @@
       }
     },
     created () {
-      if(this.itemObj.disocunt) {
+      if(this.itemObj.discount) {
         this.serviceItem.rawPrice = this.itemObj.price
         this.serviceItem.price = (this.itemObj.discount * this.serviceItem.rawPrice).toFixed(2)
       }

@@ -1,6 +1,6 @@
 <template>
   <div class="service-publish" v-loading="loading">
-    <el-button class="btn-add" @click="jumpPublish" type="primary">发布新微服务</el-button>
+    <el-button class="btn-add" @click="jumpPublish" type="primary">发布新微应用</el-button>
     <table class="table usercenter-table">
       <thead>
         <tr>

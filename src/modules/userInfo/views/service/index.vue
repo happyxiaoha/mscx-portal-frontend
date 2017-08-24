@@ -3,13 +3,13 @@
     <div class="center-tabs">
       <div class="tab-active-bar" :style="barStyle"></div>
       <div :class="[activeTabIndex === 0 ? 'active' : '', 'center-item-tab']">
-        <router-link :to="{ name: 'servicePublished'}">发布的微服务</router-link>
+        <router-link :to="{ name: 'servicePublished'}">发布的微应用</router-link>
       </div>
       <div :class="[activeTabIndex === 1 ? 'active' : '', 'center-item-tab']">
       <router-link :to="{ name: 'serviceFollow'}">关注的微应用</router-link>
       </div>
       <div :class="[activeTabIndex === 2 ? 'active' : '', 'center-item-tab']">
-      <router-link :to="{ name: 'serviceRecord'}">微服务申请记录</router-link>
+      <router-link :to="{ name: 'serviceRecord'}">微应用申请记录</router-link>
       </div>
     </div>
     <div class="center-content">

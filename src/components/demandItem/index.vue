@@ -71,6 +71,8 @@
         h1 {
           color: @mainBackground;
           margin-bottom: 17px;
+          width: 60%;
+          .ellipsis();
         }
         .app-content-right {
           position: absolute;

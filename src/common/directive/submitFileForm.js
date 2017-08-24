@@ -21,7 +21,8 @@ Vue.directive('submit-file-form', {
         method: 'POST',
         url : submitOption.url,
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data;charset=utf-8'
+          // 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
         },
         data: formData
       }).then(function(res) {

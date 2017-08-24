@@ -4,9 +4,9 @@
       <ul>
         <li>
           <a href="/index.html">首页</a>
-          <a href="/api.html">API</a>
-          <a href="/services.html">微应用</a>
-          <a href="/demand.html">需求定制</a>
+          <a href="/api/">API</a>
+          <a href="/services/">微应用</a>
+          <a href="/demand/">需求定制</a>
         </li>
         <li>
           <a href="javascript:;">帮助中心</a>

@@ -53,7 +53,7 @@
         if(this.marketTheme.showRuleType === '2') {
           location.href = this.marketTheme.browseUrl
         }else {
-          location.href = '/saas/' + 
+          location.href = '/saas' + 
           (this.marketTheme.categoryId ? '/category-' + this.marketTheme.categoryId : '') + 
           (this.marketTheme.tags ? '/tag-' + this.marketTheme.tags.split(',')[0] : '')
         }

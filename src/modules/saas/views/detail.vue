@@ -215,8 +215,18 @@
         }
       },
       showDemo () {
-        this.loadDemo = true
-        this.demoVisible = true
+        // this.loadDemo = true
+        // this.demoVisible = true
+        let index = layer.open({
+            type: 2,
+            title: this.detail.name,
+            shadeClose: false,
+            shade: 0.8,
+            maxmin: true,
+            area: ['750px', '500px'],
+            content: this.demoUrl
+        });
+        // layer.full(index)
       }
     },
     components: {

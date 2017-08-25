@@ -23,12 +23,12 @@
       </div>
       <div class="footer-right">
         <div class="cooper">
-          <p>商务合作（工作日9:00-18:00）</p>
-          <p class="footer-tel">010-61853273</p>
+          <p>{{result.coopName}}</p>
+          <p class="footer-tel">{{result.coopTel}}</p>
         </div>
         <div class="support">
-          <p>技术支持</p>
-          <p class="footer-tel">010-82705480</p>
+          <p>{{result.techName}}</p>
+          <p class="footer-tel">{{result.techTel}}</p>
         </div>
       </div>
     </div>
@@ -49,7 +49,8 @@
     data: function () {
       return {
         logo: '',
-        title: ''
+        title: '',
+        result: {}
       }
     },
     computed: {
@@ -58,7 +59,9 @@
       }
     },
     created: function () {
-      
+      API.Common.getContactUsCms().then((res) => {
+        this.result = res[0]
+      })
     },
     methods: {
       logout: function () {

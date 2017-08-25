@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js src/modules src/widget test/e2e/specs"
   },
   "dependencies": {
+    "jquery": "^2.1.4",
     "axios": "^0.16.1",
     "element-ui": "^1.4.1",
     "iview": "^2.0.0-rc.19",

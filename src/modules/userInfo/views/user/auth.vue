@@ -122,14 +122,14 @@
     },
     created () {
       API.UC.getEnterpriseAuth().then((res) => {
+        this.loadEnterpriseForm = true
         if(res.result) {
           this.isEnterpriseAuthorized = res.result.status === '02'
           this.isEnterpriseAuthorizing = res.result.status === '01'
           this.enterpriseAuth = res.result
-          this.loadEnterpriseForm = true
-        }else {
+        }
+        if(!this.isEnterpriseAuthorized) {
           this.getPersonAuth()
-          this.loadEnterpriseForm = true
         }
       })
     },

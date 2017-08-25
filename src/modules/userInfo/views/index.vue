@@ -10,10 +10,13 @@
             <c-upload v-else id="fileId" v-on:uploaded="handlePicSuccess" name="photo" :url="serviceIconUrl">
               <el-upload slot="elUpload" id="serviceIcon" name="photo" :action="serviceIconUrl" :on-success="handlePicSuccess" :show-file-list="false">
                 <img v-if="avatarUri" :src="avatarUri" class="picture">
-                <i v-else class="el-icon-plus picture-uploader-icon"></i>
+                <!-- <i v-else class="el-icon-plus picture-uploader-icon"></i> -->
+                <el-tooltip content="点击上传头像" effect="dark" placement="top">
+                  <img src="../images/avatar.png">
+                </el-tooltip>
               </el-upload>
             </c-upload>
-            <h1>{{user.account}}</h1>
+            <h1><a href="#user/">{{user.account}}</a></h1>
             <p>
               <a href="#user/auth" v-if="authText === '立刻认证'">{{authText}}</a>
               <span v-else>{{authText}}</span>
@@ -223,6 +226,9 @@
             box-sizing: border-box;
             h1 {
               margin-top: 20px;
+              a {
+                text-decoration: underline;
+              }
             }
             .avatar-image {
               width: 80px;

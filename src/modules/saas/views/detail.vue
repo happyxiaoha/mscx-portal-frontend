@@ -47,7 +47,9 @@
       <div class="detail-main-content">
         <p>接入URL：{{detail.uri}}</p>
         <p>服务简介：{{detail.description}}</p>
-        <p>版本特性：{{detail.versionFeatures}}</p>
+        <p>版本特性：</p>
+        <div v-html="detail.versionFeatures"></div>
+        
         <div v-if="detail.demoImage1 || detail.demoImage2 || detail.demoImage3">
           <el-carousel :interval="banner.autoplaySpeed" height="400px" class="banner">
             <el-carousel-item v-if="detail.demoImage1">

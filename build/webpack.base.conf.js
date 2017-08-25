@@ -25,9 +25,12 @@ module.exports = {
         }),
         new ExtractTextPlugin("css/[name].[contenthash:8].css"),
         new webpack.ProvidePlugin({
-            '_': 'underscore',
+            $: 'jquery',
+            jQuery: 'jquery',
+            jquery: 'jquery',
+            'window.jQuery': 'jquery',
             Base64: resolve('src/lib/base64'),
-            mscxPage: resolve('src/lib/config')
+            layer: resolve('src/lib/layer/layer'),
         }),
         // https://github.com/ampedandwired/html-webpack-plugin
         new HtmlWebpackPlugin({

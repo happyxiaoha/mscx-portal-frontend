@@ -194,12 +194,21 @@
     },
     methods: {
       goApiTest () {
-        location.href = 'http://mscx_apitest_utils.citysdk.cn/'
+        let index = layer.open({
+            type: 2,
+            title: 'API测试工具',
+            shadeClose: false,
+            shade: 0.8,
+            maxmin: true,
+            content: 'http://mscx_apitest_utils.citysdk.cn/'
+        });
+        layer.full(index)
       },
       goPaas () {
         if(this.user.userType && this.user.userType !== 'REGISTER') {
+          window.newWin = window.open();
           API.Common.jumpDevelop().then((res)=> {
-            location.href = res.result
+            newWin.location = res.result
           })
         }else {
           location.href = 'userInfo.html#user/auth'
@@ -207,7 +216,16 @@
       },
       goEthink () {
         API.Common.redirectToEthink().then((res) => {
-          location.href = res.result
+          let index = layer.open({
+            type: 2,
+            title: '数据可视化',
+            shadeClose: false,
+            shade: 0.8,
+            maxmin: true,
+            area: ['700px', '500px'],
+            content: res.result
+          });
+          layer.full(index)
         })
       },
       goPublishApi () {
@@ -310,11 +328,15 @@
             width: 50%;
             float: left;
             text-align: center;
-            height: 92.6px;
+            height: 91.6px;
             a {
               height: 100%;
               display: block;
               color: #000;
+              &:hover {
+                .box-shadow();
+                color: @linkColorHover;
+              }
             }
             &.api {
               background: url(./images/api-icon.png) center 20px no-repeat;
@@ -406,6 +428,10 @@
             color: #aaa;
             outline: none;
             cursor: pointer;
+            &:hover {
+              color: #666;
+              border: 1px solid #666;
+            }
           }
         }
       }

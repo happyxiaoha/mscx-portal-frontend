@@ -3,7 +3,7 @@
     <div class="app-main">
       <div class="app-content">
         <a :href="detailLink">
-          <h1>{{itemObj.name}}</h1>
+          <h1 :title="itemObj.name">{{itemObj.name}}</h1>
         </a>
         <p>{{itemObj.name}}</p>
         <div v-if="type === 'api'" class="app-content-right">{{itemObj.netType}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{{itemObj.department}}</div>

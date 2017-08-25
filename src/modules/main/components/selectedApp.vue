@@ -15,8 +15,9 @@
             <a :href="'/services/detail/' + item.id">
               <div class="rec-item-top">
                 <img :src="item.imageUri">
-                <a :href="'/services/detail/' + item.id">
-                </a>
+                <el-tooltip content="观看演示" effect="dark" placement="top">
+                  <a :href="'/services/detail/' + item.id"></a>
+                </el-tooltip>
               </div>
               <div class="rec-title">
                 <p class="title">{{item.name}}</p>

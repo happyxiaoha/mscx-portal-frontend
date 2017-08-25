@@ -3,10 +3,10 @@
     <div class="header-top">
       <el-row class="grid-l">
         <el-col :span="5" class="area-picker">
-          <div @mouseenter="showCityStation" @mouseleave="hideCityStation">
+          <div @mouseleave="hideCityStation">
             <span>hi，欢迎进入新型智慧城市OS！</span>
-            <span class="down">
-              <span>【{{city && city.name || '全国' }}】</span>
+            <span class="down" @click="showCityStation">
+              【{{city && city.name || '全国' }}】
             </span>
             <div id="city-station" v-show="cityStationVisiable">
               <ul>
@@ -248,6 +248,9 @@
           -o-transition: opacity .3s ease-in-out;
           transition: opacity .3s ease-in-out;*/
       }
+      .down {
+        cursor: pointer;
+      }
       .area-picker.active #city-station {
           /*opacity: 1;*/
           display: block;
@@ -294,6 +297,9 @@
           }
           a {
             color: #fff;
+            &:hover {
+              color: #f90;
+            }
           }
         }
       }

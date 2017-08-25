@@ -112,7 +112,7 @@
       },
       demoUrl () {
         let url = this.detail.demoUri
-        if(url.indexOf('http') < 0){
+        if(url && url.indexOf('http') < 0){
             url = 'http://' + url
         }
         return url
@@ -130,7 +130,9 @@
     created () {
       this.appId = +this.$route.params.id
       this.getDetail()
-
+      if(window.location.search.indexOf('display') > -1) {
+        this.showDemo()
+      }
     },
     methods: {
       handleScore () {

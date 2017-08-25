@@ -16,7 +16,7 @@
               <div class="rec-item-top">
                 <img :src="item.imageUri">
                 <el-tooltip content="观看演示" effect="dark" placement="top">
-                  <a :href="'/services/detail/' + item.id"></a>
+                  <a :href="'/services/detail/' + item.id + '?display=1'"></a>
                 </el-tooltip>
               </div>
               <div class="rec-title">

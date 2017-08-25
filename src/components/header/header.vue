@@ -337,6 +337,10 @@
             text-overflow: ellipsis;
             color: #fff;
             vertical-align: middle;
+            text-decoration: underline;
+            // &:hover {
+            //   color: @linkColorHover;
+            // }
           }
         }
       }

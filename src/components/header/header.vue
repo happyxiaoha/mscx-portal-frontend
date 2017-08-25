@@ -190,6 +190,7 @@
           width: 100px;
           float: right;
           overflow: hidden;
+          text-align: center;
           text-overflow: ellipsis;
           white-space: nowrap;
           padding-right: 20px;

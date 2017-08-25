@@ -31,7 +31,16 @@
             <a v-else class="resources" style="width: 250px;text-align: center;display:inline-block;" href="javascript:;">
               <p>{{ item.resourceName }}</p>
             </a>
-            <span class="price item-col">{{ item.price }}元</span>
+            <span class="price item-col">
+              <span v-if="item.discount" class="pay-price">
+                <el-tooltip class="item" content="折扣价" effect="dark" placement="top">
+                  <span>{{(item.discount * item.price).toFixed(2)}}</span>
+                </el-tooltip>
+                <span class="disabled-price">{{item.price}}</span>
+              </span>
+              <span v-else>{{item.price}}</span>
+              元
+            </span>
             <span class="count item-col">
               <img src="../../images/downed.png">
             </span>
@@ -67,8 +76,16 @@
             <a v-else class="resources" style="width: 250px;text-align: center;display:inline-block;">
               <p>{{ item.resourceName }}</p>
             </a>
-            <span class="price item-col">{{item.price}}元</span>
-
+            <span class="price item-col">
+              <span v-if="item.discount" class="pay-price">
+                <el-tooltip class="item" content="折扣价" effect="dark" placement="top">
+                  <span>{{(item.discount * item.price).toFixed(2)}}</span>
+                </el-tooltip>
+                <span class="disabled-price">{{item.price}}</span>
+              </span>
+              <span v-else>{{item.price}}</span>
+              元
+            </span>
             <span v-if="item.resourceType == '01' || item.resourceType == '03'" class="count">
               <el-input-number size="small" v-model="item.applyTimes" :min="1" :max="1000000" @change="handleTimesChange(item)"></el-input-number>
             </span>
@@ -136,7 +153,7 @@
       totalAmount () {
         let amount = 0
         _.each(this.checkedList, (item) => {
-          amount += item.totalPrice
+          amount += +item.totalPrice
         })
         return amount
       },
@@ -171,6 +188,7 @@
             }else {
               item.checked = false
             }
+            item.totalPrice = (item.applyTimes * (item.discount ? (item.discount*item.price).toFixed(2) : item.price)).toFixed(2)
           })
           this.shopcartList = res.result.list
           this.pageInfo = res.result.page
@@ -187,7 +205,7 @@
             cartItemId: item.id,
             applyTimes: item.applyTimes
           })
-          item.totalPrice = item.applyTimes * item.price
+          item.totalPrice = (item.applyTimes * (item.discount ? (item.discount*item.price).toFixed(2) : item.price)).toFixed(2)
         })
       },
       deleteItem (item) {
@@ -259,6 +277,15 @@
     }
     .price, .count, .resourcestype, .amount {
       width: 102px;
+    }
+    .pay-price {
+      color: @priceTextColor;
+    }
+    .disabled-price {
+      text-decoration:line-through;
+      color: #aaa;
+      font-size: 12px;
+      margin-left: 5px;
     }
     .car-title {
       width: 100%;

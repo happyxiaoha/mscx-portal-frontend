@@ -57,7 +57,15 @@
               <td>
                 {{ orderItem.orderTime ? orderItem.orderTime : '-' }}
               </td>
-              <td>{{ item.itemCash }}</td>
+              <td>
+                <span v-if="item.discount" class="pay-price">
+                  <el-tooltip class="item" content="折扣价" effect="dark" placement="top">
+                    <span>{{(item.discount * item.itemCash).toFixed(2)}}</span>
+                  </el-tooltip>
+                  <span class="disabled-price">{{item.itemCash}}</span>
+                </span>
+                <span v-else>{{item.itemCash}}</span>
+              </td>
               <template v-if="item.resourceType == '02'">
                 <td>-</td>
               </template>
@@ -66,7 +74,7 @@
                   {{ item.defaulTime == -1 ? '无次数限制' : parseInt(item.defaulTime || 0)}}
                 </td>
               </template>
-              <td>{{ item.itemCashTotal }}</td>
+              <td>{{ item.discount ? (item.discount * item.itemCashTotal).toFixed(2) : item.itemCashTotal }}</td>
               <td>{{ orderItem.orderStatus }}</td>
               <td>
                 <a v-if="orderItem.orderStatus == '未支付'" href="javascript:;" @click="payOrder(orderItem.orderNum)">支付</a>
@@ -151,5 +159,14 @@
     box-sizing: border-box;
     padding: 29px 25px;
     background: #fff;
+    .pay-price {
+      color: @priceTextColor;
+    }
+    .disabled-price {
+      text-decoration:line-through;
+      color: #aaa;
+      font-size: 12px;
+      margin-left: 5px;
+    }
   }
 </style>

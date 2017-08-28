@@ -276,7 +276,7 @@ var commonAPI = {
 
     return Axios({
       method: 'GET',
-      url : baseUrl + 'ethink/redirectToEthink.do?action=1'
+      url : baseUrl + 'ethink/redirectToEthink.do?action=2'
     })
   },
 }

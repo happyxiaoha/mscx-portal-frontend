@@ -5,9 +5,12 @@
         <img :src="serviceItem.imageUri">
       </div>
       <div class="app-content">
-        <a :href="detailLink + 'detail/' + serviceItem.id">
+        <router-link :to="{ name: 'detail', params: {id: serviceItem.id} }">
           <h1>{{serviceItem.name}}</h1>
-        </a>
+        </router-link>
+        <!-- <a :href="detailLink + 'detail/' + serviceItem.id">
+          <h1>{{serviceItem.name}}</h1>
+        </a> -->
         <span>服务商：{{serviceItem.providerName}}</span>
         <span>服务方式：{{serviceItem.serviceType}}</span>
         <span>服务渠道：{{serviceItem.serviceChannel}}</span>

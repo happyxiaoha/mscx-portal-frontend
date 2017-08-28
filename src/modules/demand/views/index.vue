@@ -6,16 +6,20 @@
         <div class="tab-wrapper">
           <div class="tab-active-bar" :style="barStyle"></div>
           <div :class="[activeTabIndex === 0 ? 'active' : '', 'api-tab']">
-            <a href="/demand/">API开发环境</a>
+            <router-link :to="{ name: 'apiEnv' }">API开发环境</router-link>
+            <!-- <a href="/demand/">API开发环境</a> -->
           </div>
           <div :class="[activeTabIndex === 1 ? 'active' : '', 'api-tab']">
-            <a href="/demand/serverEnv">服务开发环境</a>
+            <router-link :to="{ name: 'serverEnv' }">服务开发环境</router-link>
+            <!-- <a href="/demand/serverEnv">服务开发环境</a> -->
           </div>
           <div :class="[activeTabIndex === 2 ? 'active' : '', 'api-tab']">
-            <a href="/demand/api">API开发需求</a>
+            <router-link :to="{ name: 'apiList' }">API开发需求</router-link>
+            <!-- <a href="/demand/api">API开发需求</a> -->
           </div>
           <div :class="[activeTabIndex === 3 ? 'active' : '', 'api-tab']">
-            <a href="/demand/service">服务任务</a>
+            <router-link :to="{ name: 'serviceList' }">服务任务</router-link>
+            <!-- <a href="/demand/service">服务任务</a> -->
           </div>
         </div>
       </div>

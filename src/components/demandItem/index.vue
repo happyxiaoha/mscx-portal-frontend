@@ -2,9 +2,12 @@
   <div class="app-item">
     <div class="app-main">
       <div class="app-content">
-        <a :href="detailLink">
+        <router-link :to="{ name: type === 'api' ? 'apiDetail' : 'serviceDetail', params: { id: itemObj.id } }">
           <h1 :title="itemObj.name">{{itemObj.name}}</h1>
-        </a>
+        </router-link>
+        <!-- <a :href="detailLink">
+          <h1 :title="itemObj.name">{{itemObj.name}}</h1>
+        </a> -->
         <p>{{itemObj.name}}</p>
         <div v-if="type === 'api'" class="app-content-right">{{itemObj.netType}}&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;{{itemObj.department}}</div>
         <div class="app-view-count">
@@ -40,10 +43,10 @@
       }
     },
     computed: {
-      detailLink () {
-        let type = this.type
-        return '/demand/' + type + '/detail/' + this.itemObj.id
-      }
+      // detailLink () {
+      //   let type = this.type
+      //   return '/demand/' + type + '/detail/' + this.itemObj.id
+      // }
     },
     created: function () {
     },

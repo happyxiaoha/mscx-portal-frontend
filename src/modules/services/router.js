@@ -7,9 +7,10 @@ Vue.use(VueRouter)
 
 var router = new VueRouter({
   mode: 'history',
+  base: '/services/',
   routes: [
     {
-      path: '/services',
+      path: '/',
       component: function (reslove) {
         return require(['./views/index'], reslove)
       },

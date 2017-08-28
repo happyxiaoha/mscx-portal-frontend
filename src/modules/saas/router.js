@@ -7,9 +7,10 @@ Vue.use(VueRouter)
 
 var router = new VueRouter({
   mode: 'history',
+  base: '/saas/',
   routes: [
     {
-      path: '/saas/',
+      path: '/',
       component: function (reslove) {
         return require(['./views/index'], reslove)
       },

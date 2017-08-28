@@ -130,9 +130,6 @@
     created () {
       this.appId = +this.$route.params.id
       this.getDetail()
-      if(window.location.search.indexOf('display') > -1) {
-        this.showDemo()
-      }
     },
     methods: {
       handleScore () {
@@ -164,6 +161,9 @@
         }).then((res) => {
           this.detail = res.result
           this.loading.status = false
+          if(window.location.search.indexOf('display') > -1) {
+            this.showDemo()
+          }
         }).catch((res) => {
           this.response = res
           this.loading.tip = res.message

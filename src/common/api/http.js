@@ -24,7 +24,7 @@ axios.interceptors.response.use(function (response) {
   // loadingInstance.close();
   if (response.data.code === '500800') {
     var currentUrl = window.location.href;
-    location.href = 'login.html' + '?service='+ encodeURIComponent(currentUrl);;
+    location.href = 'login.html' + '?service='+ encodeURIComponent(currentUrl);
     return Promise.reject(response.data)
   // 全局错误信息的提示，建议各自页面处理，全局弹层提示错误体验不佳
   } else if (response.data.status === 'ERROR') {

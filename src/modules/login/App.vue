@@ -175,7 +175,7 @@
             width: 160px;
           }
           .captcha-img {
-            margin-left: 6px;
+            margin-left: 5px;
             border: 1px solid #8391a5;
             vertical-align: middle;
             display: inline-block;

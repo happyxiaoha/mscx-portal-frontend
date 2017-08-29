@@ -48,7 +48,7 @@
             <img src="./images/logo.png">
           </a>
         </el-col>
-        <el-col :span="13">
+        <el-col :span="12">
           <ul class="channel">
             <li :class="[active === 'index' ? 'active' : '']">
               <a href="/index.html">首页</a>
@@ -67,9 +67,9 @@
             </li>
           </ul>
         </el-col>
-        <el-col :span="6" class="header-search-wrapper">
+        <div class="header-search-wrapper">
           <div class="header-seach">
-            <el-input v-model="searchTxt" @keydown.enter.native="search" placeholder="请输入要搜索的内容" size="large">
+            <el-input v-model="searchTxt" @keydown.enter.native="search" placeholder="请输入要搜索的内容">
               <el-button slot="append" @click="search">搜索</el-button>
             </el-input>
           </div>
@@ -77,7 +77,7 @@
             <span>热门搜索：</span>
             <a href="javascript:;" v-for="item in hotWords" @click="clickSearch(item.hotWord)">{{item.hotWord}}</a>
           </div>
-        </el-col>
+        </div>
       </el-row>
     </div>
   </div>
@@ -182,9 +182,11 @@
       background: #e3e4e5;
       line-height: 35px;
       font-size: 12px;
+      color: #666;
       .login-area {
         .unlogin-link {
           float: right;
+          margin-right: 20px;
         }
         .user-drop {
           width: 100px;
@@ -230,8 +232,8 @@
         .link {
           width: 40px;
           display: inline-block;
-          text-align: center;
-          color: #7b7b7b;
+          text-align: right;
+          color: #666;
         }
       }
       /* 新增头部顶栏 */
@@ -306,13 +308,27 @@
       }
       .header-search-wrapper {
         display: table;
+        float: right;
+        margin-right: 20px;
         height: 80px;
         position: relative;
         .header-seach {
+          height: 38px;
+          width: 280px;
           display: table-cell;
           vertical-align: middle;
           .el-input-group {
             display: table;
+          }
+          .el-input-group__append {
+            background: #f7f7f7;
+          }
+          span, .el-input__inner {
+            color: #666;
+            border: 0;
+          }
+          .el-input-group__append {
+            border: 0;
           }
         }
         .hot-words {
@@ -321,7 +337,7 @@
           left: 0;
           z-index: 2;
           line-height: 20px;
-          height: 20px;
+          // height: 20px;
           bottom: 0px;
           font-size: 12px;
           span {
@@ -330,7 +346,7 @@
           }
           a {
             display: inline-block;
-            max-width: 45px;
+            max-width: 33px;
             margin-left: 10px;
             overflow: hidden;
             white-space: nowrap;

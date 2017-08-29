@@ -36,7 +36,7 @@
       <hr/>
       <p :class="[showPointArea ? 'more' : '' ,'point-title']" @click="togglePointArea">使用积分抵用<i></i></p>
       <div class="point-pay" v-show="showPointArea">
-        <ul v-if="!pointRule.id">
+        <ul v-if="!pointRule">
           <li>
             <p>当前无法使用积分。</p>
           </li>

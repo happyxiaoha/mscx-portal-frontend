@@ -342,17 +342,6 @@
         return this.$store.getters.user
       }
     },
-    beforeRouteEnter (to, from, next) {
-      API.Common.getLoginInfo().then((res) => {
-        if(!res.result) {
-          location.href = '/login.html'
-        }else if(res.result.userType === 'REGISTER') {
-          location.href = '/userInfo.html#user/auth'
-        }else {
-          next()
-        }
-      })
-    },
     created () {
       this.updateApiId = this.$route.params.id
       // 如果有updateApiId，则进入修改模式

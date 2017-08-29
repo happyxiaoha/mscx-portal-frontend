@@ -3,6 +3,7 @@
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import API from 'common/api'
 Vue.use(VueRouter)
 
 var router = new VueRouter({
@@ -57,6 +58,9 @@ var router = new VueRouter({
           name: 'create',
           component: function (reslove) {
             return require(['./views/create'], reslove)
+          },
+          meta: {
+            auth: true
           }
         },
         {
@@ -64,6 +68,9 @@ var router = new VueRouter({
           name: 'update',
           component: function (reslove) {
             return require(['./views/create'], reslove)
+          },
+          meta: {
+            auth: true
           }
         },
         {
@@ -82,7 +89,19 @@ var router = new VueRouter({
 })
 
 router.beforeEach(function (to, from, next) {
-  next()
+  if(to.meta && to.meta.auth) {
+    API.Common.getLoginInfo().then((res) => {
+      if(!res.result) {
+        location.href = '/login.html' + '?service='+ encodeURIComponent(location.href)
+      }else if(res.result.userType === 'REGISTER') {
+        location.href = '/userInfo.html#user/auth'
+      }else {
+        next()
+      }
+    })
+  }else {
+    next()
+  }
 })
 
 router.afterEach(function (route) {

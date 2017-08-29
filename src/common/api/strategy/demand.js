@@ -103,7 +103,7 @@ var demandAPI = {
   },
   // 新增API需求（form提交）
   addApiDemand: {
-    url: baseUrl + 'addApi.do'
+    url: location.protocol + '//' + location.host + '/zuul/ro/mscx-requirement-api/' + 'addApi.do'
   },
   // 修改API需求（form提交）
   modifyApiDemand: {

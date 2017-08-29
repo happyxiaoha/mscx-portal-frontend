@@ -87,7 +87,7 @@
         width: 55%;
         .title {
           font-weight: 600;
-          color: #000;
+          color: #333;
           .ellipsis();
         }
         .sub-title {

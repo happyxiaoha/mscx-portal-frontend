@@ -77,6 +77,9 @@
           width: 60%;
           .ellipsis();
         }
+        p {
+          color: #666;
+        }
         .app-content-right {
           position: absolute;
           top: 5px;

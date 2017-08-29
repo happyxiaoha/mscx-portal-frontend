@@ -1,8 +1,8 @@
 <template>
   <div class="header">
     <div class="header-top">
-      <el-row class="grid-l">
-        <el-col :span="5" class="area-picker">
+      <div class="grid-l">
+        <div class="area-picker">
           <div @mouseleave="hideCityStation">
             <span>hi，欢迎进入新型智慧城市OS！</span>
             <span class="down" @click="showCityStation">
@@ -16,8 +16,8 @@
               </ul>
             </div>
           </div>
-        </el-col>
-        <el-col :span="4" :offset="15" class="login-area">
+        </div>
+        <div class="login-area">
           <div v-if="user.userId" class="user-drop" @mouseover="showDropdown" @mouseout="hideDropdown">
             {{user.name || user.account}}
             <div :class="[dropClass, { 'active': dropHover }]">
@@ -38,8 +38,8 @@
             <a class="link" href="/login.html">登录</a>
             <a class="link" href="/register.html">注册</a>
           </div>
-        </el-col>
-      </el-row>
+        </div>
+      </div>
     </div>
     <div class="header-main">
       <el-row class="grid-l">
@@ -48,25 +48,25 @@
             <img src="./images/logo.png">
           </a>
         </el-col>
-        <el-col :span="12">
+        <div class="channel-wrap">
           <ul class="channel">
             <li :class="[active === 'index' ? 'active' : '']">
               <a href="/index.html">首页</a>
             </li>
-            <li :class="[active === 'api' ? 'active' : '']">
+            <li style="min-width:80px;" :class="[active === 'api' ? 'active' : '']">
               <a href="/api/">API</a>
             </li>
             <li :class="[active === 'service' ? 'active' : '']">
               <a href="/services/">微应用</a>
             </li>
-            <li :class="[active === 'saas' ? 'active' : '']">
+            <li style="min-width:127px;" :class="[active === 'saas' ? 'active' : '']">
               <a href="/saas/">SaaS服务</a>
             </li>
             <li :class="[active === 'demand' ? 'active' : '']">
               <a href="/demand/">需求定制</a>
             </li>
           </ul>
-        </el-col>
+        </div>
         <div class="header-search-wrapper">
           <div class="header-seach">
             <el-input v-model="searchTxt" @keydown.enter.native="search" placeholder="请输入要搜索的内容">
@@ -175,6 +175,7 @@
 </script>
 <style lang="less">
   @import "../../assets/less/variables.less";
+  @import "../../assets/less/mixins.less";
   .header {
     .header-top {
       width: 100%;
@@ -184,6 +185,7 @@
       font-size: 12px;
       color: #666;
       .login-area {
+        overflow: hidden;
         .unlogin-link {
           float: right;
           margin-right: 20px;
@@ -191,12 +193,13 @@
         .user-drop {
           width: 100px;
           float: right;
+          margin-right: 20px;
           overflow: hidden;
           text-align: center;
           text-overflow: ellipsis;
           white-space: nowrap;
           padding-right: 20px;
-          color: #7b7b7b;
+          color: #666;
           cursor: pointer;
           background: url("./images/ic_down.png") right 10px no-repeat;
           .drop-menu {
@@ -204,7 +207,7 @@
             border: 1px solid #eee;
             background: #fff;
             top: 35px;
-            right: 0;
+            right: 20px;
             display: none;
             z-index: 1001;
             width: 148px;
@@ -237,6 +240,9 @@
         }
       }
       /* 新增头部顶栏 */
+      .area-picker {
+        float: left;
+      }
       .area-picker #city-station {
         position: absolute;
         border: solid 1px #eee;
@@ -287,6 +293,9 @@
       img {
         vertical-align: middle;
       }
+      .channel-wrap {
+        display: inline-block;
+      }
       .channel {
         font-size: 18px;
         overflow: hidden;
@@ -294,6 +303,7 @@
           color: #fff;
           float: left;
           padding: 0 24px;
+          box-sizing: border-box;
           &.active {
             list-style-type: square;
             list-style-position: inside;
@@ -301,7 +311,8 @@
           a {
             color: #fff;
             &:hover {
-              color: #f90;
+              // color: #f90;
+              font-weight: 600;
             }
           }
         }
@@ -322,12 +333,17 @@
           }
           .el-input-group__append {
             background: #f7f7f7;
+            border: 0;
+            padding: 0;
+            button {
+              width: 50px;
+              margin: 0;
+              padding-left: 0;
+              padding-right: 0;
+            }
           }
           span, .el-input__inner {
             color: #666;
-            border: 0;
-          }
-          .el-input-group__append {
             border: 0;
           }
         }
@@ -340,6 +356,7 @@
           // height: 20px;
           bottom: 0px;
           font-size: 12px;
+          .ellipsis();
           span {
             display: inline-block;
             vertical-align: middle;

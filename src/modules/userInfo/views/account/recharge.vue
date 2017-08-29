@@ -22,7 +22,7 @@
       </ul>
     </div>
     <div class="account-recharge">
-      <el-form v-if="steps.current === 'step1'" :model="form" label-width="100px" :rules="rules" ref="form">
+      <el-form v-if="steps.current === 'step1'" :model="form" label-width="105px" :rules="rules" ref="form">
         <el-form-item label="充值金额：" prop="money">
           <el-input v-model="form.money" class="amount-ipt"></el-input>
           <span>元</span>

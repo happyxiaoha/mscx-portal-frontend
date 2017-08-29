@@ -362,7 +362,7 @@
           }
         }
         .object-checkbox label {
-          color: #333;
+          color: #666;
         }
         .append-txt {
           display: inline-block;
@@ -390,7 +390,7 @@
               padding-left: 0;
             }
             a {
-              color: #333;
+              color: #666;
             }
             a.active {
               color: #fff;

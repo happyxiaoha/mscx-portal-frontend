@@ -104,7 +104,7 @@
           <img src="./images/develop-api.png">
           <p class="develop-title">API测试工具</p>
           <div class="develop-content">
-            <p>神州数云为您提供在线API测试工具，在您申请 完API后，方可使用该工具。选择申请的接口，查看 参数信息，输入参数</p>
+            <p>神州数云为您提供在线API测试工具，在您申请完API后，方可使用该工具。选择申请的接口，查看参数信息，输入参数向接口发起请求，通过返回值查看返回效果。</p>
             <button @click="goApiTest">点击查看</button>
           </div>
         </div>
@@ -112,7 +112,7 @@
           <img src="./images/develop-data.png">
           <p class="develop-title">数据可视化</p>
           <div class="develop-content">
-            <p>数据可视化工具利用数据仓库、数据挖掘技术 对数据迚行系统的储存和管理，幵通过各种数据统 计分析工具迚行分析，提供各</p>
+            <p>数据可视化工具利用数据仓库、数据挖掘技术对数据迚行系统的储存和管理，幵通过各种数据统计分析工具迚行分析，提供各种分析报告，为企业的经营活动提供决策信息。</p>
             <button @click="goEthink">点击查看</button>
           </div>
         </div>
@@ -120,7 +120,7 @@
           <img src="./images/develop-paas.png">
           <p class="develop-title">神州数云PaaS</p>
           <div class="develop-content">
-            <p>神州数云PASS平台为您提供丰富的开发资源和 模板，包括测试资源申请、生产资源申请、环境配 置、测试功能、上线功能</p>
+            <p>神州数云PASS平台为您提供丰富的开发资源和模板，包括测试资源申请、生产资源申请、环境配置、测试功能、上线功能、数据库功能、状态监控，以及代码托管、持续集成功能。</p>
             <button @click="goPaas">点击查看</button>
           </div>
         </div>
@@ -366,7 +366,9 @@
           padding-top: 25px;
           .notice-title {
             background: url(./images/notice-icon.png) left center no-repeat;
-            padding-left: 25px;
+            padding-left: 30px;
+            font-size: 12px;
+            color: #666;
           }
           .scroll-wrap {
             margin-top: 10px;
@@ -413,21 +415,25 @@
           color: #fff;
         }
         .develop-content {
-          padding: 30px 30px 10px 30px;
+          padding: 20px 30px 10px 30px;
           position: relative;
           p {
             text-indent: 2em;
+            color: #666;
           }
           button {
             position: absolute;
-            top: 140px;
+            top: 145px;
             background: #fff;
             border: 1px solid #ccc;
-            padding: 5px 10px;
+            padding: 0 15px;
             border-radius: 15px;
             color: #aaa;
             outline: none;
             cursor: pointer;
+            height: 25px;
+            font-size: 12px;
+            line-height: 23px;
             &:hover {
               color: #666;
               border: 1px solid #666;

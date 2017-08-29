@@ -119,7 +119,7 @@
           color: @mainBackground;
         }
         a {
-          color: #333;
+          color: #666;
         }
       }
     }

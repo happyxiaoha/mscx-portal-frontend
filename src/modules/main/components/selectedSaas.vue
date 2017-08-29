@@ -19,7 +19,7 @@
             </div>
             <div class="item-right">
               <a :href="'/saas/detail/' + item.id" class="title">{{item.name}}</a>
-              <p class="sub-title">{{item.name}}</p>
+              <p :class="[item.description.length > 73 ? 'ellipsis' : '', 'sub-title']">{{item.description}}</p>
             </div>
           </li>
         </ul>
@@ -69,6 +69,7 @@
     .top a {
       float: right;
       margin-right: 30px;
+      color: #666;
     }
     .selected {
       margin-top: 20px;
@@ -133,14 +134,23 @@
             height: 178px;
             padding: 20px;
             box-sizing: border-box;
+            position: relative;
             .title {
               font-size: 18px;
               font-weight: 600;
             }
             .sub-title {
               margin-top: 10px;
-              .ellipsis();
-              height: 120px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              height: 95px;
+              color: #666;
+              &.ellipsis:after {
+                content: '...';
+                position: absolute;
+                top: 130px;
+                right: 15px;
+              }
             }
           }
         }

@@ -16,15 +16,15 @@
         <div>
           <ul class="rec-count">
             <li>
-              <h2>{{item.applyCount}}</h2>
+              <h3>{{item.applyCount}}</h3>
               <span class="sub-title">申请量</span>
             </li>
             <li>
-              <h2>{{item.attentionCount}}</h2>
+              <h3>{{item.attentionCount}}</h3>
               <span class="sub-title">关注量</span>
             </li>
             <li>
-              <h2 class="rate">{{item.score}}</h2>
+              <h3 class="rate">{{item.score.toFixed(1)}}</h3>
               <span class="sub-title">综合评分</span>
             </li>
           </ul>
@@ -92,7 +92,7 @@
         }
         .sub-title {
           color: #aaa;
-          margin-top: 5px;
+          font-size: 12px;
         }
       }
       .rec-count {
@@ -108,6 +108,7 @@
           }
           .sub-title {
             color: #aaa;
+            font-size: 12px;
           }
           &:first-child {
             padding-left: 0;

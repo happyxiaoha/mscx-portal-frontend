@@ -230,6 +230,7 @@
         span {
           padding: 2px 25px;
           border-right: 1px solid #eee;
+          color: #999;
           &:last-child {
             border-right: 0;
             margin-left: 15px;

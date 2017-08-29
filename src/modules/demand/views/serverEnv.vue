@@ -61,7 +61,7 @@
       background: none;
     }
     .left-font {
-      width: 800px;
+      width: 778px;
       height: 405px;
       padding: 20px 60px;
       h2 {
@@ -101,7 +101,7 @@
       margin-top: 16px!important;
     }
     .mr72 {
-      margin-right: 72px;
+      // margin-right: 72px;
     }
     .boxSizing {
       box-sizing: border-box;

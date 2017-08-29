@@ -12,7 +12,7 @@
         <div class="condition fee-type">
             <a href="javascript:;" @click="changeFee()" :class="[feeActiveIndex === '' ? 'active' : '']">全部</a>
             <a href="javascript:;" @click="changeFee('01')" :class="[feeActiveIndex === '01' ? 'active' : '']">免费</a>
-            <a href="javascript:;" @click="changeFee('02')" :class="[feeActiveIndex === '02' ? 'active' : '']">收费</a>
+            <a href="javascript:;" @clic#k="changeFee('02')" :class="[feeActiveIndex === '02' ? 'active' : '']">收费</a>
             <a href="javascript:;" @click="changeFee('03')" :class="[feeActiveIndex === '03' ? 'active' : '']">按实际订单支付</a>
         </div>
       </div>
@@ -140,7 +140,7 @@
           padding-left: 40px;
           float: right;
           a {
-            color: #333;
+            color: #666;
             font-size: 14px;
             &:not(:last-child) {
               margin-right: 26px;

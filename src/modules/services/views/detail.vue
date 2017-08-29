@@ -1,6 +1,6 @@
 <template>
   <div class="content" v-loading="loading.status" :element-loading-text="loading.tip" v-loading-response="response">
-    <div class="detail-header grid-l">
+    <div class="detail-header grid-m">
       <div class="detial-header-left">
         <div class="header-title">
           <h1>{{detail.name}}</h1>
@@ -43,7 +43,7 @@
       </div>
     </div>
     <hr>
-    <div class="detail-main grid-l">
+    <div class="detail-main grid-m">
       <div class="detail-main-content">
         <p>接入URL：{{detail.uri}}</p>
         <p>服务简介：{{detail.description}}</p>
@@ -270,6 +270,7 @@
             padding: 5px 10px;
             border-radius: 10px;
             margin-left: 20px;
+            color: #999;
           }
         }
         .header-info {

@@ -83,7 +83,7 @@
       margin-top: 16px!important;
     }
     .mr72 {
-      margin-right: 72px;
+      // margin-right: 72px;
     }
     .boxSizing {
       box-sizing: border-box;

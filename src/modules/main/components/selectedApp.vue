@@ -26,15 +26,15 @@
               </div>
               <ul class="rec-count">
                 <li>
-                  <h2>{{item.applyCount}}</h2>
+                  <h3>{{item.applyCount}}</h3>
                   <span class="sub-title">申请量</span>
                 </li>
                 <li>
-                  <h2>{{item.attentionCount}}</h2>
+                  <h3>{{item.attentionCount}}</h3>
                   <span class="sub-title">关注量</span>
                 </li>
                 <li>
-                  <h2 class="rate">{{item.score}}</h2>
+                  <h3 class="rate">{{item.score.toFixed(1)}}</h3>
                   <span class="sub-title">综合评分</span>
                 </li>
               </ul>
@@ -87,6 +87,7 @@
     .top a {
       float: right;
       margin-right: 30px;
+      color: #666;
     }
     .selected {
       margin-top: 20px;
@@ -158,6 +159,7 @@
             vertical-align: top;
             position: relative;
             width: 100%;
+            margin-top: 5px;
             .title {
               font-weight: 600;
               .ellipsis();
@@ -167,6 +169,7 @@
             .sub-title {
               color: #aaa;
               line-height: 15px;
+              font-size: 12px;
             }
             .charge-icon {
               position: absolute;
@@ -184,7 +187,7 @@
           }
           .rec-count {
             font-size: 12px;
-            margin-top: 15px;
+            margin-top: 10px;
             li {
               display: inline-block;
               width: 25%;
@@ -195,6 +198,7 @@
               }
               .sub-title {
                 color: #aaa;
+                font-size: 12px;
               }
               &:first-child {
                 padding-left: 0;

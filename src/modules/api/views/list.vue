@@ -132,6 +132,7 @@
         border-left: 3px solid @mainBackground;
         h4 {
           float: left;
+          color: #666;
           .result-count {
             color: @mainBackground
           }
@@ -140,7 +141,7 @@
           padding-left: 40px;
           float: right;
           a {
-            color: #333;
+            color: #666;
             font-size: 14px;
             &:not(:last-child) {
               margin-right: 26px;

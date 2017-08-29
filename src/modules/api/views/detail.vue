@@ -1,6 +1,6 @@
 <template>
   <div class="content" v-loading="loading">
-    <div class="detail-header grid-l">
+    <div class="detail-header grid-m">
       <div class="detial-header-left">
         <div class="header-title">
           <h1>{{detail.apiServiceCName}}</h1>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <hr>
-    <div class="detail-main grid-l">
+    <div class="detail-main grid-m">
       <div class="detail-main-tabs">
         <a href="javascript:;" @click="switchTab(0)" :class="[activeTab === 0 ? 'active' : '']">API调用</a>
         <a href="javascript:;" @click="switchTab(1)" :class="[activeTab === 1 ? 'active' : '']">返回码</a>
@@ -283,6 +283,7 @@
             padding: 5px 10px;
             border-radius: 10px;
             margin-left: 20px;
+            color: #999;
           }
         }
         .header-info {

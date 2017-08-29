@@ -267,6 +267,7 @@ var userAuthenticationView = Backbone.View.extend({
     },
     buildCertificationType: function (isValidate,res) {
         var sVal = 'photo';
+        $('#ajaxUpload').show();
         if(res.certificationType == '02'){
             sVal = 'phone';
         }
@@ -292,7 +293,7 @@ var userAuthenticationView = Backbone.View.extend({
         var res = this.personAuthModel.get('result');
         res = res || {
                 bankCardNo: '',
-                certificationType: '02',
+                certificationType: '01',
                 mobile: '',
                 idcard: '',
                 name: '',
@@ -303,7 +304,7 @@ var userAuthenticationView = Backbone.View.extend({
         var isValidate = res.name ? true : false;
         this.buildCertificationType(isValidate,res);
         this.model = new personAuthModel();
-        this.model.set('certificationType','02');
+        this.model.set('certificationType','01');
         isValidate ? '' : $('#personForm').validate(this.personValidateConfig());
     },
     renderEnterprise: function () {

@@ -184,6 +184,9 @@
       line-height: 35px;
       font-size: 12px;
       color: #666;
+      .grid-l {
+        position: relative;
+      }
       .login-area {
         overflow: hidden;
         .unlogin-link {

@@ -125,6 +125,7 @@
               display: table-cell;
               height: 178px;
               vertical-align: middle;
+              width: 30%;
             }
           }
           .item-right {

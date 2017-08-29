@@ -24,7 +24,7 @@
               <span class="sub-title">关注量</span>
             </li>
             <li>
-              <h3 class="rate">{{item.score.toFixed(1)}}</h3>
+              <h3 class="rate">{{item.score && item.score.toFixed(1)}}</h3>
               <span class="sub-title">综合评分</span>
             </li>
           </ul>

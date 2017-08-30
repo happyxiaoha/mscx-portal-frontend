@@ -5,17 +5,19 @@
       <div class="user-content-left">
         <div class="user-avatar">
           <div class="user-avatar-top">
-            <img class="avatar-image" v-if="user.headPortrait && user.headPortrait !== 'null' || avatarUri" :src="avatarUri || user.headPortrait">
+            <!-- <img class="avatar-image" v-if="user.headPortrait && user.headPortrait !== 'null' || avatarUri" :src="avatarUri || user.headPortrait"> -->
             <!-- <img src="../images/avatar.png" > -->
-            <c-upload v-else id="fileId" v-on:uploaded="handlePicSuccess" name="photo" :url="serviceIconUrl">
+            <c-upload id="fileId" v-on:uploaded="handlePicSuccess" name="photo" :url="serviceIconUrl">
               <el-upload slot="elUpload" id="serviceIcon" name="photo" :action="serviceIconUrl" :on-success="handlePicSuccess" :show-file-list="false">
-                <img v-if="avatarUri" :src="avatarUri" class="picture">
-                <!-- <i v-else class="el-icon-plus picture-uploader-icon"></i> -->
-                <el-tooltip content="点击上传头像" effect="dark" placement="top">
+                <el-tooltip v-if="avatarUri || user.headPortrait" content="点击更换头像" effect="dark" placement="top">
+                  <img :src="avatarUri || user.headPortrait" class="picture">
+                </el-tooltip>
+                <el-tooltip v-else content="点击上传头像" effect="dark" placement="top">
                   <img src="../images/avatar.png">
                 </el-tooltip>
               </el-upload>
             </c-upload>
+            <a v-if="avatarUri || user.headPortrait" href="javascript:;" @click="removeAvatar" class="btn-remove-avatar">清除头像</a>
             <h1><a href="#/">{{user.account}}</a></h1>
             <p>
               <a href="#user/auth" v-if="authText === '立刻认证'">{{authText}}</a>
@@ -191,6 +193,14 @@
             type: 'warning'
           })
         }
+      },
+      removeAvatar () {
+        API.UC.removeAvatar().then((res) => {
+          if(res.status === 'OK') {
+            this.avatarUri = ''
+            this.$store.commit('removeUserAvatar')
+          }
+        })
       }
     },
     components: {
@@ -225,10 +235,15 @@
             padding-top: 30px;
             box-sizing: border-box;
             h1 {
-              margin-top: 20px;
+              margin-top: 15px;
               a {
                 text-decoration: underline;
               }
+            }
+            .btn-remove-avatar {
+              font-size: 12px;
+              color: #999;
+              text-decoration: underline;
             }
             .avatar-image {
               width: 80px;

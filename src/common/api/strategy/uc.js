@@ -126,7 +126,16 @@ var ucAPI = {
     })
   },
   // 上传头像
-  uploadAvatarUrl: baseUrl + 'register/upload/headPortrait.do'
+  uploadAvatarUrl: baseUrl + 'register/upload/headPortrait.do',
+  // 删除头像
+  removeAvatar: function (options) {
+    options = options || {};
+
+    return Axios({
+      method: 'POST',
+      url : baseUrl  + 'register/deleteHeadPortrait.do'
+    })
+  }
 }
 
 export default ucAPI;

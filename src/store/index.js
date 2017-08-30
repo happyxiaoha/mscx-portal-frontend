@@ -42,6 +42,9 @@ var mutations = {
   clearUser: function (state) {
     state.user = {}
   },
+  removeUserAvatar: function() {
+    state.user.headPortrait = ''
+  },
   setHasAccount: function (state, hasAccount) {
     state.hasAccount = hasAccount
   },

@@ -29,7 +29,7 @@
       <span>发布于<span class="app-time">{{new Date(itemObj.publishTime).format('yyyy-MM-dd')}}</span></span>
       <span>截止于<span class="app-time">{{new Date(itemObj.endTime).format('yyyy-MM-dd')}}</span></span>
       <div class="app-status">
-        {{itemObj.statusCode || itemObj.status == 2 ? '新任务' : '已结束'}}
+        {{itemObj.statusCode == 2 || itemObj.status == 2 ? '新任务' : '已结束'}}
       </div>
     </div>
   </div>

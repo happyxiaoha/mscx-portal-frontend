@@ -16,7 +16,7 @@
                 </el-tooltip>
               </el-upload>
             </c-upload>
-            <h1><a href="#user/">{{user.account}}</a></h1>
+            <h1><a href="#/">{{user.account}}</a></h1>
             <p>
               <a href="#user/auth" v-if="authText === '立刻认证'">{{authText}}</a>
               <span v-else>{{authText}}</span>

@@ -22,8 +22,16 @@ var apiAPI = {
       method: 'GET',
       url : baseUrl + 'msg/messageInfos.do',
     })
+  },
+  // 获取首页公共消息
+  getAnnouncement: function (options) {
+    options = options || {};
+
+    return Axios({
+      method: 'GET',
+      url : baseUrl + 'msg/getAnnouncement.do',
+    })
   }
-  
 }
 
 export default apiAPI;

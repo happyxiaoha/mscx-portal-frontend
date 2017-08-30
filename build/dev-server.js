@@ -50,9 +50,9 @@ app.use(require('connect-history-api-fallback')({
     { from: /\/services\/|^\/services$/, to: '/services.html'},
     { from: /\/saas\/|^\/saas$/, to: '/saas.html'}
     // { form: /^\/api\/.*$/, to: '/api.html' }
-  ],
-  verbose: true,
-  logger: console.log.bind(console)
+  ]
+  // verbose: true,
+  // logger: console.log.bind(console)
 }))
 
 // serve webpack bundle output

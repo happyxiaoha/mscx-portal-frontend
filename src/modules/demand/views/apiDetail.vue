@@ -1,8 +1,8 @@
 <template>
   <div class="detail-content" v-loading="loading">
-    <div class="detail-header grid-l">
+    <div class="detail-header grid-m">
       <div class="header-title">
-        <h1>{{detail.name}}</h1>
+        <h1 :title="detail.name">{{detail.name}}</h1>
       </div>
       <div class="header-oper">
         <el-tooltip class="item" effect="dark" content="关注量" placement="top-end">
@@ -21,7 +21,7 @@
       </template>
     </div>
     <hr>
-    <div class="detail-main grid-l">
+    <div class="detail-main grid-m">
       <div class="detail-main-top">
         <div class="detail-main-top-title">
           <h1>详情</h1>
@@ -222,6 +222,8 @@
         h1 {
           display: inline-block;
           margin-right: 25px;
+          width: 100%;
+          .ellipsis();
         }
       }
       .header-oper {
@@ -291,7 +293,7 @@
       .detail-main-content {
         padding: 20px 0;
         li {
-          height: 30px;
+          // height: 30px;
           line-height: 30px;
           label {
             width: 205px;
@@ -299,6 +301,11 @@
             text-align: right;
             margin-right: 35px;
             color: #999;
+          }
+          span {
+            display: inline-block;
+            vertical-align: top;
+            width: 650px;
           }
         }
       }

@@ -79,8 +79,9 @@
           <div class="user-bottom">
             <span class="notice-title">公告</span>
             <div class="scroll-wrap">
-              <ul class="notice-list" id="noticeList" :style="{top}">
-                <li v-for="item in noticeList">{{item.newestInfo}}</li>
+              <ul class="notice-list" id="noticeList">
+                <!-- <li v-for="item in noticeList">{{item && item.msgContent}}</li> -->
+                <li>{{noticeList && noticeList.msgContent}}</li>
               </ul>
             </div>
           </div>
@@ -120,7 +121,7 @@
           <img src="./images/develop-paas.png">
           <p class="develop-title">神州数云PaaS</p>
           <div class="develop-content">
-            <p>神州数云PASS平台为您提供丰富的开发资源和模板，包括测试资源申请、生产资源申请、环境配置、测试功能、上线功能、数据库功能、状态监控，以及代码托管、持续集成功能。</p>
+            <p>神州数云PaaS平台为您提供丰富的开发资源和模板，包括测试资源申请、生产资源申请、环境配置、测试功能、上线功能、数据库功能、状态监控，以及代码托管、持续集成功能。</p>
             <button @click="goPaas">点击查看</button>
           </div>
         </div>
@@ -151,8 +152,8 @@
           list: []
         },
         barStyle: {},
-        noticeList: [],
-        activeScrollIndex: 0
+        noticeList: []
+        // activeScrollIndex: 0
       }
     },
     computed: {
@@ -162,23 +163,23 @@
       city () {
         return this.$store.getters.city
       },
-      top () {
-        return - this.activeScrollIndex * 20 + 'px'
-      }
+      // top () {
+      //   return - this.activeScrollIndex * 20 + 'px'
+      // }
     },
     mounted () {
-      setInterval(() => {
-        if(this.activeScrollIndex < this.noticeList.length - 1) {
-          this.activeScrollIndex += 1
-        }else {
-          this.activeScrollIndex = 0
-        }
-      }, 1000)
+      // setInterval(() => {
+      //   if(this.activeScrollIndex < this.noticeList.length - 1) {
+      //     this.activeScrollIndex += 1
+      //   }else {
+      //     this.activeScrollIndex = 0
+      //   }
+      // }, 1000)
     },
     created () {
       // 获取公共
-      Axios.get('static_html/datainfo/c2_newestInfo/index.html').then((res) => {
-        this.noticeList = res
+      API.Message.getAnnouncement().then((res) => {
+        this.noticeList = res.result[0]
       })
     },
     components: {

@@ -54,6 +54,28 @@
             </el-pagination>
           </div>
         </el-tab-pane>
+        <el-tab-pane label="SaaS服务" name="saas" class="SearchList">
+          <ul v-if="saasList.length > 0">
+            <li v-for="item in saasList">
+                <p>
+                    <a :href="'/saas/detail/' + item.id" class="corOrange ft16">{{ item.name}}</a>
+                    <span>类型：</span>
+                    <span class="corBlue">SaaS服务</span>
+                </p>
+                <p class="cor4">{{ item.description }}</p>
+            </li>
+          </ul>
+          <div v-else class="none-list">找不到数据，换个关键词试试！</div>
+          <div class="page-wrapper" v-if="saasPageInfo.totalSize > 10">
+            <el-pagination
+              layout="prev, pager, next"
+              @current-change="jumpSaasPage"
+              :current-page.sync="saasPageInfo.currentPage"
+              :page-size="10"
+              :total="saasPageInfo.totalSize">
+            </el-pagination>
+          </div>
+        </el-tab-pane>
       </el-tabs>
     </div>
     <c-footer></c-footer>
@@ -66,7 +88,8 @@
   require('common/utils/date')
   const map = {
     'api': 'API',
-    'service': '微应用'
+    'service': '微应用',
+    'saas': 'SaaS服务'
   }
   export default {
     data: function() {
@@ -87,6 +110,14 @@
           page: 1,
           pageSize: 10
         },
+        saasList: [],
+        saasPageInfo: {
+          totalSize: ''
+        },
+        saasParams: {
+          page: 1,
+          pageSize: 10
+        },
         activeTab: 'api',
         keyword: ''
       }
@@ -96,8 +127,10 @@
       this.activeTab = window.localStorage.getItem('dataType') || 'api';
       if(this.activeTab === 'api') {
         this.searchApi()
-      }else {
+      }else if(this.activeTab === 'service'){
         this.getAppList()
+      }else {
+        this.getSaasList()
       }
     },
     computed: {
@@ -110,8 +143,10 @@
         if(val !== oldVal) {
           if(val === 'api') {
             this.searchApi()
-          }else {
+          }else if(val === 'service'){
             this.getAppList()
+          }else {
+            this.getSaasList()
           }
         }
       }
@@ -120,8 +155,10 @@
       search () {
         if(this.activeTab === 'api') {
           this.searchApi()
-        }else {
+        }else if(this.activeTab === 'service'){
           this.getAppList()
+        }else {
+          this.getSaasList()
         }
       },
       getAppList () {
@@ -138,6 +175,13 @@
           this.apiPageInfo = res.result.page
         })
       },
+      getSaasList () {
+        this.saasParams.keyword = this.keyword
+        API.Saas.getSaasList(this.saasParams).then((res) => {
+          this.saasList = res.result.list
+          this.saasPageInfo = res.result.page
+        })
+      },
       jumpApiPage (page) {
         this.apiParams.page = page
         this.searchApi()
@@ -145,6 +189,10 @@
       jumpServicePage (page) {
         this.serviceParams.page = page
         this.getAppList()
+      },
+      jumpSaasPage (page) {
+        this.saasParams.page = page
+        this.getSaasList()
       }
     },
     components: {

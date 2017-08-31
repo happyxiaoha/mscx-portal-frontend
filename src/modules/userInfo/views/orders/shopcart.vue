@@ -32,7 +32,7 @@
               <p>{{ item.resourceName }}</p>
             </a>
             <span class="price item-col">
-              <span v-if="item.discount" class="pay-price">
+              <span v-if="item.discount && item.discount < 1" class="pay-price">
                 <el-tooltip class="item" content="折扣价" effect="dark" placement="top">
                   <span>{{(item.discount * item.price).toFixed(2)}}</span>
                 </el-tooltip>
@@ -77,7 +77,7 @@
               <p>{{ item.resourceName }}</p>
             </a>
             <span class="price item-col">
-              <span v-if="item.discount" class="pay-price">
+              <span v-if="item.discount && item.discount < 1" class="pay-price">
                 <el-tooltip class="item" content="折扣价" effect="dark" placement="top">
                   <span>{{(item.discount * item.price).toFixed(2)}}</span>
                 </el-tooltip>
@@ -188,7 +188,7 @@
             }else {
               item.checked = false
             }
-            item.totalPrice = (item.applyTimes * (item.discount ? (item.discount*item.price).toFixed(2) : item.price)).toFixed(2)
+            item.totalPrice = (item.applyTimes * (item.discount && item.discount < 1 ? (item.discount*item.price).toFixed(2) : item.price)).toFixed(2)
           })
           this.shopcartList = res.result.list
           this.pageInfo = res.result.page
@@ -205,7 +205,7 @@
             cartItemId: item.id,
             applyTimes: item.applyTimes
           })
-          item.totalPrice = (item.applyTimes * (item.discount ? (item.discount*item.price).toFixed(2) : item.price)).toFixed(2)
+          item.totalPrice = (item.applyTimes * (item.discount && item.discount < 1 ? (item.discount*item.price).toFixed(2) : item.price)).toFixed(2)
         })
       },
       deleteItem (item) {

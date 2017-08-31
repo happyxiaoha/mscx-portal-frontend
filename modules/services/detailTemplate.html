@@ -30,12 +30,7 @@
                                 </p>
                                 <p class="mb15">
                                     <span class="mr10">访问URL：
-                                        <% if(data.uri.indexOf('http') < 0){ %>
-                                        <a href="http://<%- data.uri %>" target="_blank">
-                                            <% }else{ %>
-                                            <a href="<%- data.uri %>" target="_blank">
-                                                <% }; %>
-                                            <%- data.uri %></a></span>
+                                    <%- data.uri %></span>
                                     <span class="mr25">更新时间：<em><%- (new Date(data.updatedTime).toISOString()).slice(0,10) %></em></span>
                                 </p>
                             </div>

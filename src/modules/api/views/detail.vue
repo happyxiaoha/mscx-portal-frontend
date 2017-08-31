@@ -265,15 +265,17 @@
     background: #fff;
     .detail-header {
       padding: 30px 0 20px 0;
-      height: 175px;
+      // height: 175px;
+      overflow: hidden;
       box-sizing: border-box;
       .detial-header-left {
         width: 75%;
         float: left;
-        height: 125px;
+        // height: 125px;
         position: relative;
         .header-title {
           padding: 10px 0;
+          width: 80%;
           h1 {
             display: inline-block;
             margin-right: 25px;
@@ -282,8 +284,10 @@
             border: 1px solid #ddd;
             padding: 5px 10px;
             border-radius: 10px;
-            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 5px;
             color: #999;
+            display: inline-block;
           }
         }
         .header-info {

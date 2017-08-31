@@ -5,10 +5,10 @@
       <div class="left-help-side">
         <a href="#" class="helpInfo">帮助中心</a>
         <ul>
-          <li :class="[currentName === 'apiHelp' ? 'active' : '']"><a href="#">API使用</a></li>
-          <li :class="[currentName === 'apiQuestion' ? 'active' : '']"><a href="#question">常见问题</a></li>
-          <li :class="[currentName === 'serviceHelp' ? 'active' : '']"><a href="#service">微应用使用</a></li>
           <li :class="[currentName === 'guidanceHelp' ? 'active' : '']"><a href="#guidance">新手指导</a></li>
+          <li :class="[currentName === 'apiHelp' ? 'active' : '']"><a href="#api">API使用</a></li>
+          <li :class="[currentName === 'serviceHelp' ? 'active' : '']"><a href="#service">微应用使用</a></li>
+          <li :class="[currentName === 'apiQuestion' ? 'active' : '']"><a href="#question">常见问题</a></li>
         </ul>
       </div>
       <div class="right-help-side help-area">

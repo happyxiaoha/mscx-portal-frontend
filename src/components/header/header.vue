@@ -366,7 +366,7 @@
           }
           a {
             display: inline-block;
-            max-width: 33px;
+            max-width: 36px;
             margin-left: 10px;
             overflow: hidden;
             white-space: nowrap;

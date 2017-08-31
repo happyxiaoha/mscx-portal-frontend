@@ -14,7 +14,7 @@ var router = new VueRouter({
       },
       children: [
         {
-          path: '',
+          path: '/api',
           name: 'apiHelp',
           component: function (reslove) {
             return require(['./views/api'], reslove)
@@ -33,6 +33,7 @@ var router = new VueRouter({
           }
         }, {
           path: '/guidance',
+          alias: '/',
           name: 'guidanceHelp',
           component: function (reslove) {
             return require(['./views/guidance'], reslove)

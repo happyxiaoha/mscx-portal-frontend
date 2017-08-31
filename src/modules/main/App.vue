@@ -13,15 +13,6 @@
                   <img :src="item.bigBannerPic">
                 </a>
               </el-carousel-item>
-              <!-- <el-carousel-item>
-                  <img src="../../assets/images/banner2.png">
-              </el-carousel-item>
-              <el-carousel-item>
-                  <img src="../../assets/images/banner3.png">
-              </el-carousel-item>
-              <el-carousel-item>
-                  <img src="../../assets/images/banner4.png">
-              </el-carousel-item> -->
           </el-carousel>
           <c-recommand></c-recommand>
         </el-col>
@@ -81,7 +72,10 @@
             <div class="scroll-wrap">
               <ul class="notice-list" id="noticeList">
                 <!-- <li v-for="item in noticeList">{{item && item.msgContent}}</li> -->
-                <li>{{noticeList && noticeList.msgContent}}</li>
+                <el-tooltip v-if="isLongAnnounce" content="点击查看更多" effect="dark" placement="top">
+                  <li @click="showMoreAnnounce" class="ellipsis">{{noticeList && noticeList.msgContent}}</li>
+                </el-tooltip>
+                <li v-else>{{noticeList && noticeList.msgContent}}</li>
               </ul>
             </div>
           </div>
@@ -152,7 +146,7 @@
           list: []
         },
         barStyle: {},
-        noticeList: []
+        noticeList: {}
         // activeScrollIndex: 0
       }
     },
@@ -166,6 +160,9 @@
       // top () {
       //   return - this.activeScrollIndex * 20 + 'px'
       // }
+      isLongAnnounce () {
+        return this.noticeList.msgContent && this.noticeList.msgContent.length > 44
+      }
     },
     mounted () {
       // setInterval(() => {
@@ -194,6 +191,16 @@
       'c-side-nav': sideNav
     },
     methods: {
+      showMoreAnnounce () {
+        const h = this.$createElement;
+        if(this.isLongAnnounce) {
+          this.$msgbox({
+            title: this.noticeList.msgTitle,
+            message: h('div', { style: 'line-height: 1.8' }, this.noticeList.msgContent),
+            confirmButtonText: '确定'
+          })
+        }
+      },
       goApiTest () {
         let index = layer.open({
             type: 2,
@@ -378,9 +385,20 @@
           }
           .notice-list {
             position: relative;
-            transition: top 0.5s;
+            // transition: top 0.5s;
+            overflow: hidden;
+            text-overflow: ellipsis;
             li {
               line-height: 20px;
+              &.ellipsis {
+                cursor: pointer;
+                &:after {
+                  content: '...';
+                  position: absolute;
+                  top: 41px;
+                  right: 0;
+                }
+              }
             }
           }
         }

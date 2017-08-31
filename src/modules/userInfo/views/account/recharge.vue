@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="account-recharge">
-      <h2>账户余额：<span class="recharge-balance">{{result.account_balance}}</span>元</h2>
+      <h2>
+        账户余额：<span class="recharge-balance">{{result.account_balance}}</span>元
+        <span v-if="result.useableBalance" class="sub-title">（可用余额：{{result.useableBalance}}元&nbsp;&nbsp;合同冻结金额：{{result.freezeBalance}}）</span>
+      </h2>
     </div>
     <div class="account-recharge">
       <ul class="process">
@@ -197,6 +200,9 @@
       font-size: 18px;
       color: @mainBackground;
       margin: 0 5px;
+    }
+    .sub-title {
+      font-size: 14px;
     }
     .process { 
       li {

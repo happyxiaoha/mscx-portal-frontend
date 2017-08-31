@@ -149,6 +149,7 @@
       },
       closeDialog () {
         this.dialogVisible = false
+        this.loading.tip = ''
         this.$emit('toggle', this.dialogVisible)
       },
       isNeedPackage () {
@@ -231,7 +232,7 @@
         })
       },
       feeOrder () {
-        this.loading.status = true
+        // this.loading.status = true
         let selectedItem = this.packageList[this.packageRadio]
         this.placeFeeOrder({
           id: this.id,

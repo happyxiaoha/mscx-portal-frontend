@@ -110,6 +110,10 @@
       let city = _.find(cityStation.cities, function(item){
         return item.url.indexOf(location.host) > -1;
       }) || cityStation.cities[0];
+      // 如果不是全国站点，城市切换只能回到全国
+      if (city.code !== '000000') {
+        this.cityStation = this.cityStation.slice(0, 1)
+      }
       this.$store.commit('setCity', city)
 
       // 切换下areaCode

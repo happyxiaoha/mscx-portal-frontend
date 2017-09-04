@@ -54,6 +54,12 @@
             "abbr": "xianggang",
             "url": "http://hk.citysdk.cn/",
             "logo": "ic_nationlogo.png"
+        },{
+            "code": "371000",
+            "name": "威海",
+            "abbr": "weihai",
+            "url": "http://wh.citysdk.cn/",
+            "logo": "ic_nationlogo.png"
         }
     ]
 }

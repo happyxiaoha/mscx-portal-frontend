@@ -88,7 +88,7 @@
         _.extend(this.params, options || {})
       },
       filterList () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Api.getModelApi(this.params).then((res) => {
           this.apiList = res.result.list

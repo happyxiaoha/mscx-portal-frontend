@@ -117,7 +117,7 @@
       this.$store.commit('setCity', city)
 
       // 切换下areaCode
-      API.Common.switchCity({areaCode: this.city.code})
+      // API.Common.switchCity({areaCode: this.city.code})
       // 获取用户信息
       API.Common.getLoginInfo().then((res) => {
         if(res.result) {
@@ -126,6 +126,12 @@
         }
         this.$emit('loaded')
       })
+
+      
+
+      // this.user = res.result
+      // this.$store.commit('setUser', res.result)
+      // this.$emit('loaded')
       
       // 获取热搜词
       API.Dict.getHotWordList().then((res) => {

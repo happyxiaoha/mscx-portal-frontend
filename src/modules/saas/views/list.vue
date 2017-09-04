@@ -88,7 +88,7 @@
         _.extend(this.params, options || {})
       },
       filterList () {
-        this.loading = true
+        // this.loading = true
         this.appList = []
         API.Saas.getSaasList(this.params).then((res) => {
           this.appList = res.result.list

@@ -149,7 +149,7 @@
         })
       },
       getDetail () {
-        this.loading.status = true
+        // this.loading.status = true
         API.Saas.getSaasDetail({
           id: this.saasId
         }).then((res) => {

@@ -67,7 +67,8 @@
     },
     computed: {
       loading () {
-        return this.apiLoading && this.appLoading
+        // return this.apiLoading && this.appLoading
+        return false
       }
     },
     created () {

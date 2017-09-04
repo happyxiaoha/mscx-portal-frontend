@@ -73,7 +73,7 @@
     },
     methods: {
       getSaledOrderList () {
-        this.loading = true
+        // this.loading = true
         this.orderList = []
         API.Common.getSaledOrderList(this.params).then((res) => {
           this.loading = false

@@ -144,7 +144,7 @@
         this.chargeTableDialogVisible = arg
       },
       querySaas () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Saas.getMyPublishedSaas(this.params).then((res) => {
           this.loading = false

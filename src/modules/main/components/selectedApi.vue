@@ -49,7 +49,7 @@
       return {
         isApiActive: true,
         selectedAPI: [],
-        loading: true,
+        loading: false,
         chargeIcon: '',
         marketTheme: {},
         map: {

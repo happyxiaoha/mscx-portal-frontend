@@ -90,7 +90,7 @@
         this.queryService()
       },
       queryService () {
-        this.loading = true
+        // this.loading = true
         this.serviceList = []
         API.Demand.queryService(this.params).then((res) => {
           this.loading = false

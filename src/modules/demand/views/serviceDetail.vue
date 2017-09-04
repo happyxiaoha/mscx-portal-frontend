@@ -102,7 +102,7 @@
         detail: {
           attentionFlag: false
         },
-        loading: true,
+        loading: false,
         applyDialogVisible: false,
         loadApply: false
       }

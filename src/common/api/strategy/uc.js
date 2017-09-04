@@ -38,28 +38,31 @@ var ucAPI = {
   getBasicInfo: function (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'user/info/mine.do'
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'user/info/mine.do'
+    // })
+    return Promise.resolve({"code":"000000","message":"success","result":{"account":"lxy111","alreadyCertification":true,"certification":"已认证","apiKey":"2C03B1F12A184B0B","secretKey":"PHUW44PMbz2rQgdLmVOQoUGahn8oY6Jk","mobile":"13915394606","userType":"个人实名"},"status":"OK"})
   },
   // 获取个人用户认证信息
   getPersonAuth: function (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'certification/person/info.do'
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'certification/person/info.do'
+    // })
+    return Promise.resolve({"code":"000000","message":"success","result":{"certificationType":"01","name":"刘晓英","idcard":"320282198908243827","photoUrl":"http://qg-shenzhoushuyun-sc.oss-cn-beijing.aliyuncs.com/mscx-uc/USER_PHOTO/440100000002681?Expires=1504407596&OSSAccessKeyId=LTAIC1yCfa7cWDyr&Signature=EVornn8f3mjOVH4q%2BRGv7vRhRhg%3D","mobile":null,"bankCardNo":null,"idcardPic1Url":null,"idcardPic2Url":null},"status":"OK"})
   },
   // 获取企业用户认证信息
   getEnterpriseAuth: function (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'certification/enterprise/info.do'
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'certification/enterprise/info.do'
+    // })
+    return Promise.resolve({"code":"000000","message":"success","result":null,"status":"OK"})
   },
   // 更新企业用户认证信息
   updateEnterpriseAuth: function (options) {
@@ -99,11 +102,12 @@ var ucAPI = {
   getShopcartList: function (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl  + 'shopping/cart/user/query.do',
-      params: _.pick(options, ['page', 'pageSize'])
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl  + 'shopping/cart/user/query.do',
+    //   params: _.pick(options, ['page', 'pageSize'])
+    // })
+    return Promise.resolve({"code":"000000","message":"success","result":{"page":{"startIndex":0,"endIndex":0,"totalPage":0,"currentPage":1,"totalSize":0},"list":[]},"status":"OK"})
   },
   // 删除购物车项
   deleteShopcartItem: function (options) {

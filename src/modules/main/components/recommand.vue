@@ -40,7 +40,7 @@
       return {
         isApiActive: true,
         recommandList: [],
-        loading: true,
+        loading: false,
         map: {
           '01': '/api/',
           '03': '/services/',

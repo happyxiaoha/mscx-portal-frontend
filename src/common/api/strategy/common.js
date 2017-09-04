@@ -28,13 +28,15 @@ var commonAPI = {
     //   }
     // })
     
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'briefInfo.do',
-      params: {
-        t: +new Date()
-      }
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'briefInfo.do',
+    //   params: {
+    //     t: +new Date()
+    //   }
+    // })
+
+    return Promise.resolve({"code":"000000","message":"success","result":{"userId":"440100000002681","account":"lxy111","mobile":"13915394606","name":"刘晓英","userType":"PERSON","certificationInfo":{"status":"CERTIFICATED_PERSON","personName":"刘晓英","enterpriseName":null,"enterpriseContactPerson":null,"enterpriseContactMobile":null},"headPortrait":null},"status":"OK"})
   },
   switchCity: function(options) {
     options = options || {};
@@ -117,10 +119,11 @@ var commonAPI = {
   getRecommendation (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'home/recommendation.do'
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'home/recommendation.do'
+    // })
+    return Promise.resolve({"code":"000000","message":"success","result":[{"imageUri":"/static/516447e156ff4be6a1b026f9286cce41.jpg","name":"身份证二元素认证","chargeTypeDesc":"收费","id":313,"viewCount":229,"applyCount":12,"sourceType":"01","background":"","attentionCount":4,"score":5.0,"updatedTime":1503653702000,"providerName":"同程金服"},{"imageUri":"/static/cfe5b3edb91043ca8b16d274e98cf514.jpg","name":"人脸识别","chargeTypeDesc":"收费","id":312,"viewCount":159,"applyCount":4,"sourceType":"01","background":"","attentionCount":4,"score":4.0,"updatedTime":1503653697000,"providerName":"神州融"},{"imageUri":"/static/f016162af76e492887ae93c2f8340df2.jpg","name":"公积金查询","chargeTypeDesc":"免费","id":21,"viewCount":204,"applyCount":0,"sourceType":"03","background":null,"attentionCount":1,"score":5.0,"updatedTime":1503653735000,"providerName":"智慧神州"}],"status":"OK"})
   },
   // 免费API下单
   placeFreeApiOrder (options) {
@@ -216,30 +219,33 @@ var commonAPI = {
   dashboard (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'personal/dashboard.do'
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'personal/dashboard.do'
+    // })
+    return Promise.resolve({"code":"000000","message":"success","result":{"focusApi":0,"focusApp":0,"applyApi":1,"focusData":0,"user":{"userId":"440100000002681","account":"lxy111","mobile":"13915394606","name":"刘晓英","userType":"PERSON","certificationInfo":{"status":"CERTIFICATED_PERSON","personName":"刘晓英","enterpriseName":null,"enterpriseContactPerson":null,"enterpriseContactMobile":null},"headPortrait":null},"cash":0.0},"status":"OK"})
   },
   // 获取我申请的微应用
   getServiceList: function (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'order/getSelfWeiAppListWithCallback.do',
-      params: _.pick(options, ['pageSize', 'page'])
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'order/getSelfWeiAppListWithCallback.do',
+    //   params: _.pick(options, ['pageSize', 'page'])
+    // })
+    return Promise.resolve({"code":"000000","message":"success","result":{"page":{"startIndex":0,"totalSize":0,"endIndex":0,"totalPage":0,"currentPage":1,"url":null},"list":[]},"status":"OK"})
   },
   // 获取我的销售记录
   getSaledOrderList: function (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'order/getSaledOrderList.do',
-      params: _.pick(options, ['pageSize', 'page'])
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'order/getSaledOrderList.do',
+    //   params: _.pick(options, ['pageSize', 'page'])
+    // })
+    return Promise.resolve({"code":"000000","message":"success","result":{"page":{"startIndex":0,"totalSize":0,"endIndex":0,"totalPage":0,"currentPage":1,"url":"/order/getSaledOrderList.do"},"list":[]},"status":"OK"})
   },
   // 重置密码
   resetPayPassword: function (options) {
@@ -265,10 +271,22 @@ var commonAPI = {
   getContactUsCms: function (options) {
     options = options || {};
 
-    return Axios({
-      method: 'GET',
-      url : baseUrl + 'static_html/datainfo/c2_indexInfo/index.html?v=' + new Date().getTime()
-    })
+    // return Axios({
+    //   method: 'GET',
+    //   url : baseUrl + 'static_html/datainfo/c2_indexInfo/index.html?v=' + new Date().getTime()
+    // })
+    return Promise.resolve([
+  {
+    "Id": "813",
+        "QRcode": "http://172.16.49.132:81/uploads/8/image/public/201706/20170626151232_n8i45xnmg7.jpg",
+    "coopName": "商务合作（工作日9:00-18:00）",
+        "coopTel": "010-61853361",
+    "coopMail": "zhangglf@dcholdings.com",
+    "techName": "技术支持",
+        "techTel": "010-82705480",
+    "techMail": "zhuangbl@dcholdings.com"
+    }
+])
   },
   // 数据可视化接口
   redirectToEthink: function (options) {

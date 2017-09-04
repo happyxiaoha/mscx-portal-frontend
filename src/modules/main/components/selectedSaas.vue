@@ -34,7 +34,7 @@
       return {
         isApiActive: true,
         selectedApp: [],
-        loading: true,
+        loading: false,
         chargeIcon: '',
         marketTheme: {}
       }

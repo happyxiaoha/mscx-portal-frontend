@@ -120,7 +120,7 @@
         this.chargeTableDialogVisible = arg
       },
       queryApi () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Api.getMyPublishedApi(this.params).then((res) => {
           this.loading = false

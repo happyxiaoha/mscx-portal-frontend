@@ -144,7 +144,7 @@
         this.chargeTableDialogVisible = arg
       },
       queryService () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.App.getPublishedService(this.params).then((res) => {
           this.loading = false

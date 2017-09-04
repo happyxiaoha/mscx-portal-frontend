@@ -155,7 +155,7 @@
         })
       },
       getDetail () {
-        this.loading.status = true
+        // this.loading.status = true
         API.App.getAppDetail({
           id: this.appId
         }).then((res) => {

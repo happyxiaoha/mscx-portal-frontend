@@ -71,7 +71,7 @@
     },
     methods: {
       queryApi () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Api.getMyAttentionApi(this.params).then((res) => {
           this.loading = false

@@ -122,7 +122,7 @@
     },
     methods: {
       queryService () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Common.getServiceList(this.params).then((res) => {
           this.loading = false

@@ -70,7 +70,7 @@
     },
     methods: {
       queryApi () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Order.getSelfApiList(this.params).then((res) => {
           this.loading = false

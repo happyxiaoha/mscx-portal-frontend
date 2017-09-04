@@ -101,7 +101,7 @@
     },
     methods: {
       queryApi () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Order.getSaaSList(this.params).then((res) => {
           this.loading = false

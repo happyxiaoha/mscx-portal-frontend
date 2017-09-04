@@ -104,7 +104,7 @@
         location.href = '/demand/api/create'
       },
       filterList () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Demand.getApiList(this.params).then((res) => {
           this.apiList = res.result.list

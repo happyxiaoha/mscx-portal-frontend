@@ -111,7 +111,7 @@
         },
         activeTab: 0,
         apiActiveTab: 0,
-        loading: true,
+        loading: false,
         offlineDialogVisible: false,
         applyDialogVisible: false,
         loadOffline: false,

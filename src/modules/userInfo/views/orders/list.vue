@@ -129,7 +129,7 @@
     },
     methods: {
       queryOrderList () {
-        this.loading = true
+        // this.loading = true
         this.orderList = []
         API.Order.getOrderList(this.params).then((res) => {
           this.loading = false

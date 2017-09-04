@@ -89,7 +89,7 @@
         this.apiOrderDialogVisible = arg
       },
       queryApi () {
-        this.loading = true
+        // this.loading = true
         this.apiList = []
         API.Demand.queryApi(this.params).then((res) => {
           this.loading = false

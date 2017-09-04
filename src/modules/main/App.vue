@@ -265,9 +265,46 @@
         }
       },
       handleHeaderLoaded () {
-        Axios.get('/static_html/datainfo/' + this.city.abbr + '_bannerpic/index.html?t='+new Date().getTime()).then((res) => {
-          this.banner.list = res
-        })
+        // Axios.get('/static_html/datainfo/' + this.city.abbr + '_bannerpic/index.html?t='+new Date().getTime()).then((res) => {
+        //   this.banner.list = res
+        // })
+        this.banner.list = [
+  {
+    "bannerId": "798",
+    "title": "展位1",
+    "metaDescription": "展位1",
+        "bigBannerPic": "/static/banner1.png",
+    "smallBannerPic": "",
+    "bannerUrl": ""
+    }
+  ,
+  {
+    "bannerId": "756",
+    "title": "展位2",
+    "metaDescription": "展位2",
+        "bigBannerPic": "/static/banner2.png",
+    "smallBannerPic": "",
+    "bannerUrl": ""
+    }
+  ,
+  {
+    "bannerId": "755",
+    "title": "展位3",
+    "metaDescription": "展位3",
+        "bigBannerPic": "/static/banner3.png",
+    "smallBannerPic": "",
+    "bannerUrl": ""
+    }
+  ,
+  {
+    "bannerId": "799",
+    "title": "展位4",
+    "metaDescription": "展位4",
+        "bigBannerPic": "/static/banner4.png",
+    "smallBannerPic": "",
+    "bannerUrl": ""
+    }
+]
       }
     }
   }

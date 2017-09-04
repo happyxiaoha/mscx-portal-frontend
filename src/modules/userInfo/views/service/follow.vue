@@ -74,7 +74,7 @@
     },
     methods: {
       queryService () {
-        this.loading = true
+        // this.loading = true
         this.serviceList = []
         API.App.getFollowService(this.params).then((res) => {
           this.loading = false

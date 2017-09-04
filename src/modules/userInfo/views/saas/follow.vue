@@ -74,7 +74,7 @@
     },
     methods: {
       querySaas () {
-        this.loading = true
+        // this.loading = true
         this.saasList = []
         API.Saas.getMyAttentionSaas(this.params).then((res) => {
           this.loading = false

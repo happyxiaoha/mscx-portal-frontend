@@ -1,0 +1,284 @@
+/*侧导航*/
+.citySdkLeft li a:first-child{background: url(../img/server01.png) no-repeat center center;}
+.citySdkLeft li a:nth-child(2){background: url(../img/sdk04.png) no-repeat center center;}
+.citySdkLeft li a:first-child:hover{background: url(../img/server01_cur.png) no-repeat center center;}
+.citySdkLeft li a:nth-child(2):hover{background: url(../img/sdk04_cur.png) no-repeat center center;}
+.citySdkLeft li a.active:first-child{background: url(../img/server01_cur.png) no-repeat center 22px #fff;}
+.citySdkLeft li a.active:nth-child(2){background: url(../img/sdk04_cur.png) no-repeat center 22px #fff;}
+/*数据模型*/
+.rightMenuWrap{width: 916px;margin-left: 2px;padding: 24px 16px;}
+.ChoiceList{width: 100%;height: auto;border: 1px solid #ccc;margin: 16px 0 24px;}
+.mainDatas{border: 1px solid #ccc;padding: 26px 26px 0;margin-top: 16px;}
+.mainDatas .DataList li{width: 186px;height: 212px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 26px 26px 0;}
+.mainDatas .DataList li a{display: block;width: 100%;height: 100%;}
+.mainDatas .DataList li .top{width: 100%;height: 30px;line-height: 30px;background: #ebedf0;padding: 0 12px;}
+.mainDatas .DataList li .centers{text-align: center;}
+.mainDatas .DataList li .centers img{display: inline-block;margin: 10px 0 4px;}
+.mainDatas .DataList li .centers span{display: block;color: #444;font-size: 14px;}
+.mainDatas .DataList li .centers a:hover span{color: #069cd9;}
+.mainDatas .DataList li .downs{margin-top: 20px;}
+.mainDatas .DataList li .downs span{display: block;text-align: center;height: 36px;width: 61px;}
+.mainDatas .DataList li .downs span:not(:last-child){border-right:1px solid #ccc;}
+.mainDatas .DataList li .downs span em{display: block;color: #999;margin-top: 7px;}
+.mainDatas .DataList li .downs span i{display: block;line-height: 36px;}
+.mainDatas .DataList li:nth-child(4n){margin: 0;}
+/*筛选条件*/
+.ConditionList{right: 0;top: 0;margin-top: 8px;}
+.ConditionList a{display: inline-block;margin-right: 10px;}
+.ConditionList a:hover,.ConditionList a:link{color: #444;}
+.ConditionList a.active{color: #069cd9 !important;}
+.ConditionList a:not(:last-child){margin-right: 26px;}
+/*符合条件的应用*/
+.R-myServerList{border: 1px solid #ccc;background: #fff;}
+.R-myServerList ul li{padding: 14px 12px;height: 110px;border-bottom: 1px solid #ccc;}
+.R-myServerList ul li:last-child{border:0;}
+.R-myServerList ul li img{width: 156px;height: 110px;}
+.myServerRight{width: 676px;}
+.myServerRight a{line-height: 28px;}
+.myServerRight p.R-infos{line-height: 20px;margin: 8px 0 11px;height: 44px;overflow: hidden;}
+.myServerRight p span{margin-right: 28px;}
+.citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}
+
+/*示例演示*/
+.E_mainDatas{padding: 25px 30px 10px;margin-top: 0px;background: #fff ;}
+.R-Cons .titTop{height: 54px;line-height: 54px;padding-left: 34px;}
+.E_towClass{margin-top: 8px}
+.titTopTimes div span{font-size: 14px;display: inline-block;vertical-align: middle;position: relative;}
+.titTopTimes div span:first-child{margin-left: 20px;}
+.titTopTimes div span:nth-child(3),.titTopTimes div span:nth-child(5){margin: 0 12px;}
+.titTopTimes div span:nth-child(2){width: 84px;height: 32px;border: 1px solid #ccc;}
+.titTopTimes div span:nth-child(2) input{width: 84px;height: 32px;padding: 0;margin: 0;border: 0;box-shadow: none;vertical-align: top;cursor: pointer;background: transparent;font-size: 14px;padding: 0 34px 0 8px;box-sizing: border-box;}
+.titTopTimes div span:nth-child(4){width: 68px;height: 32px;border: 1px solid #ccc;}
+.titTopTimes div span:nth-child(4) input{width: 68px;height: 32px;padding: 0;margin: 0;border: 0;box-shadow: none;vertical-align: top;cursor: pointer;background: transparent;font-size: 14px;padding: 0 34px 0 8px;box-sizing: border-box;}
+.titTopTimes div span:nth-child(2):before,.titTopTimes div span:nth-child(4):before{position: absolute;content: '';border-top: 10px solid #ccc;border-left: 10px solid transparent;border-right: 10px solid transparent;right: 5px;top: 12px;}
+.titTopTimes div span:nth-child(2):after,.titTopTimes div span:nth-child(4):after{position: absolute;content: ''; height: 32px;width: 30px;border-left: 1px solid #ccc; right: 2px;top: 0px;}
+
+
+.M-rightMyTxt{width: 620px;}
+.M-rightMyTxt p{margin-bottom: 20px;}
+.M-rightMyTxt p span{display: inline-block;line-height: 20px}
+.M-rightMyTxt p span:first-child{width: 86px;text-align: right;vertical-align: top;}
+.M-rightMyTxt p span:last-child{width: 510px;word-wrap:break-word;}
+.table-h tbody tr td:nth-child(2n){color: #069cd9 !important;}
+.ftbotton{margin: 20px 0px}
+
+/*示例演示*/
+.R-nameCons{padding: 10px 0 20px}
+.loginTable{padding: 20px 10px;}
+.loginTable ul li{margin-bottom: 20px;position: relative;clear: both;display: block;}
+.loginTable ul li span{float: left;width: 96px;font-size: 14px;color: #9a9a9a;margin-right: 8px;line-height: 30px;box-sizing: border-box;text-align: right;}
+.loginTable ul li span em{display: inline-block;vertical-align: -2px;margin-right: 5px;}
+.loginTable ul li input{float:left;width: 272px;border-radius: 0;box-shadow: none;height: 30px;box-sizing: border-box;padding-left: 14px;font-size: 14px;padding-right: 30px;margin: 0;border: 1px solid #ccc;}
+.loginTable ul li input{float:left;width: 272px;border-radius: 0;box-shadow: none;height: 30px;box-sizing: border-box;padding-left: 14px;font-size: 14px;padding-right: 30px;margin: 0;border: 1px solid #ccc;}
+.loginTable ul li input.errorBor{border: 1px solid #d82e3a;}
+.loginTable ul li input:focus{border: 1px solid #069cd9;}
+.loginTable ul li i{float: left;display: none;margin-left: 20px;font-size: 14px;color: #d82e3a;line-height: 30px;padding-left: 29px;background: url(../img/del.png) no-repeat center left ;}
+.loginTable ul li .close{display: none;position: absolute;width: 30px;height: 30px;line-height:30px;font-size: 18px;right: 0;top: 0;text-align: center;opacity: 1;color: #444;}
+.loginTable ul li input[type="file"]{display: none;}
+.loginTable ul li button{background: #069cd9;text-align: center;height: 40px;border: none;font-size: 14px;color: #fff;margin-left: 190px;padding: 0 26px;}
+.companyCons li span{width: 120px !important;}
+.companyCons li label{width: 136px !important;height: 98px !important;}
+
+.loginTable_task{padding: 0px 0px !important;border: 1px solid #ccc;border-top: 0;}
+.loginTable_task ul li{margin-bottom: 20px;position: relative;clear: both;display: block;}
+.loginTable_task ul li span{float: left;width: 96px;font-size: 14px;color: #9a9a9a;margin-right: 8px;line-height: 30px;box-sizing: border-box;text-align: right;}
+.loginTable_task ul li span em{display: inline-block;vertical-align: -2px;margin-right: 5px;}
+.loginTable_task ul li input{float:left;width: 272px;border-radius: 0;box-shadow: none;height: 30px;box-sizing: border-box;padding-left: 14px;font-size: 14px;padding-right: 30px;margin: 0;border: 1px solid #ccc;}
+.loginTable_task ul li input{float:left;width: 272px;border-radius: 0;box-shadow: none;height: 30px;box-sizing: border-box;padding-left: 14px;font-size: 14px;padding-right: 30px;margin: 0;border: 1px solid #ccc;}
+.loginTable_task ul li input.errorBor{border: 1px solid #d82e3a;}
+.loginTable_task ul li input:focus{border: 1px solid #069cd9;}
+.loginTable_task ul li i{float: left;display: none;margin-left: 20px;font-size: 14px;color: #d82e3a;line-height: 30px;padding-left: 29px;background: url(../img/del.png) no-repeat center left ;}
+.loginTable_task ul li .close{display: none;position: absolute;width: 30px;height: 30px;line-height:30px;font-size: 18px;right: 0;top: 0;text-align: center;opacity: 1;color: #444;}
+.loginTable_task ul li input[type="file"]{display: none;}
+.loginTable_task ul li label{float:left;box-sizing: border-box;width: 172px;height: 124px;border: 1px solid #ccc;background: url(../img/add.png) no-repeat center center;}
+.loginTable_task ul li img{display: block;width: 100%;height: 100%;}
+.loginTable_task ul li label p{text-align: center;font-size: 14px;margin-top: 13px;}
+.loginTable_task ul li button{background: #069cd9;text-align: center;height: 40px;border: none;font-size: 14px;color: #fff;margin-left: 190px;padding: 0 26px;}
+
+
+/*发布任务*/
+.ReleaseMainCons .ReleaseTit{font-size: 24px;color: #333;padding: 36px 28px 26px;border-bottom: 5px solid #e7e7e7;}
+.ReleaseInputs{padding: 24px 36px;font-size: 14px;}
+.ReleaseInputs .ReleaseList{margin-bottom: 15px;}
+.ReleaseInputs .ReleaseList .R_left{color:#8b8b8b;line-height: 32px;width: 88px;margin-right: 6px;text-align: right; }
+.ReleaseInputs .ReleaseList .R_right input[type="text"]{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 414px;height: 32px;box-sizing:border-box;color: #333;font-size: 14px;}
+.ReleaseInputs .ReleaseList .R_right textarea{border: 1px solid #ccc;border-radius: 0;box-shadow: none;margin: 0;outline: none;width: 790px;height: 68px;box-sizing:border-box;color: #333;resize:none;padding: 6px;}
+.ReleaseInputs .ReleaseList .R_right input[type="text"].error{border: 1px solid #d82e3a;}
+.ReleaseInputs .ReleaseList .R_right textarea.error{border: 1px solid #d82e3a;}
+.R_Btns{text-align: center;margin:50px 0 10px;}
+.R_Btns button{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;}
+.R_Btns button:first-child{margin-right: 40px;}
+
+
+.E_towClass_tsInf{margin-top: 0px}
+
+
+/*发布任务*/
+.requireHeader{padding: 17px 26px;margin-bottom: 24px;font-size: 16px;}
+.requireHeader p{color: #333;background: url(../img/img14.png) no-repeat left center;line-height: 46px;padding-left: 50px;}
+.requireHeader button{padding: 0 40px; height: 46px;border: 0;outline: none;color: #fff;font-size: 16px;}
+
+/*选择日期*/
+.commonDataSel .commonData input{cursor: pointer; outline: none;margin: 0;height:26px;border:1px solid #ccc;box-shadow: none;display: inline-block;padding: 0 10px;vertical-align: 8px;width: 104px;border-radius: 0;vertical-align: -1px;box-sizing:border-box;background: url(../img/img13.png) no-repeat 84px center #fff;}
+.commonDataSel .sl-search{width: 183px;position: inherit;margin: 0 0 0 10px;}
+.commonDataSel .sl-search input[type="text"]{width: 126px;}
+.mainSelDatas{margin-top: 15px;}
+.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;padding: 0 16px;}
+.mainSelDatas .DataSelList li{padding: 14px 0;border-bottom: 1px dashed #ccc;position: relative;}
+.mainSelDatas .DataSelList li:last-child{border: 0;}
+/*状态*/
+.status{right: 0;top: 0;}
+.downLoadCons{right: -16px;top: 50%;margin-top: -43px;height: 86px;border-left: 1px solid #ccc;width: 166px;text-align: center;background: #fff;padding-top: 3px;}
+.downLoadCons p em{display: inline-block;margin: 0 5px;}
+.downLoadCons p{margin-bottom: 5px;}
+.downLoadCons p.stop{color: #ccc;}
+.downLoadCons button{background: #069cd9;outline: none;width: 86px;height: 34px;margin: 8px 0 0;border: 0;color: #fff;font-size: 14px;}
+
+.downLoadCons p:last-child{margin-top: 10px;}
+/*发布任务详情*/
+.R-top{padding: 40px 28px 24px;}
+.R-top h3 em{border: 1px solid #ef6f08;padding: 3px 6px;border-radius: 3px;margin-left: 26px;vertical-align: 3px;}
+.R-Cons .titTopCons ul li span{display: inline-block;font-size: 14px;line-height: 24px;}
+.R-Cons .titTopCons ul li span:first-child{width: 114px;text-align: right;margin-right: 2px;vertical-align: top;}
+.R-Cons .titTopCons ul li span:last-child{width: 758px;}
+.R-Cons .titTopCons a{padding: 20px 0;display: inline-block;}
+
+
+.downLoadCons p:last-child{margin-top: 10px;}
+.downLoadCons p:last-child{margin-top: 10px;}
+
+/*应用详情*/
+/*城市SDK 详情页面*/
+.containerWrap .slideBanner{ position: relative;margin-top: 40px;padding-bottom: 50px;}
+.containerWrap .slideBanner .mleftCons .serverInfos{padding: 0 40px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appImgCons{width: 142px;margin-right: 26px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appImg{width: 142px;height: 142px;box-sizing: border-box;background: #fff;border: 1px solid #ddd;padding: 13px;border-radius: 10px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appImg img{margin: 14px auto 24px;display: block;}
+.containerWrap .slideBanner .mleftCons .serverInfos .viewerNums{padding-top: 20px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .viewerNums p{text-align: center;font-size: 14px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .viewerNums p span{display: inline-block;text-align: center;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons{width: 710px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top{line-height: 28px;margin-bottom: 8px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top h2{font-size: 18px;margin-right: 16px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;margin-right: 5px;margin-top: 2px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .left p span a{color: #069cd9;text-decoration: underline;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei{line-height: 24px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span{margin-right: 6px;}
+
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span:first-child em{
+  display: inline-block;width: 19px;height: 18px;background: url(../img/tu7.png) no-repeat center center;cursor: pointer;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span:nth-child(2){width: 40px;height: 20px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;cursor: pointer;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span:last-child{vertical-align: 2px;line-height: 20px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span:first-child em.acive{background: url(../img/tu7_cur.png) no-repeat center center;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons em{color: #444;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .left{padding-right: 34px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons button{height: 36px;line-height: 36px;text-align: center;color: #fff;font-size: 16px;background: #3F89EC;border: 0;margin-top: 3px;padding: 0 36px;outline: none;margin-right: 32px;}
+/*是否免费*/
+.useMoney{right:0;top: 60px;font-size: 26px;}
+.useMoney em{font-size: 16px;margin-left: 10px;}
+.R-Cons .titTopCons{padding: 26px 40px;box-sizing: border-box;}
+.R-Cons .titTopCons img{border: 1px solid #ccc;}
+
+
+.R-shareStarCons p:first-child span:first-child{margin-right: 5px;}
+.R-shareStarCons p:first-child span{height: 21px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;margin-left: 4px;cursor: pointer;padding: 2px 10px;}
+
+.titbtCons{padding: 5px 40px;}
+.titbtCons p{line-height: 40px;padding: 0 10px;}
+.titbtCons p:first-child{border-bottom: 1px dashed #ccc;}
+.titbtCons p span{margin-right: 50px;display: inline-block;}
+.titbtCons p span em{color: #444;}
+.titbtCons p span:first-child{width: 260px;}
+.titbtCons p span:last-child{margin-right: 0;margin-left: 80px;}
+
+.serverinfoList a{display: block !important;padding: 8px 12px !important;position: relative;}
+.serverinfoList a:before{content: '';position: absolute;left: 0;top: 13px;width: 4px;height: 4px;border-radius: 50%;background: #555;}
+
+/*应用详情页面*/
+.picScroll-left {
+    width: 100%;
+    border-radius: 3px;
+    background: #fefefe;
+    position: relative;
+    padding: 40px 0 !important;
+}
+
+.picScroll-left .prev,
+.picScroll-left .next {
+    position: absolute;
+    top: 140px;
+    display: block;
+    width: 42px;
+    height: 42px;
+    background: url(../img/arrows.png) no-repeat;
+    cursor: pointer;
+    padding: 0 !important;
+}
+
+.picScroll-left .prev {
+    left: 20px;
+    right: auto;
+    background-position: 0 0;
+}
+
+.picScroll-left .prev:hover {
+    background-position: -82px 0;
+}
+
+.picScroll-left .next {
+    left: auto;
+    right: 20px;
+    background-position: -41px 0;
+}
+
+.picScroll-left .next:hover {
+    background-position: -123px 0;
+}
+
+.picScroll-left .bd {
+    width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.picScroll-left .bd ul {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.picScroll-left .bd ul li {
+    margin: 0 20px 0 0;
+    float: left;
+    _display: inline;
+    overflow: hidden;
+    text-align: center;
+}
+
+.picScroll-left .bd ul li .pic {
+    text-align: center;
+}
+
+.picScroll-left .bd ul li .pic img {
+    width: 386px;
+    height: 250px;
+    display: block;
+}
+
+.picScroll-left .bd ul li .pic a:hover img {
+    border-color: #999;
+}
+
+.picScroll-left .bd ul li .title {
+    line-height: 24px;
+}
+/*应用查询*/
+
+.APPcons .R_left{width: 80px !important;}
+.APPcons .tabTit{color: #8b8b8b;margin-bottom: 16px;}
+.pubBtn{border: 0;color: #fff;width: 120px;height: 38px;font-size: 16px;margin-top: 25px;margin-bottom: 10px;}
+.strCons{border: 1px solid #ccc;padding: 16px;margin-bottom: 12px}
+.strCons p{color: #3c3c3c;font-size: 14px;line-height: 26px;}
+.strCons pre{background: #fff;border: 0;}
+.strCons pre code{line-height: 26px;font-size: 14px;}

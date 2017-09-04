@@ -208,7 +208,9 @@
             shadeClose: false,
             shade: 0.8,
             maxmin: true,
-            content: 'http://mscx_apitest_utils.citysdk.cn/'
+            area: ['620px', '550px'],
+            // content: 'http://mscx_apitest_utils.citysdk.cn/'
+            content: '/static/apitest/index.html'
         });
         layer.full(index)
       },

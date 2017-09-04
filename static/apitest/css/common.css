@@ -1,0 +1,267 @@
+/*.wrapper{overflow: hidden;}*/
+/*header*/
+.header{height: 80px;}
+.header h1{float:left;margin:17px 0 0 18px;}
+.header h1 a{display: block;color: #333;font-size: 22px;}
+.header h1 a img{display: inline-block;}
+.header h1 a span{display: inline-block;border-left: 1px solid #333;line-height: 34px;padding-left: 12px;margin-left: 6px;vertical-align: 22px;}
+.header .citys{margin: 35px 0 0 6px;cursor: pointer;}
+.header .citys input{padding: 0;margin: 0;border: 0;box-shadow: none;width: 88px;color: #069cd9;font-size: 14px;background: #fff;cursor: pointer;}
+.header .searchCons{margin: 0 12px 0 0;background: #fff;}
+.header .searchCons input{display: inline-block;margin: 0;}
+.header .searchCons .search{width: 304px;height: 38px;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 0;box-shadow: none;background: url(../img/img01.png) no-repeat 12px center;padding-left: 40px;border-right: 0;padding-right: 16px;}
+.header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
+.header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
+.header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
+.header .haslogin .noLogin span{margin: 0 4px;}
+.header .haslogin .yesLogin span{font-size: 14px;display: inline-block;position: relative;cursor: pointer;}
+.header .haslogin .yesLogin span:last-child{padding-right: 20px;}
+.header .haslogin .yesLogin span.down:last-child:after{content: "";position: absolute;right: 0;top:16px;border-top: 7px solid #069cd9;border-left:7px solid transparent;border-right: 7px solid transparent; }
+.header .goHome{float: right;font-size: 18px;margin-top: 26px;}
+.header .goHome a{display: block;color: #333;background: url(../img/home.png) no-repeat left center;padding-left: 35px;line-height: 26px;}
+/*个人信息下拉菜单*/
+.dropMenu{ position:absolute; right:0px; top: 40px; display:none; z-index:1001; border:1px solid #ddd;width: 140px;}
+.dropMenu:after{content: "";position: absolute;width: 8px;height: 8px;border-top: 1px solid #ddd;border-left: 1px solid #ddd;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);background: #fff;right: 0;top: -6px;left: 50%;margin-left: -6px;}
+.dropMenu li{ white-space:nowrap;height:36px;border-bottom:1px solid #ddd; background:#fff;line-height: 36px;}
+/*.dropMenu li:hover{ background:#4ddec4; }*/
+.dropMenu li:last-child{border:0;}
+.dropMenu a { display:block;color:#888; white-space:nowrap;  font-size:14px;text-align: center; }
+.dropMenu a:hover{ color:#069cd9; }
+/*导航*/
+.navCons{height: 54px;line-height: 54px;}
+.navCons .nav{margin-bottom: 0;}
+.navCons .nav li{float:left;font-size: 16px;padding:0 30px;}
+.navCons .nav li.active{background: #0683b6;}
+.navCons .nav li:hover{background: #0683b6;}
+.navCons .nav li a{color: #fff;display: block;}
+.navCons .nav li a:hover,.navCons .nav li a:link{background: transparent;color: #fff !important;}
+.navCons .nav li a:hover{color: #333;}
+.navCons .links{font-size: 16px;}
+.navCons .links a{color: #fff; display: inline-block;}
+.navCons .links a:first-child{width: 30px;height:31px;vertical-align: -10px;background: url(../img/img03.png) no-repeat left center;margin-right: 12px; cursor: pointer;}
+.navCons .links a:nth-child(2){background: url(../img/img02.png) no-repeat 10px center;padding: 0 10px 0 44px;cursor: pointer;}
+.navCons .links a:nth-child(2):hover{background-color: #0683b6;}
+.navCons .links a:nth-child(2).active{background-color: #0683b6;}
+
+/*公共 左边样式*/
+.common .tit{position: relative; height: 24px;line-height: 24px;padding-left: 16px;}
+.common .tit:before{content: '';position: absolute;width: 5px;height: 24px;background: #069cd9;left: 0;top: 0;}
+/*footer*/
+.footer{background: #535353;height: 56px;line-height: 56px;margin-top: 30px;}
+.footer .copytxt{text-align: center;color: #959494;}
+
+/*line*/
+.line{height: 12px;background: url("../img/shadow.png") no-repeat left center;}
+
+/*标题*/
+.infoContainer{padding-top: 26px;}
+.infoContainer h2{border-bottom: 1px solid #ccc;padding-bottom: 16px;padding-left: 16px;}
+
+/*table*/
+.D_table table{width: 85%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table thead tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}
+
+/*分页*/
+.Page{width: 100%;}
+.Page ul{text-align: center;}
+.Page ul li{display: inline-table;font-size: 12px;line-height: 24px;margin-right: 10px;}
+.Page ul li a{display: inline-block;padding: 0 7px;border: 1px solid #ddd;margin-right: 5px; }
+.Page ul li a:link{color: #333;}
+.Page ul li a:hover{color: #5596ed;}
+.Page ul li a.active{border: 1px solid #5596ed;color: #5596ed;}
+.Page ul li input{vertical-align: 0px; width: 30px;height: 26px;border-radius: 0;box-sizing: border-box;text-align: center;margin: 0 6px;}
+.Page ul li a#go{margin-left: 6px;}
+
+/*侧导航*/
+.leftMenuWrap{margin-right: 5px;}
+.leftMenuWrap ul{width: 64px;background: #dcdcdc;margin-top: 12px;}
+.leftMenuWrap ul li a{text-align: center;cursor: pointer;height: 100px;display: block;width: 100%;}
+.leftMenuWrap ul li span{display: block;color:#069cd9;display: none;margin-top: 60px;}
+.leftMenuWrap ul li a.active{border: 1px solid #ccc;box-sizing:border-box;margin-left: -16px;width: 80px;background-color: #fff !important;position: relative;}
+.leftMenuWrap ul li a.active span{display: block;z-index: 2;}
+.leftMenuWrap ul li a.active:before{content: '';position: absolute;width: 0;height: 0;border-top: 15px solid transparent;border-bottom: 15px solid transparent;border-right: 15px solid #069cd9;left:0;  top: -16px;z-index: -1;}
+.leftMenuWrap ul li a.one.active:before{content: '';position: absolute;width: 0;height: 0;border-top: 15px solid transparent;border-bottom: 15px solid transparent;border-right: 15px solid #069cd9;left:0;  top: 84px;z-index: -1;}
+
+/*分享*/
+.share{right: 0;top: 0;}
+.share a{display: inline-block;width: 30px;height: 22px;margin-right: 8px;}
+.share a:first-child{background: url(../img/tu4.png) no-repeat center center;}
+.share a:nth-child(2){background: url(../img/tu5.png) no-repeat center center;}
+.share a:last-child{background: url(../img/tu6.png) no-repeat center center;margin: 0;}
+
+/*筛选条件*/
+.sl-wrap{line-height: 40px;border-bottom: 1px dashed #ccc;background: #ebedf0;position: relative;padding-left: 78px;}
+.C_selectorLine:last-child .sl-wrap{border: 0;}
+.sl-wrap .sl-key{text-align: center;width: 78px;color: #777;height: auto;position: absolute;left: 0;top: 0;}
+.sl-v-list .J_valueList{padding: 0 92px 0 12px;box-sizing: border-box;background: #fff;}
+.sl-v-list .J_valueList li{float: left;margin-right: 24px;width: 76px;text-align: center;}
+.sl-v-list .J_valueList li.active a{color:#069cd9; }
+.sl-v-list .J_valueList li label{display: inline-block;}
+.J_List{height: 40px;overflow: hidden;}
+/*.sl-v-list .J_valueList li:nth-child(7n){margin-right:0; }*/
+.sl-ext{width: 96px;text-align: center;position: absolute;right: 0;top: 0;}
+.sl-search{width: 334px;position: absolute;right: 0;top: 0;border: 1px solid #069cd9;height: 24px;border: 1px solid #ccc;overflow: hidden;margin-top: 7px;margin-right: 12px;background: #fff;}
+.sl-search input[type="text"]{outline: none;margin: 0;height:24px;border:none;box-shadow: none;display: inline-block;padding: 0 12px;vertical-align: 8px;width: 276px;}
+.sl-search span{width: 24px;display: inline-block;height: 24px;background: url(../img/img07.png) no-repeat center center;cursor: pointer;vertical-align: 1px;}
+
+/*日期选择器 样式修改*/
+@media (max-width: 767px){
+
+}
+@media (max-width: 480px){
+  
+}
+@media only screen  and (max-width : 320px){
+  
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px){
+  
+
+}
+/* iPads (landscape) ----------- */
+@media only screen  and (min-device-width : 768px)  and (max-device-width : 1024px) and (orientation : landscape){
+    
+}
+/* iPads (portrait) ----------- */
+@media only screen  and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait){
+  
+}
+@media only screen  and (max-width : 768px){
+  
+} 
+/* Desktops and laptops ----------- */
+
+@media only screen  and (min-height: 669px) and (min-width : 1349px){
+  
+}
+@media only screen  and (min-width : 1422px){
+}
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px){
+}
+
+
+/*2016-09-05 新增 弹出层样式*/
+.wd500{width:500px;}
+.wd400{width:400px;}
+.wd1000{width: 1000px;}
+.Tips{font-family: "Microsoft YaHei";  font-size: 16px; border-radius: 0;}
+.Tips .maxH700{max-height:700px;}
+.Tips .modal-header{height: 20px;padding: 9px 20px;}
+.Tips .modal-header h3{font-size: 16px;color: #333;}
+.Tips .modal-header button{opacity: 1;color: #333;float: right;background: transparent;border: none;box-shadow: none;font-size: 24px;-webkit-appearance: none;padding: 0;}
+.Tips .modal-body{}
+.Tips .modal-body table{font-size: 12px;border: 1px solid #ccc;}
+.Tips .modal-body table tr td{border-bottom: 1px solid #ccc;}
+.Tips .modal-body table tr:last-child td{border: 0;}
+.Tips .modal-body table tr td .selListCons{text-align: left !important;}
+.Tips .modal-body table tr td:first-child{vertical-align: middle;width: 13%;background: #ddd;text-align: center;}
+.Tips .modal-body table tr td:last-child{padding: 12px;}
+.Tips .txtalign button{outline: none; width: 120px;box-sizing: border-box;color: #fff;box-shadow: none;background: #3f89ec;border: 1px solid #3f89ec;text-shadow:none;font-size: 14px;}
+.Tips .selListCons label{text-align: left;margin-bottom: 9px;}
+
+/*2016-09-12 请在.blueSel .middleSel .smallSel  输入类名 posRE  相对定位 为了让下拉图标绝对定位*/
+/*2016-09-10 修改下拉框*/
+.blueSel .bigSel{
+  width: 142px;
+  height: 56px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  /*text-align: center;*/
+  line-height: 54px;
+  position: relative;
+  font-size: 18px;
+  /*padding-right: 43px;*/
+  cursor: pointer;
+  border-radius: 0;
+  margin: 0;
+  outline: none;
+  position: relative;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  padding: 0 0 0 15px;
+}
+.blueSel .downBtn{
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #069cd9;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: 25px;
+  right: 15px;
+}
+
+/*2016-09-12  挨着输入框 高度为32px 中选择框*/
+.middleSel .middleSelList{
+  width: 150px;
+  background: #fff;
+  border: 1px solid #ccc;
+  height: 32px; 
+  line-height: 28px;
+  text-align: left;
+  padding: 0 10px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  border-radius: 0;
+  margin: 0;
+  outline: none;
+}
+.middleSel .downMiddlelBtn{
+  display: block;
+  position: absolute;
+  border-top: 6px solid #aaa;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  right: 6px;
+  top: 14px;
+}
+
+/*2016-09-12 小选择下拉框  城市联动*/
+.smallSelCons{width: 403px;}
+.smallSel{height: 40px;margin: 0 8px;}
+.smallSel .smallSelList{
+  width: 85px;
+  background: #fff;
+  border: 1px solid #ccc;
+  height: 26px; 
+  line-height: 24px;
+  text-align: left;
+  padding: 0 10px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  border-radius: 0;
+  margin: 0;
+  outline: none;
+  vertical-align: 0;
+}
+.smallSel span{
+  vertical-align: 0;
+  display: inline-block;
+  margin: 0 6px;
+}
+.smallSel .downSmalllBtn{
+  display: block;
+  position: absolute;
+  border-top: 6px solid #aaa;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  right: 36px;
+  top: 18px;
+}
+.R47{right: 47px !important;}

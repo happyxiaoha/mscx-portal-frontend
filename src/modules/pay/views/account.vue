@@ -5,12 +5,13 @@
       </h2>
     </div>
     <div class="pay-amount-block">
-      <h2>可用余额：<span class="pay-price">￥{{accountInfo.account_balance || 0}}</span>
+      <h2>
+        可用余额：<span class="pay-price">￥{{accountInfo.useableBalance || 0}}</span>
       </h2>
       <a href="userInfo.html#account" class="go-recharge">余额不足？去充值</a>
       <hr>
 
-      <div class="pass-wrapper" v-if="orderDetail.pay_balance < accountInfo.account_balance">
+      <div class="pass-wrapper" v-if="orderDetail.pay_balance < accountInfo.useableBalance">
         <h2>请输入支付密码</h2>
         <div class="pass-wrap">
           <c-password-input :leftAlign="true" @typing="handlePassword"></c-password-input>

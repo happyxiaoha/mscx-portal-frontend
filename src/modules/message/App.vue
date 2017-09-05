@@ -14,18 +14,31 @@
         </ul>
       </div>
     </div>
+    <!-- <c-message v-if="loadMessageBox" :message="currentItem" ref="messageBox"></c-message> -->
+    <detail-table-dialog 
+      :type="type" 
+      v-if="loadDetailTable" 
+      :resId="currentItem.resId"
+      :visible="detailTableDialogVisible"  
+      @toggle="toggleDetailTableVisible"></detail-table-dialog>
     <c-footer></c-footer>
   </div>
 </template>
 <script>
   import header from 'components/header/header'
   import footer from 'components/footer/footer'
+  import detailDialog from './components/detail'
   import API from 'common/api'
   require('common/utils/date')
   export default {
     data: function() {
       return {
-        list: []
+        list: [],
+        currentItem: {},
+        loadDetailTable: false,
+        resId: '',
+        detailTableDialogVisible: false,
+        type: ''
       }
     },
     created () {
@@ -34,27 +47,75 @@
       })
     },
     methods: {
-      showDetail(item) {
-        const h = this.$createElement;
-        this.$msgbox({
-          title: '消息详情',
-          message: h('div', null, [
-            h('div', null, item.msgContent),
-            h('div', { style: 'text-align: right' }, new Date(item.publishTime).format('yyyy-MM-dd HH:mm'))
-          ]),
-          confirmButtonText: '确定'
-        })
+      showDetail (arg) {
+        let item = arg
+        if(item.resId && item.resType) {
+          const h = this.$createElement
+          this.currentItem = item
+          this.$msgbox({
+            title: item.msgTitle,
+            message: h('div', null, [
+              h('div', { style: 'line-height: 1.8' }, [
+                h('span', null, item.msgContent.slice(0, item.msgContent.indexOf('<%=contractStaRes%>'))),
+                h('a', {
+                  on: {
+                    click: this.showResDetail
+                  },
+                  attrs: {
+                    href: 'javascript:;'
+                  }
+                }, '查看详情'),
+                h('span', null, item.msgContent.slice(item.msgContent.indexOf('<%=contractStaRes%>') + '<%=contractStaRes%>'.length, item.msgContent.indexOf('<%=contractStaInvoke%>'))),
+                h('a', {
+                  on: {
+                    click: this.showInvokeDetail
+                  },
+                  attrs: {
+                    href: 'javascript:;'
+                  }
+                }, '调用记录详情'),
+                h('span', null, '。')
+              ]),
+              h('div', { style: 'text-align: right' }, '神州数云"贵阳平台称数创易"运营团队'),
+              h('div', { style: 'text-align: right' }, new Date(item.publishTime).format('yyyy-MM-dd HH:mm'))
+            ]),
+            confirmButtonText: '确定'
+          })
+        }else {
+          this.$msgbox({
+            title: item.msgTitle,
+            message: item.msgContent,
+            confirmButtonText: '确定'
+          })
+        }
+      },
+      showResDetail () {
+        this.type = 'resource'
+        this.loadDetailTable = true
+        this.detailTableDialogVisible = true
+      },
+      showInvokeDetail () {
+        this.type = 'invoke'
+        this.loadDetailTable = true
+        this.detailTableDialogVisible = true
+      },
+      toggleDetailTableVisible (arg) {
+        this.detailTableDialogVisible = arg
       }
     },
     components: {
       'c-header': header,
-      'c-footer': footer
+      'c-footer': footer,
+      'detail-table-dialog': detailDialog
     }
   }
 </script>
 <style lang="less">
   @import "../../assets/less/variables.less";
   @import "../../assets/less/mixins.less";
+  .el-message-box {
+    width: 600px;
+  }
   .layout {
     background: #f7f8fc;
     .content {

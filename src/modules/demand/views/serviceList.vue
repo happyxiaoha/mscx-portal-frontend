@@ -101,7 +101,7 @@
     },
     methods: {
       goPublish () {
-        location.href = '/demand/service/create'
+        location.href = './demand.html#service/create'
       },
       filterList () {
         // this.loading = true

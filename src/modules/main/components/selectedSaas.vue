@@ -2,7 +2,7 @@
   <div class="selected-wrapper">
     <div class="top">
       <img src="../images/selected-saas-title.png">
-      <a href="/saas/">更多</a>
+      <a href="./saas.html">更多</a>
     </div>
     <div class="selected" v-loading="loading">
       <div class="selected-side">
@@ -18,7 +18,7 @@
               </div>
             </div>
             <div class="item-right">
-              <a :href="'/saas/detail/' + item.id" class="title">{{item.name}}</a>
+              <a :href="'./saas.html#detail/' + item.id" class="title">{{item.name}}</a>
               <p :class="[item.description.length > 73 ? 'ellipsis' : '', 'sub-title']">{{item.description}}</p>
             </div>
           </li>

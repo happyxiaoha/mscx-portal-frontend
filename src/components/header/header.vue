@@ -23,7 +23,7 @@
             <div :class="[dropClass, { 'active': dropHover }]">
               <ul>
                 <li class="usercenter">
-                  <a href="/userInfo.html">用户中心</a>
+                  <a href="./userInfo.html">用户中心</a>
                 </li>
                 <li class="develop" v-if="user.userType !== 'REGISTER'">
                   <a href="javascript:;" @click="jumpDevelop">开发者门户</a>
@@ -44,26 +44,26 @@
     <div class="header-main">
       <el-row class="grid-l">
         <el-col :span="5">
-          <a href="/index.html">
+          <a href="./index.html">
             <img src="./images/logo.png">
           </a>
         </el-col>
         <div class="channel-wrap">
           <ul class="channel">
             <li :class="[active === 'index' ? 'active' : '']">
-              <a href="/index.html">首页</a>
+              <a href="./index.html">首页</a>
             </li>
             <li style="min-width:80px;" :class="[active === 'api' ? 'active' : '']">
-              <a href="/api/">API</a>
+              <a href="./api.html">API</a>
             </li>
             <li :class="[active === 'service' ? 'active' : '']">
-              <a href="/services/">微应用</a>
+              <a href="./services.html">微应用</a>
             </li>
             <li style="min-width:127px;" :class="[active === 'saas' ? 'active' : '']">
-              <a href="/saas/">SaaS服务</a>
+              <a href="./saas.html">SaaS服务</a>
             </li>
             <li :class="[active === 'demand' ? 'active' : '']">
-              <a href="/demand/">需求定制</a>
+              <a href="./demand.html">需求定制</a>
             </li>
           </ul>
         </div>

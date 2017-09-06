@@ -24,11 +24,11 @@
               <div class="user-tip">
                 <p>欢迎来到神州数云</p>
                 <template v-if="user.userId">
-                  <a href="userInfo.html">{{user.account}}</a>
+                  <a href="./userInfo.html">{{user.account}}</a>
                 </template>
                 <template v-else>
                   <a href="login.html">登录</a>
-                  <a href="register.html">注册</a>
+                  <a href="./register.html">注册</a>
                 </template>
               </div>
             </div>
@@ -210,7 +210,7 @@
             maxmin: true,
             area: ['620px', '550px'],
             // content: 'http://mscx_apitest_utils.citysdk.cn/'
-            content: '/static/apitest/index.html'
+            content: './static/apitest/index.html'
         });
         layer.full(index)
       },
@@ -221,7 +221,7 @@
             newWin.location = res.result
           })
         }else {
-          location.href = 'userInfo.html#user/auth'
+          location.href = './userInfo.html#user/auth'
         }
       },
       goEthink () {
@@ -240,30 +240,30 @@
       },
       goPublishApi () {
         if(!this.user.userId) {
-          location.href = 'login.html' + '?service='+ encodeURIComponent('/api/create')
+          location.href = './login.html' + '?service='+ encodeURIComponent('/api/create')
         }else {
-          location.href = '/api/create'
+          location.href = './api.html#create'
         }
       },
       goPublishService () {
         if(!this.user.userId) {
-          location.href = 'login.html' + '?service='+ encodeURIComponent('/services/create')
+          location.href = './login.html' + '?service='+ encodeURIComponent('/services/create')
         }else {
-          location.href = '/services/create'
+          location.href = './services.html#create'
         }
       },
       goPublishDemand () {
         if(!this.user.userId) {
           location.href = 'login.html' + '?service='+ encodeURIComponent('/demand/api/create')
         }else {
-          location.href = '/demand/api/create'
+          location.href = './demand.html#api/create'
         }
       },
       goPublishSaas () {
         if(!this.user.userId) {
           location.href = 'login.html' + '?service='+ encodeURIComponent('/saas/create')
         }else {
-          location.href = '/saas/create'
+          location.href = './saas.html#create'
         }
       },
       handleHeaderLoaded () {
@@ -275,7 +275,7 @@
     "bannerId": "798",
     "title": "展位1",
     "metaDescription": "展位1",
-        "bigBannerPic": "/static/banner1.png",
+        "bigBannerPic": "./static/banner1.png",
     "smallBannerPic": "",
     "bannerUrl": ""
     }
@@ -284,7 +284,7 @@
     "bannerId": "756",
     "title": "展位2",
     "metaDescription": "展位2",
-        "bigBannerPic": "/static/banner2.png",
+        "bigBannerPic": "./static/banner2.png",
     "smallBannerPic": "",
     "bannerUrl": ""
     }
@@ -293,7 +293,7 @@
     "bannerId": "755",
     "title": "展位3",
     "metaDescription": "展位3",
-        "bigBannerPic": "/static/banner3.png",
+        "bigBannerPic": "./static/banner3.png",
     "smallBannerPic": "",
     "bannerUrl": ""
     }
@@ -302,7 +302,7 @@
     "bannerId": "799",
     "title": "展位4",
     "metaDescription": "展位4",
-        "bigBannerPic": "/static/banner4.png",
+        "bigBannerPic": "./static/banner4.png",
     "smallBannerPic": "",
     "bannerUrl": ""
     }

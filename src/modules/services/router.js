@@ -7,8 +7,8 @@ import API from 'common/api'
 Vue.use(VueRouter)
 
 var router = new VueRouter({
-  mode: 'history',
-  base: '/services/',
+  // mode: 'history',
+  // base: '/services/',
   routes: [
     {
       path: '/',

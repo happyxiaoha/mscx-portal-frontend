@@ -101,7 +101,7 @@
     },
     methods: {
       goPublish () {
-        location.href = '/demand/api/create'
+        location.href = './demand.html#api/create'
       },
       filterList () {
         // this.loading = true

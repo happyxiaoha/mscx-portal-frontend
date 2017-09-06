@@ -2,7 +2,7 @@
   <div class="selected-wrapper">
     <div class="top">
       <img src="../images/selected-app-title.png">
-      <a href="services.html">更多</a>
+      <a href="./services.html">更多</a>
     </div>
     <div class="selected" v-loading="loading">
       <div class="selected-side">
@@ -12,11 +12,11 @@
       <div class="selected-content">
         <ul class="selected-ul">
           <li v-for="(item, index) in selectedApp" v-if="index < 8">
-            <a :href="'/services/detail/' + item.id">
+            <a :href="'./services.html#detail/' + item.id">
               <div class="rec-item-top">
                 <img :src="item.imageUri">
                 <el-tooltip content="观看演示" effect="dark" placement="top">
-                  <a :href="'/services/detail/' + item.id + '?display=1'"></a>
+                  <a :href="'./services.html#detail/' + item.id + '?display=1'"></a>
                 </el-tooltip>
               </div>
               <div class="rec-title">
@@ -71,7 +71,7 @@
         if(this.marketTheme.showRuleType === '2') {
           location.href = this.marketTheme.browseUrl
         }else {
-          location.href = '/services' + 
+          location.href = './services.html#' + 
           (this.marketTheme.categoryId ? '/category-' + this.marketTheme.categoryId : '') + 
           (this.marketTheme.tags ? '/tag-' + this.marketTheme.tags.split(',')[0] : '')
         }

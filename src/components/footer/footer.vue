@@ -3,19 +3,19 @@
     <div class="grid-l">
       <ul>
         <li>
-          <a href="/index.html">首页</a>
-          <a href="/api/">API</a>
-          <a href="/services/">微应用</a>
-          <a href="/saas/">SaaS服务</a>
-          <a href="/demand/">需求定制</a>
+          <a href="./index.html">首页</a>
+          <a href="./api.html">API</a>
+          <a href="./services.html">微应用</a>
+          <a href="./saas.html">SaaS服务</a>
+          <a href="./demand.html">需求定制</a>
         </li>
         <li>
           <a href="javascript:;">帮助中心</a>
-          <a href="/contactUs.html" target="_blank">关于我们</a>
-          <a href="/help.html#guidance" target="_blank">新手指导</a>
-          <a href="/help.html#api" target="_blank">API使用</a>
-          <a href="/help.html#service" target="_blank">微应用使用</a>
-          <a href="/help.html#question" target="_blank">常见问题</a>
+          <a href="./contactUs.html" target="_blank">关于我们</a>
+          <a href="./help.html#guidance" target="_blank">新手指导</a>
+          <a href="./help.html#api" target="_blank">API使用</a>
+          <a href="./help.html#service" target="_blank">微应用使用</a>
+          <a href="./help.html#question" target="_blank">常见问题</a>
         </li>
       </ul>
       <div class="footer-center">

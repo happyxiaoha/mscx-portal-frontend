@@ -16,8 +16,17 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['babel-polyfill'].concat(baseWebpackConfig.entry[name])
 })
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
+  output: {
+    path: resolve('./dist/'), //文件输出目录
+    publicPath: './',
+    filename: 'js/[name].[hash:8].js'
+  },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
@@ -27,7 +36,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       compress: {
         warnings: false
       },
-      sourceMap: true
+      sourceMap: false
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -66,7 +75,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static')
+        from: path.resolve(__dirname, '../static'),
+        to: 'static'
       }
     ]),
     new CopyWebpackPlugin([

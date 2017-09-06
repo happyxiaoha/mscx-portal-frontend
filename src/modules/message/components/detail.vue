@@ -91,7 +91,7 @@
       }
     },
     created () {
-      if(this.item) {
+      if(this.resId) {
         this.getDetail()
       }
     },
@@ -136,6 +136,9 @@
         if(this.resId) {
           this.getDetail()
         }
+      },
+      type () {
+        this.getDetail()
       },
       params: {
         handler (val) {

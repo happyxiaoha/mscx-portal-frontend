@@ -16,7 +16,7 @@
           <tr v-for="(item, index) in list">
             <td>{{ +pageInfo.startIndex + +index + 1 }}</td>
             <td>{{item.sourceName}}</td>
-            <td>{{item.sourceMoney}}/次</td>
+            <td>{{item.sourceMoney}}元/次</td>
             <td>{{item.createdTime ? new Date(item.createdTime).format('yyyy-MM-dd') : '-'}}</td>
             <td>{{item.createdBy}}</td>
           </tr>
@@ -42,7 +42,7 @@
             <td>{{ +pageInfo.startIndex + +index + 1 }}</td>
             <td>{{item.accessTime ? new Date(item.accessTime).format('yyyy-MM-dd HH:mm') : '-'}}</td>
             <td>{{item.sourceName}}</td>
-            <td>{{item.sourceMoney}}/次</td>
+            <td>{{item.sourceMoney}}元/次</td>
             <td>{{item.flag}}</td>
           </tr>
         </template>

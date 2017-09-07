@@ -24,7 +24,7 @@
           <template v-if="result.list.length > 0">
             <tr v-for="(item, index) in result.list">
               <td>{{ +pageInfo.startIndex + +index + 1 }}</td>
-              <td>{{ item.rechargeType }}</td>
+              <td>{{ item.flowName }}</td>
               <td>{{ item.flowAmount }}</td>
               <td>{{ item.accountBalance }}</td>
               <td>{{ new Date(item.updatedTime).format('yyyy-MM-dd HH:mm:ss') }}</td>

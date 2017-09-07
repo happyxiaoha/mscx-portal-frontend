@@ -5,61 +5,61 @@
             "name": "全国",
             "abbr": "quanguo",
             "url": "http://www.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "logo": "logo.png"
         },{
             "code": "110000",
             "name": "北京",
             "abbr": "beijing",
             "url": "http://bj.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "logo": "logo.png"
         },{
             "code": "440100",
             "name": "广州",
             "abbr": "guangzhou",
             "url": "http://gz.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "logo": "logo.png"
         },{
             "code": "320300",
             "name": "徐州",
             "abbr": "xuzhou",
             "url": "http://xz.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "logo": "logo.png"
         },{
             "code": "320582",
             "name": "张家港",
             "abbr": "zhangjiagang",
             "url": "http://zjg.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "logo": "logo.png"
         },{
             "code": "320600",
             "name": "南通",
             "abbr": "nantong",
             "url": "http://nt.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "logo": "logo.png"
         },{
             "code": "340500",
             "name": "马鞍山",
             "abbr": "maanshan",
             "url": "http://mas.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "logo": "logo.png"
         },{
             "code": "520100",
             "name": "贵阳",
             "abbr": "guiyang",
             "url": "http://gy.citysdk.cn/",
-            "logo": "ic_gylogo.png"
+            "logo": "gylogo.png"
         },{
             "code": "810000",
             "name": "香港",
             "abbr": "xianggang",
             "url": "http://hk.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "logo": "logo.png"
         },{
-            "code": "371000",
-            "name": "威海",
-            "abbr": "weihai",
-            "url": "http://wh.citysdk.cn/",
-            "logo": "ic_nationlogo.png"
+            "code": "131028",
+            "name": "大厂",
+            "abbr": "dachang",
+            "url": "http://dachang.citysdk.cn/",
+            "logo": "dachanglogo.png"
         }
     ]
 }

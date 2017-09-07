@@ -45,7 +45,7 @@
       <el-row class="grid-l">
         <el-col :span="5">
           <a href="/index.html">
-            <img src="./images/logo.png">
+            <img :src="logoSrc">
           </a>
         </el-col>
         <div class="channel-wrap">
@@ -103,6 +103,9 @@
     computed: {
       city () {
         return this.$store.getters.city
+      },
+      logoSrc () {
+        return require('./images/' + this.city.logo)
       }
     },
     created () {

@@ -161,7 +161,7 @@
       //   return - this.activeScrollIndex * 20 + 'px'
       // }
       isLongAnnounce () {
-        return this.noticeList.msgContent && this.noticeList.msgContent.length > 44
+        return this.noticeList && this.noticeList.msgContent && this.noticeList.msgContent.length > 44
       }
     },
     mounted () {

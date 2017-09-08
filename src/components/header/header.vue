@@ -172,6 +172,9 @@
         })
       },
       showCityStation () {
+        if(this.city.code === '131028') {
+          return
+        }
         this.cityStationVisiable = true
       },
       hideCityStation () {

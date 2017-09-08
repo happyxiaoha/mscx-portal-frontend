@@ -8,7 +8,7 @@
         </el-checkbox-group>
       </div>
     </div>
-    <div class="filter-item">
+    <div class="filter-item" v-if="currentCity.code !== '131028'">
       <label>范围：</label>
       <div class="filter-content">
         <el-select v-model="province" class="range-select" placeholder="请选择">
@@ -111,7 +111,9 @@
       }
     },
     computed: {
-      
+      currentCity () {
+        return this.$store.getters.city
+      }
     },
     watch: {
       province (val, oldVal) {

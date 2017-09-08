@@ -41,7 +41,7 @@
 <script>
   export default {
     props: ["itemObj", "cols"],
-    data: function () {
+    data () {
       return {
         className: 'api-item',
         apiItem: this.itemObj
@@ -52,7 +52,7 @@
         return 'cols' + this.cols
       }
     },
-    created: function () {
+    created () {
       if(this.itemObj.discount) {
         this.apiItem.rawPrice = this.itemObj.price
         this.apiItem.price = (this.itemObj.discount * this.apiItem.rawPrice).toFixed(2)

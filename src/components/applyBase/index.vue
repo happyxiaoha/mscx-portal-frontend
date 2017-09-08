@@ -248,7 +248,7 @@
           }, 1000)
         })
       },
-      addShopCart (form) {
+      addShopCart (form = 'form') {
         this.$refs[form].validate((valid) => {
           if(valid) {
             this.loading.status = true

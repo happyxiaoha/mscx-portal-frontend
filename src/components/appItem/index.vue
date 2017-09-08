@@ -36,7 +36,7 @@
 <script>
   export default {
     props: ["itemObj", 'type'],
-    data: function () {
+    data () {
       return {
         toggleFlag: true,
         serviceItem: this.itemObj

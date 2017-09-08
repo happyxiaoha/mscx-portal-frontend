@@ -17,7 +17,7 @@
       name: String,
       url: String
     },
-    data: function() {
+    data () {
       return {
         fileId: this.id,
         hasFormData: window.FormData !== undefined,
@@ -25,14 +25,14 @@
       }
     },
     methods: {
-      handleClick: function() {
+      handleClick () {
         this.previewUrl = ''
         if (!this.disabled) {
           this.$refs.input.value = null;
           this.$refs.input.click();
         }
       },
-      handleChange: function() {
+      handleChange () {
         this.iframeUpload({
           uploadId: this.id,
           url: this.url,
@@ -44,7 +44,7 @@
           }.bind(this)
         });
       },
-      iframeUpload: function(options) {
+      iframeUpload (options) {
         /*
           参数说明:
           options.uploadId : 页面里file控件的ID;

@@ -89,7 +89,7 @@
   const SAAS_TYPE = 'saas'
   export default {
     props: ['type', 'category', 'tag'],
-    data: function () {
+    data () {
       return {
         loading: false,
         checkedObject: [],
@@ -295,13 +295,11 @@
             this.handleDefaultTag()
           }))
       },
-      chooseCategory (index) {
-        index = typeof index === undefined ? -1 : index
+      chooseCategory (index = -1) {
         this.activeCateIndex = index
         this.categoryId = index !== -1 ? this.categoryList[index].categoryId : ''
       },
-      chooseTag (index) {
-        index = typeof index === undefined ? -1 : index
+      chooseTag (index = -1) {
         this.activeTagIndex = index
         this.tagId = index !== -1 ? this.tagsList[index].tagId : ''
       },

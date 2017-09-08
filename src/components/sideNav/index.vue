@@ -18,7 +18,7 @@
 </template>
 <script>
   export default {
-    data: function () {
+    data () {
       return {
         erCodeVisiable: false
       }
@@ -26,7 +26,7 @@
     computed: {
       
     },
-    created: function () {
+    created () {
       
     },
     methods: {

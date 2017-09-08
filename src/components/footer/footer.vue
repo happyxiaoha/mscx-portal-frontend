@@ -47,7 +47,7 @@
     props: {
       isLogin: Boolean
     },
-    data: function () {
+    data () {
       return {
         logo: '',
         title: '',
@@ -55,23 +55,16 @@
       }
     },
     computed: {
-      user: function () {
+      user () {
         return this.$store.getters.user
       }
     },
-    created: function () {
+    created () {
       API.Common.getContactUsCms().then((res) => {
         this.result = res[0]
       })
     },
     methods: {
-      logout: function () {
-        this.$http.get('logout.do').then(function (res) {
-          if (res.status === 'OK') {
-            this.$router.replace('/login')
-          }
-        }.bind(this))
-      }
     }
   }
 </script>

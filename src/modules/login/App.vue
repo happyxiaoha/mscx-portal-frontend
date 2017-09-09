@@ -7,7 +7,7 @@
       </div>
       <div class="login-form-wrapper" v-loading="loading">
         <div class="form-title">
-          <h1>登录神州数云平台</h1>
+          <h1>登录智慧大厂平台</h1>
         </div>
         <el-form :model="form" ref="form" :rules="rules" class="login-form">
           <div class="err-msg" v-if="isError">{{errMsg}}</div>

@@ -22,7 +22,7 @@
               <img v-if="user.headPortrait && user.headPortrait !== 'null'" :src="user.headPortrait">
               <img v-else src="../../assets/images/avatar.png">
               <div class="user-tip">
-                <p>欢迎来到神州数云</p>
+                <p>欢迎来到智慧大厂</p>
                 <template v-if="user.userId">
                   <a href="userInfo.html">{{user.account}}</a>
                 </template>
@@ -99,7 +99,7 @@
           <img src="./images/develop-api.png">
           <p class="develop-title">API测试工具</p>
           <div class="develop-content">
-            <p>神州数云为您提供在线API测试工具，在您申请完API后，方可使用该工具。选择申请的接口，查看参数信息，输入参数向接口发起请求，通过返回值查看返回效果。</p>
+            <p>智慧大厂为您提供在线API测试工具，在您申请完API后，方可使用该工具。选择申请的接口，查看参数信息，输入参数向接口发起请求，通过返回值查看返回效果。</p>
             <button @click="goApiTest">点击查看</button>
           </div>
         </div>
@@ -113,9 +113,9 @@
         </div>
         <div class="develop-item">
           <img src="./images/develop-paas.png">
-          <p class="develop-title">神州数云PaaS</p>
+          <p class="develop-title">智慧大厂PaaS</p>
           <div class="develop-content">
-            <p>神州数云PaaS平台为您提供丰富的开发资源和模板，包括测试资源申请、生产资源申请、环境配置、测试功能、上线功能、数据库功能、状态监控，以及代码托管、持续集成功能。</p>
+            <p>智慧大厂PaaS平台为您提供丰富的开发资源和模板，包括测试资源申请、生产资源申请、环境配置、测试功能、上线功能、数据库功能、状态监控，以及代码托管、持续集成功能。</p>
             <button @click="goPaas">点击查看</button>
           </div>
         </div>

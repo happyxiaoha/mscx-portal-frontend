@@ -41,7 +41,7 @@
           </el-form-item>
           <el-form-item prop="agreement">
             <el-checkbox label="我已阅读并接受" v-model="form.agreement" name="agreement"></el-checkbox>
-            <a href="registerProtocol.html">《神州数云用户注册协议》</a>
+            <a href="registerProtocol.html">《智慧大厂用户注册协议》</a>
           </el-form-item>
           <el-form-item label-width="0">
             <el-button type="primary" class="register-btn" :disabled="submitBtnDisabled" @click="submitForm('form')">立即注册</el-button>

@@ -33,6 +33,7 @@ var apiAPI = {
       url : baseUrl + 'contract/getInvokeInfo.do',
       params: _.pick(options, ['contractNum', 'page', 'pageSize'])
     })
+    // return Promise.resolve({"code":"000000","message":null,"result":{"page":null,"list":null},"status":"OK"})
   },
   invokeInfoExcelUrl: baseUrl + 'invokeInfoExcel.do',
   resourceInfoExcelUrl: baseUrl + 'resourceInfoExcel.do'

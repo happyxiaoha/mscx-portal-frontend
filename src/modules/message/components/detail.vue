@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <template v-if="list.length > 0">
+        <template v-if="list && list.length > 0">
           <tr v-for="(item, index) in list">
             <td>{{ +pageInfo.startIndex + +index + 1 }}</td>
             <td>{{item.sourceName}}</td>
@@ -37,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <template v-if="list.length > 0">
+        <template v-if="list && list.length > 0">
           <tr v-for="(item, index) in list">
             <td>{{ +pageInfo.startIndex + +index + 1 }}</td>
             <td>{{item.accessTime ? new Date(item.accessTime).format('yyyy-MM-dd HH:mm') : '-'}}</td>
@@ -107,13 +107,13 @@
       getDetail() {
         if(this.isTypeRes) {
           API.Contract.getResourceInfo(this.params).then((res) => {
-            this.list = res.result.list
-            this.pageInfo = res.result.page
+            this.list = res.result.list || {}
+            this.pageInfo = res.result.page || {}
           })
         }else if(this.isTypeInvoke) {
           API.Contract.getInvokeInfo(this.params).then((res) => {
-            this.list = res.result.list
-            this.pageInfo = res.result.page
+            this.list = res.result.list || {}
+            this.pageInfo = res.result.page || {}
           })
         }
       },

@@ -71,7 +71,7 @@
               </template>
               <template v-else>
                 <td>
-                  {{ item.defaulTime == -1 ? '无次数限制' : parseInt(item.defaulTime || 0)}}
+                  {{ item.defaulTime == -1 ? '无次数限制' : (!item.defaultTime || item.defaultTime == 0 ? '--' : parseInt(item.defaulTime))}}
                 </td>
               </template>
               <td>{{ item.discount && item.discount < 1 ? (item.discount * item.itemCashTotal).toFixed(2) : item.itemCashTotal }}</td>

@@ -3,7 +3,7 @@
     <div class="grid-l">
       <div class="logo">
         <a href="/index.html">
-          <img src="./images/header-logo.png"/>
+          <img :src="logoSrc"/>
         </a>
         <span v-if="isLogin">欢迎登录</span>
         <span v-if="isRegister">欢迎注册</span>
@@ -16,6 +16,8 @@
   </div>
 </template>
 <script>
+  import _ from 'lodash'
+  const cityStation = require('common/json/cityStation.json')
   export default {
     props: {
       type: String
@@ -26,12 +28,24 @@
       }
     },
     computed: {
-      isLogin: function() {
+      isLogin () {
         return this.headerType === 'login'
       },
-      isRegister: function() {
+      isRegister () {
         return this.headerType === 'register'
+      },
+      city () {
+        return this.$store.getters.city
+      },
+      logoSrc () {
+        return require('./images/' + this.city.logo)
       }
+    },
+    created () {
+      let city = _.find(cityStation.cities, function(item){
+        return item.url.indexOf(location.host) > -1;
+      }) || cityStation.cities[0];
+      this.$store.commit('setCity', city)
     }
   }
 </script>

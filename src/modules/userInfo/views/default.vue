@@ -2,7 +2,7 @@
   <div>
     <div class="user-default-account">
       <div class="default-top">
-        <h2>我的账户</h2>
+        <h2>我的首页</h2>
         <div class="default-oper">
           <el-button class="btn-apply-service" @click="goServiceList">申请服务</el-button>
           <el-button class="btn-publish-service" @click="goServiceCreate">发布服务</el-button>

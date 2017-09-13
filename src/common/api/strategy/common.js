@@ -123,7 +123,7 @@ var commonAPI = {
     //   method: 'GET',
     //   url : baseUrl + 'home/recommendation.do'
     // })
-    return Promise.resolve({"code":"000000","message":"success","result":[{"imageUri":"./static/516447e156ff4be6a1b026f9286cce41.jpg","name":"身份证二元素认证","chargeTypeDesc":"收费","id":313,"viewCount":229,"applyCount":12,"sourceType":"01","background":"","attentionCount":4,"score":5.0,"updatedTime":1503653702000,"providerName":"同程金服"},{"imageUri":"./static/cfe5b3edb91043ca8b16d274e98cf514.jpg","name":"人脸识别","chargeTypeDesc":"收费","id":312,"viewCount":159,"applyCount":4,"sourceType":"01","background":"","attentionCount":4,"score":4.0,"updatedTime":1503653697000,"providerName":"神州融"},{"imageUri":"./static/f016162af76e492887ae93c2f8340df2.jpg","name":"公积金查询","chargeTypeDesc":"免费","id":21,"viewCount":204,"applyCount":0,"sourceType":"03","background":null,"attentionCount":1,"score":5.0,"updatedTime":1503653735000,"providerName":"智慧神州"}],"status":"OK"})
+    return Promise.resolve({"code":"000000","message":"success","result":[{"imageUri":"./static/516447e156ff4be6a1b026f9286cce41.png","name":"身份证二元素认证","chargeTypeDesc":"收费","id":313,"viewCount":229,"applyCount":12,"sourceType":"01","background":"","attentionCount":4,"score":5.0,"updatedTime":1503653702000,"providerName":"同程金服"},{"imageUri":"./static/cfe5b3edb91043ca8b16d274e98cf514.png","name":"人脸识别","chargeTypeDesc":"收费","id":312,"viewCount":159,"applyCount":4,"sourceType":"01","background":"","attentionCount":4,"score":4.0,"updatedTime":1503653697000,"providerName":"神州融"},{"imageUri":"./static/f016162af76e492887ae93c2f8340df2.png","name":"公积金查询","chargeTypeDesc":"免费","id":21,"viewCount":204,"applyCount":0,"sourceType":"03","background":null,"attentionCount":1,"score":5.0,"updatedTime":1503653735000,"providerName":"智慧神州"}],"status":"OK"})
   },
   // 免费API下单
   placeFreeApiOrder (options) {
@@ -278,7 +278,7 @@ var commonAPI = {
     return Promise.resolve([
   {
     "Id": "813",
-        "QRcode": "http://172.16.49.132:81/uploads/8/image/public/201706/20170626151232_n8i45xnmg7.jpg",
+        "QRcode": "http://172.16.49.132:81/uploads/8/image/public/201706/20170626151232_n8i45xnmg7.png",
     "coopName": "商务合作（工作日9:00-18:00）",
         "coopTel": "010-61853361",
     "coopMail": "zhangglf@dcholdings.com",

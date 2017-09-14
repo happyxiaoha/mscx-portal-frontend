@@ -147,6 +147,10 @@
             padding-top: 10px;
             text-align: center;
             box-sizing: border-box;
+            img {
+              max-width: 100px;
+              max-height: 100px;
+            }
           }
           .rec-title {
             display: inline-block;

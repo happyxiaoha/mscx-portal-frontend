@@ -164,7 +164,7 @@
         this.search()
       },
       switchCity (city) {
-        API.Common.switchCity({areaCode: this.city.code}).then((res) => {
+        API.Common.switchCity({areaCode: city.code}).then((res) => {
           if(res.status == 'OK') {
             location.href = city.url;
           }

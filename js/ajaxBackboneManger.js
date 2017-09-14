@@ -1,7 +1,6 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-
 var backboneSync = Backbone.sync;
 
 Backbone.sync = function(method, model, options) {

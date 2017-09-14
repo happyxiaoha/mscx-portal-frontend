@@ -1,7 +1,7 @@
 /**
  * Created by Kevin on 2016/12/7.
  */
-
+require('./mockData.js');
 var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
 var router = require('pioneering/router.js');

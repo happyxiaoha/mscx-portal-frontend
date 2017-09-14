@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/12/12.
  */
-
+require('./mockData.js');
 var header = require('../widget/headerWidget/headerView.js');
 var footer = require('../widget/footerWidget/footerView.js');
 

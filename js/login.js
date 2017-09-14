@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/12/12.
  */
-
+require('./mockData.js');
 var header = require('../modules/login/loginHeaderView.js');
 require('../css/base.css');
 

@@ -5,9 +5,9 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
-    connect = require('gulp-connect'),
+    // connect = require('gulp-connect'),
     rename = require('gulp-rename'),
-    livereload = require('gulp-livereload'),
+    // livereload = require('gulp-livereload'),
     webpackConfig = require('./webpack.config.js');
 
 var configRoot = {
@@ -62,7 +62,7 @@ gulp.task('backboneBuild', function() {
 });
 
 gulp.task('copy', function() {
-    return gulp.src(['./favicon.ico','./css/**/*', './*.html', './lib/**/*', './images/newicon/ic_newlogo.png', './images/apihelp/*','./images/serverHelp/*', './images/guidance/*'], {base: './'})
+    return gulp.src(['./favicon.ico','./css/**/*', './*.html', './lib/**/*', './images/newicon/ic_newlogo.png', './images/apihelp/*','./images/serverHelp/*', './images/guidance/*', './static/**/*'], {base: './'})
         .pipe(gulp.dest('build'));
 });
 

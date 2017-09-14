@@ -7,11 +7,20 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 var env = process.env.NODE_ENV === 'testing'
   ? 'testing'
   : config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
+  output: {
+    path: resolve('./dist/'), //文件输出目录
+    publicPath: './',
+    filename: 'js/[name].[hash:8].js'
+  },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -85,7 +94,8 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static')
+        from: path.resolve(__dirname, '../static'),
+        to: 'static'
       }
     ]),
     new CopyWebpackPlugin([

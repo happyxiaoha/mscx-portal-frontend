@@ -27,10 +27,10 @@ var view = Backbone.View.extend({
         window.fundUrl = '#news/fund/list';
         window.rootNewsUrl = 'startup.html';
 
-        this.$rightPart.load(invertHotCmsUrl + '?time=' + +(new Date()));
-        this.$policy.load(policyCmsUrl + '?time=' + +(new Date()));
-        this.$class.load(classCmsUrl + '?time=' + +(new Date()));
-        this.$article.load(articleCmsUrl + '?time=' + +(new Date()));
+        // this.$rightPart.load(invertHotCmsUrl + '?time=' + +(new Date()));
+        // this.$policy.load(policyCmsUrl + '?time=' + +(new Date()));
+        // this.$class.load(classCmsUrl + '?time=' + +(new Date()));
+        // this.$article.load(articleCmsUrl + '?time=' + +(new Date()));
         // this.$fund.load(fundCmsUrl + '?time=' + +(new Date()));
 
         return this;

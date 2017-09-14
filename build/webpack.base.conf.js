@@ -219,12 +219,12 @@ module.exports = {
                 })
             },
             {
-                test: /\.(jpg|png|svg|gif)$/,
+                test: /\.(jpg|png|svg|gif|jpeg|bmp)$/,
                 loader: "url-loader",
-                include: [resolve('src')],
+                include: [resolve('src'), resolve('static')],
                 options: {
-                    limit: 10000,
-                    name: 'images/[hash:8].[ext]'
+                    limit: 100000,
+                    name: './images/[hash:8].[ext]'
                 }
             },
             {

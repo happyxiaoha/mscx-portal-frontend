@@ -1,5 +1,5 @@
 <template>
-  <div class="selected-wrapper">
+  <div class="selected-wrapper" v-if="selectedApp.length > 0">
     <div class="top">
       <img src="../images/selected-saas-title.png">
       <a href="/saas/">更多</a>

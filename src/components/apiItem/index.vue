@@ -1,21 +1,23 @@
 <template>
   <div :class="[className, colClass]">
     <div class="api-top">
-      <router-link :to="{ name: 'detail', params: { id: apiItem.apiServiceId || apiItem.sourceId } }">
+      <router-link :to="{ name: 'detail', params: { id: apiItem.apiServiceId || apiItem.sourceId } }" v-if="!outer">
         <div :class="['api-icon', apiItem.discount ? 'discount' : '']">
           <img :src="apiItem.iconUrl || apiItem.logoUrl">
         </div>
       </router-link>
-      <!-- <a :href="'/api/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">
-        
-      </a> -->
+      <a v-else :href="'/api/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">
+        <div :class="['api-icon', apiItem.discount ? 'discount' : '']">
+          <img :src="apiItem.iconUrl || apiItem.logoUrl">
+        </div>
+      </a>
     </div>
     <div class="api-middle">
       <h4>
-        <router-link :to="{ name: 'detail', params: { id: apiItem.apiServiceId || apiItem.sourceId } }">
+        <router-link :to="{ name: 'detail', params: { id: apiItem.apiServiceId || apiItem.sourceId } }" v-if="!outer">
           {{apiItem.apiServiceName || apiItem.apiName}}
         </router-link>
-        <!-- <a :href="'/api/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">{{apiItem.apiServiceName || apiItem.apiName}}</a> -->
+        <a v-else :href="'/api/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">{{apiItem.apiServiceName || apiItem.apiName}}</a>
       </h4>
       <div class="api-sub-text">智慧神州</div>
       <div class="api-count">
@@ -40,7 +42,7 @@
 </template>
 <script>
   export default {
-    props: ["itemObj", "cols"],
+    props: ["itemObj", "cols", "outer"],
     data: function () {
       return {
         className: 'api-item',

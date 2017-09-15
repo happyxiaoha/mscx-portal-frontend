@@ -5,12 +5,12 @@
         <img :src="serviceItem.imageUri">
       </div>
       <div class="app-content">
-        <router-link :to="{ name: 'detail', params: {id: serviceItem.id} }">
+        <router-link :to="{ name: 'detail', params: {id: serviceItem.id} }" v-if="!outer">
           <h1>{{serviceItem.name}}</h1>
         </router-link>
-        <!-- <a :href="detailLink + 'detail/' + serviceItem.id">
+        <a v-else :href="detailLink + 'detail/' + serviceItem.id">
           <h1>{{serviceItem.name}}</h1>
-        </a> -->
+        </a>
         <span>服务商：{{serviceItem.providerName}}</span>
         <span>服务方式：{{serviceItem.serviceType}}</span>
         <span>服务渠道：{{serviceItem.serviceChannel}}</span>
@@ -35,7 +35,7 @@
 </template>
 <script>
   export default {
-    props: ["itemObj", 'type'],
+    props: ["itemObj", 'type', 'outer'],
     data: function () {
       return {
         toggleFlag: true,

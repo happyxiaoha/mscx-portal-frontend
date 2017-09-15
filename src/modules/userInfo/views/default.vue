@@ -40,7 +40,7 @@
           <h2>你还没有申请任何API</h2>
           <el-button type="primary" @click="goApiList">快去申请API</el-button>
         </div>
-        <c-api-item v-for="item in applyList" cols="4" :itemObj="item" :key="item.sourceId"></c-api-item>
+        <c-api-item v-for="item in applyList" cols="4" :outer="true" :itemObj="item" :key="item.sourceId"></c-api-item>
       </div>
     </div>
     <div class="user-default-service">
@@ -54,7 +54,7 @@
           <h2>你还没有关注任何服务</h2>
           <el-button type="primary" @click="goServiceList">快去寻找服务</el-button>
         </div>
-        <c-app-item v-for="item in focusList" :itemObj="item" :key="item.id"></c-app-item>
+        <c-app-item v-for="item in focusList" :outer="true" :itemObj="item" :key="item.id"></c-app-item>
       </div>
     </div>
   </div>

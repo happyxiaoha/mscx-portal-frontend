@@ -236,7 +236,7 @@
     }
   }
 </script>
-<style lang="less">
+<style lang="less" scoped>
   @import "../../../assets/less/variables.less";
   @import "../../../assets/less/mixins.less";
   @import '../../../assets/css/markdown.css';

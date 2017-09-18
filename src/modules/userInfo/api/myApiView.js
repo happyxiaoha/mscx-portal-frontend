@@ -85,6 +85,7 @@ var myApiView = Backbone.View.extend({
     showSmsDetail: function () {
         var model = this.smsDetailModel.toJSON();
 
+        model.result.attachmentUri = '/ro/mscx-sms-api' + model.result.attachmentUri
         var dialog = layer.open({
             type: 1,
             btn: ['关闭'],

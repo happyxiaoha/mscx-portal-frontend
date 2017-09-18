@@ -5,12 +5,12 @@
                 <thead>
                 <tr>
                     <th width="15%">API名称</th>
-                    <th width="30%">API描述</th>
+                    <th width="27%">API描述</th>
                     <th width="20%">申请时间</th>
                     <th width="9%">收费类型</th>
                     <th width="9%">使用次数</th>
                     <th width="9%">剩余次数</th>
-                    <th width="8%">操作</th>
+                    <th width="11%">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,7 +32,10 @@
         <td><%=aitem.chargeType%></td>
         <td><%=aitem.totalTime == -1 ? '不限': aitem.totalTime%></td>
         <td><%=aitem.remainTime == -1 ? '不限': aitem.remainTime%></td>
-        <td><a class="applyApi" href="api.html?detail/<%=aitem.sourceId%>">再次申请</a></td>
+        <td>
+            <a class="applyApi" href="api.html?detail/<%=aitem.sourceId%>">再次申请</a>
+            <% if(aitem.sourceId == 121) { %><br/><a href="javascript:;" class="sms-detail">请求使用详情</a><% } %>
+        </td>
     </tr>
     <% }); %>
     <%if(applyApiList.length == 0){%>
@@ -40,4 +43,14 @@
         <td colspan="7">暂无数据</td>
     </tr>
     <%}%>
+</script>
+<script id="smsDetail" type="template">
+    <div style="padding: 30px 20px;font-size: 14px;line-height: 1.8;">
+        <div>
+            <%= data && data.msg %>
+        </div>
+        <div>
+            附件：<a href="<%= data && data.attachmentUri %>" target="_blank">点击查看</a>
+        </div>
+    </div>
 </script>

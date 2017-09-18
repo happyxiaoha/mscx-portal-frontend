@@ -11,6 +11,10 @@ var applyApiListModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'api/getSelfApiList.do'
 });
 
+var smsDetailModel = Backbone.Model.extend({
+    url: mscxPage.request.sms + 'userNotice/getNotice.do'
+});
+
 
 var myApiView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -18,13 +22,18 @@ var myApiView = Backbone.View.extend({
         pageSize: 10,
         pageNum: 1
     },
-    events: {},
+    events: {
+        'click .sms-detail': 'getSmsDetail'
+    },
     initialize: function() {
         var that = this;
         this.$el.addClass('user-center-tap');
         this.$el.html(_.template(commonTemplate)({name:'myApi'}));
 
         this.model = new applyApiListModel();
+        this.smsDetailModel = new smsDetailModel();
+
+        this.listenTo(this.smsDetailModel, 'sync', this.showSmsDetail)
         this.model.on('change',function () {
             that.render()
         });
@@ -45,6 +54,7 @@ var myApiView = Backbone.View.extend({
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.pageTotal = page.totalSize;
         this.$el.find('tbody').html(temps({applyApiList:applyApiList}));
+        this.smsTemplate = _.template($('#smsDetail').html());
         laypage({
             cont: 'applyApiPages',
             pages: page.totalPage,
@@ -66,6 +76,25 @@ var myApiView = Backbone.View.extend({
             data: {
                 pageSize: this.pagObj.pageSize,
                 page: this.pagObj.pageNum
+            }
+        });
+    },
+    getSmsDetail: function () {
+        this.smsDetailModel.fetch();
+    },
+    showSmsDetail: function () {
+        var model = this.smsDetailModel.toJSON();
+
+        var dialog = layer.open({
+            type: 1,
+            btn: ['关闭'],
+            title: '请求使用详情',
+            shade: 0.6,
+            shadeClose: true,
+            area: ['500px', '300px'],
+            content: this.smsTemplate({data: model.result}),
+            btn1: function () {
+                layer.close(dialog);
             }
         });
     }

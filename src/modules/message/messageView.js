@@ -32,10 +32,12 @@ var newsView = Backbone.View.extend({
 
 
         var attachmentUrl;
+        var rawMsgContent;
         if(item.msgContent.indexOf('attachment') > -1) {
-            item.msgContent = item.msgContent.slice(0, item.msgContent.indexOf('<%'))
-            attachmentUrl = item.msgContent.slice(item.msgContent.indexOf('attachment'), -2)
-            attachmentUrl = attachmentUrl.split('=')[1]
+            rawMsgContent = item.msgContent;
+            item.msgContent = rawMsgContent.slice(0, rawMsgContent.indexOf('<%'))
+            attachmentUrl = rawMsgContent.slice(rawMsgContent.indexOf('attachment'), -2)
+            attachmentUrl = attachmentUrl.split('attachment=')[1]
 
             item.msgContent = item.msgContent + '附件：<a href="' + attachmentUrl + '" target="_blank">点击查看</a>'
         }

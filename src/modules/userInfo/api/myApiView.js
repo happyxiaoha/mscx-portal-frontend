@@ -15,6 +15,10 @@ var smsDetailModel = Backbone.Model.extend({
     url: mscxPage.request.sms + 'userNotice/getNotice.do'
 });
 
+var sendMessageModel = Backbone.Model.extend({
+    url: mscxPage.request.mes + 'msg/addMessageInfos.do'
+});
+
 
 var myApiView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
@@ -32,6 +36,7 @@ var myApiView = Backbone.View.extend({
 
         this.model = new applyApiListModel();
         this.smsDetailModel = new smsDetailModel();
+        this.sendMessageModel = new sendMessageModel();
 
         this.listenTo(this.smsDetailModel, 'sync', this.showSmsDetail)
         this.model.on('change',function () {
@@ -86,18 +91,25 @@ var myApiView = Backbone.View.extend({
         var model = this.smsDetailModel.toJSON();
 
         model.result.attachmentUri = '/ro/mscx-sms-api' + model.result.attachmentUri
-        var dialog = layer.open({
-            type: 1,
-            btn: ['关闭'],
-            title: '请求使用详情',
-            shade: 0.6,
-            shadeClose: true,
-            area: ['500px', '300px'],
-            content: this.smsTemplate({data: model.result}),
-            btn1: function () {
-                layer.close(dialog);
-            }
-        });
+
+        this.sendMessageModel.save({
+            msgTitle: '请求使用详情',
+            msgContent: model.result.msg + '<br/><% attachment=' + model.result.attachmentUri + '%>'
+        })
+
+        layer.msg('请到站内信中查看！')
+        // var dialog = layer.open({
+        //     type: 1,
+        //     btn: ['关闭'],
+        //     title: '请求使用详情',
+        //     shade: 0.6,
+        //     shadeClose: true,
+        //     area: ['500px', '300px'],
+        //     content: this.smsTemplate({data: model.result}),
+        //     btn1: function () {
+        //         layer.close(dialog);
+        //     }
+        // });
     }
 });
 module.exports = myApiView;

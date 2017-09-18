@@ -30,6 +30,16 @@ var newsView = Backbone.View.extend({
             index = $this.data('index'),
             item = this.model.get('result')[index];
 
+
+        var attachmentUrl;
+        if(item.msgContent.indexOf('attachment') > -1) {
+            item.msgContent = item.msgContent.slice(0, item.msgContent.indexOf('<%'))
+            attachmentUrl = item.msgContent.slice(item.msgContent.indexOf('attachment'), -2)
+            attachmentUrl = attachmentUrl.split('=')[1]
+
+            item.msgContent = item.msgContent + '附件：<a href="' + attachmentUrl + '" target="_blank">点击查看</a>'
+        }
+
         var dialog = layer.open({
             type: 1,
             btn: ['关闭'],

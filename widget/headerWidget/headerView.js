@@ -2,6 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 var template = require('html!./header.html');
+var cityMap = require('./cityStation.json');
 require('./header.css');
 var menuList = [
     {
@@ -48,6 +49,10 @@ var developCheck = Backbone.Model.extend({
     url: mscxPage.host+'/developer/portal.do'
 });
 
+var switchCity = Backbone.Model.extend({
+    url: mscxPage.host+'/home/switchCity.do?'
+});
+
 var headerView = Backbone.View.extend({
     el: mscxPage.domEl.headerEl,
     template: _.template(template, {variable: 'data'}),
@@ -56,24 +61,72 @@ var headerView = Backbone.View.extend({
         'click #exit': 'logout',
         'click .search-img': 'search',
         'keydown #inputs': 'keyDownSearch',
-        'click #developLink': 'jumpDevelop'
+        'click #developLink': 'jumpDevelop',
+        'click .switch-city': 'showCityStation',
+        'click #cityStation a': 'switchCity'
     },
     initialize: function() {
         this.model = new getUserMsg();
         this.developCheck = new developCheck();
+        this.switchCityModel = new switchCity();
+        this.currentCity = _.find(cityMap.cities, function(item){
+            return item.url.indexOf(location.host) > -1;
+        }) || cityMap.cities[0];
+
+        _.extend(mscxPage.city, this.currentCity)
+        
+        // 先获取城市areacode
+        this.switchCityModel.fetch({
+            data: {
+                areaCode: this.currentCity.code,
+                t: new Date().getTime()
+            },
+            async: false
+            // silent: true
+        })
+
         this.model.fetch({
             data: {
                 t: new Date().getTime()
             }
         });
+        this.listenTo(this.switchCityModel, 'sync', this.handleSwitchCity);
         this.listenTo(this.model, 'sync', this.render);
         this.$el.html(this.template({
             id: this.id,
-            menuList: menuList
+            menuList: menuList,
+            cityStations: cityMap.cities,
+            currentCity: this.currentCity
         }));
+
+    },
+    showCityStation: function() {
+        this.$('.city-station').show();
+        $('.city-station').on('mouseleave', function() {
+            $('.city-station').hide();
+        })
     },
     addDidRender: function(callback) {
         this.didRender = callback;
+    },
+    switchCity: function(event) {
+        var $target = this.$(event.currentTarget);
+        var areaCode = $target.data('code');
+        this.swicthUrl = $target.data('url');
+
+        this.switchCityModel.fetch({
+            data: {
+                areaCode: areaCode
+            }
+        })
+    },
+    handleSwitchCity: function() {
+        var model = this.switchCityModel.toJSON();
+        if(model.status == 'OK') {
+            location.href = this.swicthUrl;
+        }else {
+            layer.msg('切换城市失败，请稍后再试');
+        }
     },
     renderLogoPage: function (res) {
         if(!res && $(mscxPage.domEl.apiEl).length>0 && $(mscxPage.domEl.apiEl).data('isLogin') == 1){
@@ -96,7 +149,9 @@ var headerView = Backbone.View.extend({
             id: this.id,
             menuList: menuList,
             username: nJson.result && (nJson.result.name || nJson.result.account),
-            isRealName: nJson.result && (nJson.result.userType != 'REGISTER')
+            isRealName: nJson.result && (nJson.result.userType != 'REGISTER'),
+            cityStations: cityMap.cities,
+            currentCity: this.currentCity
         }));
         var _c;
         $("#personReal").hover(function(){

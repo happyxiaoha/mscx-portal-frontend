@@ -1,0 +1,15 @@
+{
+    "cities": [
+        {
+            "code": "440100",
+            "name": "广州",
+            "abbr": "guangzhou",
+            "url": "http://www.gzopendata.com"
+        },{
+            "code": "440113",
+            "name": "番禺",
+            "abbr": "panyu",
+            "url": "http://py.gzopendata.com"
+        }
+    ]
+}

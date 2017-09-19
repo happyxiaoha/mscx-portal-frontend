@@ -158,7 +158,12 @@ var createDemandView = Backbone.View.extend({
         this.$category = this.$('.category');
         this.$form.validate(this.validateConfig());
 
-        this.formAction = mscxPage.host + '' + demandApi + (this.id ? 'modifyApi.do' : 'addApi.do');
+        if(this.id) {
+            this.formAction = mscxPage.host + demandApi + 'modifyApi.do';
+        }else {
+            this.formAction = mscxPage.host + '/zuul' + demandApi + 'addApi.do';
+        }
+        // this.formAction = mscxPage.host + demandApi + (this.id ? 'modifyApi.do' : 'addApi.do');
 
         this.$endTime = this.$('.end-time');
 

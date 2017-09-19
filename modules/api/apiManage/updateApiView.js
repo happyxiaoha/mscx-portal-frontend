@@ -377,6 +377,9 @@ var updateApiView = Backbone.View.extend({
         if(this.model.get('tags')){
             sChooseTags = '*&'+this.model.get('tags').split(',').join('*&')+'*&';
         }
+        _.each(tagList, function(item) {
+            item.tagPinyin = 'a';
+        })
         $('.tag-list-area').remove();
         var tagsView = new tagView({
             model: {tagList: tagList,sChooseTags:sChooseTags}

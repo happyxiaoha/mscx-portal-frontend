@@ -4,6 +4,24 @@
             <img src="../../images/newicon/ic_newlogo.png" alt="logo">
         </a>
     </h1>
+    <div class="switch-city">
+    <span>【<%= data && data.currentCity && data.currentCity.name || '广州' %>】</span>
+        <div class="city-station" id="cityStation">
+            <ul>
+            <% if(data.currentCity.code == '440100') { %>
+                <% data && data.cityStations.forEach(function(item) { %>
+                <li class="<%= data.currentCity && data.currentCity.code == item.code ? 'selected' : '' %>">
+                    <a data-code="<%= item.code %>" data-url="<%= item.url %>" href="javascript:;"><%= item.name %></a>
+                </li>
+                <% }) %>
+            <% }else { %>
+                <li>
+                    <a data-code="440100" data-url="http://www.gzopendata.com" href="javascript:;">广州</a>
+                </li>
+            <% } %>
+            </ul>
+        </div>
+    </div>
     <div class="navCons fl mt20 index">
         <ul class="nav fl">
             <% _.each(data.menuList, function (item) { %>

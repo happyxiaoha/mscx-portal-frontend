@@ -58,7 +58,9 @@
             <a href="javascript:;" @click="switchApiTab(index)" :class="apiActiveTab === index ? 'active' : ''" v-for="(item, index) in detail.apiList">{{item.apiCName}}</a>
           </div>
           <div class="detail-main-right" v-show="apiActiveTab === index" v-for="(item, index) in detail.apiList">
-            <p>接口地址：{{item.encodeUri}}</p>
+            <p>接口地址：{{item.encodeUri}}
+              <button class="btn-offline btn-debug" @click="debug">调试</button>
+            </p>
             <p>支持格式：{{item.requestType}}</p>
             <p>请求方式：{{item.requestMethod}}</p>
             <p>参数和示例：</p>
@@ -221,6 +223,17 @@
       toggleApplyVisible (arg) {
         this.applyDialogVisible = arg
       },
+      debug () {
+        let index = layer.open({
+            type: 2,
+            title: 'API测试工具',
+            shadeClose: false,
+            shade: 0.8,
+            maxmin: true,
+            content: 'http://mscx_apitest_utils.citysdk.cn/'
+        });
+        layer.full(index)
+      },
       follow () {
         if (this.detail.attentionFlag) {
           // 取消关注
@@ -343,22 +356,6 @@
         padding-left: 40px;
         border-left: 1px solid #ddd;
         box-sizing: border-box;
-        button {
-          display: block;
-          background: @btnBackground;
-          border: 1px solid @btnBackground;
-          padding: 7px 20px;
-          color: #fff;
-          cursor: pointer;
-          outline: none;
-        }
-        .btn-apply {
-          margin-bottom: 45px;
-        }
-        .btn-offline {
-          background: #fff;
-          color: @btnBackground;
-        }
       }
     }
     hr {
@@ -432,6 +429,25 @@
           }
         }
       }
+    }
+    button {
+      display: block;
+      background: @btnBackground;
+      border: 1px solid @btnBackground;
+      padding: 7px 20px;
+      color: #fff;
+      cursor: pointer;
+      outline: none;
+    }
+    .btn-apply {
+      margin-bottom: 45px;
+    }
+    .btn-offline {
+      background: #fff;
+      color: @btnBackground;
+    }
+    .btn-debug {
+      display: inline-block;
     }
   }
 </style>

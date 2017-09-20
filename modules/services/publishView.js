@@ -345,6 +345,9 @@ var createDemandView = Backbone.View.extend({
             tagList: tags.result || [],
             sChooseTags: sChooseTags
         });
+        _.each(param.tagList, function(item) {
+            item.tagPinyin = 'a';
+        })
         this.tagView = new tagView({
             model: param
         });

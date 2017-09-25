@@ -37,7 +37,7 @@
       </div>
       <div class="detial-header-right" v-if="detail.status === '0'">
         <template v-if="detail.chargeType === '04'">
-          <button class="btn-offline" @click="offlineChat">线下洽谈申请</button>
+          <button class="btn-offline" @click="applyApi">申请</button>
         </template>
         <template v-else>
           <button class="btn-apply" @click="applyApi">申请</button>

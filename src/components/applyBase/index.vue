@@ -56,6 +56,9 @@
       <div class="package-content" v-else-if="chargeType === '03'">
         本套餐在24个月内后付费使用，将自动扣除账户余额，超过这个期限，需要重新申请。
       </div>
+      <div class="package-content" v-else-if="chargeType === '04'">
+        感谢您申请缴费类接口，在完成申请后您还需要代码对接以进行业务调用。请在联系我们模块中查找我方联系方式或直接进行留言，我方运营人员会第一时间和您取得联系！
+      </div>
       <div class="package-content" v-else>
         暂无套餐
       </div>
@@ -64,7 +67,7 @@
         <a href="/agreement.html" target="_blank">《神州数云平台服务协议》</a>
         <div v-if="packageList.length > 0" class="package-price-total">已选择1个套餐 应付：￥<span>{{totalPrice}}</span>元</div>
       </el-form-item>
-      <template v-if="chargeType === '01' || chargeType === '03'">
+      <template v-if="chargeType === '01' || chargeType === '03' || chargeType == '04'">
         <el-button type="primary" :icon="submitBtnCtrl.icon" :loading="submitBtnCtrl.loading" :disabled="submitBtnCtrl.disabled" class="confirm-btn" @click="submitForm('form')">完成</el-button>
       </template>
       <template v-else>
@@ -170,8 +173,8 @@
       submitForm (form) {
         this.$refs[form].validate((valid) => {
           if(valid) {
-            // 免费情况下的提交
-            if(this.chargeType === '01') {
+            // 免费情况和按实际订单支付下的提交
+            if(this.chargeType === '01' || this.chargeType === '04') {
               this.freeOrder()
             }else if(this.chargeType === '03') {
               this.afterFeeOrder()

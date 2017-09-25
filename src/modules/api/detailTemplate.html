@@ -95,7 +95,9 @@
                                     <% }else{ %>
                                     <button type="button" id="followBtn" class="btn" data-toggle="modal" data-target="#myModal">取消关注</button>
                                     <% } %>
+                                    <% if(data.result && data.result.chargeType != '04'){ %>
                                     <button id="offlineBtn" class="btn btn-active">线下洽谈申请</button>
+                                    <% } %>
                                 </div>
                                 <%}%>
                             </div>

@@ -156,7 +156,7 @@ var view = Backbone.View.extend({
 
         this.applyView.delegate = this;
 
-        var btn = this.chargeType == '01' ? ['完成'] : ['立即支付', '加入购物车'];
+        var btn = (this.chargeType == '01' || this.chargeType == '04') ? ['完成'] : ['立即支付', '加入购物车'];
 
         layer.open({
             type: 1,

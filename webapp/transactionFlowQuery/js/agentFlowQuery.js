@@ -7,9 +7,12 @@ $(function(){
 	userName = GetQueryString('userName');
 	var clientHeight=document.documentElement.clientHeight - 60;
 	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
-	initFlowQueryTables();
+	
 	dateWidget('startTime');
 	dateWidget('stopTime');
+	$('#startTime').datepicker('setDate',new Date());
+	$('#stopTime').datepicker('setDate',new Date());
+	initFlowQueryTables();
 	initSelect2();
 //	$('#countShow').html("统计信息(总面值：成功面值：待充值面值：失败面值：成本金额)");
 })

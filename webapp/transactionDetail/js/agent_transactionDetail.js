@@ -6,6 +6,7 @@ $(function() {
 	var clientHeight=document.documentElement.clientHeight - 60;
 	$('.admin_product').attr('style','min-height:250px;overflow-y:auto;overflow-x:hidden;max-height:'+clientHeight+'px;');
 	dateWidget('queryDate');
+	$('#queryDate').datepicker('setDate',new Date());
 	//初始化select2控件
 	
 	height = window.screen.availHeight - 140;

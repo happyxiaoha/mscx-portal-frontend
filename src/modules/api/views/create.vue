@@ -62,7 +62,7 @@
       <el-form-item label="是否收费：" prop="chargeType">
         <el-radio class="radio" v-model="form.chargeType" label="01">免费</el-radio>
         <el-radio class="radio" v-model="form.chargeType" label="02">收费</el-radio>
-        <el-radio class="radio" v-model="form.chargeType" label="04">按实际订单支付</el-radio>
+        <!-- <el-radio class="radio" v-model="form.chargeType" label="04">按实际订单支付</el-radio> -->
       </el-form-item>
       <div class="table-wrapper" v-show="showChargeRuleTable">
         <table class="table">

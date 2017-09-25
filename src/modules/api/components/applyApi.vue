@@ -5,7 +5,7 @@
     extends: applyBase,
     methods: {
       isNeedPackage () {
-        return this.chargeType !== '01'
+        return this.chargeType !== '01' && this.chargeType !== '04'
       },
       getPackage (id) {
         return API.Api.getPackage({

@@ -162,7 +162,19 @@
           this.detail = res.result
           this.handleMarkdown()
           this.loading = false
+
+          this.recordUserVisit()
         })
+      },
+      recordUserVisit () {
+        // 实名认证用户才记录
+        if(this.user.userType && this.user.userType !== 'REGISTER') {
+          API.Api.recordUserVisit({
+            resId: this.detail.apiServiceId,
+            resType: this.detail.resourceType,
+            userId: this.user.userId
+          })
+        }
       },
       switchTab (index) {
         this.activeTab = index

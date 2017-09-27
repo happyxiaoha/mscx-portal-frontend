@@ -243,7 +243,15 @@ var apiAPI = {
       params: _.pick(options, ['apiServiceId', 'score'])
     })
   },
-  
+  recordUserVisit: function(options) {
+    options = options || {};
+
+    return Axios({
+      method: 'POST',
+      url : baseUrl + 'statistics/addUserViewCount.do',
+      data: _.pick(options, ['resId', 'resType', 'userId'])
+    })
+  }
 }
 
 export default apiAPI;

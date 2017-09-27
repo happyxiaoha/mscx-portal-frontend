@@ -101,13 +101,18 @@
       margin-top: 16px!important;
     }
     .mr72 {
-      // margin-right: 72px;
+      margin-right: 72px!important;
     }
     .boxSizing {
       box-sizing: border-box;
     }
     .core {
       color: #eee!important;
+    }
+  }
+  @media screen and (max-width: 1300px){
+    .server-env .mr72 {
+      margin-right: 0!important;
     }
   }
 </style>

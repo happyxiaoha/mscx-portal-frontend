@@ -135,6 +135,15 @@ var ucAPI = {
       method: 'POST',
       url : baseUrl  + 'register/deleteHeadPortrait.do'
     })
+  },
+  recordLoginInfo: function (options) {
+    options = options || {};
+
+    return Axios({
+      method: 'POST',
+      url : baseUrl  + 'login/clientInfo.do',
+      data: _.pick(options, ['loginName', 'password'])
+    })
   }
 }
 

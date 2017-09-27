@@ -164,10 +164,22 @@
           if(window.location.search.indexOf('display') > -1) {
             this.showDemo()
           }
+
+          this.recordUserVisit()
         }).catch((res) => {
           this.response = res
           this.loading.tip = res.message
         })
+      },
+      recordUserVisit () {
+        // 实名认证用户才记录
+        if(this.user.userType && this.user.userType !== 'REGISTER') {
+          API.App.recordUserVisit({
+            resId: this.detail.id,
+            resType: this.detail.resourceType,
+            userId: this.user.userId
+          })
+        }
       },
       applyApp () {
         if(this.user.userId) {

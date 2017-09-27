@@ -222,6 +222,15 @@ var appAPI = {
       params: _.pick(options, ['appId', 'score'])
     })
   },
+  recordUserVisit: function(options) {
+    options = options || {};
+
+    return Axios({
+      method: 'POST',
+      url : baseUrl + 'statistics/addUserViewCount.do',
+      data: _.pick(options, ['resId', 'resType', 'userId'])
+    })
+  }
 }
 
 export default appAPI;

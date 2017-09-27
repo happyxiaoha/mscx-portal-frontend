@@ -15,23 +15,25 @@
         <tr>
           <th width="8%"></td>
           <th width="20%">名称</th>
-          <th width="20%">充值金额</th>
-          <th width="20%">账户余额</th>
-          <th width="32%">时间</th>
+          <th width="12%">充值金额</th>
+          <th width="12%">账户余额</th>
+          <th width="24%">时间</th>
+          <th width="24%">备注</th>
         </tr>
         </thead>
         <tbody>
           <template v-if="result.list.length > 0">
             <tr v-for="(item, index) in result.list">
               <td>{{ +pageInfo.startIndex + +index + 1 }}</td>
-              <td>{{ item.rechargeType }}</td>
+              <td>{{ item.flowName }}</td>
               <td>{{ item.flowAmount }}</td>
               <td>{{ item.accountBalance }}</td>
               <td>{{ new Date(item.updatedTime).format('yyyy-MM-dd HH:mm:ss') }}</td>
+              <td>{{ item.orderMemo }}</td>
             </tr>
           </template>
           <tr v-else>
-            <td colspan="5">暂无数据</td>
+            <td colspan="6">暂无数据</td>
           </tr>
         </tbody>
     </table>

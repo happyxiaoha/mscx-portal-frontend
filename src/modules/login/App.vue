@@ -107,13 +107,16 @@
             this.loading = true;
             API.Common.login(this.form).then(function(res) {
               this.loading = false;
-              var nHref = location.search.replace('?service=','');
-              if(nHref){
-                  location.href = decodeURIComponent(nHref);
-              }
-              else{
-                  location.href = 'index.html';
-              }
+              // 记录登录用户
+              API.UC.recordLoginInfo(this.form).then(() => {
+                var nHref = location.search.replace('?service=','');
+                if(nHref){
+                    location.href = decodeURIComponent(nHref);
+                }
+                else{
+                    location.href = 'index.html';
+                }
+              })
             }.bind(this)).catch(function(res) {
               this.isError = true;
               this.errMsg = res.message;

@@ -109,13 +109,9 @@
               this.loading = false;
               // 记录登录用户
               API.UC.recordLoginInfo(this.form).then(() => {
-                var nHref = location.search.replace('?service=','');
-                if(nHref){
-                    location.href = decodeURIComponent(nHref);
-                }
-                else{
-                    location.href = 'index.html';
-                }
+                this.redirectToIndex()
+              }).catch(() => {
+                this.redirectToIndex()
               })
             }.bind(this)).catch(function(res) {
               this.isError = true;
@@ -127,6 +123,15 @@
             return false;
           }
         }.bind(this))
+      },
+      redirectToIndex: function() {
+        var nHref = location.search.replace('?service=','');
+        if(nHref){
+            location.href = decodeURIComponent(nHref);
+        }
+        else{
+            location.href = 'index.html';
+        }
       },
       refreshCaptcha: function() {
         this.src = '/login/captcha.do?t=' + new Date().getTime()

@@ -72,7 +72,7 @@
             <div class="scroll-wrap">
               <ul class="notice-list" id="noticeList">
                 <!-- <li v-for="item in noticeList">{{item && item.msgContent}}</li> -->
-                <el-tooltip v-if="isLongAnnounce" content="点击查看更多" effect="dark" placement="top">
+                <el-tooltip v-if="isLongAnnounce" content="点击查看详情" effect="dark" placement="top">
                   <li @click="showMoreAnnounce" class="ellipsis">{{noticeList && noticeList.msgContent}}</li>
                 </el-tooltip>
                 <li v-else>{{noticeList && noticeList.msgContent}}</li>

@@ -1,4 +1,4 @@
-var urlRegex = /\d{15}/
+var urlRegex = /^[a-zA-Z0-9]{15,20}$/
 
 export default function(rule, value, callback) {
   if (!value) {

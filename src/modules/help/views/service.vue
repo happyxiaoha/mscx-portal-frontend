@@ -2,9 +2,9 @@
   <div>
     <div class="title">帮助中心<i>&gt;</i><span>微应用使用</span></div>
 <ul class="main-native-area ser-help-menu">
-    <li><a href="javascript:;" data-src="serCall">1. 微应用申请</a></li>
-    <li><a href="javascript:;" data-src="serApply">2. 微应用发布规范</a></li>
-    <li><a href="javascript:;" data-src="serGet">3. 微应用接入流程</a></li>
+    <li><a href="javascript:;" @click="scrollTo('serCall')" data-src="serCall">1. 微应用申请</a></li>
+    <li><a href="javascript:;" @click="scrollTo('serApply')" data-src="serApply">2. 微应用发布规范</a></li>
+    <li><a href="javascript:;" @click="scrollTo('serGet')" data-src="serGet">3. 微应用接入流程</a></li>
 </ul>
 <ul class="api-help-con">
     <li>
@@ -282,6 +282,16 @@
 </template>
 <script>
   export default {
-
+    data () {
+        return {}
+    },
+    methods: {
+        scrollTo (id) {
+            // console.log(this.$refs.content.querySelector('#' + ))
+            $('body, html').animate({
+                scrollTop: $('#' + id).offset().top
+            }, 500);
+        }
+    }
   }
 </script>

@@ -2,9 +2,9 @@
   <div>
     <div class="title">帮助中心<i>&gt;</i><span>API使用</span></div>
     <ul class="main-native-area api-help-menu">
-      <li><a href="javascript:;" data-src="apiApply">1. API申请</a></li>
-      <li><a href="javascript:;" data-src="apiCall">2. API接口调用规范</a></li>
-      <li><a href="javascript:;" data-src="apiDes">3. API使用次数查看</a></li>
+      <li><a href="javascript:;" @click="scrollTo('apiApply')" data-src="apiApply">1. API申请</a></li>
+      <li><a href="javascript:;" @click="scrollTo('apiCall')" data-src="apiCall">2. API接口调用规范</a></li>
+      <li><a href="javascript:;" @click="scrollTo('apiDes')" data-src="apiDes">3. API使用次数查看</a></li>
     </ul>
     <ul class="api-help-con">
       <li>
@@ -112,6 +112,16 @@
 </template>
 <script>
   export default {
-
+    data () {
+        return {}
+    },
+    methods: {
+        scrollTo (id) {
+            // console.log(this.$refs.content.querySelector('#' + ))
+            $('body, html').animate({
+                scrollTop: $('#' + id).offset().top
+            }, 500);
+        }
+    }
   }
 </script>

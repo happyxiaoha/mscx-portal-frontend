@@ -2,10 +2,10 @@
   <div>
     <div class="title">帮助中心<i>&gt;</i><span>常见问题</span></div>
       <ul class="main-native-area common-help-menu">
-          <li><a href="javascript:;" data-src="account-h">1. 账户相关</a></li>
-          <li><a href="javascript:;" data-src="use-h">2. 使用相关</a></li>
-          <li><a href="javascript:;" data-src="message-h">3. 发票相关</a></li>
-          <li><a href="javascript:;" data-src="tech-h">4. 技术相关</a></li>
+          <li><a href="javascript:;" @click="scrollTo('account-h')" data-src="account-h">1. 账户相关</a></li>
+          <li><a href="javascript:;" @click="scrollTo('use-h')" data-src="use-h">2. 使用相关</a></li>
+          <li><a href="javascript:;" @click="scrollTo('message-h')" data-src="message-h">3. 发票相关</a></li>
+          <li><a href="javascript:;" @click="scrollTo('tech-h')" data-src="tech-h">4. 技术相关</a></li>
       </ul>
       <ul class="api-help-con">
           <li>
@@ -68,6 +68,16 @@
 </template>
 <script>
   export default {
-
+    data () {
+      return {}
+    },
+    methods: {
+      scrollTo (id) {
+        // console.log(this.$refs.content.querySelector('#' + ))
+        $('body, html').animate({
+            scrollTop: $('#' + id).offset().top
+        }, 500);
+      }
+    }
   }
 </script>

@@ -2,13 +2,13 @@
   <div>
     <div class="title">帮助中心<i>&gt;</i><span>常见问题</span></div>
     <ul class="main-native-area new-help-menu">
-        <li><a href="javascript:;" data-src="register-n">1. 用户注册流程</a></li>
-        <li><a href="javascript:;" data-src="auth-n">2. 实名认证流程</a></li>
-        <li><a href="javascript:;" data-src="call-api-n">3. 购买API流程</a></li>
-        <li><a href="javascript:;" data-src="apply-api-n">4. 发布API流程</a></li>
-        <li><a href="javascript:;" data-src="apply-ser-n">5. 发布微应用流程</a></li>
+        <li><a href="javascript:;" @click="scrollTo('register-n')" data-src="register-n">1. 用户注册流程</a></li>
+        <li><a href="javascript:;" @click="scrollTo('auth-n')" data-src="auth-n">2. 实名认证流程</a></li>
+        <li><a href="javascript:;" @click="scrollTo('call-api-n')" data-src="call-api-n">3. 购买API流程</a></li>
+        <li><a href="javascript:;" @click="scrollTo('apply-api-n')" data-src="apply-api-n">4. 发布API流程</a></li>
+        <li><a href="javascript:;" @click="scrollTo('apply-ser-n')" data-src="apply-ser-n">5. 发布微应用流程</a></li>
     </ul>
-    <ul class="api-help-con">
+    <ul class="api-help-con" ref="content">
         <li>
             <h3 name="register-n" id="register-n">用户注册流程</h3>
             <div>
@@ -72,6 +72,16 @@
 </template>
 <script>
   export default {
-
+    data () {
+        return {}
+    },
+    methods: {
+        scrollTo (id) {
+            // console.log(this.$refs.content.querySelector('#' + ))
+            $('body, html').animate({
+                scrollTop: $('#' + id).offset().top
+            }, 500);
+        }
+    }
   }
 </script>

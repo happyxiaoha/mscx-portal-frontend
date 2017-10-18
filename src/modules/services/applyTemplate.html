@@ -25,7 +25,14 @@
                         次
                     <% } %>
                 <td><%= item.price %></td>
-                <td><input type="number" data-id="<%= item.id %>" data-limit="<%= item.countLimit %>" data-price="<%= item.price %>" class="number" min="1"  value="1"></td>
+                <td>
+                    <!-- 如果是 试用/体验 套餐（单价为0），输入框默认1且不可操作 -->
+                    <% if(item.price == 0) { %>
+                        <input type="number" data-id="<%= item.id %>" data-limit="<%= item.countLimit %>" data-price="<%= item.price %>" disabled="disabled" class="number" min="1" value="1">
+                    <% }else{ %>
+                        <input type="number" data-id="<%= item.id %>" data-limit="<%= item.countLimit %>" data-price="<%= item.price %>" class="number" min="1"  value="1">
+                    <% } %>
+                </td>
                 <td class="total"><%= item.price %></td>
             </tr>
         <% }) %>

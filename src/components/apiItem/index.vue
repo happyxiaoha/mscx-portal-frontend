@@ -19,7 +19,7 @@
         </router-link>
         <a v-else :href="'/api/detail/' + (apiItem.apiServiceId || apiItem.sourceId)">{{apiItem.apiServiceName || apiItem.apiName}}</a>
       </h4>
-      <div class="api-sub-text">智慧神州</div>
+      <div class="api-sub-text">{{apiItem.providerName}}</div>
       <div class="api-count">
         <span class="api-apply">{{apiItem.applyCnt || 0}}</span>
         <span class="api-view">{{apiItem.viewCnt || 0}}</span>

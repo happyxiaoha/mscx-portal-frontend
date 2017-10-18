@@ -43,7 +43,8 @@
                     </span>
                   </td>
                   <td>
-                    <input type="number" @input="typeNum($event)" class="number" min="1" value="1">
+
+                    <input type="number" @input="typeNum($event)" :disabled="item.price == 0" class="number" min="1" value="1">
                   </td>
                   <td class="total">{{(item.price * item.num).toFixed(2)}}</td>
               </tr>

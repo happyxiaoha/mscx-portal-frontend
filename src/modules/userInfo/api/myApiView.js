@@ -94,7 +94,9 @@ var myApiView = Backbone.View.extend({
 
         this.sendMessageModel.save({
             msgTitle: '请求使用详情',
-            msgContent: model.result.msg + '<br/><% attachment=' + model.result.attachmentUri + '%>'
+            msgContent: model.result.msg + '<br/><% attachment=' + model.result.attachmentUri + '%>',
+            userIds: mscxPage.userInfo.userId,
+            resType: 'SMS'
         })
 
         layer.msg('请到站内信中查看！')

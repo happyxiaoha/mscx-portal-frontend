@@ -1,0 +1,27 @@
+
+
+    <% if(dataList){ %>
+    <ul class="clearfix DataList">
+
+        <% _.each(dataList,function(item, index){ %>
+        <li  class="<%= (index < 10 ? '' : 'liToTen hide') %>">
+            <div class="centers">
+                <a data-id="<%= item.categoryId %>" href="sources.html#catalog/category/<%= item.categoryId %>">
+                    <% if(item.iconUrl){ %>
+                    <img src="<%= item.iconUrl %>" alt="数据图标">
+                    <% } else { %>
+                    <img src="../../../images/tu48.png" alt="数据图标">
+                    <% }; %>
+                    <span><%= item.categoryName %></span>
+                    <span class="corGreen"><%= item.count %></span>
+                </a>
+            </div>
+        </li>
+        <% }); %>
+
+    </ul>
+    <% if(dataList.length > 10){ %>
+    <p class="text-right"><a class="showToggle showMore">展开</a></p>
+    <% }; %>
+    <% }; %>
+

@@ -1,0 +1,415 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
+    <p class="ReleaseTit">发布新API</p>
+    <div class="ReleaseDownCons">
+        <form id="publishApi" onsubmit="return false;">
+        <div class="ReleaseInputs labelleft ReleaseDown">
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>服务范围：</p>
+                <div class="fl R_right">
+                    <p>
+                        <textarea placeholder="请输入服务范围" name="scope"></textarea>
+                    </p>
+                </div>
+                <p class="input-mes fl">多个城市之间用中文逗号隔开</p>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>服务名称：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" placeholder="请输入服务名称" name="cname">
+                    </p>
+                </div>
+                <p class="input-mes fl">由中文、英文（大小写）、数字及其组合组成，最多不超过20字</p>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>服务标识：</p>
+                <div class="fl R_right">
+                    <p>
+                        <input type="text" id="apiServerId" placeholder="输入服务标识" name="name">
+                    </p>
+                </div>
+                <span class="api-server-error">这是必填字段</span>
+                <p class="input-mes fl">由英文、数字及其组合组成，最多不超过20字</p>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>服务简介：</p>
+                <div class="fl R_right">
+                    <p>
+                        <textarea cols="30" rows="10" placeholder="请输入服务简介" name ="description"></textarea>
+                    </p>
+                </div>
+                <p class="input-mes fl">对业务服务进行说明，支持中文、英文（大小写）、数字、符号及其组合输入，输入最多不超过150占位符</p>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>服务图标：</p>
+                <div class="fl R_right">
+                    <p class="allInfoImg">
+                        <img src="../../../images/add.png" alt="添加服务图标">
+                    </p>
+                </div>
+                <label class="img-error">请上传服务图标</label>
+            </div>
+            <!-- 增加 选择框及选择按钮  2016-09-05-->
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>服务分类：</p>
+                <div class="fl R_right posRE">
+                    <p id="serverCategory" class="checkboxlist">
+                        <label><input type="radio">生活账单</label>
+                        <label><input type="radio">新闻资讯</label>
+                        <label><input type="radio">工作就业</label>
+                        <label><input type="radio">医疗卫生</label>
+                        <label><input type="radio">社会保障</label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>标签：</p>
+                <div class="fl R_right posRE">
+                    <div class="tag-area fl"><span class="un-select">未选择任何标签</span></div>
+                    <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
+                </div>
+                <label class="tag-error">请选择标签</label>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>服务返回码：</p>
+                <div class="fl R_right">
+                    <p>
+                        <textarea cols="30" rows="10" placeholder="请输入服务返回码" name ="rtnCode"></textarea>
+                    </p>
+                </div>
+                <p class="input-mes fl">调用说明，使用MarkDown格式</p>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>服务对象：</p>
+                <div class="fl R_right">
+                    <p class="server-dist">
+
+                    </p>
+                </div>
+                <label class="server-error">请选择服务对象</label>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><i class="need">*</i>是否收费：</p>
+                <div class="fl R_right chargeTypeRadio">
+                    <label><input type="radio" name="chargeType" id="ct01" checked>免费</label>
+                    <label><input type="radio" name="chargeType" id="ct02">收费</label>
+                </div>
+            </div>
+            <div class="D_table api-package">
+                <table >
+                    <thead>
+                    <tr>
+                        <th>套餐名称</th>
+                        <th>套餐价格</th>
+                        <th>购买限制</th>
+                        <th>使用限制</th>
+                        <th>生效日期</th>
+                        <th>失效日期</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="packageTable">
+                        <tr>
+                            <td colspan="7">暂无数据</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearfix ReleaseList mt20 api-package">
+                <label class="package-error">套餐不能为空</label>
+                <span class="newSelBtn addPrice fr bgBlue" style="padding: 3px 10px;">新增收费规则</span>
+            </div>
+
+            <div class="D_table">
+                <table>
+                    <tr>
+                        <th>API名称</th>
+                        <th>API标识</th>
+                        <th>API地址</th>
+                        <th>是否鉴权</th>
+                        <th>操作</th>
+                    </tr>
+                    <tbody id="apiTable">
+                        <tr>
+                            <td colspan="5">暂无数据</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearfix ReleaseList mt20">
+                <label class="api-error">API不能为空</label>
+                <span class="newSelBtn addApi fr bgBlue" style="padding: 3px 10px;">新增API</span>
+            </div>
+            <div class="clearfix ReleaseList">
+                <div class="fl R_right">
+                    <p>
+                        <label>
+                            <input type="checkbox" id="agreementCheckbox">
+                            阅读并接受<a href="agreement.html" target="_blank">《广州数聚平台服务协议》</a>
+                        </label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="R_Btns">
+                <!-- <button class="bgBlue">返回</button> -->
+                <input type="submit" class="bgBlue" value="发布">
+            </div>
+        </div>
+        </form>
+        <form id="ajaxUpload" class="imgForm" action="" method="post">
+            <input type="file" name="image" class="upload-file">
+            <input type="submit" id="btnAjax">
+        </form>
+    </div>
+    <div class="add-price-list layerApi">
+    </div>
+    <div class="add-api-list layerApi">
+
+    </div>
+</div>
+<script id="chooseTagArea" type="template">
+    <% for(var i=0,len=tags.length; i < len; i++) { %>
+    <p class="fl tag-list">
+        <span><%=tags[i].name%></span>
+        <i class="remove-tags-btn"></i>
+    </p>
+    <% } %>
+    <%if(tags.length == 0){%>
+    <span class="un-select">未选择任何标签</span>
+    <%}%>
+</script>
+<script id="categoryList" type="template">
+    <% _.each(categoryList, function (fcitem) { %>
+        <div class="category-block-area">
+            <p data-typeId = "<%=fcitem.typeId%>"><%=fcitem.typeName%>:</p>
+            <div>
+            <% _.each(fcitem.categoryList, function (citem) { %>
+            <label title="<%=citem.categoryName%>"><input type="radio" name="category" id="c<%=citem.categoryId%>" <%if(citem.categoryId == categoryList[0].categoryList[0].categoryId){%>checked<%}%> ><%=citem.categoryName%></label>
+            <% })%>
+            </div>
+        </div>
+    <% }); %>
+</script>
+<script id="serverTypeList" type="template">
+        <% _.each(serverTypeList, function (titem) { %>
+        <label class="fl"><input type="checkbox" id="t<%=titem.dictCode%>" name="serverTypes"><%=titem.dictName%></label>
+        <% }); %>
+</script>
+<script id="packageTableTemps" type="template">
+    <% _.each(chargeSetJson, function (chargeItem) { %>
+    <tr>
+        <td><%=chargeItem.name%></td>
+        <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%><%if(chargeItem.chargeType == '04'){%>月<%}else{%>次<%}%></td>
+        <td><%=chargeItem.countLimit == 1 ? '限制一次' : '不限制'%></td>
+        <td><%if(chargeItem.monthLimit){%>
+            <%=chargeItem.monthLimit%><%= chargeItem.chargeType == '04' ? '次' : '个月'%>
+            <%}else{%>
+            <%='不限制'%>
+            <%}%>
+        </td>
+        <td><%=chargeItem.effectDate%></td>
+        <td><%=chargeItem.expiryDate%></td>
+        <td>
+            <a href="javascript:;" class="editCharge">修改</a>
+            <a href="javascript:;" class="removeCharge">删除</a>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(chargeSetJson.length == 0){%>
+    <tr>
+        <td colspan="7">暂无数据</td>
+    </tr>
+    <%}%>
+</script>
+<script id="apiTableTemps" type="template">
+    <% _.each(apiList, function (aitem) { %>
+    <tr>
+        <td><%=aitem.cname%></td>
+        <td><%=aitem.name%></td>
+        <td><%=aitem.uri%></td>
+        <td><%=aitem.isAuth == '1' ? '是': '否'%></td>
+        <td>
+            <a href="javascript:void(0);" class="editApi">修改</a>
+            <a href="javascript:void(0);" class="deleteApi">删除</a>
+        </td>
+    </tr>
+    <% }); %>
+    <%if(apiList.length == 0){%>
+    <tr>
+        <td colspan="4">暂无数据</td>
+    </tr>
+    <%}%>
+</script>
+<script id="chargeManage" type="template">
+    <form id="addChargeForm" onsubmit="return false;">
+        <ul>
+            <li>
+                <label>
+                    <input type="hidden" name="id" value="<%=res.id%>">
+                    <span><i class="need">*</i>计费方式：</span>
+                    <%if(res.isOth){%>
+                    <p class="mes"><%=res.chargeType=='05'? '按次数': '按时间'%></p>
+                    <%}else{%>
+                    <select name="chargeType" class="charge-type">
+                        <option value="05" <%if(res && res.chargeType=='05'){%>selected="selected"<%}%>>按次数</option>
+                        <option value="04" <%if(res && res.chargeType=='04'){%>selected="selected"<%}%>>按时间</option>
+                    </select>
+                    <%}%>
+
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>套餐名称：</span>
+                    <%if(res.isOth){%>
+                    <p class="mes"><%=res.name%></p>
+                    <%}else{%>
+                    <input type="text" name="name" id="packageName" value="<%=res.name%>">
+                    <p class="input-mes-api fl">套餐名称最多不超过50字</p>
+                    <%}%>
+                </label>
+            </li>
+            <li>
+                <label style="position: relative;">
+                    <span><i class="need">*</i>套餐价格：</span>
+                    <%if(res.isOth){%>
+                    <p class="mes"><%=res.price%>元/<%=res.chargeCount%><%=res.chargeType=='05'? '次': '月'%></p>
+                    <%}else{%>
+                    <label><input type="number" class="small" name="price" id="price" value="<%=res && res.price%>">元/</label>
+                    <label><input type="number" class="small" name="chargeCount" id="chargeCount" value="<%=res && res.chargeCount%>">
+                        <%if(res.chargeType=='05'){%><span class="prePrice">次</span><%}%>
+                        <%if(res.chargeType=='04'){%><span class="prePrice">月</span><%}%>
+                    </label>
+                    <p class="input-mes-api fl">价格大于等于0元，次数或者月数是大于1的整数</p>
+                    <p class="input-mes-api-price fl">收入价格:<span class="earning-count">-</span>元/<span class="charge-count"><%=res && res.chargeCount%></span><span class="price-per"><%=res.chargeType == '05'? '次': '月'%></span>（套餐价格*<span class="earning-percent">-</span>%）</p>
+                    <p class="input-mes-api-price fl">手续费:<span class="fee-count">-</span>元/<span class="charge-count"><%=res && res.chargeCount%></span><span class="price-per"><%=res.chargeType == '05'? '次': '月'%></span>（套餐价格*<span class="fee-percent">-</span>%）</p>
+                    <%}%>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span>购买限制：</span>
+                    <%if(res.isOth){%>
+                    <p class="mes"><%=res.countLimit == '-1'? '不限制': '限制一次'%></p>
+                    <%}else{%>
+                    <label title="不限制"><input type="radio" value="-1" name="countLimit" style="margin: 0;" <%if(res || res.countLimit == '-1'){%>checked<%}%>>不限制</label>
+                    <label title="限制一次" style="margin-left: 5px;"><input value="1" type="radio" name="countLimit" style="margin: 0;" <%if(res.countLimit == '1'){%>checked<%}%>>限制一次</label>
+                    <%}%>
+                </label>
+            </li>
+            <li>
+                <%if(res.isOth){%>
+                <label class="gl">
+                    <span>使用限制：</span>
+                    <p class="mes"><%=res.monthLimit%><%=res.chargeCount%><%=res.chargeType=='05'? '个月': '次'%></p>
+                </label>
+                <%}else{%>
+                <label class="gl">
+                    <span>使用限制：</span>
+                    <input type="number" class="small fl" name="monthLimit" id="monthLimit" value="<%=res && res.monthLimit%>">
+                    <b class="fl">
+                        <%if(res.chargeType=='05'){%><span class="limitPre">个月</span><%}%>
+                        <%if(res.chargeType=='04'){%><span class="limitPre">次</span><%}%>
+                    </b>
+                    <b class="fl ml20">(不填则为无限制)</b>
+                </label>
+                <p class="input-mes-api fl">次数或者月数是大于1的整数</p>
+                <%}%>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>生效日期：</span>
+                    <%if(res.isOth){%>
+                    <p class="mes"><%=new Date(res.effectDate).format('yyyy-MM-dd')%></p>
+                    <%}else{%>
+                    <input type="text" name="effectDate" id="effectDate" value="<%= res.effectDate ? new Date(res.effectDate).format('yyyy-MM-dd') : ''%>" readonly>
+                    <%}%>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span>失效日期：</span>
+                    <input type="text" name="expiryDate" id="expiryDate" value="<%= res.expiryDate ? new Date(res.expiryDate).format('yyyy-MM-dd') : ''%>" readonly>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span>套餐说明：</span>
+                    <%if(res.isOth){%>
+                    <p class="mes"><%=res.description%></p>
+                    <%}else{%>
+                    <textarea id="chargeDescription" name="description"><%=res && res.description%></textarea>
+                    <%}%>
+                </label>
+            </li>
+        </ul>
+    </form>
+</script>
+<script id="apiManageTemps" type="template">
+    <form id="addApiForm" onsubmit="return false;">
+        <ul>
+            <li>
+                <label>
+                    <span><i class="need">*</i>API名称：</span>
+                    <input type="text" name="cname" id="cname" value="<%=res.cname%>">
+                    <p class="input-mes-api fl">支持中文、英文（大小写）、数字及其组合组成，最多不超过20字</p>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>API标识：</span>
+                    <input type="text" name="name" id="apiName" value="<%=res && res.name%>">
+                    <p class="input-mes-api fl">由英文、数字及其组合组成，最多不超过20字</p>
+                </label>
+                <span class="api-name-error"></span>
+            </li>
+            <li>
+                <label><span><i class="need">*</i>是否鉴权：</span></label>
+                <label class="auth-type"><input type="radio" name="isAuth" value="1" <%if(!res.isAuth || res.isAuth=='1'){%>checked<%}%>>是</label>
+                <label class="auth-type"><input type="radio" name="isAuth" value="0" <%if(res && res.isAuth=='0'){%>checked<%}%>>否</label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>请求类型：</span>
+                    <select name="requestType">
+                        <option value="JSON" <%if(res && res.requestType=='JSON'){%>selected="selected"<%}%>>JSON</option>
+                        <option value="FORM" <%if(res && res.requestType=='FORM'){%>selected="selected"<%}%>>FORM</option>
+                        <option value="JSON/FORM" <%if(res && res.requestType=='JSON/FORM'){%>selected="selected"<%}%>>JSON/FORM</option>
+                    </select>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>请求方法：</span>
+                    <select name="requestMethod">
+                        <option value="GET" <%if(res && res.requestMethod=='GET'){%>selected="selected"<%}%>>GET</option>
+                        <option value="POST" <%if(res && res.requestMethod=='POST'){%>selected="selected"<%}%>>POST</option>
+                        <option value="GET/POST" <%if(res && res.requestMethod=='GET/POST'){%>selected="selected"<%}%>>GET/POST</option>
+                    </select>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>API地址：</span>
+                    <input type="text" name="uri" id="uri" value="<%=res && res.uri%>">
+                    <p class="input-mes-api fl">请输入完整的服务访问URL地址(如：http://www.xxxx.cn)</p>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>参数和示例：</span>
+                    <textarea id="testPacket" name="testPacket"><%=res && res.testPacket%></textarea>
+                    <p class="input-mes-api fl">参数和返回示例，使用MarkDown格式</p>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span>备注信息：</span>
+                    <textarea id="directions" name="directions"><%=res && res.directions%></textarea>
+                </label>
+            </li>
+        </ul>
+    </form>
+</script>

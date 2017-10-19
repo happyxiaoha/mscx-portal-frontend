@@ -9,6 +9,7 @@ var paymentRecordView = require('./consumeRecordView.js');
 var rechargeRecordView = require('./rechargeRecordView.js');
 var setPayPasswordView = require('./setPayPasswordView.js');
 
+
 var accountView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterRight,
     initialize: function() {

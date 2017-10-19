@@ -23,7 +23,8 @@ var configRoot = {
     'pay': './js/pay.js',
     'search': './js/search.js',
     'contactUs': './js/contactUs.js',
-    'message': './js/message.js'
+    'message': './js/message.js',
+    'newThreeServices': './js/newThreeServices.js',
 };
 
 gulp.task('lint', function  () {

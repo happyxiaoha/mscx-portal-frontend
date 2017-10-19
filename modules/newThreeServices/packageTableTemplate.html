@@ -1,0 +1,29 @@
+<% _.each(chargeSetJson, function (chargeItem) { %>
+<tr>
+    <td><%=chargeItem.name%></td>
+    <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%><%= chargeItem.chargeType == '04' ? '天' : '次'%></td>
+    <td><%=chargeItem.boughtLimit == 1 ? '限制一次' : '不限制'%></td>
+    <td><%if(!chargeItem.invokeLimit || chargeItem.invokeLimit == '-1'){%>
+        不限制
+        <%}else{%>
+        <%=chargeItem.invokeLimit%><%= chargeItem.chargeType == '04' ? '次' : '天'%>
+        <%}%>
+    </td>
+    <%if(!isUpdate){%>
+    <td><%=chargeItem.effectDate%></td>
+    <td><%=chargeItem.expiryDate%></td>
+    <td>
+        <a href="javascript:;" class="editCharge">修改</a>
+        <a href="javascript:;" class="removeCharge">删除</a>
+    </td>
+    <%}else {%>
+    <td><%=new Date(chargeItem.effectDate).format('yyyy-MM-dd')%></td>
+    <td><%=chargeItem.expiryDate ? new Date(chargeItem.expiryDate).format('yyyy-MM-dd') : '-'%></td>
+    <%}%>
+</tr>
+<% }); %>
+<%if(chargeSetJson.length == 0){%>
+<tr>
+    <td colspan="7">暂无数据</td>
+</tr>
+<%}%>

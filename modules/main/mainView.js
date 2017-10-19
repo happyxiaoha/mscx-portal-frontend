@@ -34,7 +34,8 @@ var recommendApiModel = Backbone.Model.extend({
 var recommendSerModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'recommend/list.do'
 });
-
+var Resource = require('../pioneering/resource.js');
+var cmsUrl = Resource.cmsHost + 'static_html/datainfo/latestnews/index.html';
 
 var mainView = Backbone.View.extend({
     el: mscxPage.domEl.mainEl,
@@ -43,6 +44,11 @@ var mainView = Backbone.View.extend({
     },
     initialize: function() {
         this.$el.html(template);
+
+        this.$list = this.$('.news-list');
+        window.frameUrl = 'pioneering.html?';
+        window.listUrl = 'pioneering.html#news/list';
+        window.portalUrl = Resource.cmsHost;
         new bannerView();
         //new firstRecommendView();
         new navigationView({
@@ -82,6 +88,7 @@ var mainView = Backbone.View.extend({
             el: '.recommendSerList',
             model: new recommendSerModel()
         });
+        this.$list.load(cmsUrl + '?time=' + +(new Date()));
         this.render();
     },
     render: function(){

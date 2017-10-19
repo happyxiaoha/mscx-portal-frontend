@@ -85,8 +85,14 @@
 .containerWrap .slideBanner .mleftCons .tabList .tab{height: 54px;padding-top: 14px;box-sizing: border-box;}
 .containerWrap .slideBanner .mleftCons .tabList .tab span{display: block;float: left;width: 126px;height: 26px;line-height: 26px;text-align: center;font-size: 14px;border-right: 1px solid #a0a0a0;cursor: pointer;}
 .containerWrap .slideBanner .mleftCons .tabList .tab span.active{color: #3F89EC;}
-.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabLeft{width: 200px;padding-top: 20px;}
-.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabLeft span{display: block;height: 34px;line-height: 34px;cursor: pointer;padding-left: 38px;position: relative;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabLeft{width: 210px;padding-top: 20px;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabLeft span{display: block;height: 34px;line-height: 34px;cursor: pointer;padding-left: 38px;position: relative;
+    width: 210px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabLeft span.active{color: #3F89EC;}
 
 .containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight{width: 720px;border-left: 1px solid #ddd;padding-left: 19px;padding-top: 20px;word-wrap: break-word;}

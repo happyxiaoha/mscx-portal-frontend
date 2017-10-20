@@ -2,6 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 var template = require('html!./main.html'),
+    childTemplate = require('html!./child.html'),
     navigationView = require('./navigationView.js'),
     recommendBarView = require('./recommendBarView.js'),
     recommendView = require('./recommendView.js'),
@@ -43,52 +44,64 @@ var mainView = Backbone.View.extend({
         'blur .info-line input':'changeAttribute'
     },
     initialize: function() {
-        this.$el.html(template);
 
-        this.$list = this.$('.news-list');
-        window.frameUrl = 'pioneering.html?';
-        window.listUrl = 'pioneering.html#news/list';
-        window.portalUrl = Resource.cmsHost;
+        var currentCity = JSON.parse(sessionStorage.getItem('currentCity'));
+        if(currentCity && currentCity.code!='440100' &&  currentCity.code!='440113'){
+            require('../newThreeServices/openData.css');
+            require('../newThreeServices/apiModel/api.css');
+            require('../newThreeServices/servicesModel/services.css');
+            this.$el.html(childTemplate);
+            showDatas(currentCity.code)
+        }else{
+            this.$el.html(template);
+            this.$list = this.$('.news-list');
+            //创业资讯的配置
+            window.frameUrl = 'pioneering.html?';
+            window.listUrl = 'pioneering.html#news/list';
+            window.portalUrl = Resource.cmsHost;
+            //new bannerView();
+            //new firstRecommendView();
+            new navigationView({
+                id: 'ser',
+                el: '#daohangSer',
+                model: new navigationSerModel()
+            });
+
+            new navigationView({
+                id: 'api',
+                el: '#daohangAPI',
+                model: new navigationApiModel()
+            });
+
+            new recommendBarView({
+                id: 'ser',
+                el: '#serList',
+                model: new serListModel()
+            });
+
+
+            new recommendBarView({
+                id: 'api',
+                el: '#apiList',
+                model: new apiListModel()
+            });
+
+            new recommendView({
+                id: 'api',
+                el: '.recommendApiList',
+                className: 'loading',
+                model: new recommendApiModel()
+            });
+
+            new recommendView({
+                id: 'ser',
+                el: '.recommendSerList',
+                model: new recommendSerModel()
+            });
+            //加载创业资讯(最新资讯)
+            this.$list.load(cmsUrl + '?time=' + +(new Date()));
+        }
         new bannerView();
-        //new firstRecommendView();
-        new navigationView({
-            id: 'ser',
-            el: '#daohangSer',
-            model: new navigationSerModel()
-        });
-
-        new navigationView({
-            id: 'api',
-            el: '#daohangAPI',
-            model: new navigationApiModel()
-        });
-
-        new recommendBarView({
-            id: 'ser',
-            el: '#serList',
-            model: new serListModel()
-        });
-
-
-        new recommendBarView({
-            id: 'api',
-            el: '#apiList',
-            model: new apiListModel()
-        });
-
-        new recommendView({
-            id: 'api',
-            el: '.recommendApiList',
-            className: 'loading',
-            model: new recommendApiModel()
-        });
-
-        new recommendView({
-            id: 'ser',
-            el: '.recommendSerList',
-            model: new recommendSerModel()
-        });
-        this.$list.load(cmsUrl + '?time=' + +(new Date()));
         this.render();
     },
     render: function(){
@@ -128,5 +141,39 @@ var mainView = Backbone.View.extend({
 
     }
 });
+function showDatas(orgId, categoryId, keyword, scope, chargeType, orderBy) {
+    var openDataReleaseView = require('../newThreeServices/opendataRelease/openDataReleaseView.js');
+    mscxPage.views['openDataReleaseViewObj'] = new openDataReleaseView({
+        id: 'catalog',
+        model: {
+            keyword: keyword,
+            scope: scope,
+            chargeType: chargeType,
+            orderBy: orderBy,
+            orgId: orgId,
+            categoryId: categoryId
+        }
+    });
+    var APIView = require('../newThreeServices/apiModel/APIView.js');
+    mscxPage.views['dataAPIObj'] = new APIView({
+        id: 'data',
+        model: {
+            keyword: keyword,
+            scope: scope,
+            chargeType: chargeType,
+            orderBy: orderBy
+        }
+    });
 
+    var serviceView = require('../newThreeServices/servicesModel/servicesView.js');
+    mscxPage.views['servicesObj'] = new serviceView({
+        id: 'service',
+        model: {
+            keyword: keyword,
+            scope: scope,
+            chargeType: chargeType,
+            orderBy: orderBy
+        }
+    });
+};
 module.exports = mainView;

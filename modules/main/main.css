@@ -704,3 +704,49 @@
 .news-list ul li a:hover,.news-list ul li:link{color: #069cd9;}
 .news-list ul li:before{content: '';position: absolute;left: -18px;top: 9px;width: 5px;height: 5px;background: #069cd9;}
 .bgBoxShodow{background: #fff;box-shadow: 1px 1px 3px rgba(0,0,0,.1), -1px -1px 3px rgba(0,0,0,.1);}
+/*******子站css**********/
+.child-banner{
+    height: 354px;
+}
+.child-banner .bannger{
+    width:100%;
+}
+/**子站数据显示部分***/
+#openData{
+    display: none!important;
+}
+.three-api-content #data:first-child{
+    display:none !important;
+}
+.three-api-content #model:first-child{
+    display:none !important;
+}
+.three-api-content #tool:first-child{
+    display:none !important;
+}
+.three-api-content .mainDatas{
+    height: auto;
+}
+.service-content #service:first-child{
+    display:none !important;
+}
+.opendata.leftMenuWrap,.api.leftMenuWrap,.services.leftMenuWrap{
+    display: none !important;
+}
+/*.rightMenuWrap{
+    margin-left: 42px !important;
+}*/
+.source-content .more,.three-api-content .more,.service-content .more{
+    width: 100px;
+    float: right;
+    text-align: left;
+    font-size: 14px;
+    margin-top: 15px;
+    /* color: red; */
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+.source-content .more a,.three-api-content .more a,.service-content .more a{
+  color: #069cd9;
+  text-decoration: blink;
+}

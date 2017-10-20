@@ -1,0 +1,43 @@
+<div class="bannger fl mr10">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <% _.each(data, function(item){ %>
+            <a <%=  item.bannerUrl ? 'href ='+ item.bannerUrl : '' %> class="swiper-slide">
+            <img src="<%= item.bigBannerPic %>" alt="<%= item.title %>">
+            </a>
+            <% }); %>
+            <!-- <a href="#" class="swiper-slide ">
+                 <img src="../../images/newicon/banner2.png">
+             </a>
+             <a href="#" target="_blank" class="swiper-slide">
+                 <img src="../../images/newicon/banner3.png">
+             </a>
+             <a href="#" class="swiper-slide">
+                 <img src="../../images/newicon/banner4.png">
+             </a>-->
+        </div>
+        <!-- Add Pagination -->
+    </div>
+</div>
+<!--右侧小图-->
+<!--<div class="left-banner fl">
+    <div class="swiper-right">
+        <div class="swiper-wrapper rightBannner">
+            <% _.each(data, function(item){ %>
+            <a class="swiper-slide">
+                <img src="<%= item.smallBannerPic %>" alt="<%= item.title %>">
+            </a>
+            <% }); %>
+            &lt;!&ndash;<a href="#" class="swiper-slide ">
+                <img src="../../images/newicon/banner2-small.png">
+            </a>
+            <a href="#" class="swiper-slide">
+                <img src="../../images/newicon/banner3-small.png">
+            </a>
+            <a href="#" class="swiper-slide">
+                <img src="../../images/newicon/banner4-small.png">
+            </a>&ndash;&gt;
+        </div>
+        &lt;!&ndash; Add Pagination &ndash;&gt;
+    </div>
+</div>-->

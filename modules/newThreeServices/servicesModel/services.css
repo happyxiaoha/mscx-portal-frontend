@@ -122,7 +122,7 @@
     display: block;
     width: 42px;
     height: 42px;
-    background: url(../../images/arrows.png) no-repeat;
+    background: url(../../../images/arrows.png) no-repeat;
     cursor: pointer;
     padding: 0 !important;
 }
@@ -345,13 +345,20 @@
     font-family: '微软雅黑';
     background:#0DD79E ;
 }
-.more{
+.source-content .more ,.three-api-content .more,.service-content .more{
     width: 100px;
     float: right;
-    text-align: center;
-    font-size: 18px;
+    text-align: left;
+    font-size: 14px;
     margin-top: 15px;
+    /* color: red; */
+    box-sizing: border-box;
+    padding-left: 10px;
 }
-.more a:hover{
-    color: #0DD79E !important;
+.source-content .more a,.three-api-content .more a,.service-content .more a{
+    color: #069cd9;
+    text-decoration: blink;
+}
+.data-list{
+    border:1px solid #ccc !important;
 }

@@ -72,7 +72,7 @@ var headerView = Backbone.View.extend({
         this.currentCity = _.find(cityMap.cities, function(item){
             return item.url.indexOf(location.host) > -1;
         }) || cityMap.cities[0];
-
+        sessionStorage.setItem('currentCity',JSON.stringify(this.currentCity))
         _.extend(mscxPage.city, this.currentCity)
         
         // 先获取城市areacode
@@ -84,7 +84,6 @@ var headerView = Backbone.View.extend({
             async: false
             // silent: true
         })
-
         this.model.fetch({
             data: {
                 t: new Date().getTime()
@@ -96,7 +95,8 @@ var headerView = Backbone.View.extend({
             id: this.id,
             menuList: menuList,
             cityStations: cityMap.cities,
-            currentCity: this.currentCity
+            currentCity: this.currentCity,
+            img:this.currentCity.img
         }));
 
     },
@@ -124,6 +124,7 @@ var headerView = Backbone.View.extend({
         var model = this.switchCityModel.toJSON();
         if(model.status == 'OK') {
             location.href = this.swicthUrl;
+
         }else {
             layer.msg('切换城市失败，请稍后再试');
         }
@@ -208,3 +209,12 @@ var headerView = Backbone.View.extend({
 });
 
 module.exports = headerView;
+
+/*
+ {
+ "code": "104",
+ "name": "广州城投",
+ "abbr": "guangzhou",
+ "url": "http://www.gzopendata.com",
+ "img":"../../images/newicon/gzct.png"
+ },*/

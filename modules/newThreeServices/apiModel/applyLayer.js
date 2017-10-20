@@ -248,7 +248,7 @@ var view = Backbone.View.extend({
 
         var base = new Base64;
         window.localStorage.setItem('orderInfo', base.encode(JSON.stringify(param)));
-        location.href = 'pay.html';
+        location.href = '../../../pay.html';
     },
     // handleIsBaughtOrder: function() {
     //     var model = this.freeIsBaughtModel.toJSON();

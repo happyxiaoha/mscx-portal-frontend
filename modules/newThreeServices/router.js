@@ -26,7 +26,7 @@ var Routes =  Backbone.Router.extend({
             id: 'view'
         });
         if(!three){
-            var APIView = require('./APIView.js');
+            var APIView = require('./apiModel/APIView.js');
             mscxPage.views['dataAPIObj'] = new APIView({
                 id: 'data',
                 model: {
@@ -36,7 +36,7 @@ var Routes =  Backbone.Router.extend({
                     orderBy: orderBy
                 }
             });
-            var serviceView = require('./servicesView.js');
+            var serviceView = require('./servicesModel/servicesView.js');
             mscxPage.views['servicesObj'] = new serviceView({
                 id: 'service',
                 model: {
@@ -61,7 +61,7 @@ var Routes =  Backbone.Router.extend({
                 categoryId: categoryId
             }
         });
-        var APIView = require('./APIView.js');
+        var APIView = require('./apiModel/APIView.js');
         mscxPage.views['dataAPIObj'] = new APIView({
             id: 'data',
             model: {
@@ -72,7 +72,7 @@ var Routes =  Backbone.Router.extend({
             }
         });
 
-        var serviceView = require('./servicesView.js');
+        var serviceView = require('./servicesModel/servicesView.js');
         mscxPage.views['servicesObj'] = new serviceView({
             id: 'service',
             model: {
@@ -87,7 +87,7 @@ var Routes =  Backbone.Router.extend({
     dataAPI:function (keyword, scope, chargeType, orderBy) {
         if(location.search) return;
 
-        var APIView = require('./APIView.js');
+        var APIView = require('./apiModel/APIView.js');
         mscxPage.views['dataAPIObj'] = new APIView({
             id: 'data',
             model: {
@@ -108,7 +108,7 @@ var Routes =  Backbone.Router.extend({
                     orderBy: orderBy,
                 }
             });
-            var serviceView = require('./servicesView.js');
+            var serviceView = require('./servicesModel/servicesView.js');
             mscxPage.views['servicesObj'] = new serviceView({
                 id: 'service',
                 model: {
@@ -121,7 +121,7 @@ var Routes =  Backbone.Router.extend({
         }
     },
     toolAPI:function (keyword, scope, chargeType, orderBy) {
-        var APIView = require('./APIView.js');
+        var APIView = require('./apiModel/APIView.js');
         mscxPage.views['toolAPIObj'] = new APIView({
             id: 'tool',
             model: {
@@ -142,7 +142,7 @@ var Routes =  Backbone.Router.extend({
                     orderBy: orderBy,
                 }
             });
-            var serviceView = require('./servicesView.js');
+            var serviceView = require('./servicesModel/servicesView.js');
             mscxPage.views['servicesObj'] = new serviceView({
                 id: 'service',
                 model: {
@@ -155,7 +155,7 @@ var Routes =  Backbone.Router.extend({
         }
     },
     modelAPI:function (keyword, scope, chargeType, orderBy) {
-        var APIView = require('./APIView.js');
+        var APIView = require('./apiModel/APIView.js');
         mscxPage.views['modelAPIObj'] = new APIView({
             id: 'model',
             model: {
@@ -176,7 +176,7 @@ var Routes =  Backbone.Router.extend({
                     orderBy: orderBy,
                 }
             });
-            var serviceView = require('./servicesView.js');
+            var serviceView = require('./servicesModel/servicesView.js');
             mscxPage.views['servicesObj'] = new serviceView({
                 id: 'service',
                 model: {
@@ -192,7 +192,7 @@ var Routes =  Backbone.Router.extend({
     serviceView: function (keyword, scope, chargeType, orderBy) {
         if(location.search) return;
 
-        var serviceView = require('./servicesView.js');
+        var serviceView = require('./servicesModel/servicesView.js');
         mscxPage.views['servicesObj'] = new serviceView({
             id: 'service',
             model: {
@@ -213,7 +213,7 @@ var Routes =  Backbone.Router.extend({
                     orderBy: orderBy,
                 }
             });
-            var APIView = require('./APIView.js');
+            var APIView = require('./apiModel/APIView.js');
             mscxPage.views['dataAPIObj'] = new APIView({
                 id: 'data',
                 model: {

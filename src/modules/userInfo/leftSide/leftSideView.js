@@ -38,7 +38,7 @@ var leftSideView = Backbone.View.extend({
               for(var i = 0 ,len = aRes.list.length; i < len; i++) {
                   var obj = aRes.list[i],
                       sourceId = obj.sourceId;
-                  if(sourceId == 9569) {//9569
+                  if(sourceId == 529569) {//529569
                       mscxPage.isPhoto = true;
                       break;
                   }

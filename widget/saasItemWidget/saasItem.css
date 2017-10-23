@@ -1,0 +1,16 @@
+
+.services-item{padding: 14px 12px;height: 110px;border-bottom: 1px solid #ccc;position: relative;}
+.services-item:last-child{border:0;}
+.services-item img{width: 156px;height: 110px;}
+.myServerRight{width: 676px;}
+.myServerRight a{line-height: 28px;}
+.myServerRight p.R-infos{line-height: 20px;margin: 8px 0 11px;height: 44px;overflow: hidden;}
+.myServerRight p span{margin-right: 28px;
+    float: left;
+    max-width: 200px;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
+.citysSel{right: 0;top:0;color: #fff;background: #069cd9;padding: 8px 12px;}
+

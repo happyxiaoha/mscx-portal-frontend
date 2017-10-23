@@ -23,10 +23,10 @@ a{
 .header h1 a img{display: block;width: 172px;}
 .header .citys{margin: 35px 0 0 6px;cursor: pointer;}
 .header .citys input{padding: 0;margin: 0;border: 0;box-shadow: none;width: 88px;color: #069cd9;font-size: 14px;background: transparent;cursor: pointer;}
-.header .searchCons{margin: 0 30px 0 0;background: #fff;position: relative}
+.header .searchCons{background: #fff;position: relative}
 .header .searchCons .search-img{position: absolute;top: 0; right: 0;height: 38px;width: 38px;background: url("../../images/img01.png") center center no-repeat;cursor: pointer}
 .header .searchCons input{display: inline-block;margin: 0;}
-.header .searchCons .search{width: 220px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 36px;box-shadow: none;padding-left: 10px;padding-right: 16px;}
+.header .searchCons .search{width: 180px;height: 36px;color: #999;box-sizing: border-box;border: 1px solid #ccc;outline: none;border-radius: 36px;box-shadow: none;padding-left: 10px;padding-right: 16px;}
 .header .searchCons .searchBtn{width: 60px;height: 38px;border: 0;color: #fff;margin-left: -4px;}
 .header .haslogin{height: 38px;position: relative;line-height: 37px;margin: 24px 0 0 0;}
 .header .haslogin .noLogin a,.header .haslogin .noLogin span{display: inline-block;color: #069cd9;font-size: 14px;}
@@ -85,7 +85,7 @@ a{
     margin-top: 2px;
 }
 .noLogin{
-    width: 150px;
+    width: 130px;
     text-align: center;
 }
 /*个人信息下拉菜单*/
@@ -132,7 +132,7 @@ a{
     border: 1px solid #eee;
     background: #f9f9f9;
     top: 70px;
-    left: 285px;
+    // left: 285px;
     z-index: 1001;
     width: 150px;
     padding: 0 10px;

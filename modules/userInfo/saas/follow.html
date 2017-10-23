@@ -1,0 +1,43 @@
+<div class="tabCons">
+    <div class="M-mainInfo clearfix bgWhite pt25">
+        <div class="M-downCons">
+            <div class="D_table M-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>SaaS名称</th>
+                        <th>服务商</th>
+                        <th>浏览次数</th>
+                        <th>关注时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="5">暂无数据</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="SaaSFollowPages" class="page-area fr"></div>
+        </div>
+    </div>
+</div>
+
+
+<script id="SaaSFollowList" type="template">
+    <%_.each(followSaaSList, function (fsItem) {%>
+        <tr data-id="<%=fsItem.id%>">
+            <td><a target="_blank" href="./saas.html?detail/<%=fsItem.id%>"><%=fsItem.name || '-'%></a></td>
+            <td><%=fsItem.providerName%></td>
+            <td><%=fsItem.viewCount%></td>
+            <td><%=fsItem.attentionTime ? new Date(fsItem.attentionTime).format('yyyy-MM-dd') : '-'%></td>
+            <td><a class="cancelFollow" href="javascript:;">取消关注</a></td>
+        </tr>
+    <% }); %>
+    <%if(followSaaSList.length == 0){%>
+    <tr>
+        <td colspan="5">暂无数据</td>
+    </tr>
+    <%}%>
+</script>

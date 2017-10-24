@@ -74,6 +74,11 @@
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
+            <%}else if(scitem.resourceType == '04'){%>
+            <a class="resources" href="./saas.html?detail/<%=scitem.resourceId%>">
+                <img src="<%=scitem.resourceUrl%>">
+                <p><%=scitem.resourceName%></p>
+            </a>
             <%}else if(scitem.resourceType == '03'){%>
             <a class="resources" href="./services.html?detail/<%=scitem.resourceId%>">
                 <img src="<%=scitem.resourceUrl%>">

@@ -1,7 +1,7 @@
 /*.navCons.index .nav li a {
     color: #333 !important;
 }*/
-#openData{
+.source-content #openData{
     display: none!important;
 }
 

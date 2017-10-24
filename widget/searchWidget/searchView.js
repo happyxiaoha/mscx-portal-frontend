@@ -111,7 +111,6 @@ var view = Backbone.View.extend({
         this.searchParams = new Backbone.Model();
 
         this.listenTo(this.searchParams, 'change', this.searchData);
-
         this.on('renderBox', this.renderBox);
 
         return this;
@@ -145,12 +144,14 @@ var view = Backbone.View.extend({
         model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory || model.saasCategory;
 
         for(var key in model) {
-            if(model[key].toJSON) {
+            if(model[key]&&model[key].toJSON) {
                 params[key] = model[key].toJSON();
             }else {
                 params[key] = model[key];
             }
         }
+
+
 
         // 如果带地区查询条件，需要默认选中相应的省市区联动
         if(model.defaults && model.defaults.scope) {

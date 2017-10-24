@@ -21,6 +21,8 @@ var Routes =  Backbone.Router.extend({
         'server': 'serverView',
         'serverFollow': 'serverFollowView',
         'serverApply': 'serverApplyView',
+        'saasFollow': 'saasFollowView',
+        'saasApply': 'saasApplyView',
         'order': 'orderView',
         'shop': 'shopView',
         // 我的积分
@@ -92,6 +94,14 @@ var Routes =  Backbone.Router.extend({
     serverApplyView: function () {
         var serverApplyView = require('userInfo/servers/serversApplyView.js');
         mscxPage.views['serverApplyViewObj'] = new serverApplyView();
+    },
+    saasFollowView: function () {
+        var saasFollowView = require('userInfo/saas/saasFollowView.js');
+        mscxPage.views['saasFollowViewObj'] = new saasFollowView();
+    },
+    saasApplyView: function () {
+        var saasApplyView = require('userInfo/saas/saasApplyView.js');
+        mscxPage.views['saasApplyViewObj'] = new saasApplyView();
     },
     apiView: function () {
         var apiView = require('userInfo/api/apiView.js');

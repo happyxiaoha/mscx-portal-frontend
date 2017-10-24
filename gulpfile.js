@@ -17,6 +17,7 @@ var configRoot = {
      'sources': './js/sources.js',    //数据
     'api': './js/api.js',
     'services': './js/services.js',     //微服务
+    'saas': './js/saas.js',     //SaaS服务
     'demand': './js/demand.js',     //需求定制
     'pioneering': './js/pioneering.js',  //创业园地
     'userInfo': './js/userInfo.js',    //用户中心

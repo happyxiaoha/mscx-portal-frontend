@@ -21,6 +21,11 @@ var menuList = [
         key: 'api'
     },
     {
+        name: 'SaaS服务',
+        url: mscxPage.urlConfig.saasPage,
+        key: 'saas'
+    },
+    {
         name: '微服务',
         url: mscxPage.urlConfig.servicesPage,
         key: 'service'

@@ -212,6 +212,6 @@
 .three-api-content .data-list{
     border:none;
 }
-#data .data-list{
+#data .data-list,#tool .data-list,#model .data-list{
     border:none !important;
 }

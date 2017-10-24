@@ -12,12 +12,12 @@
       <li>
         <label>APIKey：</label>
         <span v-if="result.apiKey">{{result.apiKey}}</span>
-        <span v-else>您尚未进行实名认证，完成<a href="#user/auth">认证</a>后可以查看APIKey</span>
+        <span v-else>您尚未进行实名认证，完成<a href="#/user/auth">认证</a>后可以查看APIKey</span>
       </li>
       <li>
         <label>secretKey：</label>
         <span v-if="result.secretKey">{{result.secretKey}}</span>
-        <span v-else>您尚未进行实名认证，完成<a href="#user/auth">认证</a>后可以查看secretKey</span>
+        <span v-else>您尚未进行实名认证，完成<a href="#/user/auth">认证</a>后可以查看secretKey</span>
       </li>
       <li>
         <label>手机号码：</label>

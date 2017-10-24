@@ -184,6 +184,14 @@ module.exports = {
             chunks: ["manifest", "vendor", "common", 'help'],
             chunksSortMode: 'dependency'
         }),
+        new HtmlWebpackPlugin({
+            title: '云点餐',
+            filename: 'kuaidian.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'kuaidian'],
+            chunksSortMode: 'dependency'
+        })
     ],
     module: {
         rules: [

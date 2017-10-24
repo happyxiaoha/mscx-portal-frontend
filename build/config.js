@@ -60,6 +60,7 @@ module.exports = {
     'message': './src/js/message.js',
     'startup': './src/js/startup.js',
     'saas': './src/js/saas.js',
-    'help': './src/js/help.js'
+    'help': './src/js/help.js',
+    'kuaidian': './src/js/kuaidian.js'
   }
-}
+};

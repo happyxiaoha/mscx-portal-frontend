@@ -20,7 +20,7 @@
             <a v-if="avatarUri || user.headPortrait" href="javascript:;" @click="removeAvatar" class="btn-remove-avatar">清除头像</a>
             <h1><a href="#/">{{user.account}}</a></h1>
             <p>
-              <a href="#user/auth" v-if="authText === '立刻认证'">{{authText}}</a>
+              <a href="#/user/auth" v-if="authText === '立刻认证'">{{authText}}</a>
               <span v-else>{{authText}}</span>
             </p>
           </div>

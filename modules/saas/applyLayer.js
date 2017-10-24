@@ -57,7 +57,8 @@ var view = Backbone.View.extend({
             this.packageModel.fetch({
                 async: false,
                 data: {
-                    appId: this.id
+                    appId: this.id,
+                    saasId: this.id
                 }
             })
         }      

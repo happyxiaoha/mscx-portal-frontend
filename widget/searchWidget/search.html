@@ -168,7 +168,7 @@
 
                         <% data.chargeWay.result.forEach(function(item) { %>
                             <li class="active">
-                                <input type="checkbox" <%= data.defaults && data.defaults.chargeType == item.dictCode && 'checked' %> data-type="chargeType" value="<%= item.dictCode %>" id="chargeWay<%= item.dictCode %>">
+                                <input type="radio" name="chargeType" <%= data.defaults && data.defaults.chargeType == item.dictCode && 'checked' %> data-type="chargeType" value="<%= item.dictCode %>" id="chargeWay<%= item.dictCode %>">
                                 <label for="chargeWay<%= item.dictCode %>"><%= item.dictName %></label>
                             </li>
                         <% }) %>

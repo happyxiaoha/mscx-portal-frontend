@@ -10,8 +10,12 @@
 'use strict';
 var template = '<div id="contentPart" class="grid1190 common opacity0"></div>';
 
+var getUserMsg = Backbone.Model.extend({
+    url: mscxPage.host + '/briefInfo.do?'
+});
+
 var kuaidianModel = Backbone.Model.extend({
-    url: mscxPage.request.kuaidian + 'orderLog/save'
+    url: mscxPage.request.kuaidian + 'orderLog/save.do'
 });
 
 var kuaidianView = Backbone.View.extend({
@@ -19,27 +23,42 @@ var kuaidianView = Backbone.View.extend({
     events: {},
     initialize: function () {
         this.$el.empty().append(template);
+        /* 获取用户信息 */
+        this.model = new getUserMsg();
+        this.model.fetch({
+            data: {
+                t: new Date().getTime()
+            }
+        });
+        this.listenTo(this.model, 'sync', this.render);
+
         this.kuaidianModel = new kuaidianModel();
-        this.kuaidianModel.fetch({});
-        this.listenTo(this.kuaidianModel, 'sync', this.render);
     },
 
     render: function () {
-        var result = this.kuaidianModel.toJSON();
-        if (result.code !== 200) {
-            layer.msg(result.message);
+        var nJson = this.model.toJSON();
+        mscxPage.userInfo = nJson.result;
+        if (!mscxPage.isLogin()) {
             return;
         }
-        var base = new Base64;
-        var kuaidianParam = "channel=scy" +
-            "&store_id=" + getUrlParam("store_id") +
-            "&zh=" + getUrlParam("zh") +
-            "&uid=" + mscxPage.userInfo.userId +
-            "&uname=" + mscxPage.userInfo.account +
-            "&mobile=" + mscxPage.userInfo.mobile;
+        // window.location.href = mscxPage.request.kuaidian + "index.do";
 
-        window.location.href = "http://kuaidian.bizsov.com/index.php/wap/passport-scy_login.html" +
-            "?sign=" + encodeURI(base.encode(kuaidianParam));
+        this.kuaidianModel.save({
+            storeId: getUrlParam("store_id"),
+            tableNo: getUrlParam("zh")
+        }, {
+            type: 'POST',
+            success: this.kuaidianCallback
+        });
+    },
+    kuaidianCallback: function (res) {
+        var rtnData = res.toJSON();
+        if (rtnData.status !== 'OK') {
+            // location.href = result.result;
+            layer.msg(rtnData.message);
+            return;
+        }
+        window.location.href = rtnData.result;
     }
 });
 

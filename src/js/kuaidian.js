@@ -8,14 +8,8 @@
  * ================================================
  */
 require('less/base.less');
-var header = require('headerWidget/headerView.js');
-var router = require('kuaidian/router.js');
+var kuaidianView = require('kuaidian/kuaidianView.js');
 
-$(function() {
-    mscxPage.appRouter = new router();
-    mscxPage.appRouter.on('route', function() {
-        $('html,body').animate({ scrollTop: '0' }, 100);
-    });
-    Backbone.history.stop();
-    Backbone.history.start();
+$(function () {
+    new kuaidianView();
 });

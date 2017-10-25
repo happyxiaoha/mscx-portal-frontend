@@ -102,6 +102,7 @@ var view = Backbone.View.extend({
         'click .toggle-more': 'toggleMore',
         'click dd a': 'selectOption',
         'click input[type="checkbox"]': 'handleCheckbox',
+        'click input[type="radio"]': 'handleRadio',
         'click input[name="type"]': 'handleTypeChange',
         'change #provinceSel': 'changeProvinces',
         'change #citySel': 'changeCities',
@@ -315,6 +316,24 @@ var view = Backbone.View.extend({
             this.searchParams.set({
                 page: 1,
                 chargeType: params.length > 1 ? '' : params[0]
+            });
+        }
+    },
+    handleRadio: function(event) {
+        var $target = this.$(event.currentTarget);
+        var type = $target.data('type');
+        var value = $target.val();
+
+        var params = [];
+
+        $target.parents('dl').find('input[type="radio"]:checked').each(function(index, item) {
+            params.push(item.value);
+        })
+
+        if(type == 'chargeType') {
+            this.searchParams.set({
+                page: 1,
+                chargeType: params[0]
             });
         }
     },

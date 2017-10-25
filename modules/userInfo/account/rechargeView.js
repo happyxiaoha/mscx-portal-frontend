@@ -2,10 +2,11 @@
 
 var commonTemplate = require('html!./common.html');
 var template = require('html!./recharge.html');
-
+var amountView = require('./amountView');
 var rechargeModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/placeRechargeOrder.do'
 })
+
 
 var orderModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderDetail.do'
@@ -57,8 +58,7 @@ var accountView = Backbone.View.extend({
             el: '#content',
             model: {
                 order: this.order
-            }
-        })
+        }})
 
         this.listenTo(this.amountView, 'next', this.goSelectPayWay);
         this.listenTo(this.selectPayWayView, 'next', this.goPayResultView);
@@ -73,82 +73,31 @@ var accountView = Backbone.View.extend({
 
         return this;
     },
-    goSelectPayWay: function() {
+    goSelectPayWay: function(model) {
+        this.selectPayWayView.model = model;
         this.selectPayWayView.render();
     },
     goPayResultView: function() {
         this.payResultView.render();
     }
 });
-var amountView = Backbone.View.extend({
-    initialize: function() {
-        this.templete = _.template($('#amount').html());
-        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
 
-        this.listenTo(this.model, 'sync', this.handleRecharge);
-        return this;
-    },
-    render: function() {
-        this.$el.empty();
-        this.$el.append(this.stepTemplete({
-            current: 'step1'
-        }));
-        this.$el.append(this.templete());
-
-        this.$form = this.$('form');
-        this.$form.validate(this.validateConfig());
-    },
-    validateConfig: function () {
-        var me = this;
-        return {
-            rules: {
-                money: {
-                    max: 10000000,
-                    required: true,
-                    price: true
-                }
-            },
-            submitHandler: function () {
-                me.submitForm();
-            }
-        }
-    },
-    submitForm: function () {
-        var params = this.$form.serializeObject();
-        this.amount = params.money;
-
-        this.model.set('amount', this.amount);
-        this.model.fetch({
-            data: {
-                rechargeAmount: this.amount
-            }
-        })
-    },
-    handleRecharge: function() {
-        var model = this.model.toJSON();
-
-        // 下单成功
-        if(model.status == 'OK') {
-            this.trigger('next');
-        }
-    }
-})
 var selectPayWayView = Backbone.View.extend({
     events: {
         'click .btn-pay': 'submitPay'
     },
     initialize: function() {
         this.templete = _.template($('#slectPayWay').html(), {variable: 'data'});
-        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
+         this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
         this.payTipsTemplate = $('#payTips').html();
     },
     render: function() {
         this.$el.empty();
-        this.$el.append(this.stepTemplete({
-            done: ['step1'],
-            current: 'step2'
-        }));
-        this.$el.append(this.templete(this.model.toJSON()));
+        // this.$el.append(this.stepTemplete({
+        //     done: ['step1'],
+        //     current: 'step2'
+        // }));
+        this.$el.append(this.templete(this.model));
 
         // 支付提示弹层
         // layer.open({
@@ -162,17 +111,17 @@ var selectPayWayView = Backbone.View.extend({
     },
     submitPay: function() {
         // 支付按钮
-        var type = this.$('.pay-type').find('input[type="radio"]:checked').val();    
+        var type = this.$('.pay-type').find('input[type="radio"]:checked').val();
         var me = this;
 
         this.orderInfo = _.extend({
-            orderNum: this.model.get('result'),
-            amount: this.model.get('amount')
+            orderNum: this.model.result,
+            amount: this.model.amount
         }, {
             channel: PayResource.channels[type],
             title: '广州数聚'
         });
-        /* 
+        /*
          * 如果是支付宝，页面跳转
          * 如果是微信支付，ajax获取url生成二维码
          */

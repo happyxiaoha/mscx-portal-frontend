@@ -24,9 +24,22 @@
     </div>
     <div class="navCons fl mt20 index">
         <ul class="nav fl">
-            <% _.each(data.menuList, function (item) { %>
+            <!--广州城投mock-->
+            <% if(data.currentCity.code == '104') { %>
+                <% _.each(data.menuList, function (item,index) { %>
+                    <% if(index<1){%>
+                    <li <%= (data.id == item.key ? 'class=active' : '' ) %>><a href="<%= item.url %>"><%= item.name %></a></li>
+                    <%}%>
+                <%})%>
+                <li style="font-weight: bold"><%= data.currentCity.name%></li>
+               <!-- base64转换有图片大小限制-->
+                <li style="position: relative;top: -10px;"><img src="../../images/newicon/gzct.png" alt="" width="172px" height="54px"></li>
+            <%}%>
+            <% if(data.currentCity.code == '440100' || data.currentCity.code == '440113') { %>
+                <%  _.each(data.menuList, function (item) { %>
             <li <%= (data.id == item.key ? 'class=active' : '' ) %>><a href="<%= item.url %>"><%= item.name %></a></li>
-            <%})%>
+                <%})%>
+            <%}%>
         </ul>
     </div>
     <div class="haslogin fr clearfix">

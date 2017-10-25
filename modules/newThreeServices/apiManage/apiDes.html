@@ -1,0 +1,171 @@
+<div class="ReleaseMainCons grid960 clearfix bgWhite boxShadiow">
+    <p class="ReleaseTit">API详情</p>
+    <div class="ReleaseDownCons">
+        <form id="publishApi" onsubmit="return false;">
+
+        </form>
+
+    </div>
+</div>
+<script id="updateFormMes" type="template">
+    <div class="ReleaseInputs labelleft ReleaseDown">
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务范围：</p>
+            <div class="fl R_right">
+                <p class="mes"><%=res.scope%></p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务名称：</p>
+            <div class="fl R_right">
+                <p class="mes"><%=res.cname%></p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务标识：</p>
+            <div class="fl R_right">
+                <p class="mes"><%=res.name%></p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务简介：</p>
+            <div class="fl R_right">
+                <p class="mes"><%=res.description%></p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务图标：</p>
+            <div class="fl R_right">
+                <p class="allInfoImg">
+                    <img src="<%=res.imageUri%>" alt="服务图标">
+                </p>
+            </div>
+        </div>
+        <!-- 增加 选择框及选择按钮  2016-09-05-->
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务分类：</p>
+            <div class="fl R_right posRE">
+                <p id="serverCategory" class="checkboxlist">
+                    <label><input type="radio">加载中</label>
+                </p>
+            </div>
+        </div>
+
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">标签：</p>
+            <div class="fl R_right">
+                <p class="mes"><%=res.tagsName%></p>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList markdown-body">
+            <p class="fl R_left">服务返回码：</p>
+            <div class="fl R_right mes">
+                <%=res.rtnCode%>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">服务对象：</p>
+            <div class="fl R_right server-dist" style="margin-top: 0;">
+            </div>
+            <label class="server-error">请选择服务对象</label>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left">是否收费：</p>
+            <div class="fl R_right chargeTypeRadio">
+                <p class="mes"><%if(res.chargeType=='01'){%>免费<%}%><%if(res.chargeType=='02'){%>收费<%}%></p>
+            </div>
+        </div>
+        <div class="D_table api-package" <%if(res.chargeType=='01'){%>style="display: none;"<%}%> >
+            <table >
+                <thead>
+                <tr>
+                    <th>套餐名称</th>
+                    <th>套餐价格</th>
+                    <th>购买限制</th>
+                    <th>使用限制</th>
+                    <th>生效日期</th>
+                    <th>失效日期</th>
+                </tr>
+                </thead>
+                <tbody id="packageTable" class="package-table">
+                <tr>
+                    <td colspan="6">暂无数据</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="clearfix ReleaseList mt20 api-package">
+
+        </div>
+
+        <div class="D_table">
+            <table>
+                <tr>
+                    <th>API名称</th>
+                    <th>API标识</th>
+                    <th>API地址</th>
+                </tr>
+                <tbody id="apiTable">
+                <tr>
+                    <td colspan="3">暂无数据</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script id="chooseTagArea" type="template">
+    <% for(var i=0,len=tags.length; i < len; i++) { %>
+    <span class="fl"><%=tags[i]%></span>
+    <% } %>
+    <%if(tags.length == 0){%>
+    <span class="un-select">未选择任何标签</span>
+    <%}%>
+</script>
+<script id="categoryList" type="template">
+    <% _.each(categoryList, function (citem) { %>
+    <%if(citem.categoryId == defCid){%>
+    <p class="mes-split fl" title="<%=citem.categoryName%>"> <%=citem.categoryName%></p>
+    <%} return;%>
+    <% }); %>
+</script>
+<script id="serverTypeList" type="template">
+    <% _.each(serverTypeList, function (titem) { %>
+    <%if(titem.isSelect){%>
+    <p class="fl mes-split"><%=titem.dictName%></p>
+    <%}%>
+    <% }); %>
+</script>
+<script id="packageTableTemps" type="template">
+    <% _.each(chargeSetJson, function (chargeItem) { %>
+    <tr>
+        <td><%=chargeItem.name%></td>
+        <td><%=chargeItem.price%>元/<%=chargeItem.chargeCount%><%if(chargeItem.chargeType == '04'){%>月<%}else{%>次<%}%></td>
+        <td><%=chargeItem.countLimit == 1 ? '限制一次' : '不限制'%></td>
+        <td><%=chargeItem.monthLimit ? chargeItem.monthLimit : 0%><%if(chargeItem.chargeType == '04'){%>次<%}else{%>个月<%}%></td>
+        <td><%= chargeItem.effectDate ? new Date(chargeItem.effectDate).format('yyyy-MM-dd') : '-'%></td>
+        <td><%= chargeItem.expiryDate ? new Date(chargeItem.expiryDate).format('yyyy-MM-dd') : '-'%></td>
+    </tr>
+    <% }); %>
+    <%if(chargeSetJson.length == 0){%>
+    <tr>
+        <td colspan="6">暂无数据</td>
+    </tr>
+    <%}%>
+</script>
+<script id="apiTableTemps" type="template">
+    <% _.each(apiList, function (aitem) { %>
+    <%if(aitem.flag != 'D'){%>
+    <tr>
+        <td><%=aitem.cname%></td>
+        <td><%=aitem.name%></td>
+        <td><%=aitem.uri%></td>
+    </tr>
+    <% }%>
+    <% }); %>
+    <%if(apiList.length == 0){%>
+    <tr>
+        <td colspan="4">暂无数据</td>
+    </tr>
+    <%}%>
+</script>

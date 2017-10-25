@@ -1,0 +1,17 @@
+<%  var count = 0;_.each(serverUrlList, function (sulist) {%>
+<%if(sulist.flag != 'D'){count++;%>
+<tr>
+    <td><%=sulist.url%></td>
+    <td><%=sulist.description%></td>
+    <td>
+        <a href="javascript:;" class="editServerUrl">修改</a>
+        <a href="javascript:;" class="deleteServerUrl">删除</a>
+    </td>
+</tr>
+<%}%>
+<% }); %>
+<%if(count == 0){%>
+<tr>
+    <td colspan="3">暂无数据</td>
+</tr>
+<%}%>

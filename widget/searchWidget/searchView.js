@@ -145,7 +145,7 @@ var view = Backbone.View.extend({
         model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory || model.saasCategory;
 
         for(var key in model) {
-            if(model[key].toJSON) {
+            if(model[key]&&model[key].toJSON) {
                 params[key] = model[key].toJSON();
             }else {
                 params[key] = model[key];

@@ -1,6 +1,6 @@
 <div id="userTabs" class="topTab clearfix InfoTopTit">
     <% if(hasAccount){ %>
-    <span <%= (name == 'recharge' ? 'class=active' : '' ) %> ><a href="#account">账户充值</a></span>
+    <span <%= (name == 'recharge' ? 'class=active' : '' ) %> ><a href="#account">账户总览</a></span>
     <% } %>
     <span <%= (name == 'setPayPassword' || name == 'forgetPayPassword' ? 'class=active' : '' ) %> ><a href="#setPayPassword">支付密码设置</a></span>
     <% if(hasAccount){ %>

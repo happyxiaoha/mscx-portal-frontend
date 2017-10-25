@@ -24,7 +24,8 @@ var configRoot = {
     'pay': './js/pay.js',
     'search': './js/search.js',
     'contactUs': './js/contactUs.js',
-    'message': './js/message.js'
+    'message': './js/message.js',
+    'newThreeServices': './js/newThreeServices.js'//新增的页面 需要在打包的配置文件新增入口
 };
 
 gulp.task('lint', function  () {

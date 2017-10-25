@@ -7,6 +7,7 @@ window.three = false;
 var Routes =  Backbone.Router.extend({
     routes: {
         '':'openDataReleaseView',
+        'detail/:id':'openDataDetailView',
         'view(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'dataThemeView',
         'data(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'dataAPI',
         'catalog(/org-:orgId)(/category-:categoryId)(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'openDataReleaseView',
@@ -47,6 +48,16 @@ var Routes =  Backbone.Router.extend({
                 }
             });
         }
+    },
+    openDataDetailView: function (id) {
+        var openDataDetailView = require('./opendataDetail/openDataDetailView.js');
+
+        var detailView = mscxPage.views['dataDetailView'];
+        detailView && detailView.undelegateEvents() && detailView.stopListening();
+
+        mscxPage.views['dataDetailView'] = new openDataDetailView({
+            id: id
+        });
     },
     openDataReleaseView:function (orgId, categoryId, keyword, scope, chargeType, orderBy) {
         var openDataReleaseView = require('./opendataRelease/openDataReleaseView.js');

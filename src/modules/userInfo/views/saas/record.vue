@@ -121,6 +121,11 @@
           this.demoVisible = true
           this.demoName = item.appName
           this.demoUrl = res.result
+        }).catch((res) => {
+          this.$message({
+            message: res.message,
+            type: 'warning'
+          })
         })
       }
     }

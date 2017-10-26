@@ -49,7 +49,7 @@
     </el-form-item>
     <el-form-item prop="agreement">
       <el-checkbox v-model="enterpriseForm.agreement">阅读并接受</el-checkbox>
-      <a href="realNameProtocol.html" target="_blank">《智慧大厂用户实名认证协议》</a>
+      <a href="realNameProtocol.html" target="_blank">《神州数码智慧校园用户实名认证协议》</a>
       </el-form-item>
     <el-form-item>
       <el-button type="primary" :icon="submitBtnCtrl.icon" :loading="submitBtnCtrl.loading" :disabled="submitBtnCtrl.disabled" class="confirm-btn" @click="submitForm('enterpriseForm')">{{submitBtnCtrl.text}}</el-button>

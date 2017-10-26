@@ -240,7 +240,7 @@
 
         let orderInfo = _.extend(this.orderInfo, {
           channel: PayResource.channels[type],
-          title: '智慧大厂',
+          title: '神州数码智慧校园',
           payPoint: this.inputPoint,
           payBalance: payBalance
         });

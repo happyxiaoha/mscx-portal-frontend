@@ -21,7 +21,7 @@
       return {
         url: location.href,
         title: '',
-        desc: '欢迎使用智慧大厂平台！',
+        desc: '欢迎使用神州数码智慧校园平台！',
         pic: location.protocol + '//' + location.host + '/logo.png',
         qrcodeVisiable: false
       }

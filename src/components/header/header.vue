@@ -3,9 +3,9 @@
     <div class="header-top">
       <div class="grid-l">
         <div class="area-picker">
-          <div @mouseleave="hideCityStation">
-            <span>hi，欢迎进入新型智慧城市OS！</span>
-            <span class="down" @click="showCityStation">
+          <div>
+            <span>hi，欢迎进入神州智慧校园！</span>
+            <!-- <span class="down" @click="showCityStation">
               【{{city && city.name || '全国' }}】
             </span>
             <div id="city-station" v-show="cityStationVisiable">
@@ -14,7 +14,7 @@
                   <a @click="switchCity(item)" href="javascript:;">{{ item.name }}</a>
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="login-area">
@@ -45,7 +45,7 @@
       <el-row class="grid-l">
         <el-col :span="5">
           <a href="/index.html">
-            <img :src="logoSrc">
+            <img src="./images/logo.png">
           </a>
         </el-col>
         <div class="channel-wrap">
@@ -101,26 +101,26 @@
       }
     },
     computed: {
-      city () {
-        return this.$store.getters.city
-      },
-      logoSrc () {
-        return require('./images/' + this.city.logo)
-      }
+      // city () {
+      //   return this.$store.getters.city
+      // },
+      // logoSrc () {
+      //   return require('./images/' + this.city.logo)
+      // }
     },
     created () {
       // 城市判断
-      let city = _.find(cityStation.cities, function(item){
-        return item.url.indexOf(location.host) > -1;
-      }) || cityStation.cities[0];
-      // 如果不是全国站点，城市切换只能回到全国
-      if (city.code !== '000000') {
-        this.cityStation = this.cityStation.slice(0, 1)
-      }
-      this.$store.commit('setCity', city)
+      // let city = _.find(cityStation.cities, function(item){
+      //   return item.url.indexOf(location.host) > -1;
+      // }) || cityStation.cities[0];
+      // // 如果不是全国站点，城市切换只能回到全国
+      // if (city.code !== '000000') {
+      //   this.cityStation = this.cityStation.slice(0, 1)
+      // }
+      // this.$store.commit('setCity', city)
 
       // 切换下areaCode
-      API.Common.switchCity({areaCode: this.city.code})
+      // API.Common.switchCity({areaCode: this.city.code})
       // 获取用户信息
       API.Common.getLoginInfo().then((res) => {
         if(res.result) {

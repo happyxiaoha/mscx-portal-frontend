@@ -3,7 +3,7 @@
     <c-header type="register"></c-header>
     <div class="register-content grid-l">
       <div class="register-form-wrapper">
-        <el-form :model="form" ref="form" label-width="100px" :rules="rules" class="register-form" v-loading="loading">
+        <el-form :model="form" ref="form" label-width="120px" :rules="rules" class="register-form" v-loading="loading">
           <el-alert
             v-show="showSubmitMessage"
             :title="messageTitle"
@@ -41,7 +41,7 @@
           </el-form-item>
           <el-form-item prop="agreement">
             <el-checkbox label="我已阅读并接受" v-model="form.agreement" name="agreement"></el-checkbox>
-            <a href="registerProtocol.html">《智慧大厂用户注册协议》</a>
+            <a href="registerProtocol.html">《用户注册协议》</a>
           </el-form-item>
           <el-form-item label-width="0">
             <el-button type="primary" class="register-btn" :disabled="submitBtnDisabled" @click="submitForm('form')">立即注册</el-button>

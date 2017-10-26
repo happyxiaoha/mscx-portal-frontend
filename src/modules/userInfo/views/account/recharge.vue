@@ -145,7 +145,7 @@
           orderNum: this.orderNum,
           amount: this.form.money,
           channel: PayResource.channels[this.payType],
-          title: '智慧大厂'
+          title: '神州数码智慧校园'
         });
         /* 
          * 如果是支付宝，页面跳转

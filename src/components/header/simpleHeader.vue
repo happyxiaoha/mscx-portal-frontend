@@ -9,7 +9,7 @@
         <span v-if="isRegister">欢迎注册</span>
       </div>
       <div class="title">
-        <span v-if="isLogin" class="login-tip"><a href="/index.html">智慧大厂首页</a></span>
+        <span v-if="isLogin" class="login-tip"><a href="/index.html">神州数码智慧校园首页</a></span>
         <span v-if="isRegister" class="register-tip">已有账号？<a href="/login.html">请登录</a></span>
       </div>
     </div>
@@ -38,7 +38,7 @@
         return this.$store.getters.city
       },
       logoSrc () {
-        return require('./images/' + this.city.logo)
+        return require('./images/header-logo.png')
       }
     },
     created () {

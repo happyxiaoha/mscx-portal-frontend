@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商家注册</title>
+    <link rel="stylesheet" href="./kuaidian.css"/>
+    <script src="../../lib/jquery.js"></script>
+    <script src="../../lib/jquery.validate.js"></script>
+    <script src="../../lib/additional-methods.js"></script>
+</head>
+<body>
+<div class="container w890">
+    <div class="header_bg">
+        <img src="../../images/kuaidian_register/header_bg.jpg" alt=""/>
+    </div>
+    <div class="middle_bg shop_register">
+        <div class="shop-register-content">
+            <div class="shop-register-form">
+                <form id="shopRegistForm" onsubmit="return false">
+                    <ul>
+                        <li>
+                            <label for="shopType">店铺类型 :</label>
+                            <select name="shopType" id="shopType">
+                                <option selected>西餐厅</option>
+                                <option>中餐厅</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="shopName">店铺姓名 :</label>
+                            <input type="text" name="shopName" id="shopName"/>
+                        </li>
+                        <li>
+                            <label for="shopAddress">店铺地址 :</label>
+                            <select name="shopAddress" id="shopAddress"></select>
+                                <input type="text" name="shopAddress" id="shopAddressInput"/>
+                        </li>
+                        <li>
+                            <label for="shopHost">店主姓名 :</label>
+                            <input type="text" name="shopHost" id="shopHost"/>
+                        </li>
+                        <li>
+                            <label for="IDCard">身份证号 :</label>
+                            <input type="text" name="IDCard" id="IDCard"/>
+                        </li>
+                        <li>
+                            <label for="phoneNumber">手机号码 :</label>
+                            <input type="text" name="phoneNumber" id="phoneNumber"/>
+                        </li>
+                        <li>
+                            <label for="shopRange">经营范围 :</label>
+                            <input type="text" name="shopRange" id="shopRange"/>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="readRule" id="readRule"/>
+                            我已认真阅读并完全同意<a href="javascript:;" target="_blank">《商户服务协议》</a>与<a href="javascript:;" target="_blank">《支付协议》</a>中的所有条款
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_bg shop_register">
+        <ul class="upload_content clearfix">
+            <li class="img_wrap left_li top_li">
+                <label for="uploadIdCardOneFormInput" id="idOneLabel">
+                    <img src="../../images/kuaidian_register/idcard_01.png" alt=""/>
+                </label>
+                <p class="text">点击“+”选择</p>
+                <form id="uploadIdCardOne">
+                    <input style="display: none;" id="uploadIdCardOneFormInput" type="file" name="data"
+                           onchange="upload(this)">
+                </form>
+            </li>
+            <li class="img_wrap right_li top_li">
+                <label for="uploadLicenceFormInput" id="licenceLabel">
+                    <img src="../../images/kuaidian_register/bus_licence.png" alt=""/>
+                </label>
+                <p class="text">点击“+”选择</p>
+                <form id="uploadLicence">
+                    <input style="display: none;" id="uploadLicenceFormInput" type="file" name="data"
+                           onchange="upload(this)">
+                </form>
+            </li>
+            <li class="img_wrap left_li">
+                <label for="uploadIdCardTwoFormInput" id="idTwoLabel">
+                    <img src="../../images/kuaidian_register/idcard_02.png" alt=""/>
+                </label>
+                <p class="text">点击“+”选择</p>
+                <form id="uploadIdCardTwo">
+                    <input style="display: none;" id="uploadIdCardTwoFormInput" type="file" name="data"
+                           onchange="upload(this)">
+                </form>
+            </li>
+            <li class="img_wrap right_li">
+                <label for="uploadShopFormInput" id="shopLabel">
+                    <img src="../../images/kuaidian_register/shop.png" alt=""/>
+                </label>
+                <p class="text">点击“+”选择</p>
+                <form id="uploadShop">
+                    <input style="display: none;" id="uploadShopFormInput" type="file" name="data"
+                           onchange="upload(this)">
+                </form>
+            </li>
+        </ul>
+        <div class="btn_area">
+            <button id="registerOk" type="submit" form="shopRegistForm"></button>
+            <a href="javascript:;" id="goBack">
+                <img src="../../images/kuaidian_register/goback.png" alt=""/>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    var filesArr = [];
+    var shopHost = $('#shopHost').val();
+    var phoneNumber= $('#phoneNumber').val();
+    var IDCard = $('#IDCard').val();
+    $('#shopRegistForm').validate(registerValidateConfig());
+    function registerValidateConfig() {
+        return {
+            rules: {
+                shopType:{
+                    required: true
+                },
+                shopName:{
+                    required: true
+                },
+                shopAddress:{
+                    required:true
+                },
+                shopHost:{
+                    required: true,
+                    letterStart: true,
+                    account: true,
+                    minlength: 6,
+                    maxlength: 20
+                },
+                phoneNumber: {
+                    required: true,
+                    telephone: true
+                },
+                IDCard: {
+                    required: true,
+                },
+                shopRange:{
+                    required: true,
+                },
+                readRule: {
+                    required: true,
+                }
+            },
+            messages: {
+                shopType:{
+                    required: "请选择一个类型",
+                },
+                shopName:{
+                    required:'请输入您的爱店的名字'
+                },
+                shopAddress:{
+                    required:'请填写您的地址'
+                },
+                shopHost:{
+                    required: "请输入用户名",
+                    minlength: "用户名最少6个字符",
+                    maxlength: "用户名最多20个字符",
+                    letterStart: '用户名必须以字母开头',
+                    account: '用户名只能包含数字字母下划线',
+                    remote: '用户名已注册'
+                },
+                phoneNumber: {
+                    required: "请输入手机号码",
+                    telephone: "请输入正确的手机号码"
+                },
+                IDCard: {
+                    required: "请输入身份证号",
+                    telephone: "请输入正确的身份证号码"
+                },
+                shopRange:{
+                    required: "请填写您的经营范围",
+                },
+                readRule: {
+                    required: '请阅读并勾选协议！'
+                }
+            },
+            ignore: '.ignore'
+        }
+    }
+    function upload(obj, event) {
+        var oldSrc;
+        event = event || window.event;
+        //预览test
+        var ele = $(obj).parent().parent().find('label img');
+        var files = event.target.files;
+        for (var i = 0, f; f = files[i]; i++) {
+            filesArr.push(f)
+            // 过滤掉非图片类型文件
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+            var reader = new FileReader();
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    //console.log(e.target.result)
+                    oldSrc = ele.attr('src');
+                    ele.attr('src', e.target.result);
+                    var oDiv = document.createElement('div');
+                    oDiv.className = 'img-thumb img-item';
+                    // 向图片容器里添加元素
+                    oDiv.innerHTML = '<a href="javscript:;" class="img_remove"><img src="../../images/kuaidian_register/del_icon.png" alt=""/></a>';
+                    ele.parents('li').eq(0).append(oDiv);
+                };
+            })(f);
+            reader.readAsDataURL(f);
+        }
+        $(obj).parents('li').eq(0).on('click', '.img_remove', function (event) {
+            console.log('del');
+            event = event || window.event;
+            $(event.target).parents('li').eq(0).find('img').attr('src', oldSrc);
+            $(event.target).parents('div').eq(0).remove();
+        });
+        /*var formId = obj.parentElement.id;
+         var form = document.getElementById(formId);
+         var data = new FormData(form[0]);*/
+        $('#registerOk').on('click', function () {
+            //console.log(filesArr);
+            var formData = new FormData();
+            for (var i = 0, f; f = filesArr[i]; i++) {
+                formData.append('files', f);
+            }
+            //console.log(formData);
+            //点击注册提交图片
+            $.ajax({
+                url: '/',
+                type: 'POST',
+                dataType: 'json',
+                /*xhrFields: {
+                 withCredentials: true
+                 },*/
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                },
+            });
+        })
+    }
+</script>
+</html>

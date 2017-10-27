@@ -3,7 +3,7 @@
     <c-header type="register"></c-header>
     <div class="register-content grid-l">
       <div class="register-form-wrapper">
-        <el-form :model="form" ref="form" label-width="100px" :rules="rules" class="register-form" v-loading="loading">
+        <el-form :model="form" ref="form" label-width="120px" :rules="rules" class="register-form" v-loading="loading">
           <el-alert
             v-show="showSubmitMessage"
             :title="messageTitle"

@@ -5,7 +5,9 @@ Vue.use(Vuex)
 
 var state = {
   user: {},
-  city: {},
+  city: {
+    abbr: 'quanguo'
+  },
   // 新增修改API时使用
   chargeRuleList: [],
   apiItemList: [],

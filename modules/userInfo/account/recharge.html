@@ -1,8 +1,12 @@
 <div class="clearfix account balance">
     <h2 class="ft18">账户余额：<span class="corBlue ft18 balance-amount" id="balance"></span>元</h2>
 </div>
+<div class="D_table M-table account ensure-list">
+</div>
 <div id="content"></div>
 <div id="applyDrawingLayer"></div>
+<div id="selectServiceLayer"></div>
+<div id="transferLayer"></div>
 <script type="template" id="step">
     <div class="clearfix mt20 account balance">
         <ul class="process">
@@ -23,12 +27,51 @@
         </ul>
     </div>
 </script>
+<script type="template" id="ensureList">
+    <h2 class="title">服务需求项目保证金</h2>
+    <h2 class="title">余额总数：<%= data.total || 0 %>元</h2>
+    <table>
+        <thead>
+        <tr>
+            <th width="20%">项目</th>
+            <th width="15%">发布日期</th>
+            <th width="15%">截止日期</th>
+            <th width="20%">保证金</th>
+            <th width="10%">余额</th>
+            <th width="10%">入账时间</th>
+            <th width="10%">保证金比例</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% data.list.forEach(function(item) { %>
+        <tr>
+            <td><%= item.reqName %></td>
+            <td><%= item.publishTime %></td>
+            <td><%= item.endTime %></td>
+            <td><%= item.rechargeAmount %></td>
+            <td><%= item.guaranteeBalance %></td>
+            <td><%= item.receiveDate %></td>
+            <td><%= (+item.rate * 100).toFixed(2) %>%</td>
+        </tr>
+        <% }) %>
+        </tbody>
+    </table>
+    <div id="guaranteePage" class="mt10 tc"></div>
+</script>
 <script type="template" id="amount">
     <div class="account operate-type">
         <h2>操作类型</h2>
         <label>
             <input type="radio" name="operate" value="account" <%= data && data.serviceId || data.transferId ? 'disabled' : 'checked' %>>
             <span>账户余额充值</span>
+        </label>
+        <label>
+            <input type="radio" name="operate" value="services" <%= data && data.serviceId ? 'checked' : (data.transferId ? 'disabled' : '') %>>
+            <span>项目保证金充值</span>
+        </label>
+        <label>
+            <input type="radio" name="operate" value="transfer" <%= data && data.transferId ? 'checked' : 'disabled' %>>
+            <span>项目保证金转账</span>
         </label>
         <label>
             <input type="radio" name="operate" value="draw" <%= data && data.serviceId || data.transferId ? 'disabled' : '' %>>
@@ -70,6 +113,42 @@
             <li>请遵守支付宝、微信或相关银行的规定进行操作。您在支付宝、微信或相关银行页面上进行的任何操作及其产生的任何法律后果，
 将按照您与支付宝、微信或相关银行之间签订的合同处理。本网站不承担任何责任。</li>
         </ul>
+    </div>
+</script>
+<script type="template" id="transferTemplate">
+    <div style="padding: 20px 30px">
+        <ul>
+            <li>
+                项目信息：
+            </li>
+            <li>
+                <span><%= data.result.name %></span>
+                <span class="fr corMain">余额&nbsp;&nbsp;<%= data.result.guaranteeBalance %>元</span>
+            </li>
+            <% data.result.list.forEach(function(item) { %>
+            <li>
+                <span class="cora"><%= item.reqName %></span>
+                <span class="fr cora">余额&nbsp;&nbsp;<%= item.guaranteeBalance %>元</span>
+            </li>
+            <% }) %>
+            <li>
+                <hr/>
+                <span>确认需求用户为：<%= data.result.userName %></span>
+                <span style="margin-left: 20px;">账户：<%= data.result.account %></span>
+            </li>
+            <li>
+                <span>本次转账金额：<%= data.amount %>元</span>
+            </li>
+            <li>
+                <p>请输入支付密码</p>
+                <form id="passForm" onsubmit="return false;">
+                  <div id="passContent" class="mt10 pr">
+                    
+                  </div>
+                </form>
+            </li>
+        </ul>
+        <p class="corMain">支付后金额将进入对方的平台账户中心</p>
     </div>
 </script>
 <script type="template" id="serviceList">

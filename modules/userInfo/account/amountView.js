@@ -29,31 +29,31 @@ var amountView = Backbone.View.extend({
     },
     initialize: function() {
         this.templete = _.template($('#amount').html(), {variable: 'data'});
-         this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
-        //this.serviceListTemplate = _.template($('#serviceList').html(), {variable: 'data'});
-        //this.transferTemplate = _.template($('#transferTemplate').html(), {variable: 'data'});
+        this.stepTemplete = _.template($('#step').html(), {variable: 'data'});
+        this.serviceListTemplate = _.template($('#serviceList').html(), {variable: 'data'});
+        this.transferTemplate = _.template($('#transferTemplate').html(), {variable: 'data'});
         this.applyDrawingListTemplate = _.template($('#drawingList').html(), {variable: 'data'});
 
         // 账户充值接口
         this.rechargeModel = new rechargeModel();
-        // 接口保证金充值接口
-        //this.guaranteeRechargeModel = new guaranteeRechargeModel();
+        // 保证金充值接口
+        this.guaranteeRechargeModel = new guaranteeRechargeModel();
         // 提款申请接口
         this.drawAmountModel = new drawAmountModel();
         // 某个服务需求详情接口
-        //this.serviceDetailModel = new serviceDetailModel();
+        this.serviceDetailModel = new serviceDetailModel();
         // 保证金转帐接口
-        //this.transferGuaranteeModel = new transferGuaranteeModel();
+        this.transferGuaranteeModel = new transferGuaranteeModel();
 
         this.rechargeServiceModel = new rechargeServiceModel();
         this.applyDrawingModel = new applyDrawingModel();
         this.selectedServiceModel = new Backbone.Model();
 
-        //this.listenTo(this.selectedServiceModel, 'change', this.renderSelectedService);
+        this.listenTo(this.selectedServiceModel, 'change', this.renderSelectedService);
         this.listenTo(this.rechargeModel, 'sync', this.handleRecharge);
-        //this.listenTo(this.guaranteeRechargeModel, 'sync', this.handleGuaranteeRecharge);
-        //this.listenTo(this.drawAmountModel, 'sync', this.handleDrawAmount);
-        //this.listenTo(this.serviceDetailModel, 'sync', this.renderServiceDetail);
+        this.listenTo(this.guaranteeRechargeModel, 'sync', this.handleGuaranteeRecharge);
+        this.listenTo(this.drawAmountModel, 'sync', this.handleDrawAmount);
+        this.listenTo(this.serviceDetailModel, 'sync', this.renderServiceDetail);
         this.listenTo(this.rechargeServiceModel, 'sync', this.renderRechageList);
         this.listenTo(this.applyDrawingModel, 'sync', this.renderApplyDrawingList);
 
@@ -73,7 +73,7 @@ var amountView = Backbone.View.extend({
         this.$form.validate(this.validateConfig());
 
         // 需求页面跳转来的保证金充值
-        /*if(this.model.serviceId) {
+        if(this.model.serviceId) {
             this.operateType = 'services';
             this.serviceDetailModel.fetch({
                 data: {
@@ -82,7 +82,7 @@ var amountView = Backbone.View.extend({
             })
         }else if(this.model.transferId) {
             this.operateType = 'transfer';
-        }*/
+        }
     },
     renderRechageList: function() {
         var model = this.rechargeServiceModel.toJSON();
@@ -149,10 +149,10 @@ var amountView = Backbone.View.extend({
             }
         });
     },
-    /*renderSelectedService: function() {
+    renderSelectedService: function() {
         this.$('#rechargeTip').html(this.selectedServiceModel.get('name') ? '充值项目：' + this.selectedServiceModel.get('name') : '');
-    },*/
-    /*renderServiceDetail: function() {
+    },
+    renderServiceDetail: function() {
         var model = this.serviceDetailModel.toJSON();
         var moneyIpt;
 
@@ -176,8 +176,8 @@ var amountView = Backbone.View.extend({
             
             this.$('#amountInput').val(moneyIpt).attr('readonly', 'readonly');
         }        
-    },*/
-    /*renderTransferLayer: function() {
+    },
+    renderTransferLayer: function() {
         var model = this.serviceDetailModel.toJSON();
 
         $('#transferLayer').html(this.transferTemplate(model));
@@ -210,7 +210,7 @@ var amountView = Backbone.View.extend({
                 layer.close(this.transferDialog);
             }.bind(this)
         });
-    },*/
+    },
     changeOperateType: function(e) {
         var $target = this.$(e.target);
 
@@ -263,7 +263,7 @@ var amountView = Backbone.View.extend({
             }
         }
     },
-   /* submitTransfer: function() {
+    submitTransfer: function() {
         if(this.$passwordTail.val().length < 1 || this.submitting) {
             return;
         }
@@ -285,7 +285,7 @@ var amountView = Backbone.View.extend({
                 me.submitting = false;
             }.bind(this)
         });
-    },*/
+    },
     submitForm: function () {
         var params = this.$form.serializeObject();
         this.amount = params.money;

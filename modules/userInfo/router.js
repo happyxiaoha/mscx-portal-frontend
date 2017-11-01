@@ -33,6 +33,8 @@ var Routes =  Backbone.Router.extend({
         'pointQA': 'pointQAView',
         // 账户管理
         'account': 'accountView',
+        'account/guarantee/:id': 'guaranteeRechargeView',
+        'account/transfer/:id': 'guaranteeTransferView',
         'setPayPassword': 'setPayPasswordView',
         'rechargeRecord': 'rechargeRecordView',
         'consumeRecord': 'consumeRecordView',
@@ -151,6 +153,26 @@ var Routes =  Backbone.Router.extend({
             id: 'recharge',
             model: {
                 order: order
+            }
+        });
+    },
+    // 需求界面跳转来的保证金充值
+    guaranteeRechargeView: function(id) {
+        var view = require('userInfo/account/accountView.js');
+        mscxPage.views['accountView'] = new view({
+            id: 'recharge',
+            model: {
+                serviceId: id
+            }
+        });
+    },
+    // 保证金转账
+    guaranteeTransferView: function(id) {
+        var view = require('userInfo/account/accountView.js');
+        mscxPage.views['accountView'] = new view({
+            id: 'recharge',
+            model: {
+                transferId: id
             }
         });
     },

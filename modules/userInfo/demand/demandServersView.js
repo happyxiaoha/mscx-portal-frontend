@@ -36,6 +36,14 @@ var refusePlanModel = Backbone.Model.extend({   //拒绝接单
     url: mscxPage.request.demand + 'refuseServiceOrder.do'
 });
 
+var guaranteeDetailModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'getRequirementGuaranteeByReqId.do'
+});
+
+var getBillInfoModel = Backbone.Model.extend({
+    url: mscxPage.request.demand + 'getBillInfo.do'
+});
+
 var publishServiceModel = Backbone.Model.extend({
     idAttribute: 'serviceId',
     url: mscxPage.request.demand + 'publishService.do'
@@ -68,10 +76,15 @@ var serversDemandListView = Backbone.View.extend({
         this.serOrderPlanModel = new serOrderPlanModel();
         this.addPlanModel = new addPlanModel();
         this.refusePlanModel = new refusePlanModel();
+        this.guaranteeDetailModel = new guaranteeDetailModel();
+        this.getBillInfoModel = new getBillInfoModel();
 
         this.listenTo(this.serOrderPlanModel, 'sync', this.handleSerOrderPlan);
         this.listenTo(this.serOrderModel, 'sync', this.handleSerOrder);
         this.listenTo(this.publishServiceModel, 'sync', this.handlePublish);
+        this.listenTo(this.guaranteeDetailModel, 'sync', this.renderGuaranteeDetail);
+        this.listenTo(this.getBillInfoModel, 'sync', this.handleBillInfo);
+
         this.model.on('change',function () {
             that.render();
         });
@@ -91,6 +104,7 @@ var serversDemandListView = Backbone.View.extend({
         this.pagObj.pageNum = page.currentPage;
         this.pagObj.totalPage = page.totalPage;
         var temps = _.template($('#serversDemandList').html());
+        this.payTipTemplate = _.template($('#payTipTemplate').html(), {variable: 'data'});
         this.$el.find('tbody').html(temps({serverDemandList:serverDemandList}));
         laypage({
             cont: 'serverPage',
@@ -107,6 +121,27 @@ var serversDemandListView = Backbone.View.extend({
     },
     initRender: function () {
         this.$el.find('#demandInfo').html(template);
+    },
+    renderGuaranteeDetail: function() {
+        var model = this.guaranteeDetailModel.toJSON();
+
+        if(model.status == 'OK') {
+            model = model.result;
+            model.reqId = this.serOrderattrid;
+
+            this.$('#payTip').html(this.payTipTemplate(model)).show();
+        }
+    },
+    // 判断是否有接单
+    handleBillInfo: function() {
+        var model = this.getBillInfoModel.toJSON();
+        if(model.result) {
+            this.guaranteeDetailModel.fetch({
+                data: {
+                    reqId: this.serOrderattrid
+                }
+            })
+        }
     },
     deleteServers: function (e) {
         var that = this;
@@ -178,7 +213,14 @@ var serversDemandListView = Backbone.View.extend({
                 pageSize: 5
             }
         });
+        // 获取接单状态
+        this.getBillInfoModel.fetch({
+            data: {
+                reqId: this.serOrderattrid
+            }
+        })
         this.$el.find('#serNameList tbody').html('');
+        this.$('#payTip').empty();
         var dialog = layer.open({
             type: 1,
             btn: ['关闭'],

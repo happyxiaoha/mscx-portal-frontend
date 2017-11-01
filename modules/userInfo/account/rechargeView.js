@@ -11,6 +11,11 @@ var rechargeModel = Backbone.Model.extend({
 var orderModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'order/getOrderDetail.do'
 })
+var guaranteeListModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'getRequirementGuaranteeList.do'
+    // url: mscxPage.request.demand + 'queryData.do'
+})
+
 
 var PayResource = {
     host: mscxPage.host + '/ro/mscx-order-api/order/payOrder.do',
@@ -34,6 +39,8 @@ var accountView = Backbone.View.extend({
         _.extend(this, this.model);
 
         this.rechargeModel = new rechargeModel();
+        // 保证金列表
+        this.guaranteeListModel = new guaranteeListModel();
 
         this.$el.html(this.commonTemplate({
             name: this.id,
@@ -43,10 +50,25 @@ var accountView = Backbone.View.extend({
         this.$('#userInfoArea').html(this.template);
         this.$('#balance').html(this.accountInfoModel.toJSON().result.account_balance);
 
+        this.ensureListTemplate = _.template($('#ensureList').html(), {variable: 'data'});
+
+        this.guaranteePage = 1;
+        this.guaranteePageSize = 5;
+
+        this.guaranteeListModel.fetch({
+            data: {
+                page: this.guaranteePage,
+                pageSize: this.guaranteePageSize
+            }
+        });
+
         // step1 输入金额页面
         this.amountView = new amountView({
             el: '#content',
-            model: this.rechargeModel
+            model: {
+                serviceId: this.serviceId,
+                transferId: this.transferId
+            }
         })
         // step2 选择支付方式页面
         this.selectPayWayView = new selectPayWayView({
@@ -62,6 +84,7 @@ var accountView = Backbone.View.extend({
 
         this.listenTo(this.amountView, 'next', this.goSelectPayWay);
         this.listenTo(this.selectPayWayView, 'next', this.goPayResultView);
+        this.listenTo(this.guaranteeListModel, 'sync', this.renderGuaranteeList);
 
         // 如果有订单号，则是支付回调页面
         if(this.order) {
@@ -79,6 +102,37 @@ var accountView = Backbone.View.extend({
     },
     goPayResultView: function() {
         this.payResultView.render();
+    },
+    renderGuaranteeList: function() {
+        var model = this.guaranteeListModel.toJSON();
+        _.extend(model.result, {
+            total: this.total
+        })
+
+        if(model.status == 'OK') {
+            this.$('.ensure-list').html(this.ensureListTemplate(model.result));
+
+            laypage({
+                cont: 'guaranteePage',
+                pages: model.result.page.totalPage,
+                skip: true,
+                curr: this.guaranteePage || 1,
+                jump: function(obj, first){
+                    if(!first){
+                        this.guaranteePage = obj.curr;
+                        this.reloadGuaranteePage();
+                    }
+                }.bind(this)
+            });
+        }
+    },
+    reloadGuaranteePage: function() {
+        this.guaranteeListModel.fetch({
+            data: {
+                page: this.guaranteePage,
+                pageSize: this.guaranteePageSize
+            }
+        });
     }
 });
 

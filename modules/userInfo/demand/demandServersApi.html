@@ -40,12 +40,18 @@
                 <a href="javascript:;" class="servicePublish" data-id="<%=sitem.id%>">发布</a>
                 <a href="./demand.html#service/edit/<%=sitem.id%>" class="editServerApi">修改</a>
                 <a href="javascript:;" class="deleteServers">删除</a>
-            <%}else if(sitem.status == '2'){%>
-                <a href="javascript:;" class="showSerOrderInfo">查看接单列表</a>
+            <%}else if(sitem.status == '2' || sitem.status == '4'){%>
+                <a href="javascript:;" class="showSerOrderInfo" data-status="<%=sitem.status%>">查看接单列表</a>
+                <a href="javascript:;" class="offshopServers">下架</a>
                 <a href="javascript:;" class="closeServers">关闭</a>
-            <%}else if(sitem.status == '5'){%>
-                <a href="javascript:;" class="showSerOrderInfo">查看接单列表</a>
-            <%}%>
+            <%}else if(sitem.status == '7'){%>
+                <a href="javascript:;" class="showSerOrderInfo" data-status="<%=sitem.status%>">查看接单列表</a>
+            <%}else if(sitem.status == '5') {%>
+                <a href="javascript:;" class="showSerOrderInfo" data-status="<%=sitem.status%>">查看接单列表</a>
+                <a href="javascript:;" class="offshopServers">下架</a>
+            <%}else if(sitem.status == '3') {%>
+                <a href="javascript:;" class="queryRefuse">查看拒绝原因</a>
+            <% } %>
         </td>
     </tr>
     <% }); %>
@@ -80,6 +86,7 @@
     <div id="serOrderPage" class="fr">
 
     </div>
+    <div id="payTip"></div>
 </div>
 
 <script id="serOrderNameList" type="template">
@@ -123,4 +130,12 @@
         <textarea readonly><%- palnList.planIntro %></textarea>
     </label>
 </script>
-
+<script id="payTipTemplate" type="template">
+    <% if(data.rate == 0) { %>
+        您尚未提供资金担保，确认方案后请及时提供！<a href="userInfo.html#account/guarantee/<%= data.reqId %>" class="corMain">立即充值</a>
+    <% } else if(data.guaranteeBalance != 0){ %>
+        您已提供<%= data.rate %>%担保金，项目余额<%= data.leftMoney %>元，是否向该用户支付款项？<a href="userInfo.html#account/transfer/<%= data.reqId %>" class="corMain">立即付款</a>
+    <% } else if(data.guaranteeBalance == 0){ %>
+        您已提供<%= data.rate %>%担保金，项目余额为空，是否补充余下项目款项！<a href="userInfo.html#account/guarantee/<%= data.reqId %>" class="corMain">立即充值</a>
+    <% } %>
+</script>

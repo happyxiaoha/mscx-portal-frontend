@@ -43,3 +43,11 @@ a{cursor: pointer;}
     color: #0ab7ef;
     line-height: 25px;
 }
+#serNameList #payTip {
+    padding: 20px;
+    font-size: 14px;
+    display: none;
+}
+#serNameList #payTip a {
+    color: #3f89ec;
+}

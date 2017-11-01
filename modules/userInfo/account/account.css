@@ -1,6 +1,6 @@
 .account.balance {
   padding: 20px 25px;
-  margin: 20px 25px;
+  margin: 20px 0;
   border: 1px solid #ccc;
   background: #fff;
 }
@@ -12,7 +12,7 @@
 }
 .account.desc {
   padding: 20px 55px;
-  margin: 20px 25px;
+  margin: 20px 0;
   border: 1px solid #ccc;
   margin-top: -1px;
 }
@@ -21,9 +21,18 @@
   list-style: initial;
   line-height: 30px;
 }
+.account.ensure-list {
+    margin: 20px 0;
+}
+.account.ensure-list .title {
+    font-size: 16px;
+    padding: 10px 0;
+    display: inline-block;
+    margin-right: 40px;
+}
 .account.operate-area {
   padding: 20px 25px;
-  margin: 20px 25px;
+  margin: 20px 0;
   border: 1px solid #ccc;
   background: #f4f6fd;
 }
@@ -35,17 +44,8 @@
   font-size: 14px;
   color: red;
 }
-.account.ensure-list {
-  margin: 20px 25px;
-}
-.account.ensure-list .title {
-  font-size: 16px;
-  padding: 10px 0;
-  display: inline-block;
-  margin-right: 40px;
-}
 .account.operate-type {
-  margin: 20px 25px;
+  margin: 20px 0;
 }
 .account.operate-type h2 {
   display: inline-block;

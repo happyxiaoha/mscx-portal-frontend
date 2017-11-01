@@ -151,6 +151,7 @@ input[type="checkbox"]:checked + label:before{background: url('../../images/logi
 .register-form ul li label.error{
     position: absolute;
     bottom: -20px;
+    display: block;
     float: left;
     margin-left:100px;
     padding-left: 20px;

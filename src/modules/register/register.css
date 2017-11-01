@@ -150,7 +150,7 @@ input[type="checkbox"]:checked + label:before{background: url('../../images/logi
 .register-form ul li input.error{ border: 1px solid #d82e3a;}
 .register-form ul li label.error{
     position: absolute;
-    bottom: 5px;
+    bottom: -20px;
     float: left;
     margin-left:100px;
     padding-left: 20px;

@@ -334,6 +334,13 @@
   position: absolute;
   bottom: 15px;
 }
+#applyDrawingLayer .draw-list,
+#selectServiceLayer .draw-list,
+#transferLayer .draw-list {
+    height: 200px;
+    overflow-y: auto;
+    padding-right: 10px
+}
 .btn-search,
 .btn-reset {
   height: 28px;

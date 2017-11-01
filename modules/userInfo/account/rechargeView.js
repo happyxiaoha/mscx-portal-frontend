@@ -62,6 +62,8 @@ var accountView = Backbone.View.extend({
             }
         });
 
+        this.total = this.model.accountInfoModel.get('result').guaranteeBalance;
+
         // step1 输入金额页面
         this.amountView = new amountView({
             el: '#content',

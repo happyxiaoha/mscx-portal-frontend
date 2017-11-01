@@ -36,7 +36,7 @@
             <%if(i == 1 && olaitem.sourceDetail.length >= 1){%>
             <td rowspan="<%=olaitem.sourceDetail.length%>"><%=olaitem.orderNum%></td>
             <%}%>
-            <%if (olaitem.order_classify == '2') { %>
+            <%if (olaitem.order_classify == '2' || olaitem.order_classify == '3' || soitem.resourceType == '10') { %>
             <td><%= soitem.resourceName%></td>
             <td>充值</td>
             <%} else if(soitem.resourceType == '02'){%>
@@ -53,7 +53,7 @@
             <td><%= soitem.itemCash%></td>
             <% if(olaitem.order_classify == '2'){ %>
             <td>1</td>
-            <%} else if(soitem.resourceType == '02'){%>
+            <%} else if(soitem.resourceType == '02' || olaitem.order_classify == '3'){%>
             <td>-</td>
             <%}else {%>
             <td>

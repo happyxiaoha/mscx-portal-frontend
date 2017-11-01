@@ -174,12 +174,12 @@
     </div>
 </script>
 <script type="template" id="drawingList">
-    <div style="padding: 20px 30px">
-        <ul>
+    <div style="padding: 20px 5px 20px 30px;">
+        <ul class="draw-list">
             <% data.forEach(function(item, index) { %>
             <li>
                 <label>
-                    <input type="radio" name="services" data-balance="<%= item.balance %>" data-name="<%= item.name %>" data-type="<%= item.applyType %>" <%= index == 0 ? 'checked' : '' %> value="<%= item.reqId %>" <%= item.reqStatus == 5 ? '' : 'disabled' %>><%= item.name %>
+                    <input type="radio" name="services" data-balance="<%= item.balance %>" data-name="<%= item.name %>" data-type="<%= item.applyType %>" value="<%= item.reqId %>" <%= (item.applyType == '02' && item.reqStatus != 5 || item.balance == 0) ? 'disabled' : '' %>><%= item.name %>
                 </label>
                 <span class="fr corMain">余额：<%= item.balance %></span>
                 <% if(item.applyType == '02' && item.reqStatus != 5 ){ %>

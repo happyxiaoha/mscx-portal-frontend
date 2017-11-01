@@ -298,7 +298,13 @@ var serversDemandListView = Backbone.View.extend({
                 res = res.toJSON();
                 if(res.result == 1){
                     layer.msg('确认接单成功');
-                    that.reloadSerOrderPage('1')
+                    that.reloadSerOrderPage('1');
+                    that.reloadPage();
+                    that.guaranteeDetailModel.fetch({
+                        data: {
+                            reqId: that.serOrderattrid
+                        }
+                    })
                 }
                 else {
                     layer.alert('拒绝接单失败');

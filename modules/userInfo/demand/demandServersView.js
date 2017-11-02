@@ -105,7 +105,7 @@ var serversDemandListView = Backbone.View.extend({
         this.pagObj.totalPage = page.totalPage;
         var temps = _.template($('#serversDemandList').html());
         this.payTipTemplate = _.template($('#payTipTemplate').html(), {variable: 'data'});
-        this.$el.find('tbody').html(temps({serverDemandList:serverDemandList}));
+        this.$el.find('#demandListTbody').html(temps({serverDemandList:serverDemandList}));
         laypage({
             cont: 'serverPage',
             skip: true,

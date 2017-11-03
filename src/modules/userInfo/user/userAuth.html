@@ -1,0 +1,202 @@
+<div id="authTab" class="R-titTab My-titTab">
+    <span class="active">个人</span>
+    <span>企业</span>
+</div>
+<div class="inputCons bgWhite">
+
+</div>
+<script id="userPersonAuth" type="template">
+    <div class="inputConsList">
+        <form id="personForm" onsubmit="return false;">
+            <div class="loginTable">
+                <ul>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span>用户名：</span>
+                            <b class="cor4 fl ft14" style="margin-top: 8px;"><%=account%></b>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>姓名：</span>
+                            <input type="text" id="name" name="name" placeholder="请填写与有效身份证上一致的姓名" value="<%=name%>" <%if(name){%>disabled<%}%> >
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>身份证号码：</span>
+                            <input type="text" id="idcard" name="idcard" placeholder="请填写有效身份证号码" value="<%=idcard%>" <%if(name){%>disabled<%}%> >
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE w100">
+                            <span><em>*</em>认证方式：</span>
+                            <select class="identifide" <%if(name){%>disabled<%}%>>
+                                <option value="photo" <%if(certificationType == '01'){%>selected<%}%>>照片认证</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="clearfix identifyType" >
+
+                    </li>
+                    <%if (!name){ %>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>验证码：</span>
+                            <input type="text" id="captcha" maxlength="4" name="captcha" class="captcha" placeholder="请填写验证码" value="">
+                            <img class="captchaImg" alt="验证码" src="/certification/captcha.do">
+                            <label id="captcha-error" class="error" for="captcha"></label>
+                        </div>
+                    </li>
+                    <% } %>
+                    <li class="clearfix">
+                        <%if(!name){%>
+                        <label class="remember fl">
+                            <input class="checkbox fl" id="agreementPer" type="checkbox" name="agreement" value=""/>
+                            我已阅读并接受<a class="golink" href="realNameProtocol.html" target="_blank">《广州数聚用户实名认证协议》</a></label>
+                        <%}%>
+                    </li>
+                    <li class=" clearfix">
+                        <%if(!name){%><input type="submit" class="mt20" value="提交" /><%}%>
+
+                    </li>
+                </ul>
+            </div>
+        </form>
+        <form id="ajaxUpload" class="imgForm" action="" method="post" style="display: none;">
+            <input type="file" name="photo" class="upload-file">
+            <input type="submit" id="btnAjax">
+        </form>
+        <div id="photo" class="clearfix" style="display: none;">
+            <span><em>*</em>个人照片：</span>
+            <label  class="upLoad mr25 front allInfoImg">
+                <img <%if(photoUrl){%>src="<%=photoUrl%>"<%}else{%>class="hide" <%}%>>
+            </label>
+            <label class="phone-error hide">请上传个人照片</label>
+            <br>
+            <label style="float: left;margin: 20px 10px;">注意：照片中人像需要为唯一或者主要人脸，人像至少100×100像素，最大不要超过800x800像素</label>
+        </div>
+        <div id="creditCard" style="display: none;">
+            <div class="clearfix mb20" >
+                <span><em>*</em>手机号码：</span>
+                <input type="text" id="mobile1" name="mobile" placeholder="请输入手机号码" value="<%=mobile%>" <%if(mobile){%>disabled<%}%>>
+            </div>
+            <div class="clearfix">
+                <span><em>*</em>银行卡号：</span>
+                <input type="text" id="bankCardNo" name="bankCardNo" placeholder="请输入银行卡号" value="<%=bankCardNo%>" <%if(bankCardNo){%>disabled<%}%>>
+                <br>
+                <label style="margin: 40px 20px 0;">注意：只支持银联卡认证</label>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="userEnterpriseAuth" type="template">
+    <div class="inputConsList">
+        <%if(status != '02'){%>
+        <form id="ajaxEnterpriseUpload" class="imgForm" action="" method="post" style="top: 343px;left: 175px;width: 136px;height: 99px;" >
+            <input type="file" name="photo" class="upload-file">
+            <input type="submit" id="btnEAjax">
+        </form>
+        <%}%>
+        <form onsubmit="return false;" id="enterpriseForm">
+            <div class="loginTable">
+                <h4 class="ft18">企业信息</h4>
+                <ul class="mt30 mb30 companyCons">
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>公司名称：</span>
+                            <input type="text" name="name" id="companyName" placeholder="请填写有效的公司名称" value="<%=name%>" <%if(status == '02'){%>disabled<%}%>>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>详情地址：</span>
+                            <input type="text" name="address" id="address" placeholder="请填写详情地址" value="<%=address%>" <%if(status == '02'){%>disabled<%}%>>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="mt30 mb30 companyCons">
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>营业执照编号：</span>
+                            <%if(status == '02'){%>
+                            <input type="text" name="licenceNo" id="licenceNo" placeholder="请填写有效的营业执照编号" value="<%=licenceNo || '-'%>" disabled>
+                            <%}else{%>
+                            <input type="text" name="licenceNo" id="licenceNo" placeholder="请填写有效的营业执照编号" value="<%=licenceNo%>">
+                            <%}%>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span>税务登记证编号：</span>
+                            <%if(status == '02'){%>
+                            <input type="text" name="taxRegisterNo" id="taxRegisterNo" placeholder="请填写有效的税务登记证编号" value="<%=taxRegisterNo || '-'%>" disabled>
+                            <%}else{%>
+                            <input type="text" name="taxRegisterNo" id="taxRegisterNo" placeholder="请填写有效的税务登记证编号" value="<%=taxRegisterNo%>">
+                            <%}%>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span>组织机构编号：</span>
+                            <%if(status == '02'){%>
+                            <input type="text" name="organizationCode" id="organizationCode" placeholder="请填写有效的组织机构编号" value="<%=organizationCode || '-'%>" disabled>
+                            <%}else{%>
+                            <input type="text" name="organizationCode" id="organizationCode" placeholder="请填写有效的组织机构编号" value="<%=organizationCode%>">
+                            <%}%>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="clearfix">
+                            <span><em>*</em>营业执照副本：</span>
+                            <label class="upLoad">
+                                <img id="licencePhoto" alt="" src="<%=licencePicUrl%>" <%if(!licencePicUrl){%>class="hide"<%}%>>
+                            </label>
+                            <label class="phone-error hide">请上传有效的营业执照副本</label>
+                        </div>
+                    </li>
+                </ul>
+                <h4 class="ft18">联系人信息</h4>
+                <ul class="mt30 mb30 companyCons">
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>联系人姓名：</span>
+                            <input type="text" name="contractName" id="contractName" placeholder="请填写有效的联系人姓名" value="<%=contractName%>" <%if(status == '02'){%>disabled<%}%>>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>联系人身份证号：</span>
+                            <input type="text" name="contractIdcard" id="contractIdcard" placeholder="请填写有效的身份证号码" value="<%=contractIdcard%>" <%if(status == '02'){%>disabled<%}%>>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>手机号码：</span>
+                            <input type="text" name="contractMobile" id="contractMobile" placeholder="请填写有效的手机号码" value="<%=contractMobile%>" <%if(status == '02'){%>disabled<%}%>>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl clearfix posRE">
+                            <span><em>*</em>公司邮箱：</span>
+                            <input type="text" name="contractEmail" id="contractEmail" placeholder="请填写有效的公司邮箱" value="<%=contractEmail%>" <%if(status == '02'){%>disabled<%}%>>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <%if(status != '02'){%>
+                        <label class="remember fl">
+                            <input class="checkbox fl" id="agreement" type="checkbox" name="agreement" value=""/>
+                            我已阅读并接受<a class="golink" href="realNameProtocol.html" target="_blank">《广州数聚用户实名认证协议》</a></label>
+                        <%}%>
+                    </li>
+
+                    <li class="clearfix">
+                        <%if(status != '02'){%>
+                        <input type="submit" class="mt20" value="提交" />
+                        <%}%>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</script>

@@ -1,0 +1,28 @@
+<% if(data && data.length > 0){ %>
+    <% data && data.forEach(function(item) { %>
+    <li>
+        <p class="posRE mb20">
+            <a href="#data/detail/<%= item.id %>" class="corOrange ft16 mr72"><%= item.name %></a>
+        </p>
+        <p class="cor4 mb20 line22">需求描述：<span><%= item.dataDescription %></span></p>
+        <p class="cor4 mb20 line22">需求数据项：<span><%= item.dataItem %></span></p>
+        <p class="posRE ">
+            <span>需求用户：</span>
+            <span class="corBlue mr35"><%= item.reqUser %></span>
+            <span>发布时间：</span>
+            <span class="corBlue mr35"><%= new Date(item.publishTime).format('yyyy-MM-dd') %></span>
+            <span>处理状态：</span>
+            <span class="corOrange"><%= item.status %></span>
+        </p>
+        <p class="posAB citysSel bgOrange">
+            <% if(item.status == '已通过') { %>
+                新需求
+            <% }else { %>
+                <%= item.status %>
+            <% } %>
+        </p>
+    </li>
+    <% }) %>
+<% }else { %>
+    <li>没有符合查询条件的数据</li>
+<% } %>

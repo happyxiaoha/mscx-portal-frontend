@@ -1,0 +1,207 @@
+/*数据模型*/
+.rightMenuWrap{width: 916px;margin-left: 2px;padding: 24px 16px;}
+.ChoiceList{width: 100%;height: auto;border: 1px solid #ccc;margin: 16px 0 24px;}
+.mainDatas{border: 1px solid #ccc;padding: 26px 26px 0;margin-top: 16px;}
+.mainDatas .DataList li{width: 186px;height: 212px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 26px 26px 0;margin-right: 19px\9;}
+.mainDatas .DataList li a{display: block;width: 100%;height: 100%;}
+.mainDatas .DataList li .top{width: 100%;height: 30px;line-height: 30px;background: #ebedf0;padding: 0 12px;}
+.mainDatas .DataList li .centers{text-align: center;}
+.mainDatas .DataList li .centers img{display: inline-block;margin: 10px 0 4px;}
+.mainDatas .DataList li .centers span{display: block;color: #444;font-size: 14px;}
+.mainDatas .DataList li .centers a:hover span{color: #069cd9;}
+.mainDatas .DataList li .downs{margin-top: 20px;}
+.mainDatas .DataList li .downs span{display: block;text-align: center;height: 36px;width: 61px;}
+.mainDatas .DataList li .downs span:not(:last-child){border-right:1px solid #ccc;}
+.mainDatas .DataList li .downs span em{display: block;color: #999;margin-top: 7px;}
+.mainDatas .DataList li .downs span i{display: block;line-height: 36px;}
+.mainDatas .DataList li:nth-child(4n){margin: 0;}
+
+.data-list.data-empty {
+    min-height: auto;
+}
+
+/*筛选条件*/
+.ConditionList{right: 0;top: 0;margin-top: 8px;}
+.ConditionList a{display: inline-block;margin-right: 10px;}
+.ConditionList a:hover,.ConditionList a:link{color: #444;}
+.ConditionList a.active{color: #069cd9 !important;}
+.ConditionList a:not(:last-child){margin-right: 26px;}
+
+
+/* API开发需求 */
+.requireHeader{padding: 17px 26px;margin-bottom: 24px;font-size: 16px;}
+.requireHeader p{color: #333;background: url(../../images/img14.png) no-repeat left center;line-height: 46px;padding-left: 50px;}
+.requireHeader button{padding:0 40px;height: 46px;border: 0;outline: none;color: #fff;font-size: 16px;}
+
+/*选择日期*/
+.commonDataSel .commonData input{cursor: pointer; outline: none;margin: 0;height:26px;border:1px solid #ccc;box-shadow: none;display: inline-block;padding: 0 10px;vertical-align: 8px;width: 104px;border-radius: 0;vertical-align: -1px;box-sizing:border-box;background: url(../../images/img13.png) no-repeat 84px center #fff;}
+.commonDataSel .sl-search{width: 183px;position: inherit;margin: 0 0 0 10px;}
+.commonDataSel .sl-search input[type="text"]{width: 126px;}
+.mainSelDatas{margin-top: 15px;}
+.DataSelList{border: 1px solid #ccc;margin-bottom: 24px;}
+.mainSelDatas .DataSelList li{padding: 14px 25px;border-bottom: 1px solid #ccc;position: relative}
+.mainSelDatas .DataSelList li:last-child{border: 0;}
+/*状态*/
+.status{right: 0;top: 0;}
+
+
+/*城市SDK 详情页面*/
+.containerWrap .slideBanner{ position: relative;margin-top: 40px;padding-bottom: 50px;}
+.containerWrap .slideBanner .mleftCons .serverInfos{padding: 0 40px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appImgCons{width: 142px;margin-right: 26px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appImg{width: 142px;height: 142px;box-sizing: border-box;background: #fff;border: 1px solid #ddd;padding: 13px;border-radius: 10px;display: table-cell;vertical-align: middle;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appImg img{width: 115px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .viewerNums{padding-top: 15px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .viewerNums p{width: 50%;text-align: center;}
+.containerWrap .slideBanner .mleftCons .serverInfos .viewerNums p span{display: block;text-align: center;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons{width: 710px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top{line-height: 28px;margin-bottom: 8px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top h2{font-size: 18px;margin-right: 16px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;
+    margin-right: 5px;
+    width: 200px;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;width: 200px;overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei{line-height: 24px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span{margin-right: 6px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span:first-child em{
+    display: inline-block;width: 19px;height: 18px;background: url(../../images/tu7.png) no-repeat center center;cursor: pointer;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span:nth-child(2){width: 40px;height: 20px;text-align: center;line-height: 20px;background: #ff791f;color: #fff;vertical-align: 2px;display: inline-block;cursor: pointer;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span:last-child{vertical-align: 2px;line-height: 20px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .fenlei span:first-child em.acive{background: url(../../images/tu7_cur.png) no-repeat center center;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons em{color: #444;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons .left{padding-right: 34px;}
+.containerWrap .slideBanner .mleftCons .serverInfos .appInfoCons button{height: 36px;line-height: 36px;text-align: center;color: #fff;font-size: 16px;background: #3F89EC;border: 0;margin-top: 3px;padding: 0 36px;outline: none;margin-right: 32px;}
+/*是否免费*/
+.useMoney{right:0;top: 60px;font-size: 26px;}
+.useMoney em{font-size: 16px;margin-left: 10px;}
+
+.containerWrap .slideBanner .mleftCons .tabList{min-height: 200px;height: 100%;}
+.containerWrap .slideBanner .mleftCons .tabList .tab{height: 54px;padding-top: 14px;box-sizing: border-box;}
+.containerWrap .slideBanner .mleftCons .tabList .tab span{display: block;float: left;width: 126px;height: 26px;line-height: 26px;text-align: center;font-size: 14px;border-right: 1px solid #a0a0a0;cursor: pointer;}
+.containerWrap .slideBanner .mleftCons .tabList .tab span.active{color: #3F89EC;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabLeft{width: 210px;padding-top: 20px;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabLeft span{display: block;height: 34px;line-height: 34px;cursor: pointer;padding-left: 38px;position: relative;
+    width: 210px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabLeft span.active{color: #3F89EC;}
+
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight{width: 720px;border-left: 1px solid #ddd;padding-left: 19px;padding-top: 20px;word-wrap: break-word;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo p{line-height: 20px;margin-bottom: 12px;font-size: 12px;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo h3{font-size: 14px;font-weight: 600;line-height: 28px;margin:10px 0 6px 0;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo ul li{line-height: 24px;list-style: disc;margin-left: 17px;}
+/*.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo ul li code{font-weight: 600;color: #cc0000;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight pre{border: 1px solid #ddd;border-radius: 0;padding: 10px 14px;background: #efefef;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight pre code{line-height: 24px;}
+*/
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .tableCons{margin-bottom: 30px;}
+.tableCons h2{font-size: 16px;line-height: 28px;margin-bottom: 8px;}
+.codeTxt h3{line-height: 20px;margin-bottom: 12px;font-weight: 600;}
+.tableCons .backTop{width: 720px;height: 38px;line-height: 36px;border: 1px solid #ddd;box-sizing: border-box;}
+.tableCons .backTop span{display: block;text-align: center;font-size: 16px;width: 358px;border-right: 1px solid #ddd;cursor: pointer;}
+.tableCons .backTop span:last-child{border: none;}
+.tableCons .backTop span.cur{color: #3F89EC;}
+.tableCons .backDown{width: 720px;border: 1px solid #ddd;box-sizing: border-box;margin-top: 6px;height: 380px;}
+.tableCons .backDown textarea{width: 100%;border: none;box-sizing: border-box;height: 378px;resize:none;font-size: 14px;}
+
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips span{display: block;width: 64px;line-height: 30px;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips div{position: relative;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips p{width: 130px;height: 30px;line-height: 30px;background: #fff;border: 1px solid #ddd;position: relative;padding: 0 10px;box-sizing: border-box;cursor: pointer;margin-right: 20px;margin-bottom: 0;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips p.up:after{content: "";position: absolute;border-left: 5px solid transparent; border-right:5px solid transparent; border-bottom: 5px solid #666;width: 0;height: 0;right: 10px;top: 12px;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips p.down:after{content: "";position: absolute;border-left: 5px solid transparent; border-right:5px solid transparent; border-top: 5px solid #666;width: 0;height: 0;right: 10px;top: 12px;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips ul{position: absolute;width: 130px;background: #fff;border: 1px solid #ddd;padding: 0 10px;box-sizing: border-box;top: 34px;display: none;z-index: 100;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips ul li{height: 30px;line-height: 30px;cursor: pointer;border-bottom: 1px solid #eee;list-style: none;margin: 0;text-align: center;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips ul li:last-child{border: 0;}
+.containerWrap .slideBanner .mleftCons .tabList .tabConsInfo .tabRight .chartTips button{width: 70px;height: 30px;line-height: 28px;text-align: center;border: 0;color: #fff;background: #3F89EC;}
+
+/*API开发环境b*/
+.top-font{position: relative;padding: 0px;margin: 0px;background: #f8f8f8;}
+.left-font{width: 694px;height: 405px;padding: 20px 20px; }
+.left-font p:first-child{line-height: 24px;text-indent: 2em;}
+.left-font .l-img{margin-right: 15px}
+.right-img{width: 190px;height: 437px;background: url("../../images/tu15.png") no-repeat center center #1bb0ed}
+.right-img a{display: block;text-align: center;margin-top: 160px}
+.right-img a span{display: block;text-align: center;color: #fff;font-size: 14px;margin-top: 18px;}
+
+/*新增css*/
+.butDiv{margin-top: 80px;text-align: center}
+.butDiv button{width: 80px;height: 40px;line-height: 28px;text-align: center;border: 0;color: #fff;background: #3F89EC;}
+
+
+
+.api li a:first-child{background: url(../../images/icon_5@2x.png) no-repeat center center;}
+.api li a:nth-child(2){background: url(../../images/icon_6@2x.png) no-repeat center center;}
+.api li a:nth-child(3){background: url(../../images/icon_7@2x.png) no-repeat center center;}
+
+.api li a:first-child:hover{background: url(../../images/icon_5_1@2x.png) no-repeat center center;}
+.api li a:nth-child(2):hover{background: url(../../images/icon_6_1@2x.png) no-repeat center center;}
+.api li a:nth-child(3):hover{background: url(../../images/icon_7_1@2x.png) no-repeat center center;}
+
+.api li a.active:first-child{background: #fff url(../../images/icon_5_1@2x.png) no-repeat center 22px;}
+.api li a.active:nth-child(2){background: #fff url(../../images/icon_6_1@2x.png) no-repeat center 22px;}
+.api li a.active:nth-child(3){background: #fff url(../../images/icon_7_1@2x.png) no-repeat center 22px;}
+
+.pioneer li a:first-child{background: url(../../images/icon_3@2x.png) no-repeat center center;}
+.pioneer li a:nth-child(2){background: url(../../images/icon_1@2x.png) no-repeat center center;}
+.pioneer li a:nth-child(3){background: url(../../images/icon_4@2x.png) no-repeat center center;}
+.pioneer li a:nth-child(4){background: url(../../images/icon_2@2x.png) no-repeat center center;}
+.pioneer li a:nth-child(5){background: url(../../images/icon_10@2x.png) no-repeat center center;}
+.pioneer li a:first-child:hover{background: url(../../images/icon_3_1@2x.png) no-repeat center center;}
+.pioneer li a:nth-child(2):hover{background: url(../../images/icon_1_1@2x.png) no-repeat center center;}
+.pioneer li a:nth-child(3):hover{background: url(../../images/icon_4_1@2x.png) no-repeat center center;}
+.pioneer li a:nth-child(4):hover{background: url(../../images/icon_2_1@2x.png) no-repeat center center;}
+.pioneer li a:nth-child(5):hover{background: url(../../images/icon_10_1@2x.png) no-repeat center center;}
+.pioneer li a.active:first-child{background: url(../../images/icon_3_1@2x.png) no-repeat center 22px #fff;}
+.pioneer li a.active:nth-child(2){background: url(../../images/icon_1_1@2x.png) no-repeat center 22px #fff;}
+.pioneer li a.active:nth-child(3){background: url(../../images/icon_4_1@2x.png) no-repeat center 22px #fff;}
+.pioneer li a.active:nth-child(4){background: url(../../images/icon_2_1@2x.png) no-repeat center 22px #fff;}
+.pioneer li a.active:nth-child(5){background: url(../../images/icon_10_1@2x.png) no-repeat center 22px #fff;}
+
+.citysSel {
+    right: 0;
+    top: 0;
+    color: #fff;
+    padding: 8px 12px;
+}
+
+/*table*/
+.D_table table{width: 100%;text-align: center;background: #fff;border: 1px solid #ccc;}
+.D_table table tr th{background: #069cd9;font-size: 14px;height: 36px;border-bottom: 1px solid #fff;line-height: 37px;font-weight: 600;color: #fff;}
+.D_table table tbody tr td{border-bottom: 1px solid #ccc;font-size: 14px;padding: 10px 0;line-height: 24px;vertical-align:middle;}
+.D_table table tbody tr td input[type="radio"], .D_table table tbody tr td input[type="number"]{margin: 0}
+.D_table table tbody tr:last-child td{border: 0;}
+.D_table table tbody tr td a{color: #113c6a;}
+.D_table table tr {cursor: pointer;}
+
+.apply-box {
+    padding: 5px 30px;
+}
+.apply-box .D_table {
+    min-height: 280px;
+}
+.apply-box .D_table table tr td input[type='number'],
+.layer-table .D_table table tr td input[type='number']{
+    width: 40px;
+}
+.apply-box,.layer-table{
+    padding: 5px 30px;
+}
+.apply-box p label,.layer-table p label{
+    float: left;
+}
+.apply-box p label a,.layer-table p label a{
+    color: #00aff6;
+}
+.apply-box p span, .layer-table p span{
+    font-size: 14px;
+    float: right;
+}

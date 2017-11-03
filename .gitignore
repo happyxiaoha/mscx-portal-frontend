@@ -1,5 +1,7 @@
 /node_modules
 /dist
-/build
 /bower_components
+/test/e2e/reports
 .idea
+*.log
+package-lock.json

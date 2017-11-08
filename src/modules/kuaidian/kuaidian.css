@@ -49,7 +49,7 @@ a{
 }
 .shop-register-form{
    position: absolute;
-    top: 150px;
+    top: 190px;
 }
 .shop-register-form label{
     margin-right: 5px;
@@ -94,7 +94,7 @@ option{
 }
 .shop_register.middle_bg{
     background: url("../../images/kuaidian_register/middle_bg.jpg") no-repeat;
-    height: 435px;
+    height: 500px;
     background-size: 100% 100%;
 }
 .shop_register.bottom_bg{

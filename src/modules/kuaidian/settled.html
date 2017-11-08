@@ -1,0 +1,104 @@
+<div class="container w890">
+    <div class="header_bg">
+        <img src="../../images/kuaidian_register/header_bg.jpg" alt=""/>
+    </div>
+    <div class="middle_bg shop_register">
+        <div class="shop-register-content">
+            <div class="shop-register-form">
+                <form id="shopRegistForm" onsubmit="return false">
+                    <ul>
+                        <li>
+                            <label for="shopType">店铺类型 :</label>
+                            <select name="shopType" id="shopType">
+                                <option value="zc" selected>西餐厅</option>
+                                <option value="xc">中餐厅</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="shopName">店铺姓名 :</label>
+                            <input type="text" name="shopName" id="shopName"/>
+                        </li>
+                        <li>
+                            <label for="shopAddress">店铺地址 :</label>
+                            <div style="position: relative;">
+                            <input id="shopAddress" class="city-picker-input" readonly type="text" data-toggle="city-picker">
+                            <input type="text" name="shopAddress" id="shopAddressInput"/>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="shopHost">店主姓名 :</label>
+                            <input type="text" name="shopHost" id="shopHost"/>
+                        </li>
+                        <li>
+                            <label for="IDCard">身份证号 :</label>
+                            <input type="text" name="IDCard" id="IDCard"/>
+                        </li>
+                        <li>
+                            <label for="phoneNumber">手机号码 :</label>
+                            <input type="text" name="phoneNumber" id="phoneNumber"/>
+                        </li>
+                        <li>
+                            <label for="shopRange">经营范围 :</label>
+                            <input type="text" name="shopRange" id="shopRange"/>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="readRule" id="readRule"/>
+                            我已认真阅读并完全同意<a href="javascript:;" target="_blank">《商户服务协议》</a>与<a href="javascript:;"
+                                                                                              target="_blank">《支付协议》</a>中的所有条款
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_bg shop_register">
+        <ul class="upload_content clearfix">
+            <li class="img_wrap left_li top_li">
+                <label for="uploadIdCardOneFormInput" id="idOneLabel">
+                    <img src="../../images/kuaidian_register/idcard_01.png" alt=""/>
+                </label>
+                <p class="text">点击“+”选择</p>
+                <form id="uploadIdCardOne">
+                    <input style="display: none;" id="uploadIdCardOneFormInput" type="file" name="data"
+                           onchange="upload(this)">
+                </form>
+            </li>
+            <li class="img_wrap right_li top_li">
+                <label for="uploadLicenceFormInput" id="licenceLabel">
+                    <img src="../../images/kuaidian_register/bus_licence.png" alt=""/>
+                </label>
+                <p class="text">点击“+”选择</p>
+                <form id="uploadLicence">
+                    <input style="display: none;" id="uploadLicenceFormInput" type="file" name="data"
+                           onchange="upload(this)">
+                </form>
+            </li>
+            <li class="img_wrap left_li">
+                <label for="uploadIdCardTwoFormInput" id="idTwoLabel">
+                    <img src="../../images/kuaidian_register/idcard_02.png" alt=""/>
+                </label>
+                <p class="text">点击“+”选择</p>
+                <form id="uploadIdCardTwo">
+                    <input style="display: none;" id="uploadIdCardTwoFormInput" type="file" name="data"
+                           onchange="upload(this)">
+                </form>
+            </li>
+            <li class="img_wrap right_li">
+                <label for="uploadShopFormInput" id="shopLabel">
+                    <img src="../../images/kuaidian_register/shop.png" alt=""/>
+                </label>
+                <p class="text">点击“+”选择</p>
+                <form id="uploadShop">
+                    <input style="display: none;" id="uploadShopFormInput" type="file" name="data"
+                           onchange="upload(this)">
+                </form>
+            </li>
+        </ul>
+        <div class="btn_area">
+            <button id="registerOk" type="submit" form="shopRegistForm"></button>
+            <a href="javascript:;" id="goBack">
+                <img src="../../images/kuaidian_register/goback.png" alt=""/>
+            </a>
+        </div>
+    </div>
+</div>

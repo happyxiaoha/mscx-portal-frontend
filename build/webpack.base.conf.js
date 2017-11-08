@@ -191,6 +191,14 @@ module.exports = {
             inject: true,
             chunks: ["manifest", "vendor", "common", 'kuaidian'],
             chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '云点餐-商户入驻',
+            filename: 'kuaidian/settled.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'kuaidianSettled'],
+            chunksSortMode: 'dependency'
         })
     ],
     module: {
@@ -265,7 +273,9 @@ module.exports = {
             showdown: resolve('src/lib/showdown.js'),
             customValidate: resolve('src/lib/additional-methods.js'),
             moment: resolve('src/lib/datePicker/moment.js'),
-            daterangepicker: resolve('src/lib/datePicker/daterangepicker.js')
+            daterangepicker: resolve('src/lib/datePicker/daterangepicker.js'),
+            ChineseDistricts: resolve('src/lib/cityPicker/js/city-picker.data.js'),
+            citypicker: resolve('src/lib/cityPicker/js/city-picker.js')
         },
         extensions: ['.js', '.css', '.less', '.json']
     }

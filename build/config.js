@@ -61,6 +61,7 @@ module.exports = {
     'startup': './src/js/startup.js',
     'saas': './src/js/saas.js',
     'help': './src/js/help.js',
-    'kuaidian': './src/js/kuaidian.js'
+    'kuaidian': './src/js/kuaidian.js',
+    'kuaidianSettled': './src/js/kuaidianSettled.js'
   }
 };

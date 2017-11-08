@@ -10,6 +10,7 @@
 var settledTemplate = require('./settled.html');
 require('validate');
 require('customValidate');
+require('./kuaidian.css');
 
 var settledModel = Backbone.Model.extend({   // 商户入驻
     url: 'ro/mscx-kuaidian-api/merchant/settled.do?t=' + new Date().getTime()
@@ -80,9 +81,9 @@ var settledView = Backbone.View.extend({
                 },
                 shopHost: {
                     required: true,
-                    letterStart: true,
-                    account: true,
-                    minlength: 6,
+                    //letterStart: true,
+                    //account: true,
+                    minlength: 2,
                     maxlength: 20
                 },
                 phoneNumber: {
@@ -90,7 +91,8 @@ var settledView = Backbone.View.extend({
                     telephone: true
                 },
                 IDCard: {
-                    required: true
+                    required: true,
+                    isIdCardNo:true
                 },
                 shopRange: {
                     required: true
@@ -123,7 +125,7 @@ var settledView = Backbone.View.extend({
                 },
                 IDCard: {
                     required: "请输入身份证号",
-                    telephone: "请输入正确的身份证号码"
+                    isIdCardNo: "请输入正确的身份证号码"
                 },
                 shopRange: {
                     required: "请填写您的经营范围"

@@ -71,6 +71,8 @@ a{
     border-radius: 3px;
     outline: none;
     background: white;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .shop-register-form input{
@@ -112,11 +114,16 @@ option{
 #shopRegistForm ul li:last-child a{
     color: #FF664A;
 }
+#shopAddressInput-error{
+    position: absolute;
+    left: 374px;
+    bottom: 5px;
+}
 #readRule{
     width: 15px;
     height: 15px;
     position: relative;
-    top: 3px;
+    top: -1px;
     border: 2px solid #666565;
 }
 /*********section3***************/
@@ -202,7 +209,15 @@ option{
 }
 #readRule-error{
     position: absolute;
-    bottom: -15px;
-    left: 100px;
+    bottom: -10px;
+    left: 106px;
     z-index: 1;
+}
+#shopRegistForm .city-picker-span{
+    width: 262px !important;
+    left: 92px;
+}
+#shopRegistForm .city-picker-dropdown{
+    top: 10px !important;
+    left: 93px !important;
 }

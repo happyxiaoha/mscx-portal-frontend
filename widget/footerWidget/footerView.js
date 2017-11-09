@@ -11,7 +11,7 @@ var menuList = [
         url: mscxPage.urlConfig.indexPage
     },
     {
-        name: '数据',
+        name: '数据包',
         url: mscxPage.urlConfig.sourcesPage
     },
     {

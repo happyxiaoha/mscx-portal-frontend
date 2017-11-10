@@ -89,8 +89,8 @@ var followSaasView = Backbone.View.extend({
                     }
                     that.model.fetch({
                         data: {
-                            pageSize: this.pagObj.pageSize,
-                            page: this.pagObj.pageNum
+                            pageSize: that.pagObj.pageSize,
+                            page: that.pagObj.pageNum
                         }
                     });
                 }

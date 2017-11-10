@@ -100,8 +100,8 @@ option{
     background-size: 100% 100%;
 }
 .shop_register.bottom_bg{
-    background: url("../../images/kuaidian_register/bottom_bg.jpg") no-repeat;
-    height: 501px;
+    /*background: url("../../images/kuaidian_register/bottom_bg.jpg") no-repeat;*/
+   /* height: 501px;*/
 }
 #shopRegistForm ul li{
     letter-spacing: 2px;
@@ -220,4 +220,25 @@ option{
 #shopRegistForm .city-picker-dropdown{
     top: 30px !important;
     left: 93px !important;
+}
+/****隐藏图片上传区域*******/
+.upload_content{
+    display: none;
+}
+.shop_register.bottom_bg{
+
+}
+.btn_area{
+    bottom: 27px;
+}
+.shop_register.middle_bg{
+    background-position: 0 20px;
+    height: 520px;
+}
+.shop-register-form{
+    top: 210px;
+}
+.shop_register.bottom_bg{
+    height: 80px;
+    background: #FDFBFC;
 }

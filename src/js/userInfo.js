@@ -17,11 +17,14 @@ var router = require('userInfo/router.js');
 var userCenterLeft = require('userInfo/leftSide/leftSideView.js');
 
 $(function() {
-    new header();
+    var = new header();
     new footer();
-    mscxPage.userCenter = {leftView: new userCenterLeft()};
-    mscxPage.appRouter = new router();
-    Backbone.history.stop();
-    Backbone.history.start();
-    $(mscxPage.domEl.userCenterLeft).data('isLogin',1);
+    
+    headerView.addDidRender(function() {
+        mscxPage.userCenter = {leftView: new userCenterLeft()};
+        mscxPage.appRouter = new router();
+        Backbone.history.stop();
+        Backbone.history.start();
+        $(mscxPage.domEl.userCenterLeft).data('isLogin',1);
+    })
 });

@@ -17,7 +17,7 @@ var router = require('userInfo/router.js');
 var userCenterLeft = require('userInfo/leftSide/leftSideView.js');
 
 $(function() {
-    var = new header();
+    var headerView = new header();
     new footer();
     
     headerView.addDidRender(function() {

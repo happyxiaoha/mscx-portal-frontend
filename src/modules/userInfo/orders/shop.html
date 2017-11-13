@@ -70,22 +70,22 @@
         <div class="orderList">
             <span class="ml10"><input class="is-select-shop" type="checkbox" <%if(scitem.applyTimes > 0 || scitem.resourceType == '02'){%>checked="true"<%}%>></span>
             <%if(scitem.resourceType == '01'){%>
-            <a class="resources" href="./api.html?detail/<%=scitem.resourceId%>">
+            <a class="resources" href="./sources.html?api/detail/<%=scitem.resourceId%>">
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else if(scitem.resourceType == '04'){%>
-            <a class="resources" href="./saas.html?detail/<%=scitem.resourceId%>">
+            <a class="resources" href="./sources.html?saas/detail/<%=scitem.resourceId%>">
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else if(scitem.resourceType == '03'){%>
-            <a class="resources" href="./services.html?detail/<%=scitem.resourceId%>">
+            <a class="resources" href="./sources.html?service/detail/<%=scitem.resourceId%>">
                 <img src="<%=scitem.resourceUrl%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}else{%>
-            <a class="resources" style="width: 285px;text-align: center;" href="./sources.html?detail/<%=scitem.resourceId%>">
+            <a class="resources" style="width: 285px;text-align: center;" href="./sources.html?data/detail/<%=scitem.resourceId%>">
                 <p><%=scitem.resourceName%></p>
             </a>
             <%}%>

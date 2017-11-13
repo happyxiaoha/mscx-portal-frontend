@@ -135,9 +135,9 @@
         </div>
         <div class="fr RCconsListBtn">
             <p>申请API：<em class="corOrange ft18"><%=res.applyApi%></em>个</p>
-            <a class="corff bgBlue mb8 mt5" href="./services.html">申请服务</a>
+            <a class="corff bgBlue mb8 mt5" href="./sources.html#service">申请服务</a>
             <%if(res.user.userType != 'REGISTER'){%>
-            <a class="corff bgBlue" target="_blank" href="./services.html#publish">发布服务</a>
+            <a class="corff bgBlue" target="_blank" href="./sources.html#service/publish">发布服务</a>
             <%}%>
         </div>
     </div>
@@ -156,9 +156,9 @@
         <p class="fl">
             <span class="block ft18">最新上架</span>
             <span class="block mt30">
-                数据：<a class="corBlue ft18 mt14" id="latestData" href="sources.html#catalog/orderBy-1">-</a><span class="mr10 ml5">个</span>
-                API：<a class="corBlue ft18 mt14" id="latestAPI" href="api.html#data/orderBy-1">-</a><span class="mr10 ml5">个</span>
-                服务：<a class="corBlue ft18 mt14" id="latestServer" href="services.html#service/orderBy-1">-</a><span class="mr10 ml5">个</span>
+                数据：<a class="corBlue ft18 mt14" id="latestData" href="sources.html#data/catalog/orderBy-1">-</a><span class="mr10 ml5">个</span>
+                API：<a class="corBlue ft18 mt14" id="latestAPI" href="sources.html#api/data/orderBy-1">-</a><span class="mr10 ml5">个</span>
+                服务：<a class="corBlue ft18 mt14" id="latestServer" href="sources.html#service/orderBy-1">-</a><span class="mr10 ml5">个</span>
             </span>
         </p>
     </div>

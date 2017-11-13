@@ -194,7 +194,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             title: '云点餐-商户入驻',
-            filename: 'kuaidian/settled.html',
+            filename: 'kuaidianSettled.html',
             template: 'src/ejs/index.ejs',
             inject: true,
             chunks: ["manifest", "vendor", "common", 'kuaidianSettled'],

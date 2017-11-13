@@ -14,6 +14,8 @@ var leftSideView = Backbone.View.extend({
     events: {
     },
     initialize: function(name) {
+        console.log("userInfo=" + JSON.stringify(mscxPage.userInfo));
+        console.log("mscxPage=" + JSON.stringify(mscxPage));
         this.name = name;
         this.myApiModel = new applyApiListModel();
         

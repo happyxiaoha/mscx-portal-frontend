@@ -20,7 +20,7 @@ var settledView = Backbone.View.extend({
     el: mscxPage.domEl.mainEl,
     template: _.template(settledTemplate, {variable: 'data'}),
     events: {
-          "click #shopAddress" : "cityPicker"
+        "click #shopAddress": "cityPicker"
     },
 
     initialize: function () {
@@ -50,14 +50,16 @@ var settledView = Backbone.View.extend({
             store_idcardname: $('#shopHost').val(),
             store_name: $('#shopName').val(),
             phone: $('#phoneNumber').val(),
-            remark: $("#").val()
+            remark: $("#shopRange").val()
         }, {
             type: 'POST',
             success: function (res) {
                 res = res.toJSON();
-                if (res.message === 'success') {
+                if (res.status === 'OK') {
                     layer.msg('入驻成功');
                     window.open('userInfo.html', '_self');
+                } else {
+                    layer.alert(res.message, {icon: 2});
                 }
             },
             error: function () {
@@ -65,7 +67,7 @@ var settledView = Backbone.View.extend({
         })
     },
     cityPicker: function () {
-          $("#shopAddress").citypicker();
+        $("#shopAddress").citypicker();
     },
     registerValidateConfig: function () {
         var that = this;
@@ -93,7 +95,7 @@ var settledView = Backbone.View.extend({
                 },
                 IDCard: {
                     required: true,
-                    isIdCardNo:true
+                    isIdCardNo: true
                 },
                 shopRange: {
                     required: true

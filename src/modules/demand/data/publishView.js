@@ -96,6 +96,8 @@ var createDemandView = Backbone.View.extend({
 
         params.dataReward = this.$('#dataReward').data('realval');
 
+        params.categoryId = +params.categoryId;
+
         this.model.set(params);
         this.model.save();
     },

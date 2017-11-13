@@ -5,6 +5,9 @@ require('less/base.less');
 require('sources/openData.css');
 require('js/ajaxBackboneManger.js');
 
+window.moment = require('moment');
+require('daterangepicker');
+
 var header = require('widget/headerWidget/headerView.js');
 var footer = require('widget/footerWidget/footerView.js');
 var router = require('modules/sources/router.js');

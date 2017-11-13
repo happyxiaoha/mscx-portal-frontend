@@ -62,7 +62,8 @@ var mscxPage = {
         data: '/ro/mscx-data-api/',
         mes: '/ro/mscx-message-api/',
         point: '/ro/mscx-point-api/',
-        account: '/ro/mscx-account-api/'
+        account: '/ro/mscx-account-api/',
+        contract: '/ro/mscx-contract-api/'
     },
     isLogin: function() {
         if(!mscxPage.userInfo){

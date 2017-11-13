@@ -25,10 +25,10 @@ var defaultView = Backbone.View.extend({
     },
     initialize: function() {
         console.log("userInfo=" + mscxPage.userInfo);
-        console.log("mscxPage=" + JSON.stringify(mscxPage));
         if (true) {
             $("#merchantMrgBtn").show();
         }
+        console.log("userInfo=" + JSON.stringify(mscxPage.userInfo));
         var that = this;
         this.$el.removeClass('user-center-tap');
         this.$el.html(template);

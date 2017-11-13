@@ -17,9 +17,14 @@ var footer = require('footerWidget/footerView.js');
 var router = require('kuaidian/router.js');
 
 $(function() {
-    new header();
+    var headerView = new header({
+        id: 'kuaidianSettled'
+    });
     new footer();
-    mscxPage.appRouter = new router();
-    Backbone.history.stop();
-    Backbone.history.start();
+
+    headerView.addDidRender(function() {
+        mscxPage.appRouter = new router();
+        Backbone.history.stop();
+        Backbone.history.start();
+    });
 });

@@ -44,12 +44,12 @@ var settledView = Backbone.View.extend({
             province: districtArr[0],
             city: districtArr[1],
             district: districtArr[2],
-            address: $('#shopAddressInput').val(),
+            addr: $('#shopAddressInput').val(),
             industry_code: $('#shopType').val(),
             store_idcard: $('#IDCard').val(),
             store_idcardname: $('#shopHost').val(),
             store_name: $('#shopName').val(),
-            phone: $('#phoneNumber').val(),
+            tel: $('#phoneNumber').val(),
             remark: $("#shopRange").val()
         }, {
             type: 'POST',

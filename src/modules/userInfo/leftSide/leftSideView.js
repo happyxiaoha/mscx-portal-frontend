@@ -11,15 +11,14 @@ var applyApiListModel = Backbone.Model.extend({
 
 var leftSideView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterLeft,
-    events: {
-    },
-    initialize: function(name) {
+    events: {},
+    initialize: function (name) {
         this.name = name;
         this.myApiModel = new applyApiListModel();
-        
+
         this.listenTo(this.myApiModel, 'sync', this.doCheck);
 
-        if(!mscxPage.isCheckPhone) {
+        if (!mscxPage.isCheckPhone) {
             this.myApiModel.fetch({
                 data: {
                     pageSize: 200010,
@@ -31,32 +30,36 @@ var leftSideView = Backbone.View.extend({
             this.render();
         }
     },
-    doCheck: function() {
-      var aRes = this.myApiModel.get('result');
-      if(aRes) {
-          if(aRes.list.length > 0){
-              for(var i = 0 ,len = aRes.list.length; i < len; i++) {
-                  var obj = aRes.list[i],
-                      sourceId = obj.sourceId;
-                  if(sourceId == 529569) {//529569
-                      mscxPage.isPhoto = true;
-                      break;
-                  }
-              }
-          }
-          mscxPage.isCheckPhone = true;
-          this.render();
-      }
-      else {
-          this.render();
-      }
+    doCheck: function () {
+        var aRes = this.myApiModel.get('result');
+        if (aRes) {
+            if (aRes.list.length > 0) {
+                for (var i = 0, len = aRes.list.length; i < len; i++) {
+                    var obj = aRes.list[i],
+                        sourceId = obj.sourceId;
+                    if (sourceId == 529569) {//529569
+                        mscxPage.isPhoto = true;
+                        break;
+                    }
+                }
+            }
+            mscxPage.isCheckPhone = true;
+            this.render();
+        }
+        else {
+            this.render();
+        }
     },
-    render: function() {
-      var sName = this.name || '';
-      this.$el.addClass('bod').html(_.template(template)({
-          name: sName,
-          isDisPhone: mscxPage.isPhoto
-      }));
+    render: function () {
+        var sName = this.name || '';
+        this.$el.addClass('bod').html(_.template(template)({
+            name: sName,
+            isDisPhone: mscxPage.isPhoto
+        }));
+        console.log("mscxPage.userInfo.flagMerchant=" + mscxPage.userInfo.flagMerchant);
+        if (mscxPage.userInfo.flagMerchant === "1") {
+            $("#merchantMrgBtn").show();
+        }
     }
 });
 

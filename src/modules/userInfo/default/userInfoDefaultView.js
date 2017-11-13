@@ -24,11 +24,6 @@ var defaultView = Backbone.View.extend({
         'blur .info-line input':'changeAttribute'
     },
     initialize: function() {
-        console.log("userInfo=" + mscxPage.userInfo);
-        if (true) {
-            $("#merchantMrgBtn").show();
-        }
-        console.log("userInfo=" + JSON.stringify(mscxPage.userInfo));
         var that = this;
         this.$el.removeClass('user-center-tap');
         this.$el.html(template);

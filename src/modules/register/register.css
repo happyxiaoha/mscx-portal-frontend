@@ -135,8 +135,8 @@ input[type="checkbox"] + label:before{position: absolute;content: "";width: 13px
 .register-form ul{padding: 0 56px;}
 .register-form ul li{margin-bottom: 20px;position: relative;clear: both;display: block;}
 .register-form ul li span{float: left;width: 80px;text-align: right;font-size: 14px;color: #888;margin-right: 20px;line-height: 32px;position: relative;}
-.register-form ul li input{float:left;width: 248px;border-radius: 0;box-shadow: none;height: 22px;line-height: 22px;padding-left: 14px;font-size: 12px;color: #333;margin: 0;border: 1px solid #ddd;}
-.register-form ul li .code{width: 108px;}
+.register-form ul li input{float:left;width: 248px;border-radius: 0;box-shadow: none;height: 32px;line-height: 22px;padding-left: 14px;font-size: 12px;color: #333;margin: 0;border: 1px solid #ddd;}
+.register-form ul li .code{width: 130px;}
 .register-form ul li .getCode{width: 140px;height: 32px;display: block;background: #f7f7f7;border: 1px solid #ddd;border-left: none;font-size: 14px;color: #555;text-align: center;line-height: 32px;padding-left: 0;border-radius: 0;outline: none;}
 .register-form ul li .close{display: none;position: absolute;width: 40px;height: 40px;font-size: 16px;right: 0;top: 50%;margin-top: -20px;text-align: center;line-height: 40px;color: #555;opacity: 1;}
 .register-form ul li input[type="checkbox"]{display: none;}
@@ -162,7 +162,7 @@ input[type="checkbox"]:checked + label:before{background: url('../../images/logi
     color: #e66c6b;}
 
 .register-form ul li input.zone{
-    width: 29px;
+    width: 50px;
     float: left;
     border-right: none;
 }

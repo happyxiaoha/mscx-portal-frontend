@@ -186,7 +186,13 @@
                 <%if(res.isOth){%>
                 <label class="gl">
                     <span>使用限制：</span>
-                    <p class="mes"><%=res.monthLimit%><%=res.chargeCount%><%=res.chargeType=='05'? '个月': '次'%></p>
+                    <p class="mes">
+                        <%if(res.monthLimit){%>
+                        <%=res.monthLimit%><%=res.chargeType=='05'? '个月': '次'%>
+                        <% }else{ %>
+                        不限制
+                        <% } %>
+                    </p>
                 </label>
                     <%}else{%>
                 <label class="gl">

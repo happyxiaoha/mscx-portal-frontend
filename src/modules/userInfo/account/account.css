@@ -386,3 +386,21 @@
 #applyDrawingLayer .corMain{
   color:#069cd9 !important
 }
+#payPwdLayer {
+  padding: 20px;
+  margin-left: 25px;
+}
+.layui-layer .layui-layer-btn0.disabled {
+  background-color: #f1f1f1;
+  border: 1px solid #dedede;
+  color: #aaa;
+}
+#drawCountBox {
+  width: 88px;
+  margin: 55px auto;
+}
+#drawCountBox input {
+  width: 50px;
+  height: 20px;
+  margin-right: 10px;
+}

@@ -3,7 +3,7 @@
  */
 require('css/swiper.css');
 require('less/base.less');
-
+require('main/main.less');
 require('js/ajaxBackboneManger.js');
 
 var header = require('widget/headerWidget/headerView.js');

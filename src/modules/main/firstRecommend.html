@@ -2,39 +2,20 @@
 <% _.each(data, function(item){ %>
 <li class="angled-135 posRE">
     <div class="tabConsTop clearfix">
-        <div class="iconforapi">
+        <div class="iconforapi" style="background: url(<%= item.background %>)">
             <% if(item.sourceType ==='01'){ %>
             <a href="api.html#detail/<%- item.id %>" class="apihref">
-                <% }else if(item.sourceType ==='02'){ %>
-                <a href="sources.html#detail/<%- item.id %>" class="apihref">
-                    <% }else{ %>
-                    <a href="services.html#detail/<%- item.id %>" class="apihref">
-                        <% };%>
-                    <% if(item.background){ %>
-                <img src="<%= item.background %>" alt="API背景图">
-                        <% };%>
-                <p title="<%- item.name %>"><span><%- item.name %></span></p>
+            <% }else if(item.sourceType ==='02'){ %>
+            <a href="sources.html#detail/<%- item.id %>" class="apihref">
+            <% }else{ %>
+            <a href="services.html#detail/<%- item.id %>" class="apihref">
+            <% };%>
+            <p title="<%- item.name %>">
+                <span class="title"><%- item.name %></span>
+                <span><%- item.description %></span>
+            </p>
             </a>
         </div>
-        <% if(item.sourceType ==='01'){ %>
-        <a title="<%- item.name %>" href="api.html#detail/<%- item.id %>" class="apiname">
-            <% }else if(item.sourceType ==='02'){ %>
-            <a href="sources.html#detail/<%- item.id %>" class="apiname">
-                <% }else{ %>
-                <a href="services.html#detail/<%- item.id %>" class="apiname">
-                    <% };%>
-            <%- item.name %></a>
     </div>
-    <p class="ft14">
-        <span class="charge fl">
-            <%- item.chargeTypeDesc %>
-        </span>
-        <span class="fwjirl">
-            <i><%- item.applyCount || 0 %></i>
-        </span>
-         <span class="fangwenliang">
-            <i><%- item.viewCount %></i>
-        </span>
-    </p>
 </li>
 <% }); %>

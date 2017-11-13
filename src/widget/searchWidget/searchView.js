@@ -15,15 +15,15 @@ var Models = {
         url: ''
     })),
     // 数据API分类
-    dataCategory: new (Backbone.Model.extend({
+    apiDataCategory: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'category/getDataApiCategory.do'
     })),
     // 模型API分类
-    modelCategory: new (Backbone.Model.extend({
+    apiModelCategory: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'category/getModelApiCategory.do'
     })),
     // 工具API分类
-    toolCategory: new (Backbone.Model.extend({
+    apiToolCategory: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'category/getToolApiCategory.do'
     })),
     // 开放数据分类
@@ -39,15 +39,15 @@ var Models = {
         url: mscxPage.request.dict + 'category/getSassCategory.do'
     })),
     // 数据API标签
-    dataTags: new (Backbone.Model.extend({
+    apiDataTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getDataApiTags.do'
     })),
     // 工具API标签
-    toolTags: new (Backbone.Model.extend({
+    apiToolTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getToolApiTags.do'
     })),
     // 模型API标签
-    modelTags: new (Backbone.Model.extend({
+    apiModelTags: new (Backbone.Model.extend({
         url: mscxPage.request.dict + 'tags/getModelApiTags.do'
     })),
     // 开放数据标签
@@ -102,9 +102,9 @@ var view = Backbone.View.extend({
         this.detailTags = Models.detailTags;
 
         this.listenTo(this.detailTags, 'sync', this.renderDetailTags);
-        this.listenTo(Models.dataTags, 'sync', this.renderDetailTags);
-        this.listenTo(Models.toolTags, 'sync', this.renderDetailTags);
-        this.listenTo(Models.modelTags, 'sync', this.renderDetailTags);
+        this.listenTo(Models.apiDataTags, 'sync', this.renderDetailTags);
+        this.listenTo(Models.apiToolTags, 'sync', this.renderDetailTags);
+        this.listenTo(Models.apiModelTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.openDataTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.serviceTags, 'sync', this.renderDetailTags);
         this.listenTo(Models.saasTags, 'sync', this.renderDetailTags);
@@ -141,9 +141,9 @@ var view = Backbone.View.extend({
         _.extend(model, this.filterMaps);
 
         // 处理一下model中的标签
-        model.tags = model.dataTags || model.toolTags || model.modelTags || model.openDataTags || model.serviceTags || model.saasTags;
+        model.tags = model.apiDataTags || model.apiToolTags || model.apiModelTags || model.openDataTags || model.serviceTags || model.saasTags;
         // 处理一下model中的分类
-        model.category = model.dataCategory || model.modelCategory || model.toolCategory || model.openDataCategory || model.serviceCategory || model.saasCategory;
+        model.category = model.apiDataCategory || model.apiModelCategory || model.apiToolCategory || model.openDataCategory || model.serviceCategory || model.saasCategory;
 
         for(var key in model) {
             if(model[key]&&model[key].toJSON) {

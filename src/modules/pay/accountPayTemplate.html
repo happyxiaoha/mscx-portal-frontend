@@ -11,7 +11,7 @@
     <hr/>
 
     <!-- 账户余额不足，先去充值 -->
-    <% if(data.order.pay_balance < data.account.account_balance){ %>
+    <% if(data.order.pay_balance <= data.account.account_balance){ %>
     <p class="select-title mt30">请输入支付密码</p>
     <form id="passForm" onsubmit="return false;">
       <div id="passContent" class="mt30 pr">

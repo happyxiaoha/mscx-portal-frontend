@@ -5,6 +5,8 @@ var applyView = require('./applyLayer.js');
 var offlineView = require('offlineWidget/offlineLayer.js');
 var shareView = require('shareWidget/shareView.js');
 
+require('css/markdown.css');
+
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getApiServiceDetailById.do?t=' + new Date().getTime()
 });
@@ -31,7 +33,7 @@ var view = Backbone.View.extend({
         'click .tabLeft span': 'selectAPI'
     },
     initialize: function() {
-        this.$el.addClass('grid960 animate-content opacity0');
+        this.$el.addClass('grid960 animate-content opacity0 mt30');
 
         this.detailModel = new detailModel();
         this.followModel = new followModel();

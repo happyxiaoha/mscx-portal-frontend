@@ -58,7 +58,9 @@
                 <p class="fl R_left"><em>*</em> 赏金：</p>
                 <div class="fl R_right">
                     <p>
-                        <input type="text" name="dataReward" class="mini" value="" id="dataReward" placeholder="请输入赏金">
+                        <input type="text" name="dataReward" class="mini" value="" id="dataReward" placeholder="示例格式：200.10">
+                        <span class="cell">单位（元）</span>
+                        <label id="dataReward-error" class="error" for="dataReward"></label>
                     </p>
                 </div>
                 <!-- <p class="R_left fl unit">元</p> -->
@@ -69,6 +71,12 @@
                     <p>
                         <input type="text" name="dataClosing" class="end-time mini" readonly value="<%= data && data.dataClosing && new Date(data.dataClosing).format('yyyy-MM-dd') %>">
                     </p>
+                </div>
+            </div>
+            <div class="clearfix ReleaseList">
+                <p class="fl R_left"><em>*</em>分类：</p>
+                <div class="fl R_right wd660 category">
+                    <select name="categoryId" style="width:200px;" data-default="" id="category"></select>
                 </div>
             </div>
             <div class="clearfix ReleaseList">

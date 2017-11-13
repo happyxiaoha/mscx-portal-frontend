@@ -7,6 +7,17 @@
 <div id="applyDrawingLayer"></div>
 <div id="selectServiceLayer"></div>
 <div id="transferLayer"></div>
+<div id="payPwdLayer" style="display: none;">
+    <form id="passDrawForm" onsubmit="return false;">
+      <div id="passDrawContent" class="mt30 pr">
+      </div>
+    </form>
+</div>
+<div id="drawCountLayer" style="display: none;">
+    <div id="drawCountBox">
+        <input type="number" id="drawCountIpt" max="10" value="1" maxlength="1" min="1">次
+    </div>
+</div>
 <script type="template" id="step">
     <div class="clearfix mt20 account balance">
         <ul class="process">
@@ -81,7 +92,7 @@
         </label>
         <label>
             <input type="radio" name="operate" value="draw" <%= data && data.serviceId || data.transferId ? 'disabled' : '' %>>
-            <span>账户余额提款申请</span>
+            <span>账户余额提款申请（单日提款限制<span id="drawCountTip"></span>&nbsp;&nbsp;<a class="corBlue" href="javascript:;" id="setDrawCount">设置</a>）</span>
         </label>
     </div>
     <div class="account clearfix mt20 operate-area">

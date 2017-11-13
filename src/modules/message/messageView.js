@@ -22,7 +22,7 @@ var newsView = Backbone.View.extend({
     },
     render: function () {
         var temps = _.template(template);
-        this.$el.html(temps({messageList:this.model.get('result')}));
+        this.$el.addClass('grid1190').html(temps({messageList:this.model.get('result')}));
     },
     messageDes: function (e) {
         var $this = $(e.target),

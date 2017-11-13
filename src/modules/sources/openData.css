@@ -16,13 +16,13 @@
 /*数据模型*/
 .rightMenuWrap{width: 916px;margin-left: 2px;padding: 24px 16px;}
 .ChoiceList{width: 100%;height: auto;border: 1px solid #ccc;margin: 16px 0 24px;}
-.mainDatas{margin-top: 20px;margin-bottom: 12px}
-.mainDatas .DataList li{width: 145px;;height: 150px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 35px 18px 0;margin-right: 29px\9;}
-.mainDatas .DataList li a{display: block;width: 100%;height: 100%;}
-.mainDatas .DataList li .centers{text-align: center;}
-.mainDatas .DataList li .centers img{display: inline-block;margin: 20px 0 4px;height: 55px;}
-.mainDatas .DataList li .centers span{display: block;margin: 10px 0 ;font-size: 14px;}
-.mainDatas .DataList li:nth-child(5n){margin-right: 0;}
+.opendata-container{margin-top: 20px;margin-bottom: 12px}
+.opendata-container .DataList li{width: 145px;;height: 150px;border-radius: 10px;border: 1px solid #ccc;overflow: hidden;float: left;margin: 0 35px 18px 0;margin-right: 29px\9;}
+.opendata-container .DataList li a{display: block;width: 100%;height: 100%;}
+.opendata-container .DataList li .centers{text-align: center;}
+.opendata-container .DataList li .centers img{display: inline-block;margin: 20px 0 4px;height: 55px;}
+.opendata-container .DataList li .centers span{display: block;margin: 10px 0 ;font-size: 14px;}
+.opendata-container .DataList li:nth-child(5n){margin-right: 0;}
 /*筛选条件*/
 
 /*选择日期*/

@@ -6,10 +6,10 @@ var Routes =  Backbone.Router.extend({
         '': 'newsView',
         'news': 'newsView',
         'news/detail/:url': 'newsDetailView',
-        'news/list': 'newsListView',
-        'apiEnv': 'apiEnvView',
-        'serverEnv': 'serverEnvView',
-        'coach': 'coachView'
+        'news/list': 'newsListView'
+        // 'apiEnv': 'apiEnvView',
+        // 'serverEnv': 'serverEnvView',
+        // 'coach': 'coachView'
     },
     newsView:function () {
         var view = require('pioneering/newsView.js');

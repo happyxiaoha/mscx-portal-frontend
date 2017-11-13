@@ -32,20 +32,20 @@
 .ConditionList a:not(:last-child){margin-right: 26px;}
 
 /*详情页面*/
-.slideBanner{ position: relative;margin-top: 40px;padding-bottom: 50px;}
-.slideBanner .mleftCons .serverInfos{padding: 0 40px;}
-.slideBanner .mleftCons .serverInfos .appImgCons{width: 142px;margin-right: 26px;}
-.slideBanner .mleftCons .serverInfos .appImg{width: 142px;height: 142px;box-sizing: border-box;background: #fff;border: 1px solid #ddd;padding: 13px;border-radius: 10px;}
-.slideBanner .mleftCons .serverInfos .appImg img{margin: 14px auto 24px;display: block;}
-.slideBanner .mleftCons .serverInfos .viewerNums{padding-top: 20px;}
-.slideBanner .mleftCons .serverInfos .viewerNums p{text-align: center;font-size: 14px;}
-.slideBanner .mleftCons .serverInfos .viewerNums p span{display: inline-block;text-align: center;}
-.slideBanner .mleftCons .serverInfos .appInfoCons{width: 710px;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .top{line-height: 28px;margin-bottom: 8px;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .top h2{max-width: 350px;font-size: 18px;margin-right: 16px;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;margin-right: 5px;margin-top: 2px;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;max-width: 600px;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .left p span a{
+.service-detail { position: relative;margin-top: 40px;padding-bottom: 50px;}
+.service-detail .mleftCons .serverInfos{padding: 0 40px;}
+.service-detail .mleftCons .serverInfos .appImgCons{width: 142px;margin-right: 26px;}
+.service-detail .mleftCons .serverInfos .appImg{width: 142px;height: 142px;box-sizing: border-box;background: #fff;border: 1px solid #ddd;padding: 13px;border-radius: 10px;}
+.service-detail .mleftCons .serverInfos .appImg img{margin: 14px auto 24px;display: block;}
+.service-detail .mleftCons .serverInfos .viewerNums{padding-top: 20px;}
+.service-detail .mleftCons .serverInfos .viewerNums p{text-align: center;font-size: 14px;}
+.service-detail .mleftCons .serverInfos .viewerNums p span{display: inline-block;text-align: center;}
+.service-detail .mleftCons .serverInfos .appInfoCons{width: 710px;}
+.service-detail .mleftCons .serverInfos .appInfoCons .top{line-height: 28px;margin-bottom: 8px;}
+.service-detail .mleftCons .serverInfos .appInfoCons .top h2{max-width: 350px;font-size: 18px;margin-right: 16px;}
+.service-detail .mleftCons .serverInfos .appInfoCons .top span{display: inline-block;margin-right: 5px;margin-top: 2px;}
+.service-detail .mleftCons .serverInfos .appInfoCons .left p span{display: inline-block;max-width: 600px;}
+.service-detail .mleftCons .serverInfos .appInfoCons .left p span a{
     color: #069cd9;
     text-decoration: underline;
     max-width: 360px;
@@ -55,8 +55,8 @@
     white-space: nowrap;
     display: inline-block;}
 
-.slideBanner .mleftCons .serverInfos .appInfoCons em{color: #444;word-break: break-all;}
-.slideBanner .mleftCons .serverInfos .appInfoCons .left{padding-right: 34px;}
+.service-detail .mleftCons .serverInfos .appInfoCons em{color: #444;word-break: break-all;}
+.service-detail .mleftCons .serverInfos .appInfoCons .left{padding-right: 34px;}
 .appInfoCons button{height: 36px;line-height: 36px;text-align: center;color: #fff;font-size: 16px;background: #3F89EC;border: 0;margin-top: 3px;padding: 0 36px;outline: none;margin-right: 32px;}
 
 .useMoney{right:0;top: 60px;font-size: 26px;}

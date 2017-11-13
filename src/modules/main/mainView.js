@@ -3,12 +3,11 @@
  */
 var template = require('./main.html'),
     childTemplate = require('./child.html'),
-    navigationView = require('./navigationView.js'),
+    // navigationView = require('./navigationView.js'),
     recommendBarView = require('./recommendBarView.js'),
     recommendView = require('./recommendView.js'),
     bannerView = require('./banner.js'),
     firstRecommendView = require('./firstRecommendView.js');
-require('./main.css');
 require('./../../css/swiper.css');
 require('../../lib/swiper.jquery.js');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
@@ -29,14 +28,15 @@ var apiListModel = Backbone.Model.extend({
     url: mscxPage.request.api + 'service/getSelectedNavigation.do'
 });
 
-var recommendApiModel = Backbone.Model.extend({
-    url: mscxPage.request.api + 'service/getSelectedApi.do'
+var recommendDataModel = Backbone.Model.extend({
+    url: '/home/choiceRecommend.do'
 });
 var recommendSerModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'recommend/list.do'
 });
 var Resource = require('../pioneering/resource.js');
-var cmsUrl = Resource.cmsHost + 'static_html/datainfo/latestnews/index.html';
+var cmsHotUrl = Resource.cmsHost + '/static_html/datainfo/gz_hotArticle/index.html';
+var cmsLatestUrl = Resource.cmsHost + '/static_html/datainfo/gz_latestArticle/index.html';
 
 var mainView = Backbone.View.extend({
     el: mscxPage.domEl.mainEl,
@@ -54,30 +54,31 @@ var mainView = Backbone.View.extend({
             showDatas(currentCity.code)
         }else{
             this.$el.html(template);
-            this.$list = this.$('.news-list');
+            this.$latestNewsList = this.$('.news-list-left-wrapper');
+            this.$hotNewsList = this.$('.news-list-right-wrapper');
             //创业资讯的配置
-            window.frameUrl = 'pioneering.html?';
-            window.listUrl = 'pioneering.html#news/list';
+            window.frameUrl = 'news.html?';
             window.portalUrl = Resource.cmsHost;
-            //new bannerView();
-            //new firstRecommendView();
-            new navigationView({
-                id: 'ser',
-                el: '#daohangSer',
-                model: new navigationSerModel()
-            });
 
-            new navigationView({
-                id: 'api',
-                el: '#daohangAPI',
-                model: new navigationApiModel()
-            });
+            this.$latestNewsList.load(cmsLatestUrl + '?time=' + +(new Date()), function() {
+                this.$latestNewsList.find('.news-desc').each(function(index, item) {
+                    if($(item).text().length > 85) {
+                        $(item).addClass('ellipsis');
+                    }else {
+                        $(item).removeClass('ellipsis');
+                    }
+                })
+            }.bind(this))
 
-            new recommendBarView({
-                id: 'ser',
-                el: '#serList',
-                model: new serListModel()
-            });
+            this.$hotNewsList.load(cmsHotUrl + '?time=' + +(new Date()))
+
+            new firstRecommendView();
+
+            // new recommendBarView({
+            //     id: 'ser',
+            //     el: '#serList',
+            //     model: new serListModel()
+            // });
 
 
             new recommendBarView({
@@ -90,16 +91,16 @@ var mainView = Backbone.View.extend({
                 id: 'api',
                 el: '.recommendApiList',
                 className: 'loading',
-                model: new recommendApiModel()
+                model: new recommendDataModel()
             });
 
-            new recommendView({
-                id: 'ser',
-                el: '.recommendSerList',
-                model: new recommendSerModel()
-            });
+            // new recommendView({
+            //     id: 'ser',
+            //     el: '.recommendSerList',
+            //     model: new recommendSerModel()
+            // });
             //加载创业资讯(最新资讯)
-            this.$list.load(cmsUrl + '?time=' + +(new Date()));
+            // this.$list.load(cmsUrl + '?time=' + +(new Date()));
         }
         new bannerView();
         this.render();

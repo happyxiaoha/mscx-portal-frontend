@@ -1,8 +1,9 @@
 /**
  * Created by Kevin on 2016/12/6.
  */
-
+var formatPrice = require('lib/util').formatPrice;
 var template = require('./publishTemplate.html');
+var optionTemplate = '<% data && data.result.forEach(function(item) { %><option value="<%= item.categoryId %>"><%= item.categoryName %></option><% }) %>';
 var detailModel = Backbone.Model.extend({
     url: mscxPage.request.demand + 'modifyDataDetail.do'
 })
@@ -13,6 +14,9 @@ var addModel = Backbone.Model.extend({
 var modifyModel = Backbone.Model.extend({
     idAttribute: 'modifyId',
     url: mscxPage.request.demand + 'modifyData.do'
+});
+var serviceCategory = Backbone.Model.extend({
+    url: mscxPage.request.dict + 'category/getProviderCategory.do'
 });
 
 
@@ -26,13 +30,20 @@ var createDemandView = Backbone.View.extend({
     el: mscxPage.domEl.demandEl,
     events: {
         'click .data-publish #goBack': 'backHistory',
-        'click .contact button': 'goContact'
+        'click .contact button': 'goContact',
+        'focus #dataReward': 'handleFocus',
+        'blur #dataReward': 'handleFormat'
     },
     template: _.template(template, {variable: 'data'}),
+    optionTemplate: _.template(optionTemplate, {variable: 'data'}),
     initialize: function() {
         // 如果有ID则说明是进入修改页面
         this.$el.addClass('grid1190');
         this.detailModel = new detailModel();
+        
+        this.serviceCategory = new serviceCategory();
+
+        this.listenTo(this.serviceCategory, 'sync', this.renderServiceCategory);
         if(this.id) {
             this.listenTo(this.detailModel, 'sync', this.renderDetail);
             this.detailModel.fetch({
@@ -65,7 +76,8 @@ var createDemandView = Backbone.View.extend({
                 },
                 dataReward: {
                     required: true,
-                    maxlength: 20
+                    maxlength: 20,
+                    price: true
                 },
                 dataClosing: {
                     required: true
@@ -82,6 +94,8 @@ var createDemandView = Backbone.View.extend({
     submitForm: function () {
         var params = this.$form.serializeObject();
 
+        params.dataReward = this.$('#dataReward').data('realval');
+
         this.model.set(params);
         this.model.save();
     },
@@ -97,6 +111,17 @@ var createDemandView = Backbone.View.extend({
             setTimeout(function() {
                 location.href = 'userInfo.html#demand';
             }, 2000);
+        }
+    },
+    renderServiceCategory: function() {
+        var model = this.serviceCategory.toJSON();
+        var $serviceCategory = this.$('#category');
+        $serviceCategory.html(this.optionTemplate(model));
+
+        this.model.set('categoryId', $serviceCategory.val());
+
+        if($serviceCategory.data('default')) {
+            $serviceCategory.val($serviceCategory.data('default'));
         }
     },
     renderDetail: function() {
@@ -121,10 +146,28 @@ var createDemandView = Backbone.View.extend({
         }).on('apply.daterangepicker',function (ev,picker) {
             $(ev.target).trigger('blur');
         });
+
+        this.serviceCategory.fetch();
     },
     goContact: function(event) {
         event.preventDefault();
         location.href = 'contactUs.html#contact';
+    },
+    handleFormat: function(event) {
+        var $target = this.$(event.currentTarget);
+        var price = $target.val();
+
+        var isValid = this.$form.validate().element($('#dataReward'))
+
+        if(isValid) {
+            $target.data('realval', price).val(formatPrice(price));
+        }
+    },
+    handleFocus: function(event) {
+        var $target = this.$(event.currentTarget);
+        var price = $target.val();
+
+        $target.val(price.replace(/,/g, ''))
     }
 });
 

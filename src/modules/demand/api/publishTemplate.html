@@ -37,7 +37,9 @@
             <p class="fl R_left"><em>*</em>预期报价：</p>
             <div class="fl R_right">
                 <p>
-                    <input type="text" name="preOffer" class="mini" placeholder="请输入预期报价" value="<%= data && data.preOffer %>" id="system-price">
+                    <input type="text" name="preOffer" class="mini" placeholder="示例格式：200.10" value="<%= data && data.preOffer %>" id="system-price">
+                    <span class="cell">单位（元）</span>
+                    <label id="system-price-error" class="error" for="system-price"></label>
                 </p>
             </div>
             <!-- <p class="R_left fl unit">元</p> -->

@@ -3,15 +3,7 @@
  */
 var Routes =  Backbone.Router.extend({
     routes: {
-        '': 'dataAPI',
-        'data': 'dataAPI',
-        'data(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'dataAPI',
-        'tool(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'toolAPI',
-        'model(/keyword-:keyword)(/scope-:scope)(/chargeType-:chargeType)(/orderBy-:orderBy)': 'modelAPI',
-        'detail/:id': 'detail',
-        'createApi': 'createApiView',
-        'updateApi/:id': 'updateApiView',
-        'apiDes/:id': 'apiDesView'
+        '': 'dataAPI'
     },
     dataAPI:function (keyword, scope, chargeType, orderBy) {
         if(location.search) return;

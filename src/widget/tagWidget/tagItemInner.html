@@ -1,5 +1,5 @@
-<% _.each(tagList, function (tagitem) { %>
-<%if(!filterVal || tagitem.name.toLocaleUpperCase().indexOf(filterVal.toLocaleUpperCase()) >= 0){%>
+<%if(filterResult.length > 0){%>
+<% filterResult.forEach(function(tagitem){ %>
 <li>
     <input type="hidden" class="tagPinyin<%=tagitem.tagPinyin.toLocaleLowerCase()%>">
     <label style="width: 100%;line-height: 16px;">
@@ -7,7 +7,9 @@
         <%=tagitem.name%>
     </label>
 </li>
-<%} })%>
-<%if(tagList.length == 0){%>
-<li>此分类无标签</li>
-<%}%>
+<% }) %>
+<% }else { %>
+<div class="empty-tip">
+  没有搜索到“<%= filterVal.toLocaleUpperCase() %>”，是否将“<%= filterVal.toLocaleUpperCase() %>”标签添加到标签字典中，如果是，点击<a href="javascript:;" class="corMain" id="addTag" data-addtxt="<%= filterVal.toLocaleUpperCase() %>">添加</a>
+</div>
+<% } %>

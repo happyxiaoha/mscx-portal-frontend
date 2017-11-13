@@ -1392,7 +1392,7 @@
                 return this.optional( element ) || /^[a-zA-Z0-9_-]{2,30}$/.test( value );
             },
             price: function (value,element) {
-                return this.optional( element ) || /^([1-9]\d{0,6}?(\.\d{1,2})?)$|^([0]?(\.\d{1,2})?)$/.test( value );
+                return this.optional( element ) || /^[1-9]\d*(,\d{3})*(\.\d{1,2})?$|^0.\d{1,2}$/.test( value );
             },
             // http://jqueryvalidation.org/url-method/
             url: function( value, element ) {

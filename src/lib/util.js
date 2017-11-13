@@ -57,3 +57,11 @@ $.fn.serializeObject = function() {
     });
     return o;
 };
+
+export function formatPrice (str, size, delimiter) {
+    var _str = str.toString();
+    var _size = size||3,_delimiter=delimiter||',';
+    var regText = '\\B(?=(\\w{'+_size+'})+(?!\\w))';
+    var reg = new RegExp(regText,'g');
+    return _str.replace(reg,_delimiter);
+}

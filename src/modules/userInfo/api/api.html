@@ -1,6 +1,6 @@
 <div class="M-mainInfo clearfix bgWhite my-api-list">
     <div class="tab-title">
-        <a class="corff" href="../api.html#createApi">发布api</a>
+        <a class="corff" href="../sources.html#api/createApi">发布api</a>
     </div>
     <div class="M-downCons">
         <div class="D_table M-table">
@@ -32,10 +32,10 @@
     <% _.each(publishApiList, function (paitem) { %>
     <tr attrId="<%=paitem.apiServiceId%>">
         <%if(paitem.status == '0'){%>
-        <td><a target="_blank" href="./api.html?detail/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a></td>
+        <td><a target="_blank" href="./sources.html?api/detail/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a></td>
         <%}else{%>
         <td>
-            <a target="_blank" href="./api.html#apiDes/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a>
+            <a target="_blank" href="./sources.html#api/apiDes/<%=paitem.apiServiceId%>"><%=paitem.apiServiceCName || '-'%></a>
         </td>
         <%}%>
         <td><%=paitem.description%></td>
@@ -46,14 +46,14 @@
                 <%if(paitem.chargeType == '02'){%>
                 <a href="javascript:;" class="changePrice">调价</a>
                 <%}%>
-                <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
+                <a href="../sources.html#api/updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
                 <a href="javascript:;" class="downApi">下架</a>
             <%}else if(paitem.status == '3'){%>
                 <a href="javascript:;" class="displayMes">查看</a>
                 <%if(paitem.chargeType == '02'){%>
                 <a href="javascript:;" class="changePrice">调价</a>
                 <%}%>
-                <a href="../api.html#updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
+                <a href="../sources.html#api/updateApi/<%=paitem.apiServiceId%>" class="updateApi">编辑</a>
                 <%if(paitem.isOnline == 'N'){%>
                     <a href="javascript:;" class="deleteApi">删除</a>
                 <%}else{%>

@@ -49,11 +49,9 @@ module.exports = {
     'register': './src/js/register.js',
     'main': './src/js/main.js',      //首页
     'sources': './src/js/sources.js',    //数据
-    'api': './src/js/api.js',
-    'services': './src/js/services.js',     //微服务
-    'saas': './src/js/saas.js',     //SaaS服务
+    'recharge': './src/js/recharge.js', //充值缴费
     'demand': './src/js/demand.js',     //需求定制
-    'pioneering': './src/js/pioneering.js',  //创业园地
+    'news': './src/js/news.js',  //新闻资讯
     'userInfo': './src/js/userInfo.js',    //用户中心
     'pay': './src/js/pay.js',
     'search': './src/js/search.js',

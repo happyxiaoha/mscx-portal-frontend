@@ -19,7 +19,7 @@ var view = Backbone.View.extend({
             id: this.id
         }));
 
-        this.$dataList = this.$('.data-list');
+        this.$dataList = this.$('.api-list');
         this.$page = this.$('.page');
         this.$count = this.$('#count');
         this.$sort = this.$('.sort');

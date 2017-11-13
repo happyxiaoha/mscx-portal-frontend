@@ -13,7 +13,7 @@ var view = Backbone.View.extend({
         this.$el.addClass('grid1000');
         this.leftMenuView = new leftMenuView({
             model: {
-                className: 'services',
+                className: 'data',
                 id: this.id,
                 sideBars: [
                     {

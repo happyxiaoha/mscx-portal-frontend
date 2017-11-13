@@ -28,10 +28,21 @@ var getBillInfoModel = Backbone.Model.extend({
 var getTransferInfoModel = Backbone.Model.extend({
     url: mscxPage.request.account + 'getTransferGuaranteeInfo.do'
 })
+var verifyPwdModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'verifyPwd.do'
+})
+var setDrawCountModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'setAccountWithdraw.do'
+})
+var getDrawCountModel = Backbone.Model.extend({
+    url: mscxPage.request.account + 'accountWithdrawSettingInfo.do'
+})
+
 
 var amountView = Backbone.View.extend({
     events: {
-        'change input[type=radio]': 'changeOperateType'
+        'change input[type=radio]': 'changeOperateType',
+        'click #setDrawCount': 'setDrawCount'
     },
     initialize: function() {
         this.templete = _.template($('#amount').html(), {variable: 'data'});
@@ -54,6 +65,12 @@ var amountView = Backbone.View.extend({
         this.getBillInfoModel = new getBillInfoModel();
         // 项目保证金转账所需信息接口
         this.getTransferInfoModel = new getTransferInfoModel();
+        // 验证支付密码接口
+        this.verifyPwdModel = new verifyPwdModel();
+        // 设置提款次数接口
+        this.setDrawCountModel = new setDrawCountModel();
+        // 获取提款次数接口
+        this.getDrawCountModel = new getDrawCountModel
 
         this.rechargeServiceModel = new rechargeServiceModel();
         this.applyDrawingModel = new applyDrawingModel();
@@ -67,10 +84,12 @@ var amountView = Backbone.View.extend({
         this.listenTo(this.rechargeServiceModel, 'sync', this.renderRechageList);
         this.listenTo(this.applyDrawingModel, 'sync', this.renderApplyDrawingList);
         this.listenTo(this.getTransferInfoModel, 'sync', this.renderTransferLayer);
+        this.listenTo(this.verifyPwdModel, 'sync', this.handlePayPwdResult);
+        this.listenTo(this.setDrawCountModel, 'sync', this.handleSetDrawCount);
+        this.listenTo(this.getDrawCountModel, 'sync', this.handleGetDrawCount);
 
         // 默认的操作是账户充值
         this.operateType = 'account';
-
         return this;
     },
     render: function() {
@@ -94,6 +113,8 @@ var amountView = Backbone.View.extend({
         }else if(this.model.transferId) {
             this.operateType = 'transfer';
         }
+
+        this.getDrawCountModel.fetch();
     },
     renderRechageList: function() {
         var model = this.rechargeServiceModel.toJSON();
@@ -397,6 +418,124 @@ var amountView = Backbone.View.extend({
         // 提款成功
         if(model.status == 'OK') {
             layer.msg('申请提款成功！');            
+        }
+    },
+    toggleDrawBtnStatus: function() {
+        var $target = $('#passDrawContent #passwordTail');
+        var btn = $('#payPwdLayer').parents('.layui-layer').find('.layui-layer-btn0');
+        if($target.val()) {
+            btn.removeClass('disabled');
+        }else {
+            btn.addClass('disabled');
+        }
+    },
+    setDrawCount: function() {
+        // if($('#passDrawContent').find('.pass-wrap').length < 1) {
+            this.$passDrawContent = $('#passDrawContent');
+            this.$passDrawForm = $('#passDrawForm');
+
+            // 加密码框view到页面中
+            this.$passDrawContent.append(new passwordView({
+                model: {
+                    title: '',
+                    name: 'password'
+                }
+            }).$el);
+
+            this.$passwordDrawTail = $('#payPwdLayer #passwordTail');
+
+            $('#passDrawContent #passwordTail').on('input', this.toggleDrawBtnStatus);
+        // }
+        
+
+        this.verifyPayPwdDialog = layer.open({
+            type: 1,
+            btn: ['确认','取消'],
+            title: '请输入支付密码',
+            shade: 0.6,
+            shadeClose: true,
+            closeBtn:'1',
+            area: ['400px', '250px'],
+            content: $('#payPwdLayer'),
+            success: function() {
+                $('#payPwdLayer').parents('.layui-layer').find('.layui-layer-btn0').addClass('disabled');
+            },
+            btn1: function () {
+                if($('#payPwdLayer').parents('.layui-layer').find('.layui-layer-btn0').hasClass('disabled')) {
+                    return;
+                }
+
+                var params = this.$passDrawForm.serializeObject();
+                this.verifyPwdModel.fetch({
+                    data: {
+                        pwd: params.password + params.passwordTail
+                    }
+                })
+            }.bind(this),
+            btn2: function () {
+                layer.close(this.verifyPayPwdDialog);
+            }.bind(this),
+            end: function() {
+                this.$passDrawContent.empty();
+            }.bind(this)
+        });
+    },
+    handleDrawCountIpt: function() {
+        var $count = $('#drawCountIpt');
+        var num = +$count.val();
+
+        if(typeof num != 'number') {
+            $count.val(1);
+        }else if(num < 1) {
+            $count.val(1);
+        }else if(num > 10) {
+            $count.val(10);
+        }
+    },
+    handlePayPwdResult: function() {
+        var model = this.verifyPwdModel.toJSON();
+
+        if(model.status == 'OK') {
+            layer.close(this.verifyPayPwdDialog);
+            var dialog = layer.open({
+                type: 1,
+                btn: ['确认','取消'],
+                title: '请输入次数',
+                shade: 0.6,
+                shadeClose: true,
+                closeBtn:'1',
+                area: ['250px', '250px'],
+                content: $('#drawCountLayer'),
+                success: function() {
+                    $('#drawCountIpt').on('change', this.handleDrawCountIpt)
+                }.bind(this),
+                btn1: function () {
+                    this.setDrawCountModel.fetch({
+                        data: {
+                            withdrawTimes: $('#drawCountIpt').val()
+                        }
+                    })
+                }.bind(this),
+                btn2: function () {
+                    layer.close(dialog);
+                }
+            })
+        }
+    },
+    handleSetDrawCount: function() {
+        var model = this.setDrawCountModel.toJSON();
+
+        if(model.status == 'OK') {
+            layer.closeAll();
+            this.getDrawCountModel.fetch();
+        }
+    },
+    handleGetDrawCount: function() {
+        var model = this.getDrawCountModel.toJSON();
+
+        if(model.status == 'OK' && model.result) {
+            $('#drawCountTip').html(model.result.withdrawTimes + '次')
+            $('#drawCountIpt').val(model.result.withdrawTimes)
         }
     }
 })

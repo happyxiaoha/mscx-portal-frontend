@@ -3,21 +3,22 @@
 <% _.each(dataList,function(item,index){ %>
 <% if(index < 8 ){%>
 <li>
-    <div class="centers">
-        <a  href="api.html#detail/<%= item.apiServiceId %>">
+    <div class="centers pr">
+        <span class="choice-tag <%= typeMap[item.resourceType].code %>"><%= typeMap[item.resourceType].name %></span>
+        <a href="sources.html?<%= typeMap[item.resourceType].code %>/detail/<%= item.id %>">
             <div class="datalist-img">
-                <img src="<%= item.iconUrl %>" alt="API图标">
+                <img src="<%= item.imageUrl %>" alt="图标">
             </div>
-            <p><a href="api.html#detail/<%= item.apiServiceId %>" title="<%= item.apiServiceCName %>"><%= item.apiServiceCName %></a></p>
+            <p><a href="sources.html?<%= typeMap[item.resourceType].code %>/detail/<%= item.id %>" title="<%= item.name %>"><%= item.name %></a></p>
             <p class="buyType"><%= item.chargeTypeDesc || '免费' %></p>
         </a>
     </div>
     <div class="downs clearfix">
         <span class="lianjiehsu fl">
-           <%= item.accessCnt %>
+           <%= item.applyCount %>
         </span>
         <span class="fl diaoyongshu">
-           <%= item.viewCnt %>
+           <%= item.viewCount %>
         </span>
     </div>
 </li>
@@ -30,11 +31,11 @@
 <% if(index < 8 ){%>
 <li>
     <div class="centers">
-        <a href="services.html#detail/<%= item.id %>">
+        <a href="sources.html?service/detail/<%= item.id %>">
             <div class="datalist-img">
                 <img src="<%= item.imageUri %>" alt="服务图标">
             </div>
-            <p><a href="services.html#detail/<%= item.id %>" title="<%= item.name %>"><%= item.name %></a></p>
+            <p><a href="sources.html?service/detail/<%= item.id %>" title="<%= item.name %>"><%= item.name %></a></p>
             <p class="buyType"><%= item.chargeType %></p>
         </a>
     </div>

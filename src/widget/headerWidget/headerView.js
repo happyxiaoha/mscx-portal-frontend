@@ -11,24 +11,14 @@ var menuList = [
         key: 'index'
     },
     {
-        name: '数据',
+        name: '数据服务',
         url: mscxPage.urlConfig.sourcesPage,
         key: 'sources'
     },
     {
-        name: 'API',
-        url: mscxPage.urlConfig.apiPage,
-        key: 'api'
-    },
-    {
-        name: 'SaaS服务',
-        url: mscxPage.urlConfig.saasPage,
-        key: 'saas'
-    },
-    {
-        name: '微服务',
-        url: mscxPage.urlConfig.servicesPage,
-        key: 'service'
+        name: '充值缴费',
+        url: mscxPage.urlConfig.rechargePage,
+        key: 'recharge'
     },
     {
         name: '需求定制',
@@ -36,8 +26,13 @@ var menuList = [
         key: 'demand'
     },
     {
-        name: '创业园地',
-        url: mscxPage.urlConfig.pioneeringPage,
+        name: '新闻资讯',
+        url: mscxPage.urlConfig.newsPage,
+        key: 'news'
+    },
+    {
+        name: '关于我们',
+        url: mscxPage.urlConfig.contactPage,
         key: 'pioneering'
     }
 ];

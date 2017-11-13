@@ -89,43 +89,51 @@ module.exports = {
             chunksSortMode: 'dependency'
         }),
         new HtmlWebpackPlugin({
-            title: '数据服务',
-            filename: 'api.html',
+            title: '充值缴费',
+            filename: 'recharge.html',
             template: 'src/ejs/index.ejs',
             inject: true,
-            chunks: ["manifest", "vendor", "common", 'api'],
+            chunks: ["manifest", "vendor", "common", 'recharge'],
             chunksSortMode: 'dependency'
         }),
-        new HtmlWebpackPlugin({
-            title: '数据服务',
-            filename: 'services.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'services'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '数据服务',
-            filename: 'saas.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'saas'],
-            chunksSortMode: 'dependency'
-        }),
-        new HtmlWebpackPlugin({
-            title: '数据服务',
-            filename: 'services.html',
-            template: 'src/ejs/index.ejs',
-            inject: true,
-            chunks: ["manifest", "vendor", "common", 'services'],
-            chunksSortMode: 'dependency'
-        }),
+        // new HtmlWebpackPlugin({
+        //     title: '数据服务',
+        //     filename: 'api.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'api'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '数据服务',
+        //     filename: 'services.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'services'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '数据服务',
+        //     filename: 'saas.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'saas'],
+        //     chunksSortMode: 'dependency'
+        // }),
+        // new HtmlWebpackPlugin({
+        //     title: '数据服务',
+        //     filename: 'services.html',
+        //     template: 'src/ejs/index.ejs',
+        //     inject: true,
+        //     chunks: ["manifest", "vendor", "common", 'services'],
+        //     chunksSortMode: 'dependency'
+        // }),
         new HtmlWebpackPlugin({
             title: '新闻资讯',
-            filename: 'pioneering.html',
+            filename: 'news.html',
             template: 'src/ejs/index.ejs',
             inject: true,
-            chunks: ["manifest", "vendor", "common", 'pioneering'],
+            chunks: ["manifest", "vendor", "common", 'news'],
             chunksSortMode: 'dependency'
         }),
         new HtmlWebpackPlugin({

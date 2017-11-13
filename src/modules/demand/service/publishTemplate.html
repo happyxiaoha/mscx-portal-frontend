@@ -39,6 +39,8 @@
             <div class="fl R_right">
                 <p>
                     <input type="text" name="money" maxlength="50" class="mini" id="taskMoney" placeholder="请输入任务金额" value="<%= data && data.money %>">
+                    <span class="cell">单位（元）</span>
+                    <label id="taskMoney-error" class="error" for="taskMoney"></label>
                 </p>
             </div>
             <!-- <p class="R_left fl unit">元</p> -->
@@ -82,6 +84,25 @@
                     <input type="text" name="contactPhone" class="mini" placeholder="请输入联系人电话" value="<%= data && data.contactPhone %>">
                 </p>
             </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>分类：</p>
+            <div class="fl R_right wd660 category">
+                <!-- <input type="hidden" name="categoryName" id="categoryName" value="" /> -->
+                <!-- 服务分类 -->
+                <select name="categoryId" data-default="<%= data && data.categoryId ? data.categoryId : '' %>" id="category">
+                </select>
+            </div>
+        </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><em>*</em>标签：</p>
+            <div class="fl R_right category">
+                <div class="tag-area fl">
+                    <span class="un-select">未选择任何标签</span>
+                </div>
+                <a class="btn btn-primary" id="chooseTag" href="javascript:;">选择</a>
+            </div>
+            <label class="tag-error">请选择标签</label>
         </div>
         <div class="clearfix ReleaseList">
             <p class="fl R_left">需求用户：</p>

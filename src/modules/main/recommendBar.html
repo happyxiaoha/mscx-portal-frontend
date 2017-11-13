@@ -2,7 +2,7 @@
 <% if(type == 'api'){ %>
 <% _.each(dataList,function(item,index){ %>
 <% if(index < 10 ){%>
-<li><a href="api.html#detail/<%= item.apiServiceId %>" title="<%= item.apiServiceCName %>"><%= item.apiServiceCName %></a></li>
+<li><a href="sources.html?api/detail/<%= item.apiServiceId %>" title="<%= item.apiServiceCName %>"><%= item.apiServiceCName %></a></li>
 <% }; %>
 <% }); %>
 <% }; %>
@@ -10,7 +10,7 @@
 <% if(type == 'ser'){ %>
 <% _.each(dataList,function(item,index){ %>
 <% if(index < 10 ){%>
-<li><a href="services.html#detail/<%= item.id %>" title="<%= item.name %>"><%= item.name %></a></li>
+<li><a href="sources.html?service/detail/<%= item.id %>" title="<%= item.name %>"><%= item.name %></a></li>
 <% }; %>
 <% }); %>
 <% }; %>

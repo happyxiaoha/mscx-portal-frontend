@@ -23,7 +23,7 @@
                     <tbody>
                     <% _.each(focusList, function (fitem) { %>
                     <tr attrId="<%=fitem.dataInfoId%>">
-                        <td><a href="sources.html?detail/<%=fitem.dataInfoId%>"><%=fitem.name%></a></td>
+                        <td><a href="sources.html?data/detail/<%=fitem.dataInfoId%>"><%=fitem.name%></a></td>
                         <td><%=fitem.orgName%></td>
                         <td><%= fitem.updatedTime ? new Date(fitem.updatedTime).format('yyyy-MM-dd') : '-'%></td>
                         <td><%= fitem.attentionTime ? new Date(fitem.attentionTime).format('yyyy-MM-dd HH:mm:ss') : '-'%></td>
@@ -62,7 +62,7 @@
                         <tbody>
                         <% _.each(downloadList, function (ditem) { %>
                         <tr attrId="<%=ditem.id%>">
-                            <td><a href="sources.html?detail/<%=ditem.id%>"><%=ditem.dataSourceName%></a></td>
+                            <td><a href="sources.html?data/detail/<%=ditem.id%>"><%=ditem.dataSourceName%></a></td>
                             <td><%=ditem.orgName%></td>
                             <td><%= ditem.updateTime ? new Date(parseInt(ditem.updateTime)).format('yyyy-MM-dd') : '-'%></td>
                             <td><%=ditem.desc%></td>

@@ -253,6 +253,7 @@
 }
 .demand-portal .R_Btns.contact, .data-publish .R_Btns.contact {
     margin: 0 0 0 10px;
+    padding: 0;
 }
 @media screen and (max-width: 1300px){
     .rightMenuWrap {

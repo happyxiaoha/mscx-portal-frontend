@@ -2,6 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 
+var formatPrice = require('lib/util').formatPrice;
 var template = require('./publishTemplate.html');
 var optionTemplate = require('./optionTemplate.html');
 var detailModel = Backbone.Model.extend({
@@ -33,7 +34,9 @@ var createDemandView = Backbone.View.extend({
         'click #goBack': 'backHistory',
         'change input[type="file"]': 'changeFile',
         'click .category input[type="radio"]': 'changeCategory',
-        'click .split span': 'toggleForm'
+        'click .split span': 'toggleForm',
+        'focus #system-price': 'handleFocus',
+        'blur #system-price': 'handleFormat'
     },
     template: _.template(template, {variable: 'data'}),
     optionTemplate: _.template(optionTemplate, {variable: 'data'}),
@@ -105,7 +108,8 @@ var createDemandView = Backbone.View.extend({
                 },
                 preOffer: {
                     required: true,
-                    maxlength: 10
+                    maxlength: 20,
+                    price: true
                 }
             },
             submitHandler: function () {
@@ -120,6 +124,9 @@ var createDemandView = Backbone.View.extend({
         this.$('#categoryName').val(categoryName);
 
         this.$('#publishBtn').attr('disabled', 'disabled');
+
+        this.$('#system-price').val(this.$('#system-price').data('realval'));
+
         this.$form.ajaxSubmit({
             url: this.formAction,
             success: function(res) {
@@ -216,6 +223,22 @@ var createDemandView = Backbone.View.extend({
         var $target = this.$(event.currentTarget);
         $target.toggleClass('more');
         this.$('.more-info').toggleClass('hide');
+    },
+    handleFormat: function(event) {
+        var $target = this.$(event.currentTarget);
+        var price = $target.val();
+
+        var isValid = this.$form.validate().element($('#system-price'))
+
+        if(isValid) {
+            $target.data('realval', price).val(formatPrice(price));
+        }
+    },
+    handleFocus: function(event) {
+        var $target = this.$(event.currentTarget);
+        var price = $target.val();
+
+        $target.val(price.replace(/,/g, ''))
     }
 });
 

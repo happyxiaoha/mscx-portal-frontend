@@ -1,10 +1,17 @@
-.filter-area {position: fixed;top:43px;left: 0;width: 94%;background: #FFF;padding: 10px 0 0;z-index: 999;}
-.filter-area input[type="text"]{position: absolute;top: -35px;right: 30px;width: 180px;z-index: 99999;}
+.filter-area {position: relative;top:0;left: 0;width: 94%;background: #FFF;padding: 10px 0 0;z-index: 999;}
+.filter-area input[type="text"]{
+    position: absolute;
+    top: 35px;
+    left: 25px;
+    width: 180px;
+    z-index: 99999;
+    box-sizing: border-box;
+}
 .filter-a {padding: 0 10px 5px 30px;}
 .filter-a a {color: #0ab7ef !important;display: block;float: left;margin-right: 4px;}
 .filter-a a:hover {color: #0681a9;text-decoration: underline;}
 .provider-list {
-    margin-top: 15px;
+    margin-top: 50px;
     width: 84%;
     padding: 10px 20px;
     position: relative;
@@ -18,4 +25,9 @@
 }
 .provider-list li:hover{
     background: #eee;
+}
+.provider-list .empty-tip {
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
 }

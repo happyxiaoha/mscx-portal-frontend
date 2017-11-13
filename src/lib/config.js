@@ -16,7 +16,7 @@ var mscxPage = {
         payEl: '.pay-content',
         threeSourceEl:'.source-content',
         threeApiEl:'.three-api-content',
-        threeServicesEl:'.service-content',
+        threeServicesEl:'.service-content'
     },
     views: {},
     appRouter: {},
@@ -31,7 +31,9 @@ var mscxPage = {
         servicesPage: 'services.html',
         saasPage: 'saas.html',
         demandPage: 'demand.html',
-        pioneeringPage: 'pioneering.html'
+        newsPage: 'news.html',
+        contactPage: 'contactUs.html',
+        rechargePage: 'recharge.html',
     },
     userInfo: '',
     userAuthType: {
@@ -91,4 +93,7 @@ var mscxPage = {
         })
     }
 };
+
+window.mscxPage = mscxPage;
+
 module.exports = mscxPage;

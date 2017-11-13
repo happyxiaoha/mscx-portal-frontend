@@ -11,24 +11,24 @@ var menuList = [
         url: mscxPage.urlConfig.indexPage
     },
     {
-        name: '数据',
+        name: '数据包',
         url: mscxPage.urlConfig.sourcesPage
     },
     {
         name: 'API',
-        url: mscxPage.urlConfig.apiPage
+        url: mscxPage.urlConfig.sourcesPage + '#api/data'
     },
     {
         name: '微服务',
-        url: mscxPage.urlConfig.servicesPage
+        url: mscxPage.urlConfig.sourcesPage + '#service'
     },
     {
         name: '需求定制',
         url: mscxPage.urlConfig.demandPage
     },
     {
-        name: '创业园地',
-        url: mscxPage.urlConfig.pioneeringPage
+        name: '新闻资讯',
+        url: mscxPage.urlConfig.newsPage
     }
 ];
 

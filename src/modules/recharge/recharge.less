@@ -1,0 +1,100 @@
+.phone {
+  .desc {
+    line-height: 30px;
+    text-indent: 2em;
+    font-size: 14px;
+    button {
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      color: #fff;
+      font-size: 16px;
+      background: #3F89EC;
+      border: 0;
+      margin-top: 3px;
+      margin-left: 25px;
+      padding: 0 36px;
+      outline: none;
+    }
+  }
+  .list {
+    line-height: 30px;
+    font-size: 14px;
+    padding-left: 20px;
+    li {
+      list-style: initial;
+    }
+  }
+  .tabs {
+    height: 40px;
+    margin: 0 0 15px 0;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    span {
+      display: block;
+      float: left;
+      padding: 0 20px;
+      font-size: 15px;
+      line-height: 38px;
+      cursor: pointer;
+      position: relative;
+      height: 40px;
+      &:first-child {
+        border-left: 0!important;
+      }
+      &.active {
+        border-top: 2px solid #069cd9;
+        background: #fff;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        margin-top: -1px;
+        a {
+          color: #069cd9;
+        }
+      }
+      a {
+        color: #444;
+        display: block;
+      }
+    }
+  }
+  .tab-content {
+    border: 1px solid #ccc;
+    padding: 10px;
+    .content-item {
+      display: none;
+      &.active {
+        display: block;
+      }
+      .content-desc {
+        width: 450px;
+        line-height: 30px;
+        font-size: 14px;
+        margin: 40px 0 0 40px;
+      }
+    }
+  }
+  .flow-box {
+    border: 1px solid #ccc;
+    margin-left: 15px;
+    padding: 0 20px;
+    .flow-item {
+      font-size: 14px;
+      line-height: 25px;
+      overflow: hidden;
+      margin-top: 10px;
+      padding-bottom: 10px;
+      &:first-child {
+        border-bottom: 1px dashed #aaa;
+      } 
+      img {
+        margin-right: 20px;
+      }
+      li {
+        list-style: initial;
+        margin-left: 15px;
+      }
+    }
+    
+  }
+}

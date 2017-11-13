@@ -35,12 +35,14 @@ var bannerView = Backbone.View.extend({
     },
     banner: function (size) {
         var galleryTop = new Swiper('.swiper-container', {
-            /*        nextButton: '.swiper-button-next',
-             prevButton: '.swiper-button-prev',*/
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
             spaceBetween: 10,
             loop: true,
-            direction: 'vertical',
+            pagination : '.swiper-pagination',
+            paginationClickable: true,
             loopedSlides: 4,
+            autoplay: 3000
         });
         if (size > 4) {
             size = 4;
@@ -62,26 +64,10 @@ var bannerView = Backbone.View.extend({
                 galleryTop.stopAutoplay();
             });
         } else {
-            var galleryThumbs = new Swiper('.swiper-right', {
-                spaceBetween: 10,
-                slidesPerView: size,
-                touchRatio: 0.2,
-                loop: true,
-                autoplay: 3000,
-                direction: 'vertical',
-                // preventClicks: false,
-                loopedSlides: size,
-                slideToClickedSlide: true
-            });
-            galleryTop.params.control = galleryThumbs;
-            galleryThumbs.params.control = galleryTop;
-
             $(".swiper-container").hover(function () {
                 galleryTop.stopAutoplay();
-                galleryThumbs.stopAutoplay();
             }, function () {
                 galleryTop.startAutoplay();
-                galleryThumbs.startAutoplay();
 
             });
         }

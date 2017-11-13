@@ -5,23 +5,18 @@
 
 var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var contentView = require('./contentView.js');
+var Resource = require('lib/resource.js');
 require('./saas.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.apiEl,
     initialize: function() {
-        this.$el.addClass('grid1000');
+        this.$el.addClass('grid1000 mt30');
         this.leftMenuView = new leftMenuView({
             model: {
-                className: 'services',
+                className: 'data',
                 id: this.id,
-                sideBars: [
-                    {
-                        name: 'SaaS服务',
-                        url: '#saas',
-                        key: 'saas'
-                    }
-                ]
+                sideBars: Resource.maps
             }
         });
 

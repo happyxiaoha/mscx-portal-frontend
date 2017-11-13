@@ -126,7 +126,7 @@
         this.loadEnterpriseForm = true
         if(res.result) {
           this.isEnterpriseAuthorized = res.result.status === '02'
-          this.isEnterpriseAuthorizing = res.result.status === '01'
+          this.isEnterpriseAuthorizing = (res.result.status === '01' || res.result.status === '03')
           this.enterpriseAuth = res.result
         }
         if(!this.isEnterpriseAuthorized) {

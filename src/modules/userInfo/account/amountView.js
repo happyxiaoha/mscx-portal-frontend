@@ -533,7 +533,7 @@ var amountView = Backbone.View.extend({
     handleGetDrawCount: function() {
         var model = this.getDrawCountModel.toJSON();
 
-        if(model.status == 'OK' && model.result) {
+        if(model.status == 'OK' && model.result && model.result.withdrawTimes) {
             $('#drawCountTip').html(model.result.withdrawTimes + '次')
             $('#drawCountIpt').val(model.result.withdrawTimes)
         }

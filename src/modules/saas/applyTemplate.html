@@ -17,7 +17,14 @@
             <tr>
                 <td><input type="radio" name="radio"></td>
                 <td><%= item.name %></td>
-                <td><%= item.chargeCount || 0 %><%= item.chargeType == '04' ? '天' : '次' %></td>
+                <td>
+                    <%= item.chargeCount || 0 %>
+                    <% if(item.chargeType == '04' || item.chargeType == '06'){ %>
+                        天
+                    <% }else if(item.chargeType == '05'){ %>
+                        次
+                    <% } %>    
+                </td>
                 <td><%= item.price %></td>
                 <td>
                     <!-- 如果是 试用/体验 套餐（单价为0），输入框默认1且不可操作 -->

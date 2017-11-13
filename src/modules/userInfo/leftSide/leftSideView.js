@@ -58,7 +58,8 @@ var leftSideView = Backbone.View.extend({
         }));
         console.log("mscxPage.userInfo.flagMerchant=" + mscxPage.userInfo.flagMerchant);
         if (mscxPage.userInfo.flagMerchant === "1") {
-            $("#merchantMrgBtn").show();
+            console.log("coming");
+            $("#merchantMrgBtn").removeClass("hide");
         }
     }
 });

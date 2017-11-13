@@ -13,6 +13,9 @@ var Routes = Backbone.Router.extend({
         'settled': 'settledView'
     },
     settledView: function () {
+        if (!mscxPage.isLogin()) {
+            return;
+        }
         var view = require('./settledView.js');
         new view();
     },

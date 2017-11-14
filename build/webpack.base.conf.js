@@ -5,8 +5,8 @@ var CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
 var config = require('./config')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+function resolve(dir) {
+    return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name:'common',
+            name: 'common',
             filename: 'js/common.js',
             minChunks: 2
         }),
@@ -199,6 +199,14 @@ module.exports = {
             inject: true,
             chunks: ["manifest", "vendor", "common", 'kuaidianSettled'],
             chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
+            title: '移动登录',
+            filename: 'mobile/login.html',
+            template: 'src/ejs/mobile/login.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'mobileLogin'],
+            chunksSortMode: 'dependency'
         })
     ],
     module: {
@@ -221,7 +229,7 @@ module.exports = {
                     use: [
                         {
                             loader: "css-loader"
-                        },{
+                        }, {
                             loader: "less-loader"
                         }
                     ]

@@ -62,6 +62,7 @@ module.exports = {
     'saas': './src/js/saas.js',
     'help': './src/js/help.js',
     'kuaidian': './src/js/kuaidian.js',
-    'kuaidianSettled': './src/js/kuaidianSettled.js'
+    'kuaidianSettled': './src/js/kuaidianSettled.js',
+    'mobileLogin': './src/js/mobile/login.js'
   }
 };

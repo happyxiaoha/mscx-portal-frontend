@@ -38,8 +38,8 @@ var kuaidianView = Backbone.View.extend({
     render: function () {
         var nJson = this.model.toJSON();
         mscxPage.userInfo = nJson.result;
-        if (!mscxPage.isLogin()) {
-            return;
+        if (!mscxPage.userInfo) {
+            location.href = 'mobile/login.html?service=' + encodeURIComponent(location.href);
         }
         // window.location.href = mscxPage.request.kuaidian + "index.do";
 

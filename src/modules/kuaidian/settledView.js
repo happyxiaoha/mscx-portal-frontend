@@ -40,6 +40,10 @@ var settledView = Backbone.View.extend({
             return;
         }
         var districtArr = $("#shopAddress").val().split("/");
+        if (districtArr[0] === "") {
+            layer.alert("请选择店铺地址！");
+            return;
+        }
         that.model.save({
             province: districtArr[0],
             city: districtArr[1],

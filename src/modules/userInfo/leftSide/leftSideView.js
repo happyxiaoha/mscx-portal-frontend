@@ -56,9 +56,7 @@ var leftSideView = Backbone.View.extend({
             name: sName,
             isDisPhone: mscxPage.isPhoto
         }));
-        console.log("mscxPage.userInfo.flagMerchant=" + mscxPage.userInfo.flagMerchant);
         if (mscxPage.userInfo.flagMerchant === "1") {
-            console.log("coming");
             $("#merchantMrgBtn").removeClass("hide");
         }
     }

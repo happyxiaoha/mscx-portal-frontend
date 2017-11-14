@@ -63,6 +63,7 @@ module.exports = {
     'help': './src/js/help.js',
     'kuaidian': './src/js/kuaidian.js',
     'kuaidianSettled': './src/js/kuaidianSettled.js',
+    'kuaidianIntrodeuce': './src/js/kuaidianIntrodeuce.js',
     'mobileLogin': './src/js/mobile/login.js'
   }
 };

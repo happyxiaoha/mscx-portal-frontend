@@ -62,11 +62,23 @@
                         <tbody>
                         <% _.each(downloadList, function (ditem) { %>
                         <tr attrId="<%=ditem.id%>">
-                            <td><a href="sources.html?data/detail/<%=ditem.id%>"><%=ditem.dataSourceName%></a></td>
+                            <td>
+                                <% if(ditem.status == 1 || ditem.status == 9) { %>
+                                <%=ditem.dataSourceName%>
+                                <% } else { %>
+                                <a href="sources.html?data/detail/<%=ditem.id%>"><%=ditem.dataSourceName%></a>
+                                <% } %>
+                            </td>
                             <td><%=ditem.orgName%></td>
                             <td><%= ditem.updateTime ? new Date(parseInt(ditem.updateTime)).format('yyyy-MM-dd') : '-'%></td>
                             <td><%=ditem.desc%></td>
-                            <td><a href="javascript:;" class="down-sources">下载</a></td>
+                            <td>
+                                <% if(ditem.status == 1 || ditem.status == 9) { %>
+                                    -
+                                <% } else { %>
+                                    <a href="javascript:;" class="down-sources">下载</a>
+                                <% } %>
+                            </td>
                         </tr>
                         <% }); %>
                         <%if(downloadList.length == 0){%>

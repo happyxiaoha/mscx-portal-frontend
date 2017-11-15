@@ -72,7 +72,7 @@ var mainView = Backbone.View.extend({
 
             this.$hotNewsList.load(cmsHotUrl + '?time=' + +(new Date()))
 
-            new firstRecommendView();
+            // new firstRecommendView();
 
             // new recommendBarView({
             //     id: 'ser',

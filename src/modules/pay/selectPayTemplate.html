@@ -25,6 +25,7 @@
     </label>
     <% } %>
     <hr/>
+    <% if(data.order.order_classify != '2') { %>
     <p class="point-title">使用积分抵用<i></i></p>
     <div class="point-pay" style="display:none;">
         <% if(!data.pointRule){ %>
@@ -69,6 +70,7 @@
         </ul>
         <% } %>
     </div>
+    <% } %>
 </div>
 <div class="pay-total">
     <ul>

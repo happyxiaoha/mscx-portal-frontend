@@ -57,12 +57,12 @@
                     <% if(!data.id){ %>
                     <input type="radio" checked name="matchmakeTrade" value="Y">
                     <% }else { %>
-                    <input type="radio" <%= data && data.matchmakeTrade == 'Y' && "checked" %> name="matchmakeTrade" value="Y">
+                    <input type="radio" <%= data && (data.matchmakeTrade == '是' || data.matchmakeTrade == 'Y') && "checked" %> name="matchmakeTrade" value="Y">
                     <% } %>
                     是
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" <%= data && data.matchmakeTrade == 'N' && "checked" %> name="matchmakeTrade" value="N">
+                    <input type="radio" <%= data && (data.matchmakeTrade == '否' || data.matchmakeTrade == 'N') && "checked" %> name="matchmakeTrade" value="N">
                     否
                 </label>
             </div>

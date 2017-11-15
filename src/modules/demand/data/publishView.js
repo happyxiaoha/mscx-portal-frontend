@@ -149,6 +149,10 @@ var createDemandView = Backbone.View.extend({
             $(ev.target).trigger('blur');
         });
 
+        if(this.id) {
+            this.$('#dataReward').trigger('blur');
+        }
+
         this.serviceCategory.fetch();
     },
     goContact: function(event) {

@@ -167,6 +167,7 @@ var createDemandView = Backbone.View.extend({
 
         if(this.id) {
             this.formAction = mscxPage.host + demandApi + 'modifyApi.do';
+            this.$('#system-price').trigger('blur');
         }else {
             this.formAction = mscxPage.host + '/zuul' + demandApi + 'addApi.do';
         }

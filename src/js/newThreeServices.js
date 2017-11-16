@@ -5,7 +5,7 @@ require('less/base.less');
 require('js/ajaxBackboneManger.js');
 
 var header = require('../widget/headerWidget/headerView.js');
-var footer = require('../widget/indexFooterWidget/footerView.js');
+var footer = require('../widget/footerWidget/footerView.js');
 var router = require('../modules/newThreeServices/router.js');
 
 $(function() {

@@ -40,6 +40,8 @@ var mLoginView = Backbone.View.extend({
             } else {
                 window.localStorage.removeItem('GYFromUrl');
             }
+        } else {
+            window.localStorage.removeItem('GYFromUrl');
         }
     },
     render: function () {
@@ -67,8 +69,7 @@ var mLoginView = Backbone.View.extend({
                     if (fromUrl) {
                         window.open(decodeURIComponent(fromUrl), '_self');
                     } else {
-                        var url = new URL(window.location.href);
-                        var type = url.searchParams.get("type");
+                        var type = getParameterByName("type");
                         // type : null||1 =用户登录；2=商户登录
                         if (type === "2") {
                             window.open(mscxPage.request.kuaidian + "merchant/management.do?m=true", '_self');
@@ -125,3 +126,13 @@ var mLoginView = Backbone.View.extend({
 });
 
 module.exports = mLoginView;
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}

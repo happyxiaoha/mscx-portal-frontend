@@ -32,12 +32,14 @@ var mLoginView = Backbone.View.extend({
         this.$el.html(this.template());
         this.render();
 
-        var fromUrl = location.search && location.search.split('?')[1] && location.search.split('?')[1].split('=')[1];
-
-        if (fromUrl) {
-            window.localStorage.setItem('GYFromUrl', fromUrl);
-        } else {
-            window.localStorage.removeItem('GYFromUrl');
+        if (location.search.indexOf("?service=") > 0) {
+            alert(1);
+            var fromUrl = location.search && location.search.split('?')[1] && location.search.split('?')[1].split('=')[1];
+            if (fromUrl) {
+                window.localStorage.setItem('GYFromUrl', fromUrl);
+            } else {
+                window.localStorage.removeItem('GYFromUrl');
+            }
         }
     },
     render: function () {
@@ -45,7 +47,7 @@ var mLoginView = Backbone.View.extend({
         $('#loginForm').validate(this.loginValidateConfig());
     },
     refreshCaptcha: function () {
-        $('.captchaImg').attr('src','/login/captcha.do?t='+ new Date().getTime());
+        $('.captchaImg').attr('src', '/login/captcha.do?t=' + new Date().getTime());
     },
     login: function () {
         var that = this,
@@ -64,9 +66,15 @@ var mLoginView = Backbone.View.extend({
                     var fromUrl = window.localStorage.getItem('GYFromUrl');
                     if (fromUrl) {
                         window.open(decodeURIComponent(fromUrl), '_self');
-                    }
-                    else {
-                        window.open('index.html', '_self');
+                    } else {
+                        var url = new URL(window.location.href);
+                        var type = url.searchParams.get("type");
+                        // type : null||1 =用户登录；2=商户登录
+                        if (type === "2") {
+                            window.open(mscxPage.request.kuaidian + "merchant/management.do?m=true", '_self');
+                        } else {
+                            window.open('index.html', '_self');
+                        }
                     }
 
                 }
@@ -80,12 +88,12 @@ var mLoginView = Backbone.View.extend({
         var that = this;
         return {
             rules: {
-                loginName:{
+                loginName: {
                     required: true,
                     minlength: 6,
                     maxlength: 20
                 },
-                password:{
+                password: {
                     required: true
                 },
                 captcha: {
@@ -95,12 +103,12 @@ var mLoginView = Backbone.View.extend({
                 }
             },
             messages: {
-                loginName:{
+                loginName: {
                     required: "请输入用户名",
                     minlength: "用户名最少6个字符",
                     maxlength: "用户名最多20个字符"
                 },
-                password:{
+                password: {
                     required: "请输入密码"
                 },
                 captcha: {

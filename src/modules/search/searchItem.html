@@ -4,7 +4,7 @@
 <% _.each(data.list, function(item){ %>
 <li>
     <p>
-        <a href="sources.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
+        <a href="sources.html#data/detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
         <span>类型：</span>
         <span class="corBlue">数据</span>
     </p>
@@ -15,7 +15,7 @@
 <% _.each(data.list, function(item){ %>
 <li>
     <p>
-        <a href="api.html#detail/<%= item.apiServiceId %>" class="corOrange ft16"><%= item.apiServiceName %></a>
+        <a href="sources.html#api/detail/<%= item.apiServiceId %>" class="corOrange ft16"><%= item.apiServiceName %></a>
         <span>类型：</span>
         <span class="corBlue"><%= item.typeDesc %></span>
     </p>
@@ -26,7 +26,7 @@
 <% _.each(data.list, function(item){ %>
 <li>
     <p>
-        <a href="services.html#detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
+        <a href="sources.html#service/detail/<%= item.id %>" class="corOrange ft16"><%= item.name %></a>
         <span>类型：</span>
         <span class="corBlue">微服务</span>
     </p>

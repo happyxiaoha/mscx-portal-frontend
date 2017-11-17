@@ -2,6 +2,7 @@
  * Created by Kevin on 2016/12/6.
  */
 var template = require('./header.html');
+var userTemplate = require('./userInfo.html');
 var cityMap = require('./cityStation.json');
 require('./header.css');
 var menuList = [
@@ -33,7 +34,7 @@ var menuList = [
     {
         name: '关于我们',
         url: mscxPage.urlConfig.contactPage,
-        key: 'pioneering'
+        key: 'contactUs'
     }
 ];
 
@@ -56,6 +57,7 @@ var switchCity = Backbone.Model.extend({
 var headerView = Backbone.View.extend({
     el: mscxPage.domEl.headerEl,
     template: _.template(template, {variable: 'data'}),
+    userTemplate: _.template(userTemplate, {variable: 'data'}),
     events: {
         'blur .info-line input': 'changeAttribute',
         'click #exit': 'logout',
@@ -146,13 +148,9 @@ var headerView = Backbone.View.extend({
         mscxPage.userInfo = nJson.result;
         this.renderLogoPage(nJson.result);
         this.didRender && this.didRender();
-        this.$el.html(this.template({
-            id: this.id,
-            menuList: menuList,
+        this.$('.user-area').html(this.userTemplate({
             username: nJson.result && (nJson.result.name || nJson.result.account),
             isRealName: nJson.result && (nJson.result.userType != 'REGISTER'),
-            cityStations: cityMap.cities,
-            currentCity: this.currentCity
         }));
         var _c;
         $("#personReal").hover(function(){

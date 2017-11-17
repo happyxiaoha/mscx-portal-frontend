@@ -11,16 +11,12 @@ var menuList = [
         url: mscxPage.urlConfig.indexPage
     },
     {
-        name: '数据包',
+        name: '数据服务',
         url: mscxPage.urlConfig.sourcesPage
     },
     {
-        name: 'API',
-        url: mscxPage.urlConfig.sourcesPage + '#api/data'
-    },
-    {
-        name: '微服务',
-        url: mscxPage.urlConfig.sourcesPage + '#service'
+        name: '充值缴费',
+        url: mscxPage.urlConfig.rechargePage
     },
     {
         name: '需求定制',

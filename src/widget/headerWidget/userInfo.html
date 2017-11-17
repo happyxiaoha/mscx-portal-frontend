@@ -1,0 +1,31 @@
+
+    <% if(data.username) { %>
+        <div class="yesLogin">
+            <div id="personReal" class="personIcon">
+                <span id="infoName" class="down" title="<%= data.username %>"><%= data.username %></span>
+            </div>
+        </div>
+    <% }else { %>
+        <div class="noLogin">
+            <a href="login.html" >登录</a>
+            <span>|</span>
+            <a href="register.html">注册</a>
+        </div>
+    <% } %>
+    
+    <!-- 个人中心 -->
+    <div class="shareBox dropMenu" style="display: none;">
+        <div class="shareList">
+            <ul>
+                <li class="usercenter">
+                    <a href="userInfo.html">用户中心</a>
+                </li>
+                <% if(data.isRealName){ %>
+                <li class="develop">
+                    <a href="javascript:;" id="developLink">开发者门户</a>
+                </li>
+                <% } %>
+                <li class="logout"><a id="exit">退出</a></li>
+            </ul>
+        </div>
+    </div>

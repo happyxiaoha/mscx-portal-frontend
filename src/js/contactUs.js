@@ -8,7 +8,9 @@ var footer = require('../widget/footerWidget/footerView.js');
 var contactUsView = require('../modules/contactUs/contactUsView.js');
 
 $(function() {
-    new header();
+    new header({
+      id: 'contactUs'
+    });
     new footer();
     new contactUsView();
 

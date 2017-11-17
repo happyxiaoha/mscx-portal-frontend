@@ -1,0 +1,9 @@
+<ul>
+    <% data.partnerList.forEach(function(item) { %>
+    <li>
+        <a href="<%= item.link %>" target="_blank">
+            <img src="<%= item.icon %>" alt="<%= item.name %>">
+        </a>
+    </li>
+    <% }) %>
+</ul>

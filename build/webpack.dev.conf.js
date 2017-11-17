@@ -26,6 +26,13 @@ module.exports = merge(baseWebpackConfig, {
       {
         from: path.resolve(__dirname, '../static')
       }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/images/partner'),
+        to: 'images/partner',
+        ignore: ['.*']
+      }
     ])
   ]
 })

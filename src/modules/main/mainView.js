@@ -7,7 +7,9 @@ var template = require('./main.html'),
     recommendBarView = require('./recommendBarView.js'),
     recommendView = require('./recommendView.js'),
     bannerView = require('./banner.js'),
-    firstRecommendView = require('./firstRecommendView.js');
+    firstRecommendView = require('./firstRecommendView.js'),
+    partnerInfo = require('./partner.json'),
+    partnerTemplate = require('./partner.html');
 require('./../../css/swiper.css');
 require('../../lib/swiper.jquery.js');
 require('../../lib/jquery.SuperSlide.2.1.1.js');
@@ -43,6 +45,7 @@ var mainView = Backbone.View.extend({
     events: {
         'blur .info-line input':'changeAttribute'
     },
+    partnerTemplate: _.template(partnerTemplate, {variable: 'data'}),
     initialize: function() {
 
         var currentCity = JSON.parse(sessionStorage.getItem('currentCity'));
@@ -103,6 +106,10 @@ var mainView = Backbone.View.extend({
             // this.$list.load(cmsUrl + '?time=' + +(new Date()));
         }
         new bannerView();
+
+        // 合作伙伴加载
+        this.$('.partner').html(this.partnerTemplate(partnerInfo))
+
         this.render();
     },
     render: function(){

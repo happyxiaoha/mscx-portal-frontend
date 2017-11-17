@@ -77,6 +77,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     ]),
     new CopyWebpackPlugin([
       {
+        from: path.resolve(__dirname, '../src/images/partner'),
+        to: 'images/partner',
+        ignore: ['.*']
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
         from: path.resolve(__dirname, '../static')
       }
     ]),

@@ -1,0 +1,133 @@
+{
+  "partnerList": [
+    {
+      "name": "广州塔",
+      "icon": "../../images/partner/partner5.png",
+      "link": "http://www.cantontower.com/Default.aspx"
+    },
+    {
+      "name": "广东航运交易综合信息服务平台",
+      "icon": "../../images/partner/partner1.png",
+      "link": "http://www.gse.net.cn/gzwater/web/index/index.aspx"
+    },
+    {
+      "name": "北京因特睿软件有限公司",
+      "icon": "../../images/partner/partner2.png",
+      "link": "http://www.internetware.cn/"
+    },
+    {
+      "name": "广州城投",
+      "icon": "../../images/partner/partner3.png",
+      "link": "http://www.gzci.net/"
+    },
+    {
+      "name": "神州控股",
+      "icon": "../../images/partner/partner4.png",
+      "link": "http://www.dcholdings.com.hk/c/index.php"
+    },{
+      "name": "中国银行",
+      "icon": "../../images/partner/partner6.png",
+      "link": "http://www.boc.cn/"
+    },{
+      "name": "中国人寿",
+      "icon": "../../images/partner/partner7.png",
+      "link": "http://www.chinalife.com.cn/"
+    },{
+      "name": "中信银行",
+      "icon": "../../images/partner/partner8.png",
+      "link": "http://www.citicbank.com/"
+    },{
+      "name": "晋商银行",
+      "icon": "../../images/partner/partner9.png",
+      "link": "http://www.jshbank.com/"
+    },{
+      "name": "泰康人寿",
+      "icon": "../../images/partner/partner10.png",
+      "link": "http://www.taikang.com/"
+    },{
+      "name": "中国移动",
+      "icon": "../../images/partner/partner11.png",
+      "link": "http://www.10086.cn/"
+    },{
+      "name": "大唐电信",
+      "icon": "../../images/partner/partner12.png",
+      "link": "http://www.datang.com/"
+    },{
+      "name": "中国联通",
+      "icon": "../../images/partner/partner13.png",
+      "link": "http://www.10010.com/"
+    },{
+      "name": "中国电信",
+      "icon": "../../images/partner/partner14.png",
+      "link": "http://www.189.cn/"
+    },{
+      "name": "中国中钢集团",
+      "icon": "../../images/partner/partner16.png",
+      "link": "http://www.sinosteel.com/"
+    },{
+      "name": "中国石化",
+      "icon": "../../images/partner/partner17.png",
+      "link": "http://www.sinopec.com/"
+    },{
+      "name": "阿里巴巴",
+      "icon": "../../images/partner/partner18.png",
+      "link": "https://www.1688.com/"
+    },{
+      "name": "国家电网",
+      "icon": "../../images/partner/partner19.png",
+      "link": "http://www.sgcc.com.cn/"
+    },{
+      "name": "中国石油",
+      "icon": "../../images/partner/partner20.png",
+      "link": "http://www.cnpc.com.cn/"
+    },{
+      "name": "新华社",
+      "icon": "../../images/partner/partner21.png",
+      "link": "http://www.xinhuanet.com/"
+    },{
+      "name": "中国科学院",
+      "icon": "../../images/partner/partner22.png",
+      "link": "http://www.cas.cn/"
+    },{
+      "name": "中储粮",
+      "icon": "../../images/partner/partner24.png",
+      "link": "http://www.sinograin.com.cn/"
+    },{
+      "name": "首钢集团",
+      "icon": "../../images/partner/partner25.png",
+      "link": "http://www.shougang.com.cn/"
+    },{
+      "name": "广州市公用事业规划设计院",
+      "icon": "../../images/partner/partner26.png",
+      "link": "http://www.gzpui.com/"
+    },{
+      "name": "花城汇",
+      "icon": "../../images/partner/partner28.png",
+      "link": "http://www.mowgz.com/"
+    },{
+      "name": "moto",
+      "icon": "../../images/partner/partner29.png",
+      "link": "http://www.motorola.com.cn/"
+    },{
+      "name": "cisco",
+      "icon": "../../images/partner/partner30.png",
+      "link": "https://www.cisco.com"
+    },{
+      "name": "ibm",
+      "icon": "../../images/partner/partner31.png",
+      "link": "https://www.ibm.com"
+    },{
+      "name": "amd",
+      "icon": "../../images/partner/partner32.png",
+      "link": "http://www.amd.com/zh-hans"
+    },{
+      "name": "netgear",
+      "icon": "../../images/partner/partner33.png",
+      "link": "http://www.netgear.com.cn/"
+    },{
+      "name": "华为",
+      "icon": "../../images/partner/partner34.png",
+      "link": "http://www.huawei.com/cn/"
+    }
+  ]
+}

@@ -35,8 +35,6 @@ var bannerView = Backbone.View.extend({
     },
     banner: function (size) {
         var galleryTop = new Swiper('.swiper-container', {
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
             spaceBetween: 10,
             loop: true,
             pagination : '.swiper-pagination',
@@ -49,8 +47,6 @@ var bannerView = Backbone.View.extend({
         }
         if (currentCity && currentCity.code != '440100' && currentCity.code != '440113') {
             galleryTop = new Swiper('.swiper-container', {
-                /*        nextButton: '.swiper-button-next',
-                 prevButton: '.swiper-button-prev',*/
                 spaceBetween: 10,
                 loop: true,
                 direction: 'vertical',

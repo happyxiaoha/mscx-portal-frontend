@@ -32,7 +32,7 @@
         <%}%>
         </td>
         <td><%= aitem.sysDescription || '-' %></td>
-        <td><%=mscxPage.sourceStatus[aitem.statusCode]%></td>
+        <td><%= aitem.statusName %></td>
         <td>
             <%if(aitem.statusCode == '0'){%>
                 <a href="javascript:;" class="apiPublish" data-id="<%=aitem.id%>">发布</a>

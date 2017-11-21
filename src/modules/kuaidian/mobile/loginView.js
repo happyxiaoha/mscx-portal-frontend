@@ -72,7 +72,9 @@ var mLoginView = Backbone.View.extend({
                         var type = getParameterByName("type");
                         // type : null||1 =用户登录；2=商户登录
                         if (type === "2") {
-                            window.open(mscxPage.request.kuaidian + "merchant/management.do?m=true", '_self');
+                            window.open(mscxPage.request.kuaidian
+                                + "merchant/management.do?m=true?openid=" + getParameterByName("openid")
+                                , '_self');
                         } else {
                             window.open('index.html', '_self');
                         }

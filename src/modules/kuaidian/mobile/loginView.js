@@ -83,7 +83,7 @@ var mLoginView = Backbone.View.extend({
                 }
             },
             error: function () {
-                // that.refreshCaptcha();
+                that.refreshCaptcha();
             }
         });
     },

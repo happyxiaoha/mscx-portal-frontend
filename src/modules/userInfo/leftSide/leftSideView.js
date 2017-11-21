@@ -5,6 +5,10 @@
 var template = require('./leftSide.html');
 require('./leftSide.css');
 
+var getUserMsg = Backbone.Model.extend({
+    url: mscxPage.host + '/briefInfo.do?'
+});
+
 var applyApiListModel = Backbone.Model.extend({
     url: mscxPage.request.order + 'api/getSelfApiList.do'
 });
@@ -13,6 +17,14 @@ var leftSideView = Backbone.View.extend({
     el: mscxPage.domEl.userCenterLeft,
     events: {},
     initialize: function (name) {
+        this.userModel = new getUserMsg();
+        this.userModel.fetch({
+            data: {
+                t: new Date().getTime()
+            }
+        });
+        this.listenTo(this.userModel, 'sync', this.saveUser);
+
         this.name = name;
         this.myApiModel = new applyApiListModel();
 
@@ -25,8 +37,7 @@ var leftSideView = Backbone.View.extend({
                     page: 1
                 }
             });
-        }
-        else {
+        } else {
             this.render();
         }
     },
@@ -45,8 +56,7 @@ var leftSideView = Backbone.View.extend({
             }
             mscxPage.isCheckPhone = true;
             this.render();
-        }
-        else {
+        } else {
             this.render();
         }
     },
@@ -56,9 +66,16 @@ var leftSideView = Backbone.View.extend({
             name: sName,
             isDisPhone: mscxPage.isPhoto
         }));
-        if (mscxPage.userInfo.flagMerchant === "1") {
-            $("#merchantMrgBtn").removeClass("hide");
+
+        if (!!mscxPage.userInfo.flagMerchant && mscxPage.userInfo.flagMerchant === "1") {
+            $("#merchantMrgBtn").attr("href", "/ro/mscx-kuaidian-api/merchant/management.do");
+        } else {
+            $("#merchantMrgBtn").attr("href", "kuaidianSettled.html");
         }
+    },
+    saveUser: function () {
+        var nJson = this.userModel.toJSON();
+        mscxPage.userInfo = nJson.result;
     }
 });
 

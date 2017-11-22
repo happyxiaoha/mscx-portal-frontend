@@ -6,10 +6,20 @@
             "abbr": "guangzhou",
             "url": "http://www.gzopendata.com"
         },{
-            "code": "440113",
-            "name": "番禺",
-            "abbr": "panyu",
-            "url": "http://py.gzopendata.com"
+            "code": "920001",
+            "name": "广外大学",
+            "abbr": "gw",
+            "url": "http://gw.gzopendata.com/"
+        },{
+            "code": "910001",
+            "name": "小牛耕田",
+            "abbr": "xn",
+            "url": "http://xn.gzopendata.com/"
+        },{
+            "code": "910002",
+            "name": "量子数聚",
+            "abbr": "lz",
+            "url": "http://lz.gzopendata.com/"
         }
     ]
 }

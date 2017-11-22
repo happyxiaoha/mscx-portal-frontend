@@ -127,9 +127,9 @@ var view = Backbone.View.extend({
             rules: {
                 point: {
                     number: true,
-                    tenMultiple: true,
+                    // tenMultiple: true,
                     min: 0,
-                    max: Math.floor(+pointModel.result.remainingPoint/10) * 10
+                    max: +pointModel.result.remainingPoint
                 },
                 pointAmount: {
                     max: +this.orderAmount

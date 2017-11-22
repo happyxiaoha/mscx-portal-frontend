@@ -5,14 +5,16 @@
         </a>
     </h1>
     <div class="switch-city">
-    <span>【<%= data && data.currentCity && data.currentCity.name || '广州' %>】</span>
+        <span>【<%= data && data.currentCity && data.currentCity.code == '440100' ? '子节点' : data.currentCity.name %>】</span>
         <div class="city-station" id="cityStation">
             <ul>
             <% if(data.currentCity.code == '440100') { %>
                 <% data && data.cityStations.forEach(function(item) { %>
-                <li class="<%= data.currentCity && data.currentCity.code == item.code ? 'selected' : '' %>">
-                    <a data-code="<%= item.code %>" data-url="<%= item.url %>" href="javascript:;"><%= item.name %></a>
-                </li>
+                    <% if(data.currentCity && data.currentCity.code != item.code){ %>
+                    <li>
+                        <a data-code="<%= item.code %>" data-url="<%= item.url %>" href="javascript:;"><%= item.name %></a>
+                    </li>
+                    <% } %>
                 <% }) %>
             <% }else { %>
                 <li>
@@ -34,8 +36,7 @@
                 <li style="font-weight: bold"><%= data.currentCity.name%></li>
                <!-- base64转换有图片大小限制-->
                 <li style="position: relative;top: -10px;"><img src="../../images/newicon/gzct.png" alt="" width="172px" height="54px"></li>
-            <%}%>
-            <% if(data.currentCity.code == '440100' || data.currentCity.code == '440113') { %>
+            <%} else {%>
                 <%  _.each(data.menuList, function (item) { %>
             <li <%= (data.id == item.key ? 'class=active' : '' ) %>><a href="<%= item.url %>"><%= item.name %></a></li>
                 <%})%>

@@ -148,6 +148,14 @@
             <label class="api-error">API不能为空</label>
             <span class="newSelBtn addApi fr bgBlue" style="padding: 3px 10px;">新增API</span>
         </div>
+        <div class="clearfix ReleaseList">
+            <p class="fl R_left"><i class="need">*</i>资源类型：</p>
+            <div class="fl R_right checkboxlist publish-type-list">
+                <label><input type="radio" name="publishType" value="01" <%if(res.publishType=='01'){%>checked<%}%>>完全公开</label>
+                <label><input type="radio" name="publishType" value="02" <%if(res.publishType=='02'){%>checked<%}%>>展示但不能申请</label>
+                <label><input type="radio" name="publishType" value="03" <%if(res.publishType=='03'){%>checked<%}%>>不展示</label>
+            </div>
+        </div>
         <div class="R_Btns">
             <!-- <button class="bgBlue">返回</button> -->
             <input type="submit" class="bgBlue" value="修改">

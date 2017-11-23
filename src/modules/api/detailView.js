@@ -125,6 +125,12 @@ var view = Backbone.View.extend({
             return;
         }
 
+        // 展示但不能申请的资源，按线下洽谈处理
+        if(this.detailModel.get('result').publishType === '02') {
+            this.offlineChat();
+            return;
+        }
+
         this.applyView = new applyView({
             id: this.id,
             model: {

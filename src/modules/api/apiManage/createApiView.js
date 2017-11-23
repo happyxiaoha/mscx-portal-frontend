@@ -798,6 +798,7 @@ var createApiView = Backbone.View.extend({
                 this.model.set('cname', obj.cname);
                 this.model.set('description', obj.description);
                 this.model.set('rtnCode', obj.rtnCode || '');
+                this.model.set('publishType', obj.publishType);
                 this.model.save({}, {
                     success: function () {
                         layer.msg('已提交审核！');

@@ -21,7 +21,7 @@
 .R_Btns input[type="submit"]{width: 120px;height: 44px;border: 0;outline: none;color: #fff;font-size: 16px;}
 .R_Btns input[type="submit"]:first-child{margin-right: 40px;}
 .checkboxlist,.chargeTypeRadio{  width: 690px;  }
-.checkboxlist label,.chargeTypeRadio label{  height: 30px;  line-height: 30px;  width: 120px;  float: left;overflow: hidden; text-overflow: ellipsis;display: inline-block;white-space: nowrap;}
+.checkboxlist label,.chargeTypeRadio label{  height: 30px;  line-height: 30px;  width: 125px;  float: left;overflow: hidden; text-overflow: ellipsis;display: inline-block;white-space: nowrap;}
 .checkboxlist label input[type="radio"]{margin: 0 5px 0;vertical-align: -2px;}
 .chargeTypeRadio label {width: 80px; }
 .newSelBtn{right: -60px;top: 0;height: 32px;line-height: 32px;text-align: center;color: #fff;cursor: pointer;}

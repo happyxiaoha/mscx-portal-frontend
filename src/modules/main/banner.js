@@ -4,9 +4,9 @@
 
 var bannerTemplate = require('./banner.html');
 var currentCity = JSON.parse(sessionStorage.getItem('currentCity'));
-if (currentCity && currentCity.code != '440100' && currentCity.code != '440113') {
-    bannerTemplate = require('./childBanner.html');
-}
+// if (currentCity && currentCity.code != '440100' && currentCity.code != '440113') {
+//     bannerTemplate = require('./childBanner.html');
+// }
 
 
 var bannerModel = Backbone.Model.extend({
@@ -45,28 +45,28 @@ var bannerView = Backbone.View.extend({
         if (size > 4) {
             size = 4;
         }
-        if (currentCity && currentCity.code != '440100' && currentCity.code != '440113') {
-            galleryTop = new Swiper('.swiper-container', {
-                spaceBetween: 10,
-                loop: true,
-                direction: 'vertical',
-                loopedSlides: 4,
-                autoplay: 3000
-            });
-            //galleryTop.params.control = galleryThumbs;//需要在galleryThumbs2初始化后，galleryTop控制galleryThumbs
-            //galleryThumbs.params.control = galleryTop;
+        // if (currentCity && currentCity.code != '440100' && currentCity.code != '440113') {
+        //     galleryTop = new Swiper('.swiper-container', {
+        //         spaceBetween: 10,
+        //         loop: true,
+        //         direction: 'vertical',
+        //         loopedSlides: 4,
+        //         autoplay: 3000
+        //     });
+        //     //galleryTop.params.control = galleryThumbs;//需要在galleryThumbs2初始化后，galleryTop控制galleryThumbs
+        //     //galleryThumbs.params.control = galleryTop;
 
-            $(".swiper-container").hover(function () {
-                galleryTop.stopAutoplay();
-            });
-        } else {
+        //     $(".swiper-container").hover(function () {
+        //         galleryTop.stopAutoplay();
+        //     });
+        // } else {
             $(".swiper-container").hover(function () {
                 galleryTop.stopAutoplay();
             }, function () {
                 galleryTop.startAutoplay();
 
             });
-        }
+        // }
     }
 });
 

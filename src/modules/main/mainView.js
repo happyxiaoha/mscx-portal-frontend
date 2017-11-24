@@ -49,13 +49,13 @@ var mainView = Backbone.View.extend({
     initialize: function() {
 
         var currentCity = JSON.parse(sessionStorage.getItem('currentCity'));
-        if(currentCity && currentCity.code!='440100' &&  currentCity.code!='440113'){
-            require('../newThreeServices/openData.css');
-            require('../newThreeServices/apiModel/api.css');
-            require('../newThreeServices/servicesModel/services.css');
-            this.$el.html(childTemplate);
-            showDatas(currentCity.code)
-        }else{
+        // if(currentCity && currentCity.code!='440100' &&  currentCity.code!='440113'){
+        //     require('../newThreeServices/openData.css');
+        //     require('../newThreeServices/apiModel/api.css');
+        //     require('../newThreeServices/servicesModel/services.css');
+        //     this.$el.html(childTemplate);
+        //     showDatas(currentCity.code)
+        // }else{
             this.$el.html(template);
             this.$latestNewsList = this.$('.news-list-left-wrapper');
             this.$hotNewsList = this.$('.news-list-right-wrapper');
@@ -104,7 +104,7 @@ var mainView = Backbone.View.extend({
             // });
             //加载创业资讯(最新资讯)
             // this.$list.load(cmsUrl + '?time=' + +(new Date()));
-        }
+        // }
         new bannerView();
 
         // 合作伙伴加载

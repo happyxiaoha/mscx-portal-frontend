@@ -206,6 +206,7 @@ var serversDemandListView = Backbone.View.extend({
     },
     showSerOrderList: function (e){
         var that = this;
+        var status = $(e.target).data('status');
         that.serOrderattrid = $(e.target).closest('tr').attr('attrId');
         this.serOrderModel.fetch({
             data: {
@@ -213,12 +214,17 @@ var serversDemandListView = Backbone.View.extend({
                 pageSize: 5
             }
         });
+
+        // 下架或关闭状态的服务需求不需要获取接单状态
         // 获取接单状态
-        this.getBillInfoModel.fetch({
-            data: {
-                reqId: this.serOrderattrid
-            }
-        })
+        if(status != 5 && status != 7) {
+            this.getBillInfoModel.fetch({
+                data: {
+                    reqId: this.serOrderattrid
+                }
+            })
+        }
+        
         this.$el.find('#serNameList tbody').html('');
         this.$('#payTip').empty();
         var dialog = layer.open({

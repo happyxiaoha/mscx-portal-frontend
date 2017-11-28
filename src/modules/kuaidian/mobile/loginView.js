@@ -78,7 +78,8 @@ var mLoginView = Backbone.View.extend({
                             window.open('index.html', '_self');
                         }
                     }
-
+                } else {
+                    layer.alert(res.message);
                 }
             },
             error: function () {

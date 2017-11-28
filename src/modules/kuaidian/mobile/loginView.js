@@ -32,8 +32,7 @@ var mLoginView = Backbone.View.extend({
         this.$el.html(this.template());
         this.render();
 
-        if (location.search.indexOf("?service=") > 0) {
-            alert(1);
+        if (location.search.indexOf("?service=") >= 0) {
             var fromUrl = location.search && location.search.split('?')[1] && location.search.split('?')[1].split('=')[1];
             if (fromUrl) {
                 window.localStorage.setItem('GYFromUrl', fromUrl);

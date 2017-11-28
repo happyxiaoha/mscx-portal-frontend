@@ -23,7 +23,7 @@
         <% }else if(data.chargeType == '05'){ %>
             <em class="red mt3"><%= '¥' + data.price %></em>
             <em><%= data && data.chargeCount %>次起</em>
-        <% }else if(data.chargeType == '01' || data.chargeType == '02'){ %>
+        <% }else{ %>
             <i class="red ft14"><%= data && data.chargeTypeDesc %></i>
         <% } %>
     </span>

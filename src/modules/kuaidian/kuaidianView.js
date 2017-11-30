@@ -23,25 +23,25 @@ var kuaidianView = Backbone.View.extend({
     events: {},
     initialize: function () {
         this.$el.empty().append(template);
-        /* 获取用户信息 */
+        /* 获取用户信息
         this.model = new getUserMsg();
         this.model.fetch({
             data: {
                 t: new Date().getTime()
             }
         });
-        this.listenTo(this.model, 'sync', this.render);
+        this.listenTo(this.model, 'sync', this.render);*/
 
         this.kuaidianModel = new kuaidianModel();
+        this.render();
     },
 
     render: function () {
-        var nJson = this.model.toJSON();
+        /*var nJson = this.model.toJSON();
         mscxPage.userInfo = nJson.result;
         if (!mscxPage.userInfo) {
             location.href = 'mobile/login.html?service=' + encodeURIComponent(location.href);
-        }
-        // window.location.href = mscxPage.request.kuaidian + "index.do";
+        }*/
 
         this.kuaidianModel.save({
             storeId: getUrlParam("store_id"),
@@ -50,15 +50,16 @@ var kuaidianView = Backbone.View.extend({
             type: 'POST',
             success: this.kuaidianCallback
         });
+        window.location.href = "http://kuaidian.bizsov.com/diancan-" + getUrlParam("store_id") + ".html?zh=" + getUrlParam("zh");
     },
     kuaidianCallback: function (res) {
-        var rtnData = res.toJSON();
+        /*var rtnData = res.toJSON();
         if (rtnData.status !== 'OK') {
             // location.href = result.result;
             layer.msg(rtnData.message);
             return;
         }
-        window.location.href = rtnData.result;
+        window.location.href = rtnData.result;*/
     }
 });
 

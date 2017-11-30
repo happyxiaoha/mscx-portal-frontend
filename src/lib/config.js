@@ -13,6 +13,7 @@ var mscxPage = {
         userCenterLeft: '.left-list-wrap',
         userCenterRight: '.right-con-wrap',
         pioneeringEl: '.pioneering-content',
+        solutionEl: '.solution-content',
         payEl: '.pay-content',
         threeSourceEl:'.source-content',
         threeApiEl:'.three-api-content',
@@ -34,6 +35,7 @@ var mscxPage = {
         newsPage: 'news.html',
         contactPage: 'contactUs.html',
         rechargePage: 'recharge.html',
+        solutionPage: 'solution.html'
     },
     userInfo: '',
     userAuthType: {

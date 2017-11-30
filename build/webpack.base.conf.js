@@ -96,6 +96,14 @@ module.exports = {
             chunks: ["manifest", "vendor", "common", 'recharge'],
             chunksSortMode: 'dependency'
         }),
+        new HtmlWebpackPlugin({
+            title: '解决方案',
+            filename: 'solution.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'solution'],
+            chunksSortMode: 'dependency'
+        }),
         // new HtmlWebpackPlugin({
         //     title: '数据服务',
         //     filename: 'api.html',

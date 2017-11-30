@@ -37,7 +37,7 @@ var recommendSerModel = Backbone.Model.extend({
     url: mscxPage.request.app + 'recommend/list.do'
 });
 var Resource = require('../pioneering/resource.js');
-var cmsHotUrl = Resource.cmsHost + '/static_html/datainfo/gz_hotArticle/index.html';
+var cmsHotUrl = Resource.cmsHost + '/static_html/datainfo/gz_hotsolution/index.html';
 var cmsLatestUrl = Resource.cmsHost + '/static_html/datainfo/gz_latestArticle/index.html';
 
 var mainView = Backbone.View.extend({

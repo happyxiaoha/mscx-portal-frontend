@@ -16,9 +16,14 @@ var menuList = [
         url: mscxPage.urlConfig.sourcesPage,
         key: 'sources'
     },
-    {
+    /*{
         name: '充值缴费',
         url: mscxPage.urlConfig.rechargePage,
+        key: 'recharge'
+    },*/
+    {
+        name: '解决方案',
+        url: mscxPage.urlConfig.solutionPage,
         key: 'recharge'
     },
     {

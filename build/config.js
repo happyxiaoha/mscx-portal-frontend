@@ -50,6 +50,7 @@ module.exports = {
     'main': './src/js/main.js',      //首页
     'sources': './src/js/sources.js',    //数据
     'recharge': './src/js/recharge.js', //充值缴费
+    'solution': './src/js/solution.js', //解决方案
     'demand': './src/js/demand.js',     //需求定制
     'news': './src/js/news.js',  //新闻资讯
     'userInfo': './src/js/userInfo.js',    //用户中心

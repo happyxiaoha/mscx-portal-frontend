@@ -1,0 +1,136 @@
+@import "../../less/variables.less";
+
+.layerCons .main-tit {
+    width: 100%;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.layerCons .main-tit h2 {
+    color: #6e7782;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+}
+.layerCons .main-tit span{
+    color: #6e7782;
+}
+.layerCons .main-tit .titbg{
+    width: 11px;
+    height: 21px;
+    margin-left: 10px;
+    display: block;
+    padding-left: 11px;
+    background: url("../../images/newicon/ic_titbg1.png") left bottom no-repeat;
+}
+.layerCons .tit .titbgser {
+    background: url("../../images/newicon/ic_titbg.png") left bottom no-repeat;
+}
+
+.news-list-left {
+    width: 100%;
+    float: left;
+    padding-right: 10px;
+    box-sizing: border-box;
+    ul  {
+        overflow: hidden;
+        padding-top: 15px;
+        border-top: 1px solid #ccc;
+        li {
+            overflow: hidden;
+            margin-bottom: 20px;
+            .ellipsis:after {
+                content: "...";
+                position: absolute;
+                top: 86px;
+                right: 5px;
+            }
+        }
+    }
+    .mainDatas {
+        width: 100%;
+    }
+    .more {
+        line-height: 24px;
+        float: right;
+        color: @linkColor;
+    }
+    .news-icon {
+        float: left;
+        width: 180px;
+        height: 110px;
+        img {
+            width: 180px;
+            height:110px;
+            border-radius: 10px;
+        }
+    }
+    .news-content {
+        margin-left: 20px;
+        float: left;
+        width: 75%;
+        line-height: 1.5;
+        position: relative;
+        .news-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .news-sub-title {
+            font-size: 12px;
+            margin: 8px 0;
+            & > span {
+                margin-right: 10px;
+                span {
+                    color: @hightlightColor;
+                }
+            }
+        }
+        .news-desc {
+            font-size: 14px;
+            line-height: 2;
+            height: 60px;
+            padding-right: 10px;
+        }
+    }
+}
+
+/* 新闻列表分页 */
+.Page{width: 100%;}
+.Page ul{text-align: center;}
+.Page ul li{display: inline-table;font-size: 12px;line-height: 24px;margin-right: 10px;}
+.Page ul li a{display: inline-block;padding: 0 7px;border: 1px solid #ddd;margin-right: 5px; }
+.Page ul li a:link{color: #333;}
+.Page ul li a:hover{color: #5596ed;}
+.Page ul li a.active{border: 1px solid #5596ed;color: #5596ed;}
+.Page ul li input{vertical-align: 0px; width: 30px;height: 26px;border-radius: 0;box-sizing: border-box;text-align: center;margin: 0 6px;}
+.Page ul li a#go{margin-left: 6px;}
+
+/*公告详情*/
+.smallNav{margin: 20px 0 14px 5px;}
+.noticeListCons{border: 1px solid #ccc;padding: 15px 28px 25px;}
+.noticeListCons .noticeListConsUl li{border-bottom: 1px dashed #CCC;font-size: 14px;padding: 14px 0;line-height: 16px;}
+.noticeListCons .noticeListConsUl li a{ display: block;width: 700px;white-space:nowrap; text-overflow:ellipsis; overflow: hidden;position: relative; padding-left: 16px;}
+.noticeListCons .noticeListConsUl li a:before{content: '';width: 5px;height: 5px;background: #069cd9;position: absolute;left: 0;top: 5px;}
+.noticeListCons .noticeListConsUl li a:hover{color: #069cd9;}
+
+.noticeListCons .TopTit h2{font-size: 25px;padding-top:40px;font-weight: normal;text-align: center;}
+.noticeListCons .TopTit .titList{font-size: 12px;padding-top:25px;border-bottom:1px solid #cccccc;padding-bottom: 10px;font-weight: normal;}
+.noticeListCons .TopTit .shareCons a{height: 28px;margin-right: 12px;display: inline-block;box-sizing: border-box;margin-right: 15px;}
+.noticeListCons .TopTit .shareCons a em{height: 30px;width: 26px;vertical-align: middle;}
+.noticeListCons .TopTit .shareCons a span{display: inline-block;}
+.noticeListCons .TopTit .article{font-size: 14px;line-height: 28px;}
+
+.downCons p{font-size: 14px;line-height: 24px;margin-bottom: 14px;}
+.downCons p.tit2{text-indent: 2em;}
+.downCons img{display: block;margin: 20px auto;}
+
+.noticeListCons button{height: 36px;line-height: 36px;text-align: center;color: #fff;font-size: 16px;background: #3F89EC;border: 0;margin-top: 3px;padding: 0 36px;outline: none;margin-right: 32px;}
+
+#offlineBtn {
+    position: absolute;
+    border: solid 1px #8b8b8b;
+    background: #fff;
+    color: #8a8a8a;
+    top: 80px;
+    right: 0;
+}

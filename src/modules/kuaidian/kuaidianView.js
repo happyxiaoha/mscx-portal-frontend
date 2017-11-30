@@ -15,7 +15,7 @@ var getUserMsg = Backbone.Model.extend({
 });
 
 var kuaidianModel = Backbone.Model.extend({
-    url: 'http://mscx-portal-gy.eastdc.cn:85/ro/mscx-kuaidian-api/orderLog/save.do'
+    url: mscxPage.request.kuaidian + 'orderLog/save.do'
 });
 
 var kuaidianView = Backbone.View.extend({
@@ -53,7 +53,7 @@ var kuaidianView = Backbone.View.extend({
         });
     },
     kuaidianCallback: function (res) {
-        window.location.href = "http://kuaidian.bizsov.com/diancan-" + getUrlParam("store_id") + ".html?zh=" + getUrlParam("zh");
+        window.location.href = "http://kuaidian.bizsov.com/wap/diancan-" + getUrlParam("store_id") + ".html?zh=" + getUrlParam("zh");
         /*var rtnData = res.toJSON();
         if (rtnData.status !== 'OK') {
             // location.href = result.result;

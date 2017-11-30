@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    cmsHost: 'http://www.gzopendata.com',
+    cmsHost: location.protocol + '//' + location.host,
     maps: [
         {
             name: '解决方案',

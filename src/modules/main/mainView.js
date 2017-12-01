@@ -61,6 +61,7 @@ var mainView = Backbone.View.extend({
             this.$hotNewsList = this.$('.news-list-right-wrapper');
             //创业资讯的配置
             window.frameUrl = 'news.html?';
+            window.solutionFrameUrl = 'solution.html?';
             window.portalUrl = Resource.cmsHost;
 
             this.$latestNewsList.load(cmsLatestUrl + '?time=' + +(new Date()), function() {
@@ -71,9 +72,9 @@ var mainView = Backbone.View.extend({
                         $(item).removeClass('ellipsis');
                     }
                 })
-            }.bind(this))
+            }.bind(this));
 
-            this.$hotNewsList.load(cmsHotUrl + '?time=' + +(new Date()))
+            this.$hotNewsList.load(cmsHotUrl + '?time=' + +(new Date()));
 
             // new firstRecommendView();
 

@@ -24,7 +24,7 @@ var menuList = [
     {
         name: '解决方案',
         url: mscxPage.urlConfig.solutionPage,
-        key: 'recharge'
+        key: 'solution'
     },
     {
         name: '需求定制',

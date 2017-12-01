@@ -14,9 +14,13 @@ var menuList = [
         name: '数据服务',
         url: mscxPage.urlConfig.sourcesPage
     },
-    {
+    /*{
         name: '充值缴费',
         url: mscxPage.urlConfig.rechargePage
+    },*/
+    {
+        name: '解决方案',
+        url: mscxPage.urlConfig.solutionPage
     },
     {
         name: '需求定制',

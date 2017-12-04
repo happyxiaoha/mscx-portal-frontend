@@ -74,7 +74,18 @@ var mainView = Backbone.View.extend({
                 })
             }.bind(this));
 
-            this.$hotNewsList.load(cmsHotUrl + '?time=' + +(new Date()));
+            this.$hotNewsList.load(cmsHotUrl + '?time=' + +(new Date()),function () {
+                //添加序号
+                setTimeout(function () {
+                    var ul = $('.news-list-right-wrapper').find('ul')[0];
+                    //console.log(ul)
+                    var lis = ul.getElementsByTagName('li');
+                    for (var i = 0, l = lis.length; i < l; i++) {
+                        var tHTML = lis[i].innerHTML
+                        lis[i].innerHTML = '<span>' + (i + 1) + '</span>' + tHTML;
+                    }
+                })
+            });
 
             // new firstRecommendView();
 
@@ -110,10 +121,14 @@ var mainView = Backbone.View.extend({
 
         // 合作伙伴加载
         this.$('.partner').html(this.partnerTemplate(partnerInfo))
+        //热门方案列表添加序号
+
 
         this.render();
     },
     render: function(){
+
+
         $(".partner").slide({
             mainCell:"ul",
             autoPlay:true,
@@ -148,7 +163,7 @@ var mainView = Backbone.View.extend({
                 $('.downCons').find('.titCons').eq(index).removeClass('hide').siblings('.titCons').addClass('hide');
             });
 
-    }
+    },
 });
 function showDatas(orgId, categoryId, keyword, scope, chargeType, orderBy) {
     var openDataReleaseView = require('../newThreeServices/opendataRelease/openDataReleaseView.js');
@@ -185,4 +200,5 @@ function showDatas(orgId, categoryId, keyword, scope, chargeType, orderBy) {
         }
     });
 };
+
 module.exports = mainView;

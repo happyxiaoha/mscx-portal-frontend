@@ -31,6 +31,7 @@ module.exports = {
             rule: '**/*.do',
             options: {
                 target: 'http://mscx-portal.eastdc.cn:85',
+                // target: 'http://www.gzopendata.com:80',
                 changeOrigin: true
             }
             
@@ -38,6 +39,7 @@ module.exports = {
             rule: '/static_html',
             options: {
                 target: 'http://mscx-portal.eastdc.cn:85',
+                // target: 'http://www.gzopendata.com:80',
                 changeOrigin: true
             }
         }

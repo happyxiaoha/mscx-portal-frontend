@@ -95,6 +95,17 @@ var view = Backbone.View.extend({
 
         // 默认选中第一个
         this.$('.tab span').eq(0).click();
+
+        // add
+        var apiName = $('#apiName').text();
+        console.log(apiName);
+        if (apiName === '企业充' || apiName === '折扣充') {
+            $(".tab").hide();
+            $(".tabLeft").hide();
+            $('.tabRight').width(930);
+            $('#apiUse').hide();
+            $('.rightCons .markdown-body').prepend('<hr/>')
+        }
     },
     selectTab: function(event) {
         this.$tabWrap.addClass('opacity0');

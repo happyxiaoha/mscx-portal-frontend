@@ -76,6 +76,12 @@ var openDataDetailView = Backbone.View.extend({
             });
         }
         }
+
+        var saasName = $('#saasName').text();
+        if (saasName === '企查通') {
+            $('.titTopCons').hide();
+            $('.intro_credit_inquiry').show();
+        }
     },
     handleAttention: function(res) {
         var model = res.toJSON(),

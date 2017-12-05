@@ -1,22 +1,19 @@
 /**
- * 创业园地router
+ * 新闻资讯router
  */
 var Routes =  Backbone.Router.extend({
     routes: {
         '': 'newsView',
         'news': 'newsView',
         'news/detail/:url': 'newsDetailView',
-        'news/list': 'newsListView',
-        'apiEnv': 'apiEnvView',
-        'serverEnv': 'serverEnvView',
-        'coach': 'coachView'
+        'news/list': 'newsListView'
     },
     newsView:function () {
-        var view = require('pioneering/newsView.js');
+        var view = require('news/newsView.js');
         mscxPage.views['newsViewObj'] = new view();
     },
     newsDetailView:function (url) {
-        var view = require('../news/newsDetailView.js');
+        var view = require('news/newsDetailView.js');
         mscxPage.views['newsDetailView'] = new view({
             model: {
                 url: url
@@ -24,20 +21,8 @@ var Routes =  Backbone.Router.extend({
         });
     },
     newsListView:function () {
-        var view = require('../news/newsListView.js');
+        var view = require('news/newsListView.js');
         mscxPage.views['newsListViewObj'] = new view();
-    },
-    apiEnvView:function () {
-        var view = require('pioneering/apiEnvView.js');
-        mscxPage.views['apiEnvViewObj'] = new view();
-    },
-    serverEnvView:function () {
-        var view = require('pioneering/serverEnvView.js');
-        mscxPage.views['serverEnvViewObj'] = new view();
-    },
-    coachView: function() {
-        var view = require('pioneering/coachView.js');
-        mscxPage.views['coachViewObj'] = new view();
     },
     openPage: function(url) {
         this.navigate(url,{trigger: true});

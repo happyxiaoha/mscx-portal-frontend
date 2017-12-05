@@ -100,6 +100,7 @@ var view = Backbone.View.extend({
         var apiName = $('#apiName').text();
         console.log(apiName);
         if (apiName === '企业充' || apiName === '折扣充') {
+            $("#applyBtn").hide();
             $(".tab").hide();
             $(".tabLeft").hide();
             $('.tabRight').width(930);

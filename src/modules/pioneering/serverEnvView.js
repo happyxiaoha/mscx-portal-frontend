@@ -4,13 +4,14 @@ var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var Resource = require('./resource.js');
 var template = '<div class="server-env rightMenuWrap fl boxShadiow boxSizing bgWhite common animate-content opacity0"></div>';
 
-var cmsUrl = Resource.cmsHost + 'static_html/datainfo/serverdev/index.html'
+var cmsUrl = Resource.cmsHost + '/static_html/datainfo/serverdev/index.html';
 
 require('./pioneering.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,
     initialize: function() {
+        this.$el.addClass('grid1000 mt30');
         this.leftMenuView = new leftMenuView({
             model: {
                 className: 'pioneer',

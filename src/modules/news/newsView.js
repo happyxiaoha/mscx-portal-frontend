@@ -2,11 +2,11 @@
 
 var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var Resource = require('./resource.js');
-var template = '<div class="api-env rightMenuWrap fl boxShadiow boxSizing bgWhite common animate-content opacity0"></div>';
+var template = '<div class="layLeft common clearfix fl bgBoxShodow animate-content opacity0"></div>';
 
-var cmsUrl = Resource.cmsHost + '/static_html/datainfo/apiinfo/index.html';
+var cmsUrl = Resource.cmsHost + '/static_html/datainfo/latestnews/index.html';
 
-require('./pioneering.css');
+require('../pioneering/pioneering.css');
 
 var view = Backbone.View.extend({
     el: mscxPage.domEl.pioneeringEl,
@@ -15,18 +15,22 @@ var view = Backbone.View.extend({
         this.leftMenuView = new leftMenuView({
             model: {
                 className: 'pioneer',
-                id: 'apiEnv',
+                id: 'news',
                 sideBars: Resource.maps
             }
         });
 
         this.$el.empty().append(this.leftMenuView.$el).append(template);
 
-        this.$wrap = this.$('.rightMenuWrap');
+        this.$layLeft = this.$('.layLeft');
         var me = this;
-        
-        this.$wrap.load(cmsUrl + '?time=' + +(new Date()), function() {
-            me.$wrap.removeClass('opacity0');
+
+        window.frameUrl = '?';
+        window.listUrl = '#news/list';
+        window.portalUrl = Resource.cmsHost;
+
+        this.$layLeft.load(cmsUrl + '?time=' + +(new Date()), function() {
+            me.$layLeft.removeClass('opacity0');
         });
 
         return this;

@@ -29,6 +29,10 @@ var menuList = [
     {
         name: '新闻资讯',
         url: mscxPage.urlConfig.newsPage
+    },
+    {
+        name: '双创园地',
+        url: mscxPage.urlConfig.pioneeringPage
     }
 ];
 

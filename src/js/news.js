@@ -6,7 +6,7 @@ require('js/ajaxBackboneManger.js');
 
 var header = require('headerWidget/headerView.js');
 var footer = require('footerWidget/footerView.js');
-var router = require('pioneering/router.js');
+var router = require('news/router.js');
 
 $(function() {
     new header({
@@ -21,7 +21,7 @@ $(function() {
         if(location.search){
             this.newsDetailView(location.search.split('?')[1]);
         }
-    })
+    });
     Backbone.history.stop();
     Backbone.history.start();
 });

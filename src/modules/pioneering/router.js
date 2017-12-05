@@ -24,7 +24,7 @@ var Routes =  Backbone.Router.extend({
         });
     },
     newsListView:function () {
-        var view = require('../news/newsListView.js');
+        var view = require('pioneering/newsListView.js');
         mscxPage.views['newsListViewObj'] = new view();
     },
     apiEnvView:function () {

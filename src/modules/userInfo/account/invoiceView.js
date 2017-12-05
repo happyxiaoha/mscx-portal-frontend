@@ -193,7 +193,7 @@ var invoiceView = Backbone.View.extend({
             },
             btn2: function () {
                 $('#invoiceForm').resetForm();
-                layer.close(this.dialog);
+                layer.close(that.dialog);
             }
         });
     },

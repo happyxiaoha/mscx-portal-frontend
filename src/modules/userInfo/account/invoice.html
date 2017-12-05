@@ -1,0 +1,160 @@
+<div class="M-mainInfo clearfix bgWhite" style="padding-top: 20px;">
+    <div class="tab-title fl"><a class="corff" href="javascript:;" id="addInvoice">新增发票申请</a></div>
+    <div class="tab-title fr">
+        <input type="text" id="searchIpt" placeholder="输入发票抬头" >
+        <a href="javascript:;" class="corff" id="searchInvoice">搜索</a>
+    </div>
+    <div class="M-downCons">
+        <div class="D_table M-table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="8%">序号</td>
+                    <th width="12%">发票类型</th>
+                    <th width="10%">发票金额</th>
+                    <th width="18%">发票抬头</th>
+                    <th width="10%">发票时间</th>
+                    <th width="10%">收取方式</th>
+                    <th width="20%">邮寄地址</th>
+                    <th width="12%">发票状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td colspan="8">暂无数据</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="apiPage" class="page-area fr"></div>
+    </div>
+</div>
+<div id="invoiceWrapper" style="display:none;position:relative;">
+    <form id="invoiceForm" onsubmit="return false;">
+        <ul>
+            <li>
+                <label>
+                    <span><i class="need">*</i>发票类型：</span>
+                    <select name="invoiceType" class="invoice-type">
+                        <option value="01">普通发票</option>
+                        <option value="02">增值税专用发票</option>
+                    </select>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>发票金额：</span>
+                    <input type="text" name="applyAmount" id="applyAmount" value="" placeholder="请输入发票金额">
+                    <p class="input-mes-api fl">您共有<i id="amountLimit">0</i>元的发票可以开</p>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>发票抬头：</span>
+                    <input type="text" name="taxpayerName" placeholder="请输入发票抬头" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span>纳税人识别号：</span>
+                    <input type="text" name="taxpayerIdentify" placeholder="请输入纳税人识别号" value="">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>收取方式：</span>
+                    <input type="text" name="tokenType" value="邮寄" readonly="readonly">
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><i class="need">*</i>邮寄地址：</span>
+                    <input type="text" name="mailAddress" placeholder="请输入邮寄地址" value="">
+                </label>
+            </li>
+            <div id="moreInvoiceForm" style="display:none;">
+                <li>
+                    <label>
+                        <span><i class="need">*</i>税务登记号：</span>
+                        <input type="text" name="taxpayerId" placeholder="请输入税务登记号" value="">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>开户银行：</span>
+                        <input type="text" name="bankDeposit" placeholder="请输入开户银行" value="">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>银行账号：</span>
+                        <input type="text" name="bankAccount" placeholder="请输入银行账号" value="">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>开户银行名称：</span>
+                        <input type="text" name="bankName" placeholder="请输入开户银行名称" value="">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>注册场所地址：</span>
+                        <input type="text" name="regAddress" placeholder="请输入注册场所地址" value="">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><i class="need">*</i>注册固定电话：</span>
+                        <input type="text" name="regPhone" placeholder="请输入注册固定电话" value="">
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>税务登记扫描文件：</span>
+                        <p class="file-wrapper">
+                            <img src="../../../images/add.png" alt="税务登记扫描文件">
+                        </p>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>一般纳税人扫描件：</span>
+                        <p class="file-wrapper">
+                            <img src="../../../images/add.png" alt="一般纳税人扫描件">
+                        </p>
+                    </label>
+                </li>
+            </div>
+        </ul>
+    </form>
+    <form id="pic1Upload" class="imgForm" action="" method="post">
+        <input type="file" data-index="0" name="file" class="upload-file">
+        <input type="submit" id="btnAjax">
+    </form>
+    <form id="pic2Upload" class="imgForm" action="" method="post">
+        <input type="file" data-index="1" name="file" class="upload-file">
+        <input type="submit" id="btnAjax">
+    </form>
+</div>
+
+
+<script id="invoiceList" type="template">
+    <% _.each(data.invoiceList, function (item, index) { %>
+    <tr>
+        <td><%= +data.startIndex + +index + 1 %></td>
+        <td><%= item.invoiceType %></td>
+        <td><%= item.applyAmount %></td>
+        <td><%= item.taxpayerName %></td>
+        <td><%= new Date(item.applyTime).format('yyyy-MM-dd') %></td>
+        <td><%= item.tokenType %></td>
+        <td><%= item.mailAddress %></td>
+        <td><%= item.invoiceStatus %></td>
+    </tr>
+    <% }); %>
+    <%if(data.invoiceList.length == 0){%>
+    <tr>
+        <td colspan="8">暂无数据</td>
+    </tr>
+    <%}%>
+</script>

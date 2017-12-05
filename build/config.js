@@ -30,16 +30,16 @@ module.exports = {
         {
             rule: '**/*.do',
             options: {
-                target: 'http://mscx-portal.eastdc.cn:85',
-                // target: 'http://www.gzopendata.com:80',
+                // target: 'http://mscx-portal.eastdc.cn:85',
+                target: 'http://www.gzopendata.com:80',
                 changeOrigin: true
             }
             
         }, {
             rule: '/static_html',
             options: {
-                target: 'http://mscx-portal.eastdc.cn:85',
-                // target: 'http://www.gzopendata.com:80',
+                // target: 'http://mscx-portal.eastdc.cn:85',
+                target: 'http://www.gzopendata.com:80',
                 changeOrigin: true
             }
         }
@@ -55,6 +55,7 @@ module.exports = {
     'solution': './src/js/solution.js', //解决方案
     'demand': './src/js/demand.js',     //需求定制
     'news': './src/js/news.js',  //新闻资讯
+    'pioneering': './src/js/pioneering.js',  //双创园地
     'userInfo': './src/js/userInfo.js',    //用户中心
     'pay': './src/js/pay.js',
     'search': './src/js/search.js',

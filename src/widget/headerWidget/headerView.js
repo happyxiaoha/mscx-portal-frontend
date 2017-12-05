@@ -37,9 +37,9 @@ var menuList = [
         key: 'news'
     },
     {
-        name: '关于我们',
-        url: mscxPage.urlConfig.contactPage,
-        key: 'contactUs'
+        name: '双创园地',
+        url: mscxPage.urlConfig.pioneeringPage,
+        key: 'pioneering'
     }
 ];
 
@@ -90,7 +90,7 @@ var headerView = Backbone.View.extend({
             },
             async: false
             // silent: true
-        })
+        });
         this.model.fetch({
             data: {
                 t: new Date().getTime()

@@ -4,7 +4,7 @@ var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var Resource = require('./resource.js');
 var template = '<div class="layLeft common clearfix fl bgBoxShodow animate-content opacity0"></div>';
 
-var cmsUrl = Resource.cmsHost + '/static_html/datainfo/latestnews/index.html';
+var cmsUrl = Resource.cmsHost + '/static_html/datainfo/pioneerinfo_latest/index.html';
 
 require('./pioneering.css');
 

@@ -2,10 +2,13 @@
 
 var leftMenuView = require('leftMenuWidget/leftMenuView.js');
 var Resource = require('./resource.js');
-var template = '<div class="rightMenuWrap fl boxShadiow boxSizing bgWhite common"><div class="common posRE animate-content opacity0" id="topPart"></div><div id="downPart" class="common posRE animate-content opacity0"></div></div>';
+var template = '<div class="rightMenuWrap fl boxShadiow boxSizing bgWhite common">' +
+    '<div id="topPart" class="common posRE animate-content opacity0"></div>' +
+    '<div id="downPart" class="common posRE animate-content opacity0"></div>' +
+    '</div>';
 
-var cmsUrl = Resource.cmsHost + 'static_html/datainfo/pioneercoach/index.html';
-var cmsPolicyUrl = Resource.cmsHost + 'static_html/datainfo/policyread/index.html';
+var cmsUrl = Resource.cmsHost + '/static_html/datainfo/pioneercoach/index.html';
+var cmsPolicyUrl = Resource.cmsHost + '/static_html/datainfo/policyread/index.html';
 require('./pioneering.css');
 
 var view = Backbone.View.extend({
@@ -14,6 +17,7 @@ var view = Backbone.View.extend({
         'click #go': 'jumpToInputPage'
     },
     initialize: function() {
+        this.$el.addClass('grid1000 mt30');
         this.leftMenuView = new leftMenuView({
             model: {
                 className: 'pioneer',
@@ -23,8 +27,8 @@ var view = Backbone.View.extend({
         });
 
         this.$el.empty().append(this.leftMenuView.$el).append(template);
-        this.$downPart = this.$('#downPart');
         this.$topPart = this.$('#topPart');
+        this.$downPart = this.$('#downPart');
 
         var me = this;
 
@@ -32,7 +36,7 @@ var view = Backbone.View.extend({
         window.frameUrl = '?';
         window.jumpToPage = function(url) {
             me.$downPart.load(url + '?t=' + +(new Date()));
-        }
+        };
 
         this.$topPart.load(cmsUrl + '?time=' + +(new Date()), function() {
             me.$topPart.removeClass('opacity0');

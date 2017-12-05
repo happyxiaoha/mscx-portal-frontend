@@ -33,6 +33,7 @@ var mscxPage = {
         saasPage: 'saas.html',
         demandPage: 'demand.html',
         newsPage: 'news.html',
+        pioneeringPage: 'pioneering.html',
         contactPage: 'contactUs.html',
         rechargePage: 'recharge.html',
         solutionPage: 'solution.html'

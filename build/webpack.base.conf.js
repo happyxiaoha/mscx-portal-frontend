@@ -145,6 +145,14 @@ module.exports = {
             chunksSortMode: 'dependency'
         }),
         new HtmlWebpackPlugin({
+            title: '双创园地',
+            filename: 'pioneering.html',
+            template: 'src/ejs/index.ejs',
+            inject: true,
+            chunks: ["manifest", "vendor", "common", 'pioneering'],
+            chunksSortMode: 'dependency'
+        }),
+        new HtmlWebpackPlugin({
             title: '消息管理',
             filename: 'message.html',
             template: 'src/ejs/index.ejs',

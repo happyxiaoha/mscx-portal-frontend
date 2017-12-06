@@ -90,9 +90,6 @@
 .projectList .DataList li .centers p span:not(:first-child){padding: 0;line-height: 22px;}
 .projectList .DataList li .centers p span:before{display: none;}
 .projectList .DataList li em{display: block;width: 100%;height: 35px;text-align: center;line-height: 35px;color: #444;background: #f0f0f0;}
-.requireHeader{padding: 17px 20px;font-size: 16px;width: 587px;box-sizing: border-box;}
-.requireHeader p{color: #333;background: url(../../images/img14.png) no-repeat left center;line-height: 46px;padding-left: 50px;}
-.requireHeader button{height: 46px;border: 0;outline: none;color: #fff;font-size: 16px;padding: 0 20px;}
 .projectRight{width: 270px !important;}
 .DownsLeft{width: 587px;}
 .inputs{right: 0;top: 0;}

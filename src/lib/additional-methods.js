@@ -38,3 +38,15 @@ jQuery.validator.addMethod("payPassword", function(value, element) {
 jQuery.validator.addMethod("tenMultiple", function(value, element) {
     return this.optional(element) || (value > 0 && value % 10 === 0);
 }, "请输入10的倍数");
+
+//验证字母和数字
+jQuery.validator.addMethod("letterAndNumber", function(value, element) {
+    var re = /^[a-zA-Z0-9]+$/;
+    return this.optional(element) || (re.test(value));
+}, "只能包含字母及数字");
+
+//验证座机号
+jQuery.validator.addMethod("landlinePhone", function(value, element) {
+    var re = /(^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$)/;
+    return this.optional(element) || (re.test(value));
+}, "请输入正确的座机号");
